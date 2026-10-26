@@ -45,5 +45,23 @@ Receipts are stored in Netlify Blobs and are not exposed as public URLs. The rec
 Netlify Database requires a Credit-based plan. If the deploy reports `database feature not available for this account`, the site plan must be changed before the database backend can go live.
 
 
-## v7_34 exam type update
+## v7_35 exam type update
 `maintenance` (自動車整備・特定技能1号 Mock Exam) is now an allowed exam type. The included additive migration updates the `exam_attempts.exam_type` constraint.
+
+
+## v7_35 frontend wiring
+
+- Browser auth is bundled from `src/identity-client.js` using `@netlify/identity`.
+- `handleAuthCallback()` runs on page load, so invite, email-confirmation and recovery links are handled on the site.
+- Login / Register / Forgot Password / Logout are available from the Online Exam access card.
+- Student Verify calls `exam-student-verify` after login.
+- Exam start calls `exam-access`; one-free-attempt enforcement is now server-side.
+- Result submission calls `exam-attempt-submit`.
+- Checkout fetches authenticated bank details and submits receipt to `exam-payment-submit`.
+- Admin users with role `admin` can open the Admin Dashboard for CSV import and payment approval/rejection.
+- The 3-month plan code is standardized as `3months` on both frontend and backend.
+- `exam-bank-details` now requires an authenticated user.
+- Payment approval is transactional.
+- Re-importing an existing student with a blank verification-code field preserves the existing hash instead of rotating the code.
+
+Git builds must run `npm run build` (configured in `netlify.toml`) so `assets/identity.bundle.js` is generated before publish.

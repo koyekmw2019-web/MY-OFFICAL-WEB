@@ -27,10 +27,13 @@ export default async (req: Request) => {
       let studentCode = val(row,"student_code","Student ID","StudentID","ID");
       let verificationCode = val(row,"verification_code","Verification Code","Access Code","Code");
       if (!studentCode) studentCode = generatedCode("YKST");
-      if (!verificationCode) verificationCode = generatedCode("YK");
-      const hash = hashVerificationCode(verificationCode);
+      const existing = await db.sql<any>`SELECT verification_code_hash FROM exam_students WHERE student_code=${studentCode} LIMIT 1`;
+      let hash = existing[0]?.verification_code_hash || "";
+      let codeState = "preserved";
+      if (verificationCode) { hash = hashVerificationCode(verificationCode); codeState = "provided"; }
+      else if (!hash) { verificationCode = generatedCode("YK"); hash = hashVerificationCode(verificationCode); codeState = "generated"; }
       await db.sql`INSERT INTO exam_students(student_code,name,class_name,class_start,expire_date,verification_code_hash) VALUES(${studentCode},${name},${className || null},${normalizeDate(start)},${normalizeDate(expire)},${hash}) ON CONFLICT(student_code) DO UPDATE SET name=EXCLUDED.name,class_name=EXCLUDED.class_name,class_start=EXCLUDED.class_start,expire_date=EXCLUDED.expire_date,verification_code_hash=EXCLUDED.verification_code_hash,updated_at=NOW()`;
-      generated.push({ studentCode, verificationCode, name, className, classStart: normalizeDate(start), expireDate: normalizeDate(expire) });
+      generated.push({ studentCode, verificationCode: verificationCode || null, verificationCodeState: codeState, name, className, classStart: normalizeDate(start), expireDate: normalizeDate(expire) });
       imported++;
     }
     return Response.json({ ok: true, imported, credentials: generated });
