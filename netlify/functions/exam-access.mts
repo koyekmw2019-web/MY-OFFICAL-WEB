@@ -9,7 +9,7 @@ export default async (req: Request) => {
     const { examType } = await req.json();
     if (!EXAM_TYPES.has(examType)) return Response.json({ error: "Invalid exam type" }, { status: 400 });
     const db = getDatabase();
-    const students = await db.sql<any>`SELECT 1 FROM exam_students WHERE linked_user_id=${user.id} AND CURRENT_DATE BETWEEN class_start AND expire_date LIMIT 1`;
+    const students = await db.sql<any>`SELECT 1 FROM exam_students WHERE linked_user_id=${user.id} AND status='active' AND CURRENT_DATE BETWEEN class_start AND expire_date LIMIT 1`;
     if (students.length) {
       const [attempt] = await db.sql<any>`INSERT INTO exam_attempts(user_id,exam_type,access_mode) VALUES(${user.id},${examType},'student') RETURNING id`;
       return Response.json({ allowed: true, mode: "student", attemptId: attempt.id });

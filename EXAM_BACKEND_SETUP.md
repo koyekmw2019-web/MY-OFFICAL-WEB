@@ -65,3 +65,26 @@ Netlify Database requires a Credit-based plan. If the deploy reports `database f
 - Re-importing an existing student with a blank verification-code field preserves the existing hash instead of rotating the code.
 
 Git builds must run `npm run build` (configured in `netlify.toml`) so `assets/identity.bundle.js` is generated before publish.
+
+## v7_36 — YKCR master student synchronization
+
+YKCR is now the authoritative student source. This version adds a server-to-server receiver at:
+
+`/.netlify/functions/ykcr-student-sync`
+
+Required Netlify environment variable:
+
+- `YKCR_SYNC_SECRET` — shared HMAC-SHA256 secret. Keep it secret and scope it to Functions/Runtime.
+
+Receiver behavior:
+
+- Requires `X-YKCR-Timestamp`, `X-YKCR-Signature`, and `X-YKCR-Event-ID`.
+- Verifies HMAC over `timestamp + "." + exactRawJsonBody`.
+- Enforces a 5-minute timestamp window.
+- Records event IDs without storing the plaintext Verification Code, making retries idempotent.
+- Matches students by YKCR stable student ID, then Student ID, then a single exact legacy match on name + class + start date + expire date.
+- Hashes any received Verification Code immediately and stores only the hash in the Official Website database.
+- Adds YKCR student status and blocks inactive students from Student verification/exam access.
+- Preserves existing linked Website accounts during YKCR migration.
+
+The legacy CSV importer remains available as an Admin fallback, but YKCR should be treated as the primary source after synchronization is enabled.

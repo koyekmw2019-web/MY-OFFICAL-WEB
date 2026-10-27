@@ -12,6 +12,7 @@ export default async (req: Request) => {
     const rows = await db.sql<any>`SELECT * FROM exam_students WHERE student_code=${String(studentCode).trim()} LIMIT 1`;
     const student = rows[0];
     if (!student || !verifyCode(String(verificationCode), student.verification_code_hash)) return Response.json({ error: "Verification failed" }, { status: 403 });
+    if (String(student.status || "active").toLowerCase() !== "active") return Response.json({ error: "Student access is inactive" }, { status: 403 });
     if (student.linked_user_id && student.linked_user_id !== user.id) return Response.json({ error: "This student record is already linked to another account" }, { status: 409 });
     await db.sql`UPDATE exam_students SET linked_user_id=${user.id}, linked_email=${user.email ?? ""}, updated_at=NOW() WHERE id=${student.id}`;
     return Response.json({ ok: true, student: { studentCode: student.student_code, name: student.name, className: student.class_name, classStart: student.class_start, expireDate: student.expire_date } });
