@@ -8,6 +8,9 @@ export default async (req: Request) => {
     const user = await requireUser();
     const { examType } = await req.json();
     if (!EXAM_TYPES.has(examType)) return Response.json({ error: "Invalid exam type" }, { status: 400 });
+    if (Array.isArray(user.roles) && user.roles.includes("admin")) {
+      return Response.json({ allowed: true, mode: "admin", attemptId: null });
+    }
     const db = getDatabase();
     const students = await db.sql<any>`SELECT 1 FROM exam_students WHERE linked_user_id=${user.id} AND status='active' AND CURRENT_DATE BETWEEN class_start AND expire_date LIMIT 1`;
     if (students.length) {
