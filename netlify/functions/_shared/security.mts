@@ -1,6 +1,6 @@
 import { createHash, randomBytes, timingSafeEqual } from "node:crypto";
 
-export const EXAM_TYPES = new Set(["truck","taxi","bus","maintenance","car","motorcycle","moped"]);
+export const EXAM_TYPES = new Set(["truck","taxi","bus","maintenance","car","motorcycle","moped","jlpt_n1","jlpt_n2","jlpt_n3","jlpt_n4","jlpt_n5"]);
 export const PLAN_DAYS: Record<string, number> = { week: 7, month: 30, "3months": 90, year: 365 };
 export const PLAN_PRICE: Record<string, number> = { week: 1000, month: 2000, "3months": 3000, year: 5000 };
 

@@ -1,4 +1,4 @@
-const VERSION = 'yk-official-v7-36';
+const VERSION = 'yk-official-v7-46';
 self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', event => event.waitUntil(self.clients.claim()));
 self.addEventListener('fetch', event => {
