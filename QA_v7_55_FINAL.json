@@ -1,0 +1,93 @@
+{
+  "status": "passed_static_and_browser",
+  "source": "v7.54 Premium JLPT Cards",
+  "new_version": "v7.55",
+  "official_scoring_reference": "https://www.jlpt.jp/e/guideline/results.html",
+  "pass_marks": {
+    "N1": 100,
+    "N2": 90,
+    "N3": 95,
+    "N4": 90,
+    "N5": 80
+  },
+  "score_ranges": {
+    "N1-N3": [
+      60,
+      60,
+      60
+    ],
+    "N4-N5": [
+      120,
+      60
+    ]
+  },
+  "browser_checks": [
+    {
+      "viewport": 1280,
+      "level": "N1",
+      "score": 180,
+      "practice_pass": "true",
+      "parts": [
+        "language",
+        "reading",
+        "listening"
+      ],
+      "callback": {
+        "score": 180,
+        "pass": true
+      }
+    },
+    {
+      "viewport": 1280,
+      "level": "N4",
+      "score": 120,
+      "practice_pass": "false",
+      "parts": [
+        "combined",
+        "listening"
+      ],
+      "callback": {
+        "score": 120,
+        "pass": false
+      }
+    },
+    {
+      "viewport": 390,
+      "level": "N1",
+      "score": 180,
+      "practice_pass": "true",
+      "parts": [
+        "language",
+        "reading",
+        "listening"
+      ],
+      "callback": {
+        "score": 180,
+        "pass": true
+      }
+    },
+    {
+      "viewport": 390,
+      "level": "N4",
+      "score": 120,
+      "practice_pass": "false",
+      "parts": [
+        "combined",
+        "listening"
+      ],
+      "callback": {
+        "score": 120,
+        "pass": false
+      }
+    }
+  ],
+  "unchanged_netlify_files": 19,
+  "pdf_files": 0,
+  "pdf_page_images": 0,
+  "actual_exam_questions_per_level": 25,
+  "limitations": [
+    "linear practice score estimate, not official IRT JLPT scaled score",
+    "25 short questions per level, not full official exam-length",
+    "live Netlify authentication/payment/database not tested"
+  ]
+}

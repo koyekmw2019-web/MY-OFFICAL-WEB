@@ -1,0 +1,53 @@
+{
+  "version": "7.52",
+  "source_zip": "ye_kun_official_website_v7_51_LISTENING_LAST_native_only_netlify_source.zip",
+  "source_files_preserved": true,
+  "per_level": {
+    "N1": {
+      "native_text": 20,
+      "scored_listening": 5
+    },
+    "N2": {
+      "native_text": 20,
+      "scored_listening": 5
+    },
+    "N3": {
+      "native_text": 20,
+      "scored_listening": 5
+    },
+    "N4": {
+      "native_text": 20,
+      "scored_listening": 5
+    },
+    "N5": {
+      "native_text": 20,
+      "scored_listening": 5
+    }
+  },
+  "standalone_audio_runtime_removed": true,
+  "official_scoring_claim": false,
+  "mobile_and_desktop_browser_tests": {
+    "status": "passed",
+    "viewport_widths": [
+      1280,
+      390
+    ],
+    "levels": [
+      "N1",
+      "N2",
+      "N3",
+      "N4",
+      "N5"
+    ],
+    "flow": "20 native + 5 scored listening -> result, 100% correct answers test",
+    "note": "Japanese speechSynthesis emulated in isolated browser; physical speaker playback not confirmed"
+  },
+  "live_netlify_tests": "not performed",
+  "fullsite_browser_checks": {
+    "status": "passed_with_harness_warning",
+    "note": "JLPT cards / native exam controls present at 1280/390 widths; localStorage warning from about:blank test harness with no origin"
+  },
+  "js_syntax": "passed via node --check",
+  "zip_integrity": "passed",
+  "pdf_count": 0
+}

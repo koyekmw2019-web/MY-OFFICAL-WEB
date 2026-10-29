@@ -1,0 +1,63 @@
+{
+  "result": "passed",
+  "checks": [
+    {
+      "viewport": 1280,
+      "level": "N1",
+      "score": 180,
+      "practice_pass": "true",
+      "parts": [
+        "language",
+        "reading",
+        "listening"
+      ],
+      "callback": {
+        "score": 180,
+        "pass": true
+      }
+    },
+    {
+      "viewport": 1280,
+      "level": "N4",
+      "score": 120,
+      "practice_pass": "false",
+      "parts": [
+        "combined",
+        "listening"
+      ],
+      "callback": {
+        "score": 120,
+        "pass": false
+      }
+    },
+    {
+      "viewport": 390,
+      "level": "N1",
+      "score": 180,
+      "practice_pass": "true",
+      "parts": [
+        "language",
+        "reading",
+        "listening"
+      ],
+      "callback": {
+        "score": 180,
+        "pass": true
+      }
+    },
+    {
+      "viewport": 390,
+      "level": "N4",
+      "score": 120,
+      "practice_pass": "false",
+      "parts": [
+        "combined",
+        "listening"
+      ],
+      "callback": {
+        "score": 120,
+        "pass": false
+      }
+    }
+  ]
+}

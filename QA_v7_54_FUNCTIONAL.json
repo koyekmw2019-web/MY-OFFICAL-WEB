@@ -1,0 +1,19 @@
+{
+  "result": "passed",
+  "checks": [
+    {
+      "viewport": 1280,
+      "five_levels_exams_launch": true,
+      "native_bank": 125,
+      "long_notes_removed": true,
+      "pageerrors_relevant": []
+    },
+    {
+      "viewport": 390,
+      "five_levels_exams_launch": true,
+      "native_bank": 125,
+      "long_notes_removed": true,
+      "pageerrors_relevant": []
+    }
+  ]
+}

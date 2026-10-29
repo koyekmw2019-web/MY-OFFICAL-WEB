@@ -1,0 +1,42 @@
+{
+  "version": "7.51.0",
+  "status": "source-built; live backend untested",
+  "official_reference": "https://www.jlpt.jp/guideline/testsections.html",
+  "listening_last_stage_every_level": true,
+  "native_text_questions": 100,
+  "original_listening_questions": 25,
+  "chokuzen_questions": 100,
+  "total_original_questions": 225,
+  "score_after_listening_only": true,
+  "scoring": "Practice accuracy = correct / 25; NOT official JLPT scaled score or pass/fail",
+  "japanese_speech": "Browser TTS via Web Speech API; uses device voice; no recorded audio file",
+  "real_audio_playback_tested": false,
+  "browser_speech_simulation_tested": true,
+  "browser_qa": [
+    {
+      "width": 1280,
+      "five_levels": "pass",
+      "correct_questions_each_level": 25,
+      "result": 100,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "five_levels": "pass",
+      "correct_questions_each_level": 25,
+      "result": 100,
+      "errors": []
+    }
+  ],
+  "no_pdf_files": true,
+  "no_pdf_page_images": true,
+  "no_mp3": true,
+  "cover_images": 5,
+  "backend_unchanged_count": 20,
+  "backend_changed_files": [],
+  "duplicate_html_ids": 0,
+  "questions_teacher_verified": false,
+  "netlify_integration_tested": false,
+  "known_limitation": "Japanese TTS voice quality/availability varies by device. Test live on real phones before release.",
+  "full_site_smoke_test": "1280px/390px, all five JLPT cards start text and switch to integrated listening; PASS. LocalStorage warning on about:blank test harness only."
+}

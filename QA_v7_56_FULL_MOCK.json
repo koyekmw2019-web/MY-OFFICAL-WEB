@@ -1,0 +1,163 @@
+{
+  "1440-N5": {
+    "sections": 3,
+    "text_questions_per_section": [
+      36,
+      44
+    ],
+    "section_time_display": [
+      "20:00",
+      "40:00",
+      "30:00"
+    ],
+    "listening_questions": 20,
+    "score_0_if_blank": 0,
+    "pass_sections": 2
+  },
+  "1440-N4": {
+    "sections": 3,
+    "text_questions_per_section": [
+      36,
+      44
+    ],
+    "section_time_display": [
+      "25:00",
+      "55:00",
+      "35:00"
+    ],
+    "listening_questions": 20,
+    "score_0_if_blank": 0,
+    "pass_sections": 2
+  },
+  "1440-N3": {
+    "sections": 3,
+    "text_questions_per_section": [
+      36,
+      44
+    ],
+    "section_time_display": [
+      "30:00",
+      "70:00",
+      "40:00"
+    ],
+    "listening_questions": 20,
+    "score_0_if_blank": 0,
+    "pass_sections": 3
+  },
+  "1440-N2": {
+    "sections": 2,
+    "text_questions_per_section": [
+      80
+    ],
+    "section_time_display": [
+      "105:00",
+      "50:00"
+    ],
+    "listening_questions": 20,
+    "score_0_if_blank": 0,
+    "pass_sections": 3
+  },
+  "1440-N1": {
+    "sections": 2,
+    "text_questions_per_section": [
+      80
+    ],
+    "section_time_display": [
+      "110:00",
+      "55:00"
+    ],
+    "listening_questions": 20,
+    "score_0_if_blank": 0,
+    "pass_sections": 3
+  },
+  "cards_1440": [],
+  "js_errors_1440": [],
+  "390-N5": {
+    "sections": 3,
+    "text_questions_per_section": [
+      36,
+      44
+    ],
+    "section_time_display": [
+      "20:00",
+      "40:00",
+      "30:00"
+    ],
+    "listening_questions": 20,
+    "score_0_if_blank": 0,
+    "pass_sections": 2
+  },
+  "390-N4": {
+    "sections": 3,
+    "text_questions_per_section": [
+      36,
+      44
+    ],
+    "section_time_display": [
+      "25:00",
+      "55:00",
+      "35:00"
+    ],
+    "listening_questions": 20,
+    "score_0_if_blank": 0,
+    "pass_sections": 2
+  },
+  "390-N3": {
+    "sections": 3,
+    "text_questions_per_section": [
+      36,
+      44
+    ],
+    "section_time_display": [
+      "30:00",
+      "70:00",
+      "40:00"
+    ],
+    "listening_questions": 20,
+    "score_0_if_blank": 0,
+    "pass_sections": 3
+  },
+  "390-N2": {
+    "sections": 2,
+    "text_questions_per_section": [
+      80
+    ],
+    "section_time_display": [
+      "105:00",
+      "50:00"
+    ],
+    "listening_questions": 20,
+    "score_0_if_blank": 0,
+    "pass_sections": 3
+  },
+  "390-N1": {
+    "sections": 2,
+    "text_questions_per_section": [
+      80
+    ],
+    "section_time_display": [
+      "110:00",
+      "55:00"
+    ],
+    "listening_questions": 20,
+    "score_0_if_blank": 0,
+    "pass_sections": 3
+  },
+  "cards_390": [],
+  "js_errors_390": [],
+  "unmodified_card_html_sha256": "7d765d6221d0e1b4b67938f2eac78d0d5421a86b7ce763cfd6f767de76598b7e",
+  "new_index_html_sha256": "7d765d6221d0e1b4b67938f2eac78d0d5421a86b7ce763cfd6f767de76598b7e",
+  "unmodified_cards": true,
+  "question_bank_total": 500,
+  "per_level": {
+    "N5": 100,
+    "N4": 100,
+    "N3": 100,
+    "N2": 100,
+    "N1": 100
+  },
+  "audio_playback": "simulated SpeechSynthesis (not real phone voices)",
+  "live_backend_testing": "not performed",
+  "pedagogical_review": "not independently instructor-reviewed",
+  "scoring": "proportional practice estimate; not official IRT scaled scores"
+}
