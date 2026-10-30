@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="my">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b0b0c"><meta name="robots" content="noindex,follow">
+<title>Login / Create Account | YE KUN Official Website</title>
+<link rel="icon" type="image/png" href="/yk-192.png">
+<link rel="stylesheet" href="/assets/yk-login-v757.css">
+</head>
+<body>
+<header class="yk-auth-header">
+ <a class="yk-auth-brand" href="/#home" aria-label="YE KUN Home"><span class="yk-auth-brand-symbol">YK</span><strong>YE KUN</strong><small>OFFICIAL WEBSITE</small></a>
+ <div class="yk-auth-header-actions"><div class="auth-languages" role="group" aria-label="Languages"><button type="button" data-lang="my">မြန်မာ</button><button type="button" data-lang="en">English</button><button type="button" data-lang="ja">日本語</button></div><a href="/#home" class="yk-auth-home" data-t="back">← Homepage</a></div>
+</header>
+<main class="yk-auth-main">
+ <div class="auth-orb auth-orb-one" aria-hidden="true"></div><div class="auth-orb auth-orb-two" aria-hidden="true"></div>
+ <div class="auth-heading"><span class="auth-eyebrow">YE KUN · SECURE MEMBER ACCESS</span><h1 data-t="headline">Welcome to YE KUN.</h1><p data-t="strap">Sign in or create an account to access your exams and learning.</p></div>
+ <section class="auth-stage" id="authStage" aria-label="Login and registration">
+  <div class="auth-form-panel" id="authForms">
+   <div class="auth-form-inner">
+    <div class="form-view" id="viewLogin">
+     <div class="auth-form-kicker" data-t="member">MEMBER LOGIN</div><h2 data-t="signIn">Sign In</h2><p class="form-sub" data-t="loginDesc">Enter your existing YE KUN account details.</p>
+     <form id="loginForm" novalidate><label for="loginEmail" data-t="email">Email</label><input id="loginEmail" type="email" autocomplete="email" placeholder="name@example.com" required>
+      <label for="loginPassword" data-t="password">Password</label><div class="pass-field"><input id="loginPassword" type="password" autocomplete="current-password" required minlength="8" placeholder="••••••••"><button class="pass-eye" data-target="loginPassword" type="button" aria-label="Show or hide password">◉</button></div>
+      <div class="form-utility"><button type="button" class="link-button" id="forgotSwitch" data-t="forgot">Forgot password?</button></div>
+      <button class="auth-submit" type="submit" id="loginSubmit"><span data-t="signIn">Sign In</span><span aria-hidden="true">↗</span></button>
+     </form><p class="form-mobile-switch"><span data-t="newAccount">New here?</span> <button type="button" class="link-button" data-switch="signup" data-t="create">Create Account</button></p>
+    </div>
+    <div class="form-view" id="viewSignup" hidden>
+     <div class="auth-form-kicker" data-t="start">NEW ACCOUNT</div><h2 data-t="create">Create Account</h2><p class="form-sub" data-t="signupDesc">Registration is free. Student verification is a separate secure step.</p>
+     <form id="signupForm" novalidate><label for="suName" data-t="fullName">Full name</label><input id="suName" type="text" autocomplete="name" maxlength="120" required placeholder="Your name">
+      <label for="suEmail" data-t="email">Email</label><input id="suEmail" type="email" autocomplete="email" placeholder="name@example.com" required>
+      <label for="suPassword" data-t="password">Password</label><div class="pass-field"><input id="suPassword" type="password" autocomplete="new-password" required minlength="8" placeholder="8+ characters"><button class="pass-eye" data-target="suPassword" type="button" aria-label="Show or hide password">◉</button></div>
+      <label for="suConfirm" data-t="confirm">Confirm password</label><div class="pass-field"><input id="suConfirm" type="password" autocomplete="new-password" required minlength="8" placeholder="Repeat password"><button class="pass-eye" data-target="suConfirm" type="button" aria-label="Show or hide password">◉</button></div>
+      <button class="auth-submit" type="submit" id="signupSubmit"><span data-t="create">Create Account</span><span aria-hidden="true">↗</span></button>
+     </form><p class="form-mobile-switch"><span data-t="hasAccount">Already have an account?</span> <button type="button" class="link-button" data-switch="login" data-t="signIn">Sign In</button></p>
+    </div>
+    <div class="form-view" id="viewForgot" hidden>
+     <div class="auth-form-kicker" data-t="recoveryTag">ACCOUNT RECOVERY</div><h2 data-t="reset">Reset Password</h2><p class="form-sub" data-t="resetDesc">We will send a password recovery email.</p>
+     <form id="forgotForm" novalidate><label for="forgotEmail" data-t="email">Email</label><input id="forgotEmail" type="email" autocomplete="email" placeholder="name@example.com" required><button class="auth-submit" type="submit" id="forgotSubmit"><span data-t="sendReset">Send Recovery Email</span><span aria-hidden="true">↗</span></button></form>
+     <button type="button" class="link-button" data-switch="login" data-t="backLogin">← Back to Login</button>
+    </div>
+    <div class="form-view" id="viewNewPassword" hidden>
+     <div class="auth-form-kicker" data-t="secure">SECURE ACCOUNT SETUP</div><h2 id="passwordModeTitle" data-t="setPassword">Set New Password</h2><p class="form-sub" id="passwordModeText" data-t="newPassDesc">Create a secure password for your account.</p>
+     <form id="newPasswordForm" novalidate><label for="newPass" data-t="password">Password</label><div class="pass-field"><input id="newPass" type="password" autocomplete="new-password" minlength="8" required><button type="button" class="pass-eye" data-target="newPass" aria-label="Show or hide password">◉</button></div>
+     <label for="newConfirm" data-t="confirm">Confirm password</label><input id="newConfirm" type="password" autocomplete="new-password" minlength="8" required><button class="auth-submit" type="submit"><span data-t="savePass">Save Password</span><span>↗</span></button></form>
+    </div>
+    <div class="auth-status" id="authStatus" role="status" aria-live="polite" hidden></div>
+   </div>
+  </div>
+  <aside class="auth-story-panel" aria-label="Sign In or Create Account">
+    <div class="story-mesh" aria-hidden="true"></div><div class="story-top"><span class="story-dot"></span><span>YE KUN / STUDY WITH CONFIDENCE</span></div>
+    <div class="story-content"><div class="story-mark" aria-hidden="true">YK<span>.</span></div><div class="story-change" id="storySignin"><h2 data-t="welcomeBack">Welcome Back.</h2><p data-t="welcomeMsg">Learn at your own pace. All your exam access stays connected to your existing account.</p><button type="button" class="story-action" data-switch="signup"><span data-t="newAccount">New here?</span> <b data-t="create">Create Account</b> →</button></div>
+    <div class="story-change" id="storySignup" hidden><h2 data-t="hello">Hello, New Learner.</h2><p data-t="helloMsg">Create a free account, then verify your student status using the existing YKCR system if you are enrolled.</p><button type="button" class="story-action" data-switch="login"><span data-t="hasAccount">Already have an account?</span> <b data-t="signIn">Sign In</b> →</button></div>
+    <div class="story-pills"><span>JLPT N1–N5</span><span>SSW · DRIVE</span><span>YKCR</span></div></div>
+    <div class="story-bottom"><span class="status-pulse"></span><span data-t="security">Existing Identity · Existing Student Records · No new database</span></div>
+  </aside>
+ </section>
+ <p class="auth-guest" data-t="guest">You can browse the website without signing in. Login is required to take mock exams.</p>
+</main>
+<footer class="yk-auth-footer"><span>© YE KUN Official Website</span><a href="/#online-mock-exam" data-t="exams">Explore Mock Exams</a></footer>
+<script src="/assets/yk-login-v757.js" defer></script>
+<script type="module" src="/assets/identity.bundle.js"></script>
+</body></html>

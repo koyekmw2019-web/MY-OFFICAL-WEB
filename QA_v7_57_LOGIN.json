@@ -1,0 +1,24 @@
+{
+  "version": "7.57",
+  "features": [
+    "standalone login.html",
+    "responsive black-white sliding login and signup panels",
+    "signup and password recovery via existing Identity",
+    "mobile menu title and scrollbar fix",
+    "menu login/logout dynamic auth state",
+    "guest exam auth redirect"
+  ],
+  "tests": {
+    "js_syntax": "passed",
+    "browser_UI_desktop_and_mobile": "passed (injected DOM, not live HTTP)",
+    "mobile_horizontal_overflow": "none at 390px after fix",
+    "menu_login_logout_mock": "passed",
+    "signup_recovery_mock_sdk": "passed",
+    "netlify_backend_unchanged": true,
+    "jlpt_question_engine_unchanged": true,
+    "live_identity": "not tested",
+    "live_email": "not tested",
+    "live_student_verification": "not tested",
+    "live_deployment": "not deployed"
+  }
+}

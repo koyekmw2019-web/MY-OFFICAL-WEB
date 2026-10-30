@@ -1963,6 +1963,20 @@ body{padding-top:var(--yk-header-h) !important;}
 @media(max-width:420px){.jlpt-grid-v745{grid-template-columns:1fr;gap:12px}.exam-category.v728.jlpt-card-v745.jlpt-card-v754{padding:17px 16px}.jlpt-card-hero-v754{grid-template-columns:minmax(0,1fr) 100px;min-height:176px}.jlpt-card-cover-v754{width:100px;height:176px}.jlpt-cover-main-v754{width:100px;height:142px}.jlpt-cover-reflect-v754{width:100px;height:36px;top:148px}.jlpt-card-level-v754{font-size:56px}.jlpt-card-v754 h3{font-size:17px!important}.jlpt-card-kicker-v754{font-size:9px}.jlpt-card-tier-v754{font-size:10px}.jlpt-card-steps-v754{font-size:11px}.jlpt-card-brief-v754{font-size:11px;min-height:38px}.jlpt-card-metrics-v754 span{font-size:10px}.jlpt-card-private-v754{font-size:9px}}
 @media(prefers-reduced-motion:reduce){.jlpt-card-v754{transition:none!important}}
 </style>
+
+<style id="v757-menu-login-css">
+/* v7.57 Navigation fixes: drawer accessible below fixed header, one scrollbar, clear sticky title */
+:root{--yk-menu-top:calc(var(--yk-header-h, 65px) + 8px)}
+.site-menu{position:fixed!important;top:var(--yk-menu-top)!important;bottom:10px!important;right:10px!important;width:min(390px,calc(100vw - 20px))!important;max-height:calc(100dvh - var(--yk-header-h, 65px) - 18px)!important;overflow-y:auto!important;overflow-x:hidden!important;overscroll-behavior:contain;z-index:10070!important;scrollbar-gutter:stable;-webkit-overflow-scrolling:touch}
+.menu-backdrop{position:fixed!important;z-index:10060!important}
+.site-menu-head{position:sticky;top:-20px;z-index:5;padding:15px 0 12px;margin-top:-6px;background:linear-gradient(180deg,#151515 82%,rgba(21,21,21,.94));border-bottom:1px solid #2d2d2d}
+body.menu-open,html:has(body.menu-open){overflow:hidden!important;overscroll-behavior:none}
+#ykMenuAuthLink{border-color:rgba(255,255,255,.23);background:linear-gradient(120deg,#232327,#131316)}
+#ykMenuAuthLink:hover{border-color:#e1e1e1;background:#232326}
+#ykMenuAuthLink span{font-size:20px;color:#f8f8f8}
+#ykMenuAuthLink b{font-size:14px}
+@media(max-width:560px){.site-menu{right:7px!important;bottom:7px!important;width:calc(100vw - 14px)!important;max-height:calc(100dvh - var(--yk-header-h,65px) - 15px)!important;border-radius:20px;padding:16px}.site-menu-head{top:-16px}}
+</style>
 </head>
 <body>
 <div class="top">
@@ -1994,7 +2008,7 @@ body{padding-top:var(--yk-header-h) !important;}
 <a href="#study-resources"><span>▤</span><b>Study Resources</b></a>
 <a href="#driving-dictionary"><span>⌕</span><b>Dictionary</b></a>
 <a href="#online-mock-exam"><span>✓</span><b>Online Mock Exam</b></a>
-<a href="#featured-youtube"><span>▶</span><b>Featured YouTube</b></a>
+<a href="/login.html" id="ykMenuAuthLink" aria-label="Login"><span id="ykMenuAuthIcon" aria-hidden="true">⇥</span><b id="ykMenuAuthLabel">Login</b></a>
 </nav>
 <div class="site-menu-divider"></div>
 <div class="menu-social-title">SOCIAL MEDIA</div>
@@ -3923,7 +3937,7 @@ async function api(name,options={}){const res=await fetch(`/.netlify/functions/$
 async function waitIdentity(){for(let i=0;i<80;i++){if(window.YKIdentity)return window.YKIdentity;await new Promise(r=>setTimeout(r,50))}throw new Error('Identity client did not load. Please reload the page.')}
 async function currentUser(){try{return await (await waitIdentity()).getUser()}catch{return null}}
 function showAuthError(el,msg){if(el){el.textContent=msg||'Something went wrong.';el.classList.add('auth-error-v735')}}
-async function requireAuth(message='Please log in or create an account first.'){const user=await currentUser();if(user)return user;authModal('login',{message});return null}
+async function requireAuth(message='Please log in or create an account first.'){const user=await currentUser();if(user)return user;window.location.assign('/login.html?return=%2F%23home');return null}
 async function authModal(mode='login',opts={}){
   const id=await waitIdentity();
   if(mode==='login'){
@@ -4000,6 +4014,7 @@ function setAccessButtonsV739(s,user,state){
   }
 }
 async function syncStatus(){
+  window.YKMenuAuthV757?.refresh?.();
   const t=$('#examAccessTitleV728'),x=$('#examAccessTextV728'),a=$('#examAccountV735'),icon=$('#examAccessIconV739');const user=await currentUser();if(a)a.textContent=user?'👤 My Account':'👤 Login / Register';
   if(!user){cachedStatus=null;const s=statusText(null,null);if(t)t.textContent=s.t;if(x)x.textContent=s.x;if(icon)icon.textContent=s.icon;setAccessButtonsV739(null,null,s.state);v737Localize(document);return}
   try{const {res,data}=await api('exam-status');if(res.ok){cachedStatus=data;const s=statusText(data,user);if(t)t.textContent=s.t;if(x)x.textContent=s.x;if(icon)icon.textContent=s.icon;setAccessButtonsV739(data,user,s.state);v737Localize(document)}else{if(t)t.textContent='Account Connected';if(x)x.textContent='Could not load exam access status. Please retry.';if(icon)icon.textContent='⚠️';setAccessButtonsV739(null,user,'member');v737Localize(document)}}catch{if(t)t.textContent='Account Connected';if(x)x.textContent='Backend status is temporarily unavailable.';if(icon)icon.textContent='⚠️';setAccessButtonsV739(null,user,'member');v737Localize(document)}
@@ -4022,7 +4037,7 @@ if(window.YeKunExam&&!window.YeKunExam._originalStart){window.YeKunExam._origina
 $$('[data-hub-exam]').forEach(old=>{const n=old.cloneNode(true);old.replaceWith(n);n.addEventListener('click',()=>{document.getElementById('online-mock-exam')?.scrollIntoView({behavior:'smooth'});setTimeout(()=>requestStart(n.dataset.hubExam),320)})});
 $$('[data-exam-v728]').forEach(b=>b.addEventListener('click',()=>requestStart(b.dataset.examV728)));
 
-$('#examAccountV735')?.addEventListener('click',async()=>authModal((await currentUser())?'account':'login'));$('#examStudentVerifyV728')?.addEventListener('click',studentModal);$('#examPlansV728')?.addEventListener('click',planModal);$('#examPlansMiniV728')?.addEventListener('click',planModal);
+$('#examAccountV735')?.addEventListener('click',async()=>{if(await currentUser())authModal('account');else window.location.assign('/login.html?return=%2F%23home')});$('#examStudentVerifyV728')?.addEventListener('click',studentModal);$('#examPlansV728')?.addEventListener('click',planModal);$('#examPlansMiniV728')?.addEventListener('click',planModal);
 window.addEventListener('yk-identity-ready',()=>syncStatus());
 window.addEventListener('yk-identity-callback',async e=>{const r=e.detail;if(!r)return;if(r.type==='invite'){pendingInviteToken=r.token;authModal('invite',{token:r.token})}else if(r.type==='recovery'){authModal('recovery')}else if(r.type==='confirmation'){await syncStatus();overlay(`<div class="exam-v728-modal-head"><h3>✅ Email Confirmed</h3><button class="exam-v728-close">✕</button></div><div class="auth-message-v735">Your email has been confirmed. You can now use your exam account.</div>`)}else if(r.type==='email_change'){await syncStatus()}});
 window.addEventListener('yk-identity-error',e=>overlay(`<div class="exam-v728-modal-head"><h3>Authentication Error</h3><button class="exam-v728-close">✕</button></div><div class="auth-message-v735 auth-error-v735">${esc(e.detail?.message||'Authentication callback failed.')}</div>`));
@@ -4206,5 +4221,6 @@ syncStatus();
 <link rel="stylesheet" href="assets/jlpt-native-v750.css">
 <script type="module" src="/assets/identity.bundle.js"></script>
 
+<script src="assets/yk-site-auth-v757.js" defer></script>
 </body>
 </html>
