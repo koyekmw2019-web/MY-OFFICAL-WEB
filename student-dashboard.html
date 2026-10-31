@@ -1,5 +1,16 @@
-<!doctype html><html lang="my"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090909"><meta name="robots" content="noindex,nofollow"><title>Student Dashboard | YE KUN Official Website</title><link rel="icon" href="/yk-192.png"><link rel="stylesheet" href="/assets/yk-dashboard-v758.css"></head><body data-dashboard="student">
-<header class="topbar"><div class="top-inner"><a class="yklogo" href="/#home" aria-label="YE KUN Homepage">YK</a><a class="brand" href="/#home">YE KUN</a><div class="top-actions"><a href="/#home">⌂ Home</a><button id="dashLogout" type="button" class="logout">Logout</button></div></div></header>
+<!doctype html><html lang="my"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090909"><meta name="robots" content="noindex,nofollow"><title>Student Dashboard | YE KUN Official Website</title><link rel="icon" href="/yk-192.png"><link rel="stylesheet" href="/assets/yk-dashboard-v759.css"></head><body data-dashboard="student">
+<header class="topbar"><div class="top-inner">
+  <a class="yklogo" href="/#home" aria-label="YE KUN Homepage">YK</a><a class="brand" href="/#home">YE KUN</a>
+  <span class="top-dash-tag" data-i18n="headerTag">DASHBOARD</span>
+  <div class="top-actions"><details class="yk-lang-picker" id="ykDashboardLangPicker">
+    <summary id="ykLanguageToggle" aria-label="Choose language"><span class="yk-globe-icon" aria-hidden="true">◎</span><span data-i18n="language">Language</span><span class="yk-current-language" id="ykCurrentLanguage">မြန်မာ</span><span class="yk-chevron" aria-hidden="true">⌄</span></summary>
+    <div class="yk-lang-list" role="group" aria-label="Dashboard language"><button type="button" data-yk-lang="my" lang="my">မြန်မာ <span>MY</span></button><button type="button" data-yk-lang="en" lang="en">English <span>EN</span></button><button type="button" data-yk-lang="ja" lang="ja">日本語 <span>JP</span></button></div>
+  </details></div>
+</div></header>
 <main class="shell"><div class="intro"><div class="eyebrow">YE KUN OFFICIAL WEBSITE · DASHBOARD</div><h1>Student Dashboard</h1><p>YKCR Student Verification · Exams · Results · Learning Progress</p><span class="role-pill" id="rolePill">Checking account…</span></div><div id="dashMessage" role="status" aria-live="polite" class="status">Connecting to your account…</div><section id="dashboardBody" aria-label="Dashboard content"></section></main>
 <dialog id="receiptDialog"><div class="record-title"><h2>Receipt Review</h2><button type="button" class="btn" id="closeReceipt">✕ Close</button></div><div id="receiptContent"></div></dialog>
-<script type="module" src="/assets/identity.bundle.js"></script><script defer src="/assets/yk-dashboard-v758.js"></script></body></html>
+<script type="module" src="/assets/identity.bundle.js"></script><script defer src="/assets/yk-dashboard-v758.js"></script><nav class="yk-dash-dock" aria-label="Dashboard navigation"><div class="yk-dash-dock-inner">
+  <a class="yk-dash-dock-home" href="/#home"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m7-7-7 7 7 7"/></svg><span>BACK TO HOME</span></a>
+  <button type="button" class="yk-dash-dock-logout" id="dashLogout"><span>Logout</span><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6"/><path d="M21 12H8m5-5-5 5 5 5"/></svg></button>
+</div></nav>
+<script defer src="/assets/yk-dashboard-ui-v759.js"></script></body></html>

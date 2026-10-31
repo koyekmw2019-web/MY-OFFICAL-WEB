@@ -1985,6 +1985,32 @@ body.menu-open,html:has(body.menu-open){overflow:hidden!important;overscroll-beh
 #ykMenuDashboardLink[hidden]{display:none!important}
 
 </style>
+<style id="yk-menu-premium-v759">
+/* v7.59: premium account actions, distinct from the regular navigation items. */
+.site-menu-nav .yk-account-area-v759{display:grid;gap:10px;margin-top:17px;padding:18px 0 4px;border-top:1px solid rgba(255,255,255,.12);min-width:0;isolation:isolate}
+.site-menu-nav .yk-account-head-v759{display:flex;align-items:center;gap:9px;margin:0 0 4px 2px;color:#8a8b90;font-size:10px;letter-spacing:.19em;font-weight:850}
+.yk-account-dash-v759{width:5px;height:5px;border-radius:50%;background:#d3d3d3;box-shadow:0 0 14px rgba(255,255,255,.35)}
+.yk-account-headline-v759{height:1px;flex:1;background:linear-gradient(90deg,#424246,transparent)}
+.site-menu-nav .yk-account-area-v759 .yk-account-btn-v759{position:relative;display:flex;align-items:center;gap:13px;min-height:70px;width:100%;padding:12px 14px;border:1px solid rgba(255,255,255,.18);border-radius:17px;background:linear-gradient(115deg,#29292c 0%,#1b1b1e 58%,#17171a 100%);color:#fff;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 10px 22px rgba(0,0,0,.18);overflow:hidden;transform:translateZ(0);transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease}
+.site-menu-nav .yk-account-area-v759 .yk-account-btn-v759[hidden]{display:none!important}
+.site-menu-nav .yk-account-area-v759 .yk-account-btn-v759:before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 10%,rgba(255,255,255,.08) 46%,transparent 75%);transform:translateX(-125%);transition:transform .65s ease;pointer-events:none}
+.site-menu-nav .yk-account-area-v759 .yk-account-btn-v759:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.45);background:linear-gradient(115deg,#343438,#222226);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 12px 30px rgba(0,0,0,.27)}
+.site-menu-nav .yk-account-area-v759 .yk-account-btn-v759:hover:before{transform:translateX(125%)}
+.site-menu-nav .yk-account-area-v759 .yk-account-btn-v759:active{transform:scale(.985)}
+.site-menu-nav .yk-account-area-v759 .yk-account-btn-v759:focus-visible{outline:2px solid #eee;outline-offset:3px}
+.site-menu-nav .yk-account-area-v759 .yk-action-icon-v759{display:grid;place-items:center;flex:0 0 43px;width:43px;height:43px;border-radius:13px;background:rgba(255,255,255,.095);color:#f6f6f6;border:1px solid rgba(255,255,255,.11)}
+.site-menu-nav .yk-account-area-v759 .yk-action-icon-v759 svg{width:22px;height:22px;display:block}
+.site-menu-nav .yk-account-area-v759 .yk-account-label-v759{display:grid;gap:1px;min-width:0;flex:1;width:auto;text-align:left}
+.site-menu-nav .yk-account-area-v759 .yk-account-label-v759 b{font-size:16px;line-height:1.25;letter-spacing:.005em;color:#fff;font-weight:850}
+.site-menu-nav .yk-account-area-v759 .yk-account-label-v759 small{font-size:9px;letter-spacing:.16em;color:#a9a9af;font-weight:800}
+.site-menu-nav .yk-account-area-v759 .yk-account-right-v759{margin-left:auto;color:#a4a4ab;font-size:21px;transition:transform .2s ease}
+.site-menu-nav .yk-account-area-v759 .yk-account-btn-v759:hover .yk-account-right-v759{transform:translate(2px,-2px)}
+.site-menu-nav .yk-account-area-v759 .yk-account-dashboard-v759{background:linear-gradient(110deg,#292d32,#1d2026 72%,#171a20);border-color:rgba(209,224,255,.26)}
+.site-menu-nav .yk-account-area-v759 .yk-account-dashboard-v759 .yk-action-icon-v759{background:rgba(196,213,255,.10)}
+.site-menu-nav .yk-account-area-v759 .yk-account-auth-v759.is-logout{border-color:rgba(226,142,142,.23)}
+.yk-ico-logout-v759{display:none!important}.is-logout .yk-ico-login-v759{display:none!important}.is-logout .yk-ico-logout-v759{display:block!important}
+@media(prefers-reduced-motion:reduce){.site-menu-nav .yk-account-area-v759 .yk-account-btn-v759,.site-menu-nav .yk-account-area-v759 .yk-account-btn-v759:before{transition:none!important}}
+</style>
 </head>
 <body>
 <div class="top">
@@ -2016,8 +2042,17 @@ body.menu-open,html:has(body.menu-open){overflow:hidden!important;overscroll-beh
 <a href="#study-resources"><span>▤</span><b>Study Resources</b></a>
 <a href="#driving-dictionary"><span>⌕</span><b>Dictionary</b></a>
 <a href="#online-mock-exam"><span>✓</span><b>Online Mock Exam</b></a>
-<a href="/dashboard.html" id="ykMenuDashboardLink" aria-label="Dashboard" hidden><span aria-hidden="true">▦</span><b>Dashboard</b></a>
-<a href="/login.html" id="ykMenuAuthLink" aria-label="Login"><span id="ykMenuAuthIcon" aria-hidden="true">⇥</span><b id="ykMenuAuthLabel">Login</b></a>
+<div class="yk-account-area-v759" aria-label="Account Access">
+  <div class="yk-account-head-v759"><span class="yk-account-dash-v759" aria-hidden="true"></span><span>ACCOUNT ACCESS</span><span class="yk-account-headline-v759"></span></div>
+  <a href="/dashboard.html" class="yk-account-btn-v759 yk-account-dashboard-v759" id="ykMenuDashboardLink" aria-label="Dashboard" hidden>
+    <span class="yk-action-icon-v759" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.4"/><rect x="14" y="3" width="7" height="7" rx="1.4"/><rect x="3" y="14" width="7" height="7" rx="1.4"/><rect x="14" y="14" width="7" height="7" rx="1.4"/></svg></span>
+    <span class="yk-account-label-v759"><b>Dashboard</b><small>MY SPACE</small></span><span class="yk-account-right-v759" aria-hidden="true">↗</span>
+  </a>
+  <a href="/login.html" class="yk-account-btn-v759 yk-account-auth-v759" id="ykMenuAuthLink" aria-label="Login">
+    <span class="yk-action-icon-v759" id="ykMenuAuthIcon" aria-hidden="true"><svg class="yk-ico-login-v759" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-6"/><path d="M3 12h13M11 7l5 5-5 5"/></svg><svg class="yk-ico-logout-v759" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6"/><path d="M21 12H8M13 7l-5 5 5 5"/></svg></span>
+    <span class="yk-account-label-v759"><b id="ykMenuAuthLabel">Login</b><small id="ykMenuAuthHint">ACCOUNT</small></span><span class="yk-account-right-v759" aria-hidden="true">↗</span>
+  </a>
+</div>
 </nav>
 <div class="site-menu-divider"></div>
 <div class="menu-social-title">SOCIAL MEDIA</div>
@@ -4230,6 +4265,6 @@ syncStatus();
 <link rel="stylesheet" href="assets/jlpt-native-v750.css">
 <script type="module" src="/assets/identity.bundle.js"></script>
 
-<script src="assets/yk-site-auth-v758.js" defer></script>
+<script src="assets/yk-site-auth-v759.js" defer></script>
 </body>
 </html>
