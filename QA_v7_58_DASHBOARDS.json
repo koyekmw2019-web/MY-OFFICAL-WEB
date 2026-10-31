@@ -1,0 +1,21 @@
+{
+  "version": "v7.58",
+  "basis": "v7.57 source ZIP",
+  "browser_mock_tests": {
+    "admin_dashboard": "passed",
+    "student_dashboard": "passed",
+    "member_dashboard": "passed",
+    "menu_login_logout_visibility": "passed",
+    "soft_delete_dialog_and_payload": "passed",
+    "member_mobile_horizontal_overflow": "passed"
+  },
+  "server_typescript_parse": "passed",
+  "live_netlify_tests": "not run",
+  "database_migration_live": "not applied",
+  "actual_bank_operations": "not performed",
+  "remarks": [
+    "Netlify Identity and Functions mocked in browser QA",
+    "Approved paid access preserved by soft-delete update only",
+    "Need migration applied before new payments endpoints used"
+  ]
+}

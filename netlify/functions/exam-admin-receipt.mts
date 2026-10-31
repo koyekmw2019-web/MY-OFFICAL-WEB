@@ -6,7 +6,7 @@ export default async (req: Request) => {
     await requireAdmin();
     const id = Number(new URL(req.url).searchParams.get("paymentId"));
     const db = getDatabase();
-    const rows = await db.sql<any>`SELECT receipt_blob_key FROM exam_payment_requests WHERE id=${id} LIMIT 1`;
+    const rows = await db.sql<any>`SELECT receipt_blob_key FROM exam_payment_requests WHERE id=${id} AND deleted_at IS NULL LIMIT 1`;
     if (!rows.length) return new Response("Not found", { status:404 });
     const store = getStore({ name:"payment-receipts", consistency:"strong" });
     const entry = await store.get(rows[0].receipt_blob_key,{type:"blob"});
