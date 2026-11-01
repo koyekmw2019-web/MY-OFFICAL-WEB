@@ -1,19 +1,21 @@
 {
   "name": "ye-kun-official-website",
   "private": true,
-  "version": "7.59.0",
+  "version": "7.63.0",
   "type": "module",
   "scripts": {
+    "test": "node scripts/regenerate-exam-answer-key-v763.mjs --check && node --experimental-strip-types tests/v763-integrity.mjs",
+    "regen-answers": "node scripts/regenerate-exam-answer-key-v763.mjs",
     "build": "mkdir -p assets && esbuild src/identity-client.js --bundle --format=esm --platform=browser --target=es2020 --outfile=assets/identity.bundle.js"
   },
   "dependencies": {
-    "@netlify/database": "latest",
-    "@netlify/blobs": "latest",
-    "@netlify/functions": "latest",
-    "@netlify/identity": "latest",
-    "csv-parse": "latest"
+    "@netlify/database": "2.0.1",
+    "@netlify/blobs": "11.1.7",
+    "@netlify/functions": "6.0.3",
+    "@netlify/identity": "2.0.0",
+    "csv-parse": "7.0.3"
   },
   "devDependencies": {
-    "esbuild": "latest"
+    "esbuild": "0.28.2"
   }
 }

@@ -1,0 +1,31 @@
+{
+  "version": "7.61",
+  "baseline": "user-uploaded v7.60 Smart Learning",
+  "preserved_baseline_files": 95,
+  "removed_baseline_files": [],
+  "changed_files": [
+    "assets/jlpt-native-v750.js",
+    "index.html",
+    "netlify/functions/exam-access.mts",
+    "netlify/functions/exam-attempt-submit.mts",
+    "package.json"
+  ],
+  "new_files": [
+    "README_v7_61_AUTOSAVE_MY.md",
+    "assets/yk-exam-autosave-v761.css",
+    "assets/yk-exam-autosave-v761.js",
+    "netlify/database/migrations/20261101130000_exam_autosave.sql",
+    "netlify/functions/_shared/exam-autosave.mts",
+    "netlify/functions/exam-checkpoint.mts"
+  ],
+  "checks": {
+    "js_source_syntax": "PASS",
+    "jlpt_question_bank_500": "PASS",
+    "no_pdf_or_page_images": "PASS",
+    "existing_baseline_files_preserved": "PASS",
+    "isolated_jlpt_n5_save_close_resume": "PASS",
+    "backend_function_authenticated_ownership": "SOURCE INSPECTED ONLY",
+    "full_live_netlify_integration": "NOT TESTED",
+    "other_exam_browser_resume": "NOT TESTED"
+  }
+}

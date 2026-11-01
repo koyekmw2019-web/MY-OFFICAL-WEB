@@ -88,3 +88,45 @@ Receiver behavior:
 - Preserves existing linked Website accounts during YKCR migration.
 
 The legacy CSV importer remains available as an Admin fallback, but YKCR should be treated as the primary source after synchronization is enabled.
+
+## v7.62 — Staging deployment checklist (do NOT skip)
+
+1. **Do not overwrite production yet.** Deploy to Netlify Deploy Preview using a separate/branch Netlify Database, not production data.
+2. Apply **all nine migrations** in timestamp order, first on an empty database and then on a separate sanitized **copy of production data**. Confirm existing students, paid access, payment history, and checkpoints remain unchanged (except expired attempts intentionally becoming `abandoned`).
+3. With an authenticated Admin, GET `/.netlify/functions/exam-health`; require HTTP 200 and `ready: true`. Non-admin must receive 403. If 503, fix schema before continuing.
+4. Follow the matrix in `QA_v7_62_HARDENING.md`: free/student/paid/admin × exam families, two tabs, offline flow, wrong-score payload, expired free and migration failure injections. Log PASS / FAIL / NOT RUN and real evidence.
+5. Verify every result and access mode on Android, iOS Safari, and desktop, including login, logout, YKCR sync, bank-transfer payment approval and PWA. Only then promote the reviewed deploy to production.
+6. **Rollback:** keep a tested copy of v7.61 and deployment ID. If release fails, roll back the frontend/functions deployment; the new migration is additive and is left in place. **Do not** delete existing DB tables, checkpoints, attempts, or remove columns. Never revert by dropping customer data. The schema must remain backwards-compatible. Restore data only from an explicitly verified backup in a supervised recovery.
+
+**Free policy:** `TOTAL_ONE` (owner-selected; one free attempt total across exam types).
+**Score Verification:** STAGE A ONLY; `score_verified=false` for all new submissions. `passed` is server-derived from client-supplied (unverified) score and section totals. Question/answer keys are still published in `assets/`, so full server-side recomputation is **NOT** available; do not certify results.
+**Dependency lock:** v7.62 pins direct dependencies exactly in package.json. The development environment cannot reach npm registry, so a trusted full transitive `package-lock.json` could not be generated; on a networked staging build run `npm install --package-lock-only --ignore-scripts`, inspect the output, commit that generated lockfile, then `npm ci`. **Do not run `npm ci` before this step.**
+
+
+## v7.63 — Exam Integrity update (staging first)
+
+**Important: v7.62 notes above remain historical.** The new current policy is one free
+attempt **per exam type** (`ONE_PER_EXAM_TYPE`), not `TOTAL_ONE`. A new migration
+`20261101150000_v763_free_per_exam_type.sql` drops only the old global unique
+index and creates a new per-type partial unique index. It preserves all attempt rows.
+Do not edit or remove previously deployed migrations.
+
+Results now require a persisted final-phase checkpoint, a valid server deadline,
+and are recomputed with a server-only copy of the exact bundled original answer
+keys (`netlify/functions/_shared/exam-answer-key-v763.mts`). The server ignores
+the caller's `passed` boolean and rejects mismatched reported scores. It sets
+`score_verified=true` **only for a successfully recomputed practice score**.
+The questions and key choices are still visible in the public client script; this
+is *not* proctoring or a cheat-proof official assessment. Any change to public
+question banks MUST regenerate this server-side answer mapping and run regression
+tests before deploying.
+
+Run `npm test` in Node.js 22+ (mock DB). Staging must also verify real Netlify
+Identity, database migration index, payment approvals, YKCR student linkage,
+refresh-resume-submit across JLPT N1–N5 and all driving/license exam types, expired
+phase, offline recovery, and different account/other-tab restrictions. `exam-health`
+(Admin only) must return `ready: true` and `ONE_PER_EXAM_TYPE`.
+
+**Rollback caution:** the database migration changes a unique index. Rolling back
+only the site deploy to v7.62 will not restore the old global unique constraint;
+treat schema/client rollback as a coordinated operation. Never delete user data.

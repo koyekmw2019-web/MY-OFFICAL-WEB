@@ -1,0 +1,4 @@
+/* v7.61 Save status is intentionally subtle across all exam types. */
+.yk-autosave-badge-v761{font-size:11px;font-weight:750;white-space:normal;max-width:190px;padding:6px 8px;border-radius:10px;color:#bde5ca;border:1px solid rgba(140,202,160,.3);background:rgba(57,106,76,.2);text-align:center}
+.yk-autosave-badge-v761.warn{color:#ffdbb1;border-color:rgba(255,193,94,.4);background:rgba(98,72,32,.32)}
+@media(max-width:580px){.yk-autosave-badge-v761{font-size:9px;max-width:140px}.yk-native-bar,.exam-toolbar{flex-wrap:wrap}}
