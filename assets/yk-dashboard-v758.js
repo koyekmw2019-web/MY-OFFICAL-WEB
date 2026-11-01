@@ -59,20 +59,62 @@ async function paymentAction(event){const btn=event.target.closest('button[data-
  if(action==='delete'){if(!confirm(`Remove payment #${paymentId} from the Admin list?\nRecord and receipt will be retained for audit.\nExisting approved access will NOT be revoked.`))return;const typed=prompt(`Type DELETE ${paymentId} to confirm removal:`, '');if(typed!==`DELETE ${paymentId}`){alert('Delete cancelled: confirmation did not match.');return}confirmation=typed;note='Removed from Admin list (soft delete)';}
  btn.disabled=true;try{await api('exam-admin-payments',{method:'POST',body:JSON.stringify({action,paymentId,note,confirmation})});await loadPayments()}catch(e){status('Payment update failed: '+e.message,true)}finally{btn.disabled=false}
 }
+
+function learningChartSvg(points,maxScore){
+ const width=640,height=220,padX=26,padY=22,innerW=width-padX*2,innerH=height-padY*2;
+ if(!points.length){
+  return `<div class="learning-empty">No scored attempts yet.</div>`;
+ }
+ const safeMax=Math.max(100,Math.ceil(maxScore/10)*10||100);
+ const stepX=points.length===1?0:innerW/(points.length-1);
+ const poly=points.map((p,i)=>{
+   const x=padX+i*stepX;
+   const y=height-padY-(p.score/safeMax)*innerH;
+   p._x=x; p._y=y;
+   return `${x.toFixed(1)},${y.toFixed(1)}`;
+ }).join(' ');
+ const yTicks=[0,.25,.5,.75,1].map(r=>{
+   const value=Math.round(safeMax*r);
+   const y=(height-padY-(value/safeMax)*innerH).toFixed(1);
+   return `<g><line x1="${padX}" y1="${y}" x2="${width-padX}" y2="${y}" class="learning-grid-line"></line><text x="8" y="${Number(y)+4}" class="learning-axis">${value}</text></g>`;
+ }).join('');
+ const dots=points.map((p,i)=>`<g><circle cx="${p._x.toFixed(1)}" cy="${p._y.toFixed(1)}" r="4.5" class="learning-point"></circle><text x="${p._x.toFixed(1)}" y="${(p._y-10).toFixed(1)}" text-anchor="middle" class="learning-point-label">${esc(p.score)}</text><text x="${p._x.toFixed(1)}" y="${height-6}" text-anchor="middle" class="learning-axis">${esc(p.label)}</text></g>`).join('');
+ return `<svg class="learning-chart-svg" viewBox="0 0 ${width} ${height}" role="img" aria-label="Recent practice scores graph">${yTicks}<polyline points="${poly}" class="learning-line"></polyline>${dots}</svg>`;
+}
+function renderLearningOverview(xs){
+ const host=$('myLearningOverview'); if(!host)return;
+ const attempts=Array.isArray(xs)?xs:[];
+ const scored=attempts.filter(x=>typeof x.score==='number' && !Number.isNaN(x.score));
+ const recent=[...scored].reverse().slice(-8);
+ const points=recent.map((x,i)=>({score:Number(x.score)||0,label:when(x.submitted_at||x.started_at).replace(/\//g,'.')}));
+ const maxScore=Math.max(0,...points.map(x=>x.score));
+ const typeCounts={};
+ attempts.forEach(x=>{const key=String(x.exam_type||'Unknown'); typeCounts[key]=(typeCounts[key]||0)+1;});
+ const chips=Object.entries(typeCounts).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([name,count])=>`<span class="learning-chip">${esc(name)} · ${esc(count)}</span>`).join('');
+ host.innerHTML=`<div class="learning-overview"><div class="learning-kpis">${[
+   ['Attempt count',attempts.length],
+   ['Passed',attempts.filter(x=>x.passed).length],
+   ['Verified scores',attempts.filter(x=>x.score_verified).length],
+   ['Recent scored attempts',points.length]
+ ].map(([k,v])=>`<div class="learning-kpi"><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join('')}</div><div class="learning-chart-wrap"><div class="learning-chart-head"><strong>My Learning Overview</strong><span>Last 8 scored attempts</span></div>${learningChartSvg(points,maxScore)}</div><div class="learning-type-wrap"><div class="learning-type-head">Recent exam types</div><div class="learning-chip-row">${chips||'<span class="learning-empty-inline">No attempts yet.</span>'}</div></div></div>`;
+}
+
+
 async function showMember(role){
  const student=me.linkedStudent,active=!!me.student;
  const needVerify=role==='member'&&!student;
  const body=role==='student'?`${cards([['Student verification',active?'Active':student?.access_state||'Inactive'],['Exam access',active?'Unlimited':'See access status'],['Class expires',student?.expire_date?when(student.expire_date):'—'],['Free types used',(me.freeUsedTypes||[]).length+'']])}<div class="grid">`+
  panel('🎓 My Student Profile',row('Student name',student?.name)+row('Student ID',student?.student_code)+row('Class',student?.class_name)+row('Start date',when(student?.class_start))+row('Expire date',when(student?.expire_date))+row('Status',student?.access_state||'—')+(!active?'<p class="notice">Student record exists, but unlimited access is not currently active. Server access rules still apply.</p>':''))+
- panel('📚 My Exams & Training Access',`<p class="muted">YKCR Student Data နဲ့ချိတ်ထားပါတယ်။ သင်တန်းသက်တမ်းအတွင်း Mock Exams ကို Unlimited ဖြေနိုင်ပါတယ်။</p><div class="actions"><a class="btn primary" href="/#online-mock-exam">Start Mock Exam</a><a class="btn" href="/#study-hub">Study Hub</a></div><div class="notice">Training Access Card နဲ့ Verification Code အပြည့်အစုံကို Public Dashboard မှာ မပြပါဘူး။</div>`):
- `${cards([['Account','Member'],['Free exams','1 per exam type'],['Paid access',me.paid?'Active':'Not active'],['Plan expires',me.paid?when(me.paid.expires_at):'—']])}<div class="grid">`+
+ panel('📚 My Exams & Training Access',`<p class="muted">Linked with YKCR student data. During your active class period, mock exams can be used with unlimited access.</p><div class="actions"><a class="btn primary" href="/#online-mock-exam">Start Mock Exam</a><a class="btn" href="/#study-hub">Study Hub</a></div><div class="notice">Training Access Card and the full Verification Code are not shown on this public dashboard.</div>`):
+ `${cards([['Account','Member'],['Free exam rule','1 per exam type'],['Paid access',me.paid?'Active':'Not active'],['Plan expires',me.paid?when(me.paid.expires_at):'—']])}<div class="grid">`+
  panel('👤 My Account & Exam Access',row('Email',me.email||user.email)+row('Free attempts','1 per exam type · Used: '+((me.freeUsedTypes||[]).join(', ')||'none'))+row('Paid Plan',me.paid?'Active until '+when(me.paid.expires_at):'Not Active')+row('Payment status',me.pendingPayment?'Pending approval':'No pending request')+`<div class="actions"><a class="btn primary" href="/#online-mock-exam">Exam / Buy Access</a><a class="btn" href="/login.html">Account Settings</a></div>`)+
- panel('✅ Verify as Student',`<p class="muted">YKCR မှာ စာရင်းရှိတဲ့ Student တွေက ရှိပြီးသား Student ID နဲ့ Verification Code ကို အသုံးပြုနိုင်ပါတယ်။</p><form id="studentForm" class="formrow"><label for="studentId">Student ID</label><input id="studentId" required autocomplete="off"><label for="studentCode">Verification Code</label><input id="studentCode" required type="password" autocomplete="off"><button class="btn primary" type="submit">Verify Student</button></form><div id="studentResult" class="status" hidden></div>`);
- root.innerHTML=body+panel('📊 My Exam History','<div id="myAttempts" class="muted">Loading…</div>','wide')+panel('💳 My Payment History','<div id="myPayments" class="muted">Loading…</div>','wide')+'</div>';
+ panel('✅ Verify as Student',`<p class="muted">YKCR students can verify with their existing Student ID and Verification Code.</p><form id="studentForm" class="formrow"><label for="studentId">Student ID</label><input id="studentId" required autocomplete="off"><label for="studentCode">Verification Code</label><input id="studentCode" required type="password" autocomplete="off"><button class="btn primary" type="submit">Verify Student</button></form><div id="studentResult" class="status" hidden></div>`);
+ root.innerHTML=body+panel('📈 My Learning Overview','<div id="myLearningOverview" class="muted">Loading…</div>','wide')+panel('📊 My Exam History','<div id="myAttempts" class="muted">Loading…</div>','wide')+panel('💳 My Payment History','<div id="myPayments" class="muted">Loading…</div>','wide')+'</div>';
  if(needVerify)$('studentForm').addEventListener('submit',verifyStudent);
  await showActivity();
 }
+
 async function verifyStudent(ev){ev.preventDefault();const b=$('studentForm').querySelector('button'),m=$('studentResult');m.hidden=false;m.className='status';m.textContent='Checking YKCR Student ID…';b.disabled=true;try{await api('exam-student-verify',{method:'POST',body:JSON.stringify({studentCode:$('studentId').value.trim(),verificationCode:$('studentCode').value.trim()})});m.textContent='Student verified. Opening Student Dashboard…';go('/student-dashboard.html')}catch(e){m.className='status error';m.textContent=e.message}finally{b.disabled=false}}
-async function showActivity(){try{activity=await api('exam-my-activity');const xs=activity.attempts||[];$('myAttempts').innerHTML=xs.length?`<div class="tablewrap"><table class="records-table"><thead><tr><th>Exam</th><th>Status</th><th>Score (practice)</th><th>Server Check</th><th>Date</th></tr></thead><tbody>${xs.map(x=>`<tr><td>${esc(x.exam_type)}</td><td>${esc(x.status)}</td><td>${x.score==null?'—':esc(x.score)}</td><td>${x.score==null?'—':x.score_verified?'✓ Recalculated':'Unverified (legacy)'}</td><td>${when(x.submitted_at||x.started_at)}</td></tr>`).join('')}</tbody></table></div>`:'No exam attempts yet.';const ps=activity.payments||[];$('myPayments').innerHTML=ps.length?ps.map(p=>`<article class="record"><div class="record-title"><b>#${Number(p.id)} · ${money(p.amount_yen)} · ${esc(p.plan_code)}</b>${badge(p.status)}</div><small>${when(p.submitted_at)}${p.admin_note?' · '+esc(p.admin_note):''}</small></article>`).join(''):'No payment requests yet.'}catch(e){$('myAttempts').textContent='Could not load history: '+e.message;$('myPayments').textContent='Could not load payment history.'}}
+async function showActivity(){try{activity=await api('exam-my-activity');const xs=activity.attempts||[];$('myAttempts').innerHTML=xs.length?`<div class="tablewrap"><table class="records-table"><thead><tr><th>Exam</th><th>Status</th><th>Score (practice)</th><th>Server Check</th><th>Date</th></tr></thead><tbody>${xs.map(x=>`<tr><td>${esc(x.exam_type)}</td><td>${esc(x.status)}</td><td>${x.score==null?'—':esc(x.score)}</td><td>${x.score==null?'—':x.score_verified?'✓ Recalculated':'Unverified (legacy)'}</td><td>${when(x.submitted_at||x.started_at)}</td></tr>`).join('')}</tbody></table></div>`:'No exam attempts yet.';const ps=activity.payments||[];$('myPayments').innerHTML=ps.length?ps.map(p=>`<article class="record"><div class="record-title"><b>#${Number(p.id)} · ${money(p.amount_yen)} · ${esc(p.plan_code)}</b>${badge(p.status)}</div><small>${when(p.submitted_at)}${p.admin_note?' · '+esc(p.admin_note):''}</small></article>`).join(''):'No payment requests yet.';renderLearningOverview(xs)}catch(e){$('myAttempts').textContent='Could not load history: '+e.message;$('myPayments').textContent='Could not load payment history.';if($('myLearningOverview'))$('myLearningOverview').textContent='Could not load learning overview.'}}
 init();
 })();

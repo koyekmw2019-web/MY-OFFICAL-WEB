@@ -112,6 +112,21 @@ const entries={
 '↻ Retry':['↻ ထပ်စမ်းရန်','↻ Retry','↻ 再試行'],
 'Homepage':['မူလစာမျက်နှာ','Homepage','ホームページ'],
 'Overview not available.':['အကျဉ်းချုပ် မရရှိနိုင်ပါ။','Overview not available.','概要を取得できません。'],
+'My Learning Overview':['ကျွန်ုပ်၏ လေ့လာမှု အကျဉ်းချုပ်','My Learning Overview','学習概要'],
+'📈 My Learning Overview':['📈 ကျွန်ုပ်၏ လေ့လာမှု အကျဉ်းချုပ်','📈 My Learning Overview','📈 学習概要'],
+'Attempt count':['ဖြေဆိုမှုစုစုပေါင်း','Attempt count','受験回数'],
+'Passed':['အောင်မြင်မှု','Passed','合格数'],
+'Verified scores':['Server အတည်ပြုအမှတ်','Verified scores','検証済み得点'],
+'Recent scored attempts':['နောက်ဆုံးအမှတ်ရ ဖြေဆိုမှု','Recent scored attempts','直近の得点履歴'],
+'Last 8 scored attempts':['နောက်ဆုံး အမှတ်ရှိ ဖြေဆိုမှု ၈ ခု','Last 8 scored attempts','直近8件の得点履歴'],
+'Recent exam types':['နောက်ဆုံး စာမေးပွဲအမျိုးအစားများ','Recent exam types','最近の試験タイプ'],
+'No scored attempts yet.':['အမှတ်ရဖြေဆိုမှု မရှိသေးပါ။','No scored attempts yet.','得点付きの受験履歴はまだありません。'],
+'No attempts yet.':['ဖြေဆိုမှု မရှိသေးပါ။','No attempts yet.','受験履歴はまだありません。'],
+'Could not load learning overview.':['လေ့လာမှု အကျဉ်းချုပ်ကို မဖတ်နိုင်ပါ။','Could not load learning overview.','学習概要を読み込めませんでした。'],
+'Free exam rule':['အခမဲ့စည်းကမ်း','Free exam rule','無料受験ルール'],
+'Linked with YKCR student data. During your active class period, mock exams can be used with unlimited access.':['YKCR ကျောင်းသားဒေတာနှင့် ချိတ်ထားပြီး သင်တန်းတက်နေစဉ် Mock Exam များကို အကန့်အသတ်မရှိ အသုံးပြုနိုင်ပါသည်။','Linked with YKCR student data. During your active class period, mock exams can be used with unlimited access.','YKCR学生データと連携しています。在籍期間中は模擬試験を回数無制限で利用できます。'],
+'Training Access Card and the full Verification Code are not shown on this public dashboard.':['Training Access Card နှင့် Verification Code အပြည့်အစုံကို ဤ Public Dashboard တွင် မပြပါ။','Training Access Card and the full Verification Code are not shown on this public dashboard.','Training Access Card と認証コード全体はこの公開ダッシュボードには表示しません。'],
+'YKCR students can verify with their existing Student ID and Verification Code.':['YKCR ကျောင်းသားများသည် ရှိပြီးသား Student ID နှင့် Verification Code ဖြင့် အတည်ပြုနိုင်ပါသည်။','YKCR students can verify with their existing Student ID and Verification Code.','YKCR学生は既存の学生IDと認証コードで認証できます。'],
 };
 let lang='my';try{const saved=localStorage.getItem('yk_lang');if(['my','en','ja'].includes(saved))lang=saved;}catch{}
 const src=new WeakMap();
