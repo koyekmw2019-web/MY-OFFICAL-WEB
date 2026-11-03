@@ -60,45 +60,55 @@ async function paymentAction(event){const btn=event.target.closest('button[data-
  btn.disabled=true;try{await api('exam-admin-payments',{method:'POST',body:JSON.stringify({action,paymentId,note,confirmation})});await loadPayments()}catch(e){status('Payment update failed: '+e.message,true)}finally{btn.disabled=false}
 }
 
-function learningChartSvg(points,maxScore){
- const width=640,height=220,padX=26,padY=22,innerW=width-padX*2,innerH=height-padY*2;
- if(!points.length){
-  return `<div class="learning-empty">No scored attempts yet.</div>`;
- }
- const safeMax=Math.max(100,Math.ceil(maxScore/10)*10||100);
- const stepX=points.length===1?0:innerW/(points.length-1);
- const poly=points.map((p,i)=>{
-   const x=padX+i*stepX;
-   const y=height-padY-(p.score/safeMax)*innerH;
-   p._x=x; p._y=y;
-   return `${x.toFixed(1)},${y.toFixed(1)}`;
- }).join(' ');
- const yTicks=[0,.25,.5,.75,1].map(r=>{
-   const value=Math.round(safeMax*r);
-   const y=(height-padY-(value/safeMax)*innerH).toFixed(1);
-   return `<g><line x1="${padX}" y1="${y}" x2="${width-padX}" y2="${y}" class="learning-grid-line"></line><text x="8" y="${Number(y)+4}" class="learning-axis">${value}</text></g>`;
- }).join('');
- const dots=points.map((p,i)=>`<g><circle cx="${p._x.toFixed(1)}" cy="${p._y.toFixed(1)}" r="4.5" class="learning-point"></circle><text x="${p._x.toFixed(1)}" y="${(p._y-10).toFixed(1)}" text-anchor="middle" class="learning-point-label">${esc(p.score)}</text><text x="${p._x.toFixed(1)}" y="${height-6}" text-anchor="middle" class="learning-axis">${esc(p.label)}</text></g>`).join('');
- return `<svg class="learning-chart-svg" viewBox="0 0 ${width} ${height}" role="img" aria-label="Recent practice scores graph">${yTicks}<polyline points="${poly}" class="learning-line"></polyline>${dots}</svg>`;
-}
-function renderLearningOverview(xs){
- const host=$('myLearningOverview'); if(!host)return;
- const attempts=Array.isArray(xs)?xs:[];
- const scored=attempts.filter(x=>typeof x.score==='number' && !Number.isNaN(x.score));
- const recent=[...scored].reverse().slice(-8);
- const points=recent.map((x,i)=>({score:Number(x.score)||0,label:when(x.submitted_at||x.started_at).replace(/\//g,'.')}));
- const maxScore=Math.max(0,...points.map(x=>x.score));
- const typeCounts={};
- attempts.forEach(x=>{const key=String(x.exam_type||'Unknown'); typeCounts[key]=(typeCounts[key]||0)+1;});
- const chips=Object.entries(typeCounts).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([name,count])=>`<span class="learning-chip">${esc(name)} · ${esc(count)}</span>`).join('');
- host.innerHTML=`<div class="learning-overview"><div class="learning-kpis">${[
-   ['Attempt count',attempts.length],
-   ['Passed',attempts.filter(x=>x.passed).length],
-   ['Verified scores',attempts.filter(x=>x.score_verified).length],
-   ['Recent scored attempts',points.length]
- ].map(([k,v])=>`<div class="learning-kpi"><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join('')}</div><div class="learning-chart-wrap"><div class="learning-chart-head"><strong>My Learning Overview</strong><span>Last 8 scored attempts</span></div>${learningChartSvg(points,maxScore)}</div><div class="learning-type-wrap"><div class="learning-type-head">Recent exam types</div><div class="learning-chip-row">${chips||'<span class="learning-empty-inline">No attempts yet.</span>'}</div></div></div>`;
-}
 
+/* v7.67 interactive analytics — requires authenticated, account-scoped API records. */
+let learningType='all',learningPeriod='all',learningMistakes=null;
+const formatPercent=v=>v==null?'—':`${Number(v).toFixed(1).replace(/\.0$/,'')}%`;
+function learningChartV767(points){
+ if(!points.length)return '<div class="learning-empty-v767"><span aria-hidden="true">◌</span><b>No verified scores yet</b><p>Submit a supported mock exam to see your learning trend here.</p></div>';
+ const w=740,h=256,L=43,R=20,T=22,B=46,x1=L,x2=w-R,y1=T,y2=h-B;
+ const x=i=>points.length===1?(x1+x2)/2:x1+(x2-x1)*i/(points.length-1);
+ const y=p=>y2-(y2-y1)*(p.percent/100);
+ const grid=[0,25,50,75,100].map(v=>{const pos=y({percent:v});return `<g><line x1="${L}" y1="${pos}" x2="${x2}" y2="${pos}" class="yk767-grid"/><text x="${L-11}" y="${pos+4}" text-anchor="end" class="yk767-axis">${v}</text></g>`}).join('');
+ const segments=points.map((p,i)=>`${i===0?'M':'L'} ${x(i).toFixed(2)} ${y(p).toFixed(2)}`).join(' ');
+ const area=points.length>1?`<path d="${segments} L ${x(points.length-1).toFixed(2)} ${y2} L ${x(0).toFixed(2)} ${y2} Z" class="yk767-area"/>`:'';
+ const marks=points.map((p,i)=>{
+   const date=new Date(p.submitted_at||p.started_at),label=Number.isFinite(date.getTime())?date.toLocaleDateString('ja-JP',{month:'2-digit',day:'2-digit'}):'—';
+   const tag=String(p.exam_type||'');
+   return `<g><circle cx="${x(i).toFixed(2)}" cy="${y(p).toFixed(2)}" r="5.5" class="yk767-dot" tabindex="0" role="img" aria-label="${esc(tag)} ${esc(label)} ${esc(p.percent)} percent"><title>${esc(tag)} · ${esc(label)} · ${esc(p.percent)}%</title></circle>${i===0||i===points.length-1||points.length<=4?`<text x="${x(i).toFixed(2)}" y="${h-15}" text-anchor="middle" class="yk767-axis">${esc(label)}</text>`:''}</g>`;
+ }).join('');
+ return `<div class="yk767-chart-container"><svg class="yk767-chart" viewBox="0 0 ${w} ${h}" role="group" aria-label="Practice score trend: latest ${points.length} verified results, zero to 100 percent">${grid}${area}<path d="${segments}" class="yk767-line"/>${marks}</svg></div>`;
+}
+function learningKpi(label,value,note){return `<div class="yk767-kpi"><span>${esc(label)}</span><strong>${esc(value)}</strong><small>${esc(note)}</small></div>`}
+function paintLearningInsights(attempts){
+ const host=$('myLearningOverview');if(!host)return;
+ const engine=window.YKLearningAnalyticsV767,score=window.YKLearningScoreV765;
+ if(!engine||!score){host.innerHTML='<p class="status error">Learning analytics module unavailable. Reload this page.</p>';return}
+ const typeOptions=engine.types(attempts);
+ if(learningType!=='all'&&!typeOptions.includes(learningType))learningType='all';
+ const m=engine.summarize(attempts,learningType,learningPeriod);
+ const entries=engine.performanceByType(attempts,learningPeriod).filter(t=>learningType==='all'||t.type===learningType);
+ const focus=learningMistakes===null?null:learningMistakes==='unavailable'?'unavailable':engine.reviewPriorities(learningMistakes,learningType);
+ const change=m.change===null?'—':`${m.change>0?'+':''}${Number(m.change).toFixed(1).replace(/\.0$/,'')} pp`;
+ const scopeText=learningPeriod==='all'?'All available history':`Last ${learningPeriod} days`;
+ const options=typeOptions.map(t=>`<option value="${esc(t)}" ${learningType===t?'selected':''}>${esc(t.toUpperCase().replaceAll('_',' '))}</option>`).join('');
+ const barRows=entries.map(t=>`<div class="yk767-bar-row"><div class="yk767-bar-meta"><span>${esc(t.type.toUpperCase().replaceAll('_',' '))}</span><span>${formatPercent(t.average)} <small>(${t.verifiedCount})</small></span></div><div class="yk767-bar"><span style="width:${t.average}%"></span></div></div>`).join('');
+ const focusItems=focus===null?'<div class="yk767-focus-empty">Loading saved mistakes…</div>':focus==='unavailable'?'<div class="yk767-focus-empty">Saved review history is temporarily unavailable.</div>':focus.length?focus.map(m=>`<div class="yk767-focus-item"><div><span class="yk767-focus-type">${esc(String(m.exam_type||'').toUpperCase().replaceAll('_',' '))}</span><b>${esc(m.question_text).slice(0,150)}</b></div><span class="yk767-count">${Number(m.missed_count)}×</span></div>`).join(''):'<p class="yk767-focus-empty">No saved mistakes for this exam filter. Keep practicing to build your review list.</p>';
+ host.innerHTML=`<div class="yk767-wrap">
+ <div class="yk767-hero"><div><span class="yk767-overline">STUDYING WITH YE KUN · LEARNING INSIGHTS</span><h3>My Learning Overview</h3><p>Explore your progress using your own saved exam results.</p></div><div class="yk767-controls"><label>Exam Type<select id="learningExamType"><option value="all" ${learningType==='all'?'selected':''}>All exams</option>${options}</select></label><label>Period<select id="learningPeriod"><option value="all" ${learningPeriod==='all'?'selected':''}>All time</option>${['7','30','90'].map(d=>`<option value="${d}" ${learningPeriod===d?'selected':''}>${d} days</option>`).join('')}</select></label></div></div>
+ <div class="yk767-kpis">${learningKpi('Average score',formatPercent(m.average),'Verified practice results')}${learningKpi('Pass rate',formatPercent(m.passRate),`${m.passedCount} / ${m.verifiedCount} verified exams`)}${learningKpi('Best score',formatPercent(m.best),'In selected filters')}${learningKpi('Score change',change,learningType==='all'?'Choose one exam type':m.change===null?'Needs 6 verified results':'Latest 3 vs previous 3')}</div>
+ <div class="yk767-main-grid"><section class="yk767-surface yk767-trend"><div class="yk767-surface-head"><div><h4>Practice score trend</h4><p>${esc(scopeText)} · Latest ${m.chartRows.length} verified results</p></div><span class="yk767-verified-label">● VERIFIED</span></div>${learningChartV767(m.chartRows)}<p class="yk767-note">Scores are normalized to 0–100% for display. These are practice estimates, not official JLPT scaled scores.</p></section>
+ <section class="yk767-surface yk767-comparison"><div class="yk767-surface-head"><div><h4>Performance by exam</h4><p>Average verified scores</p></div></div>${barRows||'<p class="yk767-focus-empty">No verified results to compare.</p>'}<div class="yk767-sample">${m.attemptCount} attempts · ${m.verifiedCount} verified · ${m.exclusions} submitted without usable verified scores</div></section></div>
+ <section class="yk767-surface yk767-focus"><div class="yk767-surface-head"><div><h4>Review priorities</h4><p>Saved wrong answers, ranked by how often they were missed · All time</p></div><a class="yk767-practice-link" href="/#study-hub">Study Hub ↗</a></div><div class="yk767-focus-list">${focusItems}</div></section>
+ <p class="yk767-source">Source: your account's last 50 exam attempts (exam-my-activity) and saved mistakes (yk-learning). Older history may not appear. Unverified / legacy scores are excluded from averages and graphs. No additional free attempts are used.</p></div>`;
+ $('learningExamType')?.addEventListener('change',e=>{learningType=e.target.value;paintLearningInsights(attempts)});
+ $('learningPeriod')?.addEventListener('change',e=>{learningPeriod=e.target.value;paintLearningInsights(attempts)});
+}
+async function loadLearningFocus(attempts){
+ try{const data=await api('yk-learning');learningMistakes=Array.isArray(data.mistakes)?data.mistakes:[]}
+ catch(e){learningMistakes='unavailable';}
+ paintLearningInsights(attempts);
+}
 
 async function showMember(role){
  const student=me.linkedStudent,active=!!me.student;
@@ -109,12 +119,12 @@ async function showMember(role){
  `${cards([['Account','Member'],['Free exam rule','1 per exam type'],['Paid access',me.paid?'Active':'Not active'],['Plan expires',me.paid?when(me.paid.expires_at):'—']])}<div class="grid">`+
  panel('👤 My Account & Exam Access',row('Email',me.email||user.email)+row('Free attempts','1 per exam type · Used: '+((me.freeUsedTypes||[]).join(', ')||'none'))+row('Paid Plan',me.paid?'Active until '+when(me.paid.expires_at):'Not Active')+row('Payment status',me.pendingPayment?'Pending approval':'No pending request')+`<div class="actions"><a class="btn primary" href="/#online-mock-exam">Exam / Buy Access</a><a class="btn" href="/login.html">Account Settings</a></div>`)+
  panel('✅ Verify as Student',`<p class="muted">YKCR students can verify with their existing Student ID and Verification Code.</p><form id="studentForm" class="formrow"><label for="studentId">Student ID</label><input id="studentId" required autocomplete="off"><label for="studentCode">Verification Code</label><input id="studentCode" required type="password" autocomplete="off"><button class="btn primary" type="submit">Verify Student</button></form><div id="studentResult" class="status" hidden></div>`);
- root.innerHTML=body+panel('📈 My Learning Overview','<div id="myLearningOverview" class="muted">Loading…</div>','wide')+panel('📊 My Exam History','<div id="myAttempts" class="muted">Loading…</div>','wide')+panel('💳 My Payment History','<div id="myPayments" class="muted">Loading…</div>','wide')+'</div>';
+ root.innerHTML=body+panel('📈 Learning Analytics 2.0','<div id="myLearningOverview" class="muted">Loading…</div>','wide')+panel('📊 My Exam History','<div id="myAttempts" class="muted">Loading…</div>','wide')+panel('💳 My Payment History','<div id="myPayments" class="muted">Loading…</div>','wide')+'</div>';
  if(needVerify)$('studentForm').addEventListener('submit',verifyStudent);
  await showActivity();
 }
 
 async function verifyStudent(ev){ev.preventDefault();const b=$('studentForm').querySelector('button'),m=$('studentResult');m.hidden=false;m.className='status';m.textContent='Checking YKCR Student ID…';b.disabled=true;try{await api('exam-student-verify',{method:'POST',body:JSON.stringify({studentCode:$('studentId').value.trim(),verificationCode:$('studentCode').value.trim()})});m.textContent='Student verified. Opening Student Dashboard…';go('/student-dashboard.html')}catch(e){m.className='status error';m.textContent=e.message}finally{b.disabled=false}}
-async function showActivity(){try{activity=await api('exam-my-activity');const xs=activity.attempts||[];$('myAttempts').innerHTML=xs.length?`<div class="tablewrap"><table class="records-table"><thead><tr><th>Exam</th><th>Status</th><th>Score (practice)</th><th>Server Check</th><th>Date</th></tr></thead><tbody>${xs.map(x=>`<tr><td>${esc(x.exam_type)}</td><td>${esc(x.status)}</td><td>${x.score==null?'—':esc(x.score)}</td><td>${x.score==null?'—':x.score_verified?'✓ Recalculated':'Unverified (legacy)'}</td><td>${when(x.submitted_at||x.started_at)}</td></tr>`).join('')}</tbody></table></div>`:'No exam attempts yet.';const ps=activity.payments||[];$('myPayments').innerHTML=ps.length?ps.map(p=>`<article class="record"><div class="record-title"><b>#${Number(p.id)} · ${money(p.amount_yen)} · ${esc(p.plan_code)}</b>${badge(p.status)}</div><small>${when(p.submitted_at)}${p.admin_note?' · '+esc(p.admin_note):''}</small></article>`).join(''):'No payment requests yet.';renderLearningOverview(xs)}catch(e){$('myAttempts').textContent='Could not load history: '+e.message;$('myPayments').textContent='Could not load payment history.';if($('myLearningOverview'))$('myLearningOverview').textContent='Could not load learning overview.'}}
+async function showActivity(){try{activity=await api('exam-my-activity');const xs=activity.attempts||[];$('myAttempts').innerHTML=xs.length?`<div class="tablewrap"><table class="records-table"><thead><tr><th>Exam</th><th>Status</th><th>Score (practice)</th><th>Server Check</th><th>Date</th></tr></thead><tbody>${xs.map(x=>`<tr><td>${esc(x.exam_type)}</td><td>${esc(x.status)}</td><td>${x.score==null?'—':esc(x.score)}</td><td>${x.score==null?'—':x.score_verified?'✓ Recalculated':'Unverified (legacy)'}</td><td>${when(x.submitted_at||x.started_at)}</td></tr>`).join('')}</tbody></table></div>`:'No exam attempts yet.';const ps=activity.payments||[];$('myPayments').innerHTML=ps.length?ps.map(p=>`<article class="record"><div class="record-title"><b>#${Number(p.id)} · ${money(p.amount_yen)} · ${esc(p.plan_code)}</b>${badge(p.status)}</div><small>${when(p.submitted_at)}${p.admin_note?' · '+esc(p.admin_note):''}</small></article>`).join(''):'No payment requests yet.';paintLearningInsights(xs);void loadLearningFocus(xs)}catch(e){$('myAttempts').textContent='Could not load history: '+e.message;$('myPayments').textContent='Could not load payment history.';if($('myLearningOverview'))$('myLearningOverview').textContent='Could not load learning overview.'}}
 init();
 })();

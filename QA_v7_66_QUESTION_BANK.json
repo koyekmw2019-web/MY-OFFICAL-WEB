@@ -1,0 +1,94 @@
+{
+  "version": "v7.66",
+  "baseline": "v7.65",
+  "full_mock_questions": 500,
+  "short_practice_questions": 100,
+  "per_level": {
+    "N5": {
+      "full": {
+        "vocabulary": 36,
+        "grammar": 24,
+        "reading": 20,
+        "listening": 20
+      },
+      "practice": {
+        "vocabulary": 8,
+        "grammar": 8,
+        "reading": 4
+      }
+    },
+    "N4": {
+      "full": {
+        "vocabulary": 36,
+        "grammar": 24,
+        "reading": 20,
+        "listening": 20
+      },
+      "practice": {
+        "vocabulary": 8,
+        "grammar": 8,
+        "reading": 4
+      }
+    },
+    "N3": {
+      "full": {
+        "vocabulary": 36,
+        "grammar": 24,
+        "reading": 20,
+        "listening": 20
+      },
+      "practice": {
+        "vocabulary": 8,
+        "grammar": 8,
+        "reading": 4
+      }
+    },
+    "N2": {
+      "full": {
+        "vocabulary": 36,
+        "grammar": 24,
+        "reading": 20,
+        "listening": 20
+      },
+      "practice": {
+        "vocabulary": 8,
+        "grammar": 8,
+        "reading": 4
+      }
+    },
+    "N1": {
+      "full": {
+        "vocabulary": 36,
+        "grammar": 24,
+        "reading": 20,
+        "listening": 20
+      },
+      "practice": {
+        "vocabulary": 8,
+        "grammar": 8,
+        "reading": 4
+      }
+    }
+  },
+  "distinct_full_mock_ids": 500,
+  "distinct_practice_ids": 100,
+  "tested_scope": [
+    "schema",
+    "options",
+    "IDs",
+    "answer indexes",
+    "explanations present",
+    "passage/listening script present",
+    "public JS/JSON parity",
+    "non-leaking furigana during vocabulary tests",
+    "shared furigana toggles"
+  ],
+  "not_tested_scope": [
+    "linguistic validity for all 600 questions",
+    "full official JLPT difficulty and authenticity",
+    "production database",
+    "real user end-to-end login",
+    "mobile PWA on physical devices"
+  ],
+  "result": "Static test PASS; production validation required"
+}

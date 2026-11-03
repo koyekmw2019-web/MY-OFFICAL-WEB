@@ -1,0 +1,17 @@
+{
+  "version": "v7.65",
+  "date": "2026-11-02",
+  "status": "staging_release_candidate",
+  "test": {
+    "v763_integrity_mock": 27,
+    "v765_stability": 12,
+    "dashboard_mock_browser": 6,
+    "test_failures": 0
+  },
+  "database_migrations_unchanged": 10,
+  "backend_files_changed": [],
+  "notes": [
+    "No live Identity/YKCR/Payment/Netlify DB end-to-end test",
+    "Historic v762 standalone tests obsolete: 11 pass 3 fail"
+  ]
+}

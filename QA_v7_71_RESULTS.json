@@ -1,0 +1,61 @@
+{
+  "release": "v7.71 Stable Source / Staging Candidate",
+  "based_on": "YE_KUN_Official_Website_v7_70_Dictionary_Translation_QA(1).zip",
+  "source_zip_sha256": "0d827ade86636d4e6fae8046e4bcbf01ee8c0ca92596866259dfd9f6de46a817",
+  "changes": [
+    "package version metadata aligned",
+    "npm test updated to include current dictionary and stable release suite",
+    "post-bundle build verification added",
+    "service-worker release marker updated",
+    "sitemap lastmod updated",
+    "backend frozen SHA256 manifest and QA documentation added"
+  ],
+  "source_automated_tests": {
+    "result": "PASS",
+    "total_individual_checks": 97,
+    "test_suites": [
+      "TOTAL 27 PASS / 0 FAIL (mock DB, not production)",
+      "TOTAL 12 PASS / 0 FAIL (static/mocked; not deployed)",
+      "TOTAL v7.67: 24 PASS / 0 FAIL (local unit tests)",
+      "TOTAL v7.70: 12 PASS / 0 FAIL (static catalog checks; no full linguistic or live Netlify validation)",
+      "TOTAL v7.71: 9 PASS / 0 FAIL; 13 inline scripts parsed; 57 local resource links; PRE-BUILD checks"
+    ],
+    "tools": "Node.js v22.16.0 npm test; mock DB, static regression, JS syntax"
+  },
+  "backend_preserved": {
+    "status": "SHA256 MATCH to v7.70 source",
+    "files": 33,
+    "migrations_edited": 0,
+    "functions_edited": 0
+  },
+  "source_integrity": {
+    "new_pdf_files": 0,
+    "all_8542_dictionary_records_retained": true,
+    "translation_glosses": 1234,
+    "missing_myanmar_gloss": 7308,
+    "full_human_review_completed": false
+  },
+  "browser_exploratory": {
+    "status": "LIMITED / NOT COMPLETE",
+    "method": "Chromium set_content isolated DOM with v7.70 dictionary data preloaded, because the test environment prevents navigation and local HTTP listeners",
+    "desktop_dictionary_search_students_matches": 4,
+    "mobile_dictionary_search_students_matches": 4,
+    "login_form_rendered": true,
+    "notes": [
+      "Not full networked end-to-end QA",
+      "about:blank localStorage denied (test sandbox origin)",
+      "real production assets and third-party Identity could not be exercised"
+    ]
+  },
+  "production_checks_not_run": [
+    "npm install/npm run build (npm registry unreachable in runtime, so generated identity.bundle.js not present)",
+    "live Netlify Functions and database migrations",
+    "Login/Logout, Admin/Student/Member role gating",
+    "Payment approval / private receipt access",
+    "YKCR live student synchronization",
+    "real mobile/browser PWA install",
+    "professional dictionary translations review"
+  ],
+  "deploy_status": "NOT LIVE-VERIFIED; STAGING TEST REQUIRED BEFORE PRODUCTION",
+  "build_and_release_note": "Netlify Git-based build uses npm run build to generate assets/identity.bundle.js; direct upload of unbuilt ZIP as a public site will not support Login."
+}

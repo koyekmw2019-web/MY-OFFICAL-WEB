@@ -1,0 +1,49 @@
+{
+  "version": "v7.69",
+  "base": "v7.68",
+  "catalog_unique": 8542,
+  "verified_myanmar_from_v768": 360,
+  "unverified_myanmar": 8182,
+  "english_gloss_available": 7932,
+  "without_english_or_myanmar_gloss": 494,
+  "primary_source_level_counts": {
+    "N1": 3486,
+    "N5": 1157,
+    "N2": 2109,
+    "N3": 1733,
+    "N4": 57
+  },
+  "reading_warning": 5,
+  "review_queue_original_coverage": "all 7523 original v7.68 Review Queue rows accounted for by Japanese + Kana (one source blank Kana derived from kana-only Japanese term)",
+  "source_english_reading": "English gloss and readings are from user-supplied source PDFs and not independently dictionary-verified; flagged for checking",
+  "scanned_chokuzen_books": "not exhaustively scanned/transcribed",
+  "preexisting_backend_status": "unchanged, not live-tested",
+  "browser": "isolated UI DOM simulation: dictionary term display, 200/400 Load More and Favorites handler; not a live Netlify test",
+  "automated_regression": "v7.63 (27), v7.65 (12), v7.66 (13), v7.67 (24) PASS",
+  "source_coverage": {
+    "JLPT-N1-Vocabulary-1-1": {
+      "rows": 3263,
+      "distinct": 3263
+    },
+    "JLPT-N2-Vocabulary": {
+      "rows": 1833,
+      "distinct": 1833
+    },
+    "JLPT-N3-Vocabulary-": {
+      "rows": 1804,
+      "distinct": 1799
+    },
+    "Complete-JLPT-N2-vocabulary-list-PDF": {
+      "rows": 600,
+      "distinct": 598
+    },
+    "Vocabulary_of_JLPT_N5": {
+      "rows": 800,
+      "distinct": 788,
+      "numbered_entries": 802,
+      "max_number": 802
+    }
+  },
+  "pdf_files_in_zip": 0,
+  "test_status": "staging release candidate"
+}

@@ -1,0 +1,44 @@
+{
+  "version": "7.67",
+  "automatedTests": {
+    "integrity": 27,
+    "stability": 12,
+    "jlpt": 13,
+    "analytics": 24,
+    "total": 76,
+    "failed": 0
+  },
+  "mockBrowser": {
+    "passed": 7,
+    "failed": 0,
+    "cases": [
+      "student_desktop",
+      "student_mobile",
+      "member_desktop",
+      "member_mobile",
+      "admin_desktop",
+      "admin_mobile",
+      "member_empty_mobile"
+    ]
+  },
+  "unchangedNetlifyBackendFiles": 33,
+  "changedFiles": [
+    "admin-dashboard.html",
+    "assets/yk-dashboard-ui-v759.js",
+    "assets/yk-dashboard-v758.js",
+    "assets/yk-dashboard-v759.css",
+    "dashboard.html",
+    "member-dashboard.html",
+    "package.json",
+    "service-worker.js",
+    "student-dashboard.html"
+  ],
+  "addedFiles": [
+    "assets/yk-learning-analytics-v767.js",
+    "tests/v767-learning-analytics.mjs",
+    "README_v7_67_LEARNING_ANALYTICS_MY.md",
+    "QA_v7_67_LEARNING_ANALYTICS.md",
+    "QA_v7_67_RESULTS.json"
+  ],
+  "productionVerified": false
+}

@@ -1202,6 +1202,12 @@ footer{
 }
 
 
+
+/* v7.68 curated dictionary examples, accessible Japanese/Myanmar */
+.dict-v768-example{font-size:12px;color:#dedede;margin-top:11px;padding-top:10px;border-top:1px solid rgba(255,255,255,.09);line-height:1.75}
+.dict-v768-example span{font-size:10px;font-weight:800;color:#b8c2d3;margin-right:8px}
+.dict-v768-example small{font-size:12px;display:block;color:#b8b8bc;margin-top:3px}
+
 /* ===== V5 MOTION & UI POLISH — animation-only enhancement ===== */
 :root{
   --motion-ease:cubic-bezier(.16,1,.3,1);
@@ -1491,6 +1497,7 @@ img,video,iframe,svg{max-width:100%;}
   .hero-card{padding:18px 14px;}
 }
 
+.dictionary-review-note{display:block;color:#b8b6a7;font-size:11px;padding-top:4px}
 </style>
 <meta content="#050505" name="theme-color"/><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/><meta content="YKOC" name="apple-mobile-web-app-title"/><meta content="YKOC" name="application-name"/><link href="./manifest.webmanifest" rel="manifest"/><link rel="icon" type="image/png" sizes="192x192" href="/yk-192.png"/><link rel="icon" type="image/png" sizes="512x512" href="/yk-512.png"/><link rel="apple-touch-icon" href="/yk-192.png"/><style>
 /* ===== V7 PORTAL-FIRST UPDATE ===== */
@@ -2012,6 +2019,32 @@ body.menu-open,html:has(body.menu-open){overflow:hidden!important;overscroll-beh
 @media(prefers-reduced-motion:reduce){.site-menu-nav .yk-account-area-v759 .yk-account-btn-v759,.site-menu-nav .yk-account-area-v759 .yk-account-btn-v759:before{transition:none!important}}
 </style>
 <link rel="stylesheet" href="/assets/yk-exam-autosave-v761.css">
+<style>
+/* v7.66 study reading aids — accessibility and answer-leak guard */
+.yk-furi-toggle,.yk-furi-assessment-note{display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(192,212,236,.3);border-radius:999px;background:#1c2530;color:#eff6ff;padding:5px 11px;font-size:11px;font-weight:800;line-height:1.45;white-space:normal;cursor:pointer}
+.yk-furi-toggle:hover{background:#263447;border-color:#91b2d7}
+.yk-furi-assessment-note{cursor:default;color:#d1d8e0;background:#222427}
+.yk-native-v750 ruby,.prep-question-wrap-v750 ruby,.prep-review-v750 ruby{ruby-align:center;line-height:1.8}
+.yk-native-v750 rt,.prep-question-wrap-v750 rt,.prep-review-v750 rt{font-size:.58em;font-weight:650;color:#b5ddff}
+.yk-native-v750 .yk-native-section{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.prep-play-top-v750{flex-wrap:wrap;gap:8px}
+@media(max-width:480px){.yk-furi-toggle,.yk-furi-assessment-note{font-size:10px;padding:5px 8px}}
+</style>
+<style>
+/* Dedicated JLPT reading-aid preference takes priority over legacy global toggle. */
+html.furigana-off.yk-jlpt-furi-on .yk-native-v750 ruby rt,html.furigana-off.yk-jlpt-furi-on .prep-question-wrap-v750 ruby rt,html.furigana-off.yk-jlpt-furi-on .prep-review-v750 ruby rt{display:ruby-text!important}
+</style>
+
+<style>
+.dictionary-pending{border:1px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(255,255,255,.025);padding:9px 11px;margin-top:9px;}
+.dictionary-pending small{display:block;color:#d5ae66;font-size:10px;margin-top:5px;}
+.dictionary-en-label{font-weight:800;letter-spacing:.06em;font-size:10px;color:#a7abb5;}
+.dictionary-en{font-size:13px;color:#eee;margin-top:3px;white-space:normal;overflow-wrap:anywhere;}
+.dictionary-reading-warning{font-size:11px;color:#efb85f;margin-top:8px;}
+.dictionary-more-row{text-align:center;margin:16px auto 4px;}
+.dictionary-more-row button{min-width:220px;padding:12px 16px;}
+.dictionary-more-row button[hidden]{display:none;}
+</style>
 </head>
 <body>
 <div class="top">
@@ -2395,7 +2428,7 @@ body.menu-open,html:has(body.menu-open){overflow:hidden!important;overscroll-beh
 <span>⌕</span>
 <input aria-label="Search dictionary" id="dictionarySearch" placeholder="例：brake・ブレーキ・ဘရိတ်・点呼…" type="search"/>
 </div><div class="dictionary-tools-v7" id="dictionaryToolsV7"><button class="dict-chip active" data-dict-cat="all">All</button><button class="dict-chip" data-dict-cat="TRUCK">🚚 Truck</button><button class="dict-chip" data-dict-cat="TAXI">🚕 Taxi</button><button class="dict-chip" data-dict-cat="BUS">🚌 Bus</button><button class="dict-chip" data-dict-cat="自動車整備">🔧 自動車整備</button><button class="dict-chip" data-dict-cat="普通自動車">🚗 普通自動車</button><button class="dict-chip" data-dict-cat="二輪">🏍️ 二輪</button><button class="dict-chip" data-dict-cat="原付">🛵 原付</button><button class="dict-chip" data-dict-cat="JLPT N5">🇯🇵 N5</button><button class="dict-chip" data-dict-cat="JLPT N4">🇯🇵 N4</button><button class="dict-chip" data-dict-cat="JLPT N3">🇯🇵 N3</button><button class="dict-chip" data-dict-cat="JLPT N2">🇯🇵 N2</button><button class="dict-chip" data-dict-cat="JLPT N1">🇯🇵 N1</button><button class="dict-tool-btn" id="dictFavMode">☆ Favorites</button></div><div class="dictionary-recent-v7" id="dictRecentV7"></div><div class="dict-count" id="dictCountV7"></div>
-<div id="dictionaryResults"></div><div class="dictionary-review-note" id="dictionaryReviewNote"></div>
+<div id="dictionaryResults"></div><div class="dictionary-more-row"><button class="dict-tool-btn" id="dictionaryLoadMore" hidden type="button">နောက်ထပ် စကားလုံးများ</button></div><div class="dictionary-review-note" id="dictionaryReviewNote"></div>
 <div class="dictionary-empty" id="dictionaryEmpty">No matching terms found.</div>
 </div>
 </section>
@@ -3550,6 +3583,7 @@ ${msg}`;
 })();
 </script>
 
+<script src="/assets/yk-dictionary-v770.js"></script>
 <!-- ===== V7.18 Dictionary pronunciation restore: based on V7.17, Dictionary only ===== -->
 <script>
 (function(){
@@ -3725,6 +3759,28 @@ ${msg}`;
     {jp:"主旨",reading:"しゅし",mm:"အဓိကရည်ရွယ်ချက် / အနှစ်ချုပ်",sources:['JLPT N1 Practice']}
   ];
   v749JlptTerms.forEach(x=>{ if(!terms.some(t=>t.jp===x.jp && (t.sources||[]).includes(x.sources[0]))) terms.push(x); });
+  // v7.69: Include all source-extracted vocabulary, explicitly marking unreviewed meanings.
+  // Preserve original Burmese meanings and legacy Favorites IDs wherever a term already exists.
+  const incomingV769 = Array.isArray(window.YK_DICTIONARY_V770) ? window.YK_DICTIONARY_V770 : [];
+  const existingV769 = new Map(terms.map(t => [String(t.jp||'')+'\u00a6'+String(t.reading||''), t]));
+  for (const term of incomingV769) {
+    if (!term.jp || !term.reading) continue;
+    const key = term.jp+'\u00a6'+term.reading;
+    const current = existingV769.get(key);
+    if (current) {
+      current.sources = Array.from(new Set([...(current.sources || []), ...(term.sources || [])]));
+      // Source glosses are optional; NEVER overwrite the user's prior Burmese translations.
+      if (!current.mm && term.mm) current.mm=term.mm;
+      if (!current.en && term.en) current.en=term.en;
+      if (!current.quality && term.quality) current.quality=term.quality;
+      if (!current.example_ja && term.example_ja) { current.example_ja=term.example_ja; current.example_my=term.example_my||''; }
+    } else {
+      const entry={...term, sources:[...(term.sources||[])], _v769:true};
+      terms.push(entry);
+      existingV769.set(key,entry);
+    }
+  }
+
   const input = document.getElementById('dictionarySearch');
   const results = document.getElementById('dictionaryResults');
   const empty = document.getElementById('dictionaryEmpty');
@@ -3738,6 +3794,8 @@ ${msg}`;
   const RECENT_KEY = 'yekun_dictionary_recent_v7';
   let activeCat = 'all';
   let favMode = false;
+  let showLimit = 200;
+  const loadMoreBtn = document.getElementById('dictionaryLoadMore');
 
   const safeJSON = (key, fallback) => {
     try {
@@ -3752,7 +3810,7 @@ ${msg}`;
   let recent = safeJSON(RECENT_KEY, []);
   if(!Array.isArray(recent)) recent = [];
 
-  const keyOf = t => [t.jp || '', t.reading || '', t.mm || ''].join('¦');
+  const keyOf = t => t._v769 ? ['v769',t.jp||'',t.reading||''].join('¦') : [t.jp||'',t.reading||'',t.mm||''].join('¦');
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const inCategory = (t, cat) => {
     if(cat === 'all') return true;
@@ -3800,6 +3858,7 @@ ${msg}`;
       results.innerHTML = '';
       if(empty) empty.style.display = 'none';
       setCount(0,0);
+      if (loadMoreBtn) loadMoreBtn.hidden=true;
       return;
     }
 
@@ -3807,18 +3866,19 @@ ${msg}`;
       if(!inCategory(t, activeCat)) return false;
       if(favMode && !favorites.has(keyOf(t))) return false;
       if(!q) return true;
-      const hay = `${t.jp || ''} ${t.reading || ''} ${t.mm || ''} ${(t.sources || []).join(' ')}`.toLowerCase();
+      const hay = `${t.jp || ''} ${t.reading || ''} ${t.mm || ''} ${t.en || ''} ${t.example_ja || ''} ${(t.sources || []).join(' ')}`.toLowerCase();
       return hay.includes(q);
     });
 
     const total = matches.length;
-    const MAX_SHOW = 200;
-    matches = matches.slice(0, MAX_SHOW);
+    matches = matches.slice(0, showLimit);
+    if (loadMoreBtn) { loadMoreBtn.hidden = total<=showLimit; loadMoreBtn.textContent=`နောက်ထပ် စကားလုံးများ (${Math.min(showLimit,total)} / ${total})`; }
     setCount(total, matches.length);
 
     if(!matches.length){
       results.innerHTML = '';
       if(empty) empty.style.display = 'block';
+      if(loadMoreBtn)loadMoreBtn.hidden=true;
       return;
     }
     if(empty) empty.style.display = 'none';
@@ -3829,7 +3889,7 @@ ${msg}`;
       return `
         <div class="dictionary-item" data-term-key="${esc(k)}">
           <div class="dictionary-jp">${esc(t.jp)}${t.reading ? ` <span class="dictionary-reading">${esc(t.reading)}</span>` : ''}</div>
-          <div class="dictionary-mm">${esc(t.mm)}</div>
+          ${t.mm?`<div class="dictionary-mm">${esc(t.mm)}</div>${t.quality==='legacy_gloss_unreviewed_v770'?'<small class="dictionary-reading-warning">Existing glossary meaning · further review pending</small>':''}${t.quality==='curated_draft_v770'?'<small class="dictionary-review-note">မြန်မာပြန် ဖြည့်ထားပြီး · အဓိပ္ပာယ်ထပ်မံစစ်ဆေးရန်</small>':''}`:`<div class="dictionary-pending">${t.en?`<span class="dictionary-en-label">English meaning (source)</span><div class="dictionary-en">${esc(t.en)}</div>`:'<div class="dictionary-en">Meaning not available in source</div>'}<small>မြန်မာအဓိပ္ပာယ် ပြန်လည်စစ်ဆေးရန် · Translation pending</small></div>`}${t.reading_warning?`<div class="dictionary-reading-warning">⚠ ${esc(t.reading_warning)}</div>`:''}${t.example_ja ? `<div class="dict-v768-example"><span>例文</span> ${esc(t.example_ja)}${t.example_my?`<small>${esc(t.example_my)}</small>`:''}</div>` : ''}
           <div class="dictionary-source-row">${(t.sources||[]).map(s => `<span class="dictionary-cat">${esc(s)}</span>`).join('')}</div>
           <div class="dict-action-row">
             <button type="button" class="dict-mini-btn" data-action="speak" aria-label="Japanese pronunciation">🔊 発音</button>
@@ -3852,9 +3912,11 @@ ${msg}`;
     }
   }
 
-  input.addEventListener('input', render);
-  input.addEventListener('search', render);
-  input.addEventListener('change', render);
+  const resetLimit=()=>{showLimit=200;render()};
+  input.addEventListener('input', resetLimit);
+  input.addEventListener('search', resetLimit);
+  input.addEventListener('change', resetLimit);
+  loadMoreBtn?.addEventListener('click',()=>{showLimit+=200;render()});
   input.addEventListener('keydown', e => {
     if(e.key === 'Enter'){ rememberQuery(input.value); render(); }
   });
@@ -3865,7 +3927,7 @@ ${msg}`;
       activeCat = chip.dataset.dictCat || 'all';
       favMode = false;
       syncToolState();
-      render();
+      resetLimit();
     }
   });
 
@@ -3876,7 +3938,7 @@ ${msg}`;
       favMode=false;
       input.value='';
       syncToolState();
-      render();
+      resetLimit();
       document.getElementById('driving-dictionary')?.scrollIntoView({behavior:'smooth',block:'start'});
     });
   });
@@ -3884,7 +3946,7 @@ ${msg}`;
   favModeBtn?.addEventListener('click', () => {
     favMode = !favMode;
     syncToolState();
-    render();
+    resetLimit();
   });
 
   recentBox?.addEventListener('click', e => {
@@ -3892,7 +3954,7 @@ ${msg}`;
     if(!b) return;
     input.value = b.dataset.recent || '';
     input.focus();
-    render();
+    resetLimit();
   });
 
   results.addEventListener('click', async e => {
@@ -3936,7 +3998,7 @@ ${msg}`;
     }
 
     if(action === 'copy'){
-      const text = `${t.jp}${t.reading ? ' ('+t.reading+')' : ''} — ${t.mm}`;
+      const text = `${t.jp}${t.reading ? ' ('+t.reading+')' : ''} — ${t.mm || (t.en ? '[EN] '+t.en : '[Meaning pending review]')}`;
       try {
         await navigator.clipboard.writeText(text);
       } catch(_e){
@@ -4369,6 +4431,7 @@ syncStatus();
 })();
 </script>
 
+<script src="assets/yk-jlpt-furigana-v766.js" defer></script>
 <script src="assets/jlpt-chokuzen-bank-v750.js" defer></script>
 <script src="assets/jlpt-chokuzen-v750.js" defer></script>
 <script src="assets/jlpt-native-mock-bank-v752.js" defer></script>

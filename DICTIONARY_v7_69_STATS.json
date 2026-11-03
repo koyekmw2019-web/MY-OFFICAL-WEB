@@ -1,0 +1,43 @@
+{
+  "version": "7.69",
+  "source_parsing": {
+    "JLPT-N1-Vocabulary-1-1": {
+      "rows": 3263,
+      "distinct": 3263
+    },
+    "JLPT-N2-Vocabulary": {
+      "rows": 1833,
+      "distinct": 1833
+    },
+    "JLPT-N3-Vocabulary-": {
+      "rows": 1804,
+      "distinct": 1799
+    },
+    "Complete-JLPT-N2-vocabulary-list-PDF": {
+      "rows": 600,
+      "distinct": 598
+    },
+    "Vocabulary_of_JLPT_N5": {
+      "rows": 800,
+      "distinct": 788,
+      "numbered_entries": 802,
+      "max_number": 802
+    }
+  },
+  "total_unique": 8542,
+  "quality": {
+    "source_unreviewed": 7688,
+    "verified_v768": 360,
+    "reading_only": 494
+  },
+  "primary_level": {
+    "N1": 3486,
+    "N5": 1157,
+    "N2": 2109,
+    "N3": 1733,
+    "N4": 57
+  },
+  "needs_myanmar": 8182,
+  "source_english_available": 7932,
+  "reading_warning": 5
+}

@@ -1,0 +1,95 @@
+{
+  "version": "v7.68",
+  "base": "v7.67",
+  "runtime_curated": 360,
+  "runtime_new_vs_inline_base": 331,
+  "runtime_existing_matches": 29,
+  "runtime_per_level": {
+    "N5": 144,
+    "N4": 26,
+    "N3": 65,
+    "N2": 60,
+    "N1": 65
+  },
+  "new_per_level": {
+    "N5": 128,
+    "N4": 25,
+    "N3": 57,
+    "N2": 58,
+    "N1": 63
+  },
+  "pdf_candidates_extracted": 8518,
+  "pdf_candidates_unique": 7853,
+  "source_candidate_counts": {
+    "JLPT-N1-Vocabulary-1-1": 3261,
+    "JLPT-N2-Vocabulary": 1828,
+    "JLPT-N3-Vocabulary-": 1786,
+    "Complete-JLPT-N2-vocabulary-list-PDF": 600,
+    "JLPT N5 Jp vocabulary": 518,
+    "Vocabulary_of_JLPT_N5": 34,
+    "MKT_JLPT_word-N1": 491
+  },
+  "unmatched_curated": [
+    [
+      "N5",
+      "美しい",
+      "うつくしい"
+    ]
+  ],
+  "reading_conflicts": [
+    [
+      "N2",
+      "当てはめる",
+      "あてはめる",
+      [
+        "あてはめる"
+      ]
+    ],
+    [
+      "N2",
+      "圧力",
+      "あつりょく",
+      [
+        "あつりょく"
+      ]
+    ],
+    [
+      "N1",
+      "迫る",
+      "せまる",
+      [
+        "せまる"
+      ]
+    ]
+  ],
+  "manual_duplicate_rows": [
+    [
+      "友達",
+      "ともだち"
+    ],
+    [
+      "焦る",
+      "あせる"
+    ],
+    [
+      "悪化",
+      "あっか"
+    ],
+    [
+      "圧力",
+      "あつりょく"
+    ]
+  ],
+  "source_notes": [
+    "8 attached PDF vocab sources reviewed by structured text extraction; only manually translated and source-validated entries are published",
+    "5 older 直前対策 JLPT N1–N5 books are scanned practice exams; inspected as supplementary material, not exhaustively machine-transcribed",
+    "JLPT levels are source-book categories and not certified official vocabulary levels",
+    "No copyrighted source PDF pages are included",
+    "Original transport/auto dictionary, Favorites keys, Pronunciation, History, Payment/Exam/YKCR backend retained unchanged"
+  ],
+  "qa_pass": 21,
+  "qa_fail": 0,
+  "review_queue_count": 7523,
+  "browser_smoke_test": "not run successfully: headless chromium runtime timed out",
+  "regression_tests_pass": 76
+}

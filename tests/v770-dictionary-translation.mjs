@@ -1,0 +1,33 @@
+/** v7.70 translation QA, scoped to source and local invariants, not a substitute for a linguist */
+import {readFileSync} from 'node:fs';
+import vm from 'node:vm';
+import assert from 'node:assert/strict';
+const root=new URL('../',import.meta.url);
+const read=(file)=>readFileSync(new URL('../'+file,import.meta.url),'utf8');
+let passes=0;
+const check=(msg,fn)=>{fn();console.log('PASS',msg);passes++};
+const win={};vm.runInNewContext(read('assets/yk-dictionary-v770.js'),{window:win});
+const xs=win.YK_DICTIONARY_V770;
+const old={};vm.runInNewContext(read('assets/yk-dictionary-v769.js'),{window:old});
+const legacy=old.YK_DICTIONARY_V769;
+const lookup=new Map(xs.map(x=>[x.jp+'¦'+x.reading,x]));
+const before=new Map(legacy.map(x=>[x.jp+'¦'+x.reading,x]));
+check('all 8542 source entries present',()=>assert.equal(xs.length,8542));
+check('dictionary key pairs preserved exactly',()=>assert.deepEqual([...lookup.keys()].sort(),[...before.keys()].sort()));
+check('all 360 previously verified meanings unchanged',()=>{for(const x of legacy.filter(x=>x.quality==='verified_v768')) assert.equal(lookup.get(x.jp+'¦'+x.reading)?.mm,x.mm)});
+check('existing source English and readings preserved',()=>{for(const x of legacy){const v=lookup.get(x.jp+'¦'+x.reading);assert.equal(v?.en,x.en);assert.equal(v?.reading,x.reading)}});
+check('translation draft entries clearly distinct from verified',()=>{const a=xs.filter(x=>x.quality==='curated_draft_v770');assert(a.length>400);assert(a.every(x=>x.mm&&x.mm.trim()&&x.quality!=='verified_v768'))});
+check('legacy reused meanings have explicit unverified provenance',()=>{const a=xs.filter(x=>x.quality==='legacy_gloss_unreviewed_v770');assert(a.length>300);assert(a.every(x=>x.mm&&x.quality!=='verified_v768'))});
+check('bad reading source conflicts are not auto translated',()=>{for(const key of ['愛憎¦あいにく','悪日¦あくび','空間¦あきま']){const v=lookup.get(key);assert(v?.reading_warning);assert(!v.mm)}});
+check('source level labels and unique jp/reading keys valid',()=>{const valid=new Set(['N1','N2','N3','N4','N5']);for(const x of xs){assert(valid.has(x.level));assert(x.levels.includes(x.level));assert(x.jp&&x.reading)}});
+check('raw meaning placeholders never passed as translations',()=>{for(const x of xs.filter(x=>x.mm)) assert(!/(translation pending|source_unreviewed|မြန်မာအဓိပ္ပာယ် စစ်ဆေးရန်)/i.test(x.mm))});
+check('homepage script switched and legacy favorite key unchanged',()=>{const h=read('index.html');assert(h.includes('/assets/yk-dictionary-v770.js'));assert(h.includes('YK_DICTIONARY_V770'));assert(h.includes("const FAV_KEY = 'yekun_dictionary_favorites_v7'"));assert(h.includes('dictionaryLoadMore'));assert(h.includes('dictionaryResults'))});
+check('no external PDF embedded in the versioned dictionary script',()=>assert(!read('assets/yk-dictionary-v770.js').includes('data:application/pdf')));
+const stat=JSON.parse(read('DICTIONARY_v7_70_QA_SUMMARY.json'));
+check('QA summary matches data counts',()=>{
+ assert.equal(stat.total_entries_with_myanmar_gloss,xs.filter(x=>!!x.mm).length);
+ assert.equal(stat.remaining_missing_myanmar_gloss,xs.filter(x=>!x.mm).length);
+ assert.equal(stat.total_unique_source_entries,xs.length);
+ assert.equal(stat.full_human_review_completed,false);
+});
+console.log(`TOTAL v7.70: ${passes} PASS / 0 FAIL (static catalog checks; no full linguistic or live Netlify validation)`);

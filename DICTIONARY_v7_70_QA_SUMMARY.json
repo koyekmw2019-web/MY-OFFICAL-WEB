@@ -1,0 +1,55 @@
+{
+  "version": "7.70",
+  "total_unique_source_entries": 8542,
+  "previous_v768_verified_glosses": 360,
+  "new_curated_burmese_drafts": 491,
+  "inherited_existing_glosses_unreviewed": 383,
+  "total_entries_with_myanmar_gloss": 1234,
+  "remaining_missing_myanmar_gloss": 7308,
+  "full_human_review_completed": false,
+  "quality_counts": {
+    "curated_draft_v770": 491,
+    "verified_v768": 360,
+    "reading_warning": 8,
+    "source_unreviewed": 6873,
+    "legacy_gloss_unreviewed_v770": 383,
+    "reading_only": 427
+  },
+  "catalog_source": "v7.69 8,542 unique PDF-extracted entries; PDF pages not embedded",
+  "source_warning_count": 9,
+  "legacy_conflicts": [],
+  "release_status": "Staging candidate; translations are not all verified; production-ready not certified",
+  "by_level": {
+    "N5": {
+      "total": 1157,
+      "glosses": 352,
+      "pending": 805
+    },
+    "N4": {
+      "total": 57,
+      "glosses": 57,
+      "pending": 0
+    },
+    "N3": {
+      "total": 1733,
+      "glosses": 316,
+      "pending": 1417
+    },
+    "N2": {
+      "total": 2109,
+      "glosses": 242,
+      "pending": 1867
+    },
+    "N1": {
+      "total": 3486,
+      "glosses": 267,
+      "pending": 3219
+    }
+  },
+  "unchanged_netlify_backend_files": 33,
+  "backend_hash_changes": 0,
+  "syntax_checks": "all assets/*.js passed node --check; full page inline script parsed",
+  "automated_regressions": "27 + 12 + 13 + 24 = 76 PASS for current exam/JLPT/learning modules; 12 new dictionary checks PASS",
+  "browser_qa": "isolated dictionary DOM evaluated at 1365px and 390px; search/level filter/favorite event passed; not full production website test",
+  "legacy_test_note": "Old v7.62 test has three outdated expectations after v7.63 migration/integrity changes; v7.69 catalog snapshot test is not valid for v7.70; use new v7.70 test."
+}
