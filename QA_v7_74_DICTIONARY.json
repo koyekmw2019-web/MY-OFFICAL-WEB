@@ -1,0 +1,31 @@
+{
+  "total": 8542,
+  "translated": 2350,
+  "pending": 6192,
+  "new_translation_drafts": 119,
+  "levels": {
+    "N5": {
+      "total": 1157,
+      "translated": 1157
+    },
+    "N4": {
+      "total": 57,
+      "translated": 57
+    },
+    "N3": {
+      "total": 1733,
+      "translated": 383
+    },
+    "N2": {
+      "total": 2109,
+      "translated": 307
+    },
+    "N1": {
+      "total": 3486,
+      "translated": 446
+    }
+  },
+  "translation_complete": false,
+  "translation_review_complete": false,
+  "source_based_on": "v7.72 (v7.73 external dictionary asset not available)"
+}

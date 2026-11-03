@@ -1,0 +1,48 @@
+{
+  "version": "7.72",
+  "scope": "N5 full draft + selected N1–N3 glossary; NOT all glossary completed",
+  "total": 8542,
+  "new_v772": 997,
+  "retained_prior_glosses": 1234,
+  "with_gloss": 2231,
+  "pending": 6311,
+  "by_level": {
+    "N5": {
+      "total": 1157,
+      "with_gloss": 1157,
+      "pending": 0,
+      "v772_new": 805
+    },
+    "N4": {
+      "total": 57,
+      "with_gloss": 57,
+      "pending": 0,
+      "v772_new": 0
+    },
+    "N3": {
+      "total": 1733,
+      "with_gloss": 383,
+      "pending": 1350,
+      "v772_new": 67
+    },
+    "N2": {
+      "total": 2109,
+      "with_gloss": 307,
+      "pending": 1802,
+      "v772_new": 65
+    },
+    "N1": {
+      "total": 3486,
+      "with_gloss": 327,
+      "pending": 3159,
+      "v772_new": 60
+    }
+  },
+  "human_review_all_complete": false,
+  "english_source_modified": false,
+  "source_jp_reading_modified": false,
+  "meaning_source_conflicts_flagged": 5,
+  "existing_glosses_skipped_for_preservation": 0,
+  "method": "Burmese draft glosses authored entry-by-entry, with explicit Japanese & reading keys; NO bulk machine guesses",
+  "production_verified": false
+}

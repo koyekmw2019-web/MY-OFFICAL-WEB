@@ -3583,7 +3583,7 @@ ${msg}`;
 })();
 </script>
 
-<script src="/assets/yk-dictionary-v770.js"></script>
+<script src="/assets/yk-dictionary-v774.js"></script>
 <!-- ===== V7.18 Dictionary pronunciation restore: based on V7.17, Dictionary only ===== -->
 <script>
 (function(){
@@ -3761,7 +3761,7 @@ ${msg}`;
   v749JlptTerms.forEach(x=>{ if(!terms.some(t=>t.jp===x.jp && (t.sources||[]).includes(x.sources[0]))) terms.push(x); });
   // v7.69: Include all source-extracted vocabulary, explicitly marking unreviewed meanings.
   // Preserve original Burmese meanings and legacy Favorites IDs wherever a term already exists.
-  const incomingV769 = Array.isArray(window.YK_DICTIONARY_V770) ? window.YK_DICTIONARY_V770 : [];
+  const incomingV769 = Array.isArray(window.YK_DICTIONARY_V774) ? window.YK_DICTIONARY_V774 : [];
   const existingV769 = new Map(terms.map(t => [String(t.jp||'')+'\u00a6'+String(t.reading||''), t]));
   for (const term of incomingV769) {
     if (!term.jp || !term.reading) continue;
@@ -3889,7 +3889,7 @@ ${msg}`;
       return `
         <div class="dictionary-item" data-term-key="${esc(k)}">
           <div class="dictionary-jp">${esc(t.jp)}${t.reading ? ` <span class="dictionary-reading">${esc(t.reading)}</span>` : ''}</div>
-          ${t.mm?`<div class="dictionary-mm">${esc(t.mm)}</div>${t.quality==='legacy_gloss_unreviewed_v770'?'<small class="dictionary-reading-warning">Existing glossary meaning · further review pending</small>':''}${t.quality==='curated_draft_v770'?'<small class="dictionary-review-note">မြန်မာပြန် ဖြည့်ထားပြီး · အဓိပ္ပာယ်ထပ်မံစစ်ဆေးရန်</small>':''}`:`<div class="dictionary-pending">${t.en?`<span class="dictionary-en-label">English meaning (source)</span><div class="dictionary-en">${esc(t.en)}</div>`:'<div class="dictionary-en">Meaning not available in source</div>'}<small>မြန်မာအဓိပ္ပာယ် ပြန်လည်စစ်ဆေးရန် · Translation pending</small></div>`}${t.reading_warning?`<div class="dictionary-reading-warning">⚠ ${esc(t.reading_warning)}</div>`:''}${t.example_ja ? `<div class="dict-v768-example"><span>例文</span> ${esc(t.example_ja)}${t.example_my?`<small>${esc(t.example_my)}</small>`:''}</div>` : ''}
+          ${t.mm?`<div class="dictionary-mm">${esc(t.mm)}</div>${t.quality==='legacy_gloss_unreviewed_v770'?'<small class="dictionary-reading-warning">Existing glossary meaning · further review pending</small>':''}${['curated_draft_v770','n5_curated_draft_v772','additional_curated_draft_v772'].includes(t.quality)?'<small class="dictionary-review-note">မြန်မာပြန် ဖြည့်ထားပြီး · အဓိပ္ပာယ်ထပ်မံစစ်ဆေးရန်</small>':''}`:`<div class="dictionary-pending">${t.en?`<span class="dictionary-en-label">English meaning (source)</span><div class="dictionary-en">${esc(t.en)}</div>`:'<div class="dictionary-en">Meaning not available in source</div>'}<small>မြန်မာအဓိပ္ပာယ် ပြန်လည်စစ်ဆေးရန် · Translation pending</small></div>`}${t.reading_warning?`<div class="dictionary-reading-warning">⚠ ${esc(t.reading_warning)}</div>`:''}${t.example_ja ? `<div class="dict-v768-example"><span>例文</span> ${esc(t.example_ja)}${t.example_my?`<small>${esc(t.example_my)}</small>`:''}</div>` : ''}
           <div class="dictionary-source-row">${(t.sources||[]).map(s => `<span class="dictionary-cat">${esc(s)}</span>`).join('')}</div>
           <div class="dict-action-row">
             <button type="button" class="dict-mini-btn" data-action="speak" aria-label="Japanese pronunciation">🔊 発音</button>
@@ -3915,7 +3915,8 @@ ${msg}`;
   const resetLimit=()=>{showLimit=200;render()};
   input.addEventListener('input', resetLimit);
   input.addEventListener('search', resetLimit);
-  input.addEventListener('change', resetLimit);
+  // Avoid re-render on blur: a 'change' event here can remove a Favorite button during its first click.
+  // 'input' and 'search' already cover user-driven query changes.
   loadMoreBtn?.addEventListener('click',()=>{showLimit+=200;render()});
   input.addEventListener('keydown', e => {
     if(e.key === 'Enter'){ rememberQuery(input.value); render(); }

@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const entries=JSON.parse(fs.readFileSync('DICTIONARY_v7_74_FULL_CATALOG.json','utf8'));
+assert.equal(entries.length,8542);
+assert.equal(entries.filter(x=>Boolean(x.mm)).length,2350);
+assert.equal(entries.filter(x=>!x.mm).length,6192);
+assert.equal(entries.filter(x=>x.quality==='curated_draft_v774').length,119);
+const js=fs.readFileSync('assets/yk-dictionary-v774.js','utf8');
+assert(js.includes('window.YK_DICTIONARY_V774='));
+const html=fs.readFileSync('index.html','utf8');
+assert(html.includes('/assets/yk-dictionary-v774.js'));
+assert(html.includes('window.YK_DICTIONARY_V774'));
+console.log('v7.74 Dictionary QA PASS: 8542 words, 2350 glosses, 119 new N1 drafts, 6192 pending');

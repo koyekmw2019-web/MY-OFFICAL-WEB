@@ -1,0 +1,24 @@
+{
+  "version": "7.72",
+  "label": "Dictionary Translation Progress — not completed",
+  "base": "YE_KUN_Official_Website_v7_71_Stable.zip",
+  "scope": "Dictionary source/data and first-click Favorite UI repair",
+  "glossary_coverage": {
+    "source_total": 8542,
+    "existing_burmese_glosses_retained": 1234,
+    "new_burmese_draft_glosses": 997,
+    "all_with_burmese_glosses": 2231,
+    "still_pending": 6311,
+    "N5": "1157/1157 with draft/existing glosses",
+    "all_translation_verified": false
+  },
+  "local_static_mocked_tests_pass": 98,
+  "browser_test": "Isolated offline DOM at desktop 1365px and mobile 390px: PASS",
+  "full_homepage_browser_test": "BLOCKED: no local HTTP network in sandbox; not asserted",
+  "netlify_build": "NOT RUN: node_modules / esbuild unavailable offline",
+  "production_e2e": "NOT RUN",
+  "unchanged_backend_file_hash_checks": 33,
+  "new_PDFs": 0,
+  "deployment_recommendation": "Staging / Preview first; not confirmed Production Stable",
+  "new_feature": "Search input blur no longer interrupts first Favorite click"
+}
