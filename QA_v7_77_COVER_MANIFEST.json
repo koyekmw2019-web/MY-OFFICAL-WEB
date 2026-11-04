@@ -1,0 +1,138 @@
+{
+  "base_version": "v7.75",
+  "new_version": "v7.77",
+  "covers": [
+    {
+      "card": "truck",
+      "source_alt": "Truck study textbook cover",
+      "path": "assets/study-hub-covers/truck.webp",
+      "sha256": "dbf5e0f50a09dc42b3bd2857b45eefb8c2e0286ae4a498a12ef8b29c60060b09",
+      "size_bytes": 15586,
+      "dimensions": [
+        408,
+        576
+      ]
+    },
+    {
+      "card": "taxi",
+      "source_alt": "Taxi study textbook cover",
+      "path": "assets/study-hub-covers/taxi.webp",
+      "sha256": "e6fccc894cb86ad662a919914a933380faee642554ce93d4ce34b565c34e9aa2",
+      "size_bytes": 16664,
+      "dimensions": [
+        384,
+        576
+      ]
+    },
+    {
+      "card": "bus",
+      "source_alt": "Bus study textbook cover",
+      "path": "assets/study-hub-covers/bus.webp",
+      "sha256": "26f6ef152705a5dc24ad8f27630ce4a8cc50c57eac79c08c623d202b8d489369",
+      "size_bytes": 17890,
+      "dimensions": [
+        408,
+        559
+      ]
+    },
+    {
+      "card": "auto-maintenance",
+      "source_alt": "Auto maintenance study book cover",
+      "path": "assets/study-hub-covers/auto-maintenance.webp",
+      "sha256": "8f615fadbb06df01e21e69344e1c63b35991a3b0e3ad25a0120eec03aaec6f41",
+      "size_bytes": 28450,
+      "dimensions": [
+        408,
+        574
+      ]
+    },
+    {
+      "card": "ordinary-car",
+      "source_alt": "Ordinary car license study book cover",
+      "path": "assets/study-hub-covers/ordinary-car.webp",
+      "sha256": "7ee59e365720a6adb707c70673570f58378975cb0e4df47f15cb2595051177d6",
+      "size_bytes": 40584,
+      "dimensions": [
+        406,
+        576
+      ]
+    },
+    {
+      "card": "motorcycle",
+      "source_alt": "Motorcycle license study book cover",
+      "path": "assets/study-hub-covers/motorcycle.webp",
+      "sha256": "289e353b4fca62f4da09a454ccedec76dc665d748cc9ca8dafd868bf13d2b5b0",
+      "size_bytes": 54346,
+      "dimensions": [
+        408,
+        565
+      ]
+    },
+    {
+      "card": "moped",
+      "source_alt": "Moped license study book cover",
+      "path": "assets/study-hub-covers/moped.webp",
+      "sha256": "79a9bd673cdab34f51671d426583f56e49f10a6b1bed573802d5a3845f96edc2",
+      "size_bytes": 43906,
+      "dimensions": [
+        408,
+        569
+      ]
+    },
+    {
+      "card": "jlpt-n5",
+      "source_alt": "JLPT N5 practice book cover",
+      "path": "assets/study-hub-covers/jlpt-n5.webp",
+      "sha256": "43a34173654efdfe3e7cdfa5459473bb39d6675f9957962465a8dc1180052d3f",
+      "size_bytes": 4470,
+      "dimensions": [
+        407,
+        576
+      ]
+    },
+    {
+      "card": "jlpt-n4",
+      "source_alt": "JLPT N4 practice book cover",
+      "path": "assets/study-hub-covers/jlpt-n4.webp",
+      "sha256": "d14380b65754ca870c4f65556bbe270cac8cdb0273b2d134be7554b6794a1928",
+      "size_bytes": 4464,
+      "dimensions": [
+        407,
+        576
+      ]
+    },
+    {
+      "card": "jlpt-n3",
+      "source_alt": "JLPT N3 practice book cover",
+      "path": "assets/study-hub-covers/jlpt-n3.webp",
+      "sha256": "ece5e4673774f6f985baa392f0145d638ad23026fa87a1308f7ff07778ad1d29",
+      "size_bytes": 4478,
+      "dimensions": [
+        407,
+        576
+      ]
+    },
+    {
+      "card": "jlpt-n2",
+      "source_alt": "JLPT N2 practice book cover",
+      "path": "assets/study-hub-covers/jlpt-n2.webp",
+      "sha256": "b9a880250b63af67b2f53533391a114c565c9807601590d5304ceb30b3c5bcba",
+      "size_bytes": 5654,
+      "dimensions": [
+        407,
+        576
+      ]
+    },
+    {
+      "card": "jlpt-n1",
+      "source_alt": "JLPT N1 practice book cover",
+      "path": "assets/study-hub-covers/jlpt-n1.webp",
+      "sha256": "fda2d2b229963d1db4c7d23c738a1b2a17c143abbcaa2782b61196e36205db13",
+      "size_bytes": 5202,
+      "dimensions": [
+        408,
+        544
+      ]
+    }
+  ]
+}

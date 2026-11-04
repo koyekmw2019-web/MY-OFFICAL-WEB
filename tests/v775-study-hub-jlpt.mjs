@@ -9,7 +9,7 @@ const pkg=JSON.parse(readFileSync(join(root,'package.json'),'utf8'));
 const levels=['N5','N4','N3','N2','N1'];
 let ok=0;
 function check(name,fn){fn();console.log('PASS',name);ok++}
-check('v7.75 version',()=>assert.equal(pkg.version,'7.75.0'));
+check('v7.75 Study Hub functionality retained in later releases',()=>assert(Number(pkg.version.split('.')[1])>=75));
 check('JLPT cards are *inside* existing Study Hub grid',()=>{
  const fragment=html.split('id="studyHubGridV733">')[1]?.split('</div>\n<div class="study-hub-more-wrap">')[0];
  assert(fragment,'Missing Study Hub grid');

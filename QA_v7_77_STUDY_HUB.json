@@ -1,0 +1,157 @@
+{
+  "base_version": "v7.75 (user-uploaded ZIP, not v7.76)",
+  "version": "v7.77",
+  "source": "YE_KUN_Official_Website_v7_75_Study_Hub_JLPT(1).zip",
+  "original_file_count": 180,
+  "original_files_changed": [
+    "index.html",
+    "package.json",
+    "tests/v775-study-hub-jlpt.mjs"
+  ],
+  "original_files_added": [
+    "QA_v7_77_COVER_MANIFEST.json",
+    "tests/v777-study-hub-covers.mjs",
+    "assets/study-hub-covers/taxi.webp",
+    "assets/study-hub-covers/truck.webp",
+    "assets/study-hub-covers/motorcycle.webp",
+    "assets/study-hub-covers/jlpt-n3.webp",
+    "assets/study-hub-covers/jlpt-n1.webp",
+    "assets/study-hub-covers/bus.webp",
+    "assets/study-hub-covers/ordinary-car.webp",
+    "assets/study-hub-covers/jlpt-n2.webp",
+    "assets/study-hub-covers/moped.webp",
+    "assets/study-hub-covers/jlpt-n5.webp",
+    "assets/study-hub-covers/jlpt-n4.webp",
+    "assets/study-hub-covers/auto-maintenance.webp"
+  ],
+  "original_files_removed": [],
+  "backend_files_verified_unchanged": 33,
+  "backend_files_changed": 0,
+  "features": {
+    "collapsed_visible_count": 3,
+    "preview": [
+      "Truck",
+      "Taxi",
+      "Bus"
+    ],
+    "expanded_visible_count": 12,
+    "button_collapsed": "View More · Study Hub & JLPT ↓",
+    "button_expanded": "View Less · Study Hub & JLPT ↑",
+    "book_cover_images": 12,
+    "cover_source": "existing embedded exam-card images already present in user-provided v7.75; downsampled to WebP"
+  },
+  "tests": {
+    "npm_test": "PASS",
+    "browser_component_desktop": "PASS",
+    "browser_component_mobile": "PASS",
+    "full_site_browser": "NOT VERIFIED - local file URL blocked by browser administration",
+    "full_npm_build": "NOT VERIFIED - esbuild missing from current isolated environment; npm install network timed out",
+    "netlify_production": "NOT TESTED"
+  },
+  "browser_results": {
+    "desktop": {
+      "collapsed": {
+        "count": 3,
+        "names": [
+          "Truck",
+          "Taxi",
+          "Bus"
+        ],
+        "columns": "444.656px 444.672px 444.656px",
+        "imgLoaded": true,
+        "button": "View More · Study Hub & JLPT ↓",
+        "aria": "false",
+        "horizontalOverflow": false
+      },
+      "expanded": {
+        "count": 12,
+        "names": [
+          "Truck",
+          "Taxi",
+          "Bus",
+          "自動車整備",
+          "普通自動車",
+          "二輪",
+          "原付",
+          "JLPT N5",
+          "JLPT N4",
+          "JLPT N3",
+          "JLPT N2",
+          "JLPT N1"
+        ],
+        "columns": "444.656px 444.672px 444.656px",
+        "imgLoaded": true,
+        "button": "View Less · Study Hub & JLPT ↑",
+        "aria": "true",
+        "horizontalOverflow": false
+      },
+      "collapsed_again": {
+        "count": 3,
+        "names": [
+          "Truck",
+          "Taxi",
+          "Bus"
+        ],
+        "columns": "444.656px 444.672px 444.656px",
+        "imgLoaded": true,
+        "button": "View More · Study Hub & JLPT ↓",
+        "aria": "false",
+        "horizontalOverflow": false
+      },
+      "page_errors": []
+    },
+    "mobile": {
+      "collapsed": {
+        "count": 3,
+        "names": [
+          "Truck",
+          "Taxi",
+          "Bus"
+        ],
+        "columns": "328px",
+        "imgLoaded": true,
+        "button": "View More · Study Hub & JLPT ↓",
+        "aria": "false",
+        "horizontalOverflow": false
+      },
+      "expanded": {
+        "count": 12,
+        "names": [
+          "Truck",
+          "Taxi",
+          "Bus",
+          "自動車整備",
+          "普通自動車",
+          "二輪",
+          "原付",
+          "JLPT N5",
+          "JLPT N4",
+          "JLPT N3",
+          "JLPT N2",
+          "JLPT N1"
+        ],
+        "columns": "328px",
+        "imgLoaded": true,
+        "button": "View Less · Study Hub & JLPT ↑",
+        "aria": "true",
+        "horizontalOverflow": false
+      },
+      "collapsed_again": {
+        "count": 3,
+        "names": [
+          "Truck",
+          "Taxi",
+          "Bus"
+        ],
+        "columns": "328px",
+        "imgLoaded": true,
+        "button": "View More · Study Hub & JLPT ↓",
+        "aria": "false",
+        "horizontalOverflow": false
+      },
+      "page_errors": []
+    }
+  },
+  "dictionary_translation_status": "unchanged from v7.75; 2350/8542 gloss values present; 6192 pending",
+  "deployment": "Use existing GitHub Desktop repository and Netlify build; verify preview before production."
+}

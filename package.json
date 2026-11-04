@@ -1,12 +1,12 @@
 {
   "name": "ye-kun-official-website",
   "private": true,
-  "version": "7.75.0",
+  "version": "7.77.0",
   "type": "module",
   "scripts": {
-    "test": "node scripts/regenerate-exam-answer-key-v763.mjs --check && node --experimental-strip-types tests/v763-integrity.mjs && node tests/v765-stability.mjs && node tests/v766-jlpt-quality.mjs && node tests/v767-learning-analytics.mjs && node tests/v774-dictionary-translation.mjs && node tests/v774-release-smoke.mjs && node tests/v775-study-hub-jlpt.mjs",
+    "test": "node scripts/regenerate-exam-answer-key-v763.mjs --check && node --experimental-strip-types tests/v763-integrity.mjs && node tests/v765-stability.mjs && node tests/v766-jlpt-quality.mjs && node tests/v767-learning-analytics.mjs && node tests/v774-dictionary-translation.mjs && node tests/v774-release-smoke.mjs && node tests/v775-study-hub-jlpt.mjs && node tests/v777-study-hub-covers.mjs",
     "regen-answers": "node scripts/regenerate-exam-answer-key-v763.mjs",
-    "build": "mkdir -p assets && esbuild src/identity-client.js --bundle --format=esm --platform=browser --target=es2020 --outfile=assets/identity.bundle.js && node tests/v774-dictionary-translation.mjs && node tests/v774-release-smoke.mjs --release && node tests/v775-study-hub-jlpt.mjs",
+    "build": "mkdir -p assets && esbuild src/identity-client.js --bundle --format=esm --platform=browser --target=es2020 --outfile=assets/identity.bundle.js && node tests/v774-dictionary-translation.mjs && node tests/v774-release-smoke.mjs --release && node tests/v775-study-hub-jlpt.mjs && node tests/v777-study-hub-covers.mjs",
     "verify:release": "node tests/v774-release-smoke.mjs --release"
   },
   "dependencies": {

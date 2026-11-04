@@ -1897,6 +1897,46 @@ body{padding-top:var(--yk-header-h) !important;}
 .track-actions.three-actions{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media(max-width:560px){.track-actions.three-actions{grid-template-columns:1fr}}
 </style>
+<style id="v777-study-hub-grid-and-covers">
+/* v7.77: the three leading SSW tracks remain visible in the collapsed state. */
+.study-hub-grid:not(.expanded){grid-template-columns:repeat(3,minmax(0,1fr));max-width:none;margin-inline:0}
+.study-hub-grid:not(.expanded)>.study-track:first-child{max-width:none;width:auto;margin:0}
+.study-hub-grid:not(.expanded)>.study-track.study-extra-card{display:none}
+.study-hub-grid:not(.expanded)>.study-track.study-extra-card:nth-child(2),
+.study-hub-grid:not(.expanded)>.study-track.study-extra-card:nth-child(3){display:flex}
+.study-hub-grid.expanded>.study-extra-card{display:flex}
+.study-hub-grid>.study-track{display:flex;flex-direction:column;min-width:0}
+.study-track>.study-type-label{position:relative;z-index:1}
+.study-card-main-v777{display:grid;grid-template-columns:minmax(0,1fr) 88px;gap:14px;align-items:center;flex:1;min-height:176px;margin:0 0 14px}
+.study-card-copy-v777{min-width:0;align-self:center}
+.study-card-copy-v777 .track-icon{margin-bottom:8px;line-height:1}
+.study-card-copy-v777 h3{margin:6px 0 8px;overflow-wrap:anywhere}
+.study-card-copy-v777 p{margin:0;color:#9f9f9f;font-size:12px;line-height:1.6;min-height:0;overflow-wrap:anywhere}
+.study-book-cover-v777{width:88px;max-width:100%;margin:0;position:relative;z-index:1;justify-self:end;align-self:center}
+.study-book-cover-v777 img{display:block;width:100%;height:auto;aspect-ratio:3 / 4.25;object-fit:contain;border-radius:5px;border:1px solid rgba(255,255,255,.2);background:#e5e7eb;box-shadow:0 12px 24px rgba(0,0,0,.5),0 1px 6px rgba(255,255,255,.08)}
+.study-book-cover-v777:after{content:"";position:absolute;left:14%;right:14%;bottom:-8px;height:9px;border-radius:50%;background:rgba(255,255,255,.1);filter:blur(7px);pointer-events:none}
+.study-track .track-actions{position:relative;z-index:2;margin-top:auto}
+.study-hub-more-btn{min-width:245px;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.study-hub-more-btn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.study-more-arrow-v777{display:inline-block;line-height:1;transition:transform .18s ease}
+@media(max-width:1000px){
+ .study-hub-grid,.study-hub-grid:not(.expanded){grid-template-columns:repeat(2,minmax(0,1fr))}
+ .study-card-main-v777{grid-template-columns:minmax(0,1fr) 84px;gap:12px}
+ .study-book-cover-v777{width:84px}
+}
+@media(max-width:620px){
+ .study-hub-grid,.study-hub-grid:not(.expanded){grid-template-columns:minmax(0,1fr)}
+ .study-card-main-v777{grid-template-columns:minmax(0,1fr) 94px;min-height:150px}
+ .study-book-cover-v777{width:94px}
+ .study-hub-v7{padding:18px}
+ .study-hub-more-btn{width:min(100%,360px);min-width:0}
+}
+@media(max-width:360px){
+ .study-card-main-v777{grid-template-columns:minmax(0,1fr) 76px;gap:10px}
+ .study-book-cover-v777{width:76px}
+ .study-track{padding:15px}
+}
+</style>
 <style id="v775-study-hub-jlpt-css">
 /* v7.75 Study Hub JLPT card style: reuse existing track grid, no new backend or exam engine. */
 .study-jlpt-card{border-color:rgba(187,193,216,.17)}
@@ -2239,26 +2279,26 @@ html.furigana-off.yk-jlpt-furi-on .yk-native-v750 ruby rt,html.furigana-off.yk-j
 </section><section class="study-hub-v7 reveal" id="study-hub">
 <div class="study-hub-head"><div><div class="kicker">STUDY HUB</div><h2 data-en="Study Hub" data-ja="学習ハブ" data-my="စာလေ့လာရေး Hub">စာလေ့လာရေး Hub</h2></div><p data-en="Study SSW, driving-license exams and JLPT N5–N1 in one place. Use the existing dictionary and mock exams for each level." data-ja="特定技能・運転免許・JLPT N5～N1をここから学べます。各レベルの辞書と模擬試験に進めます。" data-my="特定技能၊ ယာဉ်မောင်းလိုင်စင်နဲ့ JLPT N5–N1 ကို ဒီနေရာမှာ လေ့လာနိုင်ပါတယ်။ Level အလိုက် Dictionary နဲ့ Mock Exam ကို တိုက်ရိုက်ဖွင့်နိုင်ပါတယ်။">特定技能၊ ယာဉ်မောင်းလိုင်စင်နဲ့ JLPT N5–N1 ကို ဒီနေရာမှာ လေ့လာနိုင်ပါတယ်။ Level အလိုက် Dictionary နဲ့ Mock Exam ကို တိုက်ရိုက်ဖွင့်နိုင်ပါတယ်။</p></div>
 <div class="study-hub-grid" id="studyHubGridV733">
-<article class="study-track"><div class="study-type-label">特定技能 / SSW</div><div class="track-icon">🚚</div><h3>Truck<span class="study-card-mm">ကုန်တင်ကား / ထရပ်ကား</span></h3><p><span data-en="Operations · Cargo handling · Safety" data-ja="運行業務・荷役業務・安全衛生" data-my="運行業務・荷役業務・安全衛生">運行業務・荷役業務・安全衛生</span><span class="study-card-mm">ယာဉ်မောင်းလုပ်ငန်း・ကုန်တင်ကုန်ချလုပ်ငန်း・လုံခြုံရေးနှင့် ကျန်းမာရေး</span></p><div class="track-actions"><a data-en="Textbook" data-ja="教材" data-my="သင်ရိုးစာအုပ်" href="#study-resources">Textbook</a><button data-dict-source="TRUCK" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">Dictionary</button><button class="primary" data-en="Mock Exam" data-hub-exam="truck" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">Mock Exam</button><a data-en="Exam Scope" data-ja="試験範囲" data-my="စာမေးပွဲအပိုင်းအခြား" href="#online-mock-exam">Exam Scope</a></div></article>
+<article class="study-track"><div class="study-type-label">特定技能 / SSW</div><div class="study-card-main-v777"><div class="study-card-copy-v777"><div class="track-icon">🚚</div><h3>Truck<span class="study-card-mm">ကုန်တင်ကား / ထရပ်ကား</span></h3><p><span data-en="Operations · Cargo handling · Safety" data-ja="運行業務・荷役業務・安全衛生" data-my="運行業務・荷役業務・安全衛生">運行業務・荷役業務・安全衛生</span><span class="study-card-mm">ယာဉ်မောင်းလုပ်ငန်း・ကုန်တင်ကုန်ချလုပ်ငန်း・လုံခြုံရေးနှင့် ကျန်းမာရေး</span></p></div><figure class="study-book-cover-v777"><img src="assets/study-hub-covers/truck.webp" alt="Truck study textbook cover" width="408" height="576" loading="lazy" decoding="async"></figure></div><div class="track-actions"><a data-en="Textbook" data-ja="教材" data-my="သင်ရိုးစာအုပ်" href="#study-resources">Textbook</a><button data-dict-source="TRUCK" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">Dictionary</button><button class="primary" data-en="Mock Exam" data-hub-exam="truck" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">Mock Exam</button><a data-en="Exam Scope" data-ja="試験範囲" data-my="စာမေးပွဲအပိုင်းအခြား" href="#online-mock-exam">Exam Scope</a></div></article>
 
-<article class="study-track study-extra-card"><div class="study-type-label">特定技能 / SSW</div><div class="track-icon">🚕</div><h3>Taxi<span class="study-card-mm">တက္ကစီ</span></h3><p><span data-en="Operations · Passenger service · Safety" data-ja="運行業務・接遇業務・安全衛生" data-my="運行業務・接遇業務・安全衛生">運行業務・接遇業務・安全衛生</span><span class="study-card-mm">ယာဉ်မောင်းလုပ်ငန်း・ခရီးသည်ဝန်ဆောင်မှုလုပ်ငန်း・လုံခြုံရေးနှင့် ကျန်းမာရေး</span></p><div class="track-actions"><a data-en="Textbook" data-ja="教材" data-my="သင်ရိုးစာအုပ်" href="#study-resources">Textbook</a><button data-dict-source="TAXI" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">Dictionary</button><button class="primary" data-en="Mock Exam" data-hub-exam="taxi" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">Mock Exam</button><a data-en="Exam Scope" data-ja="試験範囲" data-my="စာမေးပွဲအပိုင်းအခြား" href="#online-mock-exam">Exam Scope</a></div></article>
+<article class="study-track study-extra-card"><div class="study-type-label">特定技能 / SSW</div><div class="study-card-main-v777"><div class="study-card-copy-v777"><div class="track-icon">🚕</div><h3>Taxi<span class="study-card-mm">တက္ကစီ</span></h3><p><span data-en="Operations · Passenger service · Safety" data-ja="運行業務・接遇業務・安全衛生" data-my="運行業務・接遇業務・安全衛生">運行業務・接遇業務・安全衛生</span><span class="study-card-mm">ယာဉ်မောင်းလုပ်ငန်း・ခရီးသည်ဝန်ဆောင်မှုလုပ်ငန်း・လုံခြုံရေးနှင့် ကျန်းမာရေး</span></p></div><figure class="study-book-cover-v777"><img src="assets/study-hub-covers/taxi.webp" alt="Taxi study textbook cover" width="384" height="576" loading="lazy" decoding="async"></figure></div><div class="track-actions"><a data-en="Textbook" data-ja="教材" data-my="သင်ရိုးစာအုပ်" href="#study-resources">Textbook</a><button data-dict-source="TAXI" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">Dictionary</button><button class="primary" data-en="Mock Exam" data-hub-exam="taxi" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">Mock Exam</button><a data-en="Exam Scope" data-ja="試験範囲" data-my="စာမေးပွဲအပိုင်းအခြား" href="#online-mock-exam">Exam Scope</a></div></article>
 
-<article class="study-track study-extra-card"><div class="study-type-label">特定技能 / SSW</div><div class="track-icon">🚌</div><h3>Bus<span class="study-card-mm">ဘတ်စ်ကား</span></h3><p><span data-en="Operations · Passenger service · Safety" data-ja="運行業務・接遇業務・安全衛生" data-my="運行業務・接遇業務・安全衛生">運行業務・接遇業務・安全衛生</span><span class="study-card-mm">ယာဉ်မောင်းလုပ်ငန်း・ခရီးသည်ဝန်ဆောင်မှုလုပ်ငန်း・လုံခြုံရေးနှင့် ကျန်းမာရေး</span></p><div class="track-actions"><a data-en="Textbook" data-ja="教材" data-my="သင်ရိုးစာအုပ်" href="#study-resources">Textbook</a><button data-dict-source="BUS" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">Dictionary</button><button class="primary" data-en="Mock Exam" data-hub-exam="bus" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">Mock Exam</button><a data-en="Exam Scope" data-ja="試験範囲" data-my="စာမေးပွဲအပိုင်းအခြား" href="#online-mock-exam">Exam Scope</a></div></article>
+<article class="study-track study-extra-card"><div class="study-type-label">特定技能 / SSW</div><div class="study-card-main-v777"><div class="study-card-copy-v777"><div class="track-icon">🚌</div><h3>Bus<span class="study-card-mm">ဘတ်စ်ကား</span></h3><p><span data-en="Operations · Passenger service · Safety" data-ja="運行業務・接遇業務・安全衛生" data-my="運行業務・接遇業務・安全衛生">運行業務・接遇業務・安全衛生</span><span class="study-card-mm">ယာဉ်မောင်းလုပ်ငန်း・ခရီးသည်ဝန်ဆောင်မှုလုပ်ငန်း・လုံခြုံရေးနှင့် ကျန်းမာရေး</span></p></div><figure class="study-book-cover-v777"><img src="assets/study-hub-covers/bus.webp" alt="Bus study textbook cover" width="408" height="559" loading="lazy" decoding="async"></figure></div><div class="track-actions"><a data-en="Textbook" data-ja="教材" data-my="သင်ရိုးစာအုပ်" href="#study-resources">Textbook</a><button data-dict-source="BUS" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">Dictionary</button><button class="primary" data-en="Mock Exam" data-hub-exam="bus" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">Mock Exam</button><a data-en="Exam Scope" data-ja="試験範囲" data-my="စာမေးပွဲအပိုင်းအခြား" href="#online-mock-exam">Exam Scope</a></div></article>
 
-<article class="study-track study-extra-card"><div class="study-type-label">特定技能 / SSW</div><div class="track-icon">🔧</div><h3>自動車整備<span class="study-card-mm">မော်တော်ယာဉ် ပြုပြင်ထိန်းသိမ်းရေး</span></h3><p><span data-en="Chassis · Engine · Inspection · Repair · Tools" data-ja="シャシ・エンジン・点検・修理・工具" data-my="シャシ・エンジン・点検・修理・工具">シャシ・エンジン・点検・修理・工具</span><span class="study-card-mm">ကိုယ်ထည်/အောက်ပိုင်းစနစ်・အင်ဂျင်・စစ်ဆေးခြင်း・ပြုပြင်ခြင်း・ကိရိယာများ</span></p><div class="track-actions three-actions"><button data-dict-source="自動車整備" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">Dictionary</button><button class="primary" data-en="Mock Exam" data-hub-exam="maintenance" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">Mock Exam</button><a data-en="Exam Scope" data-ja="試験範囲" data-my="စာမေးပွဲအပိုင်းအခြား" href="#online-mock-exam">Exam Scope</a></div></article>
+<article class="study-track study-extra-card"><div class="study-type-label">特定技能 / SSW</div><div class="study-card-main-v777"><div class="study-card-copy-v777"><div class="track-icon">🔧</div><h3>自動車整備<span class="study-card-mm">မော်တော်ယာဉ် ပြုပြင်ထိန်းသိမ်းရေး</span></h3><p><span data-en="Chassis · Engine · Inspection · Repair · Tools" data-ja="シャシ・エンジン・点検・修理・工具" data-my="シャシ・エンジン・点検・修理・工具">シャシ・エンジン・点検・修理・工具</span><span class="study-card-mm">ကိုယ်ထည်/အောက်ပိုင်းစနစ်・အင်ဂျင်・စစ်ဆေးခြင်း・ပြုပြင်ခြင်း・ကိရိယာများ</span></p></div><figure class="study-book-cover-v777"><img src="assets/study-hub-covers/auto-maintenance.webp" alt="Auto maintenance study book cover" width="408" height="574" loading="lazy" decoding="async"></figure></div><div class="track-actions three-actions"><button data-dict-source="自動車整備" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">Dictionary</button><button class="primary" data-en="Mock Exam" data-hub-exam="maintenance" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">Mock Exam</button><a data-en="Exam Scope" data-ja="試験範囲" data-my="စာမေးပွဲအပိုင်းအခြား" href="#online-mock-exam">Exam Scope</a></div></article>
 
-<article class="study-track study-extra-card"><div class="study-type-label">運転免許 / Driving License</div><div class="track-icon">🚗</div><h3>普通自動車<span class="study-card-mm">သာမန်မော်တော်ယာဉ် (ကား)</span></h3><p><span data-en="Traffic rules · Signs · Safe driving · Hazard prediction" data-ja="交通ルール・標識・安全運転・危険予測" data-my="交通ルール・標識・安全運転・危険予測">交通ルール・標識・安全運転・危険予測</span><span class="study-card-mm">လမ်းစည်းကမ်း・လမ်းအမှတ်အသား・အန္တရာယ်ကင်းစွာ မောင်းနှင်ခြင်း・အန္တရာယ်ကြိုတင်ခန့်မှန်းခြင်း</span></p><div class="track-actions three-actions"><button data-dict-source="普通自動車" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">Dictionary</button><button class="primary" data-en="Mock Exam" data-hub-exam="car" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">Mock Exam</button><a data-en="Exam Scope" data-ja="試験範囲" data-my="စာမေးပွဲအပိုင်းအခြား" href="#online-mock-exam">Exam Scope</a></div></article>
+<article class="study-track study-extra-card"><div class="study-type-label">運転免許 / Driving License</div><div class="study-card-main-v777"><div class="study-card-copy-v777"><div class="track-icon">🚗</div><h3>普通自動車<span class="study-card-mm">သာမန်မော်တော်ယာဉ် (ကား)</span></h3><p><span data-en="Traffic rules · Signs · Safe driving · Hazard prediction" data-ja="交通ルール・標識・安全運転・危険予測" data-my="交通ルール・標識・安全運転・危険予測">交通ルール・標識・安全運転・危険予測</span><span class="study-card-mm">လမ်းစည်းကမ်း・လမ်းအမှတ်အသား・အန္တရာယ်ကင်းစွာ မောင်းနှင်ခြင်း・အန္တရာယ်ကြိုတင်ခန့်မှန်းခြင်း</span></p></div><figure class="study-book-cover-v777"><img src="assets/study-hub-covers/ordinary-car.webp" alt="Ordinary car license study book cover" width="406" height="576" loading="lazy" decoding="async"></figure></div><div class="track-actions three-actions"><button data-dict-source="普通自動車" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">Dictionary</button><button class="primary" data-en="Mock Exam" data-hub-exam="car" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">Mock Exam</button><a data-en="Exam Scope" data-ja="試験範囲" data-my="စာမေးပွဲအပိုင်းအခြား" href="#online-mock-exam">Exam Scope</a></div></article>
 
-<article class="study-track study-extra-card"><div class="study-type-label">運転免許 / Driving License</div><div class="track-icon">🏍️</div><h3>二輪<span class="study-card-mm">နှစ်ဘီးယာဉ် (မော်တော်ဆိုင်ကယ်)</span></h3><p><span data-en="Traffic rules + motorcycle-specific safe driving" data-ja="交通ルール＋二輪特有の安全運転" data-my="交通ルール＋二輪特有の安全運転">交通ルール＋二輪特有の安全運転</span><span class="study-card-mm">လမ်းစည်းကမ်း + မော်တော်ဆိုင်ကယ်အတွက် သီးသန့်လုံခြုံမောင်းနှင်နည်း</span></p><div class="track-actions three-actions"><button data-dict-source="二輪" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">Dictionary</button><button class="primary" data-en="Mock Exam" data-hub-exam="motorcycle" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">Mock Exam</button><a data-en="Exam Scope" data-ja="試験範囲" data-my="စာမေးပွဲအပိုင်းအခြား" href="#online-mock-exam">Exam Scope</a></div></article>
+<article class="study-track study-extra-card"><div class="study-type-label">運転免許 / Driving License</div><div class="study-card-main-v777"><div class="study-card-copy-v777"><div class="track-icon">🏍️</div><h3>二輪<span class="study-card-mm">နှစ်ဘီးယာဉ် (မော်တော်ဆိုင်ကယ်)</span></h3><p><span data-en="Traffic rules + motorcycle-specific safe driving" data-ja="交通ルール＋二輪特有の安全運転" data-my="交通ルール＋二輪特有の安全運転">交通ルール＋二輪特有の安全運転</span><span class="study-card-mm">လမ်းစည်းကမ်း + မော်တော်ဆိုင်ကယ်အတွက် သီးသန့်လုံခြုံမောင်းနှင်နည်း</span></p></div><figure class="study-book-cover-v777"><img src="assets/study-hub-covers/motorcycle.webp" alt="Motorcycle license study book cover" width="408" height="565" loading="lazy" decoding="async"></figure></div><div class="track-actions three-actions"><button data-dict-source="二輪" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">Dictionary</button><button class="primary" data-en="Mock Exam" data-hub-exam="motorcycle" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">Mock Exam</button><a data-en="Exam Scope" data-ja="試験範囲" data-my="စာမေးပွဲအပိုင်းအခြား" href="#online-mock-exam">Exam Scope</a></div></article>
 
-<article class="study-track study-extra-card"><div class="study-type-label">運転免許 / Driving License</div><div class="track-icon">🛵</div><h3>原付<span class="study-card-mm">မော်ပက် / မော်တော်ဆိုင်ကယ်ငယ်</span></h3><p><span data-en="Moped traffic rules · Signs · Safe driving" data-ja="原付の交通ルール・標識・安全運転" data-my="原付の交通ルール・標識・安全運転">原付の交通ルール・標識・安全運転</span><span class="study-card-mm">原付 အတွက် လမ်းစည်းကမ်း・လမ်းအမှတ်အသား・အန္တရာယ်ကင်းစွာ မောင်းနှင်နည်း</span></p><div class="track-actions three-actions"><button data-dict-source="原付" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">Dictionary</button><button class="primary" data-en="Mock Exam" data-hub-exam="moped" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">Mock Exam</button><a data-en="Exam Scope" data-ja="試験範囲" data-my="စာမေးပွဲအပိုင်းအခြား" href="#online-mock-exam">Exam Scope</a></div></article>
+<article class="study-track study-extra-card"><div class="study-type-label">運転免許 / Driving License</div><div class="study-card-main-v777"><div class="study-card-copy-v777"><div class="track-icon">🛵</div><h3>原付<span class="study-card-mm">မော်ပက် / မော်တော်ဆိုင်ကယ်ငယ်</span></h3><p><span data-en="Moped traffic rules · Signs · Safe driving" data-ja="原付の交通ルール・標識・安全運転" data-my="原付の交通ルール・標識・安全運転">原付の交通ルール・標識・安全運転</span><span class="study-card-mm">原付 အတွက် လမ်းစည်းကမ်း・လမ်းအမှတ်အသား・အန္တရာယ်ကင်းစွာ မောင်းနှင်နည်း</span></p></div><figure class="study-book-cover-v777"><img src="assets/study-hub-covers/moped.webp" alt="Moped license study book cover" width="408" height="569" loading="lazy" decoding="async"></figure></div><div class="track-actions three-actions"><button data-dict-source="原付" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">Dictionary</button><button class="primary" data-en="Mock Exam" data-hub-exam="moped" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">Mock Exam</button><a data-en="Exam Scope" data-ja="試験範囲" data-my="စာမေးပွဲအပိုင်းအခြား" href="#online-mock-exam">Exam Scope</a></div></article>
 
 <!-- v7.75: JLPT N5–N1 track cards within the EXISTING Study Hub grid -->
 <article class="study-track study-extra-card study-jlpt-card" data-study-level="N5" aria-label="JLPT N5 Study Card">
   <div class="study-type-label">日本語能力試験 / JLPT</div>
-  <div class="track-icon" aria-hidden="true">📚</div>
+  <div class="study-card-main-v777"><div class="study-card-copy-v777"><div class="track-icon" aria-hidden="true">📚</div>
   <h3>JLPT N5<span class="study-card-mm">အခြေခံအဆင့်</span></h3>
-  <p><span data-en="Vocabulary · Grammar · Kanji · Reading · Listening" data-ja="語彙・文法・漢字・読解・聴解" data-my="ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်">ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်</span><span class="study-card-mm" data-en="Foundation level · Dictionary and practice exam" data-ja="N5 対策 · 辞書と模擬試験" data-my="N5 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း">N5 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း</span></p>
+  <p><span data-en="Vocabulary · Grammar · Kanji · Reading · Listening" data-ja="語彙・文法・漢字・読解・聴解" data-my="ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်">ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်</span><span class="study-card-mm" data-en="Foundation level · Dictionary and practice exam" data-ja="N5 対策 · 辞書と模擬試験" data-my="N5 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း">N5 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း</span></p></div><figure class="study-book-cover-v777"><img src="assets/study-hub-covers/jlpt-n5.webp" alt="JLPT N5 practice book cover" width="407" height="576" loading="lazy" decoding="async"></figure></div>
   <div class="track-actions three-actions">
     <button type="button" data-dict-source="JLPT N5" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">အဘိဓာန်</button>
     <button type="button" class="primary" data-hub-exam="jlpt_n5" data-en="Mock Exam" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">အစမ်းစာမေးပွဲ</button>
@@ -2267,9 +2307,9 @@ html.furigana-off.yk-jlpt-furi-on .yk-native-v750 ruby rt,html.furigana-off.yk-j
 </article>
 <article class="study-track study-extra-card study-jlpt-card" data-study-level="N4" aria-label="JLPT N4 Study Card">
   <div class="study-type-label">日本語能力試験 / JLPT</div>
-  <div class="track-icon" aria-hidden="true">📚</div>
+  <div class="study-card-main-v777"><div class="study-card-copy-v777"><div class="track-icon" aria-hidden="true">📚</div>
   <h3>JLPT N4<span class="study-card-mm">အခြေခံအထက်အဆင့်</span></h3>
-  <p><span data-en="Vocabulary · Grammar · Kanji · Reading · Listening" data-ja="語彙・文法・漢字・読解・聴解" data-my="ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်">ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်</span><span class="study-card-mm" data-en="Elementary level · Dictionary and practice exam" data-ja="N4 対策 · 辞書と模擬試験" data-my="N4 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း">N4 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း</span></p>
+  <p><span data-en="Vocabulary · Grammar · Kanji · Reading · Listening" data-ja="語彙・文法・漢字・読解・聴解" data-my="ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်">ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်</span><span class="study-card-mm" data-en="Elementary level · Dictionary and practice exam" data-ja="N4 対策 · 辞書と模擬試験" data-my="N4 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း">N4 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း</span></p></div><figure class="study-book-cover-v777"><img src="assets/study-hub-covers/jlpt-n4.webp" alt="JLPT N4 practice book cover" width="407" height="576" loading="lazy" decoding="async"></figure></div>
   <div class="track-actions three-actions">
     <button type="button" data-dict-source="JLPT N4" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">အဘိဓာန်</button>
     <button type="button" class="primary" data-hub-exam="jlpt_n4" data-en="Mock Exam" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">အစမ်းစာမေးပွဲ</button>
@@ -2278,9 +2318,9 @@ html.furigana-off.yk-jlpt-furi-on .yk-native-v750 ruby rt,html.furigana-off.yk-j
 </article>
 <article class="study-track study-extra-card study-jlpt-card" data-study-level="N3" aria-label="JLPT N3 Study Card">
   <div class="study-type-label">日本語能力試験 / JLPT</div>
-  <div class="track-icon" aria-hidden="true">📚</div>
+  <div class="study-card-main-v777"><div class="study-card-copy-v777"><div class="track-icon" aria-hidden="true">📚</div>
   <h3>JLPT N3<span class="study-card-mm">အလယ်အလတ်အဆင့်</span></h3>
-  <p><span data-en="Vocabulary · Grammar · Kanji · Reading · Listening" data-ja="語彙・文法・漢字・読解・聴解" data-my="ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်">ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်</span><span class="study-card-mm" data-en="Intermediate level · Dictionary and practice exam" data-ja="N3 対策 · 辞書と模擬試験" data-my="N3 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း">N3 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း</span></p>
+  <p><span data-en="Vocabulary · Grammar · Kanji · Reading · Listening" data-ja="語彙・文法・漢字・読解・聴解" data-my="ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်">ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်</span><span class="study-card-mm" data-en="Intermediate level · Dictionary and practice exam" data-ja="N3 対策 · 辞書と模擬試験" data-my="N3 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း">N3 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း</span></p></div><figure class="study-book-cover-v777"><img src="assets/study-hub-covers/jlpt-n3.webp" alt="JLPT N3 practice book cover" width="407" height="576" loading="lazy" decoding="async"></figure></div>
   <div class="track-actions three-actions">
     <button type="button" data-dict-source="JLPT N3" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">အဘိဓာန်</button>
     <button type="button" class="primary" data-hub-exam="jlpt_n3" data-en="Mock Exam" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">အစမ်းစာမေးပွဲ</button>
@@ -2289,9 +2329,9 @@ html.furigana-off.yk-jlpt-furi-on .yk-native-v750 ruby rt,html.furigana-off.yk-j
 </article>
 <article class="study-track study-extra-card study-jlpt-card" data-study-level="N2" aria-label="JLPT N2 Study Card">
   <div class="study-type-label">日本語能力試験 / JLPT</div>
-  <div class="track-icon" aria-hidden="true">📚</div>
+  <div class="study-card-main-v777"><div class="study-card-copy-v777"><div class="track-icon" aria-hidden="true">📚</div>
   <h3>JLPT N2<span class="study-card-mm">အဆင့်မြင့်</span></h3>
-  <p><span data-en="Vocabulary · Grammar · Kanji · Reading · Listening" data-ja="語彙・文法・漢字・読解・聴解" data-my="ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်">ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်</span><span class="study-card-mm" data-en="Upper-intermediate level · Dictionary and practice exam" data-ja="N2 対策 · 辞書と模擬試験" data-my="N2 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း">N2 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း</span></p>
+  <p><span data-en="Vocabulary · Grammar · Kanji · Reading · Listening" data-ja="語彙・文法・漢字・読解・聴解" data-my="ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်">ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်</span><span class="study-card-mm" data-en="Upper-intermediate level · Dictionary and practice exam" data-ja="N2 対策 · 辞書と模擬試験" data-my="N2 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း">N2 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း</span></p></div><figure class="study-book-cover-v777"><img src="assets/study-hub-covers/jlpt-n2.webp" alt="JLPT N2 practice book cover" width="407" height="576" loading="lazy" decoding="async"></figure></div>
   <div class="track-actions three-actions">
     <button type="button" data-dict-source="JLPT N2" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">အဘိဓာန်</button>
     <button type="button" class="primary" data-hub-exam="jlpt_n2" data-en="Mock Exam" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">အစမ်းစာမေးပွဲ</button>
@@ -2300,9 +2340,9 @@ html.furigana-off.yk-jlpt-furi-on .yk-native-v750 ruby rt,html.furigana-off.yk-j
 </article>
 <article class="study-track study-extra-card study-jlpt-card" data-study-level="N1" aria-label="JLPT N1 Study Card">
   <div class="study-type-label">日本語能力試験 / JLPT</div>
-  <div class="track-icon" aria-hidden="true">📚</div>
+  <div class="study-card-main-v777"><div class="study-card-copy-v777"><div class="track-icon" aria-hidden="true">📚</div>
   <h3>JLPT N1<span class="study-card-mm">အမြင့်ဆုံးအဆင့်</span></h3>
-  <p><span data-en="Vocabulary · Grammar · Kanji · Reading · Listening" data-ja="語彙・文法・漢字・読解・聴解" data-my="ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်">ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်</span><span class="study-card-mm" data-en="Advanced level · Dictionary and practice exam" data-ja="N1 対策 · 辞書と模擬試験" data-my="N1 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း">N1 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း</span></p>
+  <p><span data-en="Vocabulary · Grammar · Kanji · Reading · Listening" data-ja="語彙・文法・漢字・読解・聴解" data-my="ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်">ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်</span><span class="study-card-mm" data-en="Advanced level · Dictionary and practice exam" data-ja="N1 対策 · 辞書と模擬試験" data-my="N1 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း">N1 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း</span></p></div><figure class="study-book-cover-v777"><img src="assets/study-hub-covers/jlpt-n1.webp" alt="JLPT N1 practice book cover" width="408" height="544" loading="lazy" decoding="async"></figure></div>
   <div class="track-actions three-actions">
     <button type="button" data-dict-source="JLPT N1" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">အဘိဓာန်</button>
     <button type="button" class="primary" data-hub-exam="jlpt_n1" data-en="Mock Exam" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">အစမ်းစာမေးပွဲ</button>
@@ -2310,7 +2350,7 @@ html.furigana-off.yk-jlpt-furi-on .yk-native-v750 ruby rt,html.furigana-off.yk-j
   </div>
 </article>
 </div>
-<div class="study-hub-more-wrap"><button class="study-hub-more-btn" id="studyHubMoreV733" type="button" aria-expanded="false" aria-controls="studyHubGridV733"><span data-en="View More · JLPT" data-ja="さらに見る · JLPT" data-my="နောက်ထပ်ကြည့်ရန် · JLPT">နောက်ထပ်ကြည့်ရန် · JLPT</span> ↓</button></div>
+<div class="study-hub-more-wrap"><button class="study-hub-more-btn" id="studyHubMoreV733" type="button" aria-expanded="false" aria-controls="studyHubGridV733"><span id="studyHubMoreTextV777">View More · Study Hub &amp; JLPT</span><span class="study-more-arrow-v777" aria-hidden="true">↓</span></button></div>
 </section>
 <section class="section reveal">
 <div class="kicker">NEXLYNK COURSE</div>
@@ -3003,27 +3043,24 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 <script>
-/* ===== v7.75 Study Hub: show Truck first; expand other driving paths and JLPT N5-N1 ===== */
+/* ===== v7.77 Study Hub: 3-card preview + expanded Driving & JLPT catalog ===== */
 (function(){
   const grid=document.getElementById('studyHubGridV733');
   const btn=document.getElementById('studyHubMoreV733');
   if(!grid||!btn)return;
-  btn.addEventListener('click',()=>{
-    const open=grid.classList.toggle('expanded');
+  const label=document.getElementById('studyHubMoreTextV777');
+  const arrow=btn.querySelector('.study-more-arrow-v777');
+  const render=()=>{
+    const open=grid.classList.contains('expanded');
     btn.setAttribute('aria-expanded',String(open));
-    const label=btn.querySelector('[data-my]');
-    if(label){
-      const lang=document.documentElement.lang||'my';
-      if(open){
-        const closeText={my:'ပြန်ပိတ်ရန်',ja:'閉じる',en:'Show Less'}[lang]||'Show Less';
-        label.textContent=closeText;
-      }else{
-        const moreText=label.getAttribute('data-'+lang)||label.getAttribute('data-my')||'View More';
-        label.textContent=moreText;
-      }
-    }
-    btn.lastChild.textContent=open?' ↑':' ↓';
+    if(label)label.textContent=open?'View Less · Study Hub & JLPT':'View More · Study Hub & JLPT';
+    if(arrow)arrow.textContent=open?'↑':'↓';
+  };
+  btn.addEventListener('click',()=>{
+    grid.classList.toggle('expanded');
+    render();
   });
+  render();
 })();
 </script>
 <script>
