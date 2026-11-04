@@ -81,7 +81,7 @@ check('no PDFs or environment secrets packaged for deploy',()=>{
 });
 check('npm build contract creates identity client on release',()=>{
  const pkg=JSON.parse(read('package.json'));
- assert.equal(pkg.version,'7.74.0');
+ assert(Number(pkg.version.split('.')[0])===7 && Number(pkg.version.split('.')[1])>=74,'Must be v7.74 or later');
  assert(pkg.scripts.build.includes('assets/identity.bundle.js'));
  assert(pkg.scripts.test.includes('v774-dictionary-translation.mjs'));
  if(release){const bundle=file('assets/identity.bundle.js');assert(existsSync(bundle),'Build missing identity.bundle.js');assert(readFileSync(bundle).length>2000,'Identity bundle unexpectedly small');}

@@ -1,0 +1,53 @@
+{
+  "version": "7.76.0",
+  "title": "STUDY HUB — unified JLPT N5–N1 Learning Center",
+  "baseline": "YE_KUN_Official_Website_v7_75_Study_Hub_JLPT.zip",
+  "features": {
+    "level_selectors": [
+      "N5",
+      "N4",
+      "N3",
+      "N2",
+      "N1"
+    ],
+    "skills": [
+      "Vocabulary",
+      "Grammar",
+      "Kanji",
+      "Reading",
+      "Listening",
+      "Mock Exam"
+    ],
+    "existing_transport_cards_preserved": 7,
+    "dictionary_filters_dynamic": true,
+    "mock_exam_authorization_preserved": true,
+    "translation_data_changed": false,
+    "new_lessons_created": false,
+    "level_memory": "localStorage"
+  },
+  "tests": {
+    "npm_test": "PASS",
+    "new_v776_static_checks": "9 PASS",
+    "desktop_900_component_browser": "PASS",
+    "mobile_390_component_browser": "PASS",
+    "mobile_horizontal_overflow": "NONE",
+    "level_switch_N4": "PASS",
+    "mock_button_cloning_regression_N2": "PASS",
+    "language_switch_ja": "PASS",
+    "full_website_browser": "NOT VERIFIED: ERR_BLOCKED_BY_ADMINISTRATOR",
+    "npm_run_build": "NOT VERIFIED: local esbuild dependency unavailable"
+  },
+  "preservation": {
+    "unchanged_backend_files": 33,
+    "hash_verified": true,
+    "old_dictionary_sha256": "1c517df21e5138d3e26ebbea2ebe25acaf65bd508d358bc4e6dace7c53c0c2c4",
+    "new_dictionary_sha256": "1c517df21e5138d3e26ebbea2ebe25acaf65bd508d358bc4e6dace7c53c0c2c4",
+    "old_catalog_sha256": "3e13a458f940d68cfc5a6b2bb66fdf474cfc9aea1136571653d60895102e50ae",
+    "new_catalog_sha256": "3e13a458f940d68cfc5a6b2bb66fdf474cfc9aea1136571653d60895102e50ae"
+  },
+  "known_limits": [
+    "v7.74 Dictionary translations remain incomplete: 6,192 pending",
+    "Grammar/Kanji/Reading/Listening dedicated lesson content not included",
+    "Live Netlify/Production site and authenticated payment flow not exercised"
+  ]
+}

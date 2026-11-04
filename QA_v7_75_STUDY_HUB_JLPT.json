@@ -1,0 +1,34 @@
+{
+  "source_version": "v7.74",
+  "new_version": "v7.75",
+  "study_hub_cards_old": 7,
+  "study_hub_cards_added": 5,
+  "study_hub_cards_new": 12,
+  "levels": [
+    "N5",
+    "N4",
+    "N3",
+    "N2",
+    "N1"
+  ],
+  "actions": [
+    "existing Dictionary level filter",
+    "existing authenticated Mock Exam",
+    "existing JLPT exam card anchor"
+  ],
+  "original_files_unchanged": 174,
+  "original_files_changed": [
+    "index.html",
+    "package.json",
+    "tests/v774-release-smoke.mjs"
+  ],
+  "backend_changed": false,
+  "dictionary_data_changed": false,
+  "automated_tests": "PASS",
+  "new_checks": 6,
+  "browser_visual_test": "NOT VERIFIED: local Chromium blocked by environment policy",
+  "netlify_live_test": "NOT VERIFIED",
+  "npm_build": "NOT VERIFIED: package manager dependency install network restricted",
+  "dictionary_translation_status": "v7.74 unchanged: 2350/8542 present, 6192 pending",
+  "release_ready_without_preview": false
+}
