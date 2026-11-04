@@ -1897,46 +1897,14 @@ body{padding-top:var(--yk-header-h) !important;}
 .track-actions.three-actions{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media(max-width:560px){.track-actions.three-actions{grid-template-columns:1fr}}
 </style>
-<style id="v776-jlpt-learning-center-css">
-/* v7.76: one JLPT Learning Center for all N5–N1 levels; isolated from Exam/Dictionary backend. */
-.yk776-jlpt-center{margin:16px 0 28px;background:#29292b;border:1px solid #414144;border-radius:23px;padding:clamp(14px,2.2vw,22px);color:#fafafa;box-shadow:0 18px 45px rgba(0,0,0,.19)}
-.yk776-center-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 14px}
-.yk776-center-header h3{display:flex;align-items:center;gap:9px;margin:0;font-size:16px;font-weight:850;letter-spacing:-.02em}
-.yk776-title-icon{width:20px;height:20px;flex:none}
-.yk776-level-range{color:#e8e8e8;background:#454548;border-radius:99px;font-size:11px;font-weight:800;padding:4px 10px;white-space:nowrap}
-.yk776-level-picker{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin:0 0 14px}
-.yk776-level-btn{min-width:0;min-height:64px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;border:1px solid #57575a;border-radius:11px;background:#303033;color:#ededed;font:inherit;font-size:13px;cursor:pointer;transition:border-color .15s,background .15s,transform .15s}
-.yk776-level-btn svg{width:17px;height:17px;color:#d0d0d0}
-.yk776-level-btn b{font-weight:850}
-.yk776-level-btn[aria-pressed="true"]{background:#183b30;border-color:#50c79b;color:#fff;box-shadow:inset 0 0 0 1px rgba(80,199,155,.13)}
-.yk776-level-btn[aria-pressed="true"] svg{color:#58dda3}
-.yk776-level-btn:hover{transform:translateY(-1px);border-color:#9aa0a2}
-.yk776-level-btn:focus-visible,.yk776-skill:focus-visible,.yk776-unavailable button:focus-visible,.yk776-unavailable a:focus-visible{outline:3px solid #5ddbb1;outline-offset:2px}
-.yk776-selected{padding:10px 0 13px;margin-bottom:14px;border-bottom:1px solid #444447;font-size:12px;color:#bdbdbf;font-weight:750}
-.yk776-skill-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.yk776-skill{min-width:0;min-height:92px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;padding:13px 15px;border-radius:13px;border:1px solid #525256;background:#303033;color:#fff;text-align:left;font:inherit;cursor:pointer;transition:border-color .15s,background .15s,transform .15s}
-.yk776-skill:hover{border-color:#80bea7;background:#363639;transform:translateY(-1px)}
-.yk776-skill-top{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:2px}
-.yk776-skill-top svg{width:17px;height:17px;color:#e3e3e3}
-.yk776-skill b{font-size:13px;line-height:1.4}
-.yk776-sub{display:block;font-size:11px;color:#bcbcc1;line-height:1.65;white-space:normal;overflow-wrap:anywhere}
-.yk776-token{font-size:10px;font-weight:850;color:#83d7b7;border:1px solid #47745e;border-radius:6px;padding:1px 5px}
-.yk776-skill-mock{border-color:#656566}
-.yk776-unavailable{margin-top:13px;padding:14px;border:1px solid #5b5750;border-radius:14px;background:#232326}
-.yk776-unavailable[hidden]{display:none}
-.yk776-unavailable-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.yk776-unavailable-top strong{font-size:14px}
-.yk776-unavailable-top button{background:transparent;color:#ddd;border:1px solid #555;border-radius:8px;min-width:34px;min-height:32px;cursor:pointer}
-.yk776-unavailable p{color:#ccc;font-size:12px;line-height:1.8;margin:9px 0}
-.yk776-unavailable-actions{display:flex;gap:8px;flex-wrap:wrap}
-.yk776-unavailable-actions button,.yk776-unavailable-actions a{border:1px solid #555;background:#323235;color:#fff;border-radius:9px;padding:9px 12px;text-decoration:none;font:inherit;font-size:11px;font-weight:750;cursor:pointer}
-.yk776-driving-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin:2px 0 15px}
-.yk776-driving-header h3{margin:0;font-size:17px;letter-spacing:-.02em}
-.yk776-driving-header span{color:#999;font-size:12px}
-#jlpt-learning-center,#jlpt-exam-center{scroll-margin-top:92px}
-@media(max-width:560px){.yk776-jlpt-center{padding:14px;border-radius:18px}.yk776-center-header h3{font-size:14px}.yk776-level-picker{gap:5px}.yk776-level-btn{min-height:60px}.yk776-skill-grid{gap:7px}.yk776-skill{min-height:96px;padding:11px 10px}.yk776-driving-header h3{font-size:15px}}
-@media(max-width:345px){.yk776-skill-grid{grid-template-columns:1fr}.yk776-level-btn{min-height:55px;font-size:12px}}
-@media(prefers-reduced-motion:reduce){.yk776-level-btn,.yk776-skill{transition:none}}
+<style id="v775-study-hub-jlpt-css">
+/* v7.75 Study Hub JLPT card style: reuse existing track grid, no new backend or exam engine. */
+.study-jlpt-card{border-color:rgba(187,193,216,.17)}
+.study-jlpt-card .study-type-label{border-color:rgba(187,193,216,.2);color:#c5c6cf}
+.study-jlpt-card .track-icon{font-size:25px}
+.study-jlpt-card .track-actions button:focus-visible,
+.study-jlpt-card .track-actions a:focus-visible{outline:2px solid #fff;outline-offset:3px}
+#jlpt-exam-center{scroll-margin-top:92px}
 </style>
 <style id="v735-identity-backend-css">
 .auth-tabs-v735{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}.auth-tabs-v735 button{flex:1;min-width:120px}.auth-message-v735{padding:11px 13px;border-radius:13px;background:rgba(86,199,255,.07);border:1px solid rgba(86,199,255,.18);color:#d8f3ff;font-size:12px;line-height:1.65;margin-bottom:12px}.auth-error-v735{background:rgba(255,90,90,.07);border-color:rgba(255,90,90,.2);color:#ffd1d1}.auth-account-v735{display:grid;gap:10px}.auth-account-row{padding:12px 14px;border:1px solid rgba(255,255,255,.1);border-radius:14px;background:#111}.auth-account-row b{display:block;font-size:12px}.auth-account-row span{display:block;color:#aaa;font-size:12px;margin-top:3px;word-break:break-word}.auth-account-actions{display:flex;gap:8px;flex-wrap:wrap}.admin-grid-v735{display:grid;grid-template-columns:.9fr 1.1fr;gap:12px}.admin-panel-v735{border:1px solid rgba(255,255,255,.1);border-radius:16px;background:#111;padding:14px}.admin-panel-v735 h4{margin:0 0 10px}.admin-payment-list{display:grid;gap:9px;max-height:48vh;overflow:auto}.admin-payment-item{border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:12px;background:#0d0d0d}.admin-payment-item.pending{border-color:rgba(255,205,82,.25)}.admin-payment-item.approved{border-color:rgba(103,232,164,.18)}.admin-payment-item.rejected{border-color:rgba(255,100,100,.18)}.admin-payment-meta{font-size:11px;color:#aaa;line-height:1.7}.admin-payment-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.admin-payment-actions button{font-size:11px;padding:8px 10px}.admin-credentials-v735{margin-top:10px;max-height:180px;overflow:auto;font-size:11px;white-space:pre-wrap;background:#090909;border-radius:12px;padding:10px;border:1px solid rgba(255,255,255,.08)}.bank-select-v735{width:100%;border:1px solid rgba(255,255,255,.13);border-radius:13px;padding:11px;background:#111;color:#fff;margin-bottom:9px}.bank-details-v735{line-height:1.75}.pending-pill-v735{display:inline-flex;padding:5px 8px;border-radius:999px;background:rgba(255,205,82,.08);border:1px solid rgba(255,205,82,.18);color:#ffe29a;font-size:10px;font-weight:900}.exam-access-actions #examAdminV735{background:#1b1b1b}
@@ -2270,56 +2238,6 @@ html.furigana-off.yk-jlpt-furi-on .yk-native-v750 ruby rt,html.furigana-off.yk-j
 </div>
 </section><section class="study-hub-v7 reveal" id="study-hub">
 <div class="study-hub-head"><div><div class="kicker">STUDY HUB</div><h2 data-en="Study Hub" data-ja="学習ハブ" data-my="စာလေ့လာရေး Hub">စာလေ့လာရေး Hub</h2></div><p data-en="Study SSW, driving-license exams and JLPT N5–N1 in one place. Use the existing dictionary and mock exams for each level." data-ja="特定技能・運転免許・JLPT N5～N1をここから学べます。各レベルの辞書と模擬試験に進めます。" data-my="特定技能၊ ယာဉ်မောင်းလိုင်စင်နဲ့ JLPT N5–N1 ကို ဒီနေရာမှာ လေ့လာနိုင်ပါတယ်။ Level အလိုက် Dictionary နဲ့ Mock Exam ကို တိုက်ရိုက်ဖွင့်နိုင်ပါတယ်။">特定技能၊ ယာဉ်မောင်းလိုင်စင်နဲ့ JLPT N5–N1 ကို ဒီနေရာမှာ လေ့လာနိုင်ပါတယ်။ Level အလိုက် Dictionary နဲ့ Mock Exam ကို တိုက်ရိုက်ဖွင့်နိုင်ပါတယ်။</p></div>
-<!-- v7.76 JLPT Learning Center: one level selector governs six learning shortcuts. -->
-<section class="yk776-jlpt-center" id="jlpt-learning-center" aria-labelledby="yk776JlptTitle" data-active-level="N5">
-  <header class="yk776-center-header">
-    <h3 id="yk776JlptTitle"><svg class="yk776-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6c-2.6-2-6.1-2.2-9-1v14c3-1.2 6.3-1 9 1 2.7-2 6-2.2 9-1V5c-2.9-1.2-6.4-1-9 1z"/><path d="M12 6v14"/></svg> JLPT Learning Center</h3>
-    <span class="yk776-level-range">N5–N1</span>
-  </header>
-  <div class="yk776-level-picker" role="group" aria-label="Select JLPT level / JLPT レベル選択">
-    <button type="button" class="yk776-level-btn" data-yk776-level="N5" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M9 8h6M9 12h6"/></svg><b>N5</b></button>
-    <button type="button" class="yk776-level-btn" data-yk776-level="N4" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M9 8h6M9 12h6"/></svg><b>N4</b></button>
-    <button type="button" class="yk776-level-btn" data-yk776-level="N3" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M9 8h6M9 12h6"/></svg><b>N3</b></button>
-    <button type="button" class="yk776-level-btn" data-yk776-level="N2" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M9 8h6M9 12h6"/></svg><b>N2</b></button>
-    <button type="button" class="yk776-level-btn" data-yk776-level="N1" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M9 8h6M9 12h6"/></svg><b>N1</b></button>
-  </div>
-  <div class="yk776-selected" aria-live="polite"><span data-yk776-selected data-my="ရွေးထားသော Level — JLPT N5" data-ja="選択中のレベル — JLPT N5" data-en="Selected level — JLPT N5">ရွေးထားသော Level — JLPT N5</span></div>
-  <div class="yk776-skill-grid" aria-label="JLPT learning activities">
-    <button class="yk776-skill" type="button" data-yk776-skill="vocabulary" data-dict-source="JLPT N5" aria-label="JLPT N5 Vocabulary">
-      <span class="yk776-skill-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h8v14H4zM12 5h8v14h-8z"/><path d="M6.5 9h3M14.5 9h3M6.5 13h3M14.5 13h3"/></svg><span class="yk776-token" data-yk776-token>N5</span></span>
-      <b>Vocabulary</b><span class="yk776-sub">単語 · ဝေါဟာရ</span>
-    </button>
-    <button class="yk776-skill" type="button" data-yk776-skill="grammar" aria-label="JLPT N5 Grammar">
-      <span class="yk776-skill-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4v16M8 5h12M8 12h10M8 19h12"/><path d="M14 8v8"/></svg><span class="yk776-token" data-yk776-token>N5</span></span>
-      <b>Grammar</b><span class="yk776-sub">文法 · သဒ္ဒါ</span>
-    </button>
-    <button class="yk776-skill" type="button" data-yk776-skill="kanji" aria-label="JLPT N5 Kanji">
-      <span class="yk776-skill-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M12 7v10M8 16h8"/></svg><span class="yk776-token" data-yk776-token>N5</span></span>
-      <b>Kanji</b><span class="yk776-sub">漢字 · ခန်းဂျီး</span>
-    </button>
-    <button class="yk776-skill" type="button" data-yk776-skill="reading" aria-label="JLPT N5 Reading">
-      <span class="yk776-skill-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6c-2.6-2-6.1-2.2-9-1v14c3-1.2 6.3-1 9 1 2.7-2 6-2.2 9-1V5c-2.9-1.2-6.4-1-9 1z"/><path d="M12 6v14"/></svg><span class="yk776-token" data-yk776-token>N5</span></span>
-      <b>Reading</b><span class="yk776-sub">読解 · ဖတ်ရှုခြင်း</span>
-    </button>
-    <button class="yk776-skill" type="button" data-yk776-skill="listening" aria-label="JLPT N5 Listening">
-      <span class="yk776-skill-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 14v-3a9 9 0 0118 0v3"/><rect x="3" y="13" width="5" height="7" rx="2"/><rect x="16" y="13" width="5" height="7" rx="2"/></svg><span class="yk776-token" data-yk776-token>N5</span></span>
-      <b>Listening</b><span class="yk776-sub">聴解 · နားထောင်ခြင်း</span>
-    </button>
-    <button class="yk776-skill yk776-skill-mock" type="button" data-yk776-skill="mock" data-hub-exam="jlpt_n5" aria-label="JLPT N5 Mock Exam">
-      <span class="yk776-skill-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3.5h6M8 10l2 2 5-5M8 16h8"/></svg><span class="yk776-token" data-yk776-token>N5</span></span>
-      <b>Mock Exam</b><span class="yk776-sub">模擬試験 · အစမ်းစာမေးပွဲ</span>
-    </button>
-  </div>
-  <div class="yk776-unavailable" id="yk776LessonNotice" hidden aria-live="polite">
-    <div class="yk776-unavailable-top"><strong id="yk776LessonTitle">JLPT N5 Grammar</strong><button type="button" id="yk776NoticeClose" aria-label="Close lesson information">✕</button></div>
-    <p id="yk776LessonText" data-my="ဒီ Level အတွက် သင်ခန်းစာများ ပြင်ဆင်နေဆဲဖြစ်ပါတယ်။" data-ja="このレベルの専用レッスンは準備中です。" data-en="Dedicated lessons for this level are being prepared.">ဒီ Level အတွက် သင်ခန်းစာများ ပြင်ဆင်နေဆဲဖြစ်ပါတယ်။</p>
-    <div class="yk776-unavailable-actions">
-      <button type="button" id="yk776LessonDictionary" data-dict-source="JLPT N5" data-my="ဒီ Level ရဲ့ Vocabulary ဖွင့်ရန်" data-ja="このレベルの単語を開く" data-en="Open this level's vocabulary">ဒီ Level ရဲ့ Vocabulary ဖွင့်ရန်</button>
-      <a href="#jlpt-exam-n5" id="yk776LessonExamLink" data-my="ဒီ Level ရဲ့ Mock Exam ကိုကြည့်ရန်" data-ja="このレベルの模擬試験を見る" data-en="View this level's mock exam">ဒီ Level ရဲ့ Mock Exam ကိုကြည့်ရန်</a>
-    </div>
-  </div>
-</section>
-<div class="yk776-driving-header"><h3 data-my="Driving &amp; Tokutei Gino" data-ja="運転免許・特定技能" data-en="Driving &amp; Tokutei Gino">Driving &amp; Tokutei Gino</h3><span data-my="မူလသင်ခန်းစာများ" data-ja="既存の学習コース" data-en="Existing learning tracks">မူလသင်ခန်းစာများ</span></div>
 <div class="study-hub-grid" id="studyHubGridV733">
 <article class="study-track"><div class="study-type-label">特定技能 / SSW</div><div class="track-icon">🚚</div><h3>Truck<span class="study-card-mm">ကုန်တင်ကား / ထရပ်ကား</span></h3><p><span data-en="Operations · Cargo handling · Safety" data-ja="運行業務・荷役業務・安全衛生" data-my="運行業務・荷役業務・安全衛生">運行業務・荷役業務・安全衛生</span><span class="study-card-mm">ယာဉ်မောင်းလုပ်ငန်း・ကုန်တင်ကုန်ချလုပ်ငန်း・လုံခြုံရေးနှင့် ကျန်းမာရေး</span></p><div class="track-actions"><a data-en="Textbook" data-ja="教材" data-my="သင်ရိုးစာအုပ်" href="#study-resources">Textbook</a><button data-dict-source="TRUCK" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">Dictionary</button><button class="primary" data-en="Mock Exam" data-hub-exam="truck" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">Mock Exam</button><a data-en="Exam Scope" data-ja="試験範囲" data-my="စာမေးပွဲအပိုင်းအခြား" href="#online-mock-exam">Exam Scope</a></div></article>
 
@@ -2335,8 +2253,64 @@ html.furigana-off.yk-jlpt-furi-on .yk-native-v750 ruby rt,html.furigana-off.yk-j
 
 <article class="study-track study-extra-card"><div class="study-type-label">運転免許 / Driving License</div><div class="track-icon">🛵</div><h3>原付<span class="study-card-mm">မော်ပက် / မော်တော်ဆိုင်ကယ်ငယ်</span></h3><p><span data-en="Moped traffic rules · Signs · Safe driving" data-ja="原付の交通ルール・標識・安全運転" data-my="原付の交通ルール・標識・安全運転">原付の交通ルール・標識・安全運転</span><span class="study-card-mm">原付 အတွက် လမ်းစည်းကမ်း・လမ်းအမှတ်အသား・အန္တရာယ်ကင်းစွာ မောင်းနှင်နည်း</span></p><div class="track-actions three-actions"><button data-dict-source="原付" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">Dictionary</button><button class="primary" data-en="Mock Exam" data-hub-exam="moped" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">Mock Exam</button><a data-en="Exam Scope" data-ja="試験範囲" data-my="စာမေးပွဲအပိုင်းအခြား" href="#online-mock-exam">Exam Scope</a></div></article>
 
+<!-- v7.75: JLPT N5–N1 track cards within the EXISTING Study Hub grid -->
+<article class="study-track study-extra-card study-jlpt-card" data-study-level="N5" aria-label="JLPT N5 Study Card">
+  <div class="study-type-label">日本語能力試験 / JLPT</div>
+  <div class="track-icon" aria-hidden="true">📚</div>
+  <h3>JLPT N5<span class="study-card-mm">အခြေခံအဆင့်</span></h3>
+  <p><span data-en="Vocabulary · Grammar · Kanji · Reading · Listening" data-ja="語彙・文法・漢字・読解・聴解" data-my="ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်">ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်</span><span class="study-card-mm" data-en="Foundation level · Dictionary and practice exam" data-ja="N5 対策 · 辞書と模擬試験" data-my="N5 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း">N5 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း</span></p>
+  <div class="track-actions three-actions">
+    <button type="button" data-dict-source="JLPT N5" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">အဘိဓာန်</button>
+    <button type="button" class="primary" data-hub-exam="jlpt_n5" data-en="Mock Exam" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">အစမ်းစာမေးပွဲ</button>
+    <a href="#jlpt-exam-n5" data-en="Exam Scope" data-ja="試験範囲" data-my="စာမေးပွဲအကြောင်း">စာမေးပွဲအကြောင်း</a>
+  </div>
+</article>
+<article class="study-track study-extra-card study-jlpt-card" data-study-level="N4" aria-label="JLPT N4 Study Card">
+  <div class="study-type-label">日本語能力試験 / JLPT</div>
+  <div class="track-icon" aria-hidden="true">📚</div>
+  <h3>JLPT N4<span class="study-card-mm">အခြေခံအထက်အဆင့်</span></h3>
+  <p><span data-en="Vocabulary · Grammar · Kanji · Reading · Listening" data-ja="語彙・文法・漢字・読解・聴解" data-my="ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်">ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်</span><span class="study-card-mm" data-en="Elementary level · Dictionary and practice exam" data-ja="N4 対策 · 辞書と模擬試験" data-my="N4 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း">N4 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း</span></p>
+  <div class="track-actions three-actions">
+    <button type="button" data-dict-source="JLPT N4" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">အဘိဓာန်</button>
+    <button type="button" class="primary" data-hub-exam="jlpt_n4" data-en="Mock Exam" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">အစမ်းစာမေးပွဲ</button>
+    <a href="#jlpt-exam-n4" data-en="Exam Scope" data-ja="試験範囲" data-my="စာမေးပွဲအကြောင်း">စာမေးပွဲအကြောင်း</a>
+  </div>
+</article>
+<article class="study-track study-extra-card study-jlpt-card" data-study-level="N3" aria-label="JLPT N3 Study Card">
+  <div class="study-type-label">日本語能力試験 / JLPT</div>
+  <div class="track-icon" aria-hidden="true">📚</div>
+  <h3>JLPT N3<span class="study-card-mm">အလယ်အလတ်အဆင့်</span></h3>
+  <p><span data-en="Vocabulary · Grammar · Kanji · Reading · Listening" data-ja="語彙・文法・漢字・読解・聴解" data-my="ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်">ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်</span><span class="study-card-mm" data-en="Intermediate level · Dictionary and practice exam" data-ja="N3 対策 · 辞書と模擬試験" data-my="N3 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း">N3 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း</span></p>
+  <div class="track-actions three-actions">
+    <button type="button" data-dict-source="JLPT N3" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">အဘိဓာန်</button>
+    <button type="button" class="primary" data-hub-exam="jlpt_n3" data-en="Mock Exam" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">အစမ်းစာမေးပွဲ</button>
+    <a href="#jlpt-exam-n3" data-en="Exam Scope" data-ja="試験範囲" data-my="စာမေးပွဲအကြောင်း">စာမေးပွဲအကြောင်း</a>
+  </div>
+</article>
+<article class="study-track study-extra-card study-jlpt-card" data-study-level="N2" aria-label="JLPT N2 Study Card">
+  <div class="study-type-label">日本語能力試験 / JLPT</div>
+  <div class="track-icon" aria-hidden="true">📚</div>
+  <h3>JLPT N2<span class="study-card-mm">အဆင့်မြင့်</span></h3>
+  <p><span data-en="Vocabulary · Grammar · Kanji · Reading · Listening" data-ja="語彙・文法・漢字・読解・聴解" data-my="ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်">ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်</span><span class="study-card-mm" data-en="Upper-intermediate level · Dictionary and practice exam" data-ja="N2 対策 · 辞書と模擬試験" data-my="N2 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း">N2 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း</span></p>
+  <div class="track-actions three-actions">
+    <button type="button" data-dict-source="JLPT N2" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">အဘိဓာန်</button>
+    <button type="button" class="primary" data-hub-exam="jlpt_n2" data-en="Mock Exam" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">အစမ်းစာမေးပွဲ</button>
+    <a href="#jlpt-exam-n2" data-en="Exam Scope" data-ja="試験範囲" data-my="စာမေးပွဲအကြောင်း">စာမေးပွဲအကြောင်း</a>
+  </div>
+</article>
+<article class="study-track study-extra-card study-jlpt-card" data-study-level="N1" aria-label="JLPT N1 Study Card">
+  <div class="study-type-label">日本語能力試験 / JLPT</div>
+  <div class="track-icon" aria-hidden="true">📚</div>
+  <h3>JLPT N1<span class="study-card-mm">အမြင့်ဆုံးအဆင့်</span></h3>
+  <p><span data-en="Vocabulary · Grammar · Kanji · Reading · Listening" data-ja="語彙・文法・漢字・読解・聴解" data-my="ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်">ဝေါဟာရ · သဒ္ဒါ · ခန်းဂျီး · စာဖတ် · နားထောင်</span><span class="study-card-mm" data-en="Advanced level · Dictionary and practice exam" data-ja="N1 対策 · 辞書と模擬試験" data-my="N1 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း">N1 အတွက် စကားလုံးလေ့လာခြင်းနှင့် စာမေးပွဲလေ့ကျင့်ခြင်း</span></p>
+  <div class="track-actions three-actions">
+    <button type="button" data-dict-source="JLPT N1" data-en="Dictionary" data-ja="辞書" data-my="အဘိဓာန်">အဘိဓာန်</button>
+    <button type="button" class="primary" data-hub-exam="jlpt_n1" data-en="Mock Exam" data-ja="模擬試験" data-my="အစမ်းစာမေးပွဲ">အစမ်းစာမေးပွဲ</button>
+    <a href="#jlpt-exam-n1" data-en="Exam Scope" data-ja="試験範囲" data-my="စာမေးပွဲအကြောင်း">စာမေးပွဲအကြောင်း</a>
+  </div>
+</article>
 </div>
-<div class="study-hub-more-wrap"><button class="study-hub-more-btn" id="studyHubMoreV733" type="button" aria-expanded="false" aria-controls="studyHubGridV733"><span data-en="View More" data-ja="さらに見る" data-my="နောက်ထပ်ကြည့်ရန်">နောက်ထပ်ကြည့်ရန် · JLPT</span> ↓</button></div>
+<div class="study-hub-more-wrap"><button class="study-hub-more-btn" id="studyHubMoreV733" type="button" aria-expanded="false" aria-controls="studyHubGridV733"><span data-en="View More · JLPT" data-ja="さらに見る · JLPT" data-my="နောက်ထပ်ကြည့်ရန် · JLPT">နောက်ထပ်ကြည့်ရန် · JLPT</span> ↓</button></div>
 </section>
 <section class="section reveal">
 <div class="kicker">NEXLYNK COURSE</div>
@@ -3029,7 +3003,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 <script>
-/* ===== v7.76 Study Hub: show Truck first; expand remaining driving paths ===== */
+/* ===== v7.75 Study Hub: show Truck first; expand other driving paths and JLPT N5-N1 ===== */
 (function(){
   const grid=document.getElementById('studyHubGridV733');
   const btn=document.getElementById('studyHubMoreV733');
@@ -3050,76 +3024,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
     btn.lastChild.textContent=open?' ↑':' ↓';
   });
-})();
-</script>
-<script id="v776-jlpt-level-script">
-/* v7.76: unified JLPT N5–N1 selection. Native dictionary/exam access listeners remain in charge. */
-(function(){
-  'use strict';
-  const root=document.getElementById('jlpt-learning-center');
-  if(!root)return;
-  const allowed=['N5','N4','N3','N2','N1'];
-  const storageKey='yk_study_hub_jlpt_level_v776';
-  const options=[...root.querySelectorAll('[data-yk776-level]')];
-  const skills=[...root.querySelectorAll('[data-yk776-skill]')];
-  const vocab=root.querySelector('[data-yk776-skill="vocabulary"]');
-  const selected=root.querySelector('[data-yk776-selected]');
-  const detail=root.querySelector('#yk776LessonNotice');
-  const detailTitle=root.querySelector('#yk776LessonTitle');
-  const detailText=root.querySelector('#yk776LessonText');
-  const detailDict=root.querySelector('#yk776LessonDictionary');
-  const detailLink=root.querySelector('#yk776LessonExamLink');
-  const skillName={grammar:'Grammar',kanji:'Kanji',reading:'Reading',listening:'Listening'};
-  const message={
-    my:'ဒီ Level အတွက် သီးသန့်သင်ခန်းစာများ ပြင်ဆင်နေဆဲ ဖြစ်ပါတယ်။ Vocabulary နဲ့ ရှိပြီးသား Mock Exam ကို အခုအသုံးပြုနိုင်ပါတယ်။',
-    ja:'このレベルの専用レッスンは準備中です。単語辞書と既存の模擬試験は利用できます。',
-    en:'Dedicated lessons for this level are being prepared. Vocabulary and the existing mock exam are available.'
-  };
-  const lang=()=>['my','ja','en'].includes(document.documentElement.lang)?document.documentElement.lang:'my';
-  const withLang=(el,texts)=>{if(!el)return;for(const [k,v] of Object.entries(texts))el.setAttribute('data-'+k,v);el.textContent=texts[lang()]||texts.my};
-  let level='N5';let openedSkill=null;
-  function syncDetail(){
-    if(!openedSkill || !(openedSkill in skillName))return;
-    detailTitle.textContent=`JLPT ${level} ${skillName[openedSkill]}`;
-    withLang(detailText,message);
-    detailDict.dataset.dictSource=`JLPT ${level}`;
-    detailLink.href=`#jlpt-exam-${level.toLowerCase()}`;
-  }
-  function select(next,persist=true){
-    if(!allowed.includes(next))return false;
-    level=next;
-    root.dataset.activeLevel=level;
-    options.forEach(btn=>{const chosen=btn.dataset.yk776Level===level;btn.setAttribute('aria-pressed',String(chosen));});
-    root.querySelectorAll('[data-yk776-token]').forEach(el=>el.textContent=level);
-    root.querySelectorAll('[data-yk776-skill]').forEach(btn=>btn.setAttribute('aria-label',`JLPT ${level} ${btn.querySelector('b')?.textContent||''}`));
-    vocab.dataset.dictSource=`JLPT ${level}`;
-    // Existing exam-access code clones [data-hub-exam] buttons during initialization.
-    // Always update the live element, never a stale reference to the old button.
-    const liveMock=root.querySelector('[data-yk776-skill="mock"]');
-    if(liveMock)liveMock.dataset.hubExam=`jlpt_${level.toLowerCase()}`;
-    withLang(selected,{my:`ရွေးထားသော Level — JLPT ${level}`,ja:`選択中のレベル — JLPT ${level}`,en:`Selected level — JLPT ${level}`});
-    syncDetail();
-    if(persist){try{localStorage.setItem(storageKey,level)}catch{}}
-    return true;
-  }
-  options.forEach(button=>button.addEventListener('click',()=>select(button.dataset.yk776Level)));
-  skills.forEach(button=>{
-    const skill=button.dataset.yk776Skill;
-    if(!skillName[skill])return; // Vocabulary and Mock Exam reuse existing original handlers.
-    button.addEventListener('click',()=>{
-      openedSkill=skill;
-      syncDetail();
-      detail.hidden=false;
-      detail.scrollIntoView?.({behavior:'smooth',block:'nearest'});
-    });
-  });
-  root.querySelector('#yk776NoticeClose').addEventListener('click',()=>{openedSkill=null;detail.hidden=true});
-  // Keep labels in sync when the pre-existing Myanmar/Japanese/English switch changes language.
-  new MutationObserver(()=>{withLang(selected,{my:`ရွေးထားသော Level — JLPT ${level}`,ja:`選択中のレベル — JLPT ${level}`,en:`Selected level — JLPT ${level}`});if(openedSkill)syncDetail()})
-    .observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
-  let saved='N5';try{saved=localStorage.getItem(storageKey)||'N5'}catch{}
-  select(allowed.includes(saved)?saved:'N5',false);
-  window.YKJLPTStudyHubV776={getLevel:()=>level,setLevel:next=>select(next)};
 })();
 </script>
 <script>
