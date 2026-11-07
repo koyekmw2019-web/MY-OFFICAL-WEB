@@ -1,0 +1,78 @@
+{
+  "base_version": "v7.78 Brand & Dictionary",
+  "release_type": "v7.78 translation completion draft; unchanged website version",
+  "date": "2026-11-05",
+  "total_entries": 8542,
+  "previous_with_myanmar_glosses": 2708,
+  "new_drafts_added": 5834,
+  "now_with_myanmar_glosses": 8542,
+  "remaining_blank_myanmar_glosses": 0,
+  "all_gloss_fields_populated": true,
+  "all_translations_expert_verified": false,
+  "independent_semantic_review_passed": false,
+  "source_reading_english_warnings": 198,
+  "levels": {
+    "N5": {
+      "total": 1157,
+      "gloss_filled": 1157,
+      "pending": 0
+    },
+    "N4": {
+      "total": 57,
+      "gloss_filled": 57,
+      "pending": 0
+    },
+    "N3": {
+      "total": 1733,
+      "gloss_filled": 1733,
+      "pending": 0
+    },
+    "N2": {
+      "total": 2109,
+      "gloss_filled": 2109,
+      "pending": 0
+    },
+    "N1": {
+      "total": 3486,
+      "gloss_filled": 3486,
+      "pending": 0
+    }
+  },
+  "method": "Google Sheets GOOGLETRANSLATE Japanese to Myanmar for previously empty meaning fields, then targeted manual corrections; generated translations are unverified draft and may be wrong",
+  "backend_files": "preserved",
+  "targeted_qa_corrections_2026_11_05": {
+    "date": "2026-11-05",
+    "source_version": "v7.78",
+    "release_label": "Targeted Dictionary QA correction patch (same website version)",
+    "entries_total": 8542,
+    "translation_blank_count": 0,
+    "qa_flagged_entries": 56,
+    "corrected_entries": 56,
+    "source_spelling_reading_fixes": 10,
+    "source_english_fixes": 10,
+    "meaning_updates": 55,
+    "glosses_expert_verified": false,
+    "all_entries_editorially_verified": false,
+    "scope": "targeted correction of 56 previously flagged entries, not exhaustive language verification",
+    "notes": [
+      "Rare readings 明白（あからさま）, 空間（あきま）, 悪日（あくび） are preserved after verification",
+      "The original machine-draft translations of the other entries remain review_required"
+    ]
+  },
+  "original_completion_machine_translation_drafts": 5783,
+  "original_completion_manually_revised_drafts": 51,
+  "current_quality_distribution": {
+    "curated_draft_v770": 489,
+    "verified_v768": 360,
+    "targeted_qa_correction_draft_20261105": 56,
+    "machine_translation_draft": 5735,
+    "legacy_gloss_unreviewed_v770": 383,
+    "additional_curated_draft_v772": 191,
+    "manual_revision_draft": 51,
+    "curated_draft_v774": 119,
+    "curated_draft_v778": 358,
+    "n5_curated_draft_v772": 800
+  },
+  "targeted_qa_updated_entries": 56,
+  "current_unreviewed_glosses_note": "Only 56 high-priority shortlist entries were targeted; other draft meanings are not all editorially verified."
+}

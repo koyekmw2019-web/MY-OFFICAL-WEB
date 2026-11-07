@@ -1,0 +1,115 @@
+{
+  "main_title": "YE KUN Official Website | YE LINN OO",
+  "site_url": "https://yekun-mryethemenstyle.netlify.app/",
+  "indexable_urls": [
+    "https://yekun-mryethemenstyle.netlify.app/"
+  ],
+  "keyword_groups": [
+    {
+      "category": "Brand / official",
+      "anchor": "/",
+      "terms": [
+        "YE KUN",
+        "YE LINN OO",
+        "YE KUN Official Website",
+        "STUDYING WITH YE KUN"
+      ]
+    },
+    {
+      "category": "JLPT N1-N5",
+      "anchor": "#jlpt-exam-center",
+      "terms": [
+        "JLPT N1",
+        "JLPT N2",
+        "JLPT N3",
+        "JLPT N4",
+        "JLPT N5",
+        "JLPT mock exam",
+        "JLPT 模擬試験",
+        "日本語能力試験",
+        "JLPT ミャンマー語"
+      ]
+    },
+    {
+      "category": "Japanese study",
+      "anchor": "#study-hub",
+      "terms": [
+        "日本語単語",
+        "日本語文法",
+        "漢字練習",
+        "読解",
+        "聴解",
+        "vocabulary",
+        "grammar",
+        "kanji",
+        "reading",
+        "listening",
+        "Japanese for Myanmar"
+      ]
+    },
+    {
+      "category": "Dictionary",
+      "anchor": "#driving-dictionary",
+      "terms": [
+        "Japanese Myanmar Dictionary",
+        "日本語ミャンマー語辞書",
+        "JLPT vocabulary",
+        "日本語辞書",
+        "Japanese Burmese translation"
+      ]
+    },
+    {
+      "category": "SSW transport",
+      "anchor": "#online-mock-exam",
+      "terms": [
+        "SSW TOKUTEI GINO",
+        "特定技能",
+        "特定技能自動車運送業",
+        "SSW Mock Exam",
+        "トラック 特定技能",
+        "タクシー 特定技能",
+        "バス 特定技能"
+      ]
+    },
+    {
+      "category": "Transport textbooks",
+      "anchor": "#study-resources",
+      "terms": [
+        "運送業テキスト",
+        "トラック運送業テキスト",
+        "タクシー運送業テキスト",
+        "バス運送業テキスト",
+        "Truck Textbook",
+        "Taxi Textbook",
+        "Bus Textbook"
+      ]
+    },
+    {
+      "category": "Maintenance / License",
+      "anchor": "#online-mock-exam",
+      "terms": [
+        "自動車整備 特定技能",
+        "普通自動車",
+        "二輪",
+        "原付",
+        "運転免許 模擬試験",
+        "Motorcycle License Japan",
+        "Driving License Japan"
+      ]
+    },
+    {
+      "category": "Creator support",
+      "anchor": "/",
+      "terms": [
+        "Japan Lifestyle",
+        "Career Support",
+        "Myanmar in Japan"
+      ]
+    }
+  ],
+  "limitations": [
+    "Keywords tags alone do not create ranking",
+    "No new landing pages added; this version preserves the site layout",
+    "Google chooses displayed snippets and rankings independently."
+  ]
+}

@@ -1,0 +1,57 @@
+﻿entry_index,priority,level,action,original_jp,new_jp,original_reading,new_reading,original_english,new_english,original_myanmar,corrected_myanmar,review_note
+4841,P0,N2,corrected,留まるNode- count limit exceeded,留まる,とまる,とまる,"(1) to be fixed, (2) to abide, to stay (in the one place)","(1) to be fixed, (2) to abide, to stay (in the one place)",ကျန်ရှိနေသော Node - အရေအတွက်ကန့်သတ်ချက်ထက် ကျော်လွန်သွားပါပြီ,တစ်နေရာတည်းတွင် နေသည်၊ ဆက်လက်တည်ရှိသည်၊ ရပ်တည်နေသည်,Remove injected Node-count error in source term.
+5992,P0,N3,corrected,さ,許可,きょか,きょか,"permission, approval","permission, approval",ကွာခြားချက်,ခွင့်ပြုချက်၊ ခွင့်ပြုခြင်း,Corrupt kana source repaired to 許可: きょか = permission.
+6365,P0,N3,corrected,お,直,じき,じき,"earnestly, immediately, exactly","soon, shortly, directly",အိုး,မကြာမီ၊ ခဏအတွင်း၊ တိုက်ရိုက်,Original English appears to describe 直（ひた） instead of 直（じき）; repaired to correct sense.
+6737,P0,N3,corrected,通すNode- count limit exceeded,通す,とおす,とおす,"to let pass, to overlook, to continue","to let pass, to overlook, to continue",ခွင့်ပြုထားသော node အရေအတွက်သည် ကန့်သတ်ချက်ထက် ကျော်လွန်နေပါသည်။,ဖြတ်သန်းခွင့်ပေးသည်၊ တစ်လျှောက်လုံးဆက်လုပ်သည်၊ ဖြတ်သန်းစေသည်,Remove injected Node-count error in source term.
+23,P1,N1,corrected,空間,空間,あきま,あきま,"vacancy, room for rent or lease","vacancy, room for rent or lease",အာကာသ,လွတ်နေသောအခန်း၊ အသုံးမပြုသေးသောအခန်း၊ ကြားရှိအလွတ်နေရာ,空間（あきま） is an attested rare alternative writing; keep reading.
+277,P1,N1,corrected,内訳,内訳,うちわけ,うちわけ,"the items, breakdown, classification","the items, breakdown, classification",ပျက်သည်,အသေးစိတ်ခွဲခြားဖော်ပြထားသောစာရင်း၊ အချက်အလက်အသေးစိတ်,Breakdown or itemization.
+307,P1,N1,corrected,上手,上手,うわて,うわて,"1. upper part, upper stream, left side (of a stage), 2. skillful (only in comparisons), dexterity (on","1. upper part, upper stream, left side (of a stage), 2. skillful (only in comparisons), dexterity (on",ကောင်းတယ်,အထက်ဘက်၊ ပိုကျွမ်းကျင်သောသူ၊ အသာရနေသောဘက်,Reading うわて rather than じょうず.
+910,P1,N1,corrected,玉,玉,ぎょく,ぎょく,king (shogi),king (shogi),ဘောလုံး,ရှိုးဂိကစားနည်းတွင် ဘုရင်ရုပ် (玉将),Source defines the shogi king (ぎょく).
+1700,P1,N1,corrected,助詞,助詞,じょし,じょし,"particle, postposition","particle, postposition",အမှုန်အမွှား,ဂျပန်ဝါကျတွင် သုံးသော ဝိဘတ်၊ ပုဒ်ဆက် (ဥပမာ は၊ が၊ を),"Grammar particle, not physical dust."
+1729,P1,N1,corrected,掬う,掬う,すくう,すくう,"to scoop, to ladle out","to scoop, to ladle out",ဇွန်း,လက်ဖြင့် သို့မဟုတ် ဇွန်းဖြင့် ခပ်ယူသည်၊ ဆယ်ယူသည်,Verb action rather than a spoon as noun.
+1897,P1,N1,corrected,即する,即する,そくする,そくする,"to conform to, to agree with, to be adapted to, to be based on","to conform to, to agree with, to be adapted to, to be based on",ချက်ချင်းပဲ,အခြေအနေနှင့် ကိုက်ညီသည်၊ လိုက်လျောညီထွေဖြစ်သည်,Conform to / accord with.
+2401,P1,N1,corrected,取り扱う,取り扱う,とりあつかう,とりあつかう,"to treat, to handle, to deal in","to treat, to handle, to deal in",လက်ကိုင်,ကိုင်တွယ်ဆောင်ရွက်သည်၊ စီမံခန့်ခွဲသည်,Handle / deal with.
+2506,P1,N1,corrected,生身,生身,なまみ,なまみ,"living flesh, flesh and blood, the quick","living flesh, flesh and blood, the quick",ကြမ်းတမ်းသော ခန္ဓာကိုယ်,အသက်ရှင်သောလူ၏ တကယ့်ခန္ဓာကိုယ်၊ အကာအကွယ်မပါသောခန္ဓာကိုယ်,"Living body, not rough skin."
+2814,P1,N1,corrected,票,票,ひょう,ひょう,"label, ballot, ticket, sign","label, ballot, ticket, sign",မဲပေး,မဲစာရွက်၊ မဲတစ်မဲ၊ မဲအရေအတွက်တွက်ရာတွင် သုံးသောပုဒ်,"Vote(s), ballot, counter."
+2982,P1,N1,corrected,報ずる,報ずる,ほうずる,ほうずる,"to inform, to report","to inform, to report",အစီရင်ခံစာ,သတင်းပို့သည်၊ အစီရင်ခံသည်၊ ကြေညာသည်,Verb announce / report.
+3117,P1,N1,corrected,丸で,丸で,まるで,まるで,"quite, entirely, completely, at all, as if, as though, so to speak","quite, entirely, completely, at all, as if, as though, so to speak",အဝိုင်း,တကယ့်ကို၊ လုံးဝ၊ …ကဲ့သို့ပင်,"Adverb まるで, not round circle."
+3411,P1,N1,corrected,利子,利子,りし,りし,interest (bank),interest (bank),စိတ်ဝင်စားမှု,ငွေချေးခြင်းမှ ရရှိသော အတိုးငွေ,"Interest on money, not curiosity."
+3440,P1,N1,corrected,輪,輪,りん,りん,counter for wheels and flowers,counter for wheels and flowers,လက်စွပ်,စက်ဝိုင်း၊ ဘီး၊ ပန်းပွင့်များကို ရေတွက်ရာတွင် သုံးသောပုဒ်,輪（りん）: wheel/ring or counter depending on context.
+3527,P1,N2,corrected,あちら,あっち,あっち,あっち,"over there, that way",over there; that way; colloquial form of あちら,ဟိုဘက်,ဟိုဘက်၊ ဟိုနေရာ၊ ဟိုဘက်ကို,Original あちら with reading あっち mixed polite and casual variants; keep あちら as synonym.
+3865,P1,N2,corrected,学業,学業,がくぎょう,がくぎょう,studies; schoolwork,studies; schoolwork,ပညာရှင်များ,ပညာသင်ကြားလေ့လာမှု၊ ကျောင်းစာပညာရေး,Academic studies.
+4000,P1,N2,corrected,薬指,薬指,くすりゆび,くすりゆび,ring finger,ring finger,လက်စွပ်,လက်သူကြွယ်,"Ring finger (the digit, not a ring)."
+4112,P1,N2,corrected,高等,高等,こうとう,こうとう,"high class, high grade","high class, high grade",အထက်တန်းကျောင်း,အဆင့်မြင့်သော၊ အရည်အသွေးမြင့်သော,Higher grade / advanced.
+4214,P1,N2,corrected,再来週,再来週,さらいしゅう,さらいしゅう,week after next,week after next,နောက်တစ်ပတ်ကြာရင်,နောက်တစ်ပတ်၏ နောက်တစ်ပတ် (နှစ်ပတ်အကြာ),Week after next.
+4336,P1,N2,corrected,資料,資料,しりょう,しりょう,"materials, data","materials, data",ပစ္စည်းများ,ကိုးကားစာရွက်စာတမ်းများ၊ အချက်အလက်ပစ္စည်းများ,Documents / reference materials.
+4540,P1,N2,corrected,先頭,先頭,せんとう,せんとう,"head, lead, vanguard, first","head, lead, vanguard, first",ခေါင်း,ရှေ့ဆုံးနေရာ၊ ဦးဆုံး၊ အဖွဲ့၏ခေါင်းဆုံး,Head/front of line.
+4875,P1,N2,corrected,亡くす,亡くす,なくす,なくす,"to lose someone, wife, child, etc","to lose someone, wife, child, etc",ရှုံး,ချစ်ခင်သူတစ်ဦး သေဆုံးသွား၍ ဆုံးရှုံးရသည်,Lose someone by death.
+5387,P1,N2,corrected,あげる,あげる,やる,あげる,to do for,to do for someone; to give; also やる,ပေးပါ,တစ်ဦးတစ်ယောက်အတွက် လုပ်ပေးသည် (～てあげる)၊ ပေးသည်,Original line presents あげる / やる alternatives; align reading with displayed word.
+5882,P1,N3,corrected,金,金,かね,かね,"(1) gold, (2) gold general (shogi) (abbr)","(1) gold, (2) gold general (shogi) (abbr)",ရွှေ,ငွေ၊ ပိုက်ဆံ,"金（かね） normally means money, 金（きん） means gold."
+6353,P1,N3,corrected,心臓,心臓,しんぞう,しんぞう,heart (organ),heart (organ),နှလုံးသား,နှလုံး (ကိုယ်အင်္ဂါ),Anatomical heart.
+6505,P1,N3,corrected,全然,全然,ぜんぜん,ぜんぜん,"(1) wholly, entirely, completely, (2) not at all (with neg. verb)","(1) wholly, entirely, completely, (2) not at all (with neg. verb)",ကိစ္စမရှိပါဘူး,လုံးဝ၊ လုံးဝမ… (အငြင်းအဓိပ္ပာယ်ဖြင့် အသုံးများ),ぜんぜん usually with negation; sometimes informal positive.
+6587,P1,N3,corrected,度,度,たび,たび,counter for occurrences,counter for occurrences,ဘွဲ့,အကြိမ်၊ တစ်ကြိမ်,度（たび） is an instance / occasion.
+6607,P1,N3,corrected,台,台,だい,だい,"stand, rack, table, support, counter for machine","stand, rack, table, support, counter for machine",ရပ်,စင်၊ အခြေခံခုံ၊ ယာဉ်နှင့်စက်များကို ရေတွက်သောပုဒ်,Base/platform or counter for machines/vehicles.
+6767,P1,N3,corrected,度,度,ど,ど,counter for occurrences,counter for occurrences,ဘွဲ့,အကြိမ်၊ ဒီဂရီ၊ အတိုင်းအတာ,度（ど） measure or count.
+6862,P1,N3,corrected,除く,除く,のぞく,のぞく,"to remove, to exclude, to except","to remove, to exclude, to except",ခြွင်းချက်,ဖယ်ရှားသည်၊ ချန်လှပ်သည်,To exclude or remove.
+7011,P1,N3,corrected,分,分,ぶん,ぶん,"dividing, part, segment","dividing, part, segment",မိနစ်,မိမိနှင့်သက်ဆိုင်သောအပိုင်း၊ အပိုင်းဝေစု,"分（ぶん） share/portion, not minute（ふん）."
+7058,P1,N3,corrected,任せる,任せる,まかせる,まかせる,"to entrust to another, to leave to","to entrust to another, to leave to",သူတို့အတွက် ထားခဲ့လိုက်ပါ,တာဝန်လွှဲအပ်သည်၊ တစ်ဦးဦးအား အပ်နှံသည်,Entrust or leave to someone.
+7142,P1,N3,corrected,最も,最も,もっとも,もっとも,"most, extremely","most, extremely",အများစု,အများဆုံး၊ အလွန်ဆုံး,Superlative most.
+7250,P1,N3,corrected,輪,輪,わ,わ,"ring, hoop, circle","ring, hoop, circle",လက်စွပ်,ကွင်း၊ ဝိုင်း၊ စက်ဝိုင်းပုံစံ,"Ring, circle."
+6,P2,N1,corrected,愛憎,愛憎,あいにく,あいぞう,likes and dislikes,likes and dislikes,အချစ်နဲ့ အမုန်း,ချစ်ခြင်းနှင့် မုန်းခြင်း၊ အချစ်အမုန်း,Correct reading of 愛憎 to あいぞう.
+17,P2,N1,corrected,明白,明白,あからさま,あからさま,"obvious, overt, plainly, frankly","obvious, overt, plainly, frankly",ထင်ရှားသော,မဖုံးမကွယ်၊ ပွင့်ပွင့်လင်းလင်း၊ ထင်ထင်ရှားရှား,明白（あからさま） is attested; preserve rare reading.
+27,P2,N1,corrected,灰,灰汁,あく,あく,puckery juice,lye; scum; harsh or bitter taste,ပြာ,အပင်နှင့် အစားအစာထဲက ခါးဖန်သောအရည်၊ ဟင်းချက်ရာတွင် ထွက်လာသောအမြှုပ်,灰汁（あく） matches source puckery juice; original 灰 alone means ash.
+29,P2,N1,corrected,悪日,悪日,あくび,あくび,unlucky day,unlucky day,မကောင်းတဲ့နေ့,ကံဆိုးသောနေ့၊ မကောင်းသောနေ့,悪日（あくび） is an attested rare form; preserve reading.
+1239,P2,N1,corrected,誤差,誤差,ごさ,ごさ,error,error,အမှား,အမှားကွာဟချက်၊ တိုင်းတာမှုကွာခြားချက်,Deviation/error margin.
+1529,P2,N1,corrected,象,象,しょう,しょう,phenomenon,phenomenon; form; appearance,ဆင်,ပုံသဏ္ဌာန်၊ ဖြစ်ရပ်၏ လက္ခဏာ,象（しょう） is not animal elephant reading ぞう.
+2311,P2,N5,corrected,と,戸,と,と,door,door; sliding door,နှင့်၊ ဟု (「と」၏ အဓိပ္ပာယ်၊ မူရင်း English မှားနိုင်),တံခါး၊ တံခါးရွက်,Original kana と with English door indicates missing 戸 kanji; separate from particle と.
+3207,P2,N1,corrected,名産,名産,めいさん,めいさん,noted product,noted product,ဒေသထွက် အထူးဟင်းလျာများ,ဒေသထွက် နာမည်ကြီးထုတ်ကုန်၊ ဒေသအထူးထွက်ကုန်,"Famous local product, not necessarily food."
+5138,P2,N2,corrected,不否定,不否定,ふひてい,ふひてい,not deny; cannot deny,not deny; cannot deny,ငြင်းမရတဲ့,မငြင်းဆိုခြင်း၊ ငြင်းပယ်မှုမရှိခြင်း,Uncommon wording; flag source for further editorial verification.
+5785,P2,N3,corrected,大家,大家,おおや,おおや,"rich family, distinguished family",landlord; owner of rented property,အိမ်ရှင်၊ အိမ်ငှားပေးသူ,အိမ်ရှင်၊ အိမ်ငှားပေးသူ,Reading おおや means landlord; source English rich family corresponds to たいか.
+6002,P2,N5,corrected,金,金,きん,きん,Friday = きんようび。,gold; Friday (calendar abbreviation),ရွှေ၊ ငွေ (မူရင်း English မှားနိုင်),ရွှေ (သတ္တု)၊ သောကြာနေ့၏ အတိုကောက် (ပြက္ခဒိန်တွင်),"Gold is primary, Friday only in shorthand; not a free-standing direct translation."
+6715,P2,N3,corrected,典型,典型,てんけい,てんけい,"type, pattern, archetypal","type, pattern, archetypal",ပုံမှန်,စံနမူနာ၊ ပုံမှန်ကိုယ်စားပြုပုံစံ,Archetype or representative pattern.
+6736,P2,N5,corrected,十,十,とお,とお,ten,ten,တစ်ဆယ်,တစ်ဆယ်၊ ဆယ်ခု,十（とお） = ten; already substantially correct.
+6824,P2,N5,corrected,日,日,にち,にち,Sunday = にちようび。,day; Sunday (calendar abbreviation),နေ့၊ ရက် (မူရင်း English မှားနိုင်),နေ့၊ ရက်၊ တနင်္ဂနွေနေ့၏ အတိုကောက် (ပြက္ခဒိန်တွင်),Source English only says Sunday; 日（にち） is also day.
+7170,P2,N3,corrected,唯一,唯一,ゆいいつ,ゆいいつ,"only, sole, unique","only, sole, unique",သာ,တစ်ခုတည်းသော၊ တစ်ဦးတည်းသော,Sole/unique.
+7232,P2,N3,corrected,流行,流行,りゅうこう,りゅうこう,"fashionable, fad, in vogue, prevailing","fashionable, fad, in vogue, prevailing",ဖက်ရှင်,ခေတ်စားမှု၊ ရေပန်းစားခြင်း၊ ဖက်ရှင်,"Trend, fashion, being in vogue."
+7292,P2,N3,corrected,サイン,サイン,サイン,サイン,"(1) autograph, (2) sign, (3) sine","(1) autograph, (2) sign, (3) sine",လက္ခဏာ,လက်မှတ်၊ အမှတ်အသား၊ သင်္ကေတ,Autograph/sign/symbol.
+8427,P2,N5,corrected,渡りる,渡る,わたる,わたる,,to cross; to go across,ကူးသည်၊ ဖြတ်သန်းသည် (မူရင်းစာလုံးပေါင်းစစ်ရန်),ကူးသည်၊ ဖြတ်သန်းသည်,Correct malformed verb dictionary form 渡りる to 渡る.

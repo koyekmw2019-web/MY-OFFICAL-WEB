@@ -5,3 +5,10 @@
 
 [functions]
   node_bundler = "esbuild"
+
+# v7.80: fingerprinted public images only (SHA-256 in filenames).
+# Does not apply to HTML, login/payment endpoints or generated JS.
+[[headers]]
+  for = "/assets/embedded-v780/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

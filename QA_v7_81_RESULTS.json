@@ -1,0 +1,54 @@
+{
+  "version": "v7.81",
+  "base": "YEKUN_v7.80_Stability_Speed.zip",
+  "date": "2026-11-07",
+  "deployment_status": "NOT DEPLOYED",
+  "google_indexing_status": "NOT SUBMITTED: Requires user to deploy and use Google Search Console",
+  "homepage_title": "YE KUN Official Website | YE LINN OO",
+  "public_sitemap_urls": 17,
+  "new_public_guide_pages": 16,
+  "sitemap_urls": [
+    "https://yekun-mryethemenstyle.netlify.app/",
+    "https://yekun-mryethemenstyle.netlify.app/study/index.html",
+    "https://yekun-mryethemenstyle.netlify.app/study/jlpt-n5.html",
+    "https://yekun-mryethemenstyle.netlify.app/study/jlpt-n4.html",
+    "https://yekun-mryethemenstyle.netlify.app/study/jlpt-n3.html",
+    "https://yekun-mryethemenstyle.netlify.app/study/jlpt-n2.html",
+    "https://yekun-mryethemenstyle.netlify.app/study/jlpt-n1.html",
+    "https://yekun-mryethemenstyle.netlify.app/study/jlpt-mock-exams.html",
+    "https://yekun-mryethemenstyle.netlify.app/study/japanese-myanmar-dictionary.html",
+    "https://yekun-mryethemenstyle.netlify.app/study/ssw-transport.html",
+    "https://yekun-mryethemenstyle.netlify.app/study/ssw-truck.html",
+    "https://yekun-mryethemenstyle.netlify.app/study/ssw-taxi.html",
+    "https://yekun-mryethemenstyle.netlify.app/study/ssw-bus.html",
+    "https://yekun-mryethemenstyle.netlify.app/study/transport-textbooks.html",
+    "https://yekun-mryethemenstyle.netlify.app/study/ssw-mock-exam.html",
+    "https://yekun-mryethemenstyle.netlify.app/study/ssw-auto-maintenance.html",
+    "https://yekun-mryethemenstyle.netlify.app/study/driving-license.html"
+  ],
+  "privacy": {
+    "login_dashboard_noindex": true,
+    "private_urls_in_sitemap": 0
+  },
+  "regression": {
+    "npm_test": "PASS",
+    "v7_81_static_tests": "8 PASS / 0 FAIL",
+    "protected_source_files_unchanged": 93,
+    "dictionary_entries": 8542,
+    "protected_source_files_changed": 0,
+    "full_netlify_build": "NOT RUN — esbuild dependencies not installed in this runtime",
+    "live_browser_visual": "NOT VERIFIED — Chromium startup timed out / environment limitation",
+    "production_auth_payment": "NOT TESTED"
+  },
+  "source_file_changes": [
+    "QA_v7_80_ASSET_MANIFEST.json",
+    "index.html",
+    "package.json",
+    "robots.txt",
+    "sitemap.xml",
+    "tests/v779-seo-jlpt.mjs",
+    "tests/v780-performance.mjs"
+  ],
+  "new_public_css": "assets/yk-seo-guides-v781.css",
+  "google_note": "Sitemap submissions do not guarantee indexing or rankings. No Google Search Console action was taken."
+}

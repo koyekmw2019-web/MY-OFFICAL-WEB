@@ -1,0 +1,29 @@
+{
+  "release": "v7.79",
+  "base": "YEKUN_v7.78_Dictionary_QA_Fix.zip",
+  "tested_utc_or_local": "2026-11-06",
+  "main_title_preserved": true,
+  "seo_categories": 8,
+  "indexable_public_urls": 1,
+  "jlpt_cards_with_myanmar_explanation": 5,
+  "jlpt_cards_with_bilingual_cta": 5,
+  "education_brand": "STUDYING WITH YE KUN",
+  "standalone_drill_listening": false,
+  "jlpt_full_mock_listening": true,
+  "dictionary_total": 8542,
+  "dictionary_gloss_blank": 0,
+  "dictionary_expert_review_complete": false,
+  "dictionary_contents_unchanged": true,
+  "backend_file_count_unchanged": 33,
+  "JLPT_question_banks_exactly_unchanged": true,
+  "automated_test_pass": true,
+  "isolated_browser_component_test_pass": true,
+  "full_browser_live_test": "not_run_loopback_blocked",
+  "full_netlify_build": "not_run_esbuild_unavailable_local",
+  "limitations": [
+    "Google indexing and ranking are not guaranteed",
+    "SEO metadata does not replace unique useful content pages",
+    "Google may choose a snippet and title link different from the metadata",
+    "Local component test does not verify production routes, authentication or payments"
+  ]
+}

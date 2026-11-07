@@ -1,5 +1,5 @@
 {
-  "title": "YE KUN ORIGINAL — Full-duration JLPT-style Mock Exam",
+  "title": "STUDYING WITH YE KUN ORIGINAL — Full-duration JLPT-style Mock Exam",
   "version": "7.56",
   "status": "original-full-duration-practice-not-official",
   "questions": [
@@ -7984,7 +7984,7 @@
       "kind": "統合理解"
     }
   ],
-  "notice_ja": "JLPTの試験科目・試験時間を参考にしたYE KUN独自の模擬問題です。正答率の比例換算による180点推定値は公式JLPTの尺度得点ではありません。音声はブラウザー音声合成です。",
-  "notice_my": "တရားဝင် JLPT ရဲ့ Section နဲ့ ဖြေချိန်ကို နမူနာယူထားသော YE KUN မူရင်းလေ့ကျင့်ရေးစာမေးပွဲဖြစ်ပါတယ်။ 180 မှတ်က ခန့်မှန်းအမှတ်ဖြစ်ပြီး တရားဝင် JLPT ရမှတ်မဟုတ်ပါ။ Listening ကို Browser အသံဖတ်စနစ်သုံးထားပါတယ်။",
+  "notice_ja": "JLPTの試験科目・試験時間を参考にしたSTUDYING WITH YE KUN独自の模擬問題です。正答率の比例換算による180点推定値は公式JLPTの尺度得点ではありません。音声はブラウザー音声合成です。",
+  "notice_my": "တရားဝင် JLPT ရဲ့ Section နဲ့ ဖြေချိန်ကို နမူနာယူထားသော STUDYING WITH YE KUN မူရင်းလေ့ကျင့်ရေးစာမေးပွဲဖြစ်ပါတယ်။ 180 မှတ်က ခန့်မှန်းအမှတ်ဖြစ်ပြီး တရားဝင် JLPT ရမှတ်မဟုတ်ပါ။ Listening ကို Browser အသံဖတ်စနစ်သုံးထားပါတယ်။",
   "speech": "Browser Japanese TTS; not recorded official JLPT audio"
 }

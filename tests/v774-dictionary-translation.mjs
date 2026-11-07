@@ -8,6 +8,6 @@ assert.equal(entries.filter(x=>x.quality==='curated_draft_v774').length,119);
 const js=fs.readFileSync('assets/yk-dictionary-v774.js','utf8');
 assert(js.includes('window.YK_DICTIONARY_V774='));
 const html=fs.readFileSync('index.html','utf8');
-assert(html.includes('/assets/yk-dictionary-v774.js'));
-assert(html.includes('window.YK_DICTIONARY_V774'));
+assert(html.includes('/assets/yk-dictionary-v778-complete-draft.js'));
+assert(html.includes('window.YK_DICTIONARY_V778')); 
 console.log('v7.74 Dictionary QA PASS: 8542 words, 2350 glosses, 119 new N1 drafts, 6192 pending');

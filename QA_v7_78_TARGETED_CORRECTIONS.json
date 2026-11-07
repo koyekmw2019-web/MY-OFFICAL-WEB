@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-05",
+  "source_version": "v7.78",
+  "release_label": "Targeted Dictionary QA correction patch (same website version)",
+  "entries_total": 8542,
+  "translation_blank_count": 0,
+  "qa_flagged_entries": 56,
+  "corrected_entries": 56,
+  "source_spelling_reading_fixes": 10,
+  "source_english_fixes": 10,
+  "meaning_updates": 55,
+  "glosses_expert_verified": false,
+  "all_entries_editorially_verified": false,
+  "scope": "targeted correction of 56 previously flagged entries, not exhaustive language verification",
+  "notes": [
+    "Rare readings 明白（あからさま）, 空間（あきま）, 悪日（あくび） are preserved after verification",
+    "The original machine-draft translations of the other entries remain review_required"
+  ]
+}

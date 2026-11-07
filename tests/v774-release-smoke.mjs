@@ -60,12 +60,12 @@ check('v7.74 vocabulary counts, legacy glossary and draft warnings are tracked',
  assert.equal(x.translated,2350);
  assert.equal(x.pending,6192);
  assert.equal(x.translation_review_complete,false);
- assert(read('index.html').includes('YK_DICTIONARY_V774'));
+ assert(read('index.html').includes('YK_DICTIONARY_V778')); 
 });
 check('PWA icon references and updated service worker version are valid',()=>{
  const m=JSON.parse(read('manifest.webmanifest'));
- for(const icon of m.icons)assert(existsSync(file(icon.src.replace(/^\//,''))));
- assert(read('service-worker.js').includes('yk-official-v7-72-dictionary'));
+ for(const icon of m.icons)assert(existsSync(file(icon.src.split(/[?#]/,1)[0].replace(/^\//,''))));
+ assert(/yk-official-v7-(?:78-brand-dictionary|79-seo-jlpt-cards|80-stability-speed)/.test(read('service-worker.js'))); // permit backward-compatible version bump 
 });
 check('backend functions/migrations exactly match v7.70 source',()=>{
  const manifest=JSON.parse(read('QA_v7_71_BACKEND_HASHES.json'));

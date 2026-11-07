@@ -1,0 +1,35 @@
+{
+  "version": "v7.80",
+  "base": "v7.79",
+  "purpose": "Stability & Speed: externalize embedded images and public static PWA cache",
+  "index_bytes_before": 5071924,
+  "index_bytes_after": 798707,
+  "html_reduction_percent": 84.25,
+  "index_gzip_bytes_before": 3308104,
+  "index_gzip_bytes_after": 177032,
+  "gzip_reduction_percent": 94.65,
+  "inline_images_externalized": 32,
+  "image_content_sha256_identical": true,
+  "backend_files_unchanged": true,
+  "original_source_changed": [
+    "index.html",
+    "netlify.toml",
+    "package.json",
+    "service-worker.js",
+    "tests/v774-release-smoke.mjs"
+  ],
+  "static_test_pass_lines": 123,
+  "npm_test": "PASS",
+  "service_worker_simulation": "4 PASS",
+  "static_http_smoke": "index.html and optimized image, dictionary JS and SW responded HTTP 200",
+  "full_netlify_build": "NOT VERIFIED: npm registry DNS EAI_AGAIN; esbuild not installed locally",
+  "real_browser_smoke": "NOT VERIFIED: Chromium local navigation blocked by administrator in this environment",
+  "dictionary_glosses": "existing 8542 drafted entries kept; human-quality review incomplete",
+  "production_deployed": false,
+  "known_limits": [
+    "Real network speed/Lighthouse not measured",
+    "Netlify identity/payment/YKCR live flow not tested",
+    "Google SEO results unchanged by optimization except asset paths"
+  ],
+  "added_files_count": 35
+}

@@ -12,7 +12,7 @@ const check=(label,fn)=>{fn();passed++;console.log('PASS',label)};
 const grid=html.split('id="studyHubGridV733">')[1]?.split('\n</div>\n<div class="study-hub-more-wrap">')[0];
 assert(grid,'Study Hub grid missing');
 const cards=[...grid.matchAll(/<article class="study-track[^>]*>([\s\S]*?)<\/article>/g)].map(m=>m[0]);
-check('v7.77 package version',()=>assert.equal(pkg.version,'7.77.0'));
+check('v7.77 or newer package version',()=>assert(Number(pkg.version.split('.')[1])>=77));
 check('12 original v7.75 study cards retained in order',()=>{
  assert.equal(cards.length,12);
  for(let i=0;i<7;i++)assert(cards[i].includes(`data-hub-exam="${['truck','taxi','bus','maintenance','car','motorcycle','moped'][i]}"`));
@@ -55,6 +55,6 @@ check('existing Dictionary, Mock Exam, payment and login are untouched by click 
  for(let i=7;i<12;i++)assert(cards[i].includes('data-dict-source="JLPT '));
  assert(html.includes("api('exam-access'"));
  assert(html.includes('async function requestStart(type)'));
- assert(html.includes('assets/yk-dictionary-v774.js'));
+ assert(html.includes('assets/yk-dictionary-v778-complete-draft.js'));
 });
 console.log(`v7.77 Study Hub layout/covers: ${passed} PASS / 0 FAIL`);

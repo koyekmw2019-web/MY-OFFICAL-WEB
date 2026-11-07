@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
+# Public study pages are included in sitemap; login/dashboard pages use noindex.
 Sitemap: https://yekun-mryethemenstyle.netlify.app/sitemap.xml

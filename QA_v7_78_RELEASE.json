@@ -1,0 +1,60 @@
+{
+  "version": "v7.78",
+  "base": "v7.77",
+  "status": "all translation fields populated (machine draft; expert review pending)",
+  "files_total": 207,
+  "files_modified": [
+    "package.json",
+    "index.html",
+    "admin-dashboard.html",
+    "yk-512.png",
+    "member-dashboard.html",
+    "service-worker.js",
+    "student-dashboard.html",
+    "yk-192.png",
+    "dashboard.html",
+    "login.html",
+    "manifest.webmanifest",
+    "tests/v777-study-hub-covers.mjs",
+    "tests/v774-release-smoke.mjs",
+    "tests/v774-dictionary-translation.mjs"
+  ],
+  "files_added": [
+    "DICTIONARY_v7_78_REMAINING_QUEUE.csv",
+    "QA_v7_78_DICTIONARY.json",
+    "README_v7_78_BRAND_DICTIONARY_MY.md",
+    "DICTIONARY_v7_78_FULL_CATALOG.json",
+    "DICTIONARY_v7_78_NEW_TRANSLATIONS.csv",
+    "tests/v778-brand-dictionary.mjs",
+    "assets/yk-brand-icon-v778.png",
+    "assets/yk-brand-v778.css",
+    "assets/yk-dictionary-v778.js",
+    "assets/yk-horizontal-white-v778.webp",
+    "assets/yk-horizontal-white-v778.png"
+  ],
+  "files_removed": [],
+  "backend_files_verified_unchanged": 33,
+  "translations_total": 8542,
+  "translations_with_myanmar_drafts": 8542,
+  "new_translations_v778": 6192,
+  "translations_pending": 0,
+  "dictionary_complete": "draft-only: all fields filled; not independently verified",
+  "tests": {
+    "npm_test": "pass",
+    "dashboard_component_desktop_1365": "pass",
+    "dashboard_component_mobile_390": "pass",
+    "horizontal_overflow": "none",
+    "full_netlify_build": "not_run_missing_esbuild",
+    "full_live_netlify": "not_run"
+  },
+  "branding": {
+    "homepage_header": "new_YK_symbol",
+    "login": "new_YK_symbol",
+    "dashboards": "white_horizontal_logo_all_four",
+    "pwa_icons": "replaced"
+  },
+  "privacy_and_secrets": "No .env files included in ZIP",
+  "production_deployed": false,
+  "dictionary_qa_report": "QA_v7_78_DICTIONARY.json",
+  "last_update": "2026-11-05"
+}
