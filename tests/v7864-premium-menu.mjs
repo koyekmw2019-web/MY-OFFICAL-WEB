@@ -1,4 +1,4 @@
-/** v7.86.4 — premium icon menu + direct JLPT card navigation without new dependencies. */
+/** v7.86.4 — premium icon menu + direct JLPT Learning Center Pro navigation without new dependencies. */
 import assert from 'node:assert/strict';
 import {readFileSync,existsSync,statSync} from 'node:fs';
 import {resolve,join,dirname} from 'node:path';
@@ -21,7 +21,7 @@ check('exactly one JLPT link immediately above Video Course in menu',()=>{
  assert(jlpt>=0&&video>jlpt);
  assert(menu.slice(jlpt,video).includes('>JLPT</b>'));
  assert.equal((menu.match(/id="ykMenuJLPTV7864"/g)||[]).length,1);
- assert(menu.includes('href="#jlpt-study-cards"'));
+ assert(menu.includes('href="#yk82Hub"'));
  assert.equal((menu.match(/class="yk864-menu-link/g)||[]).length,9);
 });
 check('nine icon-based navigation rows use inline SVG and accessible semantic links',()=>{
@@ -37,22 +37,25 @@ check('nine icon-based navigation rows use inline SVG and accessible semantic li
  assert.equal((nav.match(/data-en=/g)||[]).length,9);
  assert(!nav.includes('onclick=')&&!nav.includes('javascript:'));
 });
-check('Study Hub remains existing 3-card collapsed preview + all 5 original JLPT cards',()=>{
+check('Study Hub keeps all N5-N1 cards, but menu targets Learning Center Pro',()=>{
  assert(home.includes('id="studyHubGridV733"'));
  assert(home.includes('id="studyHubMoreV733"'));
  for(const n of ['N5','N4','N3','N2','N1'])assert(home.includes(`data-study-level="${n}"`));
  assert.equal((home.match(/id="jlpt-study-cards"/g)||[]).length,1);
  assert(home.includes('id="jlpt-study-cards" tabindex="-1" data-study-level="N5"'));
- assert(home.includes("grid.classList.add('expanded')"));
+ assert(home.includes('id="yk82Hub" tabindex="-1" aria-label="JLPT Learning Center"'));
+ assert(!home.includes("grid.classList.add('expanded')"));
 });
-check('menu shortcut handles click and direct external hash navigation',()=>{
+check('menu shortcut scrolls to Learning Center Pro, never the N5 card',()=>{
+ assert(home.includes("const jlptCenter=document.getElementById('yk82Hub')"));
+ assert(!home.includes("const jlptCards=document.getElementById('jlpt-study-cards')"));
  assert(home.includes("jlptMenu.addEventListener('click',event=>"));
- assert(home.includes("window.history.pushState(null,'','#jlpt-study-cards')"));
+ assert(home.includes("window.history.pushState(null,'','#yk82Hub')"));
  assert(home.includes("window.addEventListener('hashchange'"));
- assert(home.includes("if(window.location.hash==='#jlpt-study-cards')goToJLPTHub();"));
- assert(home.includes('jlptCards.scrollIntoView'));
- assert(home.includes("jlptCards.focus({preventScroll:true})"));
- assert(css.includes('#jlpt-study-cards{scroll-margin-top:'));
+ assert(home.includes("if(window.location.hash==='#yk82Hub')goToJLPTHub();"));
+ assert(home.includes('jlptCenter.scrollIntoView'));
+ assert(home.includes("jlptCenter.focus({preventScroll:true})"));
+ assert(css.includes('#yk82Hub{scroll-margin-top:'));
 });
 check('animations are short, accessible, reduced-motion aware',()=>{
  for(const token of ['prefers-reduced-motion:no-preference','prefers-reduced-motion:reduce','@media(max-width:720px)','@keyframes yk864-menu-item-in','focus-visible'])assert(css.includes(token),token);
@@ -71,7 +74,7 @@ check('public builder references stylesheet and preserves link target in deploy 
  if(existsSync(dist)){
   assert(existsSync(join(dist,'assets/yk-premium-menu-v7864.css')));
   assert(read('dist/index.html').includes('id="ykMenuJLPTV7864"'));
-  assert(read('dist/index.html').includes('href="#jlpt-study-cards"'));
+  assert(read('dist/index.html').includes('href="#yk82Hub"'));
  }
  assert(read('service-worker.js').includes('v7864-jlpt-menu'));
 });

@@ -1,0 +1,32 @@
+{
+  "version": "v7.86.4 corrected hotfix",
+  "original_base_zip": "YEKUN_v7.86.4_JLPT_Direct_Navigation_Premium_Animated_Menu.zip",
+  "target": "#yk82Hub",
+  "old_target": "#jlpt-study-cards",
+  "intended_panel": "JLPT Learning Center Pro / Original Student and Teacher card",
+  "modified_existing_files": [
+    "README_v7_86_4_JLPT_MENU_MY.md",
+    "assets/yk-premium-menu-v7864.css",
+    "index.html",
+    "service-worker.js",
+    "tests/v7864-premium-menu.mjs"
+  ],
+  "original_archive_entries": 372,
+  "tests": {
+    "npm_test": "PASS",
+    "pass_lines": 249,
+    "offline_browser": "PASS",
+    "test_widths": [
+      320,
+      390,
+      1280
+    ],
+    "reduced_motion": "PASS",
+    "direct_hash": "PASS",
+    "horizontal_overflow": 0
+  },
+  "public_build_preview": "PASS (without generated identity.bundle.js)",
+  "full_netlify_build": "NOT VERIFIED (esbuild unavailable)",
+  "live_deployment": "NOT PERFORMED",
+  "unchanged": "Login/Payment/YKCR/Exam backend, dictionary records, original anime character assets"
+}
