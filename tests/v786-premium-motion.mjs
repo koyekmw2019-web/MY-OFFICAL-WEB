@@ -10,7 +10,7 @@ function check(name,fn){fn();passed++;console.log('PASS v786 '+name)}
 const css=read('assets/yk-premium-motion-v786.css'),js=read('assets/yk-premium-motion-v786.js');
 check('v7.86 release and original homepage search title',()=>{
  const p=JSON.parse(read('package.json'));
- assert(['7.86.0','7.86.1','7.86.2'].includes(p.version));
+ assert(['7.86.0','7.86.1','7.86.2','7.86.3'].includes(p.version));
  assert(p.scripts.test.includes('tests/v786-premium-motion.mjs'));
  assert(p.scripts.build.includes('tests/v786-premium-motion.mjs'));
  assert(read('index.html').includes('<title>YE KUN Official Website | YE LINN OO</title>'));

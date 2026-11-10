@@ -52,3 +52,10 @@
   .yk86-motion .yk821-hub-people img,
   .yk86-motion .vc-card {animation:none!important}
 }
+
+/* v7.86.3: visual responsiveness on smaller/touch screens. No functionality hidden. */
+@media (max-width:720px),(pointer:coarse){
+ .yk86-motion .vc-hero .vc-hero-play{animation:none!important;box-shadow:0 4px 15px #0009!important}
+ .yk86-motion [data-yk86-reveal].yk86-inview{animation-duration:.18s!important;animation-delay:0ms!important}
+ .yk86-motion .study-track:hover,.yk86-motion .vc-card:hover{transform:none!important}
+}

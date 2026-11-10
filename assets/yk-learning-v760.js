@@ -25,5 +25,13 @@ const form=root.querySelector('#yk760AnnForm');if(form)form.onsubmit=async e=>{e
 }
 function practice(items,n){const host=document.getElementById('yk760Practice');if(!items.length){host.textContent='No saved mistakes yet.';return}const day=new Date().toISOString().slice(0,10);const pick=items.map((x,i)=>({x,k:(i*37+day.length)%101})).sort((a,b)=>a.k-b.k).slice(0,n);let i=0;function draw(){if(i>=pick.length){host.innerHTML='<p class="notice">Daily review complete. This is revision only, not an official mock exam.</p>';return}const x=pick[i].x;host.innerHTML='<div class="record"><b>Question '+(i+1)+' / '+pick.length+'</b><p>'+esc(x.question_text)+'</p><button type="button" class="btn sm" id="yk760Reveal">Show answer</button><div id="yk760Answer" hidden><p>✅ '+esc(x.correct_answer)+'</p><p>🇯🇵 '+esc(x.explanation_ja)+'</p><p>🇲🇲 '+esc(x.explanation_my)+'</p><button class="btn primary sm" id="yk760Next">Next →</button></div></div>';host.querySelector('#yk760Reveal').onclick=()=>{host.querySelector('#yk760Answer').hidden=false;host.querySelector('#yk760Reveal').hidden=true;host.querySelector('#yk760Next').onclick=()=>{i++;draw()}}}draw()}
 async function load(){try{const data=await api('yk-learning');render(data)}catch(e){attach();const s=document.getElementById('yk760Status');if(s)s.textContent='Learning data unavailable (check DB migration): '+e.message}}
-setTimeout(load,1200);
+let learningRequested=false;
+const details=panel.querySelector('.yk760-expander');
+details?.addEventListener('toggle',()=>{
+ if(!details.open||learningRequested)return;
+ learningRequested=true;
+ const shared=window.YKDashboardMistakesPromiseV7863;
+ if(shared){Promise.resolve(shared).then(render).catch(e=>{const el=document.getElementById('yk760Status');if(el)el.textContent='Learning data unavailable: '+e.message})}
+ else {const request=api('yk-learning');window.YKDashboardMistakesPromiseV7863=request;request.then(render).catch(e=>{const el=document.getElementById('yk760Status');if(el)el.textContent='Learning data unavailable: '+e.message});}
+});
 })();

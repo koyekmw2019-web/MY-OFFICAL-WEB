@@ -5,6 +5,7 @@ import {readFileSync,writeFileSync,existsSync,mkdirSync,rmSync,copyFileSync,read
 import {relative,resolve,dirname,join,sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {packDictionary} from './_dictionary-packer-v7841.mjs';
+import {lazyDictionaryHTML} from './_dictionary-lazy-v7863.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const out=join(root,'dist');
 const preview=process.argv.includes('--preview-allow-missing-generated-bundle');
@@ -56,14 +57,18 @@ const beforeHome=readFileSync(publicHome,'utf8');
 const afterHome=beforeHome.replace('/assets/yk-dictionary-v778-complete-draft.js?v=778qa20261105',
   '/assets/yk-dictionary-v778-complete-draft.js?v=7841packed');
 if(afterHome===beforeHome)throw Error('Dictionary src cache-bust location changed');
-writeFileSync(publicHome,afterHome,'utf8');
+const optimized=lazyDictionaryHTML(afterHome);
+writeFileSync(publicHome,optimized.html,'utf8');
+writeFileSync(join(out,'assets/yk-dictionary-runtime-v7863.js'),optimized.code,'utf8');
 mkdirSync(dirname(join(out,dictionary)),{recursive:true});
 writeFileSync(join(out,dictionary),packed.code,'utf8');
-const report={version:'7.86.2',source_files:assetPaths.length,archived_nonpublished_assets:legacyAssets.size,
+const report={version:'7.86.3',source_files:assetPaths.length,archived_nonpublished_assets:legacyAssets.size,
   published_assets:keep.length,public_html_pages:publicRoots.filter(x=>x.endsWith('.html')).length+study.length,
   dictionary_words:packed.words.length,
   original_dictionary_bytes:Buffer.byteLength(reads(dictionary)),
   deployed_dictionary_bytes:Buffer.byteLength(packed.code),
+  lazy_dictionary_runtime_bytes:Buffer.byteLength(optimized.code),
+  published_homepage_bytes:Buffer.byteLength(optimized.html),
   includes_identity_bundle:existsSync(join(out,'assets/identity.bundle.js')),
   excluded_archival_root_files:true};
 console.log(JSON.stringify(report,null,2));

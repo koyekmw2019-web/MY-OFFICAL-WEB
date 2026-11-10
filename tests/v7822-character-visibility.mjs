@@ -7,7 +7,7 @@ const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const read=f=>readFileSync(join(root,f),'utf8');
 const css=read('assets/yk-jlpt-characters-v7822.css');
 const files=['index.html','study/jlpt-learning.html','dashboard.html','student-dashboard.html','member-dashboard.html','admin-dashboard.html'];
-assert(['7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0','7.86.1','7.86.2'].includes(JSON.parse(read('package.json')).version));
+assert(['7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0','7.86.1','7.86.2','7.86.3'].includes(JSON.parse(read('package.json')).version));
 for(const f of files){
   assert(read(f).includes('/assets/yk-jlpt-characters-v7822.css'),`Missing update stylesheet in ${f}`);
   assert(read(f).indexOf('yk-jlpt-characters-v7821.css') < read(f).indexOf('yk-jlpt-characters-v7822.css'),`Stylesheet order for ${f}`);

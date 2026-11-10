@@ -1,0 +1,113 @@
+{
+  "release": "v7.86.3",
+  "name": "All Exam Learning Dashboard & Mobile Performance",
+  "base_filename": "YEKUN_v7.86.2_Dashboard_Dictionary_Video_Session_Refinement.zip",
+  "release_date": "2026-11-10",
+  "zip_source_only": true,
+  "features": {
+    "categories": [
+      "all",
+      "ssw",
+      "driving",
+      "jlpt"
+    ],
+    "exam_types": [
+      "truck",
+      "taxi",
+      "bus",
+      "maintenance",
+      "car",
+      "motorcycle",
+      "moped",
+      "jlpt_n5",
+      "jlpt_n4",
+      "jlpt_n3",
+      "jlpt_n2",
+      "jlpt_n1"
+    ],
+    "verified_only_scores": true,
+    "no_cross_exam_raw_average": true,
+    "lazy_mistakes_api": true,
+    "lazy_jlpt_api_and_lessons": true,
+    "shared_exam_activity_request": true,
+    "mobile_motion_reduced": true,
+    "source_dictionary_entries_unchanged": 8542,
+    "deploy_dictionary_lazy": true
+  },
+  "performance": {
+    "old_deploy_index_uncompressed_bytes": 813615,
+    "new_deploy_index_uncompressed_bytes": 511127,
+    "uncompressed_reduction_pct": 37.2,
+    "packed_dictionary_bytes": 960760,
+    "dictionary_runtime_deploy_bytes": 304576,
+    "initial_student_api_calls_offline_fixture": [
+      "exam-status",
+      "exam-my-activity"
+    ],
+    "real_world_load_time_verified": false
+  },
+  "tests": {
+    "npm_test_pass_lines": 241,
+    "npm_test_pass": true,
+    "v7863_unit_tests": 14,
+    "offline_chromium_dashboard_viewports": [
+      390,
+      1280
+    ],
+    "offline_chromium_dictionary_lazy_smoke": true,
+    "live_netlify_build": false,
+    "full_build_reason": "npm registry EAI_AGAIN; esbuild unavailable",
+    "live_backend_tests": false,
+    "staging_deploy_required": true
+  },
+  "source_integrity": {
+    "base_archive_files": 363,
+    "missing_base_files": [],
+    "modified_existing": [
+      "admin-dashboard.html",
+      "assets/yk-dashboard-pro-v784.css",
+      "assets/yk-dashboard-pro-v784.js",
+      "assets/yk-dashboard-v758.js",
+      "assets/yk-learning-v760.js",
+      "assets/yk-premium-motion-v786.css",
+      "dashboard.html",
+      "index.html",
+      "member-dashboard.html",
+      "package.json",
+      "scripts/build-public-v7841.mjs",
+      "service-worker.js",
+      "student-dashboard.html",
+      "tests/v780-performance.mjs",
+      "tests/v781-advanced-seo.mjs",
+      "tests/v7821-character-ui.mjs",
+      "tests/v7822-character-visibility.mjs",
+      "tests/v7822-reading-update.mjs",
+      "tests/v785-video-course.mjs",
+      "tests/v786-premium-motion.mjs",
+      "tests/v7861-stability-fix.mjs",
+      "tests/v7862-ui-session-stability.mjs",
+      "video-class.html"
+    ],
+    "modified_existing_count": 23,
+    "protected_byte_equal": {
+      "netlify/functions/exam-access.mts": true,
+      "netlify/functions/exam-attempt-submit.mts": true,
+      "netlify/functions/exam-payment-submit.mts": true,
+      "netlify/functions/exam-bank-details.mts": true,
+      "netlify/functions/ykcr-student-sync.mts": true,
+      "netlify/functions/exam-student-verify.mts": true,
+      "src/identity-client.js": true,
+      "assets/characters/student-v7821.webp": true,
+      "assets/characters/teacher-v7821.webp": true
+    },
+    "db_migrations_modified": false,
+    "pdf_added": false
+  },
+  "deployment": {
+    "build_command": "npm run build",
+    "publish": "dist",
+    "functions": "netlify/functions",
+    "new_database_migrations": false,
+    "production_ready_confirmed": false
+  }
+}
