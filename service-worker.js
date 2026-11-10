@@ -1,5 +1,5 @@
 /* v7.80: cache versioned PUBLIC static assets only. Never cache HTML, credentials or APIs. */
-const VERSION = 'yk-official-v7-80-stability-speed-v7841-slim-v786-motion';
+const VERSION = 'yk-official-v7-80-stability-speed-v7841-slim-v7861-stability';
 const PUBLIC_CACHE = `yk-public-static-${VERSION}`;
 self.addEventListener('install', (event) => {
   event.waitUntil(self.skipWaiting());

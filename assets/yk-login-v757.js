@@ -18,9 +18,17 @@ document.querySelectorAll('.pass-eye').forEach(el=>el.addEventListener('click',(
 function idClient(){if(window.YKIdentity)return Promise.resolve(window.YKIdentity);return new Promise((resolve,reject)=>{const timeout=setTimeout(()=>{window.removeEventListener('yk-identity-ready',ok);reject(new Error('Identity client unavailable; please deploy the Netlify build and retry.'))},10000);function ok(){clearTimeout(timeout);window.removeEventListener('yk-identity-ready',ok);resolve(window.YKIdentity)}window.addEventListener('yk-identity-ready',ok)})}
 const validEmail=s=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
 function checkEmail(e){if(!e||!validEmail(e)){note(L(e?'invalid':'missing'),true);return false}return true}
-function run(form,action){if(busy)return;busy=true;const btn=form.querySelector('[type=submit]');btn.disabled=true;note(L('working'));idClient().then(action).catch(e=>note(e?.message||String(e),true)).finally(()=>{busy=false;btn.disabled=false})}
+function run(form,action){if(busy)return;busy=true;const btn=form.querySelector('[type=submit],#loginSubmit');btn.disabled=true;note(L('working'));idClient().then(action).catch(e=>note(e?.message||String(e),true)).finally(()=>{busy=false;btn.disabled=false})}
 const home=()=>window.location.assign('/#home');
-$('loginForm').addEventListener('submit',e=>{e.preventDefault();const email=$('loginEmail').value.trim(),pass=$('loginPassword').value;if(!checkEmail(email))return;if(!pass){note(L('missing'),true);return}run(e.currentTarget,async id=>{await id.login(email,pass);note(L('success'));home()})});
+// Android keyboards/password managers may submit the form without a deliberate click.
+// Login API is called ONLY from the explicit Login button activation.
+$('loginForm').addEventListener('submit',e=>{e.preventDefault();if(!busy)note(L('clickLogin'));});
+$('loginSubmit').addEventListener('click',()=>{
+  const email=$('loginEmail').value.trim(),pass=$('loginPassword').value;
+  if(!checkEmail(email))return;
+  if(!pass){note(L('missing'),true);return;}
+  run($('loginForm'),async id=>{await id.login(email,pass);note(L('success'));home()});
+});
 $('signupForm').addEventListener('submit',e=>{e.preventDefault();const name=$('suName').value.trim(),email=$('suEmail').value.trim(),pass=$('suPassword').value,confirm=$('suConfirm').value;if(!name){note(L('missing'),true);return}if(!checkEmail(email))return;if(pass.length<8){note(L('length'),true);return}if(pass!==confirm){note(L('mismatch'),true);return}run(e.currentTarget,async id=>{await id.signup(email,pass,{full_name:name});note(L('created'));$('signupForm').reset()})});
 $('forgotForm').addEventListener('submit',e=>{e.preventDefault();const email=$('forgotEmail').value.trim();if(!checkEmail(email))return;run(e.currentTarget,async id=>{await id.requestPasswordRecovery(email);note(L('recoverySent'))})});
 $('newPasswordForm').addEventListener('submit',e=>{e.preventDefault();const pass=$('newPass').value,confirm=$('newConfirm').value;if(pass.length<8){note(L('length'),true);return}if(pass!==confirm){note(L('mismatch'),true);return}run(e.currentTarget,async id=>{if(mode==='invite'){if(!inviteToken)throw new Error('Invite token missing');await id.acceptInvite(inviteToken,pass);try{await id.refreshSession()}catch{}}else if(mode==='recovery'){await id.updateUser({password:pass})}else throw new Error('Account callback missing');note(L('saved'));home()})});

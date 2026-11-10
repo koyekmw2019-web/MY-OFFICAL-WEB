@@ -1,0 +1,98 @@
+{
+  "release": "v7.86.1",
+  "source_base": "YEKUN_v7.86_Premium_Animation_Character_Experience_Update.zip",
+  "date": "2026-11-10",
+  "overall": "Source ZIP ready; staging/live verification required",
+  "fixes": {
+    "postgres_alias_42601": {
+      "file": "netlify/functions/exam-admin-analytics.mts",
+      "change": "AS day_key in both trend queries; API still returns day",
+      "live_postgres_verified": false,
+      "mock_verified": true
+    },
+    "mobile_navigation": {
+      "file": "assets/yk-jlpt-learning-v782.css",
+      "responsive": true,
+      "mobile_row_columns": 3,
+      "no_overflow_offline": true
+    },
+    "manual_login": {
+      "file": "assets/yk-login-v757.js",
+      "form_enter_signin_blocked": true,
+      "login_button_signin_allowed": true,
+      "existing_session_preserved": true,
+      "live_identity_verified": false
+    },
+    "sql_error_redaction": true,
+    "cache_bust_updated": true
+  },
+  "tests": {
+    "npm_test": {
+      "result": "PASS",
+      "pass_lines": 219
+    },
+    "new_automated_tests": 8,
+    "offline_chromium_nav_viewports": [
+      320,
+      360,
+      390,
+      620,
+      768,
+      1280
+    ],
+    "offline_chromium_login_mock_viewports": [
+      390,
+      1280
+    ],
+    "browser_auth_api_called_on_enter": 0,
+    "browser_auth_api_called_on_button": 1,
+    "node_syntax": "PASS",
+    "mock_db_role_denial": "PASS",
+    "mock_db_graph_dates": "PASS"
+  },
+  "build": {
+    "full_npm_run_build": "BLOCKED",
+    "reason": "esbuild CLI not installed in local environment",
+    "local_public_preview": "PASS",
+    "includes_generated_identity_bundle_in_preview": false,
+    "netlify_build": "NOT TESTED",
+    "netlify_database": "NOT TESTED",
+    "live_browser_identity": "NOT TESTED"
+  },
+  "integrity": {
+    "base_files": 356,
+    "unchanged_base_files": 338,
+    "modified_base_files": [
+      "admin-dashboard.html",
+      "assets/yk-dashboard-pro-v784.js",
+      "assets/yk-jlpt-learning-v782.css",
+      "assets/yk-login-v757.js",
+      "login.html",
+      "netlify/functions/exam-admin-analytics.mts",
+      "package.json",
+      "scripts/build-public-v7841.mjs",
+      "service-worker.js",
+      "study/jlpt-learning.html",
+      "tests/v780-performance.mjs",
+      "tests/v781-advanced-seo.mjs",
+      "tests/v7821-character-ui.mjs",
+      "tests/v7822-character-visibility.mjs",
+      "tests/v7822-reading-update.mjs",
+      "tests/v784-admin-api.mock.mjs",
+      "tests/v785-video-course.mjs",
+      "tests/v786-premium-motion.mjs"
+    ],
+    "modified_backend_function_files": [
+      "netlify/functions/exam-admin-analytics.mts"
+    ],
+    "old_characters_unchanged": true,
+    "old_payment_exam_ykcr_functions_unchanged": true,
+    "new_database_migration": false,
+    "new_pdf_files": 0
+  },
+  "cautions": [
+    "Authenticated persistent browser sessions may show a user as logged in even without a fresh login click.",
+    "A browser mock verifies event behavior, not production Identity.",
+    "The SQL fix is supported by Netlify log PostgreSQL error 42601; query should be tested on staging database."
+  ]
+}

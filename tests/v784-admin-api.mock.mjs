@@ -16,10 +16,10 @@ const sql=async (fragments,...params)=>{
  if(q.includes('FROM exam_students'))return [{total:12,active:9,inactive_or_expired:3,upcoming:0}];
  if(q.includes('FROM exam_payment_requests'))return [{pending:2,approved:4,rejected:0}];
  if(q.includes('FROM exam_attempts') && q.includes('GROUP BY exam_type'))return empty?[]:[{exam_type:'truck',submitted:5,verified:4,passed:3}];
- if(q.includes('FROM exam_attempts') && q.includes('GROUP BY (submitted_at'))return empty?[]:[{day:'2026-11-09',submitted:5,verified:4,passed:3}];
+ if(q.includes('FROM exam_attempts') && q.includes('GROUP BY (submitted_at'))return empty?[]:[{day_key:'2026-11-09',submitted:5,verified:4,passed:3}];
  if(q.includes('FROM exam_attempts'))return [{submitted:5,verified:empty?0:4,passed:empty?0:3}];
  if(q.includes('FROM ykcr_sync_events'))return [{received:10,inbound_24h:2,inbound_7d:4,last_received_at:'2026-11-09T06:00:00Z'}];
- if(q.includes('jsonb_array_elements'))return [{day:'2026-11-09',sessions:8,questions:80,correct:60}];
+ if(q.includes('jsonb_array_elements'))return [{day_key:'2026-11-09',sessions:8,questions:80,correct:60}];
  if(q.includes('FROM yk_jlpt_learning_progress'))return [{accounts:4,lessons_completed:32,recently_updated:2}];
  throw Error('Unexpected query '+q);
 };

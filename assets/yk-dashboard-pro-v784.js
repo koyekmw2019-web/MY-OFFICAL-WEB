@@ -50,7 +50,7 @@ let adminRequest=0;
 async function loadAdmin(){const host=$('yk84AdminBody');if(!host)return;const request=++adminRequest,days=$('yk84AdminPeriod')?.value||'30';host.setAttribute('aria-busy','true');
  host.innerHTML='<div class="yk84-progress">Loading admin analytics…</div>';
  try{const data=await getJson(`/.netlify/functions/exam-admin-analytics?days=${encodeURIComponent(days)}`);if(request===adminRequest&&host.isConnected)host.innerHTML=adminRender(data)}
- catch(e){if(request===adminRequest&&host.isConnected)host.innerHTML=`<div class="yk84-error">Admin analytics unavailable: ${esc(e.message)}. Existing management sections below are unaffected.</div>`}
+ catch(e){if(request===adminRequest&&host.isConnected)host.innerHTML=`<div class="yk84-error">Admin analytics unavailable: ${esc(e.message||'Please retry.')}. Existing management sections below are unaffected.</div>`}
  finally{if(request===adminRequest&&host.isConnected)host.setAttribute('aria-busy','false')}
 }
 function studentRender(result,level){const data=result.insights,coverage=data.coverage,exams=data.weakExams;

@@ -13,7 +13,7 @@ const worker=readFileSync(file('service-worker.js'),'utf8');
 let passed=0;
 const check=(name,cb)=>{cb();passed++;console.log('PASS '+name)};
 check('v7.80 release and original homepage SEO title preserved',()=>{
-  assert(['7.80.0','7.81.0','7.82.0','7.82.1','7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0'].includes(pkg.version));
+  assert(['7.80.0','7.81.0','7.82.0','7.82.1','7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0','7.86.1'].includes(pkg.version));
   assert(html.includes('<title>YE KUN Official Website | YE LINN OO</title>'));
   assert(html.includes('View More · Study Hub &amp; JLPT'));
 });

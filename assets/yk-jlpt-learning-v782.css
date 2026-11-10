@@ -7,3 +7,12 @@
 @media(max-width:850px){.yk82-columns{grid-template-columns:1fr}.yk82-aside{position:static}.yk82-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.yk82-list{grid-template-columns:1fr}}
 @media(max-width:540px){.yk82-page .yk82-top-inner{padding:10px 14px}.yk82-brand{width:115px}.yk82-top-links{gap:5px}.yk82-pill{font-size:10px!important;padding:7px 9px}.yk82-main{padding:18px 13px 55px}.yk82-panel{padding:15px}.yk82-levels{gap:5px}.yk82-levels button{padding:11px 2px;font-size:12px}.yk82-tiles{gap:8px}.yk82-tile{padding:12px;min-height:101px}.yk82-block{padding:14px}.yk82-stats{gap:7px}.yk82-stat{padding:10px}.yk82-stat strong{font-size:20px}.yk82-stat small{font-size:10px}.yk82-choices{grid-template-columns:1fr}.yk82-dashboard-levels{gap:3px}.yk82-dashboard-level{padding:6px 2px}}
 @media(prefers-reduced-motion:reduce){.yk82-panel *{transition:none!important}}
+
+/* v7.86.1: three learning navigation buttons on ONE row at narrow widths. */
+@media (max-width: 620px) {
+  .yk82-page .yk82-top-inner { flex-direction:column; align-items:stretch; gap:10px; padding:12px 14px; }
+  .yk82-page .yk82-brand { display:block; width:180px; max-width:72vw; }
+  .yk82-page .yk82-brand img { max-height:55px; }
+  .yk82-page .yk82-top-links { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:7px; width:100%; flex-wrap:nowrap; }
+  .yk82-page .yk82-pill { display:flex!important; min-width:0; width:100%; min-height:42px; padding:8px 2px; white-space:nowrap; text-align:center; font-size:clamp(9px,2.55vw,12px)!important; line-height:1.2; }
+}

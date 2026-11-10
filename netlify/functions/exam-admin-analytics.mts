@@ -39,18 +39,18 @@ export default async (req: Request) => {
         COUNT(*)::int submitted
         FROM exam_attempts WHERE status='submitted' AND (submitted_at AT TIME ZONE 'Asia/Tokyo')::date >= ((NOW() AT TIME ZONE 'Asia/Tokyo')::date - (${days}::int - 1))
         GROUP BY exam_type ORDER BY exam_type LIMIT 30`,
-      db.sql<any>`SELECT (submitted_at AT TIME ZONE 'Asia/Tokyo')::date::text day,
+      db.sql<any>`SELECT (submitted_at AT TIME ZONE 'Asia/Tokyo')::date::text AS day_key,
         COUNT(*) FILTER (WHERE score_verified=TRUE AND passed IS NOT NULL)::int verified,
         COUNT(*) FILTER (WHERE score_verified=TRUE AND passed=TRUE)::int passed,
         COUNT(*)::int submitted
         FROM exam_attempts WHERE status='submitted' AND (submitted_at AT TIME ZONE 'Asia/Tokyo')::date >= ((NOW() AT TIME ZONE 'Asia/Tokyo')::date - (${days}::int - 1))
         GROUP BY (submitted_at AT TIME ZONE 'Asia/Tokyo')::date
-        ORDER BY day ASC LIMIT 92`,
+        ORDER BY day_key ASC LIMIT 92`,
       db.sql<any>`SELECT COUNT(*)::int received,
         COUNT(*) FILTER (WHERE received_at >= NOW() - INTERVAL '24 hours')::int inbound_24h,
         COUNT(*) FILTER (WHERE received_at >= NOW() - INTERVAL '7 days')::int inbound_7d,
         MAX(received_at) last_received_at FROM ykcr_sync_events`,
-      db.sql<any>`SELECT r.value->>'day' AS day,
+      db.sql<any>`SELECT r.value->>'day' AS day_key,
         COUNT(*)::int sessions,
         COALESCE(SUM((r.value->>'count')::int),0)::int questions,
         COALESCE(SUM((r.value->>'correct')::int),0)::int correct
@@ -58,7 +58,7 @@ export default async (req: Request) => {
         CROSS JOIN LATERAL jsonb_array_elements(COALESCE(p.state->'dailyRuns','[]'::jsonb)) AS r(value)
         WHERE r.value->>'day' >= ((NOW() AT TIME ZONE 'Asia/Tokyo')::date - (${days}::int - 1))::text
           AND r.value->>'day' <= (NOW() AT TIME ZONE 'Asia/Tokyo')::date::text
-        GROUP BY day ORDER BY day ASC LIMIT 92`,
+        GROUP BY r.value->>'day' ORDER BY day_key ASC LIMIT 92`,
       db.sql<any>`SELECT COUNT(*)::int accounts,
         COALESCE(SUM(jsonb_array_length(COALESCE(state->'completed','[]'::jsonb))),0)::int lessons_completed,
         COUNT(*) FILTER (WHERE updated_at>=NOW() - (${days}::int * INTERVAL '1 day'))::int recently_updated
@@ -70,14 +70,20 @@ export default async (req: Request) => {
       students:students[0] || {total:0,active:0}, payments:payments[0]||{pending:0,approved:0,rejected:0},
       exams:{submitted:count(totals[0]?.submitted),verified,passed,passRate:rate(passed,verified),
         byType:byType.map((r:any)=>({type:String(r.exam_type),submitted:count(r.submitted),verified:count(r.verified),passed:count(r.passed),passRate:rate(count(r.passed),count(r.verified))})),
-        daily:trend.map((r:any)=>({day:String(r.day),submitted:count(r.submitted),verified:count(r.verified),passed:count(r.passed),passRate:rate(count(r.passed),count(r.verified))}))},
+        daily:trend.map((r:any)=>({day:String(r.day_key),submitted:count(r.submitted),verified:count(r.verified),passed:count(r.passed),passRate:rate(count(r.passed),count(r.verified))}))},
       ykcr:{received:count(sync[0]?.received),inbound24h:count(sync[0]?.inbound_24h),inbound7d:count(sync[0]?.inbound_7d),lastReceivedAt:sync[0]?.last_received_at||null,
         queueStatus:'unknown',failureStatus:'unknown',scope:'inbound-receiver-only'},
       learning:{accounts:count(learning[0]?.accounts),lessonsCompleted:count(learning[0]?.lessons_completed),recentlyUpdated:count(learning[0]?.recently_updated),
-        dailyPractice:practice.map((r:any)=>({day:String(r.day),sessions:count(r.sessions),questions:count(r.questions),correct:count(r.correct)}))},
+        dailyPractice:practice.map((r:any)=>({day:String(r.day_key),sessions:count(r.sessions),questions:count(r.questions),correct:count(r.correct)}))},
       notes:{exam:'Pass rate uses only server-verified, submitted mock exams. Not the official exam pass rate.',
         learning:'Daily practice is stored learning activity (not verified exam results). Lesson completions have no historical day field.',
         sync:'Shows events received by the Official Website only. Upstream YKCR Pending/Failed queue is not connected.'}
     });
-  } catch (error) {return asResponse(error)}
+  } catch (error) {
+    // Keep authorization errors intact, but do not leak raw SQL, bound params,
+    // or internal database details into an admin's mobile dashboard.
+    if (error instanceof Response) return asResponse(error);
+    console.error('Admin analytics query failed', error);
+    return response({error:'Admin analytics temporarily unavailable. Please retry after checking Netlify Function logs.'},500);
+  }
 };
