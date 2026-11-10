@@ -35,7 +35,8 @@ async function showAdmin(){
  root.innerHTML='<div id="adminStats"></div><div class="grid">'+
  panel('🎓 Student Management · YKCR Sync',`<p class="muted">ရှိပြီးသား Student Records နဲ့ YKCR Sync ကိုပဲ အသုံးပြုပါတယ်။ New Student Database မတည်ဆောက်ပါဘူး။</p><form id="csvForm" class="formrow"><label for="csvFile">Student CSV Import</label><input type="file" id="csvFile" accept=".csv,text/csv" required><button class="btn primary" type="submit">Import Students</button></form><p class="notice">CSV ထဲမှာ Student ID နဲ့ Verification Code ပါရင် မူလအချက်အလက်ကို အသုံးပြုပါမယ်။ Import မလုပ်ခင် CSV မှန်ကန်ကြောင်း စစ်ပါ။</p><div id="csvResult" class="status" hidden></div><div id="csvCredentials"></div>`)+
  panel('💳 Payment Management',`<p class="muted">Receipt Review · Approve · Reject · Delete · Refresh</p><div class="filters"><label for="paymentFilter">Status</label><select id="paymentFilter"><option value="all">All</option><option value="pending">Pending</option><option value="approved">Approved</option><option value="rejected">Rejected</option></select><button id="refreshPayments" class="btn sm" type="button">↻ Refresh</button></div><div id="paymentList" aria-live="polite"><p class="muted">Loading…</p></div>`)+
- panel('📈 Exam & Student Overview','<div id="adminOverviewMore" class="muted">Loading overview…</div>','wide')+'</div>';
+ panel('📈 Exam & Student Overview','<div id="adminOverviewMore" class="muted">Loading overview…</div>','wide')+
+ panel('⚙ Admin Management Tools','<p class="muted">Dictionary corrections and reporting are reviewed by administrators before any meaning is changed.</p><a class="yk86-admin-tool-link" href="/dictionary-reports.html">⚑ Dictionary Translation Reports →</a>','wide')+'</div>';
  $('paymentFilter').addEventListener('change',e=>{selectedFilter=e.target.value;paintPayments()});
  $('refreshPayments').addEventListener('click',loadPayments);
  $('csvForm').addEventListener('submit',importCsv);

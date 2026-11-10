@@ -1,1 +1,12 @@
 .yk-v760-panel h3{margin:24px 0 12px}.yk760-trend-row{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:10px;border-bottom:1px solid rgba(128,128,128,.18)}.yk760-trend-row span{font-weight:650}.yk760-trend-row small{opacity:.6}.yk760-review details{border:1px solid rgba(128,128,128,.2);border-radius:12px;padding:12px;margin:9px 0}.yk760-review summary{cursor:pointer;font-weight:650}.yk760-review p{white-space:pre-wrap;overflow-wrap:anywhere}.yk760-form{display:grid;gap:10px}.yk760-form input,.yk760-form textarea,.yk760-form select{border:1px solid #555;border-radius:12px;background:#171717;color:white;padding:12px;font:inherit}.yk760-form textarea{min-height:85px}.yk760-ann p{white-space:pre-wrap;overflow-wrap:anywhere}
+/* v7.86.2: Advanced/legacy tools collapsed by default, metrics never cross-mix scales. */
+.yk-v760-panel{margin-top:18px}
+.yk760-expander>summary{position:relative;display:flex;flex-direction:column;gap:3px;list-style:none;cursor:pointer;font-size:17px;font-weight:850;line-height:1.4}
+.yk760-expander>summary::-webkit-details-marker{display:none}
+.yk760-expander>summary:after{content:'⌄';position:absolute;right:18px;color:#d4b2b5}
+.yk760-expander[open]>summary:after{content:'⌃'}
+.yk760-expander>summary small{color:#a2a1a8;font-weight:500;font-size:12px;padding-right:25px}
+.yk760-interior{padding-top:16px}
+.yk760-trend-row{flex-wrap:wrap;overflow-wrap:anywhere}
+.yk760-trend-row small{font-size:11px}
+@media(max-width:560px){.yk760-safe-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.yk760-trend-row{gap:4px}.yk760-trend-row small{width:100%}}

@@ -59,7 +59,7 @@ if(afterHome===beforeHome)throw Error('Dictionary src cache-bust location change
 writeFileSync(publicHome,afterHome,'utf8');
 mkdirSync(dirname(join(out,dictionary)),{recursive:true});
 writeFileSync(join(out,dictionary),packed.code,'utf8');
-const report={version:'7.86.1',source_files:assetPaths.length,archived_nonpublished_assets:legacyAssets.size,
+const report={version:'7.86.2',source_files:assetPaths.length,archived_nonpublished_assets:legacyAssets.size,
   published_assets:keep.length,public_html_pages:publicRoots.filter(x=>x.endsWith('.html')).length+study.length,
   dictionary_words:packed.words.length,
   original_dictionary_bytes:Buffer.byteLength(reads(dictionary)),

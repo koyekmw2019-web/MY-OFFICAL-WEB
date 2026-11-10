@@ -1,0 +1,65 @@
+{
+  "version": "7.86.2",
+  "base_version": "7.86.1",
+  "date": "2026-11-10",
+  "source_only": true,
+  "base_files": 359,
+  "baseline_files_modified": 24,
+  "baseline_files_unchanged": 335,
+  "new_functional_source_files": [
+    "assets/yk-video-account-v7862.js",
+    "tests/v7862-ui-session-stability.mjs"
+  ],
+  "existing_files_deleted": [],
+  "protected_backend_source_modified": [],
+  "checks": {
+    "npm_test": {
+      "result": "PASS",
+      "pass_lines": 227,
+      "scope": "Automated static, mock, source compatibility and runtime tests (not live production)"
+    },
+    "browser_fixture": {
+      "result": "PASS",
+      "file": "browser_qa.json (companion local QA)",
+      "cases": 9,
+      "scope": "Offline Chromium fixture; mock Identity; no real Netlify login or YouTube stream"
+    },
+    "public_dist_preview": {
+      "result": "PASS",
+      "dictionary_records": 8542,
+      "identity_bundle_present": false,
+      "note": "Preview mode only, generated Identity bundle must come from Netlify esbuild"
+    },
+    "full_netlify_build": {
+      "result": "NOT VERIFIED",
+      "reason": "Local esbuild executable not available; npm dependency installation not completed"
+    },
+    "live_database_sql": {
+      "result": "NOT VERIFIED"
+    },
+    "live_identity": {
+      "result": "NOT VERIFIED"
+    },
+    "live_payment_exam_ykcr": {
+      "result": "NOT VERIFIED"
+    },
+    "live_youtube": {
+      "result": "NOT VERIFIED"
+    }
+  },
+  "feature_changes": [
+    "Mobile dashboard dock no longer fixed overlay",
+    "Admin report moved to gated management tools",
+    "Legacy learning panel collapsible and mixed-type raw average removed",
+    "Dictionary Report Error moved behind More options",
+    "Video Course original STUDYING WITH YE KUN logo and session-aware Login/Dashboard",
+    "Cache bump, source and version QA"
+  ],
+  "original_character_assets_preserved": true,
+  "no_new_pdf": true,
+  "new_db_migrations": 0,
+  "note": "This ZIP has not been deployed to Netlify; staging smoke tests mandatory.",
+  "archive_entries": 363,
+  "zip_integrity": "PASS",
+  "zip_size_bytes": 8823358
+}

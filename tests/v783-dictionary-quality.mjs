@@ -73,7 +73,8 @@ test('Admin report queue is protected, responses are reviewed and changes server
  assert(migration.includes('CREATE TABLE IF NOT EXISTS yk_dictionary_reports'));
  assert(migration.includes('CREATE TABLE IF NOT EXISTS yk_dictionary_overrides'));
  assert(!/DROP TABLE|ALTER TABLE exam_|ALTER TABLE students|ALTER TABLE ykcr_/i.test(migration));
- assert(read('admin-dashboard.html').includes('/dictionary-reports.html'));
+ assert(read('assets/yk-dashboard-v758.js').includes('/dictionary-reports.html')); // Admin-only management panel after role verification
+ assert(!read('admin-dashboard.html').includes('href="/dictionary-reports.html"')); // no oversized intro CTA
  assert(read('dictionary-reports.html').includes('noindex,nofollow'));
 });
 test('Dictionary runtime JavaScript parses safely in isolation',()=>{

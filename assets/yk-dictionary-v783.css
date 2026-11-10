@@ -21,3 +21,13 @@
 .dict-report-form button[type=submit]{background:#fff;color:#111;flex:1}.dict-report-form button:disabled{opacity:.45;cursor:wait}
 .dict-report-status{font-size:12px;color:#c7c7ca;min-height:18px}.dict-report-status.error{color:#fb9ea9}.dict-report-status.success{color:#a4eac5}
 @media(max-width:560px){.dict-report-form{padding:18px}.dict-action-row .dict-v783-report{margin-left:0}}
+
+/* v7.86.2: Keep error reports accessible without covering every dictionary card. */
+.dict-action-row .dict-more-v7862{position:relative;margin-left:auto;min-width:0}
+.dict-more-v7862>summary{list-style:none;cursor:pointer;padding:7px 12px;border:1px solid #3f3f46;border-radius:11px;background:#202025;color:#ddd;font-size:12px;font-weight:800;user-select:none}
+.dict-more-v7862>summary::-webkit-details-marker{display:none}
+.dict-more-v7862[open]>summary,.dict-more-v7862>summary:hover{border-color:#bd737f;color:#fff}
+.dict-more-menu-v7862{position:relative;display:flex;flex-direction:column;gap:6px;margin:8px 0 3px;padding:12px;border:1px solid #553a42;border-radius:12px;background:#1b171a;max-width:250px;box-shadow:0 6px 20px #0003}
+.dict-more-menu-v7862 small{color:#a9a3a8;font-size:10px;line-height:1.5}
+.dict-action-row .dict-more-menu-v7862 .dict-v783-report{margin:0;text-align:left}
+@media(max-width:560px){.dict-action-row .dict-more-v7862{margin-left:0}}

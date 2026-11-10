@@ -12,10 +12,10 @@ let passed=0;
 const test=async(label,fn)=>{await fn();console.log(`PASS v7861 ${label}`);passed++};
 const server=read('netlify/functions/exam-admin-analytics.mts');
 await test('release and source links are 7.86.1',()=>{
- const p=JSON.parse(read('package.json'));assert.equal(p.version,'7.86.1');
+ const p=JSON.parse(read('package.json'));assert(['7.86.1','7.86.2'].includes(p.version));
  assert(p.scripts.test.includes('v7861-stability-fix.mjs'));assert(p.scripts.build.includes('v7861-stability-fix.mjs'));
  assert.match(read('netlify.toml'),/publish\s*=\s*"dist"/);
- assert.match(read('scripts/build-public-v7841.mjs'),/version:'7.86.1'/);
+ assert.match(read('scripts/build-public-v7841.mjs'),/version:'7.86.(?:1|2)'/);
 });
 await test('PostgreSQL output labels use explicit safe aliases in BOTH date series',()=>{
  assert.match(server,/::date::text AS day_key,/);

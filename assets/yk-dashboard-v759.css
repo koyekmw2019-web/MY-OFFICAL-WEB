@@ -144,3 +144,20 @@ body::before{content:"";position:fixed;inset:0;background:linear-gradient(140deg
 @media(max-width:680px){.yk767-hero{flex-direction:column;align-items:stretch}.yk767-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}.yk767-controls label{min-width:0}.yk767-controls select{max-width:none;width:100%}.yk767-surface{padding:16px}.yk767-focus-list{grid-template-columns:1fr}.yk767-kpi{padding:15px}.yk767-kpi strong{font-size:24px}.yk767-verified-label{font-size:9px}}
 @media(max-width:370px){.yk767-controls{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.yk767-bar span{transition:none}}
+
+/* v7.86.2: Mobile dock is part of document flow, never overlays stats/forms.
+   Desktop retains the existing floating dock. Safe-area is respected. */
+@media(max-width:720px){
+  .shell{padding-bottom:24px}
+  .yk-dash-dock{position:relative;inset:auto;bottom:auto;left:auto;right:auto;z-index:2;padding:8px 12px calc(20px + env(safe-area-inset-bottom));pointer-events:auto}
+  .yk-dash-dock-inner{max-width:100%;padding:7px;gap:8px;border-radius:17px;box-shadow:0 8px 25px rgba(0,0,0,.35)}
+  .yk-dash-dock a,.yk-dash-dock button{flex:1;min-height:46px;padding:9px 7px;font-size:11px;letter-spacing:0;white-space:normal;line-height:1.35}
+  .yk-dash-dock svg{width:16px;height:16px}
+}
+/* Compact admin intro: Pro overview is the primary visual heading below. */
+body[data-dashboard="admin"] .intro{padding:18px 0 16px}
+body[data-dashboard="admin"] .intro::before{top:8px}
+body[data-dashboard="admin"] .intro h1{font-size:clamp(22px,3vw,29px);margin:9px 0 5px}
+body[data-dashboard="admin"] .intro p{font-size:12px}
+.yk86-admin-tool-link{display:inline-flex;align-items:center;gap:8px;padding:11px 14px;max-width:100%;border:1px solid #654149;border-radius:12px;background:#251b20;color:#f6d2d6;font-weight:800;overflow-wrap:anywhere}
+.yk86-admin-tool-link:hover{border-color:#aa5864;background:#352128}
