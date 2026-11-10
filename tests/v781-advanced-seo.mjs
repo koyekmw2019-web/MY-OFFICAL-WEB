@@ -12,7 +12,7 @@ let passes=0;function test(n,cb){cb();console.log('PASS',n);passes++}
 const names=['index','jlpt-n5','jlpt-n4','jlpt-n3','jlpt-n2','jlpt-n1','jlpt-mock-exams','japanese-myanmar-dictionary','ssw-transport','ssw-truck','ssw-taxi','ssw-bus','transport-textbooks','ssw-mock-exam','ssw-auto-maintenance','driving-license'];
 function match(html, regex){return (html.match(regex)||[]).length}
 test('v7.81 package and original homepage search title stay unchanged',()=>{
- assert.equal(JSON.parse(read('package.json')).version,'7.81.0');
+ assert(['7.81.0','7.82.0','7.82.1','7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0'].includes(JSON.parse(read('package.json')).version));
  assert(home.includes('<title>YE KUN Official Website | YE LINN OO</title>'));
  assert.equal(match(home,/<title>/g),1);
  assert.equal(match(home,/rel="canonical"/g),1);
@@ -35,14 +35,16 @@ test('new guides are unique static Japanese/Myanmar readable content pages',()=>
   assert(statSync(join(root,rel)).size>5800,'thin content? '+rel);
  }
 });
-test('public sitemap exactly lists the 16 guides and one original homepage; no private URLs',()=>{
+test('public sitemap retains all 16 guides and adds only JLPT Learning and Video Course public pages',()=>{
  const locs=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
- assert.equal(locs.length,names.length+1);
+ assert.equal(locs.length,names.length+3);
+ assert(locs.includes(domain+'/study/jlpt-learning.html'));
+ assert(locs.includes(domain+'/video-class.html'));
  assert.equal(new Set(locs).size,locs.length);
  assert.equal(locs[0],domain+'/');
  for(const n of names)assert(locs.includes(`${domain}/study/${n}.html`),n);
  for(const loc of locs)assert(!/(login|dashboard|payment|\.netlify|receipt|api\/)/i.test(new URL(loc).pathname),loc);
- assert.equal(match(sitemap,/<lastmod>2026-11-07<\/lastmod>/g),locs.length);
+ assert.equal(match(sitemap,/<lastmod>2026-11-07<\/lastmod>/g),names.length+1);
 });
 test('guides have valid WebPage and BreadcrumbList JSON-LD, not fabricated official Courses',()=>{
  for(const n of names){const t=read(`study/${n}.html`);const match=t.match(/<script type="application\/ld\+json">(.*?)<\/script>/s);assert(match,n);
@@ -59,13 +61,13 @@ test('user-facing website contains discoverable footer links without changing he
  assert(home.includes('yk-brand-icon-v778'));
 });
 test('all new guides link to a known public homepage anchor, each other and index',()=>{
- const valid=new Set(names.map(n=>`/study/${n}.html`));
+ const valid=new Set(names.map(n=>`/study/${n}.html`));valid.add('/study/jlpt-learning.html');
  for(const n of names){
   const t=read(`study/${n}.html`);
   assert(t.includes('href="/study/index.html"')||n==='index',n);
   assert(t.includes('href="/#'),n);
   const hrefs=[...t.matchAll(/href="(\/study\/[^"#]+)"/g)].map(m=>m[1]);
-  for(const h of hrefs) assert(valid.has(h),`${n} invalid ${h}`);
+  for(const h of hrefs) assert(valid.has(h.split("?")[0]),`${n} invalid ${h}`);
  }
 });
 test('private login and Dashboard pages stay noindex and absent from public sitemap',()=>{

@@ -1,0 +1,23 @@
+/* v7.83 additions only: preserve the existing premium cards and dark palette. */
+.dictionary-jp ruby{ruby-align:center;line-height:1.75}
+.dictionary-jp rt{font-size:.53em;color:#ed9da4;letter-spacing:.02em}
+.dict-v783-example{padding:12px 13px;margin-top:12px;border:1px solid rgba(255,255,255,.12);border-radius:14px;background:rgba(255,255,255,.025)}
+.dict-v783-example b{display:block;font-size:11px;color:#d4a9ad;margin-bottom:5px;letter-spacing:.045em}
+.dict-v783-example .dict-v783-ja{font-size:14px;line-height:2.3;color:#fff;overflow-wrap:anywhere}
+.dict-v783-example ruby{ruby-align:center}.dict-v783-example rt{font-size:.6em;color:#bcbec6}
+.dict-v783-example .dict-v783-my{display:block;color:#c6c6ca;font-size:13px;line-height:1.9;margin-top:6px}
+.dict-v783-example .dict-v783-draft{display:block;font-size:10px;color:#919199;margin-top:7px}
+.dict-v783-review{font-size:11px;color:#b8a786;margin-top:8px;line-height:1.7}
+.dict-action-row{flex-wrap:wrap}.dict-action-row .dict-v783-report{margin-left:auto;color:#e8aab1;border-color:#663a40;background:#26161a}
+.dict-action-row .dict-v783-report:hover{border-color:#ed8f9d;background:#392026}
+.dict-report-dialog{color:#fff;border:1px solid #444;border-radius:24px;background:linear-gradient(150deg,#19191b,#09090b);padding:0;width:min(520px,calc(100vw - 28px));max-height:88vh;box-shadow:0 24px 90px #000b}
+.dict-report-dialog::backdrop{background:rgba(0,0,0,.75);backdrop-filter:blur(5px)}
+.dict-report-form{padding:23px;display:grid;gap:13px;max-height:85vh;overflow:auto}
+.dict-report-form h3{font-size:21px;margin:0}.dict-report-form p{color:#aaa;font-size:12px;line-height:1.7;margin:0}
+.dict-report-form label{display:grid;gap:6px;font-size:12px;color:#c5c5cc;font-weight:700}
+.dict-report-form select,.dict-report-form input,.dict-report-form textarea{box-sizing:border-box;width:100%;font:inherit;font-size:14px;color:#fff;background:#131316;border:1px solid #39393d;border-radius:11px;padding:11px 12px;min-width:0;line-height:1.6}
+.dict-report-form textarea{min-height:84px;resize:vertical}.dict-report-form .dict-report-actions{display:flex;gap:10px;flex-wrap:wrap}
+.dict-report-form button{border:1px solid #45454a;border-radius:12px;padding:11px 14px;font:inherit;font-size:13px;font-weight:800;background:#1d1d21;color:#fff;cursor:pointer}
+.dict-report-form button[type=submit]{background:#fff;color:#111;flex:1}.dict-report-form button:disabled{opacity:.45;cursor:wait}
+.dict-report-status{font-size:12px;color:#c7c7ca;min-height:18px}.dict-report-status.error{color:#fb9ea9}.dict-report-status.success{color:#a4eac5}
+@media(max-width:560px){.dict-report-form{padding:18px}.dict-action-row .dict-v783-report{margin-left:0}}

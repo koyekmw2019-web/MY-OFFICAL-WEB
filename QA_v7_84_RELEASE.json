@@ -1,0 +1,95 @@
+{
+  "version": "7.84.0",
+  "date": "2026-11-09",
+  "base_source": "YEKUN_v7.83_Dictionary_Quality_Examples_Update.zip",
+  "base_sha256": "346cda4055439ec94c37685535defacaeb9e751a81432a4f7ca55e0bb00c1cc4",
+  "archive_before": 331,
+  "source_integrity": {
+    "source_files_retained": 331,
+    "base_files_unchanged": 322,
+    "modified_existing_files": [
+      "admin-dashboard.html",
+      "package.json",
+      "service-worker.js",
+      "student-dashboard.html",
+      "tests/v780-performance.mjs",
+      "tests/v781-advanced-seo.mjs",
+      "tests/v7821-character-ui.mjs",
+      "tests/v7822-character-visibility.mjs",
+      "tests/v7822-reading-update.mjs"
+    ],
+    "new_files_before_this_report": [
+      "README_v7_84_DASHBOARD_PRO_MY.md",
+      "assets/yk-dashboard-pro-v784-engine.js",
+      "assets/yk-dashboard-pro-v784.css",
+      "assets/yk-dashboard-pro-v784.js",
+      "netlify/functions/exam-admin-analytics.mts",
+      "scripts/v784-browser-smoke.py",
+      "tests/v784-admin-api.mock.mjs",
+      "tests/v784-dashboard-pro.mjs"
+    ],
+    "removed_files": [],
+    "existing_netlify_functions_and_migrations_changed": 0,
+    "original_character_assets_unchanged": true,
+    "homepage_index_unchanged": true,
+    "member_dashboard_unchanged": true,
+    "prior_dictionary_catalog_unchanged": true,
+    "new_database_migrations": 0,
+    "new_pdfs": 0
+  },
+  "features": {
+    "admin": "Active students, pending payments, verified mock exam pass rate and trends by type, 7/30/90-day learning practice activity graph, YKCR receiver metrics (not upstream queue), aggregate-only admin API.",
+    "student": "Account-scoped exam performance and wrong-answer history, level-based lesson coverage, ranked next practice links, no invented subject scores.",
+    "design": "Premium black/white/red; desktop/mobile responsive; original character assets unchanged.",
+    "access": "New admin endpoint read-only GET, protected by requireAdmin, no PII returned; student uses only existing requireUser-protected endpoints."
+  },
+  "tests": {
+    "npm_test": {
+      "status": "PASS",
+      "note": "All existing tests plus v7.84 tests passed; source /mnt/data/v784_suite_final.log"
+    },
+    "v784_logic_unit": {
+      "status": "PASS",
+      "checks": 18
+    },
+    "v784_admin_api_mock": {
+      "status": "PASS",
+      "checks": 6,
+      "note": "Fake DB responses; not a real PostgreSQL query or Netlify auth test"
+    },
+    "v784_browser_ui_mock": {
+      "status": "PASS",
+      "cases": 4,
+      "widths_px": [
+        1280,
+        390
+      ],
+      "roles": [
+        "admin",
+        "student"
+      ],
+      "notes": "Real local Chromium rendering with supplied fixture responses; no real identity or database"
+    },
+    "new_function_typescript_syntax": {
+      "status": "PASS",
+      "method": "node --experimental-strip-types --check"
+    },
+    "full_netlify_build": {
+      "status": "BLOCKED",
+      "reason": "npm install failed due registry.npmjs.org DNS EAI_AGAIN; esbuild unavailable locally"
+    },
+    "real_netlify_auth_db_sql_and_live_integrations": {
+      "status": "NOT TESTED"
+    },
+    "payment_ykcr_exam_dictionary_live_regression": {
+      "status": "NOT TESTED"
+    }
+  },
+  "known_limits": [
+    "YKCR Pending/Failed upstream queue unknown; only inbound events can be shown.",
+    "No persisted subject-level mock exam performance; JLPT subject bars show lesson completion, not subject correctness.",
+    "Admin learning sessions are saved Daily Practice aggregate, not officially verified exam results.",
+    "The latest 50 attempt and mistake records bound Student recommendations."
+  ],
+  "release_guidance": "Staging first: verify npm build, real PostgreSQL queries, admin 403 for non-admin, user-account isolation, current payment/Exam/YKCR and dictionary flows before production."
+}

@@ -1,0 +1,77 @@
+{
+  "version": "7.85.0",
+  "date": "2026-11-10",
+  "source_base": "YEKUN_v7.84.1_Safe_File_Audit_Lightweight_Update.zip",
+  "source_files_base": 345,
+  "modified_existing_files": [
+    "index.html",
+    "package.json",
+    "scripts/build-public-v7841.mjs",
+    "sitemap.xml",
+    "tests/v780-performance.mjs",
+    "tests/v781-advanced-seo.mjs",
+    "tests/v7821-character-ui.mjs",
+    "tests/v7822-character-visibility.mjs",
+    "tests/v7822-reading-update.mjs"
+  ],
+  "new_files": [
+    "QA_v7_85_RELEASE.json",
+    "README_v7_85_VIDEO_COURSE_MY.md",
+    "assets/yk-video-course-v785.css",
+    "assets/yk-video-course-v785.js",
+    "tests/v785-video-course.mjs",
+    "video-class.html"
+  ],
+  "existing_files_missing": [],
+  "protected_existing_source_changed": [],
+  "old_files_unchanged": 336,
+  "dictionary_words_unchanged": 8542,
+  "youtube_video_ids": {
+    "TRUCK": "Uu9pI35J6Kw",
+    "TAXI": "sBQRpsDpBis",
+    "BUS": "-_ZD6orT8b8"
+  },
+  "netlify_video_binaries_added": false,
+  "old_netlify_functions_migrations_changed": false,
+  "existing_character_assets_changed": false,
+  "npm_test": {
+    "status": "PASS",
+    "pass_lines": 203,
+    "new_v785_tests": 7
+  },
+  "browser_qa": {
+    "checks": [
+      "PASS desktop: 3 cards and covers, no overflow, iframe deferred",
+      "PASS desktop: category filter",
+      "PASS desktop: on-click iframe + removal after closing",
+      "PASS desktop: JA/EN translation",
+      "PASS desktop: zero JS errors",
+      "PASS mobile: 3 cards and covers, no overflow, iframe deferred",
+      "PASS mobile: category filter",
+      "PASS mobile: on-click iframe + removal after closing",
+      "PASS mobile: JA/EN translation",
+      "PASS mobile: zero JS errors"
+    ],
+    "count": 10,
+    "limitation": "Offline document injection: no real network/local navigation or playback, localStorage opaque-origin disabled"
+  },
+  "preview_build": {
+    "status": "PASS (without generated identity bundle)",
+    "pages": 25,
+    "publish": "dist",
+    "runtime_assets_count": 88,
+    "missing_esbuild_bundle": true
+  },
+  "production_build": {
+    "status": "NOT VERIFIED",
+    "reason": "esbuild command missing in local environment, npm run build exit 127"
+  },
+  "live_verification": {
+    "youtube_embed": "NOT TESTED",
+    "facebook": "NOT TESTED",
+    "netlify_production": "NOT TESTED",
+    "auth_payment_exam_ykcr": "NOT TESTED"
+  },
+  "data_migrations_required_for_this_feature": false,
+  "deployment_risk": "v7.85 source NOT deployed. Stage first; full previous-version migrations and live integration need checking."
+}

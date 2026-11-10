@@ -154,9 +154,10 @@ await test('Per-type free index collision maps to payment_required without bypas
  assert.equal(res.status,402);assert.equal((await res.json()).reason,'payment_required');
  assert(queries.some(q=>q.includes("access_mode='free'")&&q.includes('exam_type=')));
 });
-await test('Migration count + no edited historical migration (10 total)',()=>{
+await test('Historical 10 migrations remain with additive v7.82 extension',()=>{
  const n=readdirSync(root+'/netlify/database/migrations').filter(x=>x.endsWith('.sql'));
- assert.equal(n.length,10);
+ assert.equal(n.filter(x=>x<'20261109090000_v782_jlpt_learning_progress.sql').length,10);
+ assert(n.includes('20261109090000_v782_jlpt_learning_progress.sql'));
 });
 console.log(`\nTOTAL ${pass} PASS / ${fail} FAIL (mock DB, not production)`);
 if(fail)process.exitCode=1;

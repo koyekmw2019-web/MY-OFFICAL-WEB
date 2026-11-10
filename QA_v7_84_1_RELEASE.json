@@ -1,0 +1,58 @@
+{
+  "project": "YE KUN Official Website",
+  "release_version": "7.84.1",
+  "base": "YEKUN_v7.84_Admin_Student_Dashboard_Pro_Update.zip",
+  "release_type": "safe public deployment slim + lossless dictionary transport",
+  "source_integrity": {
+    "baseline_files": 340,
+    "changed_existing_files": [
+      "netlify.toml",
+      "package.json",
+      "service-worker.js",
+      "tests/v780-performance.mjs",
+      "tests/v781-advanced-seo.mjs",
+      "tests/v7821-character-ui.mjs",
+      "tests/v7822-character-visibility.mjs",
+      "tests/v7822-reading-update.mjs"
+    ],
+    "unchanged_existing_files": 332,
+    "deleted_existing_files": 0,
+    "changed_backend_files": 0,
+    "changed_db_migrations": 0
+  },
+  "optimized_build_preview": {
+    "publish": "dist",
+    "html_pages": 24,
+    "asset_files_preview": 86,
+    "excluded_legacy_assets_from_public": 23,
+    "original_source_tree_bytes": 41005043,
+    "preview_publish_bytes_without_generated_identity": 6287327,
+    "dictionary_original_bytes": 2717230,
+    "dictionary_packed_bytes": 960760,
+    "dictionary_gzip9_original_bytes": 317009,
+    "dictionary_gzip9_packed_bytes": 273411,
+    "dictionary_words": 8542,
+    "lossless_record_validation": true,
+    "local_html_references_checked": 448,
+    "local_missing_excluding_generated_bundle": 0
+  },
+  "checks": {
+    "old_and_new_npm_test": "PASS",
+    "new_optimization_tests": 5,
+    "dictionary_deep_compare_all_8542": "PASS",
+    "source_filesystem_integrity": "PASS",
+    "static_local_references": "PASS",
+    "offline_browser_dictionary_smoke_1280_390": "PASS_WITH_OPAQUE_ORIGIN_LOCALSTORAGE_LIMITATION",
+    "original_character_assets": "UNCHANGED",
+    "ZIP_integrity": "PASS"
+  },
+  "not_tested": {
+    "full_netlify_build": "BLOCKED_esbuild_unavailable",
+    "staging_netlify_login": "NOT_TESTED",
+    "database_and_YKCR": "NOT_TESTED",
+    "live_payment_and_exam": "NOT_TESTED",
+    "real_page_load_benchmarks": "NOT_TESTED"
+  },
+  "production_ready_confirmed": false,
+  "notes": "Preview dist excludes compiled identity.bundle.js because esbuild unavailable in this container. Netlify npm run build must generate it before copying to publish dist."
+}

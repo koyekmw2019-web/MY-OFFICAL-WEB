@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="my">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Dictionary Reports | STUDYING WITH YE KUN</title>
+<link rel="icon" href="/yk-192.png">
+<style>
+:root{color-scheme:dark;font-family:Inter,'Noto Sans Myanmar','Noto Sans JP',system-ui,sans-serif}
+*{box-sizing:border-box}body{background:#09090b;color:#fff;margin:0;line-height:1.65}
+header{position:sticky;top:0;z-index:2;background:rgba(9,9,11,.94);border-bottom:1px solid #303036;backdrop-filter:blur(10px)}
+header .bar{max-width:1080px;margin:auto;padding:13px 18px;display:flex;align-items:center;gap:14px;justify-content:space-between;flex-wrap:wrap}
+a{color:#fff;text-decoration:none}header img{width:146px;height:auto;max-height:56px;object-fit:contain}header a.back{font-size:13px;border:1px solid #444;border-radius:12px;padding:9px 12px}
+main{max-width:1080px;margin:0 auto;padding:35px 18px 90px}h1{font-size:clamp(24px,4vw,36px);margin:0}p{color:#aaa;margin:5px 0 16px}.subtitle{font-size:13px}
+.controls{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:22px 0}
+select,textarea,input{color:#fff;background:#18181c;border:1px solid #424249;padding:11px 13px;border-radius:12px;font:inherit;max-width:100%;width:100%}
+.controls select{width:min(250px,100%)}.btn{border:1px solid #494951;background:#151519;color:#eee;border-radius:12px;padding:10px 15px;font:inherit;font-size:13px;font-weight:750;cursor:pointer}
+.btn.primary{background:#fff;color:#101012}.btn.reject{color:#edaab2;border-color:#823740}.btn:disabled{opacity:.4;cursor:wait}
+#status{color:#bbb;font-size:13px;margin:12px 0;min-height:24px}#status.error{color:#ffaab2}.reports{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.report{padding:19px;border:1px solid #303036;border-radius:21px;background:linear-gradient(145deg,#151518,#0e0e10);min-width:0}
+.report h2{margin:0 0 4px;font-size:19px;overflow-wrap:anywhere}.report p{font-size:12px;overflow-wrap:anywhere;margin:8px 0}
+.report small{color:#8f8f99}.report .tag{display:inline-flex;font-size:10px;font-weight:800;border:1px solid #5c4448;border-radius:999px;padding:4px 9px;color:#e6aab2}
+.report .label{display:block;font-size:11px;color:#999;margin:13px 0 4px}.report .value{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;color:#ddd}
+.report textarea{min-height:85px;margin-top:5px}.report .actions{display:flex;gap:7px;margin-top:12px;flex-wrap:wrap}.empty{border:1px dashed #39393e;border-radius:16px;text-align:center;padding:32px;color:#aaa}
+@media(max-width:700px){.reports{grid-template-columns:1fr}main{padding-top:22px}}
+</style>
+</head>
+<body>
+<header><div class="bar"><a href="/admin-dashboard.html" class="back">← Admin Dashboard</a><a href="/#driving-dictionary" aria-label="STUDYING WITH YE KUN"><img src="/assets/yk-horizontal-white-v778.webp" alt="STUDYING WITH YE KUN"></a></div></header>
+<main><div style="color:#db8e9b;font-size:11px;letter-spacing:.12em;font-weight:800">STUDYING WITH YE KUN · ADMIN ONLY</div>
+<h1>Dictionary Translation Reports</h1><p class="subtitle">User Report တွေကို Admin စစ်ပြီးမှ Approve / Reject လုပ်ပါ။ Approve အတည်ပြုထားတဲ့ Myanmar Meaning ကို Website က Server မှတစ်ဆင့် Update ပြသမယ်။</p>
+<div class="controls"><select id="statusFilter" aria-label="Report status"><option value="pending">Pending</option><option value="needs_review">Needs Review</option><option value="approved">Approved</option><option value="rejected">Rejected</option><option value="all">All reports</option></select><button type="button" class="btn" id="reload">↻ Reload</button></div>
+<div id="status" role="status" aria-live="polite">Admin Permission စစ်ဆေးနေပါတယ်…</div><section class="reports" id="reportList" aria-label="Reported dictionary terms"></section>
+</main>
+<script type="module" src="/assets/identity.bundle.js"></script>
+<script>
+(()=>{
+const list=document.getElementById('reportList'),msg=document.getElementById('status'),filter=document.getElementById('statusFilter');
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let reports=[];
+async function load(){
+  msg.className='';msg.textContent='Loading…';list.innerHTML='';
+  try{
+    const r=await fetch('/.netlify/functions/dictionary-reports-admin?status='+encodeURIComponent(filter.value),{credentials:'same-origin'});
+    const data=await r.json().catch(()=>({}));
+    if(!r.ok){throw new Error(r.status===401||r.status===403?'Admin Account နဲ့ Login ဝင်ပြီးမှ ဒီနေရာကို ကြည့်နိုင်ပါတယ်။':(data.error||'Report service unavailable'))}
+    reports=Array.isArray(data.reports)?data.reports:[];
+    msg.textContent=`${reports.length} report(s) · latest 150`;
+    list.innerHTML=reports.length?reports.map(r=>`
+      <article class="report" data-id="${Number(r.id)}"><span class="tag">${esc(r.status)} · #${Number(r.id)}</span>
+      <h2 lang="ja">${esc(r.jp)} <small>(${esc(r.reading)})</small></h2>
+      <small>${esc(r.issue_type)} · ${esc(r.reported_at||'')}</small>
+      <span class="label">Current meaning</span><div class="value" lang="my">${esc(r.reported_meaning)}</div>
+      <span class="label">User suggestion</span><div class="value" lang="my">${esc(r.suggested_meaning||'—')}</div>
+      <span class="label">Details</span><div class="value">${esc(r.details||'—')}</div>
+      ${r.status==='pending'||r.status==='needs_review'?`
+        <label class="label">Admin approved meaning (edit before approval)</label><textarea data-approved maxlength="500">${esc(r.suggested_meaning||r.reported_meaning||'')}</textarea>
+        <label class="label">Review note (optional)</label><input data-note maxlength="1000" placeholder="Admin note">
+        <div class="actions"><button class="btn primary" data-action="approve">Approve meaning</button><button class="btn" data-action="needs_review">Keep reviewing</button><button class="btn reject" data-action="reject">Reject</button></div>`:
+        `<p>Admin review: ${esc(r.review_note||'—')}</p>`}
+      </article>`).join(''):'<div class="empty">ဒီ Status နဲ့ Report မရှိသေးပါဘူး။</div>';
+  }catch(e){msg.className='error';msg.textContent=e.message||'Could not load reports'}
+}
+list.addEventListener('click',async e=>{
+ const btn=e.target.closest('[data-action]');if(!btn)return;
+ const card=btn.closest('[data-id]'),id=Number(card?.dataset.id),action=btn.dataset.action;
+ const approvedMeaning=card.querySelector('[data-approved]')?.value.trim()||'',note=card.querySelector('[data-note]')?.value.trim()||'';
+ if(action==='approve'&&!approvedMeaning){msg.className='error';msg.textContent='Enter a Myanmar meaning before approval';return}
+ if(!confirm(action==='approve'?`Approve #${id}? The new Myanmar meaning will appear publicly after the cache refresh.`:`Confirm ${action} for #${id}?`))return;
+ btn.disabled=true;msg.className='';msg.textContent='Saving review…';
+ try{
+  const r=await fetch('/.netlify/functions/dictionary-reports-admin',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({id,action,approvedMeaning,note})});
+  const d=await r.json().catch(()=>({}));if(!r.ok||!d.ok)throw new Error(d.error||'Review failed');
+  await load();
+ }catch(err){msg.className='error';msg.textContent=err.message||'Review failed';btn.disabled=false}
+});
+filter.addEventListener('change',load);document.getElementById('reload').addEventListener('click',load);
+load();
+})();
+</script>
+</body></html>

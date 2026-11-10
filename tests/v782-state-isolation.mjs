@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';import vm from 'node:vm';
+const script=readFileSync(new URL('../assets/yk-jlpt-learning-v782-state.js',import.meta.url),'utf8');
+const saved=new Map();let currentUser='alice',calls=[];
+const localStorage={getItem:k=>saved.get(k)||null,setItem:(k,v)=>saved.set(k,v)};
+const window={YKIdentity:{getUser:async()=>({id:currentUser})}};
+const fetch=async(path,options)=>{calls.push(options.method);return {ok:true,json:async()=>({state:{}})}};
+const ctx={window,localStorage,fetch,Date,console,setTimeout:(fn)=>1,clearTimeout:()=>{}};
+vm.runInNewContext(script,ctx);const a=window.YKJLPTStateV782;
+await a.init();assert.equal(a.getScope(),'account:alice');assert(a.isCloud());a.markDone('N5-v-1');a.toggleSaved('N5-v-1');assert(a.isDone('N5-v-1'));assert(a.isSaved('N5-v-1'));
+currentUser='bob';await a.init();assert.equal(a.getScope(),'account:bob');assert.equal(a.isDone('N5-v-1'),false);assert.equal(a.isSaved('N5-v-1'),false);a.markDone('N4-v-1');
+currentUser='alice';await a.init();assert.equal(a.isDone('N5-v-1'),true);assert.equal(a.isDone('N4-v-1'),false);assert.deepEqual(calls,['GET','GET','GET']);
+console.log('PASS v7.82 state account isolation + local persistence + cloud-ready init');

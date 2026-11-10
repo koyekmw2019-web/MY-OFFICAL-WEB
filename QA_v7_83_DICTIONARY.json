@@ -1,0 +1,15 @@
+{
+  "version": "7.83",
+  "catalog_entries": 8542,
+  "translations_blank": 0,
+  "automated_audited": 8542,
+  "machine_translation_review_required": 5776,
+  "targeted_meaning_corrections": 24,
+  "examples_with_bilingual_sentences": 180,
+  "original_v783_examples": 138,
+  "legacy_example_additions": 15,
+  "legacy_gloss_corrections": 10,
+  "qa_flags_not_human_verification": true,
+  "all_translations_expert_verified": false,
+  "uncorrected_draft_entries_remain": true
+}

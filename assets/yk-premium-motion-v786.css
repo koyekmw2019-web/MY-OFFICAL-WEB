@@ -1,0 +1,54 @@
+/* STUDYING WITH YE KUN — v7.86.0 Premium Motion
+ * Lightweight, decorative layer. Never alters exam scoring, auth, paywalls,
+ * YKCR state, original anime illustrations or content visibility without JS.
+ * One-time transform/opacity motion, accessible reduced-motion fallback. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes yk86-arrive {from{opacity:.35;transform:translate3d(0,12px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+  @keyframes yk86-slide-right {from{opacity:.55;transform:translate3d(14px,0,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+  @keyframes yk86-student-arrive {from{opacity:.65;transform:translate3d(-9px,10px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+  @keyframes yk86-teacher-arrive {from{opacity:.65;transform:translate3d(9px,10px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+  @keyframes yk86-reaction-pop {0%{opacity:.5;transform:translate3d(0,7px,0) scale(.986)}70%{opacity:1;transform:translate3d(0,-1px,0) scale(1.006)}100%{opacity:1;transform:translate3d(0,0,0) scale(1)}}
+  @keyframes yk86-soft-glow {0%,100%{box-shadow:0 5px 25px #0009}50%{box-shadow:0 5px 25px #0009,0 0 0 9px #e7232926}}
+  @keyframes yk86-score-in {from{opacity:.7;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+
+  /* Only animate when script enables motion. No initial display:none or opacity:0. */
+  .yk86-motion .hero .hero-card .eyebrow {animation:yk86-arrive .48s ease-out both}
+  .yk86-motion .hero .hero-card h1 {animation:yk86-arrive .58s .07s ease-out both}
+  .yk86-motion .hero .hero-card .subtitle {animation:yk86-arrive .58s .12s ease-out both}
+  .yk86-motion .hero .hero-card .lead {animation:yk86-arrive .58s .17s ease-out both}
+  .yk86-motion .hero .hero-card .actions {animation:yk86-arrive .58s .22s ease-out both}
+  .yk86-motion .vc-hero .vc-hero-body {animation:yk86-arrive .65s .06s ease-out both}
+  .yk86-motion .vc-hero .vc-hero-play {animation:yk86-soft-glow 1.4s .35s ease-in-out 2}
+  .yk86-motion [data-yk86-reveal].yk86-inview {animation:yk86-arrive .52s ease-out both;animation-delay:var(--yk86-delay,0ms)}
+  .yk86-motion .yk821-hub-welcome.yk86-inview .yk821-hub-people img:first-child,
+  .yk86-motion .yk821-hero.yk86-inview .yk821-art-student {animation:yk86-student-arrive .56s .12s ease-out both}
+  .yk86-motion .yk821-hub-welcome.yk86-inview .yk821-hub-people img:last-child,
+  .yk86-motion .yk821-hero.yk86-inview .yk821-art-teacher {animation:yk86-teacher-arrive .56s .22s ease-out both}
+  .yk86-motion.menu-open .site-menu-nav>a {animation:yk86-slide-right .3s ease-out both}
+  .yk86-motion.menu-open .site-menu-nav>a:nth-child(2) {animation-delay:30ms}
+  .yk86-motion.menu-open .site-menu-nav>a:nth-child(3) {animation-delay:60ms}
+  .yk86-motion.menu-open .site-menu-nav>a:nth-child(4) {animation-delay:90ms}
+  .yk86-motion.menu-open .site-menu-nav>a:nth-child(5) {animation-delay:120ms}
+  .yk86-motion.menu-open .site-menu-nav>a:nth-child(6) {animation-delay:150ms}
+  .yk86-motion.menu-open .site-menu-nav>a:nth-child(7) {animation-delay:180ms}
+  .yk86-motion.menu-open .site-menu-nav>a:nth-child(8) {animation-delay:210ms}
+  .yk86-motion .yk821-reaction.yk86-feedback-show {animation:yk86-reaction-pop .44s ease-out both}
+  .yk86-motion .yk821-lesson-companion.yk86-tip-fresh {animation:yk86-reaction-pop .35s ease-out both}
+  .yk86-motion .exam-result .score-ring {animation:yk86-score-in .55s ease-out both}
+  .yk86-motion .vc-card.yk86-filter-in {animation:yk86-arrive .35s ease-out both}
+  @media(hover:hover) and (pointer:fine) {
+    .yk86-motion .study-track {transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease}
+    .yk86-motion .study-track:hover {transform:translateY(-4px);box-shadow:0 13px 32px #0005;border-color:#a54a55}
+    .yk86-motion .vc-material {transition:transform .25s ease,border-color .25s ease}
+    .yk86-motion .vc-material:hover {transform:translateY(-3px);border-color:#8a4248}
+    .yk86-motion .yk821-hub-open:hover {filter:brightness(1.1)}
+    .yk86-motion .vc-contact-actions .vc-btn:hover {filter:brightness(1.08)}
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .yk86-motion [data-yk86-reveal],
+  .yk86-motion .yk821-reaction,
+  .yk86-motion .yk821-hero-art img,
+  .yk86-motion .yk821-hub-people img,
+  .yk86-motion .vc-card {animation:none!important}
+}

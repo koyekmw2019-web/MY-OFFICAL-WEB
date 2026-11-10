@@ -1,5 +1,5 @@
 /* v7.80: cache versioned PUBLIC static assets only. Never cache HTML, credentials or APIs. */
-const VERSION = 'yk-official-v7-80-stability-speed';
+const VERSION = 'yk-official-v7-80-stability-speed-v7841-slim-v786-motion';
 const PUBLIC_CACHE = `yk-public-static-${VERSION}`;
 self.addEventListener('install', (event) => {
   event.waitUntil(self.skipWaiting());
@@ -19,6 +19,8 @@ self.addEventListener('fetch', (event) => {
   if (url.pathname.startsWith('/.netlify/') || url.pathname.startsWith('/api/') || url.pathname.startsWith('/admin')) return;
   // Public assets only; never store private responses or cache page HTML.
   const isStatic = /^\/assets\/.+\.(?:js|css|png|jpe?g|webp|svg|woff2?)$/.test(url.pathname)
+    || url.pathname === '/assets/jlpt-learning-v782-content.json'
+    || url.pathname === '/assets/jlpt-reading-v7822-upgrade.json'
     || /^\/yk-(?:192|512)\.png$/.test(url.pathname);
   if (!isStatic || request.headers.has('authorization')) return;
   event.respondWith((async () => {

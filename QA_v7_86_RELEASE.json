@@ -1,0 +1,84 @@
+{
+  "version": "7.86.0",
+  "release_name": "Premium Animation & Character Experience",
+  "base_zip": "YEKUN_v7.85_Video_Course_Learning_Center_Update.zip",
+  "release_type": "source_candidate_not_production_deployed",
+  "base_file_count": 351,
+  "base_unchanged_count": 339,
+  "base_modified_count": 12,
+  "base_files_missing": [],
+  "modified_original_files": [
+    "index.html",
+    "package.json",
+    "scripts/build-public-v7841.mjs",
+    "service-worker.js",
+    "study/jlpt-learning.html",
+    "tests/v780-performance.mjs",
+    "tests/v781-advanced-seo.mjs",
+    "tests/v7821-character-ui.mjs",
+    "tests/v7822-character-visibility.mjs",
+    "tests/v7822-reading-update.mjs",
+    "tests/v785-video-course.mjs",
+    "video-class.html"
+  ],
+  "new_files_excluding_qa": [
+    "README_v7_86_PREMIUM_MOTION_MY.md",
+    "assets/yk-premium-motion-v786.css",
+    "assets/yk-premium-motion-v786.js",
+    "tests/v786-premium-motion.mjs"
+  ],
+  "protected_function_database_and_original_characters_changed": [],
+  "automated_tests": {
+    "result": "PASS",
+    "pass_lines": 211,
+    "new_motion_tests": 8
+  },
+  "offline_chromium": {
+    "result": "PASS",
+    "viewports": [
+      1280,
+      390
+    ],
+    "tested": [
+      "homepage hamburger menu",
+      "study hub scroll entrance",
+      "video course truck filter and modal iframe removal",
+      "teacher grammar tip update",
+      "reaction animation",
+      "both original character images",
+      "no horizontal overflow",
+      "reduced motion disabled"
+    ],
+    "test_origin": "opaque about:blank; homepage existing localStorage security exception expected"
+  },
+  "public_preview": {
+    "result": "PASS",
+    "public_html_pages": 25,
+    "published_runtime_asset_files": 90,
+    "html_asset_references_scanned": 483,
+    "unresolved_non_generated_assets": 0,
+    "identity_bundle_references_pending_generated_build": 8,
+    "dictionary_entries": 8542
+  },
+  "full_netlify_build": {
+    "result": "NOT_VERIFIED",
+    "reason": "esbuild binary not installed locally; npm run build exit 127"
+  },
+  "live_checks": {
+    "netlify_staging": "NOT_TESTED",
+    "youtube_playback": "NOT_TESTED",
+    "authenticated_login": "NOT_TESTED",
+    "payments": "NOT_TESTED",
+    "ykcr_sync": "NOT_TESTED",
+    "exam_access": "NOT_TESTED"
+  },
+  "safety": {
+    "netlify_functions_modified": false,
+    "database_migrations_modified": false,
+    "original_character_assets_modified": false,
+    "new_pdf_files": 0,
+    "new_video_files": 0,
+    "new_remote_media": 0
+  },
+  "deploy": "Staging and successful full npm/netlify build required before main production."
+}

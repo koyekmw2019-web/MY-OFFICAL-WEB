@@ -1,0 +1,60 @@
+{
+  "version": "v7.82.1",
+  "base": "v7.82",
+  "release_type": "minor UI/UX — anime student and teacher",
+  "date": "2026-11-09",
+  "source_files_prior_to_release_docs": 301,
+  "changed_paths": [
+    "admin-dashboard.html",
+    "assets/yk-jlpt-learning-v782-dashboard.js",
+    "dashboard.html",
+    "index.html",
+    "member-dashboard.html",
+    "package.json",
+    "student-dashboard.html",
+    "study/jlpt-learning.html",
+    "tests/v780-performance.mjs",
+    "tests/v781-advanced-seo.mjs"
+  ],
+  "new_files_including_tests": [
+    "assets/characters/student-v7821.webp",
+    "assets/characters/teacher-v7821.webp",
+    "assets/yk-jlpt-characters-v7821.css",
+    "assets/yk-jlpt-characters-v7821.js",
+    "tests/v7821-character-ui.mjs"
+  ],
+  "unchanged_baseline_files": 286,
+  "backend_files_changed": [],
+  "dictionary_or_lesson_dataset_files_changed": [],
+  "homepage_title_unchanged": true,
+  "sitemap_unchanged": true,
+  "lesson_count_retained": 152,
+  "dictionary_entries_retained": 8542,
+  "assets": [
+    {
+      "path": "assets/characters/student-v7821.webp",
+      "bytes": 29070
+    },
+    {
+      "path": "assets/characters/teacher-v7821.webp",
+      "bytes": 18880
+    }
+  ],
+  "checks": {
+    "npm_test": "PASS",
+    "v7821_character_checks": "7 PASS",
+    "desktop_1365_browser": "PASS synthetic route",
+    "mobile_390_browser": "PASS synthetic route",
+    "bookmark_daily_20_quiz": "PASS synthetic route",
+    "hub_level_links": "PASS synthetic route",
+    "zip_integrity": "PASS — ZIP testzip() returned no errors",
+    "full_netlify_build": "NOT VERIFIED – esbuild not installed",
+    "production_login_payment_cloud": "NOT VERIFIED – staging required"
+  },
+  "limitations": [
+    "Browser tests used isolated local asset routing, not live Netlify",
+    "JLPT content not full curriculum, browser Japanese TTS still used",
+    "No modifications to exam/payment access controls or cloud migration",
+    "No fake XP, streak, badges or AI tutoring added"
+  ]
+}

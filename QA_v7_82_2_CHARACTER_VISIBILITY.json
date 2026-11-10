@@ -1,0 +1,35 @@
+{
+  "release": "7.82.2",
+  "base": "7.82.1",
+  "scope": "Two-character visibility CSS layout fix only",
+  "characters_reused_unchanged": true,
+  "existing_webp_hashes": {
+    "assets/characters/student-v7821.webp": "41ab47957a4e7a0db8fd2c88d0a965f6ed4ceb966e1ff1317ca4f5ccda32f955",
+    "assets/characters/teacher-v7821.webp": "ea40f13ad7812c18f3de09f04f7afa4c85a75aa29d979962d95f2390b919cd1b"
+  },
+  "backend_file_count": 35,
+  "backend_unchanged": true,
+  "dictionary_catalog_unchanged": true,
+  "learning_lesson_content_unchanged": true,
+  "mock_exam_and_payment_code_unchanged": true,
+  "automated_regression_tests": "PASS (npm test, 2026-11-09)",
+  "visual_component_tests": {
+    "study_hub_widths": [
+      1365,
+      900,
+      390,
+      320
+    ],
+    "learning_page_widths": [
+      1365,
+      390
+    ],
+    "two_characters_loaded_and_no_overlap": true,
+    "horizontal_overflow": false
+  },
+  "limitations": [
+    "Full Netlify build unverified; esbuild command not installed in local environment.",
+    "Live Netlify authentication/payment/YKCR not exercised.",
+    "Visual component test uses local browser with intercepted asset routes, not deployed website."
+  ]
+}

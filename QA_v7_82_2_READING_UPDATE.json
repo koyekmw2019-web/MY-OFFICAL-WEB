@@ -1,0 +1,56 @@
+{
+  "release": "v7.82.2 Reading Update (revised build)",
+  "date": "2026-11-09 Asia/Tokyo",
+  "base_zip": "YEKUN_v7.82.2_Teacher_Visibility_Fix.zip",
+  "package_version": "7.82.2",
+  "original_lessons_preserved": 152,
+  "supplemental_reading_practices": 20,
+  "total_learning_items": 172,
+  "level_breakdown": {
+    "N5": 3,
+    "N4": 3,
+    "N3": 4,
+    "N2": 5,
+    "N1": 5
+  },
+  "automated_npm_test": "PASS",
+  "new_automated_tests": "7 PASS",
+  "browser_component_tests": {
+    "desktop_1365": "PASS",
+    "mobile_390": "PASS",
+    "study_hub_desktop": "PASS",
+    "study_hub_mobile": "PASS"
+  },
+  "browser_cases": [
+    "JST countdown",
+    "N5/N2 level selector",
+    "reading method filters",
+    "reading MCQ correct feedback",
+    "bookmark toggle and persisted learning state",
+    "mark learned and progress",
+    "daily practice 5 questions",
+    "level-specific deep link from STUDY HUB",
+    "mobile horizontal overflow"
+  ],
+  "full_netlify_build": "NOT VERIFIED: esbuild not installed in local environment",
+  "live_netlify_auth_payment_ykcr_tests": "NOT RUN; deploy preview required",
+  "official_exam_date_source": "https://www.jlpt.jp/e/faq/",
+  "copyright": "New reading questions are original; official sample questions are externally linked only",
+  "protected_files_same_sha256_count": 45,
+  "changed_existing_files": [
+    "assets/yk-jlpt-learning-v782-hub.js",
+    "assets/yk-jlpt-learning-v782-page.js",
+    "index.html",
+    "package.json",
+    "service-worker.js",
+    "study/jlpt-learning.html"
+  ],
+  "added_files": [
+    "README_v7_82_2_COUNTDOWN_READING_MY.md",
+    "assets/jlpt-reading-v7822-upgrade.json",
+    "assets/yk-jlpt-reading-v7822.css",
+    "assets/yk-jlpt-reading-v7822.js",
+    "tests/v7822-reading-update.mjs",
+    "QA_v7_82_2_READING_UPDATE.json"
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "version": "7.83.0",
+  "release_date": "2026-11-09",
+  "base_source": "YEKUN_v7.82.2_JLPT_Countdown_Reading_Update.zip",
+  "catalog": {
+    "version": "7.83",
+    "catalog_entries": 8542,
+    "translations_blank": 0,
+    "automated_audited": 8542,
+    "machine_translation_review_required": 5776,
+    "targeted_meaning_corrections": 24,
+    "examples_with_bilingual_sentences": 180,
+    "original_v783_examples": 138,
+    "legacy_example_additions": 15,
+    "legacy_gloss_corrections": 10,
+    "qa_flags_not_human_verification": true,
+    "all_translations_expert_verified": false,
+    "uncorrected_draft_entries_remain": true
+  },
+  "legacy_backend_files_modified": 0,
+  "modified_base_files": [
+    "admin-dashboard.html",
+    "index.html",
+    "package.json",
+    "service-worker.js",
+    "tests/v780-performance.mjs",
+    "tests/v781-advanced-seo.mjs",
+    "tests/v7821-character-ui.mjs",
+    "tests/v7822-character-visibility.mjs",
+    "tests/v7822-reading-update.mjs"
+  ],
+  "legacy_tests_and_v783_source_tests": {
+    "status": "PASS",
+    "log": "npm test",
+    "note": "All existing tests and new dictionary QA tests passed locally."
+  },
+  "v783_runtime_mock": {
+    "status": "PASS",
+    "tested": [
+      "search",
+      "targeted meaning correction",
+      "ruby furigana",
+      "bilingual example",
+      "favorite key migration",
+      "report dialog open",
+      "report submit payload"
+    ]
+  },
+  "typescript_syntax_check": {
+    "status": "PASS",
+    "note": "node --experimental-strip-types --check for new .mts functions"
+  },
+  "browser_desktop_mobile": {
+    "status": "NOT RUN",
+    "reason": "Chromium navigation to loopback/file URLs blocked by environment (ERR_BLOCKED_BY_ADMINISTRATOR)"
+  },
+  "full_npm_build": {
+    "status": "BLOCKED",
+    "reason": "npm dependency install timed out in environment; esbuild unavailable locally; npm run build returned 127"
+  },
+  "netlify_live_migration_reports_payment_exam_ykcr": {
+    "status": "NOT RUN"
+  },
+  "all_8542_editorially_verified": false,
+  "no_pdf_added": true,
+  "deployment": "Staging first; verify Netlify build and migration, report moderation, permissions, login/exam/payment/YKCR before production"
+}

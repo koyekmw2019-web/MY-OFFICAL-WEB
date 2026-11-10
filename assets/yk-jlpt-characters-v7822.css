@@ -1,0 +1,147 @@
+/* v7.82.2 — Two-character visibility fix.
+   Reuses the existing v7.82.1 STUDENT and TEACHER WebP files without retouching,
+   regenerating, swapping, or changing their identities/appearance.
+   Side-by-side positioning avoids the former z-index overlap that covered the teacher. */
+
+/* STUDY HUB: reserve enough width for each original illustration. */
+.yk821-hub-people {
+  display:grid;
+  grid-template-columns:minmax(0, 1.06fr) minmax(0, .80fr);
+  align-items:end;
+  gap:5px;
+  flex:none;
+  width:238px;
+  min-width:238px;
+  height:132px;
+  padding:4px 2px 0 4px;
+  overflow:hidden;
+}
+.yk821-hub-people img,
+.yk821-hub-people img:first-child,
+.yk821-hub-people img:last-child {
+  position:static;
+  inset:auto;
+  display:block;
+  width:100%;
+  max-width:100%;
+  max-height:124px;
+  height:auto;
+  object-fit:contain;
+  object-position:bottom center;
+  align-self:end;
+  justify-self:center;
+  z-index:auto;
+}
+
+/* Dedicated learning hero: students and teachers have separate columns. */
+.yk82-page .yk82-hero.yk821-hero {
+  grid-template-columns:minmax(0, 1fr) minmax(320px, 44%);
+}
+.yk82-page .yk821-hero-art {
+  display:grid;
+  grid-template-columns:minmax(0, 1.06fr) minmax(0, .80fr);
+  align-items:end;
+  column-gap:8px;
+  padding:0 5px;
+  isolation:isolate;
+  min-width:0;
+}
+.yk82-page .yk821-hero-art img,
+.yk82-page .yk821-hero-art img.yk821-art-student,
+.yk82-page .yk821-hero-art img.yk821-art-teacher {
+  position:static;
+  inset:auto;
+  display:block;
+  width:100%;
+  max-width:100%;
+  height:auto;
+  max-height:288px;
+  align-self:end;
+  justify-self:center;
+  object-fit:contain;
+  object-position:bottom center;
+  z-index:auto;
+  filter:drop-shadow(0 10px 14px #0007);
+}
+.yk82-page .yk821-hero-art .yk821-art-caption {
+  bottom:8px;
+  right:9px;
+}
+
+/* Dashboard: retain the current figures, but display both faces independently. */
+.yk821-dashboard-people {
+  display:grid;
+  grid-template-columns:minmax(0, 1.06fr) minmax(0, .80fr);
+  align-items:end;
+  flex:none;
+  gap:5px;
+  width:220px;
+  min-width:220px;
+  height:121px;
+  overflow:hidden;
+}
+.yk821-dashboard-people img,
+.yk821-dashboard-people img:first-child,
+.yk821-dashboard-people img:last-child {
+  display:block;
+  position:static;
+  inset:auto;
+  width:100%;
+  max-width:100%;
+  max-height:116px;
+  height:auto;
+  object-fit:contain;
+  object-position:bottom center;
+  align-self:end;
+  z-index:auto;
+}
+
+@media (min-width:641px) and (max-width:980px){
+  .yk821-hub-people {width:212px;min-width:212px;}
+  .yk82-page .yk82-hero.yk821-hero {grid-template-columns:minmax(0, 1fr) minmax(230px, 39%);}
+  .yk821-dashboard-people {width:194px;min-width:194px;}
+}
+@media (max-width:640px){
+  .yk821-hub-welcome {padding:12px 13px;}
+  .yk821-hub-people {
+    order:2;
+    flex:0 0 200px;
+    width:200px;
+    min-width:0;
+    max-width:100%;
+    height:112px;
+    padding:1px 0 0;
+    gap:5px;
+  }
+  .yk821-hub-people img,
+  .yk821-hub-people img:first-child,
+  .yk821-hub-people img:last-child {max-height:107px;}
+  .yk82-page .yk82-hero.yk821-hero {grid-template-columns:minmax(0, 1fr);}
+  .yk82-page .yk821-hero-art {
+    grid-template-columns:minmax(0, 1.06fr) minmax(0, .80fr);
+    gap:8px;
+    width:min(100%, 340px);
+    min-height:173px;
+    margin:5px auto 0;
+    padding:0 3px;
+  }
+  .yk82-page .yk821-hero-art img,
+  .yk82-page .yk821-hero-art img.yk821-art-student,
+  .yk82-page .yk821-hero-art img.yk821-art-teacher {max-height:172px;}
+  .yk821-dashboard-hero {flex-wrap:wrap;}
+  .yk821-dashboard-people {
+    flex:0 0 200px;
+    width:200px;
+    min-width:0;
+    max-width:100%;
+    height:111px;
+    gap:5px;
+  }
+  .yk821-dashboard-people img,
+  .yk821-dashboard-people img:first-child,
+  .yk821-dashboard-people img:last-child {max-height:106px;}
+}
+@media (max-width:360px){
+  .yk821-hub-people {width:184px;flex-basis:184px;}
+  .yk82-page .yk821-hero-art {width:100%;gap:4px;}
+}
