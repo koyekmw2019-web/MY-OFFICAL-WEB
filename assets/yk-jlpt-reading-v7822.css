@@ -11,3 +11,9 @@
 @media(max-width:850px){.yk822-method-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.yk822-countdown{padding:14px;margin:10px 0 16px}.yk822-countdown-head{font-size:11px}.yk822-countdown-head a{font-size:10px}.yk822-countdown-main{gap:10px;min-height:72px}.yk822-countdown-days{font-size:33px}.yk822-countdown-main p{font-size:12px}.yk822-countdown-main img{width:52px;height:65px}.yk822-section-title img{width:48px;height:66px}.yk822-section-title h3{font-size:17px}.yk822-method-grid{grid-template-columns:1fr}.yk822-reading-tools{padding:12px}.yk822-official-row{flex-direction:column;align-items:start}.yk822-official-row a{align-self:flex-start}.yk822-hub-reading-link{justify-content:stretch}.yk822-hub-reading-link a{display:block;width:100%;text-align:center}}
 @media(prefers-reduced-motion:reduce){.yk822-countdown-track>div{transition:none}}
+
+/* v7.86.4 dynamic date clarity: "tentative" means future date unconfirmed. */
+.yk822-countdown-date-status{font-size:11px;color:#bfb4bf;margin-top:7px;line-height:1.4}
+.yk822-countdown-date-status a{color:#f7b2bc;text-underline-offset:2px}
+.yk822-countdown-head{flex-wrap:wrap}
+@media(max-width:560px){.yk822-countdown-foot{flex-wrap:wrap}.yk822-countdown-head a{overflow-wrap:anywhere}}

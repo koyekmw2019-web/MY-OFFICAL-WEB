@@ -1,0 +1,41 @@
+{
+  "version": "7.86.4 — JLPT Dynamic Countdown Corrected Hotfix",
+  "source_base": "YEKUN_v7.86.4_JLPT_Learning_Center_Target_Corrected.zip",
+  "date": "2026-11-10",
+  "changes": [
+    "assets/yk-jlpt-reading-v7822.css",
+    "assets/yk-jlpt-reading-v7822.js",
+    "index.html",
+    "package.json",
+    "service-worker.js",
+    "study/jlpt-learning.html"
+  ],
+  "added_files": [
+    "QA_v7_86_4_DYNAMIC_COUNTDOWN.json",
+    "README_v7_86_4_DYNAMIC_COUNTDOWN_MY.md",
+    "tests/v7864-dynamic-countdown.mjs",
+    "QA_v7_86_4_DYNAMIC_COUNTDOWN.json"
+  ],
+  "removed_files": [],
+  "confirmed_exam_dates": {
+    "2026-07": "2026-07-05",
+    "2026-12": "2026-12-06"
+  },
+  "future_dates": "Generated first Sunday of July/December as TENTATIVE; do not claim official until confirmed",
+  "test_result": {
+    "npm_test": "PASS",
+    "pass_lines": 257,
+    "new_countdown_tests": 8,
+    "browser_fixture_cases": 4,
+    "browser_fixture_overflow": 0,
+    "preview_public_builder": "PASS"
+  },
+  "not_verified": [
+    "Full npm run build (esbuild missing locally)",
+    "Real localhost browser navigation (blocked in this environment)",
+    "Netlify production/staging deployment",
+    "Live authentication, payments, database, YKCR and exam access"
+  ],
+  "protected_backends_modified": false,
+  "official_reference": "https://www.jlpt.jp/e/faq/"
+}

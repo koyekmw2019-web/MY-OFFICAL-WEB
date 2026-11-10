@@ -1,0 +1,25 @@
+/* v7.86.5 — Dashboard-only coach. Original theme and exam pages unchanged. */
+.yk865-panel{margin:14px 0 18px;padding:20px;border:1px solid #63343c;background:linear-gradient(145deg,#23191f,#151519 75%);border-radius:21px;color:#f7f6f8;min-width:0}
+.yk865-eyebrow{display:block;letter-spacing:.17em;color:#fa9ea7;font-size:11px;font-weight:850;margin-bottom:8px}
+.yk865-panel h3{font-size:clamp(18px,2.8vw,24px);margin:0 0 7px;font-weight:850;color:#fff}
+.yk865-sub{font-size:12px;color:#b2a9af;line-height:1.6;margin:0 0 14px}
+.yk865-summary{padding:12px 13px;border:1px solid #4d3a41;border-radius:12px;background:#1b191e;font-size:12px;color:#e5dce2;line-height:1.65}
+.yk865-topics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:12px 0}
+.yk865-topic{border:1px solid #4c424b;border-radius:14px;padding:13px;background:#16161b;min-width:0}
+.yk865-topic strong{font-size:13px;overflow-wrap:anywhere}.yk865-topic small{display:block;color:#c1b6c0;font-size:11px;margin-top:6px}
+.yk865-topic em{font-style:normal;font-size:12px;color:#ffc4ca}.yk865-track{height:7px;border-radius:10px;background:#373239;margin-top:9px;overflow:hidden}
+.yk865-track i{height:100%;display:block;background:linear-gradient(90deg,#ba3449,#ef6375);border-radius:10px}
+.yk865-date{display:flex;align-items:end;flex-wrap:wrap;gap:10px;margin:15px 0}
+.yk865-date label{display:grid;gap:5px;font-size:11px;color:#dad0d7;font-weight:700}
+.yk865-date input{font:inherit;min-height:44px;padding:8px 12px;border-radius:11px;border:1px solid #6b5058;background:#111114;color:#fff;color-scheme:dark}
+.yk865-date button,.yk865-load{cursor:pointer;background:#a82638;color:#fff;border:1px solid #ed697b;font-weight:800;border-radius:11px;padding:10px 14px;min-height:44px;font:inherit;align-self:flex-end;height:44px}
+.yk865-date button:disabled,.yk865-load:disabled{opacity:.65;cursor:wait}
+.yk865-date .yk865-feedback{font-size:11px;color:#f3b0b9}
+.yk865-plan{display:grid;gap:8px;margin:12px 0}
+.yk865-day{display:flex;align-items:flex-start;gap:11px;background:#1b1a1e;border:1px solid #3a3037;border-radius:11px;padding:11px}
+.yk865-day b{flex:none;min-width:46px;font-size:11px;color:#fca9b2}.yk865-day strong{display:block;font-size:12px;color:#fff}.yk865-day p{font-size:11px;line-height:1.55;color:#bcb4ba;margin:3px 0 0}
+.yk865-hint{color:#aaa1a9;font-size:11px;line-height:1.65;margin:12px 0 0}
+.yk865-start{display:inline-flex;margin-top:7px;padding:10px 14px;text-decoration:none;border-radius:11px;background:#312027;border:1px solid #84414d;color:#ffe1e4;font-size:12px;font-weight:800}
+.yk865-panel :is(button,input,a):focus-visible{outline:2px solid #fff;outline-offset:3px}
+@media(max-width:590px){.yk865-panel{padding:15px;border-radius:17px}.yk865-topics{grid-template-columns:1fr}.yk865-date{align-items:stretch}.yk865-date label{flex:1;min-width:170px}.yk865-day{gap:7px}}
+@media(prefers-reduced-motion:reduce){.yk865-panel *{animation:none!important;transition:none!important}}

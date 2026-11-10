@@ -2,6 +2,7 @@ import { getDatabase } from '@netlify/database';
 import { requireUser, asResponse } from './_shared/auth.mts';
 import { examScoreRules, sectionDurations, checkpointGraceSeconds } from './_shared/exam-autosave.mts';
 import { evaluateSnapshot } from './_shared/exam-score-v763.mts';
+import { verifiedTopics } from './_shared/exam-coach-evidence-v7865.mts';
 
 /** v7.63 — only server-recomputed practice results can be persisted.
  * Client score, passed, and section totals are never trusted. */
@@ -60,6 +61,15 @@ export default async (req:Request)=>{
           AND NOW() <= c.ends_at + INTERVAL '60 seconds')
     RETURNING a.id`;
   if(!updated.length)return Response.json({error:'submission_conflict_or_expired'},{status:409});
+
+  // v7.86.5: persist section-level evidence only from the already validated checkpoint.
+  // Optional: an un-migrated coach table must never cancel a submitted exam.
+  try {
+   const topics=verifiedTopics(attempt.exam_type,cp.snapshot);
+   if(topics.length)await db.sql`INSERT INTO exam_coach_topic_results(attempt_id,user_id,exam_type,topic_stats)
+      VALUES(${id},${user.id},${attempt.exam_type},${JSON.stringify(topics)}::jsonb)
+      ON CONFLICT(attempt_id) DO NOTHING`;
+  }catch(e){console.error('Optional verified coaching evidence insert failed',e)}
 
   // Existing optional review data: accepted only for matched checkpoint question IDs.
   // These descriptions are from the browser and are not considered server-verified.

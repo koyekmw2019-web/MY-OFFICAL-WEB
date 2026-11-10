@@ -36,6 +36,7 @@ const mkDb=(type='jlpt_n5',snapshot=null,opts={})=>{
    if(query.startsWith('UPDATE exam_attempts')&&query.includes("status='abandoned'")){state.attempt.status='abandoned';return [{id:42}]}
    if(query.startsWith('DELETE FROM exam_attempt_checkpoints')){state.checkpoint=null;return []}
    if(query.startsWith('INSERT INTO yk_learning_mistakes'))return [];
+   if(query.startsWith('INSERT INTO exam_coach_topic_results'))return [];
    if(query.startsWith('UPDATE exam_attempt_checkpoints'))return [];
    throw Error('Unmocked SQL: '+query.slice(0,220));
  };

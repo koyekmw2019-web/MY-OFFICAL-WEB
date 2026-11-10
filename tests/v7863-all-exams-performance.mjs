@@ -94,7 +94,7 @@ test('deploy output has no personal DB source or unpublished drafts',()=>{
 });
 test('no original protected backend change required',()=>{
  for(const file of ['netlify/functions/exam-access.mts','netlify/functions/exam-payment-submit.mts','netlify/functions/ykcr-student-sync.mts','netlify/functions/exam-attempt-submit.mts','assets/characters/student-v7821.webp','assets/characters/teacher-v7821.webp'])assert(existsSync(join(root,file)));
- const p=JSON.parse(read('package.json'));assert(['7.86.3','7.86.4'].includes(p.version));
+ const p=JSON.parse(read('package.json'));assert(['7.86.3','7.86.4','7.86.5'].includes(p.version));
  assert(read('netlify.toml').includes('publish = "dist"'));
 });
 console.log(`v7.86.3: ${passed} PASS / 0 FAIL`);
