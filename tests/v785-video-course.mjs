@@ -51,7 +51,7 @@ test('SEO title/canonical/schema and sitemap include one public video-class rout
 test('public build includes new page without publishing backend or introducing video binary',()=>{
   assert(rd('scripts/build-public-v7841.mjs').includes("'index.html','video-class.html'"));
   const pkg=JSON.parse(rd('package.json'));
-  assert(['7.85.0','7.86.0','7.86.1','7.86.2','7.86.3','7.86.4'].includes(pkg.version));
+  assert(['7.85.0','7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5'].includes(pkg.version));
   assert(pkg.scripts.test.includes('tests/v785-video-course.mjs'));
   assert(pkg.scripts.build.includes('tests/v785-video-course.mjs'));
   assert(/publish = "dist"/.test(rd('netlify.toml')));

@@ -87,7 +87,7 @@ test('Dictionary runtime JavaScript parses safely in isolation',()=>{
 });
 test('Source performance budget, Study Hub and character asset paths remain retained',()=>{
  // v7.86.4: small self-contained menu SVG sprite and accessibility labels.
- const menuBudget=JSON.parse(read('package.json')).version==='7.86.4'?8000:0;
+ const menuBudget=['7.86.4','7.86.5'].includes(JSON.parse(read('package.json')).version)?8000:0;
  assert(fs.statSync('index.html').size<=799611+15000+menuBudget);
  for(const p of ['assets/characters/student-v7821.webp','assets/characters/teacher-v7821.webp','assets/jlpt-reading-v7822-upgrade.json'])assert(fs.existsSync(p));
  assert(html.includes('id="studyHubGridV733"'));
