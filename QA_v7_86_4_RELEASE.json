@@ -1,0 +1,91 @@
+{
+  "version": "7.86.4",
+  "base": "YEKUN_v7.86.3_All_Exam_Dashboard_Mobile_Performance_Update.zip",
+  "scope": "JLPT Direct Navigation & Premium Animated Hamburger Menu",
+  "source": {
+    "original_files": 368,
+    "original_unchanged_files": 353,
+    "modified_files": 15,
+    "modified_paths": [
+      "index.html",
+      "package.json",
+      "scripts/build-public-v7841.mjs",
+      "service-worker.js",
+      "tests/v780-performance.mjs",
+      "tests/v781-advanced-seo.mjs",
+      "tests/v7821-character-ui.mjs",
+      "tests/v7822-character-visibility.mjs",
+      "tests/v7822-reading-update.mjs",
+      "tests/v783-dictionary-quality.mjs",
+      "tests/v785-video-course.mjs",
+      "tests/v786-premium-motion.mjs",
+      "tests/v7861-stability-fix.mjs",
+      "tests/v7862-ui-session-stability.mjs",
+      "tests/v7863-all-exams-performance.mjs"
+    ],
+    "missing_original_files": [],
+    "protected_backend_and_character_files_modified": false
+  },
+  "features": {
+    "jlpt_menu": "Directly above Video Course; existing Study Hub automatically expands and scrolls to existing JLPT N5–N1 cards",
+    "icons": "Nine linked navigation rows use a single inline SVG symbol sprite, no external icon dependency",
+    "motion": "Light CSS entrance/stagger, tap/focus hover; reduced motion respected; instant jump when far away",
+    "languages": "Existing my/en/ja switch preserved; menu labels use data-my/data-en/data-ja",
+    "account": "Existing dashboard/login/logout menu IDs and handlers preserved",
+    "cache": "Service worker static cache version bumped, no private credential caching added"
+  },
+  "tests": {
+    "npm_test": "PASS",
+    "automated_pass_lines": 249,
+    "v7864_new_tests": 8,
+    "browser_offline_cases": 5,
+    "browser_widths": [
+      320,
+      390,
+      1280
+    ],
+    "browser_reduced_motion_pass": true,
+    "direct_hash_pass": true,
+    "browser_horizontal_overflow_px": 0,
+    "browser_errors": 0,
+    "zip_integrity": "PASS",
+    "source_clean_extract_tests": "PASS (249 automated lines)"
+  },
+  "public_build_preview": {
+    "version": "7.86.4",
+    "source_files": 116,
+    "archived_nonpublished_assets": 23,
+    "published_assets": 93,
+    "public_html_pages": 25,
+    "dictionary_words": 8542,
+    "original_dictionary_bytes": 2717230,
+    "deployed_dictionary_bytes": 960760,
+    "lazy_dictionary_runtime_bytes": 304576,
+    "published_homepage_bytes": 518042,
+    "includes_identity_bundle": false,
+    "excluded_archival_root_files": true,
+    "local_html_asset_references_checked": 487,
+    "missing_file_references": [],
+    "identity_bundle": "not present in local preview; requires Netlify build"
+  },
+  "full_build": {
+    "verified": false,
+    "reason": "esbuild not installed locally; npm run build exits 127: esbuild: not found"
+  },
+  "live_checks": {
+    "netlify_deployed": false,
+    "live_auth_payment_exam_ykcr_tested": false
+  },
+  "safety": {
+    "new_database_migrations": 0,
+    "new_pdf_files": 0,
+    "new_icon_packages": 0,
+    "dictionary_entries_unchanged": 8542,
+    "original_student_teacher_images_unchanged": true
+  },
+  "verification_note": "Automated/static tests and offline Chromium fixture are not equivalent to a complete Netlify deployment or live database test.",
+  "release_zip": {
+    "file": "YEKUN_v7.86.4_JLPT_Direct_Navigation_Premium_Animated_Menu.zip",
+    "archive_entries": 372
+  }
+}

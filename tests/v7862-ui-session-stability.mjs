@@ -10,10 +10,10 @@ const rd=p=>readFileSync(join(root,p),'utf8');
 const check=(name,fn)=>{fn();console.log('PASS v7862 '+name)};
 check('version, build, no new DB or protected core changes required',()=>{
  const p=JSON.parse(rd('package.json'));
- assert(['7.86.2','7.86.3'].includes(p.version));
+ assert(['7.86.2','7.86.3','7.86.4'].includes(p.version));
  assert(p.scripts.test.includes('v7862-ui-session-stability.mjs'));
  assert(p.scripts.build.includes('v7862-ui-session-stability.mjs'));
- assert(["version:'7.86.2'","version:'7.86.3'"].some(x=>rd('scripts/build-public-v7841.mjs').includes(x)));
+ assert(["version:'7.86.2'","version:'7.86.3'","version:'7.86.4'"].some(x=>rd('scripts/build-public-v7841.mjs').includes(x)));
  assert(rd('netlify.toml').includes('publish = "dist"'));
 });
 check('mobile dashboard action footer is in document flow not fixed',()=>{
