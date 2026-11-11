@@ -1,0 +1,35 @@
+/* v7.87.4 — Exam Center and dedicated exam navigation only.
+ * Same hover and menu-open animation for JLPT as all other menu entries.
+ * Do not change exam answer choices, progress, status or access colors. */
+body.yk874-education-menu .top .brand-home-link{max-width:min(74vw,430px);min-width:0;}
+body.yk874-education-menu .top .brand-home-link>div:last-child{
+  font-size:clamp(11px,1.2vw,14px);font-weight:900;line-height:1.28;letter-spacing:.035em;
+  overflow-wrap:anywhere;
+}
+body.yk874-education-menu .site-menu-nav>a.yk864-menu-jlpt:not([aria-current="page"]):is(:hover,:focus-visible){
+  transform:translateX(2px);background:#251a1e;border-color:#b94c5a;color:#fff;
+}
+body.yk874-education-menu .site-menu-nav>a.yk864-menu-jlpt:not([aria-current="page"]):is(:hover,:focus-visible)>.yk864-menu-icon{
+  background:#50222b;border-color:#b94c5a;color:#ff8290;
+}
+body.yk874-education-menu .site-menu-nav>a.yk864-menu-jlpt:not([aria-current="page"]):is(:hover,:focus-visible)>svg.yk864-menu-chevron{
+  transform:translateX(2px);color:#ff8290;
+}
+body.yk874-education-menu .site-menu-nav>a[data-yk874-return-home]:focus-visible{outline:2px solid #fa718c;outline-offset:2px;}
+@media(max-width:720px){
+ body.yk874-education-menu .top .brand-home-link{gap:7px;max-width:41vw;}
+ body.yk874-education-menu .top .brand-home-link>div:last-child{font-size:10px;letter-spacing:0;line-height:1.25;}
+}
+@media(prefers-reduced-motion:reduce){
+ body.yk874-education-menu .site-menu-nav>a.yk864-menu-jlpt,
+ body.yk874-education-menu .site-menu-nav>a.yk864-menu-jlpt>.yk864-menu-icon,
+ body.yk874-education-menu .site-menu-nav>a.yk864-menu-jlpt>svg.yk864-menu-chevron{animation:none!important;transition:none!important;}
+}
+/* v7.87.3 hid the single-exam wordmark on narrow screens.
+ * Use two small lines rather than lose the required education brand. */
+@media(max-width:650px){
+ body.yk874-education-menu.yk873-exam-page .top .brand-home-link>div:last-child{
+   display:block!important;max-width:122px;font-size:9px!important;
+   line-height:1.2!important;white-space:normal;letter-spacing:0!important;
+ }
+}

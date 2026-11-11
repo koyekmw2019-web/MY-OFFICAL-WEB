@@ -1,0 +1,32 @@
+{
+  "version": "7.87.4",
+  "baseline": "GitHub main v7.87.3 (read-verified)",
+  "scope": [
+    "mock-exams.html",
+    "12 separate /exams/*.html"
+  ],
+  "changes": [
+    "Homepage section menu links corrected",
+    "JLPT click handler capture-stage override on education pages",
+    "JLPT menu hover parity",
+    "Exam Center education wordmark and existing logo",
+    "mobile education brand display"
+  ],
+  "qa": {
+    "node_syntax": [
+      "PASS builder",
+      "PASS JS capture helper",
+      "PASS source test",
+      "PASS release test"
+    ],
+    "source_vm_test": "PASS 7 destination allowlist, original ctrl-click preserved, JLPT and Study Hub navigations",
+    "generated_fixture": "PASS 13 built HTML pages, 12 exam types + Exam Center, seven home routes each, server engine markers retained",
+    "compatibility_guard": "PASS v7.87.4 version lists patched idempotently (fixture)",
+    "manual_live_browser": "NOT VERIFIED; headless Chromium network navigations were blocked by runtime policy",
+    "full_npm_netlify_build": "NOT VERIFIED; full repository dependency tree unavailable locally",
+    "live_api_auth_payment_ykcr": "NOT TESTED; code not changed",
+    "production_changed": false
+  },
+  "server_or_db_files_modified": [],
+  "new_pdfs": 0
+}
