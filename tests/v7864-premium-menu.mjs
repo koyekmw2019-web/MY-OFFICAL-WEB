@@ -10,7 +10,7 @@ let count=0;
 function check(name,fn){fn();count++;console.log('PASS v7864 '+name);}
 check('version and lightweight standalone stylesheet included in both test and build',()=>{
  const p=JSON.parse(read('package.json'));
- assert(['7.86.4','7.86.5'].includes(p.version));
+ assert(['7.86.4','7.86.5','7.87.0','7.87.1'].includes(p.version));
  for(const cmd of ['test','build'])assert(p.scripts[cmd].includes('tests/v7864-premium-menu.mjs'));
  assert.equal(home.split('yk-premium-menu-v7864.css').length-1,1);
  assert(statSync(join(root,'assets/yk-premium-menu-v7864.css')).size<9000);

@@ -6,7 +6,7 @@ if(!root||!engine)return;
 const valid=new Set((window.YKAllExamsV7863?.catalog||[]).map(x=>x.type));
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const label=t=>window.YKAllExamsV7863?.catalog.find(x=>x.type===t)?.short||t;
-const href=t=>/^jlpt_n[1-5]$/.test(t)?`/study/jlpt-learning.html?level=${t.slice(-2).toUpperCase()}`:'/#online-mock-exam';
+const href=t=>'/mock-exams.html?exam='+encodeURIComponent(String(t||'truck'));
 const $=id=>document.getElementById(id);
 let chosen='',response=null,pending=0,saving=false,ready=false;
 const panel=`<section id="yk865Coach" class="yk865-panel" aria-label="Personal Exam Coach" hidden>

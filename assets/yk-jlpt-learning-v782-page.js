@@ -43,7 +43,8 @@
    el.innerHTML=start+official+(specs.length?controls+`<div class="yk822-method-grid">${types}</div><p class="yk822-copyright-note">練習問題はSTUDYING WITH YE KUN のオリジナルです。掲載文章は公式試験と同じ文字数・設問数を保証しません。</p>`:'<p class="yk82-sub">Reading Technique の追加データが読み込めませんでした。既存レッスンは引き続き使えます。</p>');
   }
  function drawLessons(){const selected=entries()[tab]||[],savedIds=S.bookmarks(S.snapshot());let items=selected.map(x=>({...x,category:tab}));if(tab==='reading'&&readingFilter!=='all')items=items.filter(x=>(x.readingType||'classic')===readingFilter);if(tab==='saved')items=allItems().filter(x=>savedIds.includes(x.id));
-  $('yk82Content').innerHTML=items.length?`<p class="yk82-sub">${fmt(names[tab]||'⭐ Bookmarks')} · ${items.length} items · STUDYING WITH YE KUN original materials</p><div class="yk82-list">${items.map(itemHtml).join('')}</div>`:`<div class="yk82-empty">ဒီ Level မှာ Bookmark မရှိသေးပါ။ ☆ Bookmark ခလုတ်နဲ့ သိမ်းနိုင်ပါတယ်။</div>`;
+  const sameMeaningLink=level==='N2'&&tab==='vocabulary'?'<div class="yk82-lesson full"><span class="yk82-eyebrow">JLPT N2 · NEW VOCABULARY PRACTICE</span><h3>📘 同じ意味 · Same Meaning (132 Pairs)</h3><p class="yk82-mm">ဂျပန်အဓိပ္ပာယ်တူ စကားလုံးတွေကို မြန်မာဘာသာရှင်းပြချက်၊ Furigana၊ ဥပမာဝါကျ၊ Bookmark နဲ့ Practice တွဲပြီး လေ့လာပါ။</p><a class="yk82-action primary" style="display:inline-block;text-decoration:none" href="/study/jlpt-n2-same-meaning.html">Open N2 Same Meaning →</a></div>':'';
+  $('yk82Content').innerHTML=sameMeaningLink+ (items.length?`<p class="yk82-sub">${fmt(names[tab]||'⭐ Bookmarks')} · ${items.length} items · STUDYING WITH YE KUN original materials</p><div class="yk82-list">${items.map(itemHtml).join('')}</div>`:`<div class="yk82-empty">ဒီ Level မှာ Bookmark မရှိသေးပါ။ ☆ Bookmark ခလုတ်နဲ့ သိမ်းနိုင်ပါတယ်။</div>`);
  }
  const hash=t=>[...t].reduce((a,c)=>(Math.imul(a,31)+c.charCodeAt(0))>>>0,7);
  function questionPool(){const selected=entries(),p=[];

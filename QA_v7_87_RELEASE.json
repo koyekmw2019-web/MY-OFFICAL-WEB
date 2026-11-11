@@ -1,0 +1,27 @@
+{
+  "version": "7.87.0",
+  "base": "v7.86.5 — Personal Exam Coach Dashboard, production commit 3ab2df8",
+  "features": [
+    "Existing YK Crimson theme unified",
+    "Homepage subtle red SVG trail animation",
+    "JLPT hamburger red highlight only when active",
+    "Existing Study Hub exam cards link to generated dedicated mock-exams.html?exam=TYPE",
+    "No new Homepage Mock Exam cards",
+    "Published Homepage strips old 3 exam runtime script blocks",
+    "Legacy exam engine and 12 cards preserved on dedicated page"
+  ],
+  "npm_test_pass_cases": 277,
+  "npm_test": "PASS",
+  "preview_build": "PASS using --preview-allow-missing-generated-bundle",
+  "generated_output_smoke": "PASS",
+  "full_npm_build": "UNVERIFIED: esbuild/npm dependencies not installable in this environment",
+  "browser_visual_test": "UNVERIFIED: local Chromium navigation denied by environment policy",
+  "production_deployed": false,
+  "git_pushed": false,
+  "backend_files_unchanged": 43,
+  "database_migrations_changed": false,
+  "published_home_bytes_old": 519001,
+  "published_home_bytes_new": 284502,
+  "saved_bytes": 234499,
+  "original_12_exam_cards_preserved": true
+}

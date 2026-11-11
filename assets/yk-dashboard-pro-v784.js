@@ -59,7 +59,7 @@ async function loadAdmin(){const host=$('yk84AdminBody');if(!host)return;const r
 /* v7.86.3 — one initial scoped exam request, other APIs only when selected. */
 let studentData=null,studentRequest=0,selectedCategory='all',selectedExam='all',jlptLoad=null,mistakesLoad=null;
 const examLabel=t=>allExams.catalog.find(x=>x.type===t)?.short||t;
-const safeHref=t=>/^jlpt_n[1-5]$/.test(t)?`/study/jlpt-learning.html?level=${t.slice(-2).toUpperCase()}`:'/#online-mock-exam';
+const safeHref=t=>'/mock-exams.html?exam='+encodeURIComponent(String(t||'truck'));
 function examCards(){const grid=$('yk863ExamGrid');if(!grid)return;
  const attempts=studentData?.attempts||[];
  grid.innerHTML=allExams.list(selectedCategory).map(c=>{const s=allExams.summarize(attempts,c.type);
@@ -79,7 +79,7 @@ function studentRender(){
  const mistakePanel=mistakes?`<p class="yk84-caption">${fmt(filtered.length)} recent stored wrong-answer entries${selectedExam==='all'?'':' for this exam'}. Zero saved entries does not mean zero wrong answers.</p>${filtered.slice(0,3).map(x=>`<div class="yk863-mistake"><strong>${esc(examLabel(x.exam_type))} · ${fmt(x.missed_count)}×</strong><p>${esc(String(x.question_text||'').slice(0,180))}</p></div>`).join('')}`:
  studentData?.mistakesError?`<div class="yk84-empty">Review data unavailable. ${esc(studentData.mistakesError)}</div>`:`<button type="button" class="yk863-load" id="yk863Mistakes">Load saved wrong answers</button><p class="yk84-caption">Loads only when requested. Your private results are not cached publicly.</p>`;
  const next=selectedExam==='all'?(review.length?review[0].type:null):selectedExam;
- const title=next?examLabel(next):'Choose an exam',url=next?safeHref(next):'/#online-mock-exam';
+ const title=next?examLabel(next):'Choose an exam',url=next?safeHref(next):'/mock-exams.html';
  const course=selectedExam.startsWith('jlpt_')?jlptPanel(selectedExam):'<div class="yk84-empty">For SSW / Driving exams, question-section scores are not currently stored as verified data. Review saved mistakes and exam history instead.</div>';
  return `<div class="yk863-summaryline">${esc(categories)}</div>${headline}
  <div class="yk84-grid"><article class="yk84-surface"><div class="yk84-head"><div><h3>Exam Areas to Review</h3><p>Based only on server-verified mock exam scores (min. 2 attempts)</p></div></div>${evidence}</article>
