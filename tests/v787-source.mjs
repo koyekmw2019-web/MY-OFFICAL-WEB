@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+const read=p=>readFileSync(p,'utf8');
+const index=read('index.html'),css=read('assets/yk-v787-unified-theme.css'),route=read('assets/yk-v787-routing.js'),builder=read('scripts/build-v787-exam-pages.mjs');
+assert(index.includes('yk787-hero-trails'));
+assert(index.includes('yk-v787-unified-theme.css'));
+assert(index.includes('yk-v787-routing.js'));
+assert(css.includes('prefers-reduced-motion:reduce'));
+assert(css.includes('.yk864-menu-jlpt:not([aria-current="page"])'));
+assert(route.includes("location.assign(route(type))"));
+assert(route.includes("if(isExamPage)return"));
+assert(builder.includes("legacyExamScriptsRemoved"));
+assert(builder.includes("existingExamCards:12"));
+assert(read('netlify.toml').includes('publish = "dist"'));
+assert(read('netlify/functions/exam-attempt-submit.mts').includes('score_verified=TRUE'));
+assert(['7.87.0','7.87.1'].includes(JSON.parse(read('package.json')).version));
+console.log('PASS v787-source theme, routes, backend preservation and build contract');

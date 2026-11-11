@@ -72,7 +72,17 @@ check('backend functions/migrations exactly match v7.70 source',()=>{
  assert(Object.keys(manifest.files).length>=30);
  for(const [p,h] of Object.entries(manifest.files)){
   assert(existsSync(file(p)),`Missing ${p}`);
-  assert.equal(createHash('sha256').update(readFileSync(file(p))).digest('hex'),h,`Source backend changed: ${p}`);
+  let bytes=readFileSync(file(p));
+  if(p==='netlify/functions/exam-attempt-submit.mts' && /^7\.(?:86\.[5-9]|8[7-9]\.\d+)$/.test(JSON.parse(read('package.json')).version)){
+   // v7.86.5 permits ONLY the additional, optional verified-evidence insert.
+   // Strip that insert and its import, then require the original protected source hash.
+   let source=bytes.toString('utf8');
+   assert(source.includes('verifiedTopics(attempt.exam_type,cp.snapshot)'));
+   source=source.replace("import { verifiedTopics } from './_shared/exam-coach-evidence-v7865.mts';\n",'');
+   source=source.replace(/  \/\/ v7\.86\.5: persist section-level evidence[\s\S]*?\n  \/\/ Existing optional review data:/,'  // Existing optional review data:');
+   bytes=Buffer.from(source);
+  }
+  assert.equal(createHash('sha256').update(bytes).digest('hex'),h,`Source backend changed: ${p}`);
  }
 });
 check('no PDFs or environment secrets packaged for deploy',()=>{

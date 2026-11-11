@@ -41,7 +41,7 @@ function recommendations({attempts=[],mistakes=[],state={},content=null,mistakes
  const mistakesByExam=[...byExam.values()].sort((a,b)=>b.totalMisses-a.totalMisses).slice(0,3);
  const focus=[];
  for(const e of mistakesByExam)focus.push({kind:'mistakes',title:`${friendly(e.type)} · Wrong Answer Review`,why:`${e.questions} saved question(s) · ${e.totalMisses} misses`,href:'#yk760Content',priority:0,examType:e.type});
- for(const w of examWeakness(attempts))focus.push({kind:'exam',title:`${friendly(w.type)} · Mock Exam Review`,why:`${percent(w.average)} average across ${w.count} verified attempts`,href:'/#online-mock-exam',priority:1,examType:w.type});
+ for(const w of examWeakness(attempts))focus.push({kind:'exam',title:`${friendly(w.type)} · Mock Exam Review`,why:`${percent(w.average)} average across ${w.count} verified attempts`,href:'/mock-exams.html',priority:1,examType:w.type});
  const lessonFocus=coverage.filter(c=>c.percent<100).slice(0,3);
  for(const c of lessonFocus)focus.push({kind:'coverage',title:`JLPT ${c.level} · ${c.section[0].toUpperCase()+c.section.slice(1)}`,why:`${c.done}/${c.total} lessons completed · study coverage (not a test score)`,href:`/study/jlpt-learning.html?level=${encodeURIComponent(c.level)}&section=${encodeURIComponent(c.section)}`,priority:2,section:c.section});
  const run=(Array.isArray(state?.dailyRuns)?state.dailyRuns:[]).filter(x=>x&&Number.isFinite(Number(x.correct))&&Number(x.count)>0),recent=run.slice(-10);

@@ -62,7 +62,7 @@ writeFileSync(publicHome,optimized.html,'utf8');
 writeFileSync(join(out,'assets/yk-dictionary-runtime-v7863.js'),optimized.code,'utf8');
 mkdirSync(dirname(join(out,dictionary)),{recursive:true});
 writeFileSync(join(out,dictionary),packed.code,'utf8');
-const report={version:'7.86.4',source_files:assetPaths.length,archived_nonpublished_assets:legacyAssets.size,
+const report={version:'7.86.5',source_files:assetPaths.length,archived_nonpublished_assets:legacyAssets.size,
   published_assets:keep.length,public_html_pages:publicRoots.filter(x=>x.endsWith('.html')).length+study.length,
   dictionary_words:packed.words.length,
   original_dictionary_bytes:Buffer.byteLength(reads(dictionary)),

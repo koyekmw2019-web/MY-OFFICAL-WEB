@@ -1,0 +1,135 @@
+{
+  "version": "7.86.5",
+  "title": "Personal Exam Coach — Student Dashboard only",
+  "base_source": "YEKUN_v7.86.4_JLPT_Dynamic_Countdown_Corrected.zip",
+  "features": [
+    "On-demand personal topic priorities after ONE new server-verified exam",
+    "JLPT four sections; SSW theory/practical; licenses overall only",
+    "Per-user per-exam manually selected date and bounded study routine",
+    "No new public page; no new animation dependencies; prior dashboard and exam access maintained"
+  ],
+  "verified_source_categories": {
+    "jlpt": [
+      "vocabulary",
+      "grammar",
+      "reading",
+      "listening"
+    ],
+    "ssw": [
+      "theory",
+      "practical"
+    ],
+    "licenses": [
+      "overall"
+    ]
+  },
+  "automated_tests": {
+    "npm_test": {
+      "status": "PASS",
+      "pass_lines": 276,
+      "fail_lines": 0
+    },
+    "new_pure_logic_tests": 13,
+    "new_mock_api_tests": 6,
+    "server_snapshot_fixture_tested": [
+      "JLPT N5 canonical",
+      "TRUCK canonical",
+      "MOPED canonical"
+    ],
+    "old_tests": "PASS"
+  },
+  "offline_browser_mock": {
+    "viewports": [
+      390,
+      1280
+    ],
+    "status": "PASS",
+    "scenarios": [
+      "no eager coach request",
+      "select exam triggers GET",
+      "server topic ranking",
+      "save date POST",
+      "study plan rendering",
+      "no horizontal overflow"
+    ],
+    "screenshot_sample_data_only": true,
+    "live_server_tested": false
+  },
+  "public_build_preview": {
+    "status": "PASS",
+    "html_pages": 25,
+    "dictionary_entries": 8542,
+    "static_references_checked": 352,
+    "static_references_missing": 0,
+    "dynamic_js_template_paths_not_counted": 2,
+    "identity_bundle_generated": false,
+    "note": "Preview allows missing esbuild-generated identity.bundle.js"
+  },
+  "full_netlify_build": {
+    "status": "NOT_VERIFIED",
+    "reason": "Local esbuild dependency not installed; npm run build exits 127 with esbuild: not found"
+  },
+  "migration": {
+    "required": true,
+    "file": "netlify/database/migrations/20261110190000_v7865_exam_coach.sql",
+    "description": "Adds two account-scoped private tables; no existing table modified",
+    "warning": "Apply migration before new exams; legacy checkpoints were deleted and cannot be backfilled"
+  },
+  "security": {
+    "signed_in_user_required": true,
+    "server_canonical_topic_source": true,
+    "private_no_store": true,
+    "payment_exam_access_rules_changed": false,
+    "personal_data_publicly_cached": false
+  },
+  "source_integrity": {
+    "base_file_count": 377,
+    "unchanged_files": 358,
+    "modified_existing_files": [
+      "netlify/functions/exam-attempt-submit.mts",
+      "package.json",
+      "scripts/build-public-v7841.mjs",
+      "service-worker.js",
+      "student-dashboard.html",
+      "tests/v763-integrity.mjs",
+      "tests/v774-release-smoke.mjs",
+      "tests/v780-performance.mjs",
+      "tests/v781-advanced-seo.mjs",
+      "tests/v7821-character-ui.mjs",
+      "tests/v7822-character-visibility.mjs",
+      "tests/v7822-reading-update.mjs",
+      "tests/v783-dictionary-quality.mjs",
+      "tests/v785-video-course.mjs",
+      "tests/v786-premium-motion.mjs",
+      "tests/v7861-stability-fix.mjs",
+      "tests/v7862-ui-session-stability.mjs",
+      "tests/v7863-all-exams-performance.mjs",
+      "tests/v7864-premium-menu.mjs"
+    ],
+    "removed_existing_files": [],
+    "added_files": [
+      "README_v7_86_5_PERSONAL_EXAM_COACH_MY.md",
+      "assets/yk-exam-coach-v7865-engine.js",
+      "assets/yk-exam-coach-v7865.css",
+      "assets/yk-exam-coach-v7865.js",
+      "netlify/database/migrations/20261110190000_v7865_exam_coach.sql",
+      "netlify/functions/_shared/exam-coach-evidence-v7865.mts",
+      "netlify/functions/exam-coach.mts",
+      "tests/v7865-exam-coach-api.mock.mjs",
+      "tests/v7865-exam-coach.mjs"
+    ]
+  },
+  "preservation": {
+    "original_characters_untouched": true,
+    "original_dictionary_dataset_untouched": true,
+    "login_payment_ykcr_access_functions_untouched": true,
+    "exam_submit_file_modified_only_for_optional_verified_evidence": true
+  },
+  "deployment": {
+    "live_site_changed": false,
+    "production_tested": false,
+    "staging_required": true
+  },
+  "fresh_zip_extraction_tests": "PASS: npm test from clean extracted ZIP, 276 PASS / 0 FAIL",
+  "zip_integrity": "PASS: ZIP CRC testzip returned None; 387 entries; no PDFs; no removed base files"
+}

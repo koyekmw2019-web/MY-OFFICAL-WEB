@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {readFileSync,existsSync} from 'node:fs';
+const read=p=>readFileSync(p,'utf8');
+const home=read('dist/index.html'),exam=read('dist/mock-exams.html');
+assert(!home.includes('id="examPanel"'));assert(!home.includes('id="v728-online-exam-system-js"'));
+assert(!home.includes('yk787-home-exam-cta'));
+assert(!home.includes('id="online-mock-exam"')); assert(home.includes('href="/mock-exams.html"'));
+assert(home.includes('data-hub-exam="truck"'));assert(home.includes('data-hub-exam="jlpt_n5"'));
+assert(exam.includes('id="examPanel"'));assert(exam.includes('id="v728-online-exam-system-js"'));
+assert(exam.includes('yk787-exam-page'));
+assert(exam.includes('href="/mock-exams.html"'));
+assert(exam.includes('og:url')&&exam.includes('/mock-exams.html'));
+assert(exam.includes('/login.html?return=%2Fmock-exams.html')); 
+assert.equal((exam.match(/data-exam-v728=/g)||[]).length,12);
+assert(existsSync('dist/assets/yk-v787-unified-theme.css'));
+assert(existsSync('dist/assets/yk-v787-routing.js'));
+assert(!home.includes('jlpt-native-v750.js'));
+console.log('PASS v787-release dedicated exam route and lightweight homepage');
