@@ -12,7 +12,7 @@ let passes=0;function test(n,cb){cb();console.log('PASS',n);passes++}
 const names=['index','jlpt-n5','jlpt-n4','jlpt-n3','jlpt-n2','jlpt-n1','jlpt-mock-exams','japanese-myanmar-dictionary','ssw-transport','ssw-truck','ssw-taxi','ssw-bus','transport-textbooks','ssw-mock-exam','ssw-auto-maintenance','driving-license'];
 function match(html, regex){return (html.match(regex)||[]).length}
 test('v7.81 package and original homepage search title stay unchanged',()=>{
- assert(['7.81.0','7.82.0','7.82.1','7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5'].includes(JSON.parse(read('package.json')).version));
+ assert(['7.81.0','7.82.0','7.82.1','7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1'].includes(JSON.parse(read('package.json')).version));
  assert(home.includes('<title>YE KUN Official Website | YE LINN OO</title>'));
  assert.equal(match(home,/<title>/g),1);
  assert.equal(match(home,/rel="canonical"/g),1);
@@ -35,9 +35,11 @@ test('new guides are unique static Japanese/Myanmar readable content pages',()=>
   assert(statSync(join(root,rel)).size>5800,'thin content? '+rel);
  }
 });
-test('public sitemap retains all 16 guides and adds only JLPT Learning and Video Course public pages',()=>{
+test('public sitemap retains all 16 guides and adds JLPT N2 Same Meaning learning page while preserving existing guides',()=>{
  const locs=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
- assert.equal(locs.length,names.length+3);
+ assert.equal(locs.length,names.length+5);
+ assert(locs.includes(domain+'/study/jlpt-n2-same-meaning.html'));
+ assert(locs.includes(domain+'/mock-exams.html'));
  assert(locs.includes(domain+'/study/jlpt-learning.html'));
  assert(locs.includes(domain+'/video-class.html'));
  assert.equal(new Set(locs).size,locs.length);
@@ -61,7 +63,7 @@ test('user-facing website contains discoverable footer links without changing he
  assert(home.includes('yk-brand-icon-v778'));
 });
 test('all new guides link to a known public homepage anchor, each other and index',()=>{
- const valid=new Set(names.map(n=>`/study/${n}.html`));valid.add('/study/jlpt-learning.html');
+ const valid=new Set(names.map(n=>`/study/${n}.html`));valid.add('/study/jlpt-learning.html');valid.add('/study/jlpt-n2-same-meaning.html');
  for(const n of names){
   const t=read(`study/${n}.html`);
   assert(t.includes('href="/study/index.html"')||n==='index',n);
