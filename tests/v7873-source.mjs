@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {readFileSync,existsSync} from 'node:fs';
+const rd=p=>readFileSync(p,'utf8');
+const p=JSON.parse(rd('package.json'));
+assert.equal(p.version,'7.87.3');
+assert(p.scripts.build.includes('node scripts/build-v7872-mobile-exams.mjs && node tests/v7872-release.mjs'));
+assert(p.scripts.build.endsWith('node scripts/build-v7873-ui-fix.mjs && node tests/v7873-release.mjs'));
+for(const f of ['assets/yk-v7873-auth.css','assets/yk-v7873-auth-notice.js','assets/yk-v7873-exam.css','scripts/build-v7873-ui-fix.mjs']) assert(existsSync(f),f);
+const builder=rd('scripts/build-v7873-ui-fix.mjs');
+assert(builder.includes('ykPrepMountV750'));
+assert(builder.includes('jlpt-chokuzen-'));
+assert(builder.includes('STUDYING WITH YE KUN'));
+assert(builder.includes('yk-192.png'));
+assert(!builder.includes('exam-attempt-submit.mts'));
+assert(!builder.includes('payment_requests'));
+assert(rd('assets/yk-v7873-exam.css').includes('exam-hub::before'));
+assert(rd('assets/yk-v7873-auth-notice.js').includes('scrollIntoView'));
+console.log('PASS v7873-source route-preserving UI/branding patch');

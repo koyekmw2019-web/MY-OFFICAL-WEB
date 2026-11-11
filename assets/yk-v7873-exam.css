@@ -1,0 +1,66 @@
+/* v7.87.3 — focused STUDYING WITH YE KUN exam interface.
+ * Scope all rules to generated /exams/*.html to leave homepage and exams directory intact. */
+body.yk873-exam-page{--yk873-crimson:#c9233d;--yk873-surface:#151518;background:#09090b;color:#f7f7f8;}
+body.yk873-exam-page .top{background:rgba(10,10,12,.96);border-bottom:1px solid #2c2327;}
+body.yk873-exam-page .top .brand-home-link{min-width:0;gap:10px;}
+body.yk873-exam-page .top .brand-home-link>div:last-child{font-size:13px;letter-spacing:.055em;line-height:1.35;font-weight:900;}
+body.yk873-exam-page .yk872-page-title{padding:14px 4px 18px!important;}
+body.yk873-exam-page.yk872-running #online-mock-exam::before{content:"STUDYING WITH YE KUN";display:block;margin:0 0 12px;padding:7px 8px 7px 38px;min-height:30px;color:#f7bcc8;background:url("/yk-192.png") 6px 50% / 24px 24px no-repeat;font-weight:900;font-size:11px;letter-spacing:.12em;}
+body.yk873-exam-page .yk872-eyebrow{color:#f78a9b!important;font-size:12px!important;letter-spacing:.15em;}
+body.yk873-exam-page .yk872-page-title h1{color:#fff;font-weight:850;letter-spacing:-.015em;}
+body.yk873-exam-page .yk872-back a{border-color:#413139!important;background:#171316!important;color:#fff;}
+body.yk873-exam-page .yk872-back a:hover{border-color:#b3445b!important;}
+body.yk873-exam-page #online-mock-exam{background:transparent!important;box-shadow:none!important;}
+body.yk873-exam-page .exam-hub{max-width:100%;overflow:visible!important;background:#101013!important;box-shadow:0 16px 48px rgba(0,0,0,.22)!important;border:1px solid #29292e!important;border-radius:23px!important;padding:16px!important;}
+body.yk873-exam-page .exam-hub::before,body.yk873-exam-page .exam-hub::after{display:none!important;content:none!important;animation:none!important;}
+body.yk873-exam-page .exam-v728-access{display:block!important;margin:0 0 16px!important;}
+body.yk873-exam-page .exam-access-card,body.yk873-exam-page .exam-plan-mini{background:#18181b!important;border:1px solid #343238!important;box-shadow:none!important;border-radius:17px!important;padding:16px!important;}
+body.yk873-exam-page .exam-access-card{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between;}
+body.yk873-exam-page .exam-access-actions button{min-height:42px;}
+body.yk873-exam-page .exam-access-copy b{font-size:15px!important;line-height:1.5;}
+body.yk873-exam-page .exam-access-copy span{font-size:12px!important;line-height:1.6;}
+body.yk873-exam-page .exam-category.v728{width:100%!important;min-height:0!important;height:auto!important;max-height:none!important;margin:0!important;padding:22px!important;gap:12px!important;display:flex!important;align-items:stretch!important;justify-content:flex-start!important;overflow:visible!important;transform:none!important;border-radius:19px!important;border:1px solid #50313b!important;background:linear-gradient(153deg,#202024 0%,#151518 72%)!important;box-shadow:inset 0 1px 0 #ffffff0d!important;}
+body.yk873-exam-page .exam-category.v728 .exam-card-top-v742{display:flex!important;min-height:0!important;height:auto!important;margin:0 0 2px!important;gap:8px!important;align-items:center!important;grid-template-columns:none!important;}
+body.yk873-exam-page .exam-category.v728 .exam-card-top-v742::after{display:none!important;}
+body.yk873-exam-page .exam-card-copy-v742{grid-column:auto!important;grid-row:auto!important;display:flex!important;align-items:center;gap:16px;padding:0!important;min-width:0;}
+body.yk873-exam-page .exam-card-copy-v742>.icon{font-size:32px!important;line-height:1.1;flex:none;}
+body.yk873-exam-page .exam-category.v728 h3{margin:0!important;font-size:clamp(24px,3vw,29px)!important;line-height:1.27!important;font-weight:900;}
+body.yk873-exam-page .exam-category.v728 h3 .exam-card-mm{margin-top:5px;font-size:13px!important;color:#bbb6bc!important;line-height:1.5!important;}
+body.yk873-exam-page .exam-book-float-v743{display:none!important;}
+body.yk873-exam-page .exam-card-desc-v744{display:block!important;margin:4px 0!important;}
+body.yk873-exam-page .exam-card-desc-v744 p{min-height:0!important;margin:0!important;color:#bcb9be!important;font-size:13px!important;line-height:1.65!important;}
+body.yk873-exam-page .exam-rule-badge{margin:2px 0!important;background:#321b24!important;border:1px solid #803c50!important;color:#ffced6!important;max-width:100%;width:max-content;border-radius:999px!important;padding:7px 12px!important;font-size:12px!important;white-space:normal;}
+body.yk873-exam-page .exam-rule-mm{color:#d2bcc5!important;font-size:12px!important;line-height:1.6!important;}
+body.yk873-exam-page .exam-category.v728 .exam-scope{display:flex!important;gap:8px!important;flex-wrap:wrap!important;margin:5px 0 1px!important;padding:0!important;}
+body.yk873-exam-page .exam-category.v728 .exam-scope span{border:1px solid #474047!important;background:#262326!important;color:#e5e2e5!important;border-radius:999px!important;font-size:12px!important;padding:6px 11px!important;}
+body.yk873-exam-page .exam-launch-v728{min-height:56px!important;margin-top:8px!important;padding:13px 16px!important;border-radius:13px!important;background:#fff!important;color:#101014!important;font-weight:900!important;font-size:16px!important;box-shadow:none!important;}
+body.yk873-exam-page .exam-launch-v728 .exam-button-mm{font-size:12px!important;opacity:.76!important;line-height:1.55!important;}
+body.yk873-exam-page .exam-launch-v728:focus-visible,body.yk873-exam-page .exam-feature-row-v7 button:focus-visible{outline:3px solid #fa718c!important;outline-offset:2px!important;}
+body.yk873-exam-page .exam-feature-row-v7{display:flex!important;gap:8px!important;flex-wrap:wrap!important;margin:0 0 16px!important;}
+body.yk873-exam-page .exam-tool-v7{background:#1c1b1f!important;border-color:#414047!important;color:#fff!important;border-radius:999px!important;min-height:39px;}
+body.yk873-exam-page .exam-tool-v7.active{background:#fff!important;color:#171519!important;}
+body.yk873-exam-page #examPanel{background:#0d0d10!important;border:1px solid #383038!important;box-shadow:none!important;max-width:100%!important;}
+body.yk873-exam-page .exam-toolbar{background:#17171a!important;border-bottom:1px solid #373238;}
+body.yk873-exam-page .exam-type-pill{background:#29212a!important;border-color:#543844!important;color:#fff!important;}
+body.yk873-exam-page .exam-question{color:#fff;}
+body.yk873-exam-page .exam-question .exam-q-number{color:#bbb;}
+body.yk873-exam-page .exam-plan-mini{background:#151518!important;}
+/* Keep success/verified state green: green now communicates real status, not decoration. */
+body.yk873-exam-page #ykPrepMountV750{display:none!important;}
+body.yk873-exam-page .jlpt-card-v754{height:auto!important;min-height:0!important;}
+body.yk873-exam-page .jlpt-card-hero-v754{min-height:0!important;}
+body.yk873-exam-page .exam-category.v728.jlpt-card-v754 .jlpt-card-brief-v779{color:#c7c4c8!important;}
+@media(max-width:650px){
+ body.yk873-exam-page .wrap{width:100%;padding:12px 10px 32px!important;}
+ body.yk873-exam-page .exam-hub{padding:10px!important;border-radius:17px!important;}
+ body.yk873-exam-page .exam-access-card{padding:14px!important;}
+ body.yk873-exam-page .exam-category.v728{padding:18px 15px!important;}
+ body.yk873-exam-page .exam-card-copy-v742>.icon{font-size:26px!important;}
+ body.yk873-exam-page .exam-category.v728 h3{font-size:23px!important;}
+ body.yk873-exam-page .exam-rule-badge{font-size:11px!important;}
+ body.yk873-exam-page .top .brand-home-link>div:last-child{display:none!important;}
+ body.yk873-exam-page .yk872-back a{font-size:12px;padding:9px 11px;}
+ body.yk873-exam-page .exam-toolbar{top:var(--yk-header-h,65px)!important;gap:8px!important;}
+ body.yk873-exam-page #examPanel{border-radius:17px!important;}
+}
+@media(prefers-reduced-motion:reduce){body.yk873-exam-page .exam-hub *,body.yk873-exam-page .exam-category.v728{animation:none!important;transition:none!important}}
