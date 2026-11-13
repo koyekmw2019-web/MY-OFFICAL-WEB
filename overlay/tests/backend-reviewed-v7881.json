@@ -1,0 +1,42 @@
+{
+  "version": "7.88.1-rc.1",
+  "baseCommit": "1d5c21cdb234add7ca33c4fd456ea6cd81d0a89a",
+  "files": {
+    "netlify/functions/_shared/auth.mts": {
+      "sha256": "0e6a84e3b0495bf4f2f539afe9207e635c6c6300bf08be4d48703d077ff0e69f",
+      "reason": "Missing/malformed roles deny admin access"
+    },
+    "netlify/functions/_shared/exam-autosave.mts": {
+      "sha256": "43519d39e12e1a808fe3e96302a0f13e011a161bd88f32cac37d32cd9118c329",
+      "reason": "Structured wrapped SQL errors and additive nishu timer/score rules"
+    },
+    "netlify/functions/_shared/exam-score-v763.mts": {
+      "sha256": "d10e74ed374d084211cdad4b58884ca2c90f0831d963caf7e33967469f322a28",
+      "reason": "Add nishu server scoring dispatch"
+    },
+    "netlify/functions/_shared/security.mts": {
+      "sha256": "3f7adc9ea4fe1454772c8bbedd9a4527798459b684fe552977e12e2818b27dc3",
+      "reason": "Add nishu exam type only"
+    },
+    "netlify/functions/exam-access.mts": {
+      "sha256": "32cffeca2169c8d5bf0bc442d6562c230c22cd8a082b3e62eef3a04bbfeccf55",
+      "reason": "Add nishu legacy expiry duration only"
+    },
+    "netlify/functions/exam-checkpoint.mts": {
+      "sha256": "88fcbe4679e399548b36c6b187bb51e99a32076026c657a49e44e7a8b3f8a16b",
+      "reason": "Add nishu engine routing only"
+    },
+    "netlify/functions/exam-payment-submit.mts": {
+      "sha256": "c0603b8e2f8ab07526b97d5e737bd27f407cb6b6b987e6b86db22288f470a692",
+      "reason": "Validate plan/bank/receipt; preserve pending payment on notification failure"
+    },
+    "netlify/functions/exam-status.mts": {
+      "sha256": "7f8f87d83b6bc930549be02fc1499b39512473a2c8c33effb60b49ea08f6361d",
+      "reason": "Private no-store account response"
+    },
+    "netlify/functions/exam-student-verify.mts": {
+      "sha256": "d80fb7fc4e2fa637657ef8c46c2e4b97b62c27fbe9e8b102b3bf29fc3a4c92c2",
+      "reason": "Atomic account linking with code, status and ownership guards"
+    }
+  }
+}

@@ -1,0 +1,3384 @@
+{
+ "version": "7.87.10",
+ "level": "N3",
+ "sourceReference": "https://nihongokyoshi-net.com/jlpt-grammars/",
+ "licenseNote": "Grammar pattern titles used as index. All explanations and examples are originally authored, not copied from source; teaching materials need ongoing human editorial review.",
+ "editorialStatus": "complete original authored drafts; not certified official JLPT list",
+ "items": [
+  {
+   "id": "N3-grammar-001",
+   "title": "〜合う",
+   "level": "N3",
+   "index": 1,
+   "status": "draft",
+   "meaningJa": "複数の人が互いに同じ動作を行う。",
+   "meaningMy": "အပြန်အလှန် အတူတူလုပ်ခြင်း။",
+   "meaningEn": "Do something mutually or together.",
+   "formation": "Vます形の語幹＋合う",
+   "examples": [
+    {
+     "ja": "二人は助け合って仕事をしました。",
+     "highlight": "合って",
+     "my": "သူတို့နှစ်ယောက် အပြန်အလှန်ကူညီပြီး အလုပ်လုပ်ခဲ့တယ်။",
+     "en": "The two helped each other at work."
+    },
+    {
+     "ja": "問題について話し合いましょう。",
+     "highlight": "合い",
+     "my": "ပြဿနာကို အတူဆွေးနွေးကြစို့။",
+     "en": "Let us discuss the issue together."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-002",
+   "title": "いくら〜ても / どんなに〜ても",
+   "level": "N3",
+   "index": 2,
+   "status": "draft",
+   "meaningJa": "程度がどんなに高くても結果が変わらない。",
+   "meaningMy": "ဘယ်လောက်ပဲ…ပေမဲ့ ရလဒ်မပြောင်းဘူး။",
+   "meaningEn": "No matter how much; even if very.",
+   "formation": "いくら / どんなに＋Vても / Aくても",
+   "examples": [
+    {
+     "ja": "いくら急いでも間に合いません。",
+     "highlight": "いくら",
+     "my": "ဘယ်လောက်မြန်မြန်လုပ်လုပ် မမီနိုင်ဘူး။",
+     "en": "No matter how much I hurry, I will not make it."
+    },
+    {
+     "ja": "どんなに忙しくても、朝ご飯は食べます。",
+     "highlight": "どんなに",
+     "my": "ဘယ်လောက်အလုပ်များများ မနက်စာတော့ စားတယ်။",
+     "en": "No matter how busy I am, I eat breakfast."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-003",
+   "title": "〜一方だ",
+   "level": "N3",
+   "index": 3,
+   "status": "draft",
+   "meaningJa": "変化が一方向へ進み続ける。",
+   "meaningMy": "တစ်ဖက်တည်းကို ဆက်တိုက်ပြောင်းလဲသွားခြင်း။",
+   "meaningEn": "Keeps changing in one direction.",
+   "formation": "V辞書形＋一方だ",
+   "examples": [
+    {
+     "ja": "物価は上がる一方です。",
+     "highlight": "一方です",
+     "my": "ကုန်ဈေးနှုန်းတွေ ဆက်တိုက်တက်နေတယ်။",
+     "en": "Prices just keep rising."
+    },
+    {
+     "ja": "人口は減る一方だ。",
+     "highlight": "一方だ",
+     "my": "လူဦးရေက ဆက်တိုက်လျော့နေတယ်။",
+     "en": "The population keeps declining."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-004",
+   "title": "〜上に",
+   "level": "N3",
+   "index": 4,
+   "status": "draft",
+   "meaningJa": "一つの理由や特徴にさらに別のものを加える。",
+   "meaningMy": "အချက်တစ်ခုအပြင် နောက်တစ်ခုပါ ပေါင်းပြောခြင်း။",
+   "meaningEn": "In addition to; adds another fact.",
+   "formation": "普通形＋上に（名詞はの、ナ形容詞はな）",
+   "examples": [
+    {
+     "ja": "この部屋は広い上に、静かです。",
+     "highlight": "上に",
+     "my": "ဒီအခန်းက ကျယ်တဲ့အပြင် တိတ်ဆိတ်တယ်။",
+     "en": "This room is spacious and quiet as well."
+    },
+    {
+     "ja": "彼は親切な上に、仕事も速いです。",
+     "highlight": "上に",
+     "my": "သူက ကြင်နာတဲ့အပြင် အလုပ်လည်းမြန်တယ်။",
+     "en": "He is kind and also works quickly."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-005",
+   "title": "〜うちに",
+   "level": "N3",
+   "index": 5,
+   "status": "draft",
+   "meaningJa": "ある状態が続いている間に行う。",
+   "meaningMy": "အခြေအနေတစ်ခုရှိနေတဲ့အချိန်အတွင်း လုပ်ခြင်း။",
+   "meaningEn": "Do something while a condition still holds.",
+   "formation": "普通形＋うちに",
+   "examples": [
+    {
+     "ja": "若いうちに、いろいろ経験したいです。",
+     "highlight": "うちに",
+     "my": "ငယ်တုန်း အတွေ့အကြုံမျိုးစုံ ရချင်တယ်။",
+     "en": "I want to gain many experiences while I am young."
+    },
+    {
+     "ja": "雨が降らないうちに、帰りましょう。",
+     "highlight": "うちに",
+     "my": "မိုးမရွာခင် ပြန်ကြရအောင်။",
+     "en": "Let us go home before it starts raining."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-006",
+   "title": "〜おかげで",
+   "level": "N3",
+   "index": 6,
+   "status": "draft",
+   "meaningJa": "良い結果の原因になったものを示す。",
+   "meaningMy": "အကူအညီ၊ အကြောင်းရင်းကောင်းကြောင့် ရလဒ်ကောင်းရခြင်း။",
+   "meaningEn": "Thanks to; cause of a positive result.",
+   "formation": "普通形＋おかげで / Nの＋おかげで",
+   "examples": [
+    {
+     "ja": "先生のおかげで、試験に合格しました。",
+     "highlight": "おかげで",
+     "my": "ဆရာ့ကျေးဇူးကြောင့် စာမေးပွဲအောင်တယ်။",
+     "en": "Thanks to my teacher, I passed the exam."
+    },
+    {
+     "ja": "友達が手伝ってくれたおかげで、早く終わりました。",
+     "highlight": "おかげで",
+     "my": "သူငယ်ချင်းက ကူညီပေးလို့ မြန်မြန်ပြီးသွားတယ်။",
+     "en": "Thanks to my friend’s help, we finished early."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-007",
+   "title": "〜おきに",
+   "level": "N3",
+   "index": 7,
+   "status": "draft",
+   "meaningJa": "決まった間隔を空けて繰り返す。",
+   "meaningMy": "သတ်မှတ်ထားတဲ့အချိန်၊ အကွာအဝေးခြားပြီး ထပ်လုပ်ခြင်း။",
+   "meaningEn": "At regular intervals.",
+   "formation": "数量＋おきに",
+   "examples": [
+    {
+     "ja": "電車は十分おきに来ます。",
+     "highlight": "おきに",
+     "my": "ရထားက ဆယ်မိနစ်ခြားတစ်စီးလာတယ်။",
+     "en": "Trains arrive every ten minutes."
+    },
+    {
+     "ja": "一日おきに運動します。",
+     "highlight": "おきに",
+     "my": "တစ်ရက်ခြား လေ့ကျင့်ခန်းလုပ်တယ်။",
+     "en": "I exercise every other day."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-008",
+   "title": "〜おそれがある",
+   "level": "N3",
+   "index": 8,
+   "status": "draft",
+   "meaningJa": "よくないことが起こる可能性がある。",
+   "meaningMy": "မကောင်းတဲ့အရာဖြစ်နိုင်ချေရှိတယ်လို့ သတိပေးခြင်း။",
+   "meaningEn": "There is a risk that something bad may happen.",
+   "formation": "V辞書形 / 名詞の＋おそれがある",
+   "examples": [
+    {
+     "ja": "大雨で川があふれるおそれがあります。",
+     "highlight": "おそれがあります",
+     "my": "မိုးကြီးလို့ မြစ်ရေလျှံနိုင်တယ်။",
+     "en": "There is a risk of river flooding due to heavy rain."
+    },
+    {
+     "ja": "この建物は倒れるおそれがあります。",
+     "highlight": "おそれがあります",
+     "my": "ဒီအဆောက်အအုံ ပြိုလဲနိုင်ခြေရှိတယ်။",
+     "en": "This building may collapse."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-009",
+   "title": "お〜だ",
+   "level": "N3",
+   "index": 9,
+   "status": "draft",
+   "meaningJa": "相手の行動や状態を尊敬して述べる。",
+   "meaningMy": "တစ်ဖက်လူရဲ့ လုပ်ဆောင်မှုကို လေးစားစွာ ပြောခြင်း။",
+   "meaningEn": "Respectfully describes another person’s action or state.",
+   "formation": "お＋Vます形の語幹＋だ / です（限られた動詞）",
+   "examples": [
+    {
+     "ja": "先生はもうお帰りです。",
+     "highlight": "お帰りです",
+     "my": "ဆရာ ပြန်သွားပြီဖြစ်ပါတယ်။",
+     "en": "The teacher has already gone home."
+    },
+    {
+     "ja": "部長は今、お休みです。",
+     "highlight": "お休みです",
+     "my": "ဌာနမှူး အခု နားနေပါတယ်။",
+     "en": "The manager is resting now."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-010",
+   "title": "〜がきっかけで",
+   "level": "N3",
+   "index": 10,
+   "status": "draft",
+   "meaningJa": "ある出来事が始まりの原因になる。",
+   "meaningMy": "ကိစ္စတစ်ခုက နောက်အဖြစ်အပျက်စတင်ရတဲ့ အကြောင်းဖြစ်ခြင်း။",
+   "meaningEn": "An event becomes the trigger or starting point.",
+   "formation": "名詞 / 普通形＋のがきっかけで",
+   "examples": [
+    {
+     "ja": "友達の紹介がきっかけで、日本語を始めました。",
+     "highlight": "がきっかけで",
+     "my": "သူငယ်ချင်းမိတ်ဆက်ပေးလို့ ဂျပန်စာ စလေ့လာခဲ့တယ်။",
+     "en": "A friend’s introduction prompted me to start Japanese."
+    },
+    {
+     "ja": "旅行がきっかけで、その町が好きになりました。",
+     "highlight": "がきっかけで",
+     "my": "ခရီးသွားခဲ့တာက အကြောင်းဖြစ်ပြီး အဲဒီမြို့ကို ကြိုက်လာတယ်။",
+     "en": "A trip sparked my love for that city."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-011",
+   "title": "〜かける / 〜かけの",
+   "level": "N3",
+   "index": 11,
+   "status": "draft",
+   "meaningJa": "始めたがまだ完了していない状態を表す。",
+   "meaningMy": "စလုပ်ထားပြီး မပြီးသေးတာကို ဖော်ပြခြင်း။",
+   "meaningEn": "Partly done or in the middle of doing something.",
+   "formation": "Vます形の語幹＋かける / かけの",
+   "examples": [
+    {
+     "ja": "読みかけの本が机にあります。",
+     "highlight": "かけの",
+     "my": "ဖတ်လက်စစာအုပ် စားပွဲပေါ်ရှိတယ်။",
+     "en": "There is a half-read book on the desk."
+    },
+    {
+     "ja": "食べかけのパンを冷蔵庫に入れました。",
+     "highlight": "かけの",
+     "my": "စားလက်စပေါင်မုန့်ကို ရေခဲသေတ္တာထဲ ထည့်ခဲ့တယ်။",
+     "en": "I put the partly eaten bread in the refrigerator."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-012",
+   "title": "〜がち",
+   "level": "N3",
+   "index": 12,
+   "status": "draft",
+   "meaningJa": "よくない状態が起こりやすい傾向を表す。",
+   "meaningMy": "မကောင်းတဲ့အခြေအနေ မကြာခဏဖြစ်တတ်ခြင်း။",
+   "meaningEn": "Tends to do something, often undesirable.",
+   "formation": "Vます形の語幹 / 名詞＋がち",
+   "examples": [
+    {
+     "ja": "忙しいと朝食を抜きがちです。",
+     "highlight": "がち",
+     "my": "အလုပ်များရင် မနက်စာ မစားမိတတ်ဘူး။",
+     "en": "When busy, I tend to skip breakfast."
+    },
+    {
+     "ja": "冬は運動不足になりがちです。",
+     "highlight": "がち",
+     "my": "ဆောင်းတွင်းမှာ လေ့ကျင့်ခန်း မလုံလောက်တတ်တယ်။",
+     "en": "People tend to get too little exercise in winter."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-013",
+   "title": "〜かな(あ)",
+   "level": "N3",
+   "index": 13,
+   "status": "draft",
+   "meaningJa": "独り言のように疑問や気持ちを表す。",
+   "meaningMy": "ကိုယ့်ဘာသာ တွေးမေးတာ၊ မသေချာတာကို ပြောခြင်း။",
+   "meaningEn": "I wonder; expresses a casual doubt or feeling.",
+   "formation": "普通形＋かな / なあ",
+   "examples": [
+    {
+     "ja": "明日は晴れるかな。",
+     "highlight": "かな",
+     "my": "မနက်ဖြန် နေသာမလားနော်။",
+     "en": "I wonder if it will be sunny tomorrow."
+    },
+    {
+     "ja": "この問題は難しいなあ。",
+     "highlight": "なあ",
+     "my": "ဒီမေးခွန်းက ခက်လိုက်တာနော်။",
+     "en": "This problem is really hard."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-014",
+   "title": "〜から〜にかけて",
+   "level": "N3",
+   "index": 14,
+   "status": "draft",
+   "meaningJa": "時間や場所の大まかな範囲を表す。",
+   "meaningMy": "အချိန်၊ နေရာ အကြမ်းဖျင်းအပိုင်းအခြားကို ပြတယ်။",
+   "meaningEn": "From one approximate time or place to another.",
+   "formation": "名詞 A＋から＋名詞 B＋にかけて",
+   "examples": [
+    {
+     "ja": "夕方から夜にかけて雨が降ります。",
+     "highlight": "にかけて",
+     "my": "ညနေကနေ ညအထိ မိုးရွာမယ်။",
+     "en": "It will rain from evening into the night."
+    },
+    {
+     "ja": "関東から東北にかけて雪が降りました。",
+     "highlight": "にかけて",
+     "my": "ကန်တိုကနေ တိုဟိုကုအထိ နှင်းကျခဲ့တယ်။",
+     "en": "Snow fell from Kanto through Tohoku."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-015",
+   "title": "〜からには",
+   "level": "N3",
+   "index": 15,
+   "status": "draft",
+   "meaningJa": "決めたことには責任を持つべきだと述べる。",
+   "meaningMy": "ဆုံးဖြတ်ပြီးသားဆိုရင် တာဝန်ယူရမယ်လို့ ဆိုခြင်း။",
+   "meaningEn": "Now that; having committed, one should follow through.",
+   "formation": "普通形＋からには",
+   "examples": [
+    {
+     "ja": "始めたからには最後まで頑張ります。",
+     "highlight": "からには",
+     "my": "စပြီးသားမို့ အဆုံးထိ ကြိုးစားမယ်။",
+     "en": "Now that I have started, I will do my best to the end."
+    },
+    {
+     "ja": "約束したからには守ってください。",
+     "highlight": "からには",
+     "my": "ကတိပေးပြီးသားမို့ တည်ပါ။",
+     "en": "Since you promised, please keep your word."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-016",
+   "title": "〜かわりに（代償・交換条件）",
+   "level": "N3",
+   "index": 16,
+   "status": "draft",
+   "meaningJa": "ある行為の見返りとして別のことを行う。",
+   "meaningMy": "တစ်ခုလုပ်ပေးတဲ့ အပြန်အလှန်အဖြစ် နောက်တစ်ခုလုပ်ခြင်း။",
+   "meaningEn": "In exchange for; as a trade-off.",
+   "formation": "普通形＋かわりに / 名詞の＋かわりに",
+   "examples": [
+    {
+     "ja": "今日手伝うかわりに、明日休ませてください。",
+     "highlight": "かわりに",
+     "my": "ဒီနေ့ကူညီမယ်၊ အပြန်အလှန်အဖြစ် မနက်ဖြန်နားခွင့်ပေးပါ။",
+     "en": "I will help today in exchange for a day off tomorrow."
+    },
+    {
+     "ja": "料理をするかわりに、皿を洗ってください。",
+     "highlight": "かわりに",
+     "my": "ကျွန်တော် ဟင်းချက်မယ်၊ အပြန်အလှန် ပန်းကန်ဆေးပေးပါ။",
+     "en": "I will cook if you wash the dishes in return."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-017",
+   "title": "〜かわりに（代理・代用）",
+   "level": "N3",
+   "index": 17,
+   "status": "draft",
+   "meaningJa": "あるものの代わりに別のものを用いる、代理をする。",
+   "meaningMy": "တစ်ခုအစား နောက်တစ်ခုသုံးခြင်း၊ လူစားဝင်လုပ်ခြင်း။",
+   "meaningEn": "Instead of; substitutes for someone or something.",
+   "formation": "名詞の / V辞書形＋かわりに",
+   "examples": [
+    {
+     "ja": "父のかわりに私が会議に出ます。",
+     "highlight": "かわりに",
+     "my": "ဖေဖေ့အစား ကျွန်တော် အစည်းအဝေးတက်မယ်။",
+     "en": "I will attend the meeting in place of my father."
+    },
+    {
+     "ja": "電車のかわりにバスで行きました。",
+     "highlight": "かわりに",
+     "my": "ရထားအစား ဘတ်စ်ကားနဲ့ သွားခဲ့တယ်။",
+     "en": "I took the bus instead of the train."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-018",
+   "title": "〜きる",
+   "level": "N3",
+   "index": 18,
+   "status": "draft",
+   "meaningJa": "最後まで完全に行う、または程度が極限になる。",
+   "meaningMy": "အဆုံးအထိ လုံးဝလုပ်ပြီးခြင်း။",
+   "meaningEn": "Do something completely to the end.",
+   "formation": "Vます形の語幹＋きる",
+   "examples": [
+    {
+     "ja": "三時間で本を読みきりました。",
+     "highlight": "きりました",
+     "my": "သုံးနာရီအတွင်း စာအုပ်ကို အဆုံးထိဖတ်ပြီးတယ်။",
+     "en": "I finished reading the entire book in three hours."
+    },
+    {
+     "ja": "最後まで走りきりました。",
+     "highlight": "きりました",
+     "my": "နောက်ဆုံးအထိ ပြေးပြီးခဲ့တယ်။",
+     "en": "I ran all the way to the finish."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-019",
+   "title": "〜くらい（軽視）",
+   "level": "N3",
+   "index": 19,
+   "status": "draft",
+   "meaningJa": "大したことではないと軽く扱う。",
+   "meaningMy": "အဲဒီလောက်က အသေးအဖွဲပါလို့ သဘောထားပြောခြင်း။",
+   "meaningEn": "Treats something as trivial or minor.",
+   "formation": "名詞・動詞普通形＋くらい",
+   "examples": [
+    {
+     "ja": "これくらいの荷物なら持てます。",
+     "highlight": "くらい",
+     "my": "ဒီလောက်အထုပ်ကတော့ သယ်နိုင်တယ်။",
+     "en": "I can carry a package this small."
+    },
+    {
+     "ja": "名前を書くくらい簡単ですよ。",
+     "highlight": "くらい",
+     "my": "နာမည်ရေးရုံလောက်က လွယ်ပါတယ်။",
+     "en": "Something as simple as writing your name is easy."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-020",
+   "title": "〜結果",
+   "level": "N3",
+   "index": 20,
+   "status": "draft",
+   "meaningJa": "ある行為の後に生じた結末を示す。",
+   "meaningMy": "လုပ်ဆောင်ပြီးနောက် ထွက်လာတဲ့ရလဒ်ကို ပြတယ်။",
+   "meaningEn": "As a result of something done.",
+   "formation": "Vた形 / 名詞の＋結果",
+   "examples": [
+    {
+     "ja": "調べた結果、原因が分かりました。",
+     "highlight": "結果",
+     "my": "စစ်ဆေးပြီးနောက် အကြောင်းရင်းသိလာတယ်။",
+     "en": "As a result of investigating, I found the cause."
+    },
+    {
+     "ja": "話し合いの結果、延期を決めました。",
+     "highlight": "結果",
+     "my": "ဆွေးနွေးပြီးနောက် ရွှေ့ဆိုင်းဖို့ဆုံးဖြတ်တယ်။",
+     "en": "After discussion, we decided to postpone it."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-021",
+   "title": "〜こそ",
+   "level": "N3",
+   "index": 21,
+   "status": "draft",
+   "meaningJa": "特定の人・物・状況を強く取り立てる。",
+   "meaningMy": "အဲဒါပဲ အဓိကလို့ အလေးပေးပြောခြင်း။",
+   "meaningEn": "Precisely; emphasizes one particular thing.",
+   "formation": "名詞＋こそ",
+   "examples": [
+    {
+     "ja": "今こそ挑戦するときです。",
+     "highlight": "こそ",
+     "my": "အခုမှပဲ စိန်ခေါ်ဖို့ အချိန်ကောင်းဖြစ်တယ်။",
+     "en": "Now is precisely the time to take on a challenge."
+    },
+    {
+     "ja": "こちらこそありがとうございます。",
+     "highlight": "こそ",
+     "my": "ကျွန်တော်ကပဲ ကျေးဇူးတင်ပါတယ်။",
+     "en": "Thank you, too; I should be thanking you."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-022",
+   "title": "〜こと",
+   "level": "N3",
+   "index": 22,
+   "status": "draft",
+   "meaningJa": "規則・指示などを簡潔な文で表す。",
+   "meaningMy": "စည်းကမ်း၊ ညွှန်ကြားချက်ကို တိုတိုတုတ်တုတ် ရေးခြင်း။",
+   "meaningEn": "Marks a rule or written instruction.",
+   "formation": "V辞書形 / Vない形＋こと",
+   "examples": [
+    {
+     "ja": "試験中は話さないこと。",
+     "highlight": "こと",
+     "my": "စာမေးပွဲအတွင်း စကားမပြောရ။",
+     "en": "Do not talk during the exam."
+    },
+    {
+     "ja": "提出前に名前を確認すること。",
+     "highlight": "こと",
+     "my": "တင်သွင်းမီ နာမည်စစ်ရမည်။",
+     "en": "Check your name before submission."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-023",
+   "title": "〜ごとに",
+   "level": "N3",
+   "index": 23,
+   "status": "draft",
+   "meaningJa": "それぞれの単位・機会を一つずつ示す。",
+   "meaningMy": "တစ်ခုချင်းစီ၊ အကြိမ်တိုင်း၊ အချိန်ခြားတိုင်း။",
+   "meaningEn": "Every; for each occurrence or unit.",
+   "formation": "名詞 / 数量＋ごとに",
+   "examples": [
+    {
+     "ja": "一時間ごとに休憩します。",
+     "highlight": "ごとに",
+     "my": "တစ်နာရီခြား နားတယ်။",
+     "en": "We take a break every hour."
+    },
+    {
+     "ja": "国ごとに習慣が違います。",
+     "highlight": "ごとに",
+     "my": "နိုင်ငံတစ်နိုင်ငံစီအလိုက် အလေ့အထမတူဘူး။",
+     "en": "Customs differ from country to country."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-024",
+   "title": "〜ことから",
+   "level": "N3",
+   "index": 24,
+   "status": "draft",
+   "meaningJa": "事実・理由を根拠に判断や名前の由来を述べる。",
+   "meaningMy": "အကြောင်းအချက်တစ်ခုကို အခြေခံပြီး ကောက်ချက်ချခြင်း။",
+   "meaningEn": "Because of a fact; based on evidence.",
+   "formation": "普通形＋ことから",
+   "examples": [
+    {
+     "ja": "道がぬれていることから、雨が降ったと考えられます。",
+     "highlight": "ことから",
+     "my": "လမ်းစိုနေတာကြောင့် မိုးရွာထားတယ်လို့ ယူဆရတယ်။",
+     "en": "Because the road is wet, it seems to have rained."
+    },
+    {
+     "ja": "形が星に似ていることから、その名前が付きました。",
+     "highlight": "ことから",
+     "my": "ပုံစံက ကြယ်နဲ့တူလို့ အဲဒီနာမည်ရခဲ့တယ်။",
+     "en": "It got its name because its shape resembles a star."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-025",
+   "title": "〜ことになっている",
+   "level": "N3",
+   "index": 25,
+   "status": "draft",
+   "meaningJa": "規則・予定として決まっている。",
+   "meaningMy": "စည်းမျဉ်း၊ အချိန်ဇယားအရ သတ်မှတ်ထားခြင်း။",
+   "meaningEn": "Be scheduled or required by a rule.",
+   "formation": "V辞書形 / Vない形＋ことになっている",
+   "examples": [
+    {
+     "ja": "この建物では靴を脱ぐことになっています。",
+     "highlight": "ことになっています",
+     "my": "ဒီအဆောက်အအုံမှာ ဖိနပ်ချွတ်ရမယ်လို့ စည်းကမ်းရှိတယ်။",
+     "en": "You are required to take off your shoes in this building."
+    },
+    {
+     "ja": "会議は九時に始まることになっています。",
+     "highlight": "ことになっています",
+     "my": "အစည်းအဝေးကို ကိုးနာရီမှာ စဖို့ သတ်မှတ်ထားတယ်။",
+     "en": "The meeting is scheduled to start at nine."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-026",
+   "title": "〜ことはない",
+   "level": "N3",
+   "index": 26,
+   "status": "draft",
+   "meaningJa": "何かをする必要がないと述べる。",
+   "meaningMy": "အဲဒီလိုလုပ်စရာ မလိုဘူးလို့ ပြောခြင်း။",
+   "meaningEn": "There is no need to do something.",
+   "formation": "V辞書形＋ことはない",
+   "examples": [
+    {
+     "ja": "そんなに心配することはありません。",
+     "highlight": "ことはありません",
+     "my": "ဒီလောက် စိတ်ပူစရာမလိုဘူး။",
+     "en": "There is no need to worry so much."
+    },
+    {
+     "ja": "急ぐことはないですよ。",
+     "highlight": "ことはない",
+     "my": "အလျင်လိုစရာမလိုပါဘူး။",
+     "en": "There is no need to rush."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-027",
+   "title": "〜込む",
+   "level": "N3",
+   "index": 27,
+   "status": "draft",
+   "meaningJa": "中へ入る動きや、動作を深く長く行う意味を加える。",
+   "meaningMy": "အထဲဝင်ခြင်း၊ တစ်ခုကို လေးလေးနက်နက် လုပ်ခြင်း။",
+   "meaningEn": "Move into something or do an action intensively.",
+   "formation": "Vます形の語幹＋込む",
+   "examples": [
+    {
+     "ja": "電車に乗り込みました。",
+     "highlight": "込みました",
+     "my": "ရထားပေါ်ကို တက်ဝင်ခဲ့တယ်။",
+     "en": "I boarded the train."
+    },
+    {
+     "ja": "問題について考え込みました。",
+     "highlight": "込みました",
+     "my": "ပြဿနာကို လေးလေးနက်နက် စဉ်းစားမိခဲ့တယ်။",
+     "en": "I thought deeply about the problem."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-028",
+   "title": "〜最中に",
+   "level": "N3",
+   "index": 28,
+   "status": "draft",
+   "meaningJa": "何かをしているまさにそのときに別のことが起きる。",
+   "meaningMy": "တစ်ခုလုပ်နေတုန်း အလယ်ခေါင်မှာ နောက်တစ်ခုဖြစ်ခြင်း။",
+   "meaningEn": "Right in the middle of doing something.",
+   "formation": "Vている / 名詞の＋最中に",
+   "examples": [
+    {
+     "ja": "会議の最中に電話が鳴りました。",
+     "highlight": "最中に",
+     "my": "အစည်းအဝေးလယ်မှာ ဖုန်းမြည်ခဲ့တယ်။",
+     "en": "The phone rang in the middle of a meeting."
+    },
+    {
+     "ja": "食事をしている最中に停電しました。",
+     "highlight": "最中に",
+     "my": "ထမင်းစားနေတုန်း မီးပျက်ခဲ့တယ်။",
+     "en": "The power went out in the middle of dinner."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-029",
+   "title": "〜際に / 〜際の",
+   "level": "N3",
+   "index": 29,
+   "status": "draft",
+   "meaningJa": "特定の機会や場面を改まって述べる。",
+   "meaningMy": "တစ်ခုလုပ်တဲ့အခါ၊ အခွင့်အရေးတစ်ခုမှာ ဆိုတဲ့ တရားဝင်အသုံး။",
+   "meaningEn": "On the occasion of; a formal way to say when.",
+   "formation": "V辞書形 / Vた形 / 名詞の＋際に",
+   "examples": [
+    {
+     "ja": "入国する際に、パスポートを見せてください。",
+     "highlight": "際に",
+     "my": "နိုင်ငံဝင်တဲ့အခါ ပတ်စ်ပို့ပြပါ။",
+     "en": "Please show your passport when entering the country."
+    },
+    {
+     "ja": "面接の際の注意点を確認しました。",
+     "highlight": "際の",
+     "my": "အင်တာဗျူးအချိန် သတိထားစရာတွေ စစ်ခဲ့တယ်။",
+     "en": "I checked the precautions for the interview."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-030",
+   "title": "〜さえ",
+   "level": "N3",
+   "index": 30,
+   "status": "draft",
+   "meaningJa": "極端な例を示し、ほかも同じだと強調する。",
+   "meaningMy": "…တောင် ဆိုပြီး အလွန်ထင်ရှားတဲ့ ဥပမာနဲ့ အလေးပေးခြင်း။",
+   "meaningEn": "Even; highlights an extreme example.",
+   "formation": "名詞＋さえ",
+   "examples": [
+    {
+     "ja": "忙しくて水さえ飲めませんでした。",
+     "highlight": "さえ",
+     "my": "အလုပ်များလို့ ရေတောင် မသောက်နိုင်ခဲ့ဘူး။",
+     "en": "I was so busy I could not even drink water."
+    },
+    {
+     "ja": "彼は自分の名前さえ書けません。",
+     "highlight": "さえ",
+     "my": "သူက ကိုယ့်နာမည်တောင် မရေးနိုင်ဘူး။",
+     "en": "He cannot even write his own name."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-031",
+   "title": "〜さえ〜ば",
+   "level": "N3",
+   "index": 31,
+   "status": "draft",
+   "meaningJa": "最低限の条件が満たされれば十分だと表す。",
+   "meaningMy": "အဲဒီတစ်ချက်သာ ရှိရင် လုံလောက်တယ်။",
+   "meaningEn": "If only one condition is met, it is enough.",
+   "formation": "名詞＋さえ＋あれば / Vます形の語幹＋さえすれば",
+   "examples": [
+    {
+     "ja": "時間さえあれば、手伝えます。",
+     "highlight": "さえあれば",
+     "my": "အချိန်သာရှိရင် ကူညီနိုင်တယ်။",
+     "en": "If I only had time, I could help."
+    },
+    {
+     "ja": "練習さえすれば、上手になります。",
+     "highlight": "さえすれば",
+     "my": "လေ့ကျင့်ရုံသာ လေ့ကျင့်ရင် တော်လာမယ်။",
+     "en": "If you only practice, you will improve."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-032",
+   "title": "〜しかない / 〜ほかない",
+   "level": "N3",
+   "index": 32,
+   "status": "draft",
+   "meaningJa": "選択肢がなく、その方法を取るしかない。",
+   "meaningMy": "တခြားလမ်းမရှိလို့ အဲဒီနည်းပဲ ရွေးရမယ်။",
+   "meaningEn": "Have no option other than to do something.",
+   "formation": "V辞書形＋しかない / ほかない",
+   "examples": [
+    {
+     "ja": "電車が止まったので歩くしかありません。",
+     "highlight": "しかありません",
+     "my": "ရထားရပ်သွားလို့ လမ်းလျှောက်သွားရုံပဲ ရှိတယ်။",
+     "en": "The train stopped, so there is no choice but to walk."
+    },
+    {
+     "ja": "雨が強いので延期するほかありません。",
+     "highlight": "ほかありません",
+     "my": "မိုးကြီးလို့ ရွှေ့ဆိုင်းရုံပဲရှိတယ်။",
+     "en": "Because of heavy rain, we have no choice but to postpone."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-033",
+   "title": "〜じゃない？",
+   "level": "N3",
+   "index": 33,
+   "status": "draft",
+   "meaningJa": "相手に同意や確認を求めるくだけた表現。",
+   "meaningMy": "မဟုတ်လားလို့ ရင်းရင်းနှီးနှီး အတည်ပြုမေးခြင်း။",
+   "meaningEn": "A casual way to seek confirmation or agreement.",
+   "formation": "普通形＋じゃない？",
+   "examples": [
+    {
+     "ja": "この映画、おもしろいんじゃない？",
+     "highlight": "じゃない",
+     "my": "ဒီရုပ်ရှင် စိတ်ဝင်စားစရာကောင်းတယ်မဟုတ်လား။",
+     "en": "Isn’t this movie interesting?"
+    },
+    {
+     "ja": "明日は休みじゃない？",
+     "highlight": "じゃない",
+     "my": "မနက်ဖြန် နားရက်မဟုတ်လား။",
+     "en": "Tomorrow is a day off, right?"
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-034",
+   "title": "〜ずに",
+   "level": "N3",
+   "index": 34,
+   "status": "draft",
+   "meaningJa": "ある動作をしないで別のことを行う。",
+   "meaningMy": "တစ်ခုကို မလုပ်ဘဲ နောက်တစ်ခုလုပ်ခြင်း။",
+   "meaningEn": "Without doing something; a formal alternative to ないで.",
+   "formation": "Vない形の「ない」を「ずに」（する→せずに）",
+   "examples": [
+    {
+     "ja": "朝食を食べずに出かけました。",
+     "highlight": "ずに",
+     "my": "မနက်စာမစားဘဲ အပြင်ထွက်ခဲ့တယ်။",
+     "en": "I went out without eating breakfast."
+    },
+    {
+     "ja": "誰にも言わずに帰りました。",
+     "highlight": "ずに",
+     "my": "ဘယ်သူ့ကိုမှ မပြောဘဲ ပြန်သွားခဲ့တယ်။",
+     "en": "I went home without telling anyone."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-035",
+   "title": "〜せいで",
+   "level": "N3",
+   "index": 35,
+   "status": "draft",
+   "meaningJa": "悪い結果の原因を表す。",
+   "meaningMy": "မကောင်းတဲ့ရလဒ်ရစေတဲ့ အကြောင်းရင်းကို ဖော်ပြခြင်း။",
+   "meaningEn": "Because of; usually the cause of something bad.",
+   "formation": "普通形＋せいで / Nの＋せいで",
+   "examples": [
+    {
+     "ja": "渋滞のせいで、遅刻しました。",
+     "highlight": "せいで",
+     "my": "ယာဉ်ကြောပိတ်လို့ နောက်ကျသွားတယ်။",
+     "en": "I was late because of the traffic jam."
+    },
+    {
+     "ja": "風邪をひいたせいで、旅行をやめました。",
+     "highlight": "せいで",
+     "my": "အအေးမိသွားလို့ ခရီးစဉ်ဖျက်လိုက်တယ်။",
+     "en": "I canceled the trip because I caught a cold."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-036",
+   "title": "〜たがる",
+   "level": "N3",
+   "index": 36,
+   "status": "draft",
+   "meaningJa": "第三者が何かをしたい様子を表す。",
+   "meaningMy": "အခြားလူတစ်ယောက် လုပ်ချင်နေတဲ့ပုံကို ဖော်ပြခြင်း။",
+   "meaningEn": "Describes another person appearing to want to do something.",
+   "formation": "Vます形の語幹＋たがる",
+   "examples": [
+    {
+     "ja": "子どもが外で遊びたがっています。",
+     "highlight": "たがっています",
+     "my": "ကလေးက အပြင်မှာ ကစားချင်နေတယ်။",
+     "en": "The child seems eager to play outside."
+    },
+    {
+     "ja": "友達は日本へ行きたがっています。",
+     "highlight": "たがっています",
+     "my": "သူငယ်ချင်းက ဂျပန်သွားချင်နေတယ်။",
+     "en": "My friend wants to go to Japan."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-037",
+   "title": "〜だけ",
+   "level": "N3",
+   "index": 37,
+   "status": "draft",
+   "meaningJa": "できる範囲の限界まで行う。",
+   "meaningMy": "တတ်နိုင်သလောက်၊ ရနိုင်သလောက် လုပ်ခြင်း။",
+   "meaningEn": "As much as possible within the available limit.",
+   "formation": "V可能形 / Vたい形＋だけ",
+   "examples": [
+    {
+     "ja": "食べられるだけ食べてください。",
+     "highlight": "だけ",
+     "my": "စားနိုင်သလောက် စားပါ။",
+     "en": "Please eat as much as you can."
+    },
+    {
+     "ja": "できるだけ早く来てください。",
+     "highlight": "だけ",
+     "my": "တတ်နိုင်သလောက် စောစောလာပါ။",
+     "en": "Please come as early as possible."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-038",
+   "title": "〜だけでなく・・・も",
+   "level": "N3",
+   "index": 38,
+   "status": "draft",
+   "meaningJa": "一つだけではなく、さらに別のものも当てはまる。",
+   "meaningMy": "တစ်ခုတည်းမဟုတ်ဘဲ နောက်တစ်ခုလည်း ပါဝင်ခြင်း။",
+   "meaningEn": "Not only A but also B.",
+   "formation": "普通形 / 名詞＋だけでなく、～も",
+   "examples": [
+    {
+     "ja": "彼は日本語だけでなく、英語も話せます。",
+     "highlight": "だけでなく",
+     "my": "သူက ဂျပန်စာတင်မက အင်္ဂလိပ်စာလည်း ပြောနိုင်တယ်။",
+     "en": "He speaks not only Japanese but also English."
+    },
+    {
+     "ja": "この店は安いだけでなく、おいしいです。",
+     "highlight": "だけでなく",
+     "my": "ဒီဆိုင်က ဈေးချိုရုံမက စားလို့လည်းကောင်းတယ်။",
+     "en": "This restaurant is not only cheap but also delicious."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-039",
+   "title": "たとえ〜ても",
+   "level": "N3",
+   "index": 39,
+   "status": "draft",
+   "meaningJa": "仮にそうなったとしても結論は変わらない。",
+   "meaningMy": "တကယ်ဖြစ်သွားရင်တောင် ရလဒ်မပြောင်းဘူး။",
+   "meaningEn": "Even if; regardless of a hypothetical condition.",
+   "formation": "たとえ＋Vても / Aくても",
+   "examples": [
+    {
+     "ja": "たとえ失敗しても、また挑戦します。",
+     "highlight": "たとえ",
+     "my": "ကျရှုံးရင်တောင် ထပ်ကြိုးစားမယ်။",
+     "en": "Even if I fail, I will try again."
+    },
+    {
+     "ja": "たとえ忙しくても、連絡します。",
+     "highlight": "たとえ",
+     "my": "ဘယ်လောက်အလုပ်များများ ဆက်သွယ်မယ်။",
+     "en": "Even if I am busy, I will contact you."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-040",
+   "title": "〜たところ",
+   "level": "N3",
+   "index": 40,
+   "status": "draft",
+   "meaningJa": "実際に行動した直後の結果を述べる。",
+   "meaningMy": "စမ်းလုပ်ကြည့်ပြီးနောက် တွေ့ရတဲ့ရလဒ်ကို ဖော်ပြခြင်း။",
+   "meaningEn": "On doing something, found a particular result.",
+   "formation": "Vた形＋ところ",
+   "examples": [
+    {
+     "ja": "電話してみたところ、留守でした。",
+     "highlight": "ところ",
+     "my": "ဖုန်းခေါ်ကြည့်တော့ အိမ်မှာမရှိခဲ့ဘူး။",
+     "en": "When I called, no one was home."
+    },
+    {
+     "ja": "確認したところ、間違いが見つかりました。",
+     "highlight": "ところ",
+     "my": "စစ်ကြည့်တော့ အမှားတွေ့ခဲ့တယ်။",
+     "en": "After checking, an error was found."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-041",
+   "title": "〜たびに",
+   "level": "N3",
+   "index": 41,
+   "status": "draft",
+   "meaningJa": "同じことが起きる度に、別のことも起きる。",
+   "meaningMy": "တစ်ခုခုဖြစ်တိုင်း နောက်တစ်ခုလည်း ဖြစ်ခြင်း။",
+   "meaningEn": "Every time; whenever.",
+   "formation": "V辞書形 / Nの＋たびに",
+   "examples": [
+    {
+     "ja": "この歌を聞くたびに、故郷を思い出します。",
+     "highlight": "たびに",
+     "my": "ဒီသီချင်းကြားတိုင်း မွေးရပ်မြေကို သတိရတယ်။",
+     "en": "Every time I hear this song, I remember my hometown."
+    },
+    {
+     "ja": "日本に来るたびに、新しい発見があります。",
+     "highlight": "たびに",
+     "my": "ဂျပန်လာတိုင်း အသစ်တစ်ခုခု တွေ့တယ်။",
+     "en": "Whenever I visit Japan, I discover something new."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-042",
+   "title": "〜ために（原因）",
+   "level": "N3",
+   "index": 42,
+   "status": "draft",
+   "meaningJa": "原因によって好ましくない結果が起きたことを表す。",
+   "meaningMy": "အကြောင်းရင်းတစ်ခုကြောင့် ရလဒ်တစ်ခု ဖြစ်လာခြင်း။",
+   "meaningEn": "Because of a cause, often with an unwelcome result.",
+   "formation": "普通形＋ために / 名詞の＋ために",
+   "examples": [
+    {
+     "ja": "台風のために、試合が中止されました。",
+     "highlight": "ために",
+     "my": "မုန်တိုင်းကြောင့် ပြိုင်ပွဲဖျက်သိမ်းခဲ့တယ်။",
+     "en": "The game was canceled because of a typhoon."
+    },
+    {
+     "ja": "事故が起きたために、道路が混みました。",
+     "highlight": "ために",
+     "my": "မတော်တဆမှုဖြစ်လို့ လမ်းပိတ်တယ်။",
+     "en": "Traffic was heavy because an accident occurred."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-043",
+   "title": "〜たものだ",
+   "level": "N3",
+   "index": 43,
+   "status": "draft",
+   "meaningJa": "昔よくしていたことを懐かしく振り返る。",
+   "meaningMy": "အရင်က မကြာခဏလုပ်ခဲ့တာကို ပြန်သတိရပြောခြင်း။",
+   "meaningEn": "Used to; fondly recalls past habits.",
+   "formation": "Vた形＋ものだ",
+   "examples": [
+    {
+     "ja": "子どものころ、川で泳いだものです。",
+     "highlight": "ものです",
+     "my": "ငယ်ငယ်က မြစ်ထဲမှာ ရေကူးလေ့ရှိတယ်။",
+     "en": "I used to swim in the river as a child."
+    },
+    {
+     "ja": "昔はよく友達と夜まで話したものだ。",
+     "highlight": "ものだ",
+     "my": "အရင်က သူငယ်ချင်းတွေနဲ့ ညအထိ စကားပြောတတ်ခဲ့တယ်။",
+     "en": "I used to chat with friends late into the night."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-044",
+   "title": "〜だらけ",
+   "level": "N3",
+   "index": 44,
+   "status": "draft",
+   "meaningJa": "好ましくないものがたくさん付いている。",
+   "meaningMy": "မကောင်းတဲ့အရာတွေနဲ့ ပြည့်နေခြင်း။",
+   "meaningEn": "Covered or full of something undesirable.",
+   "formation": "名詞＋だらけ",
+   "examples": [
+    {
+     "ja": "このシャツは泥だらけです。",
+     "highlight": "だらけ",
+     "my": "ဒီအင်္ကျီ ရွှံ့တွေနဲ့ ပြည့်နေတယ်။",
+     "en": "This shirt is covered in mud."
+    },
+    {
+     "ja": "作文は間違いだらけでした。",
+     "highlight": "だらけ",
+     "my": "စာစီစာကုံးမှာ အမှားတွေအများကြီးရှိခဲ့တယ်။",
+     "en": "The essay was full of mistakes."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-045",
+   "title": "〜だろう",
+   "level": "N3",
+   "index": 45,
+   "status": "draft",
+   "meaningJa": "推測や未来の予想を表す普通体。",
+   "meaningMy": "…မယ်ထင်တယ်ဆိုတဲ့ ခန့်မှန်းချက်ကို ရင်းနှီးပုံစံနဲ့ ပြောခြင်း။",
+   "meaningEn": "Probably; a plain form of conjecture.",
+   "formation": "普通形＋だろう",
+   "examples": [
+    {
+     "ja": "明日は雨が降るだろう。",
+     "highlight": "だろう",
+     "my": "မနက်ဖြန် မိုးရွာမယ်ထင်တယ်။",
+     "en": "It will probably rain tomorrow."
+    },
+    {
+     "ja": "この計画は成功するだろう。",
+     "highlight": "だろう",
+     "my": "ဒီအစီအစဉ် အောင်မြင်မယ်ထင်တယ်။",
+     "en": "This plan will probably succeed."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-046",
+   "title": "（なんて）〜だろう",
+   "level": "N3",
+   "index": 46,
+   "status": "draft",
+   "meaningJa": "感動や驚きの程度を強く表す。",
+   "meaningMy": "ဘယ်လောက်…လိုက်တာလဲဆိုတဲ့ အံ့ဩမှုကို ဖော်ပြခြင်း။",
+   "meaningEn": "What a…; expresses strong surprise or emotion.",
+   "formation": "なんて＋形容詞・名詞＋だろう",
+   "examples": [
+    {
+     "ja": "なんてきれいな景色だろう。",
+     "highlight": "だろう",
+     "my": "ဘယ်လောက်လှတဲ့ရှုခင်းလဲ။",
+     "en": "What beautiful scenery!"
+    },
+    {
+     "ja": "なんて親切な人だろう。",
+     "highlight": "だろう",
+     "my": "ဘယ်လောက်ကြင်နာတဲ့လူလဲ။",
+     "en": "What a kind person!"
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-047",
+   "title": "つい〜てしまう",
+   "level": "N3",
+   "index": 47,
+   "status": "draft",
+   "meaningJa": "意図せず、思わず何かをしてしまう。",
+   "meaningMy": "မရည်ရွယ်ဘဲ စိတ်မထိန်းနိုင်လို့ လုပ်မိခြင်း။",
+   "meaningEn": "Inadvertently end up doing something.",
+   "formation": "つい＋Vてしまう",
+   "examples": [
+    {
+     "ja": "ついお菓子を食べてしまいました。",
+     "highlight": "つい",
+     "my": "မသိမသာ သရေစာစားမိခဲ့တယ်။",
+     "en": "I ended up eating snacks without thinking."
+    },
+    {
+     "ja": "話が面白くて、つい笑ってしまいました。",
+     "highlight": "つい",
+     "my": "စကားက ရယ်စရာကောင်းလို့ မတော်တဆ ရယ်မိတယ်။",
+     "en": "It was so funny that I laughed without meaning to."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-048",
+   "title": "〜ついでに",
+   "level": "N3",
+   "index": 48,
+   "status": "draft",
+   "meaningJa": "ある用事をする機会に別の用事も行う。",
+   "meaningMy": "ကိစ္စတစ်ခုလုပ်ရင်း နောက်ကိစ္စတစ်ခုကိုလည်း တစ်ခါတည်းလုပ်ခြင်း။",
+   "meaningEn": "While doing one errand, also do another.",
+   "formation": "V辞書形 / Vた形 / 名詞の＋ついでに",
+   "examples": [
+    {
+     "ja": "買い物のついでに、銀行に寄りました。",
+     "highlight": "ついでに",
+     "my": "ဈေးဝယ်ထွက်ရင်း ဘဏ်ဝင်ခဲ့တယ်။",
+     "en": "I stopped by the bank while shopping."
+    },
+    {
+     "ja": "散歩するついでに、手紙を出します。",
+     "highlight": "ついでに",
+     "my": "လမ်းလျှောက်ရင်း စာပို့မယ်။",
+     "en": "I will mail a letter while out for a walk."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-049",
+   "title": "〜っけ",
+   "level": "N3",
+   "index": 49,
+   "status": "draft",
+   "meaningJa": "前に知っていた情報を思い出そうとする。",
+   "meaningMy": "သိပြီးသားအချက်ကို ပြန်သတိရဖို့ မေးခြင်း။",
+   "meaningEn": "Used when trying to recall something once known.",
+   "formation": "普通形＋っけ",
+   "examples": [
+    {
+     "ja": "会議は何時からだっけ。",
+     "highlight": "っけ",
+     "my": "အစည်းအဝေး ဘယ်နှနာရီကစတာပါလိမ့်။",
+     "en": "What time was the meeting again?"
+    },
+    {
+     "ja": "彼の名前は何だったっけ。",
+     "highlight": "っけ",
+     "my": "သူ့နာမည် ဘာပါလိမ့်။",
+     "en": "What was his name again?"
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-050",
+   "title": "〜つもりだ（実際とは異なる）",
+   "level": "N3",
+   "index": 50,
+   "status": "draft",
+   "meaningJa": "実際と違うが、自分ではそうしたと思っている。",
+   "meaningMy": "တကယ်အခြေအနေနဲ့ မတူပေမဲ့ ကိုယ်က အဲဒီလိုလုပ်ခဲ့တယ်လို့ ထင်နေခြင်း။",
+   "meaningEn": "Believes one has done something though reality differs.",
+   "formation": "Vた形＋つもりだ",
+   "examples": [
+    {
+     "ja": "説明したつもりですが、伝わっていませんでした。",
+     "highlight": "つもり",
+     "my": "ရှင်းပြပြီးပြီထင်ပေမဲ့ နားမလည်ကြသေးဘူး။",
+     "en": "I thought I had explained it, but it did not get across."
+    },
+    {
+     "ja": "鍵をかけたつもりで出かけました。",
+     "highlight": "つもり",
+     "my": "တံခါးသော့ခတ်ပြီးပြီထင်လို့ အပြင်ထွက်ခဲ့တယ်။",
+     "en": "I left thinking I had locked the door."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-051",
+   "title": "（移動動詞）ている",
+   "level": "N3",
+   "index": 51,
+   "status": "draft",
+   "meaningJa": "目的地に行った結果、そこにいることを表す。",
+   "meaningMy": "တစ်နေရာသွားပြီး အဲဒီနေရာမှာ ဆက်ရှိနေခြင်း။",
+   "meaningEn": "Indicates being at the destination after moving there.",
+   "formation": "行く / 来る / 帰る＋ている",
+   "examples": [
+    {
+     "ja": "兄は東京へ行っています。",
+     "highlight": "っています",
+     "my": "အစ်ကို တိုကျိုသွားပြီး အဲဒီမှာရှိနေတယ်။",
+     "en": "My brother has gone to Tokyo and is there now."
+    },
+    {
+     "ja": "母はもう家に帰っています。",
+     "highlight": "っています",
+     "my": "အမေ အိမ်ပြန်ရောက်နေပြီ။",
+     "en": "My mother is already back home."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-052",
+   "title": "〜ている場合じゃない",
+   "level": "N3",
+   "index": 52,
+   "status": "draft",
+   "meaningJa": "状況が緊急で、そんなことをする余裕がない。",
+   "meaningMy": "အရေးကြီးတဲ့အခြေအနေကြောင့် အဲဒါလုပ်နေဖို့ အချိန်မဟုတ်ဘူး။",
+   "meaningEn": "This is no time to be doing something.",
+   "formation": "Vている＋場合じゃない",
+   "examples": [
+    {
+     "ja": "試験が明日なので、遊んでいる場合じゃありません。",
+     "highlight": "場合じゃありません",
+     "my": "မနက်ဖြန် စာမေးပွဲရှိလို့ အပျော်ကစားနေဖို့ အချိန်မဟုတ်ဘူး။",
+     "en": "The exam is tomorrow, so this is no time to play."
+    },
+    {
+     "ja": "急がないといけないので、話している場合じゃない。",
+     "highlight": "場合じゃない",
+     "my": "အလျင်လိုနေလို့ စကားပြောနေရမယ့်အချိန် မဟုတ်ဘူး။",
+     "en": "We must hurry, so there is no time to chat."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-053",
+   "title": "〜てからでないと",
+   "level": "N3",
+   "index": 53,
+   "status": "draft",
+   "meaningJa": "ある動作を先にしなければ次のことはできない。",
+   "meaningMy": "တစ်ခုအရင် မလုပ်မချင်း နောက်တစ်ခု မလုပ်နိုင်ဘူး။",
+   "meaningEn": "Cannot do B until A has been done first.",
+   "formation": "Vて＋からでないと",
+   "examples": [
+    {
+     "ja": "予約してからでないと入れません。",
+     "highlight": "からでないと",
+     "my": "ကြိုတင်ဘွတ်မထားရင် မဝင်နိုင်ဘူး။",
+     "en": "You cannot enter unless you reserve first."
+    },
+    {
+     "ja": "説明を聞いてからでないと、始められません。",
+     "highlight": "からでないと",
+     "my": "ရှင်းပြချက်မကြားရသေးရင် မစနိုင်ဘူး။",
+     "en": "We cannot start until we hear the explanation."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-054",
+   "title": "〜てしかたがない / 〜てしょうがない",
+   "level": "N3",
+   "index": 54,
+   "status": "draft",
+   "meaningJa": "感情や感覚が非常に強く、抑えられない。",
+   "meaningMy": "ခံစားချက်က အရမ်းပြင်းပြီး မထိန်းနိုင်လောက်အောင်ဖြစ်ခြင်း။",
+   "meaningEn": "Cannot help feeling something strongly.",
+   "formation": "Vて / Aくて / ナ形容詞で＋しかたがない",
+   "examples": [
+    {
+     "ja": "試験の結果が気になってしかたがありません。",
+     "highlight": "しかたがありません",
+     "my": "စာမေးပွဲရလဒ်ကို အရမ်းစိတ်ပူနေတယ်။",
+     "en": "I cannot stop worrying about my exam results."
+    },
+    {
+     "ja": "眠くてしょうがないです。",
+     "highlight": "しょうがない",
+     "my": "အိပ်ချင်လွန်းလို့ မထိန်းနိုင်ဘူး။",
+     "en": "I am terribly sleepy."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-055",
+   "title": "〜て済む",
+   "level": "N3",
+   "index": 55,
+   "status": "draft",
+   "meaningJa": "簡単な手段で解決して、それ以上必要ない。",
+   "meaningMy": "ဒီလောက်လုပ်ရုံနဲ့ ဖြေရှင်းပြီးသွားခြင်း။",
+   "meaningEn": "Can settle a matter simply by doing something.",
+   "formation": "Vて＋済む",
+   "examples": [
+    {
+     "ja": "電話で説明して済みました。",
+     "highlight": "済みました",
+     "my": "ဖုန်းနဲ့ ရှင်းပြရုံနဲ့ ပြီးသွားတယ်။",
+     "en": "A phone explanation was enough to settle it."
+    },
+    {
+     "ja": "一言謝って済む問題ではありません。",
+     "highlight": "済む",
+     "my": "တစ်ခွန်းတည်း တောင်းပန်ရုံနဲ့ ပြီးမယ့်ကိစ္စ မဟုတ်ဘူး။",
+     "en": "This is not a problem an apology alone can solve."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-056",
+   "title": "〜てたまらない",
+   "level": "N3",
+   "index": 56,
+   "status": "draft",
+   "meaningJa": "強い感情や感覚を抑えられない。",
+   "meaningMy": "ခံစားချက် ပြင်းလွန်းလို့ မထိန်းနိုင်ခြင်း။",
+   "meaningEn": "Cannot bear or contain an intense feeling.",
+   "formation": "Vて / Aくて / ナ形容詞で＋たまらない",
+   "examples": [
+    {
+     "ja": "母に会いたくてたまりません。",
+     "highlight": "たまりません",
+     "my": "အမေ့ကို တွေ့ချင်လွန်းလို့ မနေနိုင်ဘူး။",
+     "en": "I miss my mother so much I can hardly bear it."
+    },
+    {
+     "ja": "暑くてたまらないので、窓を開けました。",
+     "highlight": "たまらない",
+     "my": "ပူလွန်းလို့ မခံနိုင်တော့လို့ ပြတင်းပေါက်ဖွင့်ခဲ့တယ်။",
+     "en": "It was unbearably hot, so I opened the window."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-057",
+   "title": "〜てはいけないから / 〜といけないから",
+   "level": "N3",
+   "index": 57,
+   "status": "draft",
+   "meaningJa": "よくない事態を避けるために前もって行動する。",
+   "meaningMy": "မကောင်းတာမဖြစ်အောင် ကြိုတင်လုပ်ခြင်း။",
+   "meaningEn": "Take precautions to prevent something undesirable.",
+   "formation": "Vる＋といけないから / Vてはいけないから",
+   "examples": [
+    {
+     "ja": "遅れるといけないから、早く出ましょう。",
+     "highlight": "といけないから",
+     "my": "နောက်ကျမှာစိုးလို့ စောစောထွက်ကြစို့။",
+     "en": "Let us leave early in case we are late."
+    },
+    {
+     "ja": "風邪をひいてはいけないから、暖かくしてください。",
+     "highlight": "てはいけないから",
+     "my": "အအေးမိမှာစိုးလို့ နွေးနွေးဝတ်ပါ။",
+     "en": "Dress warmly so you do not catch a cold."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-058",
+   "title": "〜てはじめて",
+   "level": "N3",
+   "index": 58,
+   "status": "draft",
+   "meaningJa": "ある経験の後に初めて気づく、実現する。",
+   "meaningMy": "အဲဒီအတွေ့အကြုံရမှ ပထမဆုံး သိလာခြင်း။",
+   "meaningEn": "Only after doing something does a realization occur.",
+   "formation": "Vて＋はじめて",
+   "examples": [
+    {
+     "ja": "日本に来てはじめて、雪を見ました。",
+     "highlight": "てはじめて",
+     "my": "ဂျပန်ရောက်မှ ပထမဆုံးနှင်းမြင်ဖူးတယ်။",
+     "en": "I saw snow for the first time after coming to Japan."
+    },
+    {
+     "ja": "働いてはじめて、お金の大切さが分かりました。",
+     "highlight": "てはじめて",
+     "my": "အလုပ်လုပ်ပြီးမှ ငွေတန်ဖိုးကို နားလည်လာတယ်။",
+     "en": "Only after starting work did I understand the value of money."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-059",
+   "title": "〜ても構わない",
+   "level": "N3",
+   "index": 59,
+   "status": "draft",
+   "meaningJa": "ある行動をしても問題ない、気にしない。",
+   "meaningMy": "လုပ်လည်းရတယ်၊ ပြဿနာမရှိဘူး။",
+   "meaningEn": "It is fine or acceptable to do something.",
+   "formation": "Vても / Aくても / 名詞でも＋構わない",
+   "examples": [
+    {
+     "ja": "ここに座っても構いません。",
+     "highlight": "ても構いません",
+     "my": "ဒီမှာ ထိုင်လို့ရပါတယ်။",
+     "en": "You may sit here."
+    },
+    {
+     "ja": "少し遅れても構いません。",
+     "highlight": "ても構いません",
+     "my": "နည်းနည်းနောက်ကျလည်း ရပါတယ်။",
+     "en": "It is fine if you are a little late."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-060",
+   "title": "〜てもしかたがない / 〜てもしょうがない",
+   "level": "N3",
+   "index": 60,
+   "status": "draft",
+   "meaningJa": "そうしても状況は変わらないので意味がない。",
+   "meaningMy": "လုပ်နေလည်း အခြေအနေမပြောင်းလို့ အကျိုးမရှိခြင်း။",
+   "meaningEn": "There is no use doing something.",
+   "formation": "Vても＋しかたがない / しょうがない",
+   "examples": [
+    {
+     "ja": "今さら悩んでもしかたがありません。",
+     "highlight": "でもしかたがありません",
+     "my": "အခုမှ စိတ်ပူနေလည်း အကျိုးမရှိဘူး။",
+     "en": "There is no point worrying about it now."
+    },
+    {
+     "ja": "泣いてもしょうがないよ。",
+     "highlight": "てもしょうがない",
+     "my": "ငိုနေလည်း ဘာမှမထူးဘူး။",
+     "en": "Crying will not help."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-061",
+   "title": "〜ても始まらない",
+   "level": "N3",
+   "index": 61,
+   "status": "draft",
+   "meaningJa": "その行動だけでは解決や進展につながらない。",
+   "meaningMy": "ဒါတစ်ခုတည်းလုပ်နေလည်း ဘာမှ မတိုးတက်ဘူး။",
+   "meaningEn": "Doing that will get you nowhere.",
+   "formation": "Vても＋始まらない",
+   "examples": [
+    {
+     "ja": "文句を言っても始まりません。",
+     "highlight": "ても始まりません",
+     "my": "ညည်းညူနေလည်း ဘာမှမထူးဘူး။",
+     "en": "Complaining will not solve anything."
+    },
+    {
+     "ja": "心配しても始まらないから行動しよう。",
+     "highlight": "ても始まらない",
+     "my": "စိတ်ပူနေရုံနဲ့ မဖြစ်လို့ လက်တွေ့လုပ်ကြစို့။",
+     "en": "Worrying gets us nowhere, so let us act."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-062",
+   "title": "〜といえば",
+   "level": "N3",
+   "index": 62,
+   "status": "draft",
+   "meaningJa": "ある話題から代表的なものを思い出して述べる。",
+   "meaningMy": "အကြောင်းအရာတစ်ခု ပြောလိုက်တာနဲ့ ဆက်စပ်တာကို သတိရပြောခြင်း။",
+   "meaningEn": "Speaking of; brings up an association.",
+   "formation": "名詞 / 普通形＋といえば",
+   "examples": [
+    {
+     "ja": "日本の春といえば、桜ですね。",
+     "highlight": "といえば",
+     "my": "ဂျပန်နွေဦးဆိုရင် ဆာကူရာကို သတိရတယ်နော်။",
+     "en": "Speaking of spring in Japan, cherry blossoms come to mind."
+    },
+    {
+     "ja": "旅行といえば、去年京都へ行きました。",
+     "highlight": "といえば",
+     "my": "ခရီးသွားတာဆိုလို့ မနှစ်က ကျိုတိုသွားခဲ့တယ်။",
+     "en": "Speaking of travel, I went to Kyoto last year."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-063",
+   "title": "〜ということだ（伝聞・結論）",
+   "level": "N3",
+   "index": 63,
+   "status": "draft",
+   "meaningJa": "聞いた情報を伝える、またはそこから結論を述べる。",
+   "meaningMy": "ကြားရတဲ့သတင်းကို ပြန်ပြောတာ၊ အဲဒီကနေ အဓိပ္ပာယ်ကောက်တာ။",
+   "meaningEn": "It is said that; or means that.",
+   "formation": "普通形＋ということだ",
+   "examples": [
+    {
+     "ja": "ニュースによると、明日は電車が止まるということです。",
+     "highlight": "ということです",
+     "my": "သတင်းအရ မနက်ဖြန်ရထားရပ်မယ်လို့ ဆိုတယ်။",
+     "en": "The news says trains will stop tomorrow."
+    },
+    {
+     "ja": "全員が合格したということは、努力が実ったということだ。",
+     "highlight": "ということだ",
+     "my": "အားလုံးအောင်တာက ကြိုးစားမှုအကျိုးရခဲ့တယ်လို့ ဆိုလိုတယ်။",
+     "en": "Everyone passing means their efforts paid off."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-064",
+   "title": "〜というよりも",
+   "level": "N3",
+   "index": 64,
+   "status": "draft",
+   "meaningJa": "前の表現より後の表現のほうが適切である。",
+   "meaningMy": "ရှေ့ကစကားထက် နောက်ကစကားက ပိုမှန်တယ်။",
+   "meaningEn": "Rather than A, B is a more accurate description.",
+   "formation": "名詞 / 普通形＋というよりも",
+   "examples": [
+    {
+     "ja": "彼は怒っているというよりも、悲しそうです。",
+     "highlight": "というよりも",
+     "my": "သူ စိတ်ဆိုးတာထက် ဝမ်းနည်းနေပုံပိုတူတယ်။",
+     "en": "He looks sad rather than angry."
+    },
+    {
+     "ja": "これは仕事というよりも、趣味です。",
+     "highlight": "というよりも",
+     "my": "ဒါက အလုပ်ထက် ဝါသနာပိုဆန်တယ်။",
+     "en": "This is more of a hobby than a job."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-065",
+   "title": "〜といっても",
+   "level": "N3",
+   "index": 65,
+   "status": "draft",
+   "meaningJa": "言葉から想像するほどではないと補足する。",
+   "meaningMy": "ပြောလိုက်တဲ့စကားကြောင့် ထင်ထားသလောက် မဟုတ်ကြောင်း ဖြည့်ရှင်းခြင်း။",
+   "meaningEn": "Although one says A, it is not as much as it sounds.",
+   "formation": "普通形 / 名詞＋といっても",
+   "examples": [
+    {
+     "ja": "料理ができるといっても、簡単なものだけです。",
+     "highlight": "といっても",
+     "my": "ဟင်းချက်တတ်တယ်ဆိုပေမဲ့ လွယ်တာတွေပဲ ချက်တတ်တယ်။",
+     "en": "Although I say I can cook, it is only simple dishes."
+    },
+    {
+     "ja": "旅行といっても、日帰りです。",
+     "highlight": "といっても",
+     "my": "ခရီးဆိုပေမဲ့ တစ်နေ့တည်းသွားပြန်တာပါ။",
+     "en": "It is a trip, but only a day trip."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-066",
+   "title": "〜通す",
+   "level": "N3",
+   "index": 66,
+   "status": "draft",
+   "meaningJa": "途中でやめずに最後まで続ける。",
+   "meaningMy": "အလယ်မှာမရပ်ဘဲ အဆုံးထိ ဆက်လုပ်ခြင်း။",
+   "meaningEn": "Continue and finish without giving up.",
+   "formation": "Vます形の語幹＋通す",
+   "examples": [
+    {
+     "ja": "彼は最後まで走り通しました。",
+     "highlight": "通しました",
+     "my": "သူ အဆုံးထိ ပြေးပြီးခဲ့တယ်။",
+     "en": "He ran all the way to the end."
+    },
+    {
+     "ja": "難しい本を読み通しました。",
+     "highlight": "通しました",
+     "my": "ခက်တဲ့စာအုပ်ကို အဆုံးထိ ဖတ်ပြီးခဲ့တယ်။",
+     "en": "I read the difficult book all the way through."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-067",
+   "title": "〜とおりに",
+   "level": "N3",
+   "index": 67,
+   "status": "draft",
+   "meaningJa": "示された方法や内容と同じように行う。",
+   "meaningMy": "ညွှန်ထားတဲ့အတိုင်း လုပ်ခြင်း။",
+   "meaningEn": "Exactly as; follows instructions or a model.",
+   "formation": "V辞書形 / Vた形 / 名詞の＋とおりに",
+   "examples": [
+    {
+     "ja": "説明のとおりに操作してください。",
+     "highlight": "とおりに",
+     "my": "ရှင်းပြထားတဲ့အတိုင်း လုပ်ပါ။",
+     "en": "Please operate it as instructed."
+    },
+    {
+     "ja": "先生が言ったとおりに書きました。",
+     "highlight": "とおりに",
+     "my": "ဆရာပြောတဲ့အတိုင်း ရေးခဲ့တယ်။",
+     "en": "I wrote it exactly as the teacher said."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-068",
+   "title": "〜とか〜とか",
+   "level": "N3",
+   "index": 68,
+   "status": "draft",
+   "meaningJa": "いくつかの例を挙げる。",
+   "meaningMy": "ဥပမာအချို့ကို စာရင်းပြောခြင်း။",
+   "meaningEn": "Lists examples, such as A and B.",
+   "formation": "名詞 / 普通形＋とか＋名詞 / 普通形＋とか",
+   "examples": [
+    {
+     "ja": "休みの日は映画を見るとか、散歩するとかしています。",
+     "highlight": "とか",
+     "my": "နားရက်မှာ ရုပ်ရှင်ကြည့်တာ၊ လမ်းလျှောက်တာတွေ လုပ်တယ်။",
+     "en": "On days off I do things like watching films or walking."
+    },
+    {
+     "ja": "パンとか果物とかを買いました。",
+     "highlight": "とか",
+     "my": "ပေါင်မုန့်၊ သစ်သီး စတာတွေ ဝယ်ခဲ့တယ်။",
+     "en": "I bought things like bread and fruit."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-069",
+   "title": "〜としたら",
+   "level": "N3",
+   "index": 69,
+   "status": "draft",
+   "meaningJa": "ある仮定の状況について考える。",
+   "meaningMy": "အကယ်၍ …ဆိုရင် ဘယ်လိုဖြစ်မလဲဆိုပြီး စဉ်းစားခြင်း။",
+   "meaningEn": "Supposing that; if a hypothetical situation occurs.",
+   "formation": "普通形＋としたら",
+   "examples": [
+    {
+     "ja": "日本に住むとしたら、どの町がいいですか。",
+     "highlight": "としたら",
+     "my": "ဂျပန်မှာနေမယ်ဆိုရင် ဘယ်မြို့ကကောင်းမလဲ။",
+     "en": "If you were to live in Japan, which city would you choose?"
+    },
+    {
+     "ja": "百万円もらえるとしたら、何に使いますか。",
+     "highlight": "としたら",
+     "my": "ယန်းတစ်သန်းရမယ်ဆိုရင် ဘာအတွက်သုံးမလဲ။",
+     "en": "If you received one million yen, what would you do with it?"
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-070",
+   "title": "〜として",
+   "level": "N3",
+   "index": 70,
+   "status": "draft",
+   "meaningJa": "役割・立場・資格を示す。",
+   "meaningMy": "အဖြစ်၊ အနေဖြင့်ဆိုတဲ့ ရာထူးတာဝန်ကို ဖော်ပြခြင်း။",
+   "meaningEn": "As; in the capacity or role of something.",
+   "formation": "名詞＋として",
+   "examples": [
+    {
+     "ja": "私は教師として働いています。",
+     "highlight": "として",
+     "my": "ကျွန်တော် ဆရာအဖြစ် အလုပ်လုပ်နေတယ်။",
+     "en": "I work as a teacher."
+    },
+    {
+     "ja": "留学生として日本へ来ました。",
+     "highlight": "として",
+     "my": "နိုင်ငံခြားကျောင်းသားအဖြစ် ဂျပန်ကိုလာခဲ့တယ်။",
+     "en": "I came to Japan as an international student."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-071",
+   "title": "〜としても",
+   "level": "N3",
+   "index": 71,
+   "status": "draft",
+   "meaningJa": "仮にそうであっても結論は変わらない。",
+   "meaningMy": "အဲဒီလို ဖြစ်တယ်ဆိုရင်တောင် ရလဒ်မပြောင်းဘူး။",
+   "meaningEn": "Even if; even assuming something to be true.",
+   "formation": "普通形＋としても",
+   "examples": [
+    {
+     "ja": "失敗したとしても、あきらめません。",
+     "highlight": "としても",
+     "my": "ကျရှုံးရင်တောင် လက်မလျှော့ဘူး။",
+     "en": "Even if I fail, I will not give up."
+    },
+    {
+     "ja": "雨だとしても、試合はあります。",
+     "highlight": "としても",
+     "my": "မိုးရွာရင်တောင် ပြိုင်ပွဲရှိမယ်။",
+     "en": "Even if it rains, the match will take place."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-072",
+   "title": "〜とたん",
+   "level": "N3",
+   "index": 72,
+   "status": "draft",
+   "meaningJa": "ある行動の直後に予想外のことが起こる。",
+   "meaningMy": "လုပ်ပြီးတာနဲ့ ချက်ချင်း မထင်မှတ်တာဖြစ်ခြင်း။",
+   "meaningEn": "The moment something happened, another event occurred.",
+   "formation": "Vた形＋とたん",
+   "examples": [
+    {
+     "ja": "外に出たとたん、雨が降り出しました。",
+     "highlight": "とたん",
+     "my": "အပြင်ထွက်လိုက်တာနဲ့ မိုးစရွာတယ်။",
+     "en": "The moment I went outside, it started raining."
+    },
+    {
+     "ja": "座ったとたん、眠くなりました。",
+     "highlight": "とたん",
+     "my": "ထိုင်လိုက်တာနဲ့ အိပ်ချင်လာတယ်။",
+     "en": "As soon as I sat down, I felt sleepy."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-073",
+   "title": "〜途中で / 途中に",
+   "level": "N3",
+   "index": 73,
+   "status": "draft",
+   "meaningJa": "行動や移動がまだ終わらない中間の時点を表す。",
+   "meaningMy": "လုပ်ဆောင်မှု၊ ခရီးလမ်းအလယ်မှာ ဖြစ်ခြင်း။",
+   "meaningEn": "In the middle of an action or journey.",
+   "formation": "Vている / 名詞の＋途中で / 途中に",
+   "examples": [
+    {
+     "ja": "駅へ行く途中で友達に会いました。",
+     "highlight": "途中で",
+     "my": "ဘူတာသွားရင်း လမ်းမှာ သူငယ်ချင်းတွေ့တယ်။",
+     "en": "I met a friend on the way to the station."
+    },
+    {
+     "ja": "映画の途中で寝てしまいました。",
+     "highlight": "途中で",
+     "my": "ရုပ်ရှင်ကြည့်နေတုန်း အိပ်ပျော်သွားတယ်။",
+     "en": "I fell asleep halfway through the movie."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-074",
+   "title": "〜とともに（一緒）",
+   "level": "N3",
+   "index": 74,
+   "status": "draft",
+   "meaningJa": "ある人と一緒に行う、同時に進める。",
+   "meaningMy": "တစ်ယောက်နဲ့အတူ၊ တစ်ပြိုင်နက် လုပ်ခြင်း။",
+   "meaningEn": "Together with someone; along with.",
+   "formation": "名詞＋とともに",
+   "examples": [
+    {
+     "ja": "家族とともに日本へ来ました。",
+     "highlight": "とともに",
+     "my": "မိသားစုနဲ့အတူ ဂျပန်ကိုလာခဲ့တယ်။",
+     "en": "I came to Japan with my family."
+    },
+    {
+     "ja": "仲間とともに目標を目指します。",
+     "highlight": "とともに",
+     "my": "အဖွဲ့သားတွေနဲ့အတူ ရည်မှန်းချက်ကို ဦးတည်တယ်။",
+     "en": "We work toward our goal together with our colleagues."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-075",
+   "title": "〜とのことだ",
+   "level": "N3",
+   "index": 75,
+   "status": "draft",
+   "meaningJa": "人から聞いた情報を少しかしこまって伝える。",
+   "meaningMy": "တစ်ယောက်က ပြောတဲ့သတင်းကို တရားဝင်ဆန်ဆန် ပြန်ပြောခြင်း။",
+   "meaningEn": "It is reported that; according to what was said.",
+   "formation": "普通形＋とのことだ",
+   "examples": [
+    {
+     "ja": "会社から、明日は休みとのことです。",
+     "highlight": "とのことです",
+     "my": "ကုမ္ပဏီက မနက်ဖြန် ပိတ်တယ်လို့ အသိပေးတယ်။",
+     "en": "The company says tomorrow is a holiday."
+    },
+    {
+     "ja": "先生は少し遅れるとのことです。",
+     "highlight": "とのことです",
+     "my": "ဆရာ နည်းနည်းနောက်ကျမယ်လို့ ပြောထားတယ်။",
+     "en": "The teacher is reportedly running a little late."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-076",
+   "title": "〜とは限らない",
+   "level": "N3",
+   "index": 76,
+   "status": "draft",
+   "meaningJa": "必ずしもそうだと断定できない。",
+   "meaningMy": "အမြဲတမ်း အဲဒီလိုဖြစ်မယ်လို့ မပြောနိုင်ခြင်း။",
+   "meaningEn": "Not necessarily; not always true.",
+   "formation": "普通形＋とは限らない",
+   "examples": [
+    {
+     "ja": "高い物が良いとは限りません。",
+     "highlight": "とは限りません",
+     "my": "ဈေးကြီးတိုင်း ကောင်းတာမဟုတ်ဘူး။",
+     "en": "Expensive things are not necessarily good."
+    },
+    {
+     "ja": "毎日晴れるとは限りません。",
+     "highlight": "とは限りません",
+     "my": "နေ့တိုင်း နေသာမယ်လို့ မသေချာဘူး။",
+     "en": "It will not necessarily be sunny every day."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-077",
+   "title": "〜とみえる",
+   "level": "N3",
+   "index": 77,
+   "status": "draft",
+   "meaningJa": "観察した様子からそうだと判断する。",
+   "meaningMy": "မြင်ရတဲ့အခြေအနေကြောင့် အဲဒီလိုဖြစ်နေတဲ့ပုံလို့ သတ်မှတ်ခြင်း။",
+   "meaningEn": "Judging from appearances, it seems.",
+   "formation": "普通形＋とみえる",
+   "examples": [
+    {
+     "ja": "道路がぬれている。雨が降ったとみえます。",
+     "highlight": "とみえます",
+     "my": "လမ်းစိုနေလို့ မိုးရွာထားတဲ့ပုံပဲ။",
+     "en": "The road is wet; apparently it rained."
+    },
+    {
+     "ja": "彼は疲れているとみえて、すぐ眠りました。",
+     "highlight": "とみえて",
+     "my": "သူ ပင်ပန်းနေတဲ့ပုံမို့ ချက်ချင်းအိပ်ပျော်တယ်။",
+     "en": "He seemed tired and fell asleep quickly."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-078",
+   "title": "〜なあ",
+   "level": "N3",
+   "index": 78,
+   "status": "draft",
+   "meaningJa": "感情や驚きを独り言のように表す。",
+   "meaningMy": "အံ့ဩမှု၊ ခံစားချက်ကို ကိုယ့်ဘာသာပြောခြင်း။",
+   "meaningEn": "An exclamation expressing feeling or wonder.",
+   "formation": "普通形 / 形容詞＋なあ",
+   "examples": [
+    {
+     "ja": "今日は暑いなあ。",
+     "highlight": "なあ",
+     "my": "ဒီနေ့ ပူလိုက်တာနော်။",
+     "en": "It is so hot today!"
+    },
+    {
+     "ja": "きれいな空だなあ。",
+     "highlight": "なあ",
+     "my": "မိုးကောင်းကင် လှလိုက်တာနော်။",
+     "en": "What a beautiful sky!"
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-079",
+   "title": "〜直す",
+   "level": "N3",
+   "index": 79,
+   "status": "draft",
+   "meaningJa": "一度した動作を改めてもう一度行う。",
+   "meaningMy": "လုပ်ပြီးသားကို ပြင်ပြီး ထပ်လုပ်ခြင်း။",
+   "meaningEn": "Do something again or redo it.",
+   "formation": "Vます形の語幹＋直す",
+   "examples": [
+    {
+     "ja": "間違えたので書き直しました。",
+     "highlight": "直しました",
+     "my": "မှားလို့ ပြန်ရေးခဲ့တယ်။",
+     "en": "I rewrote it because I had made a mistake."
+    },
+    {
+     "ja": "説明をもう一度聞き直しました。",
+     "highlight": "直しました",
+     "my": "ရှင်းပြချက်ကို နောက်တစ်ခါ ပြန်မေးနားထောင်ခဲ့တယ်။",
+     "en": "I asked to hear the explanation again."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-080",
+   "title": "〜など / なんて / なんか",
+   "level": "N3",
+   "index": 80,
+   "status": "draft",
+   "meaningJa": "例を挙げたり、軽く扱ったりして表現する。",
+   "meaningMy": "ဥပမာပြတာ၊ တစ်ခုကို အသေးအဖွဲလို ပြောတာ။",
+   "meaningEn": "Such as; sometimes belittles or downplays something.",
+   "formation": "名詞＋など / なんて / なんか",
+   "examples": [
+    {
+     "ja": "野菜などを毎日食べています。",
+     "highlight": "など",
+     "my": "နေ့တိုင်း ဟင်းသီးဟင်းရွက်လို အစားအစာတွေစားတယ်။",
+     "en": "I eat things like vegetables every day."
+    },
+    {
+     "ja": "私なんかまだ初心者です。",
+     "highlight": "なんか",
+     "my": "ကျွန်တော်လိုလူက အခုထိ အစပြုသူပါပဲ။",
+     "en": "Someone like me is still a beginner."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-081",
+   "title": "〜において / 〜における",
+   "level": "N3",
+   "index": 81,
+   "status": "draft",
+   "meaningJa": "特定の場所・時代・分野を改まって示す。",
+   "meaningMy": "နေရာ၊ ခေတ်၊ နယ်ပယ်တစ်ခုမှာဆိုပြီး တရားဝင်ပြောခြင်း။",
+   "meaningEn": "In; within a particular field, place, or era, formally.",
+   "formation": "名詞＋において / における＋名詞",
+   "examples": [
+    {
+     "ja": "会議は東京において開催されます。",
+     "highlight": "において",
+     "my": "အစည်းအဝေးကို တိုကျိုမှာ ကျင်းပမယ်။",
+     "en": "The meeting will be held in Tokyo."
+    },
+    {
+     "ja": "教育における課題を考えます。",
+     "highlight": "における",
+     "my": "ပညာရေးနယ်ပယ်က ပြဿနာတွေကို စဉ်းစားမယ်။",
+     "en": "We will consider issues in education."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-082",
+   "title": "〜に限る",
+   "level": "N3",
+   "index": 82,
+   "status": "draft",
+   "meaningJa": "最もよいと思う方法・ものを強く勧める。",
+   "meaningMy": "ဒါပဲအကောင်းဆုံးဆိုပြီး အကြံပြုခြင်း။",
+   "meaningEn": "Nothing beats; the best choice is.",
+   "formation": "名詞 / V辞書形＋に限る",
+   "examples": [
+    {
+     "ja": "暑い日は冷たい水に限ります。",
+     "highlight": "に限ります",
+     "my": "ပူတဲ့နေ့ဆို ရေအေးသောက်တာ အကောင်းဆုံးပဲ။",
+     "en": "On hot days, nothing beats cold water."
+    },
+    {
+     "ja": "疲れたときは早く寝るに限ります。",
+     "highlight": "に限ります",
+     "my": "ပင်ပန်းရင် စောစောအိပ်တာ အကောင်းဆုံးပဲ။",
+     "en": "When tired, going to bed early is best."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-083",
+   "title": "〜にかけては",
+   "level": "N3",
+   "index": 83,
+   "status": "draft",
+   "meaningJa": "ある分野で特に優れていることを表す。",
+   "meaningMy": "နယ်ပယ်တစ်ခုမှာ အထူးတော်ခြင်း။",
+   "meaningEn": "When it comes to a skill or field, someone excels.",
+   "formation": "名詞＋にかけては",
+   "examples": [
+    {
+     "ja": "料理にかけては、母が一番です。",
+     "highlight": "にかけては",
+     "my": "ဟင်းချက်ရာမှာ အမေက အတော်ဆုံးပဲ။",
+     "en": "When it comes to cooking, my mother is the best."
+    },
+    {
+     "ja": "計算の速さにかけては、彼に勝てません。",
+     "highlight": "にかけては",
+     "my": "တွက်ချက်မြန်နှုန်းမှာ သူ့ကို မနိုင်ဘူး။",
+     "en": "No one beats him when it comes to quick calculation."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-084",
+   "title": "〜に代わって",
+   "level": "N3",
+   "index": 84,
+   "status": "draft",
+   "meaningJa": "ある人や物の代理・代用として行う。",
+   "meaningMy": "တစ်ယောက်၊ တစ်ခုအစား ကိုယ်စားပြုလုပ်ခြင်း။",
+   "meaningEn": "In place of or on behalf of someone or something.",
+   "formation": "名詞＋に代わって",
+   "examples": [
+    {
+     "ja": "部長に代わって、私が説明します。",
+     "highlight": "に代わって",
+     "my": "ဌာနမှူးအစား ကျွန်တော်ရှင်းပြမယ်။",
+     "en": "I will explain on behalf of the manager."
+    },
+    {
+     "ja": "現金に代わってカードを使う人が増えました。",
+     "highlight": "に代わって",
+     "my": "ငွေသားအစား ကတ်သုံးတဲ့လူတွေ ပိုများလာတယ်။",
+     "en": "More people use cards instead of cash."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-085",
+   "title": "〜に関して",
+   "level": "N3",
+   "index": 85,
+   "status": "draft",
+   "meaningJa": "対象となる話題を示すやや硬い表現。",
+   "meaningMy": "အကြောင်းအရာတစ်ခုနဲ့ ပတ်သက်ပြီး ဆိုတဲ့ အသုံး။",
+   "meaningEn": "Regarding; concerning a particular topic.",
+   "formation": "名詞＋に関して",
+   "examples": [
+    {
+     "ja": "試験に関して質問があります。",
+     "highlight": "に関して",
+     "my": "စာမေးပွဲနဲ့ ပတ်သက်ပြီး မေးစရာရှိတယ်။",
+     "en": "I have a question regarding the exam."
+    },
+    {
+     "ja": "契約に関して詳しく説明します。",
+     "highlight": "に関して",
+     "my": "စာချုပ်နဲ့ ပတ်သက်ပြီး အသေးစိတ်ရှင်းပြမယ်။",
+     "en": "I will explain the contract in detail."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-086",
+   "title": "〜に決まっている",
+   "level": "N3",
+   "index": 86,
+   "status": "draft",
+   "meaningJa": "疑う余地がないほど強く確信している。",
+   "meaningMy": "သေချာပေါက်ဖြစ်မယ်လို့ ပြင်းပြင်းထန်ထန် ယုံကြည်ခြင်း။",
+   "meaningEn": "It is certain; strongly convinced.",
+   "formation": "普通形＋に決まっている",
+   "examples": [
+    {
+     "ja": "毎日練習すれば、上手になるに決まっています。",
+     "highlight": "に決まっています",
+     "my": "နေ့တိုင်း လေ့ကျင့်ရင် တော်လာမှာသေချာတယ်။",
+     "en": "If you practice daily, you are sure to improve."
+    },
+    {
+     "ja": "そんな話はうそに決まっている。",
+     "highlight": "に決まっている",
+     "my": "အဲဒီစကားက လိမ်ညာတာဖြစ်မှာ သေချာတယ်။",
+     "en": "That story has to be a lie."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-087",
+   "title": "〜に比べて",
+   "level": "N3",
+   "index": 87,
+   "status": "draft",
+   "meaningJa": "二つを比較し違いを示す。",
+   "meaningMy": "နှစ်ခုကို နှိုင်းယှဉ်ပြီး ကွာခြားမှုကို ပြခြင်း။",
+   "meaningEn": "Compared with; in comparison to.",
+   "formation": "名詞＋に比べて",
+   "examples": [
+    {
+     "ja": "去年に比べて、今年は暑いです。",
+     "highlight": "に比べて",
+     "my": "မနှစ်ကထက် ဒီနှစ် ပိုပူတယ်။",
+     "en": "It is hotter this year compared with last year."
+    },
+    {
+     "ja": "兄に比べて、私は背が低いです。",
+     "highlight": "に比べて",
+     "my": "အစ်ကိုနဲ့ယှဉ်ရင် ကျွန်တော် အရပ်ပုတယ်။",
+     "en": "I am shorter compared with my older brother."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-088",
+   "title": "〜にしたがって",
+   "level": "N3",
+   "index": 88,
+   "status": "draft",
+   "meaningJa": "一つの変化に応じて別の変化も進む。",
+   "meaningMy": "တစ်ခု ပြောင်းလဲလာတာနဲ့အမျှ နောက်တစ်ခုလည်း ပြောင်းခြင်း။",
+   "meaningEn": "As one thing changes, another changes accordingly.",
+   "formation": "V辞書形 / 名詞＋にしたがって",
+   "examples": [
+    {
+     "ja": "年を取るにしたがって、健康を意識するようになりました。",
+     "highlight": "にしたがって",
+     "my": "အသက်ကြီးလာတာနဲ့ ကျန်းမာရေးကို ပိုဂရုစိုက်လာတယ်။",
+     "en": "As I get older, I pay more attention to health."
+    },
+    {
+     "ja": "時間が経つにしたがって、不安が減りました。",
+     "highlight": "にしたがって",
+     "my": "အချိန်ကြာလာတာနဲ့ စိုးရိမ်မှုလျော့လာတယ်။",
+     "en": "As time passed, my anxiety lessened."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-089",
+   "title": "〜にしても〜にしても",
+   "level": "N3",
+   "index": 89,
+   "status": "draft",
+   "meaningJa": "どちらの場合でも結論は同じだと述べる。",
+   "meaningMy": "ဘယ်ဘက်ဖြစ်ဖြစ် ရလဒ်က အတူတူပဲ။",
+   "meaningEn": "Whether A or B, the same conclusion applies.",
+   "formation": "名詞 / 普通形＋にしても＋名詞 / 普通形＋にしても",
+   "examples": [
+    {
+     "ja": "行くにしても行かないにしても、連絡してください。",
+     "highlight": "にしても",
+     "my": "သွားသွား မသွားသွား အကြောင်းကြားပါ။",
+     "en": "Whether you go or not, please let us know."
+    },
+    {
+     "ja": "日本語にしても英語にしても、練習が大切です。",
+     "highlight": "にしても",
+     "my": "ဂျပန်စာဖြစ်ဖြစ် အင်္ဂလိပ်စာဖြစ်ဖြစ် လေ့ကျင့်တာ အရေးကြီးတယ်။",
+     "en": "Practice matters for both Japanese and English."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-090",
+   "title": "〜に対して（対象・対比）",
+   "level": "N3",
+   "index": 90,
+   "status": "draft",
+   "meaningJa": "行動の対象、または二つのものの対照を示す。",
+   "meaningMy": "တစ်ဖက်လူကို ဦးတည်တာ၊ နှစ်ခုကို ဆန့်ကျင်နှိုင်းယှဉ်တာ။",
+   "meaningEn": "Toward; in contrast to.",
+   "formation": "名詞＋に対して",
+   "examples": [
+    {
+     "ja": "先生に対して失礼な言葉を使わないでください。",
+     "highlight": "に対して",
+     "my": "ဆရာကို မရိုမသေစကား မပြောပါနဲ့။",
+     "en": "Do not use rude words toward teachers."
+    },
+    {
+     "ja": "兄が静かなのに対して、弟は活発です。",
+     "highlight": "に対して",
+     "my": "အစ်ကိုက တိတ်ဆိတ်ပေမဲ့ ညီက တက်ကြွတယ်။",
+     "en": "In contrast to the quiet older brother, the younger is active."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-091",
+   "title": "〜に違いない",
+   "level": "N3",
+   "index": 91,
+   "status": "draft",
+   "meaningJa": "強い確信を表す。",
+   "meaningMy": "…ဖြစ်မှာ သေချာတယ်ဆိုတဲ့ ယုံကြည်မှု။",
+   "meaningEn": "Must be; strong conviction.",
+   "formation": "普通形＋に違いない",
+   "examples": [
+    {
+     "ja": "あの人は先生に違いありません。",
+     "highlight": "に違いありません",
+     "my": "အဲဒီလူက ဆရာဖြစ်မှာ သေချာတယ်။",
+     "en": "That person must be a teacher."
+    },
+    {
+     "ja": "電気がついているから、誰かいるに違いない。",
+     "highlight": "に違いない",
+     "my": "မီးလင်းနေတာကြောင့် တစ်ယောက်ယောက် ရှိမှာသေချာတယ်။",
+     "en": "The lights are on, so someone must be there."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-092",
+   "title": "〜について",
+   "level": "N3",
+   "index": 92,
+   "status": "draft",
+   "meaningJa": "何を話すか、考えるかの話題を示す。",
+   "meaningMy": "ဘာအကြောင်းလဲဆိုတဲ့ ခေါင်းစဉ်ကို ပြခြင်း။",
+   "meaningEn": "About; indicates the topic of speech or thought.",
+   "formation": "名詞＋について",
+   "examples": [
+    {
+     "ja": "日本の文化について調べています。",
+     "highlight": "について",
+     "my": "ဂျပန်ယဉ်ကျေးမှုအကြောင်း လေ့လာနေတယ်။",
+     "en": "I am researching Japanese culture."
+    },
+    {
+     "ja": "試験の日程について教えてください。",
+     "highlight": "について",
+     "my": "စာမေးပွဲရက်စွဲအကြောင်း ပြောပြပါ။",
+     "en": "Please tell me about the exam schedule."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-093",
+   "title": "〜につき（比率）",
+   "level": "N3",
+   "index": 93,
+   "status": "draft",
+   "meaningJa": "一つの単位当たりの数量や金額を示す。",
+   "meaningMy": "တစ်ယောက်၊ တစ်ခုလျှင် ဘယ်လောက်ဆိုတဲ့ နှုန်းထား။",
+   "meaningEn": "Per; indicates an amount for each unit.",
+   "formation": "数量・名詞＋につき",
+   "examples": [
+    {
+     "ja": "参加者一人につき、資料を一冊配ります。",
+     "highlight": "につき",
+     "my": "ပါဝင်သူတစ်ယောက်လျှင် စာအုပ်တစ်အုပ်ပေးမယ်။",
+     "en": "One booklet is distributed per participant."
+    },
+    {
+     "ja": "一回につき五百円かかります。",
+     "highlight": "につき",
+     "my": "တစ်ကြိမ်လျှင် ယန်းငါးရာ ကုန်တယ်။",
+     "en": "It costs 500 yen per use."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-094",
+   "title": "〜につれて",
+   "level": "N3",
+   "index": 94,
+   "status": "draft",
+   "meaningJa": "ある変化が進むのと同時に別の変化も起こる。",
+   "meaningMy": "တစ်ခု ပြောင်းလာတာနဲ့အမျှ နောက်တစ်ခုပါ ပြောင်းလာခြင်း။",
+   "meaningEn": "As one change progresses, another occurs.",
+   "formation": "V辞書形 / 名詞＋につれて",
+   "examples": [
+    {
+     "ja": "寒くなるにつれて、外に出る人が減りました。",
+     "highlight": "につれて",
+     "my": "အေးလာတာနဲ့ အပြင်ထွက်သူတွေ နည်းလာတယ်။",
+     "en": "As it got colder, fewer people went outside."
+    },
+    {
+     "ja": "日本語が上達するにつれて、自信がつきました。",
+     "highlight": "につれて",
+     "my": "ဂျပန်စာတော်လာတာနဲ့ ယုံကြည်မှုတိုးလာတယ်။",
+     "en": "As my Japanese improved, I became more confident."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-095",
+   "title": "〜にとって",
+   "level": "N3",
+   "index": 95,
+   "status": "draft",
+   "meaningJa": "ある人や立場から見た評価を表す。",
+   "meaningMy": "လူတစ်ယောက်ရဲ့ ရှုထောင့်ကနေ ဖော်ပြခြင်း။",
+   "meaningEn": "For; from the perspective of someone.",
+   "formation": "N＋にとって",
+   "examples": [
+    {
+     "ja": "私にとって、家族が一番大切です。",
+     "highlight": "にとって",
+     "my": "ကျွန်တော့်အတွက် မိသားစုက အရေးအကြီးဆုံးပါ။",
+     "en": "For me, family is the most important thing."
+    },
+    {
+     "ja": "学生にとって、時間は貴重です。",
+     "highlight": "にとって",
+     "my": "ကျောင်းသားတွေအတွက် အချိန်က တန်ဖိုးရှိတယ်။",
+     "en": "Time is precious for students."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-096",
+   "title": "〜には",
+   "level": "N3",
+   "index": 96,
+   "status": "draft",
+   "meaningJa": "目標を達成するために必要なことを示す。",
+   "meaningMy": "ရည်မှန်းချက်တစ်ခုရဖို့ ဘာလိုတယ်ဆိုတာ ပြခြင်း။",
+   "meaningEn": "To achieve a goal, a certain condition is needed.",
+   "formation": "V辞書形＋には",
+   "examples": [
+    {
+     "ja": "日本語を上達させるには、毎日の練習が大切です。",
+     "highlight": "には",
+     "my": "ဂျပန်စာတိုးတက်ဖို့ နေ့တိုင်းလေ့ကျင့်ဖို့ အရေးကြီးတယ်။",
+     "en": "To improve Japanese, daily practice matters."
+    },
+    {
+     "ja": "この薬を買うには、処方箋が必要です。",
+     "highlight": "には",
+     "my": "ဒီဆေးဝယ်ဖို့ ဆရာဝန်ဆေးစာလိုတယ်။",
+     "en": "To buy this medicine, a prescription is required."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-097",
+   "title": "〜に反して / 〜に反する",
+   "level": "N3",
+   "index": 97,
+   "status": "draft",
+   "meaningJa": "予想・規則・意向などと逆である。",
+   "meaningMy": "မျှော်မှန်းချက်၊ စည်းကမ်းနဲ့ ဆန့်ကျင်နေခြင်း။",
+   "meaningEn": "Contrary to a prediction, rule, or expectation.",
+   "formation": "名詞＋に反して / に反する＋名詞",
+   "examples": [
+    {
+     "ja": "予想に反して、試験は簡単でした。",
+     "highlight": "に反して",
+     "my": "ထင်ထားတာနဲ့ ဆန့်ကျင်ပြီး စာမေးပွဲလွယ်ခဲ့တယ်။",
+     "en": "Contrary to expectations, the exam was easy."
+    },
+    {
+     "ja": "規則に反する行為は禁止です。",
+     "highlight": "に反する",
+     "my": "စည်းကမ်းချိုးဖောက်တဲ့လုပ်ရပ် တားမြစ်ထားတယ်။",
+     "en": "Actions against the rules are forbidden."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-098",
+   "title": "〜によって（手段・方法）",
+   "level": "N3",
+   "index": 98,
+   "status": "draft",
+   "meaningJa": "特定の手段を利用して結果を得る。",
+   "meaningMy": "နည်းလမ်းတစ်ခုကို အသုံးပြုပြီး လုပ်ခြင်း။",
+   "meaningEn": "By means of; using a method.",
+   "formation": "名詞＋によって",
+   "examples": [
+    {
+     "ja": "インターネットによって情報を集めます。",
+     "highlight": "によって",
+     "my": "အင်တာနက်သုံးပြီး အချက်အလက်စုတယ်။",
+     "en": "I gather information via the internet."
+    },
+    {
+     "ja": "調査によって原因が分かりました。",
+     "highlight": "によって",
+     "my": "စုံစမ်းလေ့လာမှုကြောင့် အကြောင်းရင်းသိလာတယ်။",
+     "en": "The cause became clear through an investigation."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-099",
+   "title": "〜によって（対応）",
+   "level": "N3",
+   "index": 99,
+   "status": "draft",
+   "meaningJa": "人や条件に応じて結果・方法が異なる。",
+   "meaningMy": "လူ၊ အခြေအနေအလိုက် မတူခြင်း။",
+   "meaningEn": "Varies depending on a person or condition.",
+   "formation": "名詞＋によって",
+   "examples": [
+    {
+     "ja": "人によって考え方が違います。",
+     "highlight": "によって",
+     "my": "လူအလိုက် အတွေးအခေါ် မတူကြဘူး။",
+     "en": "Opinions differ depending on the person."
+    },
+    {
+     "ja": "季節によって服を変えます。",
+     "highlight": "によって",
+     "my": "ရာသီအလိုက် အဝတ်ပြောင်းဝတ်တယ်။",
+     "en": "I change clothes depending on the season."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-100",
+   "title": "〜によって（原因・理由）",
+   "level": "N3",
+   "index": 100,
+   "status": "draft",
+   "meaningJa": "出来事の原因を述べる。",
+   "meaningMy": "ဖြစ်ရပ်တစ်ခုရဲ့ အကြောင်းရင်းကို ဖော်ပြခြင်း။",
+   "meaningEn": "Due to; caused by something.",
+   "formation": "名詞＋によって",
+   "examples": [
+    {
+     "ja": "台風によって電車が止まりました。",
+     "highlight": "によって",
+     "my": "မုန်တိုင်းကြောင့် ရထားရပ်သွားတယ်။",
+     "en": "The train stopped because of the typhoon."
+    },
+    {
+     "ja": "大雨によって道路が冠水しました。",
+     "highlight": "によって",
+     "my": "မိုးကြီးလို့ လမ်းရေမြုပ်ခဲ့တယ်။",
+     "en": "Heavy rain caused the roads to flood."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-101",
+   "title": "〜によっては",
+   "level": "N3",
+   "index": 101,
+   "status": "draft",
+   "meaningJa": "場合によって例外がある可能性を示す。",
+   "meaningMy": "အခြေအနေအချို့မှာတော့ မတူနိုင်တာကို ပြခြင်း။",
+   "meaningEn": "Depending on the case, there may be exceptions.",
+   "formation": "名詞＋によっては",
+   "examples": [
+    {
+     "ja": "場所によっては雪が降ります。",
+     "highlight": "によっては",
+     "my": "နေရာအချို့မှာ နှင်းကျနိုင်တယ်။",
+     "en": "In some areas, it may snow."
+    },
+    {
+     "ja": "人によってはこの味が苦手です。",
+     "highlight": "によっては",
+     "my": "လူအချို့က ဒီအရသာကို မကြိုက်နိုင်ဘူး။",
+     "en": "Some people may dislike this flavor."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-102",
+   "title": "〜によると",
+   "level": "N3",
+   "index": 102,
+   "status": "draft",
+   "meaningJa": "情報の出どころ・出典を示す。",
+   "meaningMy": "သတင်းအရင်းအမြစ်က ဘယ်ကလဲဆိုတာ ပြခြင်း။",
+   "meaningEn": "According to a source of information.",
+   "formation": "名詞＋によると",
+   "examples": [
+    {
+     "ja": "天気予報によると、明日は晴れです。",
+     "highlight": "によると",
+     "my": "ရာသီဥတုသတင်းအရ မနက်ဖြန် နေသာမယ်။",
+     "en": "According to the forecast, tomorrow will be sunny."
+    },
+    {
+     "ja": "先生によると、試験は来週だそうです。",
+     "highlight": "によると",
+     "my": "ဆရာပြောတာအရ စာမေးပွဲ နောက်အပတ်ရှိတယ်။",
+     "en": "According to the teacher, the exam is next week."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-103",
+   "title": "〜にわたって",
+   "level": "N3",
+   "index": 103,
+   "status": "draft",
+   "meaningJa": "期間・範囲の全体に及ぶことを表す。",
+   "meaningMy": "အချိန်၊ နေရာ အပိုင်းအခြားတစ်လျှောက်လုံး။",
+   "meaningEn": "Throughout; across an entire period or area.",
+   "formation": "数量・名詞＋にわたって",
+   "examples": [
+    {
+     "ja": "三日間にわたって研修を行いました。",
+     "highlight": "にわたって",
+     "my": "သုံးရက်ကြာ သင်တန်းဖွင့်ခဲ့တယ်။",
+     "en": "We held training over three days."
+    },
+    {
+     "ja": "広い地域にわたって停電が起きました。",
+     "highlight": "にわたって",
+     "my": "ဒေသအကျယ်အဝန်းတစ်လျှောက် မီးပျက်ခဲ့တယ်။",
+     "en": "Power outages occurred across a wide area."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-104",
+   "title": "〜のでしょうか / 〜んでしょうか",
+   "level": "N3",
+   "index": 104,
+   "status": "draft",
+   "meaningJa": "理由や事情を丁寧に知りたい気持ちを表す。",
+   "meaningMy": "ဘာကြောင့်လဲ၊ ဘယ်လိုအခြေအနေလဲဆိုပြီး ယဉ်ကျေးစွာမေးခြင်း။",
+   "meaningEn": "A polite way to ask about a reason or situation.",
+   "formation": "普通形＋のでしょうか / んでしょうか",
+   "examples": [
+    {
+     "ja": "なぜこの道は混んでいるのでしょうか。",
+     "highlight": "のでしょうか",
+     "my": "ဘာကြောင့် ဒီလမ်းပိတ်နေတာလဲ။",
+     "en": "Why is this road so crowded?"
+    },
+    {
+     "ja": "次の試験はいつ始まるんでしょうか。",
+     "highlight": "んでしょうか",
+     "my": "နောက်စာမေးပွဲ ဘယ်တော့စမလဲ။",
+     "en": "I wonder when the next exam starts."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-105",
+   "title": "数量 + は",
+   "level": "N3",
+   "index": 105,
+   "status": "draft",
+   "meaningJa": "数量が少なくともそれ以上あることを示す。",
+   "meaningMy": "အနည်းဆုံး အဲဒီအရေအတွက်လောက်တော့ ရှိတယ်။",
+   "meaningEn": "At least a certain number or amount.",
+   "formation": "数量＋は",
+   "examples": [
+    {
+     "ja": "完成まで三時間はかかります。",
+     "highlight": "は",
+     "my": "ပြီးဖို့ အနည်းဆုံး သုံးနာရီကြာမယ်။",
+     "en": "It will take at least three hours to complete."
+    },
+    {
+     "ja": "この本は千円はするでしょう。",
+     "highlight": "は",
+     "my": "ဒီစာအုပ်က အနည်းဆုံး ယန်းတစ်ထောင်လောက်ရှိမယ်။",
+     "en": "This book probably costs at least 1,000 yen."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-106",
+   "title": "〜場合",
+   "level": "N3",
+   "index": 106,
+   "status": "draft",
+   "meaningJa": "ある状況が起きたときの対処を述べる。",
+   "meaningMy": "အခြေအနေတစ်ခုဖြစ်လာရင် ဘာလုပ်ရမလဲ ပြောခြင်း။",
+   "meaningEn": "In the event or case that something happens.",
+   "formation": "普通形 / 名詞の＋場合",
+   "examples": [
+    {
+     "ja": "雨が降った場合、試合は中止です。",
+     "highlight": "場合",
+     "my": "မိုးရွာရင် ပြိုင်ပွဲဖျက်မယ်။",
+     "en": "If it rains, the match will be canceled."
+    },
+    {
+     "ja": "緊急の場合は、この番号に電話してください。",
+     "highlight": "場合",
+     "my": "အရေးပေါ်ဖြစ်ရင် ဒီနံပါတ်ကိုဖုန်းခေါ်ပါ။",
+     "en": "In an emergency, call this number."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-107",
+   "title": "〜ばかりなく",
+   "level": "N3",
+   "index": 107,
+   "status": "draft",
+   "meaningJa": "「〜ばかりでなく」の形で、一つだけでないことを表す。",
+   "meaningMy": "တစ်ခုတည်းမဟုတ်ဘဲ နောက်တစ်ခုလည်း ပါခြင်း (ပုံမှန်က ばかりでなく)။",
+   "meaningEn": "Not only; commonly expressed as ばかりでなく.",
+   "formation": "名詞 / 普通形＋ばかりでなく",
+   "examples": [
+    {
+     "ja": "彼は日本語ばかりでなく、中国語も話せます。",
+     "highlight": "ばかりでなく",
+     "my": "သူက ဂျပန်စာတင်မက တရုတ်စာလည်း ပြောနိုင်တယ်။",
+     "en": "He speaks Chinese as well as Japanese."
+    },
+    {
+     "ja": "この町は静かなばかりでなく、便利です。",
+     "highlight": "ばかりでなく",
+     "my": "ဒီမြို့က တိတ်ဆိတ်ရုံမက အဆင်ပြေတယ်။",
+     "en": "This town is not only quiet but convenient."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-108",
+   "title": "〜はずがない",
+   "level": "N3",
+   "index": 108,
+   "status": "draft",
+   "meaningJa": "可能性がないと強く判断する。",
+   "meaningMy": "ဒီလိုဖြစ်နိုင်စရာမရှိဘူးလို့ အခိုင်အမာပြောခြင်း။",
+   "meaningEn": "It cannot be; there is no way.",
+   "formation": "普通形＋はずがない",
+   "examples": [
+    {
+     "ja": "彼がそんなことを言うはずがありません。",
+     "highlight": "はずがありません",
+     "my": "သူ အဲဒီလိုပြောမယ်ဆိုတာ မဖြစ်နိုင်ဘူး။",
+     "en": "There is no way he would say that."
+    },
+    {
+     "ja": "こんなに簡単な問題を間違えるはずがない。",
+     "highlight": "はずがない",
+     "my": "ဒီလောက်လွယ်တာကို မှားမယ်လို့ မထင်ဘူး။",
+     "en": "There is no way I could get such an easy question wrong."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-109",
+   "title": "〜ば〜のに（反実仮想）",
+   "level": "N3",
+   "index": 109,
+   "status": "draft",
+   "meaningJa": "実際とは違う条件を仮定して残念な気持ちを述べる。",
+   "meaningMy": "တကယ်မဖြစ်ခဲ့တဲ့အခြေအနေကို စိတ်မကောင်းဖြစ်ပြီး စဉ်းစားခြင်း။",
+   "meaningEn": "If only; expresses regret about an unreal condition.",
+   "formation": "Vば / Aければ＋～のに",
+   "examples": [
+    {
+     "ja": "もっと早く出れば、間に合ったのに。",
+     "highlight": "のに",
+     "my": "စောစောထွက်ခဲ့ရင် အချိန်မီမှာကို။",
+     "en": "If only I had left earlier, I would have made it."
+    },
+    {
+     "ja": "お金があれば、旅行できるのに。",
+     "highlight": "のに",
+     "my": "ပိုက်ဆံရှိရင် ခရီးသွားလို့ရမှာကို။",
+     "en": "If I had money, I could travel."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-110",
+   "title": "〜は別として",
+   "level": "N3",
+   "index": 110,
+   "status": "draft",
+   "meaningJa": "話題をいったん対象から外して考える。",
+   "meaningMy": "အကြောင်းအရာတစ်ခုကို ခဏဘေးဖယ်ထားပြီး စဉ်းစားခြင်း။",
+   "meaningEn": "Leaving something aside for now.",
+   "formation": "名詞＋は別として",
+   "examples": [
+    {
+     "ja": "値段は別として、品質はとてもいいです。",
+     "highlight": "は別として",
+     "my": "ဈေးနှုန်းကို ခဏထားရင် အရည်အသွေးက အရမ်းကောင်းတယ်။",
+     "en": "Leaving the price aside, the quality is excellent."
+    },
+    {
+     "ja": "結果は別として、努力したことが大切です。",
+     "highlight": "は別として",
+     "my": "ရလဒ်ကို ခဏထားရင် ကြိုးစားခဲ့တာ အရေးကြီးတယ်။",
+     "en": "Regardless of the result, the effort matters."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-111",
+   "title": "〜はもちろん",
+   "level": "N3",
+   "index": 111,
+   "status": "draft",
+   "meaningJa": "あることは当然で、さらに別のことも当てはまる。",
+   "meaningMy": "အဲဒါကတော့ သေချာပြီး နောက်တစ်ခုလည်း ပါတယ်။",
+   "meaningEn": "Of course A, and also B.",
+   "formation": "名詞＋はもちろん",
+   "examples": [
+    {
+     "ja": "彼は日本語はもちろん、英語も話せます。",
+     "highlight": "はもちろん",
+     "my": "သူက ဂျပန်စာအပြင် အင်္ဂလိပ်စာလည်း ပြောတတ်တယ်။",
+     "en": "Of course he speaks Japanese, and he also speaks English."
+    },
+    {
+     "ja": "この店は味はもちろん、サービスもいいです。",
+     "highlight": "はもちろん",
+     "my": "ဒီဆိုင်က အရသာတင်မက ဝန်ဆောင်မှုလည်းကောင်းတယ်။",
+     "en": "This restaurant has not only good food but also good service."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-112",
+   "title": "〜ぶり",
+   "level": "N3",
+   "index": 112,
+   "status": "draft",
+   "meaningJa": "前回からの時間の長さ、または様子を表す。",
+   "meaningMy": "ကြာချိန်အပြီး ပထမဆုံးဖြစ်တာ၊ လုပ်ပုံလုပ်နည်းကို ဖော်ပြခြင်း။",
+   "meaningEn": "After a long interval; also manner of doing.",
+   "formation": "時間の数量＋ぶり / Vます形の語幹＋ぶり",
+   "examples": [
+    {
+     "ja": "三年ぶりに友達に会いました。",
+     "highlight": "ぶり",
+     "my": "သုံးနှစ်ကြာပြီးမှ သူငယ်ချင်းနဲ့ ပြန်တွေ့တယ်။",
+     "en": "I met my friend for the first time in three years."
+    },
+    {
+     "ja": "彼の話しぶりは自信に満ちていました。",
+     "highlight": "ぶり",
+     "my": "သူ့ပြောပုံက ယုံကြည်မှုရှိတဲ့ပုံပဲ။",
+     "en": "His way of speaking was full of confidence."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-113",
+   "title": "〜ふりをする",
+   "level": "N3",
+   "index": 113,
+   "status": "draft",
+   "meaningJa": "本当は違うのに、その状態であるように振る舞う。",
+   "meaningMy": "တကယ်မဟုတ်ပေမဲ့ အဲဒီလို ဟန်ဆောင်ခြင်း။",
+   "meaningEn": "Pretend to be or do something.",
+   "formation": "普通形＋ふりをする",
+   "examples": [
+    {
+     "ja": "彼は知らないふりをしました。",
+     "highlight": "ふりをしました",
+     "my": "သူက မသိချင်ယောင်ဆောင်ခဲ့တယ်။",
+     "en": "He pretended not to know."
+    },
+    {
+     "ja": "子どもは寝たふりをしています。",
+     "highlight": "ふりをしています",
+     "my": "ကလေးက အိပ်ချင်ယောင်ဆောင်နေတယ်။",
+     "en": "The child is pretending to be asleep."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-114",
+   "title": "〜べきだ / 〜べきではない",
+   "level": "N3",
+   "index": 114,
+   "status": "draft",
+   "meaningJa": "道徳・常識・責任から望ましい行動を述べる。",
+   "meaningMy": "လုပ်သင့်တယ်၊ မလုပ်သင့်ဘူးဆိုတဲ့ သဘောတရား။",
+   "meaningEn": "Should or should not; moral or practical advice.",
+   "formation": "V辞書形＋べきだ / べきではない",
+   "examples": [
+    {
+     "ja": "約束は守るべきです。",
+     "highlight": "べきです",
+     "my": "ကတိကို တည်သင့်တယ်။",
+     "en": "You should keep your promises."
+    },
+    {
+     "ja": "人を傷つけることは言うべきではありません。",
+     "highlight": "べきではありません",
+     "my": "သူများနာကျင်စေမယ့် စကား မပြောသင့်ဘူး။",
+     "en": "You should not say things that hurt others."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-115",
+   "title": "〜べきだった / 〜べきではなかった",
+   "level": "N3",
+   "index": 115,
+   "status": "draft",
+   "meaningJa": "過去の行動について後悔や反省を述べる。",
+   "meaningMy": "အရင်က လုပ်သင့်ခဲ့တာ၊ မလုပ်သင့်ခဲ့တာကို နောင်တရပြောခြင်း။",
+   "meaningEn": "Should have or should not have done something.",
+   "formation": "V辞書形＋べきだった / べきではなかった",
+   "examples": [
+    {
+     "ja": "もっと早く準備するべきでした。",
+     "highlight": "べきでした",
+     "my": "စောစောပြင်ဆင်သင့်ခဲ့တယ်။",
+     "en": "I should have prepared earlier."
+    },
+    {
+     "ja": "あんなことを言うべきではなかった。",
+     "highlight": "べきではなかった",
+     "my": "အဲဒီလို မပြောသင့်ခဲ့ဘူး။",
+     "en": "I should not have said that."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-116",
+   "title": "〜ほど（相関関係）",
+   "level": "N3",
+   "index": 116,
+   "status": "draft",
+   "meaningJa": "ある程度が大きくなるほど別の程度も変わる。",
+   "meaningMy": "တစ်ခု ပိုများလာလေလေ နောက်တစ်ခုပါ ပြောင်းလေလေ။",
+   "meaningEn": "The more A, the more B.",
+   "formation": "Vば / Aければ＋同じ表現＋ほど",
+   "examples": [
+    {
+     "ja": "勉強すればするほど、日本語が分かります。",
+     "highlight": "ほど",
+     "my": "လေ့လာလေလေ ဂျပန်စာပိုနားလည်လေလေ။",
+     "en": "The more I study, the better I understand Japanese."
+    },
+    {
+     "ja": "練習すればするほど上達します。",
+     "highlight": "ほど",
+     "my": "လေ့ကျင့်လေလေ ပိုတော်လာလေလေ။",
+     "en": "The more you practice, the more you improve."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-117",
+   "title": "〜ほど（程度）",
+   "level": "N3",
+   "index": 117,
+   "status": "draft",
+   "meaningJa": "強い程度や比較の基準を示す。",
+   "meaningMy": "ဘယ်လောက်အထိ ဆိုတဲ့ အတိုင်းအတာကို ပြခြင်း။",
+   "meaningEn": "To the extent that; expresses a degree.",
+   "formation": "普通形 / 名詞＋ほど",
+   "examples": [
+    {
+     "ja": "声が出ないほど疲れました。",
+     "highlight": "ほど",
+     "my": "အသံမထွက်နိုင်လောက်အောင် ပင်ပန်းတယ်။",
+     "en": "I was so tired I could barely speak."
+    },
+    {
+     "ja": "泣きたいほど感動しました。",
+     "highlight": "ほど",
+     "my": "ငိုချင်လောက်အောင် စိတ်လှုပ်ရှားခဲ့တယ်။",
+     "en": "I was moved almost to tears."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-118",
+   "title": "〜ほど〜はない",
+   "level": "N3",
+   "index": 118,
+   "status": "draft",
+   "meaningJa": "最上級の比較を否定形で表す。",
+   "meaningMy": "…လောက် …တဲ့အရာ မရှိဘူးလို့ အကောင်းဆုံးကို ဖော်ပြခြင်း။",
+   "meaningEn": "Nothing is as ... as something else.",
+   "formation": "名詞＋ほど＋形容詞＋名詞はない",
+   "examples": [
+    {
+     "ja": "母の料理ほどおいしいものはありません。",
+     "highlight": "ほど",
+     "my": "အမေ့ဟင်းလောက် အရသာရှိတာ မရှိဘူး။",
+     "en": "Nothing tastes as good as my mother’s cooking."
+    },
+    {
+     "ja": "健康ほど大切なものはないです。",
+     "highlight": "ほど",
+     "my": "ကျန်းမာရေးလောက် အရေးကြီးတာ မရှိဘူး။",
+     "en": "Nothing is more important than health."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-119",
+   "title": "まるで〜みたいだ（比喩）",
+   "level": "N3",
+   "index": 119,
+   "status": "draft",
+   "meaningJa": "何かを別のものにたとえて強調する。",
+   "meaningMy": "တစ်ခုကို တခြားအရာနဲ့ တူသလို ဥပမာပြောခြင်း။",
+   "meaningEn": "Just like; makes a vivid comparison.",
+   "formation": "まるで＋名詞＋みたいだ",
+   "examples": [
+    {
+     "ja": "この雲はまるで綿みたいです。",
+     "highlight": "みたいです",
+     "my": "ဒီတိမ်က ဝါဂွမ်းလိုပဲ။",
+     "en": "This cloud looks just like cotton."
+    },
+    {
+     "ja": "彼はまるで子どもみたいに笑います。",
+     "highlight": "みたいに",
+     "my": "သူက ကလေးလို ရယ်တယ်။",
+     "en": "He laughs just like a child."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-120",
+   "title": "まるで〜ようだ（比喩）",
+   "level": "N3",
+   "index": 120,
+   "status": "draft",
+   "meaningJa": "現実ではないものに例える。",
+   "meaningMy": "တကယ်မဟုတ်ပေမဲ့ တစ်ခုနဲ့တူသလို နှိုင်းယှဉ်ခြင်း။",
+   "meaningEn": "As if; compares something metaphorically.",
+   "formation": "まるで＋名詞の＋ようだ",
+   "examples": [
+    {
+     "ja": "湖はまるで鏡のようです。",
+     "highlight": "ようです",
+     "my": "ကန်ရေက မှန်လိုပဲ။",
+     "en": "The lake looks just like a mirror."
+    },
+    {
+     "ja": "彼女はまるで鳥のように歌います。",
+     "highlight": "ように",
+     "my": "သူမက ငှက်လို သီချင်းဆိုတယ်။",
+     "en": "She sings like a bird."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-121",
+   "title": "〜向きに",
+   "level": "N3",
+   "index": 121,
+   "status": "draft",
+   "meaningJa": "特定の人や用途に適している。",
+   "meaningMy": "လူအုပ်စုတစ်ခုအတွက် သင့်တော်ခြင်း။",
+   "meaningEn": "Suitable for a particular group or purpose.",
+   "formation": "名詞＋向きに / 向きの",
+   "examples": [
+    {
+     "ja": "この本は初心者向きです。",
+     "highlight": "向き",
+     "my": "ဒီစာအုပ်က အစပြုသူအတွက် သင့်တော်တယ်။",
+     "en": "This book is suitable for beginners."
+    },
+    {
+     "ja": "この仕事は経験者向きの内容です。",
+     "highlight": "向き",
+     "my": "ဒီအလုပ်က အတွေ့အကြုံရှိသူတွေအတွက် သင့်တော်တယ်။",
+     "en": "This work is suited to experienced people."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-122",
+   "title": "〜向けに",
+   "level": "N3",
+   "index": 122,
+   "status": "draft",
+   "meaningJa": "特定の対象を想定して作ったことを表す。",
+   "meaningMy": "ပရိသတ်တစ်စုအတွက် ရည်ရွယ်ထုတ်လုပ်ထားခြင်း။",
+   "meaningEn": "Designed or intended for a particular audience.",
+   "formation": "名詞＋向けに / 向けの",
+   "examples": [
+    {
+     "ja": "外国人向けに案内を作りました。",
+     "highlight": "向けに",
+     "my": "နိုင်ငံခြားသားတွေအတွက် လမ်းညွှန်ပြင်ခဲ့တယ်။",
+     "en": "I made a guide for foreign residents."
+    },
+    {
+     "ja": "子ども向けの映画を見ました。",
+     "highlight": "向けの",
+     "my": "ကလေးတွေအတွက်ရိုက်ထားတဲ့ ရုပ်ရှင်ကြည့်ခဲ့တယ်။",
+     "en": "I watched a film aimed at children."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-123",
+   "title": "〜も〜ば〜も",
+   "level": "N3",
+   "index": 123,
+   "status": "draft",
+   "meaningJa": "複数の特徴を並べて強調する。",
+   "meaningMy": "လက္ခဏာအများကြီးရှိတာကို ဆက်တိုက် အလေးပေးပြောခြင်း။",
+   "meaningEn": "Emphasizes multiple qualities together.",
+   "formation": "名詞 A＋も＋形容詞ば、名詞 B＋も＋形容詞",
+   "examples": [
+    {
+     "ja": "この店は値段も安ければ、味もいいです。",
+     "highlight": "も安ければ",
+     "my": "ဒီဆိုင်က ဈေးလည်းချို၊ အရသာလည်းကောင်းတယ်။",
+     "en": "This place is both cheap and delicious."
+    },
+    {
+     "ja": "彼は英語も話せれば、日本語も話せます。",
+     "highlight": "も話せれば",
+     "my": "သူက အင်္ဂလိပ်စာလည်း ပြောနိုင်၊ ဂျပန်စာလည်း ပြောနိုင်တယ်။",
+     "en": "He can speak both English and Japanese."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-124",
+   "title": "〜ようがない",
+   "level": "N3",
+   "index": 124,
+   "status": "draft",
+   "meaningJa": "方法や手段がなく、実行できない。",
+   "meaningMy": "လုပ်ဖို့ နည်းလမ်းမရှိလို့ မလုပ်နိုင်ခြင်း။",
+   "meaningEn": "There is no way to do something.",
+   "formation": "Vます形の語幹＋ようがない",
+   "examples": [
+    {
+     "ja": "住所が分からず、連絡しようがありません。",
+     "highlight": "ようがありません",
+     "my": "လိပ်စာမသိလို့ ဆက်သွယ်ဖို့ နည်းလမ်းမရှိဘူး။",
+     "en": "Without an address, I have no way to contact them."
+    },
+    {
+     "ja": "証拠がなくて確かめようがありません。",
+     "highlight": "ようがありません",
+     "my": "သက်သေမရှိလို့ အတည်ပြုဖို့ နည်းမရှိဘူး။",
+     "en": "There is no way to verify it without evidence."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-125",
+   "title": "〜ようとする",
+   "level": "N3",
+   "index": 125,
+   "status": "draft",
+   "meaningJa": "動作を始めようとする瞬間や試みを示す。",
+   "meaningMy": "လုပ်တော့မယ့်အချိန်၊ လုပ်ဖို့ ကြိုးစားခြင်း။",
+   "meaningEn": "Try to do; be about to do something.",
+   "formation": "V意向形＋とする",
+   "examples": [
+    {
+     "ja": "家を出ようとしたとき、電話が鳴りました。",
+     "highlight": "ようとした",
+     "my": "အိမ်ကထွက်တော့မယ့်အချိန် ဖုန်းမြည်တယ်။",
+     "en": "The phone rang just as I was about to leave home."
+    },
+    {
+     "ja": "彼は重い箱を持ち上げようとしました。",
+     "highlight": "ようとしました",
+     "my": "သူ လေးတဲ့သေတ္တာကို မဖို့ ကြိုးစားခဲ့တယ်။",
+     "en": "He tried to lift the heavy box."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-126",
+   "title": "連用中止",
+   "level": "N3",
+   "index": 126,
+   "status": "draft",
+   "meaningJa": "動詞のます形の語幹で文をつなぐ書き言葉。",
+   "meaningMy": "ကြိယာရဲ့ ますပုံစံအမြစ်နဲ့ ဝါကျတွေ ဆက်ရေးတဲ့ စာရေးဟန်။",
+   "meaningEn": "A formal written way to connect clauses using a verb stem.",
+   "formation": "Vます形の語幹＋、＋次の節",
+   "examples": [
+    {
+     "ja": "窓を開け、外の景色を見ました。",
+     "highlight": "開け",
+     "my": "ပြတင်းပေါက်ဖွင့်ပြီး အပြင်ရှုခင်းကြည့်ခဲ့တယ်။",
+     "en": "I opened the window and looked outside."
+    },
+    {
+     "ja": "資料を確認し、会議を始めました。",
+     "highlight": "確認し",
+     "my": "စာရွက်စာတမ်းတွေစစ်ပြီး အစည်းအဝေးစခဲ့တယ်။",
+     "en": "We checked the documents and began the meeting."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-127",
+   "title": "〜わけがない",
+   "level": "N3",
+   "index": 127,
+   "status": "draft",
+   "meaningJa": "事情から考えて絶対にありえないと述べる。",
+   "meaningMy": "ဖြစ်နိုင်စရာ လုံးဝမရှိဘူးလို့ အခိုင်အမာပြောခြင်း။",
+   "meaningEn": "There is no way something can be true.",
+   "formation": "普通形＋わけがない",
+   "examples": [
+    {
+     "ja": "彼が約束を忘れるわけがありません。",
+     "highlight": "わけがありません",
+     "my": "သူ ကတိကို မေ့မယ်ဆိုတာ မဖြစ်နိုင်ဘူး။",
+     "en": "There is no way he would forget his promise."
+    },
+    {
+     "ja": "そんな簡単な問題を間違えるわけがない。",
+     "highlight": "わけがない",
+     "my": "ဒီလောက်လွယ်တာကို မှားမယ်ဆိုတာ မဖြစ်နိုင်ဘူး။",
+     "en": "There is no way I would get that easy question wrong."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-128",
+   "title": "〜わけだ / 〜というわけだ",
+   "level": "N3",
+   "index": 128,
+   "status": "draft",
+   "meaningJa": "事実から当然の結論や納得できる理由を示す。",
+   "meaningMy": "အချက်အလက်တွေကြောင့် ဒီလိုဖြစ်တာပဲဆိုပြီး နားလည်လာခြင်း။",
+   "meaningEn": "That explains why; naturally it follows.",
+   "formation": "普通形＋わけだ",
+   "examples": [
+    {
+     "ja": "毎日練習しているんですね。上手なわけです。",
+     "highlight": "わけです",
+     "my": "နေ့တိုင်းလေ့ကျင့်နေတာကိုး၊ ဒါကြောင့်တော်တာပေါ့။",
+     "en": "You practice every day; no wonder you are good."
+    },
+    {
+     "ja": "電車が止まったのか。だから遅れたというわけだ。",
+     "highlight": "というわけだ",
+     "my": "ရထားရပ်သွားတာကိုး၊ ဒါကြောင့်နောက်ကျတာပေါ့။",
+     "en": "The train stopped; that explains why you were late."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-129",
+   "title": "〜わけではない / 〜わけじゃない",
+   "level": "N3",
+   "index": 129,
+   "status": "draft",
+   "meaningJa": "すべてを否定するのではなく、部分的に否定する。",
+   "meaningMy": "အားလုံးကို ငြင်းတာမဟုတ်ဘဲ တစ်စိတ်တစ်ပိုင်းကို ငြင်းခြင်း။",
+   "meaningEn": "It does not mean that; partial negation.",
+   "formation": "普通形＋わけではない",
+   "examples": [
+    {
+     "ja": "嫌いなわけではありませんが、今は食べたくないです。",
+     "highlight": "わけではありません",
+     "my": "မကြိုက်တာ မဟုတ်ပါဘူး၊ အခုမစားချင်ရုံပါ။",
+     "en": "It is not that I dislike it; I just do not want it now."
+    },
+    {
+     "ja": "忙しいわけじゃないけど、今日は出かけません。",
+     "highlight": "わけじゃない",
+     "my": "မအားတာမဟုတ်ပေမဲ့ ဒီနေ့ မထွက်ဘူး။",
+     "en": "It is not that I am busy, but I am not going out today."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-130",
+   "title": "〜わけにはいかない",
+   "level": "N3",
+   "index": 130,
+   "status": "draft",
+   "meaningJa": "事情・責任があり、したくてもできない。",
+   "meaningMy": "အခြေအနေ၊ တာဝန်ကြောင့် မလုပ်နိုင်ခြင်း။",
+   "meaningEn": "Cannot do something due to circumstances or obligation.",
+   "formation": "V辞書形＋わけにはいかない",
+   "examples": [
+    {
+     "ja": "約束したので、休むわけにはいきません。",
+     "highlight": "わけにはいきません",
+     "my": "ကတိပေးထားလို့ နားလို့မဖြစ်ဘူး။",
+     "en": "I promised, so I cannot take the day off."
+    },
+    {
+     "ja": "試験中に答えを教えるわけにはいきません。",
+     "highlight": "わけにはいきません",
+     "my": "စာမေးပွဲဖြေစဉ် အဖြေပြောပေးလို့ မရဘူး။",
+     "en": "I cannot tell you the answers during the exam."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-131",
+   "title": "〜わりに",
+   "level": "N3",
+   "index": 131,
+   "status": "draft",
+   "meaningJa": "ある条件から予想する結果と違うことを示す。",
+   "meaningMy": "ထင်ထားတဲ့အတိုင်း မဟုတ်ဘဲ ကွာခြားနေခြင်း။",
+   "meaningEn": "Despite; different from what might be expected.",
+   "formation": "普通形 / 名詞の＋わりに",
+   "examples": [
+    {
+     "ja": "この店は安いわりに、おいしいです。",
+     "highlight": "わりに",
+     "my": "ဒီဆိုင်က ဈေးချိုပေမဲ့ စားလို့ကောင်းတယ်။",
+     "en": "Despite being cheap, this restaurant is good."
+    },
+    {
+     "ja": "彼は年齢のわりに若く見えます。",
+     "highlight": "わりに",
+     "my": "သူ့အသက်နဲ့ယှဉ်ရင် ငယ်တဲ့ပုံပဲ။",
+     "en": "He looks young for his age."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-132",
+   "title": "〜を込めて",
+   "level": "N3",
+   "index": 132,
+   "status": "draft",
+   "meaningJa": "気持ちや思いを何かに託す。",
+   "meaningMy": "စိတ်ခံစားချက်ကို တစ်ခုထဲ ထည့်သွင်းဖော်ပြခြင်း။",
+   "meaningEn": "With feelings put into something.",
+   "formation": "感謝・願いなどの名詞＋を込めて",
+   "examples": [
+    {
+     "ja": "感謝を込めて手紙を書きました。",
+     "highlight": "を込めて",
+     "my": "ကျေးဇူးတင်စိတ်နဲ့ စာရေးခဲ့တယ်။",
+     "en": "I wrote a letter with gratitude."
+    },
+    {
+     "ja": "心を込めて料理を作ります。",
+     "highlight": "を込めて",
+     "my": "စေတနာနဲ့ ဟင်းချက်မယ်။",
+     "en": "I cook with all my heart."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-133",
+   "title": "〜を中心に",
+   "level": "N3",
+   "index": 133,
+   "status": "draft",
+   "meaningJa": "最も大切なものや範囲の真ん中を示す。",
+   "meaningMy": "အဓိကဗဟိုထားပြီး လုပ်ခြင်း။",
+   "meaningEn": "Centered on; mainly around something.",
+   "formation": "名詞＋を中心に",
+   "examples": [
+    {
+     "ja": "東京を中心にイベントが行われます。",
+     "highlight": "を中心に",
+     "my": "တိုကျိုကို ဗဟိုထားပြီး ပွဲတွေလုပ်မယ်။",
+     "en": "Events will take place mainly around Tokyo."
+    },
+    {
+     "ja": "文法を中心に勉強しています。",
+     "highlight": "を中心に",
+     "my": "သဒ္ဒါကို အဓိကထားပြီး လေ့လာနေတယ်။",
+     "en": "I study mainly grammar."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-134",
+   "title": "〜を通して / 〜を通じて（期間）",
+   "level": "N3",
+   "index": 134,
+   "status": "draft",
+   "meaningJa": "ある期間の最初から最後まで続くことを示す。",
+   "meaningMy": "ကာလတစ်ခုလုံးတစ်လျှောက် ဆက်ဖြစ်ခြင်း။",
+   "meaningEn": "Throughout an entire period.",
+   "formation": "期間の名詞＋を通して / を通じて",
+   "examples": [
+    {
+     "ja": "一年を通して暖かい地域です。",
+     "highlight": "を通して",
+     "my": "တစ်နှစ်ပတ်လုံး နွေးတဲ့ဒေသပါ။",
+     "en": "It is a warm region throughout the year."
+    },
+    {
+     "ja": "四季を通じて観光客が来ます。",
+     "highlight": "を通じて",
+     "my": "ရာသီလေးမျိုးလုံး ခရီးသွားတွေလာတယ်။",
+     "en": "Tourists come throughout all four seasons."
+    }
+   ]
+  },
+  {
+   "id": "N3-grammar-135",
+   "title": "〜を通して / 〜を通じて（手段・媒介）",
+   "level": "N3",
+   "index": 135,
+   "status": "draft",
+   "meaningJa": "人や手段を仲立ちとして情報や経験を得る。",
+   "meaningMy": "ကြားခံနည်းလမ်းတစ်ခုကနေ အတွေ့အကြုံ၊ အချက်အလက်ရယူခြင်း။",
+   "meaningEn": "Through or via a person, activity, or medium.",
+   "formation": "名詞＋を通して / を通じて",
+   "examples": [
+    {
+     "ja": "友人を通して先生を紹介してもらいました。",
+     "highlight": "を通して",
+     "my": "သူငယ်ချင်းကနေတစ်ဆင့် ဆရာနဲ့ မိတ်ဆက်ရတယ်။",
+     "en": "A friend introduced me to the teacher."
+    },
+    {
+     "ja": "ボランティア活動を通じて多くを学びました。",
+     "highlight": "を通じて",
+     "my": "စေတနာ့ဝန်ထမ်းလုပ်ငန်းကနေ အများကြီး သင်ယူခဲ့တယ်။",
+     "en": "I learned a lot through volunteering."
+    }
+   ]
+  }
+ ]
+}

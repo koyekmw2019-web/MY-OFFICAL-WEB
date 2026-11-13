@@ -1,0 +1,103 @@
+{
+  "version": "7.88.1-rc.1",
+  "runAt": "2026-11-13T15:00:30.319Z",
+  "mode": "LOCAL_HTTP_FIXTURE_OR_FULL_DIST",
+  "base": "http://127.0.0.1:<ephemeral>",
+  "status": "PASS",
+  "checks": 11,
+  "passed": 11,
+  "failed": 0,
+  "results": [
+    {
+      "path": "/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 285126,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "path": "/mock-exams.html",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 521140,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "path": "/exams/truck.html",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 397025,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "path": "/exams/jlpt_n5.html",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 399042,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "path": "/study/jlpt-grammar-library.html",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 6090,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "path": "/study/jlpt-grammar-practice.html",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 6410,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "path": "/student-dashboard.html",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 5377,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "path": "/admin-dashboard.html",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 4233,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "path": "/login.html",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 8989,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "path": "/service-worker.js",
+      "status": 200,
+      "contentType": "text/javascript",
+      "bytes": 4044,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "path": "/assets/yk-v78720-mobile-fixes.css",
+      "status": 200,
+      "contentType": "text/css",
+      "bytes": 1153,
+      "passed": true,
+      "error": ""
+    }
+  ],
+  "authenticatedFlowsTested": false,
+  "netlifyDeployTriggered": false,
+  "realDevicePerformanceMeasured": false
+}

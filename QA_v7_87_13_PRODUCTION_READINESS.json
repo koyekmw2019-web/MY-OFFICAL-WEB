@@ -1,0 +1,164 @@
+{
+  "version": "7.87.13",
+  "date": "2026-11-12",
+  "basis": "v7.87.12 cumulative source patch (not entire GitHub checkout)",
+  "test_kind": "local source / mock / synthetic public fixture only",
+  "tests": [
+    {
+      "name": "source_v7875",
+      "status": "PASS",
+      "exit": 0,
+      "output": "PASS v7875-source: safe performance, connectivity UX and public cache boundaries"
+    },
+    {
+      "name": "runtime_v7875",
+      "status": "PASS",
+      "exit": 0,
+      "output": "PASS v7875-runtime: offline, critical script failures, no auto retry, versioned SW cache invalidation and private navigation bypass"
+    },
+    {
+      "name": "source_v7876",
+      "status": "PASS",
+      "exit": 0,
+      "output": "PASS v7876-source: cumulative v7875 preserved, student-only journey, no backend changes"
+    },
+    {
+      "name": "engine_v7876",
+      "status": "PASS",
+      "exit": 0,
+      "output": "PASS v7876-engine: 12 subject routes, scoped verified history, date filtering, trusted per-exam scores, no new APIs"
+    },
+    {
+      "name": "source_v7877",
+      "status": "PASS",
+      "exit": 0,
+      "output": "PASS v7877-source: cumulative, public click-only, admin-auth data, two isolated tables, previous engine retained"
+    },
+    {
+      "name": "api_v7877",
+      "status": "PASS",
+      "exit": 0,
+      "output": "PASS v7877-runtime: click-only UTM, same-origin, admin auth, manual entries, arithmetic, no fake visitors\n(node:1993) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+    },
+    {
+      "name": "source_v7878",
+      "status": "PASS",
+      "exit": 0,
+      "output": "PASS v7878-source: v7877 cumulative retained, admin-only cleanup and CRM, prior backend untouched"
+    },
+    {
+      "name": "validation_v7878",
+      "status": "PASS",
+      "exit": 0,
+      "output": "PASS v7878-crm: validation, status, optional YKCR reference, dates and length limits"
+    },
+    {
+      "name": "api_v7878",
+      "status": "PASS",
+      "exit": 0,
+      "output": "PASS v7878-crm-api.mock: admin auth, origin guard, input checks, CRUD, no YKCR/payment/Exam mutation\n(node:2026) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+    },
+    {
+      "name": "data_v7879",
+      "status": "PASS",
+      "exit": 0,
+      "output": "PASS v7879-data: 509 patterns, 509 original multilingual lesson drafts, 0 explicitly pending, furigana & underline, no backend changes"
+    },
+    {
+      "name": "source_v7879",
+      "status": "PASS",
+      "exit": 0,
+      "output": "PASS v7879-source: incremental cumulative, source/built route consistency, no exam/payment/YKCR server modification"
+    },
+    {
+      "name": "bridge_v7879",
+      "status": "PASS",
+      "exit": 0,
+      "output": "PASS v7879-bridge: 30 original grammar lessons available by ?legacy=1, selected JLPT level passed, modifier clicks stay native"
+    },
+    {
+      "name": "grammar_v78710",
+      "status": "PASS",
+      "exit": 0,
+      "output": "PASS v78710-content: 509/509 trilingual original authored lessons, 1,018 JP/MY/EN examples, all highlights present, legacy safe, cache key v78710"
+    },
+    {
+      "name": "stability_v78711",
+      "status": "PASS",
+      "exit": 0,
+      "output": "PASS v78711-stability: wrapped PostgreSQL free-attempt collision recognized, 12 exam rules unchanged, grammar+CRM assets preserved\n(node:2081) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+    },
+    {
+      "name": "language_v78712",
+      "status": "PASS",
+      "exit": 0,
+      "output": "PASS v78712-source: additive i18n, no content/backend rewrite, CRM/business confirmations localized"
+    },
+    {
+      "name": "static_v78713",
+      "status": "PASS",
+      "exit": 0,
+      "output": "PASS v78713-static: patch chain, all 509 grammar records, previous API/schema retained, SW no private caching, full source preflight present"
+    },
+    {
+      "name": "sw_v78713",
+      "status": "PASS",
+      "exit": 0,
+      "output": "PASS v78713-sw-runtime: public repeat cache, grammar JSON, max-byte budget, private/no-store/cookie/authorization, no HTML or protected API caching"
+    },
+    {
+      "name": "fixture_v78713",
+      "status": "PASS",
+      "exit": 0,
+      "output": "PASS v78713-build-fixture: 24-page HTML metadata, inline JS preservation, positive release gate & missing CSS negative test (synthetic fixture only)"
+    }
+  ],
+  "summary": {
+    "pass": 18,
+    "fail": 0
+  },
+  "not_verified": [
+    "original repository npm test",
+    "original repository npm run build",
+    "Netlify Deploy Preview",
+    "live payment/login/YKCR/Database migrations",
+    "real mobile Core Web Vitals",
+    "all 509 grammar linguistic correctness"
+  ],
+  "cumulative_integrity": {
+    "base_file": "YEKUN_v7.87.12_Multilingual_UI_Consistency_CUMULATIVE.zip",
+    "prior_files": 89,
+    "preserved_prior_files": 89,
+    "changed_existing_files": [
+      "package.json",
+      "scripts/build-v7875-performance.mjs",
+      "scripts/v7872-qa-version-guards.mjs",
+      "service-worker.js",
+      "tests/v78710-content.mjs",
+      "tests/v78711-stability.mjs",
+      "tests/v78712-source.mjs",
+      "tests/v7873-source.mjs",
+      "tests/v7874-source.mjs",
+      "tests/v7875-release.mjs",
+      "tests/v7875-source.mjs",
+      "tests/v7876-release.mjs",
+      "tests/v7876-source.mjs",
+      "tests/v7877-source.mjs",
+      "tests/v7878-source.mjs",
+      "tests/v7879-source.mjs"
+    ],
+    "new_files": [
+      "QA_v7_87_13_PRODUCTION_READINESS.json",
+      "README_v7_87_13_PRODUCTION_READINESS_MY.md",
+      "scripts/build-v78713-performance.mjs",
+      "scripts/preflight-v78713.mjs",
+      "tests/v78713-build-fixture.mjs",
+      "tests/v78713-release.mjs",
+      "tests/v78713-static.mjs",
+      "tests/v78713-sw-runtime.mjs"
+    ],
+    "missing_files": [],
+    "notes": "Expected additions: README, QA report and v7.87.13 test/build scripts. No backend function or grammar JSON changed."
+  },
+  "deployment_status": "NOT_DEPLOYED; GitHub main v7.87.4 at audit time"
+}

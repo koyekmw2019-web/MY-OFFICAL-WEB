@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {readFileSync, existsSync} from 'node:fs';
+const read=p=>readFileSync(p,'utf8');
+const pkg=JSON.parse(read('package.json'));
+assert(['7.87.9','7.87.10','7.87.11','7.87.12','7.87.13','7.87.14','7.87.15','7.87.16','7.87.17','7.87.18','7.87.19','7.87.20','7.87.21','7.88.0-rc.1','7.88.1-rc.1'].includes(pkg.version));
+for(const version of ['7875','7876','7877','7878'])assert(pkg.scripts.build.includes(`build-v${version}`),version+' previous cumulative builder missing');
+assert(pkg.scripts.build.includes('node scripts/build-v7879-grammar.mjs && node tests/v7879-release.mjs'));
+assert(pkg.scripts.test.includes('node tests/v7879-data.mjs && node tests/v7879-source.mjs && node tests/v7879-bridge.mjs'));
+for(const p of ['assets/yk-v7879-grammar.js','assets/yk-v7879-grammar.css','assets/yk-v7879-grammar-bridge.js','study/jlpt-grammar-library.html','scripts/build-v7879-grammar.mjs','tests/v7879-data.mjs','tests/v7879-release.mjs'])assert(existsSync(p),p);
+assert(read('scripts/build-v7879-grammar.mjs').includes('yk-jlpt-learning-v782-page.js'),'preserve legacy learning engine');
+assert(!read('scripts/build-v7879-grammar.mjs').includes('netlify/functions/'),'no backend patch');
+for(const forbidden of ['netlify/functions/exam-access.mts','src/identity-client.js','payment_requests','exam_attempts'])assert(!read('scripts/build-v7879-grammar.mjs').includes(forbidden));
+console.log('PASS v7879-source: incremental cumulative, source/built route consistency, no exam/payment/YKCR server modification');

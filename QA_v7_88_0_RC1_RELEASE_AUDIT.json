@@ -1,0 +1,84 @@
+{
+  "candidate": "7.88.0-rc.1",
+  "requested_release": "7.88.0",
+  "release_decision": "NO_GO_NOT_STABLE",
+  "tested_at": "2026-11-13T04:52:51.021066+00:00",
+  "github_repository": "koyekmw2019-web/MY-OFFICAL-WEB",
+  "last_verified_main_version": "7.87.4",
+  "last_verified_main_commit": "1d5c21cdb234add7ca33c4fd456ea6cd81d0a89a",
+  "files_preserved": 211,
+  "missing_from_prior": [],
+  "protected_runtime_backend_changes": [],
+  "selected_staged_regression": {
+    "passed": 41,
+    "total": 41,
+    "scope": "SOURCE_MOCK_AND_FIXTURE_IN_TEST_ONLY_STAGING",
+    "full_npm_test": false
+  },
+  "new_candidate_tests": {
+    "v7880_source": "PASS",
+    "v7880_gate": "PASS",
+    "negative_test_cases": [
+      "missing evidence rejected",
+      "synthetic preview rejected",
+      "flag-only report without full checkout rejected"
+    ]
+  },
+  "stable_gate": {
+    "status": "NO_GO",
+    "passed": 1,
+    "total": 11,
+    "blockers": [
+      "complete_checkout_and_git_sha",
+      "lockfile",
+      "full_npm_test_build_and_release",
+      "generated_dist_source_audit",
+      "remote_netlify_deploy_preview",
+      "source_commit_matches_evidence",
+      "isolated_test_database",
+      "authenticated_end_to_end",
+      "real_device_verification",
+      "rollback_and_human_signoff"
+    ]
+  },
+  "real_original_repo_full_test": {
+    "status": "BLOCKED",
+    "reason": "Full checkout absent from container",
+    "npm_test_attempt": "PREFLIGHT_BLOCKED_EXIT_2",
+    "npm_build_attempt": "PREFLIGHT_BLOCKED_EXIT_2",
+    "runner": {
+      "version": "7.88.0-rc.1",
+      "runAt": "2026-11-13T04:51:49.960Z",
+      "sourceCommit": null,
+      "source": "full original checkout required",
+      "blocked": true,
+      "passed": false,
+      "checks": [],
+      "liveNetlifyDeployPreviewVerified": false,
+      "notes": [
+        "Local full checkout != Netlify Deploy Preview",
+        "No private payments or real student records modified"
+      ]
+    }
+  },
+  "netlify_preview": {
+    "status": "NOT_CREATED",
+    "synthetic_only_prior_test": true
+  },
+  "authenticated_end_to_end": "NOT_TESTED",
+  "real_device_performance": "NOT_MEASURED",
+  "package_lock": "MISSING_IN_VERIFIED_GITHUB_MAIN",
+  "production_changes": false,
+  "git_push": false,
+  "netlify_deploy": false,
+  "database_migration": false,
+  "next_required_steps": [
+    "Create reviewed package-lock in full repo",
+    "npm ci",
+    "Full npm test and build",
+    "Actual Netlify deploy preview, new QA branch only",
+    "Isolated test-user payment/student/exam YKCR workflows",
+    "Real Android/iOS PWA and performance test",
+    "Rollback check and human signoff"
+  ]
+}

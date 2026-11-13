@@ -1,0 +1,21 @@
+/* v7.87.20: narrowly scoped exam/payment mobile layout/accessibility fixes. */
+.exam-v728-overlay .exam-v728-modal {
+  box-sizing:border-box; min-width:0; max-width:min(100%,720px);
+  max-height:calc(100dvh - 24px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));
+  overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch;
+}
+.exam-v728-modal .exam-plans-v728,
+.exam-v728-modal .exam-plan-card-v728,
+.exam-access-card .exam-access-copy { min-width:0; max-width:100%; }
+.exam-v728-modal .exam-plan-card-v728 { overflow-wrap:anywhere; cursor:pointer; }
+.exam-v728-modal .exam-plan-card-v728:focus-visible {
+  outline:3px solid #f0a4b2; outline-offset:3px;
+}
+.exam-v728-modal .exam-v728-close { min-width:44px; min-height:44px; }
+@media(max-width:390px) {
+ .exam-access-card { min-width:0; }
+ .exam-access-actions { min-width:0; max-width:100%; }
+ .exam-access-actions button { min-width:0; overflow-wrap:anywhere; }
+ .exam-v728-overlay { padding: max(8px,env(safe-area-inset-top,0px)) 8px max(8px,env(safe-area-inset-bottom,0px)); }
+ .exam-v728-modal .exam-plan-card-v728 { padding-inline:clamp(12px,4vw,24px); }
+}

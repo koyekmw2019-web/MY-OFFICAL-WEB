@@ -1,0 +1,21 @@
+/** v7.87.6 cumulative from the previous delivered v7.87.5 patch. */
+import assert from 'node:assert/strict';
+import {readFileSync,existsSync} from 'node:fs';
+const rd=p=>readFileSync(p,'utf8');
+const pkg=JSON.parse(rd('package.json'));
+assert(['7.87.6','7.87.7','7.87.8','7.87.9','7.87.10','7.87.11','7.87.12','7.87.13','7.87.14','7.87.15','7.87.16','7.87.17','7.87.18','7.87.19','7.87.20','7.87.21','7.88.0-rc.1','7.88.1-rc.1'].includes(pkg.version));
+assert(pkg.scripts.build.includes('node scripts/build-v7875-performance.mjs && node tests/v7875-release.mjs'));
+assert(pkg.scripts.build.includes('node scripts/build-v7876-smart-learning.mjs && node tests/v7876-release.mjs'));
+assert(pkg.scripts.test.includes('node tests/v7875-runtime.mjs'));
+assert(pkg.scripts.test.includes('node tests/v7876-source.mjs && node tests/v7876-engine.mjs'));
+for(const f of ['assets/yk-v7875-stability.js','assets/yk-v7875-stability.css','scripts/build-v7875-performance.mjs','tests/v7875-source.mjs','tests/v7875-runtime.mjs','tests/v7875-release.mjs','assets/yk-v7876-journey-engine.js','assets/yk-v7876-journey.js','assets/yk-v7876-journey.css','scripts/build-v7876-smart-learning.mjs','tests/v7876-release.mjs'])assert(existsSync(f),f);
+assert(rd('service-worker.js').match(/yk-official-v7-87-(?:5|13|20)/));
+const builder=rd('scripts/build-v7876-smart-learning.mjs');
+assert(builder.includes("student-dashboard.html"));
+assert(builder.includes('No authenticated network calls') || builder.includes('no login'));
+assert(!builder.includes('netlify/functions/'));
+assert(!builder.includes('payment_requests'));
+assert(!builder.includes('database/migrations'));
+assert(rd('assets/yk-v7876-journey.css').includes('prefers-reduced-motion:reduce'));
+assert(rd('assets/yk-v7876-journey.js').includes('STUDYING WITH YE KUN'));
+console.log('PASS v7876-source: cumulative v7875 preserved, student-only journey, no backend changes');

@@ -1,0 +1,84 @@
+{
+  "version": "7.87.10",
+  "expectedReferenceLevels": {
+    "N5": {
+      "total": 35,
+      "authored": 35,
+      "missing": 0
+    },
+    "N4": {
+      "total": 75,
+      "authored": 75,
+      "missing": 0
+    },
+    "N3": {
+      "total": 135,
+      "authored": 135,
+      "missing": 0
+    },
+    "N2": {
+      "total": 137,
+      "authored": 137,
+      "missing": 0
+    },
+    "N1": {
+      "total": 127,
+      "authored": 127,
+      "missing": 0
+    }
+  },
+  "totalCatalogEntries": 509,
+  "authoredOriginalTrilingualLessons": 509,
+  "originalJapaneseExampleSentences": 1018,
+  "missingLessons": 0,
+  "source": "Independently authored trilingual learning explanations/examples, reference pattern titles only",
+  "editorialScope": "Automated schema/grammar substring/missing-translation QA; professional native proofreading and pedagogy audit not certified",
+  "originalV782LessonsPreserved": true,
+  "noServerAPIChanges": true,
+  "noAuthorContentCopiedFromReference": true,
+  "localChecks": {
+    "nodeSchemaDataAndBridgeTests": "PASS",
+    "distFixtureReleaseTests": "PASS (simulated dist, not full production build)",
+    "chromiumMobile390AndDesktop1280": "PASS",
+    "nodeSyntax": "PASS",
+    "fullNetlifyBuild": "NOT RUN (cumulative patch does not include full repository)",
+    "actualPaidExamAndAccountE2E": "NOT RUN",
+    "nativeJapaneseHumanProofreading": "NOT CERTIFIED",
+    "contentFiles": {
+      "N5": {
+        "patterns": 35,
+        "allAuthored": 35,
+        "rawBytes": 34947,
+        "gzipBytes": 8170
+      },
+      "N4": {
+        "patterns": 75,
+        "allAuthored": 75,
+        "rawBytes": 76309,
+        "gzipBytes": 16926
+      },
+      "N3": {
+        "patterns": 135,
+        "allAuthored": 135,
+        "rawBytes": 143004,
+        "gzipBytes": 31853
+      },
+      "N2": {
+        "patterns": 137,
+        "allAuthored": 137,
+        "rawBytes": 148222,
+        "gzipBytes": 33159
+      },
+      "N1": {
+        "patterns": 127,
+        "allAuthored": 127,
+        "rawBytes": 144843,
+        "gzipBytes": 33592
+      }
+    },
+    "jsonLoading": "Only one selected JLPT level loaded at a time",
+    "dataCacheKey": "v=78710",
+    "grammarUnderlineEvidence": "1018 highlights found in their own example strings",
+    "userPreviousProgress": "Old 30 lessons remain reachable via legacy bridge; new library local-only"
+  }
+}

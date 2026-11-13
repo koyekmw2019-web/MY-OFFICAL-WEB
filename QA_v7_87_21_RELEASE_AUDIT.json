@@ -1,0 +1,76 @@
+{
+  "version": "7.87.21",
+  "purpose": "Full Regression QA, Deploy Preview Readiness, Release Audit",
+  "release_decision": "RELEASE_CANDIDATE_ONLY_NOT_PRODUCTION_STABLE",
+  "prior_cumulative": "YEKUN_v7.87.20_Mobile_Speed_PWA_Cache_UI_Fixes_CUMULATIVE.zip",
+  "git_repo": "koyekmw2019-web/MY-OFFICAL-WEB",
+  "last_verified_main_package_version": "7.87.4",
+  "prior_file_count": 199,
+  "prior_files_missing": [],
+  "prior_files_byte_unchanged": 178,
+  "prior_files_modified": [
+    "package.json",
+    "scripts/preflight-v78713.mjs",
+    "scripts/v7872-qa-version-guards.mjs",
+    "tests/v78710-content.mjs",
+    "tests/v78711-stability.mjs",
+    "tests/v78712-source.mjs",
+    "tests/v78713-static.mjs",
+    "tests/v78714-source.mjs",
+    "tests/v78715-source.mjs",
+    "tests/v78716-source.mjs",
+    "tests/v78717-source.mjs",
+    "tests/v78718-source.mjs",
+    "tests/v78719-source.mjs",
+    "tests/v78720-source.mjs",
+    "tests/v7873-source.mjs",
+    "tests/v7874-source.mjs",
+    "tests/v7875-source.mjs",
+    "tests/v7876-source.mjs",
+    "tests/v7877-source.mjs",
+    "tests/v7878-source.mjs",
+    "tests/v7879-source.mjs"
+  ],
+  "backend_and_migration_bytes_unchanged": true,
+  "grammar_json_bytes_unchanged": true,
+  "service_worker_bytes_unchanged": true,
+  "local_staged_selected_regression": {
+    "passed": 41,
+    "total": 41,
+    "original_7_87_3_and_7_87_4_UI_file_staging_required": true,
+    "not_full_repository_build": true
+  },
+  "synthetic_preview": {
+    "routes": 29,
+    "local_HTTP_smoke": "PASS",
+    "not_real_Netlify_deploy": true
+  },
+  "negative_release_checks": [
+    "missing_local_JS_or_CSS",
+    "stale_static_asset_cache_query",
+    "tampered_plan_price",
+    "missing_exam_route",
+    "private_backend_in_public_output",
+    "missing_dist_blocked"
+  ],
+  "full_original_npm_test": "BLOCKED_MISSING_FULL_CHECKOUT",
+  "full_original_npm_build": "BLOCKED_MISSING_FULL_CHECKOUT",
+  "live_netlify_deploy_preview": "NOT_CREATED",
+  "live_login_payment_ykcr_E2E": "NOT_TESTED",
+  "real_device_lcp_inp_cls": "NOT_MEASURED",
+  "new_database_migrations": 0,
+  "new_public_runtime_behaviors": 0,
+  "backend_data_or_user_accounts_modified": false,
+  "github_push_performed": false,
+  "netlify_deploy_performed": false,
+  "next_action": "In intact GitHub checkout run npm ci and npm run verify:full; only then make a branch Deploy Preview and smoke plus authenticated test-only flows.",
+  "mobile_browser_fixture": {
+    "android_widths_px": [
+      320,
+      390
+    ],
+    "desktop_width_px": 1280,
+    "result": "PASS",
+    "scope": "synthetic_page_not_real_production"
+  }
+}

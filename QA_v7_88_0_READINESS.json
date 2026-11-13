@@ -1,0 +1,56 @@
+{
+  "candidate": "7.88.0-rc.1",
+  "check": "real-checkout-preflight",
+  "state": "BLOCKED",
+  "entries": [
+    {
+      "path": "index.html",
+      "label": "full home HTML",
+      "present": false
+    },
+    {
+      "path": "src/identity-client.js",
+      "label": "Identity client source",
+      "present": false
+    },
+    {
+      "path": "scripts/build-public-v7841.mjs",
+      "label": "original public build",
+      "present": false
+    },
+    {
+      "path": "netlify.toml",
+      "label": "Netlify configuration",
+      "present": false
+    },
+    {
+      "path": "netlify/functions/ykcr-student-sync.mts",
+      "label": "YKCR backend",
+      "present": false
+    },
+    {
+      "path": "netlify/database/migrations/20261112090000_yk_growth_analytics.sql",
+      "label": "growth migration",
+      "present": true
+    },
+    {
+      "path": "netlify/database/migrations/20261112140000_yk_enrollment_crm.sql",
+      "label": "CRM migration",
+      "present": true
+    },
+    {
+      "path": "package-lock.json",
+      "label": "reproducible package lockfile",
+      "present": false
+    }
+  ],
+  "missing": [
+    "index.html",
+    "src/identity-client.js",
+    "scripts/build-public-v7841.mjs",
+    "netlify.toml",
+    "netlify/functions/ykcr-student-sync.mts",
+    "package-lock.json"
+  ],
+  "important": "A READY preflight does NOT imply full build, deploy preview, authenticated E2E, real-device QA or stable certification."
+}

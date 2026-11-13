@@ -1,0 +1,39 @@
+{
+  "environment": "NOT_TESTED",
+  "isolatedTestDatabase": false,
+  "realPaymentNotUsed": false,
+  "sourceCommit": "",
+  "previewSourceCommit": "",
+  "e2e": {
+    "register": false,
+    "login": false,
+    "logout": false,
+    "studentVerification": false,
+    "ykcrSync": false,
+    "freeAttemptPerExamType": false,
+    "examResume": false,
+    "examSubmitAndScore": false,
+    "receiptUpload": false,
+    "adminApproval": false,
+    "paidStartAndExpiry": false,
+    "rolePermissions": false,
+    "paymentRejectAndDuplicateHandling": false
+  },
+  "device": {
+    "androidRealDevice": false,
+    "iosRealDevice": false,
+    "pwaInstall": false,
+    "offlinePublicOnly": false,
+    "newVersionAfterCache": false,
+    "myEnJaLanguages": false,
+    "mobileNoOverflow": false,
+    "performanceMeasured": false
+  },
+  "rollback": {
+    "previousProductionCommit": "",
+    "previousDeployId": "",
+    "dryRunVerified": false
+  },
+  "reviewer": "",
+  "reviewedAt": ""
+}

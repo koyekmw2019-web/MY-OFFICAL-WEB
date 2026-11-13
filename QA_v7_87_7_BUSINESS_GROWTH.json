@@ -1,0 +1,62 @@
+{
+  "version": "7.87.7",
+  "type": "cumulative_patch",
+  "based_on": "previous delivered v7.87.6 cumulative ZIP; GitHub main comparison 7.87.4",
+  "cumulative_versions": [
+    "7.87.5",
+    "7.87.6",
+    "7.87.7"
+  ],
+  "feature_scope": [
+    "admin business growth dashboard",
+    "3 course guide inquiry CTAs",
+    "video consultation link click measurement",
+    "session-only UTM campaign attribution",
+    "campaign link builder",
+    "admin manual confirmed enquiry, class enrollment revenue and marketing expense records",
+    "privacy/data caveats"
+  ],
+  "new_netlify_functions": [
+    "yk-growth-event",
+    "yk-business-growth"
+  ],
+  "new_database_tables": [
+    "yk_growth_click_events",
+    "yk_growth_manual_entries"
+  ],
+  "unchanged_sensitive_modules": [
+    "exam scoring",
+    "exam free-attempt gates",
+    "login identity",
+    "student verification",
+    "YKCR sync",
+    "existing payment approval",
+    "current Student/Member dashboards"
+  ],
+  "tests": {
+    "javascript_syntax": "PASS",
+    "source_contract": "PASS",
+    "mocked_endpoint_access_validation_math": "PASS",
+    "generated_html_fixture": "PASS",
+    "12_exam_static_preservation": "PASS",
+    "zip_integrity": "PASS",
+    "full_netlify_build": "NOT_RUN: full original repository unavailable locally",
+    "browser_end_to_end": "NOT_RUN: local navigation blocked",
+    "live_database_migrations": "NOT_RUN",
+    "live_auth_ykcr_payment": "NOT_RUN"
+  },
+  "data_quality": {
+    "website_visitors": "NOT_TRACKED",
+    "cta_clicks": "anonymous nonunique event, not inquiry",
+    "confirmed_inquiries": "admin manually entered",
+    "class_enrollments": "admin manually entered",
+    "class_revenue": "manually entered and not payment reconciled",
+    "net_profit": "NOT_CALCULATED"
+  },
+  "deployment": {
+    "github_push": false,
+    "netlify_deploy": false,
+    "database_mutation": false
+  },
+  "workflow": "once-weekly single cumulative source patch push"
+}

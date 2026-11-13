@@ -1,0 +1,32 @@
+{
+  "version": "7.87.9",
+  "expectedReferenceLevels": {
+    "N5": {
+      "total": 35,
+      "draft": 15
+    },
+    "N4": {
+      "total": 75,
+      "draft": 10
+    },
+    "N3": {
+      "total": 135,
+      "draft": 10
+    },
+    "N2": {
+      "total": 137,
+      "draft": 10
+    },
+    "N1": {
+      "total": 127,
+      "draft": 10
+    }
+  },
+  "totalCatalogEntries": 509,
+  "authoredDrafts": 55,
+  "awaitingDraft": 454,
+  "status": "partial: 55 draft trilingual lessons, 454 patterns not authored; expert Japanese content review pending",
+  "originalV782LessonsPreserved": true,
+  "noServerAPIChanges": true,
+  "noAutomatedGeneratedFakeTranslations": true
+}

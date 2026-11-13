@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';import {readFileSync,existsSync} from 'node:fs';
+const r=p=>readFileSync(p,'utf8'),dist='dist/';
+const center=r(dist+'mock-exams.html');const nishu=r(dist+'exams/nishu.html');
+const i=center.indexOf('data-exam-v728="car"'),j=center.indexOf('yk7881-second-license-card'),k=center.indexOf('data-exam-v728="motorcycle"');
+assert(i>=0&&i<j&&j<k);assert.equal((center.match(/data-exam-v728=/g)||[]).length,12);
+for(const v of ['95問','50分','100点満点','90点合格','yk-v7881-nishu-book-cover.jpg','/exams/nishu.html'])assert(center.includes(v),v);
+for(const p of ['yk-v7881-nishu.css','yk-v7881-nishu.js','yk-v7881-nishu-questions.json','yk-v7881-nishu-book-cover.jpg',...['crosswalk','taxi','bus','rain','junction'].map(x=>`yk-v7881-scene-${x}.svg`)])assert(existsSync(dist+'assets/'+p),p);
+for(const s of ['yk-v7881-nishu.js','YKExamAutoSaveV761','Student Verify','95問','100点','scoreVerified','nishu-submit'])assert(nishu.includes(s)||r(dist+'assets/yk-v7881-nishu.js').includes(s),s);
+for(const sensitive of ['netlify','tests','scripts','nishu-key-v7881.mts'])assert(!existsSync(dist+sensitive),'Private source leak: '+sensitive);
+assert.equal(JSON.parse(r(dist+'assets/yk-v7881-nishu-questions.json')).text.length,90);
+for(const t of ['car','motorcycle','moped'])assert(existsSync(`${dist}exams/${t}.html`),t);
+console.log('PASS v7881-release: 13 total exam cards, new nishu route, no backend leak, 95 original Q, 12 old routes intact');

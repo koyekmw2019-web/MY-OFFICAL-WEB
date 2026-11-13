@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {readFileSync,existsSync} from 'node:fs';
+const p='dist/study/jlpt-learning.html',html=readFileSync(p,'utf8');
+assert(html.includes('yk-v7879-grammar-bridge.js?v=7879'));
+assert(html.includes('yk-jlpt-learning-v782-page.js'));
+assert(html.includes('id="yk82Stats"'));
+assert(existsSync('dist/study/jlpt-grammar-library.html'));
+for(const a of ['yk-v7879-grammar.js','yk-v7879-grammar.css','yk-v7879-grammar-bridge.js',...['n5','n4','n3','n2','n1'].map(x=>'yk-v7879-grammar-'+x+'.json')])assert(existsSync('dist/assets/'+a),a);
+assert(readFileSync('dist/study/jlpt-grammar-library.html','utf8').includes('id="yk879App"'));
+console.log('PASS v7879-release: grammar learning route and lazy JSON included; existing learning page and engine preserved');

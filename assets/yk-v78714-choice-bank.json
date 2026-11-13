@@ -1,0 +1,406 @@
+{
+  "version": "7.87.14",
+  "editorialStatus": "curated starter questions; not official JLPT scoring",
+  "items": [
+    {
+      "id": "N5-grammar-001",
+      "level": "N5",
+      "exampleIndex": 0,
+      "distractors": [
+        "まえで",
+        "くらい",
+        "だから"
+      ]
+    },
+    {
+      "id": "N5-grammar-004",
+      "level": "N5",
+      "exampleIndex": 0,
+      "distractors": [
+        "書きた",
+        "読んで",
+        "読みほど"
+      ]
+    },
+    {
+      "id": "N5-grammar-005",
+      "level": "N5",
+      "exampleIndex": 0,
+      "distractors": [
+        "がほしいな",
+        "を欲しがる",
+        "も欲しいて"
+      ]
+    },
+    {
+      "id": "N5-grammar-010",
+      "level": "N5",
+      "exampleIndex": 0,
+      "distractors": [
+        "たあとに",
+        "なければ",
+        "てらしい"
+      ]
+    },
+    {
+      "id": "N5-grammar-012",
+      "level": "N5",
+      "exampleIndex": 0,
+      "distractors": [
+        "たことがあります",
+        "ませんでした",
+        "すぎます"
+      ]
+    },
+    {
+      "id": "N5-grammar-014",
+      "level": "N5",
+      "exampleIndex": 0,
+      "distractors": [
+        "ときから",
+        "どこまで",
+        "いつも"
+      ]
+    },
+    {
+      "id": "N5-grammar-015",
+      "level": "N5",
+      "exampleIndex": 0,
+      "distractors": [
+        "と思ったら",
+        "ならばいい",
+        "と思うとき"
+      ]
+    },
+    {
+      "id": "N5-grammar-025",
+      "level": "N5",
+      "exampleIndex": 0,
+      "distractors": [
+        "なくなりました",
+        "なかろうでした",
+        "なかったです"
+      ]
+    },
+    {
+      "id": "N4-grammar-002",
+      "level": "N4",
+      "exampleIndex": 0,
+      "distractors": [
+        "間で",
+        "間ほど",
+        "間より"
+      ]
+    },
+    {
+      "id": "N4-grammar-006",
+      "level": "N4",
+      "exampleIndex": 0,
+      "distractors": [
+        "かどんな",
+        "かでも",
+        "がどうか"
+      ]
+    },
+    {
+      "id": "N4-grammar-007",
+      "level": "N4",
+      "exampleIndex": 0,
+      "distractors": [
+        "かしらない",
+        "かもしらしい",
+        "かもしりません"
+      ]
+    },
+    {
+      "id": "N4-grammar-008",
+      "level": "N4",
+      "exampleIndex": 0,
+      "distractors": [
+        "ことがします",
+        "のことあります",
+        "ことにあります"
+      ]
+    },
+    {
+      "id": "N4-grammar-009",
+      "level": "N4",
+      "exampleIndex": 0,
+      "distractors": [
+        "ことにます",
+        "ことをしました",
+        "ことなりました"
+      ]
+    },
+    {
+      "id": "N4-grammar-012",
+      "level": "N4",
+      "exampleIndex": 0,
+      "distractors": [
+        "ほど",
+        "さえ",
+        "ばかり"
+      ]
+    },
+    {
+      "id": "N4-grammar-020",
+      "level": "N4",
+      "exampleIndex": 0,
+      "distractors": [
+        "ばかりに",
+        "からだけ",
+        "ばかりで"
+      ]
+    },
+    {
+      "id": "N4-grammar-021",
+      "level": "N4",
+      "exampleIndex": 0,
+      "distractors": [
+        "ための",
+        "ためだ",
+        "ことだ"
+      ]
+    },
+    {
+      "id": "N3-grammar-003",
+      "level": "N3",
+      "exampleIndex": 0,
+      "distractors": [
+        "一方に",
+        "一方で",
+        "一方な"
+      ]
+    },
+    {
+      "id": "N3-grammar-004",
+      "level": "N3",
+      "exampleIndex": 0,
+      "distractors": [
+        "上を",
+        "上ほど",
+        "上な"
+      ]
+    },
+    {
+      "id": "N3-grammar-006",
+      "level": "N3",
+      "exampleIndex": 0,
+      "distractors": [
+        "おかげに",
+        "おかげの",
+        "おかげを"
+      ]
+    },
+    {
+      "id": "N3-grammar-008",
+      "level": "N3",
+      "exampleIndex": 0,
+      "distractors": [
+        "おそれがします",
+        "おそれはいます",
+        "おそれがなります"
+      ]
+    },
+    {
+      "id": "N3-grammar-010",
+      "level": "N3",
+      "exampleIndex": 0,
+      "distractors": [
+        "がきっかけに",
+        "をきっかけに",
+        "がきっかけを"
+      ]
+    },
+    {
+      "id": "N3-grammar-012",
+      "level": "N3",
+      "exampleIndex": 0,
+      "distractors": [
+        "がちに",
+        "がちを",
+        "がちの"
+      ]
+    },
+    {
+      "id": "N3-grammar-014",
+      "level": "N3",
+      "exampleIndex": 0,
+      "distractors": [
+        "にかかり",
+        "のかけて",
+        "にかからず"
+      ]
+    },
+    {
+      "id": "N3-grammar-028",
+      "level": "N3",
+      "exampleIndex": 0,
+      "distractors": [
+        "最中を",
+        "最中で",
+        "最中から"
+      ]
+    },
+    {
+      "id": "N2-grammar-001",
+      "level": "N2",
+      "exampleIndex": 0,
+      "distractors": [
+        "あげくにして",
+        "あげくで",
+        "あげくのに"
+      ]
+    },
+    {
+      "id": "N2-grammar-005",
+      "level": "N2",
+      "exampleIndex": 0,
+      "distractors": [
+        "一方に",
+        "一方が",
+        "一方を"
+      ]
+    },
+    {
+      "id": "N2-grammar-006",
+      "level": "N2",
+      "exampleIndex": 0,
+      "distractors": [
+        "以降で",
+        "以来の",
+        "以上を"
+      ]
+    },
+    {
+      "id": "N2-grammar-012",
+      "level": "N2",
+      "exampleIndex": 0,
+      "distractors": [
+        "かいがありに",
+        "かいもありの",
+        "かいがなり"
+      ]
+    },
+    {
+      "id": "N2-grammar-015",
+      "level": "N2",
+      "exampleIndex": 0,
+      "distractors": [
+        "がたく",
+        "がたの",
+        "がたさ"
+      ]
+    },
+    {
+      "id": "N2-grammar-016",
+      "level": "N2",
+      "exampleIndex": 0,
+      "distractors": [
+        "かと思えと",
+        "かと思ったの",
+        "かと思いで"
+      ]
+    },
+    {
+      "id": "N2-grammar-018",
+      "level": "N2",
+      "exampleIndex": 0,
+      "distractors": [
+        "かねるか",
+        "かねなりません",
+        "かねないです"
+      ]
+    },
+    {
+      "id": "N2-grammar-032",
+      "level": "N2",
+      "exampleIndex": 0,
+      "distractors": [
+        "ことなしの",
+        "ことなければ",
+        "ことにより"
+      ]
+    },
+    {
+      "id": "N1-grammar-001",
+      "level": "N1",
+      "exampleIndex": 0,
+      "distractors": [
+        "あってが",
+        "あってはの",
+        "あったを"
+      ]
+    },
+    {
+      "id": "N1-grammar-005",
+      "level": "N1",
+      "exampleIndex": 0,
+      "distractors": [
+        "かたわれ",
+        "かたわらに",
+        "かたわらを"
+      ]
+    },
+    {
+      "id": "N1-grammar-006",
+      "level": "N1",
+      "exampleIndex": 0,
+      "distractors": [
+        "がてらに",
+        "がてらを",
+        "がてれ"
+      ]
+    },
+    {
+      "id": "N1-grammar-008",
+      "level": "N1",
+      "exampleIndex": 0,
+      "distractors": [
+        "が早くか",
+        "が早いので",
+        "が早いに"
+      ]
+    },
+    {
+      "id": "N1-grammar-011",
+      "level": "N1",
+      "exampleIndex": 0,
+      "distractors": [
+        "きってな",
+        "きってを",
+        "きってが"
+      ]
+    },
+    {
+      "id": "N1-grammar-013",
+      "level": "N1",
+      "exampleIndex": 0,
+      "distractors": [
+        "極まりません",
+        "極まりないに",
+        "極まるない"
+      ]
+    },
+    {
+      "id": "N1-grammar-014",
+      "level": "N1",
+      "exampleIndex": 0,
+      "distractors": [
+        "ごとくに",
+        "ごときに",
+        "ごとくが"
+      ]
+    },
+    {
+      "id": "N1-grammar-021",
+      "level": "N1",
+      "exampleIndex": 0,
+      "distractors": [
+        "すらを",
+        "すらに",
+        "すらが"
+      ]
+    }
+  ]
+}

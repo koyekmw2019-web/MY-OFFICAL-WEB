@@ -1,0 +1,20 @@
+/** v7.87.14 source-level guard. Full site tests need intact repo. */
+import assert from 'node:assert/strict';
+import {existsSync,readFileSync} from 'node:fs';
+const r=p=>readFileSync(p,'utf8');
+const pkg=JSON.parse(r('package.json'));
+assert(['7.87.14','7.87.15','7.87.16','7.87.17','7.87.18','7.87.19','7.87.20','7.87.21','7.88.0-rc.1','7.88.1-rc.1'].includes(pkg.version));
+assert(pkg.scripts.build.includes('node scripts/build-v78713-performance.mjs && node tests/v78713-release.mjs && node scripts/build-v78714-grammar-mastery.mjs && node tests/v78714-release.mjs'));
+assert(pkg.scripts.test.includes('tests/v78714-engine.mjs')&&pkg.scripts.test.includes('tests/v78714-source.mjs'));
+for(const p of ['study/jlpt-grammar-practice.html','assets/yk-v78714-engine.js','assets/yk-v78714-practice.js','assets/yk-v78714-practice.css','assets/yk-v78714-choice-bank.json','assets/yk-v78714-student.js','assets/yk-v78714-student.css','assets/yk-v78714-link.css','scripts/build-v78714-grammar-mastery.mjs'])assert(existsSync(p),p);
+const html=r('study/jlpt-grammar-practice.html');
+assert(html.includes('id="yk814App"')&&html.includes('data-mode="daily"')&&html.includes('data-mode="review"'));
+assert(!html.includes('identity.bundle.js')&&!html.includes('exam-access'));
+const study=r('assets/yk-v78714-practice.js');
+assert(study.includes('makeDeck(')&&study.includes('grade(')&&study.includes('localStorage'));
+for(const forbidden of ['/.netlify/functions','exam-attempt-submit','exam-access','paid_access','exam_students','YKCR_SYNC_SECRET'])assert(!study.includes(forbidden),forbidden);
+const engine=r('assets/yk-v78714-engine.js');assert(!engine.includes('fetch(')&&!engine.includes('getDatabase('));
+const student=r('assets/yk-v78714-student.js');assert(student.includes("dataset.dashboard==='student'")&&!student.includes('fetch('));
+const bridge=r('assets/yk-v7879-grammar.js');assert(bridge.includes("query.get('grammar')"));
+for(const p of ['netlify/functions/_shared/exam-autosave.mts','netlify/functions/yk-enrollment-crm.mts','netlify/functions/yk-business-growth.mts'])assert(existsSync(p));
+console.log('PASS v78714-source: additive student-only integration, no mock exam/identity/payment/YKCR APIs, 509 lesson deep links and patch chain intact');

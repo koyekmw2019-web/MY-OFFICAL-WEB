@@ -1,0 +1,6 @@
+/* v7.87.12 — only the independent grammar/learning language picker. */
+.yk-l12-languages{display:inline-flex;align-items:center;justify-content:center;gap:3px;flex-wrap:wrap;max-width:100%;border:1px solid #38383d;border-radius:13px;background:#161618;padding:3px}
+.yk-l12-languages button{background:none;border:0;border-radius:9px;padding:7px 9px;color:#bbb;cursor:pointer;font:500 12px/1.45 Inter,'Noto Sans Myanmar','Noto Sans JP',system-ui,sans-serif;min-height:34px;white-space:nowrap}
+.yk-l12-languages button[aria-pressed="true"]{background:#b72a42;color:#fff}
+.yk-l12-languages button:focus-visible{outline:2px solid #ffb5c2;outline-offset:2px}
+@media(max-width:540px){.yk879-topin{flex-wrap:wrap}.yk-l12-languages button{padding:6px 7px;font-size:11px}}

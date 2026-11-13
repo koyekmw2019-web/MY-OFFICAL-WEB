@@ -1,0 +1,61 @@
+{
+  "version": "7.87.8",
+  "type": "weekly_cumulative_source_patch",
+  "basis": "previous verified v7.87.7 cumulative ZIP",
+  "cumulative_versions": [
+    "7.87.5",
+    "7.87.6",
+    "7.87.7",
+    "7.87.8"
+  ],
+  "new_functions": [
+    "yk-enrollment-crm"
+  ],
+  "database_migrations": [
+    "20261112090000_yk_growth_analytics.sql",
+    "20261112140000_yk_enrollment_crm.sql"
+  ],
+  "tests": {
+    "node_syntax": "PASS",
+    "prior_v7875_runtime": "PASS",
+    "prior_v7876_engine": "PASS",
+    "prior_v7877_mock_api": "PASS",
+    "v7878_crm_input": "PASS",
+    "v7878_admin_api_mock": "PASS",
+    "v7878_release_fixture": "PASS",
+    "student_and_12_exam_sha256_unchanged": "PASS",
+    "chromium_mobile_390px": "PASS",
+    "chromium_desktop_1280px": "PASS",
+    "chromium_student_role_no_crm": "PASS"
+  },
+  "not_tested": [
+    "full_real_repository_npm_build",
+    "Netlify_production_deploy",
+    "live_Netlify_database_migration",
+    "live_Identity_Payment_YKCR"
+  ],
+  "unchanged_prior_payload_file_count": 28,
+  "changed_prior_payload_files": [
+    "package.json",
+    "scripts/v7872-qa-version-guards.mjs",
+    "tests/v7873-source.mjs",
+    "tests/v7874-source.mjs",
+    "tests/v7875-source.mjs",
+    "tests/v7876-source.mjs",
+    "tests/v7877-source.mjs"
+  ],
+  "new_payload_files": [
+    "README_v7_87_8_ADMIN_CRM_MY.md",
+    "assets/yk-v7878-admin.css",
+    "assets/yk-v7878-admin.js",
+    "netlify/database/migrations/20261112140000_yk_enrollment_crm.sql",
+    "netlify/functions/_shared/yk-crm-validation-v7878.mjs",
+    "netlify/functions/yk-enrollment-crm.mts",
+    "scripts/build-v7878-admin-crm.mjs",
+    "tests/v7878-crm-api.mock.mjs",
+    "tests/v7878-crm.mjs",
+    "tests/v7878-release.mjs",
+    "tests/v7878-source.mjs"
+  ],
+  "safety": "No new Student DB; CRM is separate prospect table, endpoint admin-only; no production modifications; no automated Messenger messaging."
+}

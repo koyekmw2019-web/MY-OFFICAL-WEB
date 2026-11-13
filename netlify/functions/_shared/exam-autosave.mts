@@ -19,9 +19,26 @@ export function isValidSnapshot(v: unknown): v is Record<string, any> {
 /** v7.63: one free attempt for each exam type. Abandoning never restores its quota. */
 export const EXAM_FREE_POLICY = 'ONE_PER_EXAM_TYPE' as const;
 export const checkpointGraceSeconds = 60;
-export const isMissingCheckpointTable = (e:any) => e?.code === '42P01' && /exam_attempt_checkpoints/.test(String(e?.message??''));
-export const isFreeUniqueViolation = (e:any) => e?.code === '23505' &&
-  /exam_one_free_attempt/.test(String(e?.constraint ?? e?.message ?? ''));
+/** v7.87.11: The Netlify Database adapter may wrap a Neon/Postgres error in
+ * WaddlerQueryError.cause. Check the *structured* code and constraint in each
+ * cause instead of matching arbitrary message text. No change to free quotas.
+ * Bound traversal protects against cycles and unexpected thrown values.
+ */
+function pgErrorChain(e:unknown): Record<string, any>[] {
+  const chain:Record<string,any>[]=[];
+  const seen=new Set<unknown>();
+  let current:unknown=e;
+  for(let n=0;n<6&&current&&typeof current==='object'&&!seen.has(current);n++){
+    seen.add(current);
+    chain.push(current as Record<string,any>);
+    current=(current as Record<string,any>).cause;
+  }
+  return chain;
+}
+export const isMissingCheckpointTable = (e:unknown) => pgErrorChain(e).some(x=>
+  x.code==='42P01' && /exam_attempt_checkpoints/.test(String(x.message??'')));
+export const isFreeUniqueViolation = (e:unknown) => pgErrorChain(e).some(x=>
+  x.code==='23505' && /^exam_one_free_attempt(?:_per_user_type|_per_user)?$/.test(String(x.constraint??'')));
 
 /** Close any phase expired past grace, so abandoned attempts cannot block resuming
  * indefinitely. Free quota is retained per exam type. Preserves all rows. */

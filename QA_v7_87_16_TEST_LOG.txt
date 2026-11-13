@@ -1,0 +1,84 @@
+# 7875-source PASS
+PASS v7875-source: safe performance, connectivity UX and public cache boundaries
+
+# 7875-runtime PASS
+PASS v7875-runtime: offline, critical script failures, no auto retry, versioned SW cache invalidation and private navigation bypass
+
+# 7876-source PASS
+PASS v7876-source: cumulative v7875 preserved, student-only journey, no backend changes
+
+# 7876-engine PASS
+PASS v7876-engine: 12 subject routes, scoped verified history, date filtering, trusted per-exam scores, no new APIs
+
+# 7877-source PASS
+PASS v7877-source: cumulative, public click-only, admin-auth data, two isolated tables, previous engine retained
+
+# 7877-runtime PASS
+PASS v7877-runtime: click-only UTM, same-origin, admin auth, manual entries, arithmetic, no fake visitors
+(node:12122) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+# 7878-source PASS
+PASS v7878-source: v7877 cumulative retained, admin-only cleanup and CRM, prior backend untouched
+
+# 7878-crm PASS
+PASS v7878-crm: validation, status, optional YKCR reference, dates and length limits
+
+# 7878-mock PASS
+PASS v7878-crm-api.mock: admin auth, origin guard, input checks, CRUD, no YKCR/payment/Exam mutation
+(node:12158) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+# 7879-data PASS
+PASS v7879-data: 509 patterns, 509 original multilingual lesson drafts, 0 explicitly pending, furigana & underline, no backend changes
+
+# 7879-source PASS
+PASS v7879-source: incremental cumulative, source/built route consistency, no exam/payment/YKCR server modification
+
+# 7879-bridge PASS
+PASS v7879-bridge: 30 original grammar lessons available by ?legacy=1, selected JLPT level passed, modifier clicks stay native
+
+# 78710-content PASS
+PASS v78710-content: 509/509 trilingual original authored lessons, 1,018 JP/MY/EN examples, all highlights present, legacy safe, cache key v78710
+
+# 78711-stability PASS
+PASS v78711-stability: wrapped PostgreSQL free-attempt collision recognized, 12 exam rules unchanged, grammar+CRM assets preserved
+(node:12218) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+# 78712-source PASS
+PASS v78712-source: additive i18n, no content/backend rewrite, CRM/business confirmations localized
+
+# 78713-static PASS
+PASS v78713-static: patch chain, all 509 grammar records, previous API/schema retained, SW no private caching, full source preflight present
+
+# 78713-fixture PASS
+PASS v78713-build-fixture: 24-page HTML metadata, inline JS preservation, positive release gate & missing CSS negative test (synthetic fixture only)
+
+# 78714-engine PASS
+PASS v78714-engine: 509 original items, 1,018 cloze examples, 40 curated MCQs, no automatically synthesized distractors, review/daily prioritization, per-device progress & session validation
+
+# 78714-source PASS
+PASS v78714-source: additive student-only integration, no mock exam/identity/payment/YKCR APIs, 509 lesson deep links and patch chain intact
+
+# 78714-fixture PASS
+PASS v78714-build-fixture: isolated publish pass, Admin/Member exclusion, missing JS negative-release gate
+
+# 78715-engine PASS
+PASS v78715-engine: zero-data honesty, 1-attempt uncertainty, repeated mistakes, recovery, due heuristic, priority, 7-day method splitting, 1200-event cap, 5-level isolation
+
+# 78715-source PASS
+PASS v78715-source: version chain, new files, student-only role, no backend or personal data network requests
+
+# 78715-fixture PASS
+PASS v78715-build-fixture: positive integration, role separation, missing dependency blocks release
+
+# 78716-engine PASS
+PASS v78716-engine: strict dates/weekly boundaries, actual sessions vs plans, self-report separation, streak, targets, invalid input and 400-day cap
+
+# 78716-source PASS
+PASS v78716-source: version/build chain, safe local state, 3 languages, student-only integration, previous backend/grammar preserved
+
+# 78716-fixture PASS
+PASS v78716-build-fixture: prior v7.87.15 builder, additive calendar integration, role isolation, missing-asset release rejection
+

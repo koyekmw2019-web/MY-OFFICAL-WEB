@@ -6,6 +6,10 @@ import { PLAN_PRICE } from "./_shared/security.mts";
 import { env } from "./_shared/env.mts";
 import { sendAdminPaymentEmail } from "./_shared/notify.mts";
 
+/** v7.87.19: A successfully saved payment request must not become a false
+ * HTTP 500 merely because the optional admin email provider is unavailable.
+ * Do NOT auto-approve payment; an admin still reviews the saved receipt.
+ */
 export default async (req: Request) => {
   try {
     if (req.method !== "POST") return new Response("Method not allowed", { status: 405 });
@@ -16,20 +20,41 @@ export default async (req: Request) => {
     const bankKey = String(form.get("bank") || "").trim();
     const transferDate = String(form.get("transferDate") || "").trim();
     const receipt = form.get("receipt");
-    if (!(plan in PLAN_PRICE) || !name || !bankKey || !(receipt instanceof File) || receipt.size === 0) return Response.json({ error: "Missing or invalid payment fields" }, { status: 400 });
+    // Do not accept prototype properties like "toString" as valid plan codes.
+    if (!Object.prototype.hasOwnProperty.call(PLAN_PRICE, plan) || !name || name.length > 120 ||
+        !bankKey || bankKey.length > 180 || !(receipt instanceof File) || receipt.size === 0)
+      return Response.json({ error: "Missing or invalid payment fields" }, { status: 400 });
+    if (transferDate && !/^\d{4}-\d{2}-\d{2}$/.test(transferDate))
+      return Response.json({ error: "Invalid transfer date" }, { status: 400 });
     const bankRaw = env("EXAM_BANK_ACCOUNTS_JSON");
     let banks: any[] = [];
-    try { banks = bankRaw ? JSON.parse(bankRaw) : []; } catch { return Response.json({ error: "Bank account configuration is invalid" }, { status: 500 }); }
-    if (!banks.some((b:any) => String(b.bank || b.name || b.key || "") === bankKey)) return Response.json({ error: "Invalid bank selection" }, { status: 400 });
-    if (receipt.size > 4_500_000) return Response.json({ error: "Receipt file is too large (max about 4.5 MB)" }, { status: 413 });
-    if (!receipt.type.startsWith("image/") && receipt.type !== "application/pdf") return Response.json({ error: "Receipt must be an image or PDF" }, { status: 400 });
-    const safeName = receipt.name.replace(/[^a-zA-Z0-9._-]/g,"_");
+    try {
+      const parsed = bankRaw ? JSON.parse(bankRaw) : [];
+      if (!Array.isArray(parsed)) throw Error("not an array");
+      banks = parsed;
+    } catch { return Response.json({ error: "Bank account configuration is invalid" }, { status: 500 }); }
+    if (!banks.some((b:any) => String(b?.bank || b?.name || b?.key || "") === bankKey))
+      return Response.json({ error: "Invalid bank selection" }, { status: 400 });
+    if (receipt.size > 4_500_000)
+      return Response.json({ error: "Receipt file is too large (max about 4.5 MB)" }, { status: 413 });
+    if (!receipt.type.startsWith("image/") && receipt.type !== "application/pdf")
+      return Response.json({ error: "Receipt must be an image or PDF" }, { status: 400 });
+    const safeName = receipt.name.replace(/[^a-zA-Z0-9._-]/g,"_").slice(-150) || "receipt";
     const key = `${user.id}/${randomUUID()}-${safeName}`;
     const store = getStore({ name: "payment-receipts", consistency: "strong" });
     await store.set(key, receipt, { metadata: { userId: user.id, plan, uploadedAt: Date.now() } });
     const db = getDatabase();
-    const [row] = await db.sql<any>`INSERT INTO exam_payment_requests(user_id,user_email,payer_name,plan_code,amount_yen,bank_key,transfer_date,receipt_blob_key) VALUES(${user.id},${user.email ?? ""},${name},${plan},${PLAN_PRICE[plan]},${bankKey},${transferDate || null},${key}) RETURNING id,submitted_at`;
-    const email = await sendAdminPaymentEmail({ id: row.id, name, email: user.email ?? "", plan, amount: PLAN_PRICE[plan], transferDate });
-    return Response.json({ ok: true, paymentId: row.id, status: "pending", adminEmailNotification: email });
+    const [row] = await db.sql<any>`INSERT INTO exam_payment_requests(user_id,user_email,payer_name,plan_code,amount_yen,bank_key,transfer_date,receipt_blob_key)
+      VALUES(${user.id},${user.email ?? ""},${name},${plan},${PLAN_PRICE[plan]},${bankKey},${transferDate || null},${key}) RETURNING id,submitted_at`;
+    // Record already exists. Report the true saved status even when Resend fails.
+    let email: { sent: boolean; reason?: string } = { sent: false, reason: "notification_unavailable" };
+    try {
+      email = await sendAdminPaymentEmail({ id: row.id, name, email: user.email ?? "", plan,
+        amount: PLAN_PRICE[plan], transferDate });
+    } catch (notificationError) {
+      console.error("Admin payment notification failed after request was saved", notificationError);
+    }
+    return Response.json({ ok: true, paymentId: row.id, status: "pending", adminEmailNotification: email },
+      { headers: { "Cache-Control": "no-store" } });
   } catch (e) { return asResponse(e); }
 };

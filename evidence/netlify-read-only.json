@@ -1,0 +1,15 @@
+{
+  "originalHead": "082290577842ad98996c3156c65734e741adeaaf",
+  "previewDeploy": "6af710c67df854879beeda08",
+  "previewState": "error",
+  "previewError": "Failed during stage 'building site': Build script returned non-zero exit code: 2",
+  "previewHttpStatus": 404,
+  "productionDeploy": "6af487c28b2e2361db76f8ee",
+  "productionCommit": "1d5c21cdb234add7ca33c4fd456ea6cd81d0a89a",
+  "productionState": "ready",
+  "databaseBranchId": null,
+  "databaseMigrations": null,
+  "secretValuesIncluded": false,
+  "remoteBranchUpdated": false,
+  "githubWriteError": "403 Resource not accessible by integration"
+}

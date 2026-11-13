@@ -1,0 +1,60 @@
+{
+  "version": "7.87.11",
+  "status": "RELEASE_CANDIDATE_NOT_PRODUCTION_CERTIFIED",
+  "basedOn": "YEKUN_v7.87.10_JLPT_Grammar_509_COMPLETE_CUMULATIVE.zip",
+  "baseRepositoryVersion": "7.87.4",
+  "previousArchiveFilesVerified": 76,
+  "previousFilesChangedForCompatibility": [
+    "package.json",
+    "scripts/v7872-qa-version-guards.mjs",
+    "tests/v78710-content.mjs",
+    "tests/v7873-source.mjs",
+    "tests/v7874-source.mjs",
+    "tests/v7875-source.mjs",
+    "tests/v7876-source.mjs",
+    "tests/v7877-source.mjs",
+    "tests/v7878-source.mjs",
+    "tests/v7879-source.mjs"
+  ],
+  "productionGitHubOrNetlifyChanged": false,
+  "newFix": {
+    "scope": "netlify/functions/_shared/exam-autosave.mts: nested WaddlerQueryError cause handling for free attempt duplicates and missing checkpoint table",
+    "examQuotaChanged": false,
+    "scoringOrTimersChanged": false,
+    "originalScoringFingerprintVerified": true
+  },
+  "grammar": {
+    "patterns": 509,
+    "examples": 1018,
+    "levelCounts": {
+      "n5": 35,
+      "n4": 75,
+      "n3": 135,
+      "n2": 137,
+      "n1": 127
+    },
+    "structuredCompleteness": "PASS",
+    "humanProofreading": "NOT_CERTIFIED",
+    "levelJSONLazyLoad": true
+  },
+  "qa": {
+    "nodeAndTsSyntax": "PASS",
+    "cumulativeIntegrity": "PASS",
+    "nodeTests": "PASS_SELF_CONTAINED",
+    "fixtureReleaseRegression": "PASS_FOR_v7875_THROUGH_v78711",
+    "mobile390Desktop1280": "PASS_FIXTURE",
+    "fullRepoNpmTest": "NOT_RUN",
+    "fullRepoNpmBuild": "NOT_RUN",
+    "liveAuthPaymentYKCR": "NOT_RUN",
+    "migrationsOnNetlify": "NOT_RUN",
+    "coreWebVitals": "NOT_MEASURED"
+  },
+  "releaseGates": [
+    "npm test full repo",
+    "npm run build full repo",
+    "Netlify Deploy Preview + migrations",
+    "free attempt repeated returns 402 not 500",
+    "12 authenticated exams and payment YKCR E2E",
+    "native pedagogical review prior expert-certification"
+  ]
+}

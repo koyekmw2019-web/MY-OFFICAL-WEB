@@ -1,0 +1,51 @@
+PASS v78718-source: cumulative build, exact per-exam policy, no backend/learning changes
+PASS tests/v78718-source.mjs
+PASS v78718-build-fixture: 13 pages, localization, repeat prevention, price tamper gate
+PASS tests/v78718-build-fixture.mjs
+PASS v78717-engine: valid windows, scoped pipeline groupings, follow-up counts, no fake conversion
+PASS tests/v78717-engine.mjs
+PASS v78717-source: build chain, admin-only and no new DB/identity/CRM mutations
+PASS tests/v78717-source.mjs
+PASS v78717-build-fixture: admin-only build, duplicate prevention and missing CSS gate
+PASS tests/v78717-build-fixture.mjs
+PASS v78716-engine: strict dates/weekly boundaries, actual sessions vs plans, self-report separation, streak, targets, invalid input and 400-day cap
+PASS tests/v78716-engine.mjs
+PASS v78716-source: version/build chain, safe local state, 3 languages, student-only integration, previous backend/grammar preserved
+PASS tests/v78716-source.mjs
+PASS v78716-build-fixture: prior v7.87.15 builder, additive calendar integration, role isolation, missing-asset release rejection
+PASS tests/v78716-build-fixture.mjs
+PASS v78715-engine: zero-data honesty, 1-attempt uncertainty, repeated mistakes, recovery, due heuristic, priority, 7-day method splitting, 1200-event cap, 5-level isolation
+PASS tests/v78715-engine.mjs
+PASS v78715-source: version chain, new files, student-only role, no backend or personal data network requests
+PASS tests/v78715-source.mjs
+PASS v78715-build-fixture: positive integration, role separation, missing dependency blocks release
+PASS tests/v78715-build-fixture.mjs
+PASS v78714-engine: 509 original items, 1,018 cloze examples, 40 curated MCQs, no automatically synthesized distractors, review/daily prioritization, per-device progress & session validation
+PASS tests/v78714-engine.mjs
+PASS v78714-source: additive student-only integration, no mock exam/identity/payment/YKCR APIs, 509 lesson deep links and patch chain intact
+PASS tests/v78714-source.mjs
+PASS v78714-build-fixture: isolated publish pass, Admin/Member exclusion, missing JS negative-release gate
+PASS tests/v78714-build-fixture.mjs
+PASS v78713-static: patch chain, all 509 grammar records, previous API/schema retained, SW no private caching, full source preflight present
+PASS tests/v78713-static.mjs
+PASS v78713-build-fixture: 24-page HTML metadata, inline JS preservation, positive release gate & missing CSS negative test (synthetic fixture only)
+PASS tests/v78713-build-fixture.mjs
+PASS v78713-sw-runtime: public repeat cache, grammar JSON, max-byte budget, private/no-store/cookie/authorization, no HTML or protected API caching
+PASS tests/v78713-sw-runtime.mjs
+PASS v78712-source: additive i18n, no content/backend rewrite, CRM/business confirmations localized
+PASS tests/v78712-source.mjs
+PASS v78710-content: 509/509 trilingual original authored lessons, 1,018 JP/MY/EN examples, all highlights present, legacy safe, cache key v78710
+PASS tests/v78710-content.mjs
+PASS v7879-data: 509 patterns, 509 original multilingual lesson drafts, 0 explicitly pending, furigana & underline, no backend changes
+PASS tests/v7879-data.mjs
+PASS v7879-bridge: 30 original grammar lessons available by ?legacy=1, selected JLPT level passed, modifier clicks stay native
+PASS tests/v7879-bridge.mjs
+PASS v7878-crm: validation, status, optional YKCR reference, dates and length limits
+PASS tests/v7878-crm.mjs
+PASS v7877-source: cumulative, public click-only, admin-auth data, two isolated tables, previous engine retained
+PASS tests/v7877-source.mjs
+PASS v7876-engine: 12 subject routes, scoped verified history, date filtering, trusted per-exam scores, no new APIs
+PASS tests/v7876-engine.mjs
+PASS v7875-runtime: offline, critical script failures, no auto retry, versioned SW cache invalidation and private navigation bypass
+PASS tests/v7875-runtime.mjs
+TOTAL 25 PASS 0 FAIL

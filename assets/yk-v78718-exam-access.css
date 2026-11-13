@@ -1,0 +1,15 @@
+/* v7.87.18 — guest / plan clarity, no card layout or checkout flow replacement. */
+.exam-access-copy #examAccessTextV728{display:block;white-space:normal;overflow-wrap:anywhere;word-break:normal;line-height:1.78;max-width:65ch}
+.exam-plan-mini #examPlanMiniTextV739{line-height:1.85;overflow-wrap:anywhere;word-break:normal}
+#examPlanMiniTextV739 .yk8718-plan-line{display:inline}
+.exam-v728-modal .exam-plan-card-v728 span{line-height:1.65;overflow-wrap:anywhere;word-break:normal}
+.exam-v728-modal .exam-backend-note-v728{line-height:1.8;overflow-wrap:anywhere}
+.exam-v728-modal .yk8718-plan-hint{font-size:14px;color:#c6c6ca;line-height:1.7;margin:12px 0 16px}
+@media(max-width:650px){
+ .exam-access-main{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+ .exam-access-copy{width:100%;min-width:0}
+ .exam-access-copy #examAccessTextV728{line-height:1.85;font-size:clamp(12px,3.4vw,14px)}
+ .exam-access-actions button{white-space:normal;line-height:1.45;min-height:46px}
+ .exam-plan-mini #examPlanMiniTextV739{font-size:clamp(12px,3.3vw,14px)}
+ .exam-v728-modal .exam-plan-card-v728 span{line-height:1.75}
+}

@@ -1,0 +1,47 @@
+{
+  "version": "7.87.17",
+  "base_zip": "YEKUN_v7.87.16_Student_Learning_Calendar_Study_Goals_CUMULATIVE.zip",
+  "previous_files": 149,
+  "previous_files_missing": [],
+  "prior_files_intentionally_changed": [
+    "assets/yk-v7878-admin.css",
+    "assets/yk-v7878-admin.js",
+    "package.json",
+    "scripts/preflight-v78713.mjs",
+    "scripts/v7872-qa-version-guards.mjs",
+    "tests/v78710-content.mjs",
+    "tests/v78711-stability.mjs",
+    "tests/v78712-source.mjs",
+    "tests/v78713-static.mjs",
+    "tests/v78714-source.mjs",
+    "tests/v78715-source.mjs",
+    "tests/v78716-source.mjs",
+    "tests/v7873-source.mjs",
+    "tests/v7874-source.mjs",
+    "tests/v7875-source.mjs",
+    "tests/v7876-source.mjs",
+    "tests/v7877-source.mjs",
+    "tests/v7878-source.mjs",
+    "tests/v7879-source.mjs"
+  ],
+  "added_files": [
+    "README_v7_87_17_MARKETING_CRM_MY.md",
+    "assets/yk-v78717-admin.css",
+    "assets/yk-v78717-admin.js",
+    "netlify/functions/_shared/yk-crm-insights-v78717.mjs",
+    "netlify/functions/yk-enrollment-insights.mts",
+    "scripts/build-v78717-marketing-crm.mjs",
+    "tests/v78717-api.mock.mjs",
+    "tests/v78717-browser-qa.py",
+    "tests/v78717-build-fixture.mjs",
+    "tests/v78717-engine.mjs",
+    "tests/v78717-release.mjs",
+    "tests/v78717-source.mjs"
+  ],
+  "new_database_migrations": 0,
+  "new_netlify_functions": [
+    "netlify/functions/yk-enrollment-insights.mts"
+  ],
+  "original_backend_functions_changed": false,
+  "full_repository_included": false
+}
