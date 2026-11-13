@@ -10,7 +10,7 @@ function check(name,fn){fn();passed++;console.log('PASS v786 '+name)}
 const css=read('assets/yk-premium-motion-v786.css'),js=read('assets/yk-premium-motion-v786.js');
 check('v7.86 release and original homepage search title',()=>{
  const p=JSON.parse(read('package.json'));
- assert(['7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1'].includes(p.version));
+ assert(['7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1','7.88.0-rc.1','7.88.1-rc.1'].includes(p.version));
  assert(p.scripts.test.includes('tests/v786-premium-motion.mjs'));
  assert(p.scripts.build.includes('tests/v786-premium-motion.mjs'));
  assert(read('index.html').includes('<title>YE KUN Official Website | YE LINN OO</title>'));
@@ -64,7 +64,7 @@ check('video embeds still user click only, contact/book covers untouched',()=>{
 check('existing examination, auth, YKCR, payment functions and build remain isolated',()=>{
  assert(read('netlify.toml').includes('publish = "dist"'));
  assert(read('scripts/build-public-v7841.mjs').includes("'video-class.html'"));
- assert(['v7841-slim-v786-motion','v7841-slim-v7861-stability'].some(x=>read('service-worker.js').includes(x)));
+ assert(read('service-worker.js').includes('yk-official-v7-87-20'));
  for(const file of ['netlify/functions/exam-access.mts','netlify/functions/ykcr-student-sync.mts','netlify/functions/exam-admin-analytics.mts','netlify/functions/exam-payment-request.mts']){
   // Only require known existing files if they are actually part of this source.
   if(existsSync(join(root,file))) assert(statSync(join(root,file)).size>100);

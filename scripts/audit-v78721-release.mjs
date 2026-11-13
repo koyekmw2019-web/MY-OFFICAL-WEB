@@ -42,7 +42,11 @@ for(const file of walk(dist).filter(x=>x.endsWith('.html'))){
    if(u.origin!=='https://yk.invalid'||!/\.(?:js|css)$/i.test(u.pathname))continue;
    const target=resolve(dist,'.'+decodeURIComponent(u.pathname));
    if(!target.startsWith(dist+sep)||!existsSync(target))missing.push({page,raw});
-   if(u.searchParams.get('ykv')!=='78720')unversioned.push({page,raw});
+   // The final nishu step follows the v7.87.20 asset pass; only its three
+   // explicit JS/CSS URLs use the newer epoch. All inherited URLs stay pinned.
+   const nishuAsset=pkg.version==='7.88.1-rc.1' && page==='exams/nishu.html' &&
+     ['/assets/yk-exam-autosave-v761.js','/assets/yk-v7881-nishu.js','/assets/yk-v7881-nishu.css'].includes(u.pathname);
+   if(u.searchParams.get('ykv')!==(nishuAsset?'7881':'78720'))unversioned.push({page,raw});
    refs++;
  }
  const imgs=noInline.match(/<img\b[^>]*>/gi)||[];

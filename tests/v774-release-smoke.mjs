@@ -1,6 +1,6 @@
 /** v7.72 dictionary progress release static checks; does not replace live Netlify testing */
 import {readFileSync, existsSync, readdirSync} from 'node:fs';
-import {resolve,dirname,join,relative,extname,sep} from 'node:path';
+import {resolve,dirname,join,relative,extname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import assert from 'node:assert/strict';
@@ -25,7 +25,7 @@ check('all local HTML referenced assets exist, except generated bundle pre-build
    const resource=url.split(/[?#]/,1)[0].replace(/^\//,'');
    if(!resource)continue;
    const path=resolve(root,resource);
-  assert(path.startsWith(root+sep),`Disallowed local asset path ${h}: ${url}`);
+   assert(path.startsWith(root+'/'),`Disallowed local asset path ${h}: ${url}`);
    if(!existsSync(path))assert(!release && resource==='assets/identity.bundle.js',`Missing: ${h} ${resource}`);
    fileRefs++;
   }
@@ -50,13 +50,11 @@ check('every shipped browser asset JavaScript parses',()=>{
   const code=read(`assets/${f}`);
   // bundled identity client is ESM and is checked by esbuild during the Netlify build
   if(f==='identity.bundle.js')continue;
-  // v7.88.1 QA: browser module syntax check
+  // Modules are parsed without executing browser code; classic scripts retain their parse goal.
   if (/^\s*(?:import\s+(?!\()|export\s+)/m.test(code)) {
-    const syntax = spawnSync(process.execPath, ['--check', file(`assets/${f}`)], { encoding: 'utf8' });
-    assert.equal(syntax.status, 0, `JavaScript module syntax error in ${f}: ${syntax.stderr || syntax.stdout}`);
-  } else {
-    new vm.Script(code,{filename:f});
-  }
+   const result=spawnSync(process.execPath,['--check',file(`assets/${f}`)],{encoding:'utf8'});
+   assert.equal(result.status,0,`Module syntax error in ${f}: ${result.stderr}`);
+  } else new vm.Script(code,{filename:f});
   total++;
  }
  assert(total>=12);
@@ -72,15 +70,22 @@ check('v7.74 vocabulary counts, legacy glossary and draft warnings are tracked',
 check('PWA icon references and updated service worker version are valid',()=>{
  const m=JSON.parse(read('manifest.webmanifest'));
  for(const icon of m.icons)assert(existsSync(file(icon.src.split(/[?#]/,1)[0].replace(/^\//,''))));
- assert(/yk-official-v7-(?:78-brand-dictionary|79-seo-jlpt-cards|80-stability-speed|87-20)/.test(read('service-worker.js'))); // permit backward-compatible version bump 
+ assert(/yk-official-v7-87-20/.test(read('service-worker.js'))); // permit backward-compatible version bump
 });
-check('backend functions/migrations exactly match v7.70 source',()=>{
+check('backend matches legacy fingerprints or explicitly reviewed RC1 changes',()=>{
  const manifest=JSON.parse(read('QA_v7_71_BACKEND_HASHES.json'));
+ const reviewed=JSON.parse(read('tests/backend-reviewed-v7881.json'));
+ assert.equal(reviewed.version,JSON.parse(read('package.json')).version);
+ assert.equal(Object.keys(reviewed.files).length,9);
  assert(Object.keys(manifest.files).length>=30);
  for(const [p,h] of Object.entries(manifest.files)){
   assert(existsSync(file(p)),`Missing ${p}`);
   let bytes=readFileSync(file(p));
-  if(p==='netlify/functions/exam-attempt-submit.mts' && /^7\.(?:86\.[5-9]|8[7-9]\.\d+)$/.test(JSON.parse(read('package.json')).version)){
+  if(reviewed.files[p]) {
+   assert.equal(createHash('sha256').update(bytes).digest('hex'),reviewed.files[p].sha256,`Reviewed backend changed: ${p}`);
+   continue;
+  }
+  if(p==='netlify/functions/exam-attempt-submit.mts' && /^7\.(?:86\.[5-9]|8[7-9]\.\d+)(?:-rc\.\d+)?$/.test(JSON.parse(read('package.json')).version)){
    // v7.86.5 permits ONLY the additional, optional verified-evidence insert.
    // Strip that insert and its import, then require the original protected source hash.
    let source=bytes.toString('utf8');

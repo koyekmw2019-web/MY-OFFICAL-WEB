@@ -13,7 +13,7 @@ const worker=readFileSync(file('service-worker.js'),'utf8');
 let passed=0;
 const check=(name,cb)=>{cb();passed++;console.log('PASS '+name)};
 check('v7.80 release and original homepage SEO title preserved',()=>{
-  assert(['7.80.0','7.81.0','7.82.0','7.82.1','7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1'].includes(pkg.version));
+  assert(['7.80.0','7.81.0','7.82.0','7.82.1','7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1','7.88.0-rc.1','7.88.1-rc.1'].includes(pkg.version));
   assert(html.includes('<title>YE KUN Official Website | YE LINN OO</title>'));
   assert(html.includes('View More · Study Hub &amp; JLPT'));
 });
@@ -33,7 +33,7 @@ check('32 inline JPEG/PNG images safely externalized without changing bytes',()=
 check('homepage HTML transfer-size reduction is at least 75% in bytes',()=>{
   assert(manifest.original_index_bytes>4_000_000);
   // v7.86.4 adds a self-contained SVG icon sprite + 9 accessible menu rows; preserve a small explicit source HTML budget.
-  const menuBudget=['7.86.4','7.86.5','7.87.0','7.87.1'].includes(JSON.parse(readFileSync(file('package.json'),'utf8')).version)?8000:0;
+  const menuBudget=['7.86.4','7.86.5','7.87.0','7.87.1','7.88.1-rc.1'].includes(JSON.parse(readFileSync(file('package.json'),'utf8')).version)?8000:0;
   assert(statSync(file('index.html')).size<=manifest.optimized_index_bytes+15000+menuBudget);
   assert(manifest.optimized_index_bytes/manifest.original_index_bytes<.25);
   assert(manifest.optimized_index_gzip_bytes<manifest.original_index_gzip_bytes);
@@ -47,12 +47,12 @@ check('original logo, dictionary, exam and YKCR integrations still referenced',(
   }
 });
 check('safe PWA caching never stores protected routes or navigation HTML',()=>{
-  assert(worker.includes('v7-80-stability-speed'));
+  assert(worker.includes('yk-official-v7-87-20'));
   assert(worker.includes("request.mode === 'navigate'"));
   for(const guard of ["request.method !== 'GET'",'url.origin !== self.location.origin',"/.netlify/","/api/","/admin", "request.headers.has('authorization')"])
     assert(worker.includes(guard),guard);
   assert(/\.\*\?\:js\|css/.test(worker)||worker.includes('js|css|png'));
-  assert(worker.includes('response.ok'));
+  assert(worker.includes('response?.ok'));
 });
 check('source data and published content complete',()=>{
   const dict=JSON.parse(readFileSync(file('DICTIONARY_v7_78_FULL_CATALOG.json')));

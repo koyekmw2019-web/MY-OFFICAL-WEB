@@ -12,7 +12,7 @@ let passed=0;
 const test=async(label,fn)=>{await fn();console.log(`PASS v7861 ${label}`);passed++};
 const server=read('netlify/functions/exam-admin-analytics.mts');
 await test('release and source links are 7.86.1',()=>{
- const p=JSON.parse(read('package.json'));assert(['7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1'].includes(p.version));
+ const p=JSON.parse(read('package.json'));assert(['7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1','7.88.0-rc.1','7.88.1-rc.1'].includes(p.version));
  assert(p.scripts.test.includes('v7861-stability-fix.mjs'));assert(p.scripts.build.includes('v7861-stability-fix.mjs'));
  assert.match(read('netlify.toml'),/publish\s*=\s*"dist"/);
  assert.match(read('scripts/build-public-v7841.mjs'),/version:'7\.86\.(?:1|2|3|4|5)'/);
@@ -93,6 +93,6 @@ await test('legacy auth bundle and existing session mechanism kept',()=>{
  assert(read('login.html').includes('/assets/identity.bundle.js'));
  assert(read('src/identity-client.js').includes('handleAuthCallback'));
  assert(read('index.html').includes('<title>YE KUN Official Website | YE LINN OO</title>'));
- assert(read('service-worker.js').includes('v7861-stability'));
+ assert(read('service-worker.js').includes('yk-official-v7-87-20'));
 });
 console.log(`v7.86.1 regression: ${passed} PASS / 0 FAIL`);

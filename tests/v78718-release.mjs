@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import vm from 'node:vm';
 import {existsSync,readFileSync} from 'node:fs';
 const root='dist/';
 const types=['truck','taxi','bus','maintenance','car','motorcycle','moped','jlpt_n5','jlpt_n4','jlpt_n3','jlpt_n2','jlpt_n1'];
@@ -16,7 +17,21 @@ for(const route of routes){
   assert(html.includes(marker),`${route}: missing ${marker}`);
  }
  for(const price of ['price:1000','price:2000','price:3000','price:5000'])assert(html.includes(price),`${route}: price ${price}`);
- assert(html.includes("$$('[data-plan]',o).forEach(c=>c.onclick=()=>checkout(c.dataset.plan))"),`${route}: selection -> checkout lost`);
+ const bindings=[
+  "$$('[data-plan]',o).forEach(c=>c.onclick=()=>checkout(c.dataset.plan))",
+  "$$('[data-plan]',o).forEach(c=>{c.setAttribute('role','button');c.tabIndex=0;const select=()=>checkout(c.dataset.plan);c.onclick=select;c.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select()}}})"
+ ];
+ const binding=bindings.find(code=>html.includes(code));
+ assert(binding,`${route}: plan selection binding missing`);
+ const cards=['week','month','3months','year'].map(plan=>({dataset:{plan},setAttribute(){}}));
+ const selected=[];
+ vm.runInNewContext(binding,{$$:(selector)=>{assert.equal(selector,'[data-plan]');return cards;},o:{},checkout:plan=>selected.push(plan)});
+ for(const card of cards){card.onclick();assert.equal(selected.pop(),card.dataset.plan);}
+ if(html.includes('yk-v78720-mobile-fixes.css')) for(const card of cards){
+  assert.equal(card.tabIndex,0);
+  for(const key of ['Enter',' ']){let prevented=false;card.onkeydown({key,preventDefault(){prevented=true;}});assert(prevented);assert.equal(selected.pop(),card.dataset.plan);}
+  card.onkeydown({key:'Escape'});assert.equal(selected.length,0);
+ }
  assert(html.includes('function syncStatus()'),`${route}: account status refresh lost`);
  assert(html.includes('function v737Localize(root=document'),`${route}: original language layer lost`);
  assert(!html.includes(`x:'Login / Register required · One free attempt per exam type.'`),`${route}: outdated guest message still used`);

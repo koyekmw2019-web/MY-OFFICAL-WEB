@@ -12,7 +12,7 @@ let passes=0;function test(n,cb){cb();console.log('PASS',n);passes++}
 const names=['index','jlpt-n5','jlpt-n4','jlpt-n3','jlpt-n2','jlpt-n1','jlpt-mock-exams','japanese-myanmar-dictionary','ssw-transport','ssw-truck','ssw-taxi','ssw-bus','transport-textbooks','ssw-mock-exam','ssw-auto-maintenance','driving-license'];
 function match(html, regex){return (html.match(regex)||[]).length}
 test('v7.81 package and original homepage search title stay unchanged',()=>{
- assert(['7.81.0','7.82.0','7.82.1','7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1'].includes(JSON.parse(read('package.json')).version));
+ assert(['7.81.0','7.82.0','7.82.1','7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1','7.88.1-rc.1'].includes(JSON.parse(read('package.json')).version));
  assert(home.includes('<title>YE KUN Official Website | YE LINN OO</title>'));
  assert.equal(match(home,/<title>/g),1);
  assert.equal(match(home,/rel="canonical"/g),1);

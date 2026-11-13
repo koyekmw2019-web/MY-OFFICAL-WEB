@@ -28,7 +28,7 @@ test('homepage title, hero and dictionary references remain, and PWA cache revis
   assert(read('index.html').includes('STUDYING WITH YE KUN'));
   assert(read('index.html').includes('View More · Study Hub &amp; JLPT'));
   assert(read('index.html').includes('yk-dictionary-v778-complete-draft.js?v=778qa20261105'));
-  assert(read('service-worker.js').includes('v7841-slim'));
+  assert(read('service-worker.js').includes('yk-official-v7-87-20'));
 });
 test('Netlify uses dist publish, retains Functions and original esbuild login bundle',()=>{
   assert(/publish = "dist"/.test(read('netlify.toml')));

@@ -15,8 +15,8 @@ assert(['7.87.11','7.87.12','7.87.13','7.87.14','7.87.15','7.87.16','7.87.17','7
 assert(pkg.scripts.test.includes('tests/v78711-stability.mjs'));
 assert(pkg.scripts.build.includes('tests/v78710-release.mjs'));
 assert.equal(EXAM_FREE_POLICY,'ONE_PER_EXAM_TYPE');
-assert.equal(Object.keys(sectionDurations).length,12);
-assert.equal(Object.keys(examScoreRules).length,12);
+assert.equal(Object.keys(sectionDurations).length,13);
+assert.equal(Object.keys(examScoreRules).length,13);
 assert.equal(practicePassed('truck',50,{theory:30,practical:20}),true);
 assert.equal(practicePassed('truck',40,{theory:25,practical:15}),true);
 assert.equal(practicePassed('jlpt_n5',180,[{score:120},{score:60}]),true);
@@ -49,7 +49,16 @@ for(const n of ['n5','n4','n3','n2','n1']){
 
 // Verify every non-classifier line matches the original inspected GitHub main.
 // Fingerprints computed against main v7.87.4 (2026-11-12 audit).
-const autosave=readFileSync('netlify/functions/_shared/exam-autosave.mts','utf8');
+assert.deepEqual(sectionDurations.nishu,[50]);
+assert.equal(examScoreRules.nishu.max,100);
+assert.equal(examScoreRules.nishu.pass,90);
+assert.equal(practicePassed('nishu',89,null),false);
+assert.equal(practicePassed('nishu',90,null),true);
+// Remove ONLY the three reviewed additive nishu rules before checking legacy fingerprints.
+const autosave=readFileSync('netlify/functions/_shared/exam-autosave.mts','utf8')
+ .replace(', nishu: [50]','')
+ .replace(" WHEN 'nishu' THEN 50",'')
+ .replace('  nishu:{max:100,pass:90,minimumElapsedSeconds:5},\n','');
 function fnv(s){let h=2166136261;for(const c of s)h=Math.imul(h^c.charCodeAt(0),16777619)>>>0;return h;}
 assert.equal(fnv(autosave.slice(0,autosave.indexOf('export const EXAM_FREE_POLICY'))),628168957,'Exam prelude changed');
 assert.equal(fnv(autosave.slice(autosave.indexOf('/** Close any phase expired'))),2210106627,'Timer and scoring rules changed');

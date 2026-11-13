@@ -97,7 +97,7 @@ await test('UI is responsive, accessible and lightweight',()=>{
 });
 await test('Netlify preserves existing build contract',()=>{
  assert(read('netlify.toml').includes('publish = "dist"'));
- assert(read('service-worker.js').includes('v7865-coach'));
- assert.match(JSON.parse(read('package.json')).version,/^7\.(?:86\.[5-9]|8[7-9]\.\d+)$/);
+ assert(read('service-worker.js').includes('yk-official-v7-87-20'));
+ assert.match(JSON.parse(read('package.json')).version,/^7\.(?:86\.[5-9]|8[7-9]\.\d+)(?:-rc\.\d+)?$/);
 });
 console.log(`v7.86.5 ${passed} PASS / 0 FAIL`);

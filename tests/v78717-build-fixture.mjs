@@ -8,7 +8,7 @@ const put=(name,contents)=>{const path=join(tmp,'dist',name);mkdirSync(dirname(p
 const run=name=>spawnSync(process.execPath,[join(origin,name)],{cwd:tmp,encoding:'utf8'});
 try{
  const base='<!doctype html><html><head><title>Fixture</title></head>';
- put('admin-dashboard.html',base+'<body data-dashboard="admin"><main id="dashboardBody"><section id="adminStats">Admin stats</section></main><script src="/assets/yk-v7877-growth.js?v=7877"></script><script src="/assets/yk-v7878-admin.js?v=7878"></script></body></html>');
+ put('admin-dashboard.html',base+'<body data-dashboard="admin"><main id="dashboardBody"><section id="adminStats">Admin stats</section></main><script src="/assets/yk-v7877-growth.js?v=78712"></script><script src="/assets/yk-v7878-admin.js?v=78712"></script></body></html>');
  for(const page of ['student-dashboard.html','member-dashboard.html'])put(page,base+`<body data-dashboard="${page.startsWith('student')?'student':'member'}"><div id="dashboardBody"></div></body></html>`);
  for(const page of ['index.html','mock-exams.html'])put(page,base+'<body>Test fixture</body></html>');
  for(const asset of ['assets/yk-v78717-admin.js','assets/yk-v78717-admin.css','assets/yk-v7878-admin.js','assets/yk-v7878-admin.css']){

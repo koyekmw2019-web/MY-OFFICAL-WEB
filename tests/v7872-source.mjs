@@ -4,7 +4,7 @@ import {readFileSync,existsSync} from 'node:fs';
 import vm from 'node:vm';
 const read=p=>readFileSync(p,'utf8');
 const pkg=JSON.parse(read('package.json'));
-assert(['7.87.2','7.87.3'].includes(pkg.version));
+assert(['7.87.2','7.87.3','7.88.0-rc.1','7.88.1-rc.1'].includes(pkg.version));
 assert(pkg.scripts.build.includes('node scripts/build-v787-exam-pages.mjs && node tests/v787-release.mjs'));
 assert(pkg.scripts.build.includes('node scripts/build-v7872-mobile-exams.mjs && node tests/v7872-release.mjs'));
 const route=read('assets/yk-v787-routing.js');

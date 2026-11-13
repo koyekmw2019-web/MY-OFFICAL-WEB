@@ -13,7 +13,7 @@ assert(existsSync(path), `Missing ${path}. Run this script from MY-OFFICAL-WEB r
 const old = readFileSync(path, 'utf8');
 const importAnchor = "import vm from 'node:vm';";
 const importExtra = "import { spawnSync } from 'node:child_process';";
-const exactAnchor = '   new vm.Script(code,{filename:f});';
+const exactAnchor = '  new vm.Script(code,{filename:f});';
 const fixedBlock = `   // Classic script and ES module syntax must be checked in their own parse goals.
    // The repository's package.json has \"type\":\"module\", so node --check handles ESM.
    if (/^\\s*(?:import\\s+(?!\\()|import\\.meta|export\\s+)/m.test(code)) {
@@ -23,7 +23,7 @@ const fixedBlock = `   // Classic script and ES module syntax must be checked in
      new vm.Script(code,{filename:f});
    }`;
 
-if (old.includes('Classic script and ES module syntax must be checked')) {
+if (old.includes('Classic script and ES module syntax must be checked') || old.includes('Modules are parsed without executing browser code')) {
   console.log('ALREADY_PATCHED: no changes.');
   process.exit(0);
 }

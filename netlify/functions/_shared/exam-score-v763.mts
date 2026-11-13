@@ -2,6 +2,7 @@
  * Important: v7.62 question selection is client-originated; this recalculation prevents
  * arbitrary reported scores but does NOT make the publicly inspectable quiz cheat-proof. */
 import { key } from './exam-answer-key-v763.mts';
+import { scoreNishuSnapshot } from './nishu-scoring-v7881.mjs';
 
 export type ScoreResult = {score:number, passed:boolean, sections:any, correct:number, count:number};
 const invalid = (why:string):never => {throw new Error('Invalid exam checkpoint: '+why)};
@@ -74,6 +75,7 @@ export function evaluateSnapshot(type:string,s:any):ScoreResult{
    const score=theory+practical;
    return {score,passed:theory>=18&&practical>=12,sections:{theory,practical},correct:score,count:50};
  }
+ if(type==='nishu')return scoreNishuSnapshot(s);
  if(['car','motorcycle','moped'].includes(type)){
    const b:any=(key as any).license[type];const count=type==='moped'?48:95;
    if(s.engine!=='license'||!Array.isArray(s.refs)||s.refs.length!==count||

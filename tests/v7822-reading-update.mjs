@@ -12,7 +12,7 @@ const levels=['N5','N4','N3','N2','N1'];
 const base=load('assets/jlpt-learning-v782-content.json');
 const addon=load('assets/jlpt-reading-v7822-upgrade.json');
 test('version stays v7.82.2 and legacy homepage branding is unchanged',()=>{
- assert(['7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1'].includes(load('package.json').version));
+ assert(['7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1','7.88.1-rc.1'].includes(load('package.json').version));
  assert.match(read('index.html'),/<title>YE KUN Official Website \| YE LINN OO<\/title>/);
  assert(read('index.html').includes('id="yk822HubCountdown"'));
  assert(read('index.html').includes('id="yk822HubReadingLink"'));

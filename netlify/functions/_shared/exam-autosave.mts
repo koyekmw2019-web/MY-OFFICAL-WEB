@@ -3,7 +3,7 @@ export const sectionDurations: Record<string, number[]> = {
   jlpt_n1: [110, 55], jlpt_n2: [105, 50], jlpt_n3: [30, 70, 40],
   jlpt_n4: [25, 55, 35], jlpt_n5: [20, 40, 30],
   truck: [80], taxi: [80], bus: [80], maintenance: [80],
-  car: [50], motorcycle: [50], moped: [30]
+  car: [50], motorcycle: [50], moped: [30], nishu: [50]
 };
 export const maxCheckpointBytes = 130_000;
 export const initialDeadline = (examType: string, startedAt: string | Date) =>
@@ -52,7 +52,7 @@ export async function abandonExpiredAttempts(db:any, userId:string) {
            (CASE owned.exam_type
             WHEN 'jlpt_n1' THEN 110 WHEN 'jlpt_n2' THEN 105 WHEN 'jlpt_n3' THEN 30
             WHEN 'jlpt_n4' THEN 25 WHEN 'jlpt_n5' THEN 20
-            WHEN 'car' THEN 50 WHEN 'motorcycle' THEN 50 WHEN 'moped' THEN 30
+            WHEN 'car' THEN 50 WHEN 'motorcycle' THEN 50 WHEN 'moped' THEN 30 WHEN 'nishu' THEN 50
             ELSE 80 END * INTERVAL '1 minute') + INTERVAL '60 seconds')
       ) RETURNING a.id`;
   return rows.length;
@@ -66,6 +66,7 @@ export const examScoreRules:Record<string,{max:number;pass:number;minimumElapsed
   car:{max:95,pass:90,minimumElapsedSeconds:5},
   motorcycle:{max:95,pass:90,minimumElapsedSeconds:5},
   moped:{max:48,pass:45,minimumElapsedSeconds:5},
+  nishu:{max:100,pass:90,minimumElapsedSeconds:5},
   jlpt_n1:{max:180,pass:100,minimumElapsedSeconds:5},
   jlpt_n2:{max:180,pass:90,minimumElapsedSeconds:5},
   jlpt_n3:{max:180,pass:95,minimumElapsedSeconds:5},

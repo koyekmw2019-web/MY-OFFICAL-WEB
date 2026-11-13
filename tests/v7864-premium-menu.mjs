@@ -10,7 +10,7 @@ let count=0;
 function check(name,fn){fn();count++;console.log('PASS v7864 '+name);}
 check('version and lightweight standalone stylesheet included in both test and build',()=>{
  const p=JSON.parse(read('package.json'));
- assert(['7.86.4','7.86.5','7.87.0','7.87.1'].includes(p.version));
+ assert(['7.86.4','7.86.5','7.87.0','7.87.1','7.88.0-rc.1','7.88.1-rc.1'].includes(p.version));
  for(const cmd of ['test','build'])assert(p.scripts[cmd].includes('tests/v7864-premium-menu.mjs'));
  assert.equal(home.split('yk-premium-menu-v7864.css').length-1,1);
  assert(statSync(join(root,'assets/yk-premium-menu-v7864.css')).size<9000);
@@ -76,6 +76,6 @@ check('public builder references stylesheet and preserves link target in deploy 
   assert(read('dist/index.html').includes('id="ykMenuJLPTV7864"'));
   assert(read('dist/index.html').includes('href="#yk82Hub"'));
  }
- assert(read('service-worker.js').includes('v7864-jlpt-menu'));
+ assert(read('service-worker.js').includes('yk-official-v7-87-20'));
 });
 console.log(`v7.86.4 Premium Menu ${count} PASS / 0 FAIL`);

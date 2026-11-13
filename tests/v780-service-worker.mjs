@@ -18,7 +18,7 @@ const caches={
   open:async()=>store
 };
 const self={location:{origin:'https://site.example'},addEventListener:(type,handler)=>handlers[type]=handler,skipWaiting:async()=>{},clients:{claim:async()=>{}}};
-const fetch=async()=>{calls.network++;const response=new Response('public',{status:200});Object.defineProperty(response,'type',{value:'basic'});return response};
+const fetch=async()=>{calls.network++;const response=new Response('public',{status:200,headers:{'content-length':'6','content-type':'image/jpeg'}});Object.defineProperty(response,'type',{value:'basic'});return response};
 vm.runInNewContext(readFileSync(join(root,'service-worker.js'),'utf8'),{self,caches,fetch,Response,URL});
 assert(handlers.fetch&&handlers.install&&handlers.activate);
 let passes=0;

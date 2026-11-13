@@ -75,6 +75,6 @@ check('both pages load the updated asset with cache busting',()=>{
   assert.match(html,/yk-jlpt-reading-v7822\.css\?v=7864dynamic/);
   assert.match(html,/Upcoming JLPT exam countdown/);
  }
- assert.match(read('service-worker.js'),/v7864-jlpt-menu-target-dynamic-countdown/);
+ assert.match(read('service-worker.js'),/yk-official-v7-87-20/);
 });
 console.log(`v7.86.4 rolling countdown ${tests} PASS / 0 FAIL`);

@@ -13,5 +13,5 @@ assert(builder.includes("legacyExamScriptsRemoved"));
 assert(builder.includes("existingExamCards:12"));
 assert(read('netlify.toml').includes('publish = "dist"'));
 assert(read('netlify/functions/exam-attempt-submit.mts').includes('score_verified=TRUE'));
-assert(['7.87.0','7.87.1'].includes(JSON.parse(read('package.json')).version));
+assert(['7.87.0','7.87.1','7.88.1-rc.1'].includes(JSON.parse(read('package.json')).version));
 console.log('PASS v787-source theme, routes, backend preservation and build contract');

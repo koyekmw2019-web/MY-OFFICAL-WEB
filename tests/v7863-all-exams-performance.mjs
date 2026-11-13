@@ -74,7 +74,7 @@ test('new layout preserves responsive semantics and accessibility',()=>{
  assert(page.includes('yk-all-exams-v7863-engine.js'));
  assert(css.includes('.yk863-categories'));assert(css.includes('@media(max-width:620px)'));
  assert(read('assets/yk-dashboard-pro-v784.js').includes('aria-pressed'));
- assert(css.includes('focus-visible'));assert(['v7863-all-exams','v7864-jlpt-menu'].some(v=>read('service-worker.js').includes(v)));
+ assert(css.includes('focus-visible'));assert(read('service-worker.js').includes('yk-official-v7-87-20'));
 });
 test('deploy-only dictionary preserves original source and produces lazy loader',()=>{
  const source=read('index.html');assert(source.includes('<script src="/assets/yk-dictionary-v778-complete-draft.js?v=778qa20261105"></script>'));
@@ -94,7 +94,7 @@ test('deploy output has no personal DB source or unpublished drafts',()=>{
 });
 test('no original protected backend change required',()=>{
  for(const file of ['netlify/functions/exam-access.mts','netlify/functions/exam-payment-submit.mts','netlify/functions/ykcr-student-sync.mts','netlify/functions/exam-attempt-submit.mts','assets/characters/student-v7821.webp','assets/characters/teacher-v7821.webp'])assert(existsSync(join(root,file)));
- const p=JSON.parse(read('package.json'));assert(['7.86.3','7.86.4','7.86.5','7.87.0','7.87.1'].includes(p.version));
+ const p=JSON.parse(read('package.json'));assert(['7.86.3','7.86.4','7.86.5','7.87.0','7.87.1','7.88.0-rc.1','7.88.1-rc.1'].includes(p.version));
  assert(read('netlify.toml').includes('publish = "dist"'));
 });
 console.log(`v7.86.3: ${passed} PASS / 0 FAIL`);

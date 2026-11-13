@@ -9,7 +9,7 @@ let pass=0;
 function check(title,fn){fn();pass++;console.log('PASS '+title)}
 const html=read('study/jlpt-learning.html'),index=read('index.html');
 check('v7.82.1 has matching package release and unchanged official title',()=>{
- assert(['7.82.1','7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1'].includes(JSON.parse(read('package.json')).version));
+ assert(['7.82.1','7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1','7.88.1-rc.1'].includes(JSON.parse(read('package.json')).version));
  assert(index.includes('<title>YE KUN Official Website | YE LINN OO</title>'));
  assert(html.includes('STUDYING WITH YE KUN'));
 });

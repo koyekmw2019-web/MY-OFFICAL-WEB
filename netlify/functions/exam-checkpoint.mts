@@ -31,7 +31,8 @@ export default async (req:Request) => {
   if(req.method==='GET')return Response.json({ok:true,attemptId:id,type:attempt.exam_type,...shape(current)});
   const {snapshot,phase,baseVersion}=payload;
   if(!isValidSnapshot(snapshot)||snapshot.type!==attempt.exam_type)return Response.json({error:'Invalid checkpoint'},{status:400});
-  const engine=attempt.exam_type.startsWith('jlpt_')?'jlpt':
+  const engine=attempt.exam_type==='nishu'?'nishu':
+    attempt.exam_type.startsWith('jlpt_')?'jlpt':
     ['truck','taxi','bus'].includes(attempt.exam_type)?'driving':
     attempt.exam_type==='maintenance'?'maintenance':'license';
   if(snapshot.engine!==engine)return Response.json({error:'Exam engine mismatch'},{status:400});

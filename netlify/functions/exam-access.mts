@@ -30,7 +30,7 @@ export default async (req: Request) => {
         AND user_id=${user.id} AND status='started' AND NOW() > started_at +
         (CASE exam_type WHEN 'jlpt_n1' THEN 110 WHEN 'jlpt_n2' THEN 105 WHEN 'jlpt_n3' THEN 30
          WHEN 'jlpt_n4' THEN 25 WHEN 'jlpt_n5' THEN 20 WHEN 'car' THEN 50
-         WHEN 'motorcycle' THEN 50 WHEN 'moped' THEN 30 ELSE 80 END * INTERVAL '1 minute')
+         WHEN 'motorcycle' THEN 50 WHEN 'moped' THEN 30 WHEN 'nishu' THEN 50 ELSE 80 END * INTERVAL '1 minute')
          + INTERVAL '60 seconds' RETURNING id`;
       if(old.length)unfinished=[];
     }
