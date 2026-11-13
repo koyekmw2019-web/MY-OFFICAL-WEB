@@ -1,0 +1,73 @@
+{
+  "engine": "PGlite embedded PostgreSQL; disposable in-memory DB, NOT Netlify Neon",
+  "checks": [
+    {
+      "name": "20261021131500_exam_backend.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "20261021150000_add_maintenance_exam_type.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "20261027023000_ykcr_student_sync.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "20261028193000_add_jlpt_n1_exam_type.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "20261028203000_add_jlpt_n2_n5_exam_types.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "20261031090000_payment_soft_delete.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "20261101010000_v760_learning.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "20261101130000_exam_autosave.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "20261101140000_v762_hardening.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "20261101150000_v763_free_per_exam_type.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "20261109090000_v782_jlpt_learning_progress.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "20261109150000_v783_dictionary_reports.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "20261110190000_v7865_exam_coach.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "20261112090000_yk_growth_analytics.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "20261112140000_yk_enrollment_crm.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "20261113090000_v7881_nishu_exam_type.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "13 exam types; duplicate free attempt denied; unknown type denied; 3 migrations replay without row changes",
+      "status": "PASS"
+    }
+  ]
+}

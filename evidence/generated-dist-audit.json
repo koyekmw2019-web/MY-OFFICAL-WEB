@@ -1,0 +1,38 @@
+{
+  "version": "7.88.1-rc.1",
+  "mode": "GENERATED_DIST_SOURCE_AUDIT",
+  "runAt": "2026-11-13T14:58:04.116Z",
+  "result": "PASS",
+  "checks": 149,
+  "checksPassed": 149,
+  "checksFailed": 0,
+  "htmlRoutesAudited": 44,
+  "criticalRoutes": 29,
+  "staticJsCssReferences": 588,
+  "missingStaticRefs": [],
+  "unversionedStaticRefs": [],
+  "largeImages": [
+    {
+      "path": "assets/embedded-v780/image-01-e6c8e62b0f32.jpg",
+      "bytes": 541831
+    }
+  ],
+  "errors": [],
+  "warnings": [
+    {
+      "code": "LARGE_IMAGES_NOT_COMPRESSED",
+      "count": 1,
+      "examples": [
+        {
+          "path": "assets/embedded-v780/image-01-e6c8e62b0f32.jpg",
+          "bytes": 541831
+        }
+      ]
+    }
+  ],
+  "repoVersion": "7.88.1-rc.1",
+  "liveNetlifyPreviewVerified": false,
+  "realDeviceWebVitalsMeasured": false,
+  "fullNpmTestPerformedByThisScript": false,
+  "fullBuildPerformedByThisScript": false
+}

@@ -1,0 +1,136 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> ye-kun-official-website@7.88.1-rc.1 test
+> node scripts/generate-v7881-nishu.mjs && node scripts/patch-v7881-nishu-backend.mjs && node scripts/preflight-v78713.mjs && node scripts/v7872-qa-version-guards.mjs && node scripts/regenerate-exam-answer-key-v763.mjs --check && node --experimental-strip-types tests/v763-integrity.mjs && node tests/v765-stability.mjs && node tests/v766-jlpt-quality.mjs && node tests/v767-learning-analytics.mjs && node tests/v774-dictionary-translation.mjs && node tests/v774-release-smoke.mjs && node tests/v775-study-hub-jlpt.mjs && node tests/v777-study-hub-covers.mjs && node tests/v778-brand-dictionary.mjs && node tests/v778-dictionary-qa-corrections.mjs && node tests/v779-seo-jlpt.mjs && node tests/v780-performance.mjs && node tests/v780-service-worker.mjs && node tests/v781-advanced-seo.mjs && node tests/v782-learning.mjs && node tests/v782-state-isolation.mjs && node tests/v782-api.mock.mjs && node tests/v7821-character-ui.mjs && node tests/v7822-character-visibility.mjs && node tests/v7822-reading-update.mjs && node tests/v783-dictionary-quality.mjs && node tests/v783-dictionary-runtime.mock.mjs && node tests/v784-dashboard-pro.mjs && node --experimental-strip-types tests/v784-admin-api.mock.mjs && node tests/v7841-performance-safety.mjs && node tests/v785-video-course.mjs && node tests/v786-premium-motion.mjs && node --experimental-strip-types tests/v7861-stability-fix.mjs && node tests/v7862-ui-session-stability.mjs && node tests/v7863-all-exams-performance.mjs && node tests/v7864-premium-menu.mjs && node tests/v7864-dynamic-countdown.mjs && node --experimental-strip-types tests/v7865-exam-coach.mjs && node --experimental-strip-types tests/v7865-exam-coach-api.mock.mjs && node tests/v787-source.mjs && node tests/v7871-n2-same-meaning.mjs && node tests/v7872-source.mjs && node tests/v7873-source.mjs && node tests/v7874-source.mjs && node tests/v7875-source.mjs && node tests/v7875-runtime.mjs && node tests/v7876-source.mjs && node tests/v7876-engine.mjs && node tests/v7877-source.mjs && node --experimental-strip-types tests/v7877-runtime.mjs && node tests/v7878-source.mjs && node tests/v7878-crm.mjs && node --experimental-strip-types tests/v7878-crm-api.mock.mjs && node tests/v7879-data.mjs && node tests/v7879-source.mjs && node tests/v7879-bridge.mjs && node tests/v78710-content.mjs && node --experimental-strip-types tests/v78711-stability.mjs && node tests/v78712-source.mjs && node tests/v78713-static.mjs && node tests/v78713-build-fixture.mjs && node tests/v78714-engine.mjs && node tests/v78714-source.mjs && node tests/v78714-build-fixture.mjs && node tests/v78715-engine.mjs && node tests/v78715-source.mjs && node tests/v78715-build-fixture.mjs && node tests/v78716-engine.mjs && node tests/v78716-source.mjs && node tests/v78716-build-fixture.mjs && node tests/v78717-engine.mjs && node --experimental-strip-types tests/v78717-api.mock.mjs && node tests/v78717-source.mjs && node tests/v78717-build-fixture.mjs && node tests/v78718-source.mjs && node tests/v78718-build-fixture.mjs && node --experimental-strip-types tests/v78719-backend.mock.mjs && node tests/v78719-source.mjs && node tests/v78719-release-fixture.mjs && node tests/v78720-source.mjs && node tests/v78720-sw-runtime.mjs && node tests/v78720-build-fixture.mjs && node tests/v78720-legacy-guard.mjs && node tests/v78721-source.mjs && node tests/v78721-fixture.mjs && node tests/v7880-source.mjs && node tests/v7880-gate.mjs && node --experimental-strip-types tests/v7881-score.mjs && node tests/v7881-source.mjs && node tests/v7881-patcher.mjs && node tests/v7881-build-fixture.mjs
+
+PASS original nishu bank: 90 unique text + 5 illustrated triplets; official-style 100-point distribution; private/public split
+{
+  "version": "7.88.1-rc.1",
+  "kind": "source_backend_patch",
+  "changes": [
+    {
+      "path": "netlify/functions/_shared/security.mts",
+      "edits": 1
+    },
+    {
+      "path": "netlify/functions/_shared/exam-autosave.mts",
+      "edits": 3
+    },
+    {
+      "path": "netlify/functions/exam-access.mts",
+      "edits": 1
+    },
+    {
+      "path": "netlify/functions/exam-checkpoint.mts",
+      "edits": 1
+    },
+    {
+      "path": "netlify/functions/_shared/exam-score-v763.mts",
+      "edits": 2
+    }
+  ],
+  "allFilesFound": true
+}
+PASS v7.87.13 full checkout preflight: source, 12-exam build chain, backend and DB migration files present
+v7.87.13 source QA version allowlist compatibility: 8 files
+v7.87.20 legacy SW expectations updated: 3 (0 when original tests are not staged)
+PASS answer key matches public source bank
+PASS Free policy: one free per exam type and Pg index classifier
+PASS Canonical full-score jlpt_n1
+PASS Canonical full-score jlpt_n2
+PASS Canonical full-score jlpt_n3
+PASS Canonical full-score jlpt_n4
+PASS Canonical full-score jlpt_n5
+PASS Canonical full-score truck
+PASS Canonical full-score taxi
+PASS Canonical full-score bus
+PASS Canonical full-score car
+PASS Canonical full-score motorcycle
+PASS Canonical full-score moped
+PASS Canonical full-score maintenance
+PASS JLPT: fake zero-answer 180 rejected by recomputation
+PASS JLPT: duplicate question IDs fail
+PASS Driving: incorrect source index or duplicate fail
+PASS Canonical source bank contains 500 JLPT questions
+PASS Missing checkpoint prevents 180 spoof
+PASS Early JLPT phase prevents 180 spoof
+PASS Expired last phase prevents full-score spoof
+PASS Forged browser 180 cannot overwrite saved 0-score answers
+PASS Server recomputes and stores valid checkpoint result; duplicate is idempotent
+PASS Final question not reached prevents early submit
+PASS Last listening audio not played prevents early manual submit
+PASS Checkpoint cannot advance a phase after its grace deadline
+PASS Per-type free index collision maps to payment_required without bypass
+PASS Historical 10 migrations remain with additive v7.82 extension
+
+TOTAL 27 PASS / 0 FAIL (mock DB, not production)
+PASS N5 読み方 target cannot reveal 時計 reading
+PASS All 5 JLPT levels: no ruby during 文字・語彙
+PASS Additional direct reading prompts protected regardless of section
+PASS Furigana remains available for non-tested context
+PASS Post-submit review can show annotated target words
+PASS Escaping protects arbitrary text in exam content
+PASS Chart max score mapping by exam type
+PASS Different score scales normalize to comparable percentages
+PASS Legacy unverified, pending, invalid and unknown results excluded
+PASS Filtered chart uses most recent 8 verified attempts
+PASS Dashboard graph helper loaded on all role dashboards
+PASS v7.65 leaves auth, payment, save/resume and YKCR API files in place
+TOTAL 12 PASS / 0 FAIL (static/mocked; not deployed)
+PASS Full JLPT mock: IDs unique; consistent records
+PASS Full JLPT mock: expected counts per level and section
+PASS 直前対策: IDs unique; consistent records
+PASS 直前対策: expected counts per level and section
+PASS Full mock public JS and JSON banks match exactly
+PASS Practice public JS and JSON banks match exactly
+PASS Furigana dictionary has > 250 curated phrases and safely escapes HTML
+PASS All 5 levels protect every live vocabulary question from ruby answer leaks
+PASS Reading target protected even outside vocab and includes kana terms
+PASS Non-reading grammar, including 漢字の書き方, can show ruby
+PASS Furigana preference OFF removes live ruby but review still annotates
+PASS Full mock and 直前対策 use shared formatter and level-specific question context
+PASS Client preload order and existing security files preserved
+v7.66: 13 PASS / 0 FAIL (static test only)
+PASS Existing score module loaded
+PASS 7-day filter includes recent and excludes older
+PASS 30-day filter excludes 45+ days
+PASS 90-day filter includes 50 days not 100 days
+PASS all period includes all without fabricating data
+PASS type filter intersects with window
+PASS normalized averages are not raw 180 versus 50
+PASS unverified and out of range scores excluded
+PASS started attempts excluded from pass rate
+PASS no-data yields null metrics not fake zero
+PASS verified rows chronological
+PASS delta disabled when comparing mixed exam types
+PASS delta of latest 3 versus earlier 3 same type
+PASS delta unavailable with fewer than 6
+PASS last 12 cap enforced with no missing values invented
+PASS performanceByType excludes unknown exam types
+PASS review priorities only own supplied records and filtered by type
+PASS invalid dates never enter bounded periods
+PASS boundary future date excluded for bounded period
+PASS data inputs are not mutated while computing analytics
+PASS shared client module loaded before dashboard runtime
+PASS authorized APIs unchanged and no database migrations added
+PASS dashboard offers date/type filters & focus
+PASS all translations are present for new analytical headings
+TOTAL v7.67: 24 PASS / 0 FAIL (local unit tests)
+v7.74 Dictionary QA PASS: 8542 words, 2350 glosses, 119 new N1 drafts, 6192 pending
+PASS all six website entry routes exist
+PASS all local HTML referenced assets exist, except generated bundle pre-build
+PASS every classic inline script parses
+yk-v78714-engine.js:5
+export const LEVELS = Object.freeze(['N5','N4','N3','N2','N1']);
+^^^^^^
+
+SyntaxError: Unexpected token 'export'
+    at new Script (node:vm:117:7)
+    at file:///workspace/scratch/4fa686e19819/repo/tests/v774-release-smoke.mjs:52:3
+    at check (file:///workspace/scratch/4fa686e19819/repo/tests/v774-release-smoke.mjs:13:26)
+    at file:///workspace/scratch/4fa686e19819/repo/tests/v774-release-smoke.mjs:45:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.22.1

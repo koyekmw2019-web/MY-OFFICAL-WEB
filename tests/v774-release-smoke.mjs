@@ -1,10 +1,11 @@
 /** v7.72 dictionary progress release static checks; does not replace live Netlify testing */
 import {readFileSync, existsSync, readdirSync} from 'node:fs';
-import {resolve,dirname,join,relative,extname} from 'node:path';
+import {resolve,dirname,join,relative,extname,sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
+import { spawnSync } from 'node:child_process';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const read=p=>readFileSync(join(root,p),'utf8');
 const file=p=>join(root,p);
@@ -24,7 +25,7 @@ check('all local HTML referenced assets exist, except generated bundle pre-build
    const resource=url.split(/[?#]/,1)[0].replace(/^\//,'');
    if(!resource)continue;
    const path=resolve(root,resource);
-   assert(path.startsWith(root+'/'),`Disallowed local asset path ${h}: ${url}`);
+  assert(path.startsWith(root+sep),`Disallowed local asset path ${h}: ${url}`);
    if(!existsSync(path))assert(!release && resource==='assets/identity.bundle.js',`Missing: ${h} ${resource}`);
    fileRefs++;
   }
@@ -49,7 +50,13 @@ check('every shipped browser asset JavaScript parses',()=>{
   const code=read(`assets/${f}`);
   // bundled identity client is ESM and is checked by esbuild during the Netlify build
   if(f==='identity.bundle.js')continue;
-  new vm.Script(code,{filename:f});
+  // v7.88.1 QA: browser module syntax check
+  if (/^\s*(?:import\s+(?!\()|export\s+)/m.test(code)) {
+    const syntax = spawnSync(process.execPath, ['--check', file(`assets/${f}`)], { encoding: 'utf8' });
+    assert.equal(syntax.status, 0, `JavaScript module syntax error in ${f}: ${syntax.stderr || syntax.stdout}`);
+  } else {
+    new vm.Script(code,{filename:f});
+  }
   total++;
  }
  assert(total>=12);
@@ -65,7 +72,7 @@ check('v7.74 vocabulary counts, legacy glossary and draft warnings are tracked',
 check('PWA icon references and updated service worker version are valid',()=>{
  const m=JSON.parse(read('manifest.webmanifest'));
  for(const icon of m.icons)assert(existsSync(file(icon.src.split(/[?#]/,1)[0].replace(/^\//,''))));
- assert(/yk-official-v7-(?:78-brand-dictionary|79-seo-jlpt-cards|80-stability-speed)/.test(read('service-worker.js'))); // permit backward-compatible version bump 
+ assert(/yk-official-v7-(?:78-brand-dictionary|79-seo-jlpt-cards|80-stability-speed|87-20)/.test(read('service-worker.js'))); // permit backward-compatible version bump 
 });
 check('backend functions/migrations exactly match v7.70 source',()=>{
  const manifest=JSON.parse(read('QA_v7_71_BACKEND_HASHES.json'));

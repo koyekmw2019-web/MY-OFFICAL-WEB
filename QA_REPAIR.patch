@@ -1,0 +1,2092 @@
+diff --git a/netlify/functions/_shared/exam-autosave.mts b/netlify/functions/_shared/exam-autosave.mts
+index 0908d6f..d65401b 100644
+--- a/netlify/functions/_shared/exam-autosave.mts
++++ b/netlify/functions/_shared/exam-autosave.mts
+@@ -3,7 +3,7 @@ export const sectionDurations: Record<string, number[]> = {
+   jlpt_n1: [110, 55], jlpt_n2: [105, 50], jlpt_n3: [30, 70, 40],
+   jlpt_n4: [25, 55, 35], jlpt_n5: [20, 40, 30],
+   truck: [80], taxi: [80], bus: [80], maintenance: [80],
+-  car: [50], motorcycle: [50], moped: [30]
++  car: [50], motorcycle: [50], moped: [30], nishu: [50]
+ };
+ export const maxCheckpointBytes = 130_000;
+ export const initialDeadline = (examType: string, startedAt: string | Date) =>
+@@ -52,7 +52,7 @@ export async function abandonExpiredAttempts(db:any, userId:string) {
+            (CASE owned.exam_type
+             WHEN 'jlpt_n1' THEN 110 WHEN 'jlpt_n2' THEN 105 WHEN 'jlpt_n3' THEN 30
+             WHEN 'jlpt_n4' THEN 25 WHEN 'jlpt_n5' THEN 20
+-            WHEN 'car' THEN 50 WHEN 'motorcycle' THEN 50 WHEN 'moped' THEN 30
++            WHEN 'car' THEN 50 WHEN 'motorcycle' THEN 50 WHEN 'moped' THEN 30 WHEN 'nishu' THEN 50
+             ELSE 80 END * INTERVAL '1 minute') + INTERVAL '60 seconds')
+       ) RETURNING a.id`;
+   return rows.length;
+@@ -66,6 +66,7 @@ export const examScoreRules:Record<string,{max:number;pass:number;minimumElapsed
+   car:{max:95,pass:90,minimumElapsedSeconds:5},
+   motorcycle:{max:95,pass:90,minimumElapsedSeconds:5},
+   moped:{max:48,pass:45,minimumElapsedSeconds:5},
++  nishu:{max:100,pass:90,minimumElapsedSeconds:5},
+   jlpt_n1:{max:180,pass:100,minimumElapsedSeconds:5},
+   jlpt_n2:{max:180,pass:90,minimumElapsedSeconds:5},
+   jlpt_n3:{max:180,pass:95,minimumElapsedSeconds:5},
+diff --git a/netlify/functions/_shared/exam-score-v763.mts b/netlify/functions/_shared/exam-score-v763.mts
+index bcf0b3a..b17708e 100644
+--- a/netlify/functions/_shared/exam-score-v763.mts
++++ b/netlify/functions/_shared/exam-score-v763.mts
+@@ -2,6 +2,7 @@
+  * Important: v7.62 question selection is client-originated; this recalculation prevents
+  * arbitrary reported scores but does NOT make the publicly inspectable quiz cheat-proof. */
+ import { key } from './exam-answer-key-v763.mts';
++import { scoreNishuSnapshot } from './nishu-scoring-v7881.mjs';
+ 
+ export type ScoreResult = {score:number, passed:boolean, sections:any, correct:number, count:number};
+ const invalid = (why:string):never => {throw new Error('Invalid exam checkpoint: '+why)};
+@@ -74,6 +75,7 @@ export function evaluateSnapshot(type:string,s:any):ScoreResult{
+    const score=theory+practical;
+    return {score,passed:theory>=18&&practical>=12,sections:{theory,practical},correct:score,count:50};
+  }
++ if(type==='nishu')return scoreNishuSnapshot(s);
+  if(['car','motorcycle','moped'].includes(type)){
+    const b:any=(key as any).license[type];const count=type==='moped'?48:95;
+    if(s.engine!=='license'||!Array.isArray(s.refs)||s.refs.length!==count||
+diff --git a/netlify/functions/_shared/security.mts b/netlify/functions/_shared/security.mts
+index eabd81f..976bc4d 100644
+--- a/netlify/functions/_shared/security.mts
++++ b/netlify/functions/_shared/security.mts
+@@ -1,6 +1,6 @@
+ import { createHash, randomBytes, timingSafeEqual } from "node:crypto";
+ 
+-export const EXAM_TYPES = new Set(["truck","taxi","bus","maintenance","car","motorcycle","moped","jlpt_n1","jlpt_n2","jlpt_n3","jlpt_n4","jlpt_n5"]);
++export const EXAM_TYPES = new Set(["truck","taxi","bus","maintenance","car","motorcycle","moped","jlpt_n1","jlpt_n2","jlpt_n3","jlpt_n4","jlpt_n5","nishu"]);
+ export const PLAN_DAYS: Record<string, number> = { week: 7, month: 30, "3months": 90, year: 365 };
+ export const PLAN_PRICE: Record<string, number> = { week: 1000, month: 2000, "3months": 3000, year: 5000 };
+ 
+diff --git a/netlify/functions/exam-access.mts b/netlify/functions/exam-access.mts
+index 4bdf682..4db37d7 100644
+--- a/netlify/functions/exam-access.mts
++++ b/netlify/functions/exam-access.mts
+@@ -30,7 +30,7 @@ export default async (req: Request) => {
+         AND user_id=${user.id} AND status='started' AND NOW() > started_at +
+         (CASE exam_type WHEN 'jlpt_n1' THEN 110 WHEN 'jlpt_n2' THEN 105 WHEN 'jlpt_n3' THEN 30
+          WHEN 'jlpt_n4' THEN 25 WHEN 'jlpt_n5' THEN 20 WHEN 'car' THEN 50
+-         WHEN 'motorcycle' THEN 50 WHEN 'moped' THEN 30 ELSE 80 END * INTERVAL '1 minute')
++         WHEN 'motorcycle' THEN 50 WHEN 'moped' THEN 30 WHEN 'nishu' THEN 50 ELSE 80 END * INTERVAL '1 minute')
+          + INTERVAL '60 seconds' RETURNING id`;
+       if(old.length)unfinished=[];
+     }
+diff --git a/netlify/functions/exam-checkpoint.mts b/netlify/functions/exam-checkpoint.mts
+index 4ebcd35..6dda619 100644
+--- a/netlify/functions/exam-checkpoint.mts
++++ b/netlify/functions/exam-checkpoint.mts
+@@ -31,7 +31,8 @@ export default async (req:Request) => {
+   if(req.method==='GET')return Response.json({ok:true,attemptId:id,type:attempt.exam_type,...shape(current)});
+   const {snapshot,phase,baseVersion}=payload;
+   if(!isValidSnapshot(snapshot)||snapshot.type!==attempt.exam_type)return Response.json({error:'Invalid checkpoint'},{status:400});
+-  const engine=attempt.exam_type.startsWith('jlpt_')?'jlpt':
++  const engine=attempt.exam_type==='nishu'?'nishu':
++    attempt.exam_type.startsWith('jlpt_')?'jlpt':
+     ['truck','taxi','bus'].includes(attempt.exam_type)?'driving':
+     attempt.exam_type==='maintenance'?'maintenance':'license';
+   if(snapshot.engine!==engine)return Response.json({error:'Exam engine mismatch'},{status:400});
+diff --git a/package-lock.json b/package-lock.json
+new file mode 100644
+index 0000000..a84e1a9
+--- /dev/null
++++ b/package-lock.json
+@@ -0,0 +1,1367 @@
++{
++  "name": "ye-kun-official-website",
++  "version": "7.88.1-rc.1",
++  "lockfileVersion": 3,
++  "requires": true,
++  "packages": {
++    "": {
++      "name": "ye-kun-official-website",
++      "version": "7.88.1-rc.1",
++      "dependencies": {
++        "@netlify/blobs": "11.1.7",
++        "@netlify/database": "2.0.1",
++        "@netlify/functions": "6.0.3",
++        "@netlify/identity": "2.0.0",
++        "csv-parse": "7.0.3"
++      },
++      "devDependencies": {
++        "esbuild": "0.28.2"
++      },
++      "engines": {
++        "node": ">=22 <25"
++      }
++    },
++    "node_modules/@envelop/instrumentation": {
++      "version": "1.0.1",
++      "resolved": "https://registry.npmjs.org/@envelop/instrumentation/-/instrumentation-1.0.1.tgz",
++      "integrity": "sha512-FuexE2qd3Yc1Kh1DjTliwGxb9kyyv4ySBNnfJOxnQasVmGdcqX6AkkO5sIMxLWFRftp8PErOcIn2dQW/1RwytQ==",
++      "license": "MIT",
++      "dependencies": {
++        "@whatwg-node/promise-helpers": "^1.2.1",
++        "tslib": "^2.5.0"
++      },
++      "engines": {
++        "node": ">=18.0.0"
++      }
++    },
++    "node_modules/@esbuild/aix-ppc64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/aix-ppc64/-/aix-ppc64-0.28.2.tgz",
++      "integrity": "sha512-XExcO+dvLKvVtNTibSTBej1NCAbaGhWn9Ww1ZPx80qsahhPFe/8jgWP0IchNe0F3HwkU7n8ejhH8bjonqht8mQ==",
++      "cpu": [
++        "ppc64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "aix"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/android-arm": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/android-arm/-/android-arm-0.28.2.tgz",
++      "integrity": "sha512-kXXoiPVVGQcnIYGOeaovwOURpniDBpSq4A03qkQ+BMQqtGG6HYap3xne9C1O1yo4TR3qxlCX5IqqmX6fFo2Lqg==",
++      "cpu": [
++        "arm"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "android"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/android-arm64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/android-arm64/-/android-arm64-0.28.2.tgz",
++      "integrity": "sha512-5YfKeeI8qWfBZIX+u2xZC3Zlb3Os/gLS2sbEKM+I4ZOcsWmHS2WLysCcQZDAFRslDUU5Oiq44gf6PYN1vGwG5A==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "android"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/android-x64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/android-x64/-/android-x64-0.28.2.tgz",
++      "integrity": "sha512-O387ite7SzUyCcy3JQX4P4bLtEA7bLLkx+esve5JHnyYfNTxcVpXZo9jhdB0lTKN44gztELTdU7nS8Nr16Fs1Q==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "android"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/darwin-arm64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/darwin-arm64/-/darwin-arm64-0.28.2.tgz",
++      "integrity": "sha512-n4KqkOQrraxHJcgjM1RvwbigfQKIKJVpM7xp+KsxiyUSrRdIXnt73VhrPAx0fV44hgfmIVKjxMN9J1t5jySVkw==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/darwin-x64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/darwin-x64/-/darwin-x64-0.28.2.tgz",
++      "integrity": "sha512-uq6suIWYP37qzGddBKPw5QEQPi6HiLGsO7UmkpfyaYNQ3D+rN6w6WfwH+nuqcGXWvawGwxOEroO4YGnFh95azw==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/freebsd-arm64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/freebsd-arm64/-/freebsd-arm64-0.28.2.tgz",
++      "integrity": "sha512-n+I0BTSRIoy+d6RPKnEVwql5UwBJolytvY4mAOIEJorKlqgPII8ix6slVVrfZ5Tnj7glIZvloylbB/EJPMWEXw==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "freebsd"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/freebsd-x64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/freebsd-x64/-/freebsd-x64-0.28.2.tgz",
++      "integrity": "sha512-78XJTJkvPs0kz2w61301PJjXl4g7q3JqiYMZ/M/yVI73EHBrCRTgkhu9oqG7vPqq+a/yadEW8aD+agKlk5xrmg==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "freebsd"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-arm": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-arm/-/linux-arm-0.28.2.tgz",
++      "integrity": "sha512-XlDnu2q5yoqems+xay6wSAcg9DDD7K9RLKZEBOMZm3ckNpJBvOX20tSfby8KfrrhINDyv9V2YVZKY/SpoGJI8w==",
++      "cpu": [
++        "arm"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-arm64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-arm64/-/linux-arm64-0.28.2.tgz",
++      "integrity": "sha512-pW4AC0P3it8c7do9MVM4p51FzHzdM/TZrerurgRcHJ2WTa1VQ1CIq18xncfpBJw4ojkiZZrKW2yIBWBP92j6Ug==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-ia32": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-ia32/-/linux-ia32-0.28.2.tgz",
++      "integrity": "sha512-CYbnj78HsIeA+DhgUKgFCfvNsTHFhMMrinUrMZpDXJXKN8T3XViTZ/+wtHeVxEWY8ewSzTFN+nRmSwO2tZaLUQ==",
++      "cpu": [
++        "ia32"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-loong64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-loong64/-/linux-loong64-0.28.2.tgz",
++      "integrity": "sha512-buwkd8nsph4R+ajRvw0qM5Hja/TXQow3ptzWO2EbG/cqcIkHloRrdlBtQlshyYGTNFvfkfJ5tpPLVkY4DtsPfQ==",
++      "cpu": [
++        "loong64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-mips64el": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-mips64el/-/linux-mips64el-0.28.2.tgz",
++      "integrity": "sha512-ZVykbDyk7519VwiNb9Lcj9m8XM6v5V9uKPvrEMkkEedVewf+0itkhahp4HDpgERXhwLRpWFypsGbG/J8s0QjJA==",
++      "cpu": [
++        "mips64el"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-ppc64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-ppc64/-/linux-ppc64-0.28.2.tgz",
++      "integrity": "sha512-CAXl+Dtd9UUuJd8pKKdwh6MLm3MUMiqMPmhZ3tTSXPqfyQ3vDl6R5hZdZ/kYojK4ofXtdfSv1tFq8XzWx3heNQ==",
++      "cpu": [
++        "ppc64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-riscv64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-riscv64/-/linux-riscv64-0.28.2.tgz",
++      "integrity": "sha512-GeXCej4IQtU1B+QlDV8W/RRvbzI3O/Stss+/bCXv4lZls5WGRtu2a+3JkA3i4qIUlMXpcHebWpF8AkJhATowuA==",
++      "cpu": [
++        "riscv64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-s390x": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-s390x/-/linux-s390x-0.28.2.tgz",
++      "integrity": "sha512-3H1weTYZPxt/WOhByszQZybS9w5lKzUn1FDMsgEChbHWQwHYQQRfBxgCcZvPhjHfKyJjIievvMmEUawJrdY9Dg==",
++      "cpu": [
++        "s390x"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-x64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-x64/-/linux-x64-0.28.2.tgz",
++      "integrity": "sha512-4xTZr1FUmSoQW4XIWmit3tzQrUTZM+N3P0XV8xROKYF50XfI7xeO90+1bZvNwxIufQ9hDQVRJH5YhgPVF8A/HQ==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/netbsd-arm64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/netbsd-arm64/-/netbsd-arm64-0.28.2.tgz",
++      "integrity": "sha512-sSATRjPeDBg3pdgHoQfoYBob11Kk1FGa9lui5RIHZCoCkJa9QKlvl3/vKz2usCmYYjs7ymJR/2Nnsqe+Hjt5nw==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "netbsd"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/netbsd-x64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/netbsd-x64/-/netbsd-x64-0.28.2.tgz",
++      "integrity": "sha512-lqnzCV+mM0gIADaKihiCg6ifgfU2L3h5E33rNQBN1Y4MaVGnzryzmvvf7UHxprpQdE8hpqLolJ9Rl+SkIRDpyw==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "netbsd"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/openbsd-arm64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/openbsd-arm64/-/openbsd-arm64-0.28.2.tgz",
++      "integrity": "sha512-AL2qJILH7lNjrDmCQDvdxMfAUIv8KMNZOvrwAQ8i8//ntL9FflhOyMJ8OZSMBb8/AWXe3/5v5S20y3zCoZWKoQ==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "openbsd"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/openbsd-x64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/openbsd-x64/-/openbsd-x64-0.28.2.tgz",
++      "integrity": "sha512-QtiuPytchRyC4rwUKhexJdQKvDuZ6hWloi3igqPQNUJCS1/v9EiO3UTOXR6A3FoMo4fnAKbWJdqaIwhOzh8qEw==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "openbsd"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/openharmony-arm64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/openharmony-arm64/-/openharmony-arm64-0.28.2.tgz",
++      "integrity": "sha512-WkhYDmpTjLvGlScA1rwjRUmhl4k8oXR3cIbtqWmELgU/dFeHHlEllxDvdWcNJV9rbzCexB5vz8gtNewWLgCT7Q==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "openharmony"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/sunos-x64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/sunos-x64/-/sunos-x64-0.28.2.tgz",
++      "integrity": "sha512-GPMSkTOtMnv2U2F8gxe4Io6qmVs+YKyp832Etqqxr0hFngmXQ3rzwytelm3GIn7T4VviRUlf3sOgBOiTdvaf7g==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "sunos"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/win32-arm64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/win32-arm64/-/win32-arm64-0.28.2.tgz",
++      "integrity": "sha512-PIhhEkE9uPBleRBrQEJpUn7MBnibZzbGzYWPmY3x+YoVg/95zbjB4CxPPOQ8l5tYYM4mMaCthF8/1DIfBQQyWQ==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/win32-ia32": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/win32-ia32/-/win32-ia32-0.28.2.tgz",
++      "integrity": "sha512-YmJbfTlvU7Sdn9BB+4PRES4oB6pxgS37MAONj+hBr/cpXS1aBPKXxNnDbu+QCWPj0o9dgyxeq79g6c5P8KeuYA==",
++      "cpu": [
++        "ia32"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/win32-x64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.28.2.tgz",
++      "integrity": "sha512-5ebpxr3nWMzrL/rnUI755Jkuee0bHL/Gq0WTF9lvcpv73wAp5eu8MfBUgWK9bhWvZjj7yX8etf/8tI8Ney695g==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@fastify/busboy": {
++      "version": "3.2.5",
++      "resolved": "https://registry.npmjs.org/@fastify/busboy/-/busboy-3.2.5.tgz",
++      "integrity": "sha512-y8MTAeBlEQUNVnskmZQwpseZN3EgCksQNOULlfxWY6o6VEqh01+oExMgbM7gN6YLQ8pNDYeweNPKJRt8jQm2ZQ==",
++      "license": "MIT"
++    },
++    "node_modules/@neondatabase/serverless": {
++      "version": "1.2.0",
++      "resolved": "https://registry.npmjs.org/@neondatabase/serverless/-/serverless-1.2.0.tgz",
++      "integrity": "sha512-tnaqgixUengZQNd9ZrS3ytQfamJzLKY8QxgqWQTNHHtB+KrFQWk77JTbbpg4RD+J3qE4eO2lVytvGDX5Kj6FdQ==",
++      "license": "MIT",
++      "engines": {
++        "node": ">=19.0.0"
++      }
++    },
++    "node_modules/@netlify/blobs": {
++      "version": "11.1.7",
++      "resolved": "https://registry.npmjs.org/@netlify/blobs/-/blobs-11.1.7.tgz",
++      "integrity": "sha512-iOOQSC990P5JtvBGfPMngRxId9H7FWJWAZrzGyYWanCreYElkU5VjoTBt0DgJE859ukNGHAwULZlOdiYHESHfA==",
++      "license": "MIT",
++      "dependencies": {
++        "@netlify/dev-utils": "6.0.4",
++        "@netlify/otel": "^7.0.6",
++        "@netlify/runtime-utils": "3.0.0"
++      },
++      "engines": {
++        "node": ">=22.12.0"
++      }
++    },
++    "node_modules/@netlify/database": {
++      "version": "2.0.1",
++      "resolved": "https://registry.npmjs.org/@netlify/database/-/database-2.0.1.tgz",
++      "integrity": "sha512-ikz0NcVgeOe62Sic5MEFMyv/yMWtzhMLcynXTDftTL3rVEMoJL16mjnU9gNZ6G80lBngjjPjZrDOyAS1j+Kt3A==",
++      "license": "MIT",
++      "dependencies": {
++        "@neondatabase/serverless": "^1.1.0",
++        "@netlify/runtime-utils": "3.0.0",
++        "pg": "^8.13.0",
++        "waddler": "^0.1.1",
++        "ws": "^8.18.0"
++      },
++      "engines": {
++        "node": ">=22.12.0"
++      }
++    },
++    "node_modules/@netlify/dev-utils": {
++      "version": "6.0.4",
++      "resolved": "https://registry.npmjs.org/@netlify/dev-utils/-/dev-utils-6.0.4.tgz",
++      "integrity": "sha512-VZgq2gqRLQual8P2v6B8/W1WgUNYJvVvgqCIbviPR/BcI6hKvxVBdAMjz+84eU3qpfMau1Bn2J70JDSQSNkNgg==",
++      "license": "MIT",
++      "dependencies": {
++        "@whatwg-node/server": "^0.11.0",
++        "ansis": "^4.1.0",
++        "atomically": "^2.0.3",
++        "chokidar": "^5.0.0",
++        "decache": "^4.6.2",
++        "dettle": "^1.0.5",
++        "dot-prop": "9.0.0",
++        "empathic": "^2.0.0",
++        "env-paths": "^3.0.0",
++        "parse-gitignore": "^2.0.0",
++        "semver": "^7.7.2"
++      },
++      "engines": {
++        "node": ">=22.12.0"
++      }
++    },
++    "node_modules/@netlify/functions": {
++      "version": "6.0.3",
++      "resolved": "https://registry.npmjs.org/@netlify/functions/-/functions-6.0.3.tgz",
++      "integrity": "sha512-6KHpsR2L4VQL2gMm3VvG46xBNTga/SbOziluInR0++gkvOuQ/T2pxsxf2Rys5wOikpNY3Zv1IoE52/pWBJjZ9Q==",
++      "license": "MIT",
++      "dependencies": {
++        "@netlify/types": "3.3.0"
++      },
++      "engines": {
++        "node": ">=22.12.0"
++      }
++    },
++    "node_modules/@netlify/identity": {
++      "version": "2.0.0",
++      "resolved": "https://registry.npmjs.org/@netlify/identity/-/identity-2.0.0.tgz",
++      "integrity": "sha512-AX2zdazgfa9M/L22kgC5TpuVgofz9ZkK0W7JRIqmW/In6LyW6HzLS2K9a3CPXlfcjWm1JqEdmXoXze3VIjes6Q==",
++      "license": "MIT",
++      "dependencies": {
++        "gotrue-js": "^1.0.1"
++      },
++      "engines": {
++        "node": ">=22.12.0"
++      }
++    },
++    "node_modules/@netlify/otel": {
++      "version": "7.0.8",
++      "resolved": "https://registry.npmjs.org/@netlify/otel/-/otel-7.0.8.tgz",
++      "integrity": "sha512-sFKKABqvQN6VAtdEH/tBkdZUZUYkLSzWhzacjUWp40t694WuSo8YyhWQeG/LqYrxkqWyLAPjb2bYzla/euqmxQ==",
++      "license": "MIT",
++      "dependencies": {
++        "@opentelemetry/api": "1.9.1",
++        "@opentelemetry/core": "2.12.0",
++        "@opentelemetry/instrumentation": "^0.223.0",
++        "@opentelemetry/resources": "2.12.0",
++        "@opentelemetry/sdk-trace-node": "2.12.0"
++      },
++      "engines": {
++        "node": ">=22.12.0"
++      }
++    },
++    "node_modules/@netlify/runtime-utils": {
++      "version": "3.0.0",
++      "resolved": "https://registry.npmjs.org/@netlify/runtime-utils/-/runtime-utils-3.0.0.tgz",
++      "integrity": "sha512-OHo40+V3QZkR+UrDjqhN+LekrAby/dSSJxsvyYs9i88E/mSl3goB/ysoL+VYROm190egxmQyRYlHK7vL4GeHBQ==",
++      "license": "MIT",
++      "engines": {
++        "node": ">=22.12.0"
++      }
++    },
++    "node_modules/@netlify/types": {
++      "version": "3.3.0",
++      "resolved": "https://registry.npmjs.org/@netlify/types/-/types-3.3.0.tgz",
++      "integrity": "sha512-u/uh0vOFslJsTcG8nnynAKnTpVIakXbv3mkBG9DTqKZrDEzmfLKDZ3I7evHA3/CYUmNB24pNrzlHj2nIsqEwzg==",
++      "license": "MIT",
++      "engines": {
++        "node": ">=22.12.0"
++      }
++    },
++    "node_modules/@opentelemetry/api": {
++      "version": "1.9.1",
++      "resolved": "https://registry.npmjs.org/@opentelemetry/api/-/api-1.9.1.tgz",
++      "integrity": "sha512-gLyJlPHPZYdAk1JENA9LeHejZe1Ti77/pTeFm/nMXmQH/HFZlcS/O2XJB+L8fkbrNSqhdtlvjBVjxwUYanNH5Q==",
++      "license": "Apache-2.0",
++      "engines": {
++        "node": ">=8.0.0"
++      }
++    },
++    "node_modules/@opentelemetry/api-logs": {
++      "version": "0.223.2",
++      "resolved": "https://registry.npmjs.org/@opentelemetry/api-logs/-/api-logs-0.223.2.tgz",
++      "integrity": "sha512-pKr/0bxkzNPhWKTqqSP2KtPVxqmC2oQrWjUjr4EDHrJCCiRkGIN52m2c7ILhCnQkYKmlTQBiESIEeyg0hlmotQ==",
++      "license": "Apache-2.0",
++      "dependencies": {
++        "@opentelemetry/api": "^1.3.0"
++      },
++      "engines": {
++        "node": ">=8.0.0"
++      }
++    },
++    "node_modules/@opentelemetry/context-async-hooks": {
++      "version": "2.12.0",
++      "resolved": "https://registry.npmjs.org/@opentelemetry/context-async-hooks/-/context-async-hooks-2.12.0.tgz",
++      "integrity": "sha512-iK/1nD7mmZVkuYjVjkdFBiCvzntJdFny1S3CYbUYyOq7V5enL6XX+gJ7eh965L1LnS11VA8mQ7Ej/ck04SB0MQ==",
++      "license": "Apache-2.0",
++      "engines": {
++        "node": "^18.19.0 || >=20.6.0"
++      },
++      "peerDependencies": {
++        "@opentelemetry/api": ">=1.0.0 <1.10.0"
++      }
++    },
++    "node_modules/@opentelemetry/core": {
++      "version": "2.12.0",
++      "resolved": "https://registry.npmjs.org/@opentelemetry/core/-/core-2.12.0.tgz",
++      "integrity": "sha512-1HsSAuvT4/my0QrXWsyXFdWjKaPeCHsismKZgEEIb8NK13LP6DrMRlsUbvD/0F9mDWK3xDom9AMv3IscxgOnOQ==",
++      "license": "Apache-2.0",
++      "dependencies": {
++        "@opentelemetry/semantic-conventions": "^1.29.0"
++      },
++      "engines": {
++        "node": "^18.19.0 || >=20.6.0"
++      },
++      "peerDependencies": {
++        "@opentelemetry/api": ">=1.0.0 <1.10.0"
++      }
++    },
++    "node_modules/@opentelemetry/instrumentation": {
++      "version": "0.223.2",
++      "resolved": "https://registry.npmjs.org/@opentelemetry/instrumentation/-/instrumentation-0.223.2.tgz",
++      "integrity": "sha512-2tRpOgQ91+wC2/h6IDt+dsQNuUlfUR+CVwABceAEtiWtON9JumZR6YQcYCsisNRTX942TnCjPDuBI0xxGgVLHQ==",
++      "license": "Apache-2.0",
++      "dependencies": {
++        "@opentelemetry/api-logs": "0.223.2",
++        "import-in-the-middle": "^3.0.0",
++        "require-in-the-middle": "^8.0.0"
++      },
++      "engines": {
++        "node": "^18.19.0 || >=20.6.0"
++      },
++      "peerDependencies": {
++        "@opentelemetry/api": "^1.3.0"
++      }
++    },
++    "node_modules/@opentelemetry/resources": {
++      "version": "2.12.0",
++      "resolved": "https://registry.npmjs.org/@opentelemetry/resources/-/resources-2.12.0.tgz",
++      "integrity": "sha512-+rSRoOdln6NhXTVcBdHSlZxJDNzwxadeweK2ltZO3tVtfp6aklABc06xclDk6ovRR+EiGgIcSbh/6NgjFhnb3A==",
++      "license": "Apache-2.0",
++      "dependencies": {
++        "@opentelemetry/core": "2.12.0",
++        "@opentelemetry/semantic-conventions": "^1.29.0"
++      },
++      "engines": {
++        "node": "^18.19.0 || >=20.6.0"
++      },
++      "peerDependencies": {
++        "@opentelemetry/api": ">=1.3.0 <1.10.0"
++      }
++    },
++    "node_modules/@opentelemetry/sdk-trace": {
++      "version": "2.12.0",
++      "resolved": "https://registry.npmjs.org/@opentelemetry/sdk-trace/-/sdk-trace-2.12.0.tgz",
++      "integrity": "sha512-ImVuRQ6faOsTi1Wna88s2avgrrf/iDgXPigIeynkUhjstMuoQUDOJXgkez2j1mlU4btjXcXBGa+q7qKFYR3GsA==",
++      "license": "Apache-2.0",
++      "dependencies": {
++        "@opentelemetry/core": "2.12.0",
++        "@opentelemetry/resources": "2.12.0",
++        "@opentelemetry/semantic-conventions": "^1.29.0"
++      },
++      "engines": {
++        "node": "^18.19.0 || >=20.6.0"
++      },
++      "peerDependencies": {
++        "@opentelemetry/api": ">=1.3.0 <1.10.0"
++      }
++    },
++    "node_modules/@opentelemetry/sdk-trace-base": {
++      "version": "2.12.0",
++      "resolved": "https://registry.npmjs.org/@opentelemetry/sdk-trace-base/-/sdk-trace-base-2.12.0.tgz",
++      "integrity": "sha512-JOERgZCxRM06FEJ5kEWxlSRChah6MmXDx3KwCruqEv/iEyLkTokCSemf2y1w8oIHtfrr8EVTpzebq/31vn2Cpg==",
++      "deprecated": "Use @opentelemetry/sdk-trace package",
++      "license": "Apache-2.0",
++      "dependencies": {
++        "@opentelemetry/core": "2.12.0",
++        "@opentelemetry/resources": "2.12.0",
++        "@opentelemetry/sdk-trace": "2.12.0",
++        "@opentelemetry/semantic-conventions": "^1.29.0"
++      },
++      "engines": {
++        "node": "^18.19.0 || >=20.6.0"
++      },
++      "peerDependencies": {
++        "@opentelemetry/api": ">=1.3.0 <1.10.0"
++      }
++    },
++    "node_modules/@opentelemetry/sdk-trace-node": {
++      "version": "2.12.0",
++      "resolved": "https://registry.npmjs.org/@opentelemetry/sdk-trace-node/-/sdk-trace-node-2.12.0.tgz",
++      "integrity": "sha512-9DufH1IlmQMoKAfot5y/FhTP1RnmhLb5K6eKmJO/bvzPjYwPAazoiAUbTZFdPbqxOXN0FEbhZx/e6SB1Og4jmg==",
++      "deprecated": "Use @opentelemetry/sdk-trace package",
++      "license": "Apache-2.0",
++      "dependencies": {
++        "@opentelemetry/context-async-hooks": "2.12.0",
++        "@opentelemetry/core": "2.12.0",
++        "@opentelemetry/sdk-trace-base": "2.12.0"
++      },
++      "engines": {
++        "node": "^18.19.0 || >=20.6.0"
++      },
++      "peerDependencies": {
++        "@opentelemetry/api": ">=1.0.0 <1.10.0"
++      }
++    },
++    "node_modules/@opentelemetry/semantic-conventions": {
++      "version": "1.45.0",
++      "resolved": "https://registry.npmjs.org/@opentelemetry/semantic-conventions/-/semantic-conventions-1.45.0.tgz",
++      "integrity": "sha512-aOP45mbcOKbQVvFWfQmgoOPT8R2iwbbbgl83k4CujGV9BrJhFr3qG55MFpwFs4YLabpuW3HhzUY9eQxPlDqaZw==",
++      "license": "Apache-2.0",
++      "engines": {
++        "node": ">=14"
++      }
++    },
++    "node_modules/@whatwg-node/disposablestack": {
++      "version": "0.0.6",
++      "resolved": "https://registry.npmjs.org/@whatwg-node/disposablestack/-/disposablestack-0.0.6.tgz",
++      "integrity": "sha512-LOtTn+JgJvX8WfBVJtF08TGrdjuFzGJc4mkP8EdDI8ADbvO7kiexYep1o8dwnt0okb0jYclCDXF13xU7Ge4zSw==",
++      "license": "MIT",
++      "dependencies": {
++        "@whatwg-node/promise-helpers": "^1.0.0",
++        "tslib": "^2.6.3"
++      },
++      "engines": {
++        "node": ">=18.0.0"
++      }
++    },
++    "node_modules/@whatwg-node/fetch": {
++      "version": "0.10.13",
++      "resolved": "https://registry.npmjs.org/@whatwg-node/fetch/-/fetch-0.10.13.tgz",
++      "integrity": "sha512-b4PhJ+zYj4357zwk4TTuF2nEe0vVtOrwdsrNo5hL+u1ojXNhh1FgJ6pg1jzDlwlT4oBdzfSwaBwMCtFCsIWg8Q==",
++      "license": "MIT",
++      "dependencies": {
++        "@whatwg-node/node-fetch": "^0.8.3",
++        "urlpattern-polyfill": "^10.0.0"
++      },
++      "engines": {
++        "node": ">=18.0.0"
++      }
++    },
++    "node_modules/@whatwg-node/node-fetch": {
++      "version": "0.8.6",
++      "resolved": "https://registry.npmjs.org/@whatwg-node/node-fetch/-/node-fetch-0.8.6.tgz",
++      "integrity": "sha512-BDMdYFcerLQkwA2RTldxOqRCs6ZQD1S7UgP3pUdGUkcbgTrP/V5ko77ZkCww9DHmC4lpoYuwigGfQYj285gMvA==",
++      "license": "MIT",
++      "dependencies": {
++        "@fastify/busboy": "^3.1.1",
++        "@whatwg-node/disposablestack": "^0.0.6",
++        "@whatwg-node/promise-helpers": "^1.3.2",
++        "tslib": "^2.6.3"
++      },
++      "engines": {
++        "node": ">=18.0.0"
++      }
++    },
++    "node_modules/@whatwg-node/promise-helpers": {
++      "version": "1.3.2",
++      "resolved": "https://registry.npmjs.org/@whatwg-node/promise-helpers/-/promise-helpers-1.3.2.tgz",
++      "integrity": "sha512-Nst5JdK47VIl9UcGwtv2Rcgyn5lWtZ0/mhRQ4G8NN2isxpq2TO30iqHzmwoJycjWuyUfg3GFXqP/gFHXeV57IA==",
++      "license": "MIT",
++      "dependencies": {
++        "tslib": "^2.6.3"
++      },
++      "engines": {
++        "node": ">=16.0.0"
++      }
++    },
++    "node_modules/@whatwg-node/server": {
++      "version": "0.11.0",
++      "resolved": "https://registry.npmjs.org/@whatwg-node/server/-/server-0.11.0.tgz",
++      "integrity": "sha512-VSdkwnJRr8Yv9UgB2aXB3VUPWwd6Oqnn0hycFwhg9pZgWxJXb7JmhsiXe9tmpMwjHFxli12PGcz9aI63YYloGQ==",
++      "license": "MIT",
++      "dependencies": {
++        "@envelop/instrumentation": "^1.0.0",
++        "@whatwg-node/disposablestack": "^0.0.6",
++        "@whatwg-node/fetch": "^0.10.13",
++        "@whatwg-node/promise-helpers": "^1.3.2",
++        "tslib": "^2.6.3"
++      },
++      "engines": {
++        "node": ">=18.0.0"
++      }
++    },
++    "node_modules/ansis": {
++      "version": "4.5.0",
++      "resolved": "https://registry.npmjs.org/ansis/-/ansis-4.5.0.tgz",
++      "integrity": "sha512-KwIVkfFfJSSzBmZhDGuTmkhWqTdyB5oNVzzznBJbBZ5bZtHiqSrcugRF0RKJKT4Ss3d7ZrcjnlFVDlQNmtWfWw==",
++      "license": "ISC",
++      "engines": {
++        "node": ">=14"
++      }
++    },
++    "node_modules/atomically": {
++      "version": "2.1.1",
++      "resolved": "https://registry.npmjs.org/atomically/-/atomically-2.1.1.tgz",
++      "integrity": "sha512-P4w9o2dqARji6P7MHprklbfiArZAWvo07yW7qs3pdljb3BWr12FIB7W+p0zJiuiVsUpRO0iZn1kFFcpPegg0tQ==",
++      "license": "MIT",
++      "dependencies": {
++        "stubborn-fs": "^2.0.0",
++        "when-exit": "^2.1.4"
++      }
++    },
++    "node_modules/callsite": {
++      "version": "1.0.0",
++      "resolved": "https://registry.npmjs.org/callsite/-/callsite-1.0.0.tgz",
++      "integrity": "sha512-0vdNRFXn5q+dtOqjfFtmtlI9N2eVZ7LMyEV2iKC5mEEFvSg/69Ml6b/WU2qF8W1nLRa0wiSrDT3Y5jOHZCwKPQ==",
++      "engines": {
++        "node": "*"
++      }
++    },
++    "node_modules/chokidar": {
++      "version": "5.0.0",
++      "resolved": "https://registry.npmjs.org/chokidar/-/chokidar-5.0.0.tgz",
++      "integrity": "sha512-TQMmc3w+5AxjpL8iIiwebF73dRDF4fBIieAqGn9RGCWaEVwQ6Fb2cGe31Yns0RRIzii5goJ1Y7xbMwo1TxMplw==",
++      "license": "MIT",
++      "dependencies": {
++        "readdirp": "^5.0.0"
++      },
++      "engines": {
++        "node": ">= 20.19.0"
++      },
++      "funding": {
++        "url": "https://paulmillr.com/funding/"
++      }
++    },
++    "node_modules/cjs-module-lexer": {
++      "version": "2.3.0",
++      "resolved": "https://registry.npmjs.org/cjs-module-lexer/-/cjs-module-lexer-2.3.0.tgz",
++      "integrity": "sha512-lmNyBzi6iYiqyrExTctfmjd8tInx+dHu9PBomTfH5RXS53c27JMFJgzNv5TyAnm3PgGf+MLy0+Ws41/HlVxdKQ==",
++      "license": "MIT"
++    },
++    "node_modules/csv-parse": {
++      "version": "7.0.3",
++      "resolved": "https://registry.npmjs.org/csv-parse/-/csv-parse-7.0.3.tgz",
++      "integrity": "sha512-YFd3QM/yo17vH91L1IOZuvl09zM0zEEtdfTcOCKWcMdM++MNaQSyp09slXyFCLaPXvHstQFx/xC8myiFHSMUvw==",
++      "license": "MIT"
++    },
++    "node_modules/debug": {
++      "version": "4.4.3",
++      "resolved": "https://registry.npmjs.org/debug/-/debug-4.4.3.tgz",
++      "integrity": "sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==",
++      "license": "MIT",
++      "dependencies": {
++        "ms": "^2.1.3"
++      },
++      "engines": {
++        "node": ">=6.0"
++      },
++      "peerDependenciesMeta": {
++        "supports-color": {
++          "optional": true
++        }
++      }
++    },
++    "node_modules/decache": {
++      "version": "4.6.2",
++      "resolved": "https://registry.npmjs.org/decache/-/decache-4.6.2.tgz",
++      "integrity": "sha512-2LPqkLeu8XWHU8qNCS3kcF6sCcb5zIzvWaAHYSvPfwhdd7mHuah29NssMzrTYyHN4F5oFy2ko9OBYxegtU0FEw==",
++      "license": "MIT",
++      "dependencies": {
++        "callsite": "^1.0.0"
++      }
++    },
++    "node_modules/dettle": {
++      "version": "1.0.5",
++      "resolved": "https://registry.npmjs.org/dettle/-/dettle-1.0.5.tgz",
++      "integrity": "sha512-ZVyjhAJ7sCe1PNXEGveObOH9AC8QvMga3HJIghHawtG7mE4K5pW9nz/vDGAr/U7a3LWgdOzEE7ac9MURnyfaTA==",
++      "license": "MIT"
++    },
++    "node_modules/dot-prop": {
++      "version": "9.0.0",
++      "resolved": "https://registry.npmjs.org/dot-prop/-/dot-prop-9.0.0.tgz",
++      "integrity": "sha512-1gxPBJpI/pcjQhKgIU91II6Wkay+dLcN3M6rf2uwP8hRur3HtQXjVrdAK3sjC0piaEuxzMwjXChcETiJl47lAQ==",
++      "license": "MIT",
++      "dependencies": {
++        "type-fest": "^4.18.2"
++      },
++      "engines": {
++        "node": ">=18"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/sindresorhus"
++      }
++    },
++    "node_modules/empathic": {
++      "version": "2.1.0",
++      "resolved": "https://registry.npmjs.org/empathic/-/empathic-2.1.0.tgz",
++      "integrity": "sha512-AnfC1ATldl49/cvZdLPDjBfrRNwbDO05aibiOtzQu3qtlbJtomNLhF30HEtn/7iBz50dlMECqATo3fG0LrdEgw==",
++      "license": "MIT",
++      "engines": {
++        "node": ">=14"
++      }
++    },
++    "node_modules/env-paths": {
++      "version": "3.0.0",
++      "resolved": "https://registry.npmjs.org/env-paths/-/env-paths-3.0.0.tgz",
++      "integrity": "sha512-dtJUTepzMW3Lm/NPxRf3wP4642UWhjL2sQxc+ym2YMj1m/H2zDNQOlezafzkHwn6sMstjHTwG6iQQsctDW/b1A==",
++      "license": "MIT",
++      "engines": {
++        "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/sindresorhus"
++      }
++    },
++    "node_modules/es-module-lexer": {
++      "version": "3.0.4",
++      "resolved": "https://registry.npmjs.org/es-module-lexer/-/es-module-lexer-3.0.4.tgz",
++      "integrity": "sha512-BldNY5mwkVu+cQ5Ymn3e6hB9Sx8XHx4ZevWbiUyZbfKxJxYO27Hf0wfzkxIaD5CAJMaGl3YspKELj0ff/7nCMA==",
++      "license": "MIT"
++    },
++    "node_modules/esbuild": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
++      "integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
++      "dev": true,
++      "hasInstallScript": true,
++      "license": "MIT",
++      "bin": {
++        "esbuild": "bin/esbuild"
++      },
++      "engines": {
++        "node": ">=18"
++      },
++      "optionalDependencies": {
++        "@esbuild/aix-ppc64": "0.28.2",
++        "@esbuild/android-arm": "0.28.2",
++        "@esbuild/android-arm64": "0.28.2",
++        "@esbuild/android-x64": "0.28.2",
++        "@esbuild/darwin-arm64": "0.28.2",
++        "@esbuild/darwin-x64": "0.28.2",
++        "@esbuild/freebsd-arm64": "0.28.2",
++        "@esbuild/freebsd-x64": "0.28.2",
++        "@esbuild/linux-arm": "0.28.2",
++        "@esbuild/linux-arm64": "0.28.2",
++        "@esbuild/linux-ia32": "0.28.2",
++        "@esbuild/linux-loong64": "0.28.2",
++        "@esbuild/linux-mips64el": "0.28.2",
++        "@esbuild/linux-ppc64": "0.28.2",
++        "@esbuild/linux-riscv64": "0.28.2",
++        "@esbuild/linux-s390x": "0.28.2",
++        "@esbuild/linux-x64": "0.28.2",
++        "@esbuild/netbsd-arm64": "0.28.2",
++        "@esbuild/netbsd-x64": "0.28.2",
++        "@esbuild/openbsd-arm64": "0.28.2",
++        "@esbuild/openbsd-x64": "0.28.2",
++        "@esbuild/openharmony-arm64": "0.28.2",
++        "@esbuild/sunos-x64": "0.28.2",
++        "@esbuild/win32-arm64": "0.28.2",
++        "@esbuild/win32-ia32": "0.28.2",
++        "@esbuild/win32-x64": "0.28.2"
++      }
++    },
++    "node_modules/gotrue-js": {
++      "version": "1.0.1",
++      "resolved": "https://registry.npmjs.org/gotrue-js/-/gotrue-js-1.0.1.tgz",
++      "integrity": "sha512-ZynwwM4bEo2y5yNWO3/Ynbx1AvQz9ONJSM9tB1jpooAvDPevGdvgeFP3NwM59FAlkd0szSkQRAhjINMkJSDfAQ==",
++      "license": "MIT"
++    },
++    "node_modules/import-in-the-middle": {
++      "version": "3.6.0",
++      "resolved": "https://registry.npmjs.org/import-in-the-middle/-/import-in-the-middle-3.6.0.tgz",
++      "integrity": "sha512-xRU7hI24S2FhucXtuZXn8EpcOjfVP6iiEQyR0USayPeaOroEmSsNlqnl95866iRdRtkHrd6Q/Z4D14R60au0+A==",
++      "license": "Apache-2.0",
++      "dependencies": {
++        "cjs-module-lexer": "^2.2.0",
++        "es-module-lexer": "^3.0.4",
++        "module-details-from-path": "^1.0.4"
++      },
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/module-details-from-path": {
++      "version": "1.0.4",
++      "resolved": "https://registry.npmjs.org/module-details-from-path/-/module-details-from-path-1.0.4.tgz",
++      "integrity": "sha512-EGWKgxALGMgzvxYF1UyGTy0HXX/2vHLkw6+NvDKW2jypWbHpjQuj4UMcqQWXHERJhVGKikolT06G3bcKe4fi7w==",
++      "license": "MIT"
++    },
++    "node_modules/ms": {
++      "version": "2.1.3",
++      "resolved": "https://registry.npmjs.org/ms/-/ms-2.1.3.tgz",
++      "integrity": "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==",
++      "license": "MIT"
++    },
++    "node_modules/parse-gitignore": {
++      "version": "2.0.0",
++      "resolved": "https://registry.npmjs.org/parse-gitignore/-/parse-gitignore-2.0.0.tgz",
++      "integrity": "sha512-RmVuCHWsfu0QPNW+mraxh/xjQVw/lhUCUru8Zni3Ctq3AoMhpDTq0OVdKS6iesd6Kqb7viCV3isAL43dciOSog==",
++      "license": "MIT",
++      "engines": {
++        "node": ">=14"
++      }
++    },
++    "node_modules/pg": {
++      "version": "8.23.1",
++      "resolved": "https://registry.npmjs.org/pg/-/pg-8.23.1.tgz",
++      "integrity": "sha512-aL96AHANtWjPLDOLqnhx+ngp9+UK7ETEU8VJrDCGvsSSi/mGLcWYsS6Herg7lmaBJe4uwrfqsa7gTEFaSizDoQ==",
++      "license": "MIT",
++      "dependencies": {
++        "pg-connection-string": "^2.14.1",
++        "pg-pool": "^3.14.0",
++        "pg-protocol": "^1.16.1",
++        "pg-types": "2.2.0",
++        "pgpass": "1.0.5"
++      },
++      "engines": {
++        "node": ">= 16.0.0"
++      },
++      "optionalDependencies": {
++        "pg-cloudflare": "^1.4.1"
++      },
++      "peerDependencies": {
++        "pg-native": ">=3.0.1"
++      },
++      "peerDependenciesMeta": {
++        "pg-native": {
++          "optional": true
++        }
++      }
++    },
++    "node_modules/pg-cloudflare": {
++      "version": "1.4.1",
++      "resolved": "https://registry.npmjs.org/pg-cloudflare/-/pg-cloudflare-1.4.1.tgz",
++      "integrity": "sha512-6PQbsFWZcp9EmJEwy5cGQ2La+AMWpP46lgbb8X+U/XsHIUweYDNCpeuKck5RxL2MdVFi7krbbEi5nX4Zh7JhrQ==",
++      "license": "MIT",
++      "optional": true
++    },
++    "node_modules/pg-connection-string": {
++      "version": "2.14.1",
++      "resolved": "https://registry.npmjs.org/pg-connection-string/-/pg-connection-string-2.14.1.tgz",
++      "integrity": "sha512-qR3kGNPBLpCNtz0evbKA0Y/MRFXwSSdT+pTJvYp/bXTcReZbvX1kzF0IyTc1QnxqF7AZbOeBhNL8R5mYQZV/MA==",
++      "license": "MIT"
++    },
++    "node_modules/pg-int8": {
++      "version": "1.0.1",
++      "resolved": "https://registry.npmjs.org/pg-int8/-/pg-int8-1.0.1.tgz",
++      "integrity": "sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==",
++      "license": "ISC",
++      "engines": {
++        "node": ">=4.0.0"
++      }
++    },
++    "node_modules/pg-pool": {
++      "version": "3.14.0",
++      "resolved": "https://registry.npmjs.org/pg-pool/-/pg-pool-3.14.0.tgz",
++      "integrity": "sha512-gKtPkFdQPU3DksooVLi9LsjZxrsBUZIpa+7aVx+LV5pNh0KzP4Zleud2po+ConrxbuXGBJ6Hfer6hdgpIBpBaw==",
++      "license": "MIT",
++      "peerDependencies": {
++        "pg": ">=8.0"
++      }
++    },
++    "node_modules/pg-protocol": {
++      "version": "1.16.1",
++      "resolved": "https://registry.npmjs.org/pg-protocol/-/pg-protocol-1.16.1.tgz",
++      "integrity": "sha512-p9VOFMiHB/ZbJATetbg+99PxssTVSQRnyuPSQ67mN1+1KBOjZaZ83ZQzltnxPhJwSsC3nwVjJ10DVJlerbFzLg==",
++      "license": "MIT"
++    },
++    "node_modules/pg-types": {
++      "version": "2.2.0",
++      "resolved": "https://registry.npmjs.org/pg-types/-/pg-types-2.2.0.tgz",
++      "integrity": "sha512-qTAAlrEsl8s4OiEQY69wDvcMIdQN6wdz5ojQiOy6YRMuynxenON0O5oCpJI6lshc6scgAY8qvJ2On/p+CXY0GA==",
++      "license": "MIT",
++      "dependencies": {
++        "pg-int8": "1.0.1",
++        "postgres-array": "~2.0.0",
++        "postgres-bytea": "~1.0.0",
++        "postgres-date": "~1.0.4",
++        "postgres-interval": "^1.1.0"
++      },
++      "engines": {
++        "node": ">=4"
++      }
++    },
++    "node_modules/pgpass": {
++      "version": "1.0.5",
++      "resolved": "https://registry.npmjs.org/pgpass/-/pgpass-1.0.5.tgz",
++      "integrity": "sha512-FdW9r/jQZhSeohs1Z3sI1yxFQNFvMcnmfuj4WBMUTxOrAyLMaTcE1aAMBiTlbMNaXvBCQuVi0R7hd8udDSP7ug==",
++      "license": "MIT",
++      "dependencies": {
++        "split2": "^4.1.0"
++      }
++    },
++    "node_modules/postgres-array": {
++      "version": "2.0.0",
++      "resolved": "https://registry.npmjs.org/postgres-array/-/postgres-array-2.0.0.tgz",
++      "integrity": "sha512-VpZrUqU5A69eQyW2c5CA1jtLecCsN2U/bD6VilrFDWq5+5UIEVO7nazS3TEcHf1zuPYO/sqGvUvW62g86RXZuA==",
++      "license": "MIT",
++      "engines": {
++        "node": ">=4"
++      }
++    },
++    "node_modules/postgres-bytea": {
++      "version": "1.0.1",
++      "resolved": "https://registry.npmjs.org/postgres-bytea/-/postgres-bytea-1.0.1.tgz",
++      "integrity": "sha512-5+5HqXnsZPE65IJZSMkZtURARZelel2oXUEO8rH83VS/hxH5vv1uHquPg5wZs8yMAfdv971IU+kcPUczi7NVBQ==",
++      "license": "MIT",
++      "engines": {
++        "node": ">=0.10.0"
++      }
++    },
++    "node_modules/postgres-date": {
++      "version": "1.0.7",
++      "resolved": "https://registry.npmjs.org/postgres-date/-/postgres-date-1.0.7.tgz",
++      "integrity": "sha512-suDmjLVQg78nMK2UZ454hAG+OAW+HQPZ6n++TNDUX+L0+uUlLywnoxJKDou51Zm+zTCjrCl0Nq6J9C5hP9vK/Q==",
++      "license": "MIT",
++      "engines": {
++        "node": ">=0.10.0"
++      }
++    },
++    "node_modules/postgres-interval": {
++      "version": "1.2.0",
++      "resolved": "https://registry.npmjs.org/postgres-interval/-/postgres-interval-1.2.0.tgz",
++      "integrity": "sha512-9ZhXKM/rw350N1ovuWHbGxnGh/SNJ4cnxHiM0rxE4VN41wsg8P8zWn9hv/buK00RP4WvlOyr/RBDiptyxVbkZQ==",
++      "license": "MIT",
++      "dependencies": {
++        "xtend": "^4.0.0"
++      },
++      "engines": {
++        "node": ">=0.10.0"
++      }
++    },
++    "node_modules/readdirp": {
++      "version": "5.1.1",
++      "resolved": "https://registry.npmjs.org/readdirp/-/readdirp-5.1.1.tgz",
++      "integrity": "sha512-Kko+Y5XQ6fM+Ce3dq3m9YGxnacYZYl9cA1wZjaF3Vbry2L3i1qVg8+CAgNPsXRArPMUMCaOR7oa9Nqntc43JKA==",
++      "license": "MIT",
++      "engines": {
++        "node": ">= 20.19.0"
++      },
++      "funding": {
++        "type": "individual",
++        "url": "https://paulmillr.com/funding/"
++      }
++    },
++    "node_modules/require-in-the-middle": {
++      "version": "8.0.1",
++      "resolved": "https://registry.npmjs.org/require-in-the-middle/-/require-in-the-middle-8.0.1.tgz",
++      "integrity": "sha512-QT7FVMXfWOYFbeRBF6nu+I6tr2Tf3u0q8RIEjNob/heKY/nh7drD/k7eeMFmSQgnTtCzLDcCu/XEnpW2wk4xCQ==",
++      "license": "MIT",
++      "dependencies": {
++        "debug": "^4.3.5",
++        "module-details-from-path": "^1.0.3"
++      },
++      "engines": {
++        "node": ">=9.3.0 || >=8.10.0 <9.0.0"
++      }
++    },
++    "node_modules/semver": {
++      "version": "7.8.6",
++      "resolved": "https://registry.npmjs.org/semver/-/semver-7.8.6.tgz",
++      "integrity": "sha512-9lpSSU4Mly3mrtruwLs1eLK6+gzbzqeBFwRNjIjE+9LuDpWdYctrQlQ3ej1Ilgi7gknpsTRnPoLP8DpCHqHIJw==",
++      "license": "ISC",
++      "bin": {
++        "semver": "bin/semver.js"
++      },
++      "engines": {
++        "node": ">=10"
++      }
++    },
++    "node_modules/split2": {
++      "version": "4.2.0",
++      "resolved": "https://registry.npmjs.org/split2/-/split2-4.2.0.tgz",
++      "integrity": "sha512-UcjcJOWknrNkF6PLX83qcHM6KHgVKNkV62Y8a5uYDVv9ydGQVwAHMKqHdJje1VTWpljG0WYpCDhrCdAOYH4TWg==",
++      "license": "ISC",
++      "engines": {
++        "node": ">= 10.x"
++      }
++    },
++    "node_modules/stubborn-fs": {
++      "version": "2.0.0",
++      "resolved": "https://registry.npmjs.org/stubborn-fs/-/stubborn-fs-2.0.0.tgz",
++      "integrity": "sha512-Y0AvSwDw8y+nlSNFXMm2g6L51rBGdAQT20J3YSOqxC53Lo3bjWRtr2BKcfYoAf352WYpsZSTURrA0tqhfgudPA==",
++      "license": "MIT",
++      "dependencies": {
++        "stubborn-utils": "^1.0.1"
++      }
++    },
++    "node_modules/stubborn-utils": {
++      "version": "1.0.2",
++      "resolved": "https://registry.npmjs.org/stubborn-utils/-/stubborn-utils-1.0.2.tgz",
++      "integrity": "sha512-zOh9jPYI+xrNOyisSelgym4tolKTJCQd5GBhK0+0xJvcYDcwlOoxF/rnFKQ2KRZknXSG9jWAp66fwP6AxN9STg==",
++      "license": "MIT"
++    },
++    "node_modules/tslib": {
++      "version": "2.9.1",
++      "resolved": "https://registry.npmjs.org/tslib/-/tslib-2.9.1.tgz",
++      "integrity": "sha512-a4Ux9VKuIMHsOS7ENbEq6hK2ZGYIT27Rtl0E4eD9KqwxhKiQeMZE/9xb3IdYwWaSOyIBQLExhQgXDTYoiCxnWA==",
++      "license": "0BSD"
++    },
++    "node_modules/type-fest": {
++      "version": "4.41.0",
++      "resolved": "https://registry.npmjs.org/type-fest/-/type-fest-4.41.0.tgz",
++      "integrity": "sha512-TeTSQ6H5YHvpqVwBRcnLDCBnDOHWYu7IvGbHT6N8AOymcr9PJGjc1GTtiWZTYg0NCgYwvnYWEkVChQAr9bjfwA==",
++      "license": "(MIT OR CC0-1.0)",
++      "engines": {
++        "node": ">=16"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/sindresorhus"
++      }
++    },
++    "node_modules/urlpattern-polyfill": {
++      "version": "10.1.0",
++      "resolved": "https://registry.npmjs.org/urlpattern-polyfill/-/urlpattern-polyfill-10.1.0.tgz",
++      "integrity": "sha512-IGjKp/o0NL3Bso1PymYURCJxMPNAf/ILOpendP9f5B6e1rTJgdgiOvgfoT8VxCAdY+Wisb9uhGaJJf3yZ2V9nw==",
++      "license": "MIT"
++    },
++    "node_modules/waddler": {
++      "version": "0.1.1",
++      "resolved": "https://registry.npmjs.org/waddler/-/waddler-0.1.1.tgz",
++      "integrity": "sha512-lBJXYFBLEpYe+scAeCJmLj6Iqweuq1whM6Am3I9WfopOCFxvKz8Nq5hXoy8/b3zwJqHIQMglFIvM4skRydSpZg==",
++      "license": "MIT",
++      "peerDependencies": {
++        "@clickhouse/client": "^1.11.2",
++        "@duckdb/node-api": "^1.1.2-alpha.4",
++        "@electric-sql/pglite": "^0.2.17",
++        "@libsql/client": "^0.15.4",
++        "@libsql/client-wasm": "^0.15.4",
++        "@neondatabase/serverless": "^1.0.0",
++        "@planetscale/database": "^1.19.0",
++        "@tidbcloud/serverless": "^0.2.0",
++        "@vercel/postgres": "^0.10.0",
++        "@xata.io/client": "^0.30.1",
++        "better-sqlite3": "^11.9.1",
++        "bun-types": "*",
++        "duckdb": "^1.2.1",
++        "gel": "^2.0.2",
++        "mysql2": "^3.14.0",
++        "pg": "^8.14.0",
++        "pg-query-stream": "^4.8.0",
++        "postgres": "^3.4.5"
++      },
++      "peerDependenciesMeta": {
++        "@clickhouse/client": {
++          "optional": true
++        },
++        "@cloudflare/workers-types": {
++          "optional": true
++        },
++        "@duckdb/node-api": {
++          "optional": true
++        },
++        "@electric-sql/pglite": {
++          "optional": true
++        },
++        "@libsql/client": {
++          "optional": true
++        },
++        "@libsql/client-wasm": {
++          "optional": true
++        },
++        "@neondatabase/serverless": {
++          "optional": true
++        },
++        "@op-engineering/op-sqlite": {
++          "optional": true
++        },
++        "@planetscale/database": {
++          "optional": true
++        },
++        "@tidbcloud/serverless": {
++          "optional": true
++        },
++        "@vercel/postgres": {
++          "optional": true
++        },
++        "@xata.io/client": {
++          "optional": true
++        },
++        "better-sqlite3": {
++          "optional": true
++        },
++        "bun-types": {
++          "optional": true
++        },
++        "duckdb": {
++          "optional": true
++        },
++        "gel": {
++          "optional": true
++        },
++        "mysql2": {
++          "optional": true
++        },
++        "pg": {
++          "optional": true
++        },
++        "pg-query-stream": {
++          "optional": true
++        },
++        "postgres": {
++          "optional": true
++        }
++      }
++    },
++    "node_modules/when-exit": {
++      "version": "2.1.5",
++      "resolved": "https://registry.npmjs.org/when-exit/-/when-exit-2.1.5.tgz",
++      "integrity": "sha512-VGkKJ564kzt6Ms1dbgPP/yuIoQCrsFAnRbptpC5wOEsDaNsbCB2bnfnaA8i/vRs5tjUSEOtIuvl9/MyVsvQZCg==",
++      "license": "MIT"
++    },
++    "node_modules/ws": {
++      "version": "8.23.0",
++      "resolved": "https://registry.npmjs.org/ws/-/ws-8.23.0.tgz",
++      "integrity": "sha512-wCkmX8QMOrKjgO8HW2WyDbTSGeqkocxgDzS9iR79rEAexty6/2qzilx3Ag8Tqf9ykop3irLKle0MtVn5qjVnoQ==",
++      "license": "MIT",
++      "engines": {
++        "node": ">=10.0.0"
++      },
++      "peerDependencies": {
++        "bufferutil": "^4.0.1",
++        "utf-8-validate": ">=5.0.2"
++      },
++      "peerDependenciesMeta": {
++        "bufferutil": {
++          "optional": true
++        },
++        "utf-8-validate": {
++          "optional": true
++        }
++      }
++    },
++    "node_modules/xtend": {
++      "version": "4.0.2",
++      "resolved": "https://registry.npmjs.org/xtend/-/xtend-4.0.2.tgz",
++      "integrity": "sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==",
++      "license": "MIT",
++      "engines": {
++        "node": ">=0.4"
++      }
++    }
++  }
++}
+diff --git a/package.json b/package.json
+index 58d4bdb..de1637c 100644
+--- a/package.json
++++ b/package.json
+@@ -4,10 +4,10 @@
+   "version": "7.88.1-rc.1",
+   "type": "module",
+   "scripts": {
+-    "test": "node scripts/generate-v7881-nishu.mjs && node scripts/patch-v7881-nishu-backend.mjs && node scripts/preflight-v78713.mjs && node scripts/v7872-qa-version-guards.mjs && node scripts/regenerate-exam-answer-key-v763.mjs --check && node --experimental-strip-types tests/v763-integrity.mjs && node tests/v765-stability.mjs && node tests/v766-jlpt-quality.mjs && node tests/v767-learning-analytics.mjs && node tests/v774-dictionary-translation.mjs && node tests/v774-release-smoke.mjs && node tests/v775-study-hub-jlpt.mjs && node tests/v777-study-hub-covers.mjs && node tests/v778-brand-dictionary.mjs && node tests/v778-dictionary-qa-corrections.mjs && node tests/v779-seo-jlpt.mjs && node tests/v780-performance.mjs && node tests/v780-service-worker.mjs && node tests/v781-advanced-seo.mjs && node tests/v782-learning.mjs && node tests/v782-state-isolation.mjs && node tests/v782-api.mock.mjs && node tests/v7821-character-ui.mjs && node tests/v7822-character-visibility.mjs && node tests/v7822-reading-update.mjs && node tests/v783-dictionary-quality.mjs && node tests/v783-dictionary-runtime.mock.mjs && node tests/v784-dashboard-pro.mjs && node --experimental-strip-types tests/v784-admin-api.mock.mjs && node tests/v7841-performance-safety.mjs && node tests/v785-video-course.mjs && node tests/v786-premium-motion.mjs && node --experimental-strip-types tests/v7861-stability-fix.mjs && node tests/v7862-ui-session-stability.mjs && node tests/v7863-all-exams-performance.mjs && node tests/v7864-premium-menu.mjs && node tests/v7864-dynamic-countdown.mjs && node --experimental-strip-types tests/v7865-exam-coach.mjs && node --experimental-strip-types tests/v7865-exam-coach-api.mock.mjs && node tests/v787-source.mjs && node tests/v7871-n2-same-meaning.mjs && node tests/v7872-source.mjs && node tests/v7873-source.mjs && node tests/v7874-source.mjs && node tests/v7875-source.mjs && node tests/v7875-runtime.mjs && node tests/v7876-source.mjs && node tests/v7876-engine.mjs && node tests/v7877-source.mjs && node --experimental-strip-types tests/v7877-runtime.mjs && node tests/v7878-source.mjs && node tests/v7878-crm.mjs && node --experimental-strip-types tests/v7878-crm-api.mock.mjs && node tests/v7879-data.mjs && node tests/v7879-source.mjs && node tests/v7879-bridge.mjs && node tests/v78710-content.mjs && node --experimental-strip-types tests/v78711-stability.mjs && node tests/v78712-source.mjs && node tests/v78713-static.mjs && node tests/v78713-build-fixture.mjs && node tests/v78714-engine.mjs && node tests/v78714-source.mjs && node tests/v78714-build-fixture.mjs && node tests/v78715-engine.mjs && node tests/v78715-source.mjs && node tests/v78715-build-fixture.mjs && node tests/v78716-engine.mjs && node tests/v78716-source.mjs && node tests/v78716-build-fixture.mjs && node tests/v78717-engine.mjs && node --experimental-strip-types tests/v78717-api.mock.mjs && node tests/v78717-source.mjs && node tests/v78717-build-fixture.mjs && node tests/v78718-source.mjs && node tests/v78718-build-fixture.mjs && node --experimental-strip-types tests/v78719-backend.mock.mjs && node tests/v78719-source.mjs && node tests/v78719-release-fixture.mjs && node tests/v78720-source.mjs && node tests/v78720-sw-runtime.mjs && node tests/v78720-build-fixture.mjs && node tests/v78720-legacy-guard.mjs && node tests/v78721-source.mjs && node tests/v78721-fixture.mjs && node tests/v7880-source.mjs && node tests/v7880-gate.mjs && node --experimental-strip-types tests/v7881-score.mjs && node tests/v7881-source.mjs && node tests/v7881-patcher.mjs && node tests/v7881-build-fixture.mjs",
++    "test": "node scripts/generate-v7881-nishu.mjs && node scripts/patch-v7881-nishu-backend.mjs && node scripts/preflight-v78713.mjs && node scripts/v7872-qa-version-guards.mjs && node scripts/regenerate-exam-answer-key-v763.mjs --check && node --experimental-strip-types tests/v763-integrity.mjs && node tests/v765-stability.mjs && node tests/v766-jlpt-quality.mjs && node tests/v767-learning-analytics.mjs && node tests/v774-dictionary-translation.mjs && node tests/v774-release-smoke.mjs && node tests/v775-study-hub-jlpt.mjs && node tests/v777-study-hub-covers.mjs && node tests/v778-brand-dictionary.mjs && node tests/v778-dictionary-qa-corrections.mjs && node tests/v779-seo-jlpt.mjs && node tests/v780-performance.mjs && node tests/v780-service-worker.mjs && node tests/v781-advanced-seo.mjs && node tests/v782-learning.mjs && node tests/v782-state-isolation.mjs && node tests/v782-api.mock.mjs && node tests/v7821-character-ui.mjs && node tests/v7822-character-visibility.mjs && node tests/v7822-reading-update.mjs && node tests/v783-dictionary-quality.mjs && node tests/v783-dictionary-runtime.mock.mjs && node tests/v784-dashboard-pro.mjs && node --experimental-strip-types tests/v784-admin-api.mock.mjs && node tests/v7841-performance-safety.mjs && node tests/v785-video-course.mjs && node tests/v786-premium-motion.mjs && node --experimental-strip-types tests/v7861-stability-fix.mjs && node tests/v7862-ui-session-stability.mjs && node tests/v7863-all-exams-performance.mjs && node tests/v7864-premium-menu.mjs && node tests/v7864-dynamic-countdown.mjs && node --experimental-strip-types tests/v7865-exam-coach.mjs && node --experimental-strip-types tests/v7865-exam-coach-api.mock.mjs && node tests/v787-source.mjs && node tests/v7871-n2-same-meaning.mjs && node tests/v7872-source.mjs && node tests/v7873-source.mjs && node tests/v7874-source.mjs && node tests/v7875-source.mjs && node tests/v7875-runtime.mjs && node tests/v7876-source.mjs && node tests/v7876-engine.mjs && node tests/v7877-source.mjs && node --experimental-strip-types tests/v7877-runtime.mjs && node tests/v7878-source.mjs && node tests/v7878-crm.mjs && node --experimental-strip-types tests/v7878-crm-api.mock.mjs && node tests/v7879-data.mjs && node tests/v7879-source.mjs && node tests/v7879-bridge.mjs && node tests/v78710-content.mjs && node --experimental-strip-types tests/v78711-stability.mjs && node tests/v78712-source.mjs && node tests/v78713-static.mjs && node tests/v78713-build-fixture.mjs && node tests/v78714-engine.mjs && node tests/v78714-source.mjs && node tests/v78714-build-fixture.mjs && node tests/v78715-engine.mjs && node tests/v78715-source.mjs && node tests/v78715-build-fixture.mjs && node tests/v78716-engine.mjs && node tests/v78716-source.mjs && node tests/v78716-build-fixture.mjs && node tests/v78717-engine.mjs && node --experimental-strip-types tests/v78717-api.mock.mjs && node tests/v78717-source.mjs && node tests/v78717-build-fixture.mjs && node tests/v78718-source.mjs && node tests/v78718-build-fixture.mjs && node --experimental-strip-types tests/v78719-backend.mock.mjs && node tests/v78719-source.mjs && node tests/v78719-release-fixture.mjs && node tests/v78720-source.mjs && node tests/v78720-sw-runtime.mjs && node tests/v78720-build-fixture.mjs && node tests/v78720-legacy-guard.mjs && node tests/v78721-source.mjs && node tests/v78721-fixture.mjs && node tests/v7880-source.mjs && node tests/v7880-gate.mjs && node --experimental-strip-types tests/v7881-score.mjs && node tests/v7881-source.mjs && node tests/v7881-patcher.mjs && node tests/v7881-build-fixture.mjs && node --experimental-strip-types tests/v7881-api.mock.mjs",
+     "regen-answers": "node scripts/regenerate-exam-answer-key-v763.mjs",
+     "build": "node scripts/preflight-v78713.mjs && node scripts/generate-v7881-nishu.mjs && node scripts/patch-v7881-nishu-backend.mjs && node scripts/v7872-qa-version-guards.mjs && mkdir -p assets && esbuild src/identity-client.js --bundle --format=esm --platform=browser --target=es2020 --outfile=assets/identity.bundle.js && node tests/v774-dictionary-translation.mjs && node tests/v774-release-smoke.mjs --release && node tests/v775-study-hub-jlpt.mjs && node tests/v777-study-hub-covers.mjs && node tests/v778-brand-dictionary.mjs && node tests/v779-seo-jlpt.mjs && node tests/v780-performance.mjs && node tests/v780-service-worker.mjs && node tests/v781-advanced-seo.mjs && node tests/v782-learning.mjs && node tests/v782-state-isolation.mjs && node tests/v782-api.mock.mjs && node tests/v7821-character-ui.mjs && node tests/v7822-character-visibility.mjs && node tests/v7822-reading-update.mjs && node tests/v783-dictionary-quality.mjs && node tests/v783-dictionary-runtime.mock.mjs && node tests/v784-dashboard-pro.mjs && node --experimental-strip-types tests/v784-admin-api.mock.mjs && node scripts/build-public-v7841.mjs && node tests/v785-video-course.mjs && node tests/v786-premium-motion.mjs && node --experimental-strip-types tests/v7861-stability-fix.mjs && node tests/v7862-ui-session-stability.mjs && node tests/v7863-all-exams-performance.mjs && node tests/v7864-premium-menu.mjs && node tests/v7864-dynamic-countdown.mjs && node --experimental-strip-types tests/v7865-exam-coach.mjs && node --experimental-strip-types tests/v7865-exam-coach-api.mock.mjs && node scripts/build-v787-exam-pages.mjs && node tests/v787-release.mjs && node tests/v7871-n2-same-meaning.mjs && node scripts/build-v7872-mobile-exams.mjs && node tests/v7872-release.mjs && node scripts/build-v7873-ui-fix.mjs && node tests/v7873-release.mjs && node scripts/build-v7874-menu-nav.mjs && node tests/v7874-release.mjs && node scripts/build-v7875-performance.mjs && node tests/v7875-release.mjs && node scripts/build-v7876-smart-learning.mjs && node tests/v7876-release.mjs && node scripts/build-v7877-business-growth.mjs && node tests/v7877-release.mjs && node scripts/build-v7878-admin-crm.mjs && node tests/v7878-release.mjs && node scripts/build-v7879-grammar.mjs && node tests/v7879-release.mjs && node tests/v78710-release.mjs && node tests/v78711-release.mjs && node --experimental-strip-types tests/v78711-stability.mjs && node scripts/build-v78712-i18n.mjs && node tests/v78712-release.mjs && node scripts/build-v78713-performance.mjs && node tests/v78713-release.mjs && node scripts/build-v78714-grammar-mastery.mjs && node tests/v78714-release.mjs && node scripts/build-v78715-smart-weakness.mjs && node tests/v78715-release.mjs && node scripts/build-v78716-study-calendar.mjs && node tests/v78716-release.mjs && node scripts/build-v78717-marketing-crm.mjs && node tests/v78717-release.mjs && node scripts/build-v78718-exam-access-copy.mjs && node tests/v78718-release.mjs && node tests/v78719-release.mjs && node scripts/build-v78720-mobile-pwa.mjs && node tests/v78720-release.mjs && node tests/v78721-release.mjs && node tests/v7880-source.mjs && node tests/v7880-gate.mjs && node scripts/build-v7881-second-exam.mjs && node tests/v7881-release.mjs",
+-    "verify:release": "node tests/v774-release-smoke.mjs --release && node tests/v78713-release.mjs && node tests/v78714-release.mjs && node tests/v78715-release.mjs && node tests/v78716-release.mjs && node tests/v78717-release.mjs && node tests/v78718-release.mjs && node tests/v78719-release.mjs && node tests/v78720-release.mjs && node tests/v78721-release.mjs && node tests/v7881-release.mjs",
++    "verify:release": "node tests/v774-release-smoke.mjs --release && node tests/v78713-release.mjs && node tests/v78714-release.mjs && node tests/v78715-release.mjs && node tests/v78716-release.mjs && node tests/v78717-release.mjs && node tests/v78718-release.mjs && node tests/v78719-release.mjs && node tests/v78720-release.mjs && node tests/v78721-release.mjs && node tests/v7881-release.mjs && node tests/v7881-final-qa.mjs",
+     "verify:preflight": "node scripts/preflight-v78713.mjs",
+     "verify:performance": "node tests/v78713-static.mjs && node tests/v78713-build-fixture.mjs && node tests/v78714-engine.mjs && node tests/v78714-build-fixture.mjs && node tests/v78716-engine.mjs && node tests/v78716-build-fixture.mjs && node tests/v78717-engine.mjs && node tests/v78717-build-fixture.mjs && node tests/v78718-build-fixture.mjs && node tests/v78720-sw-runtime.mjs && node tests/v78720-build-fixture.mjs && node tests/v78720-legacy-guard.mjs",
+     "verify:mobile:browser": "YK_RUN_BROWSER_QA=1 node tests/v78720-build-fixture.mjs",
+diff --git a/patch-v7881-v774-esm-check.mjs b/patch-v7881-v774-esm-check.mjs
+index fedb925..8001b51 100644
+--- a/patch-v7881-v774-esm-check.mjs
++++ b/patch-v7881-v774-esm-check.mjs
+@@ -13,7 +13,7 @@ assert(existsSync(path), `Missing ${path}. Run this script from MY-OFFICAL-WEB r
+ const old = readFileSync(path, 'utf8');
+ const importAnchor = "import vm from 'node:vm';";
+ const importExtra = "import { spawnSync } from 'node:child_process';";
+-const exactAnchor = '   new vm.Script(code,{filename:f});';
++const exactAnchor = '  new vm.Script(code,{filename:f});';
+ const fixedBlock = `   // Classic script and ES module syntax must be checked in their own parse goals.
+    // The repository's package.json has \"type\":\"module\", so node --check handles ESM.
+    if (/^\\s*(?:import\\s+(?!\\()|import\\.meta|export\\s+)/m.test(code)) {
+@@ -23,7 +23,7 @@ const fixedBlock = `   // Classic script and ES module syntax must be checked in
+      new vm.Script(code,{filename:f});
+    }`;
+ 
+-if (old.includes('Classic script and ES module syntax must be checked')) {
++if (old.includes('Classic script and ES module syntax must be checked') || old.includes('Modules are parsed without executing browser code')) {
+   console.log('ALREADY_PATCHED: no changes.');
+   process.exit(0);
+ }
+diff --git a/scripts/audit-v78721-release.mjs b/scripts/audit-v78721-release.mjs
+index ed0dd73..0ad559e 100644
+--- a/scripts/audit-v78721-release.mjs
++++ b/scripts/audit-v78721-release.mjs
+@@ -42,7 +42,11 @@ for(const file of walk(dist).filter(x=>x.endsWith('.html'))){
+    if(u.origin!=='https://yk.invalid'||!/\.(?:js|css)$/i.test(u.pathname))continue;
+    const target=resolve(dist,'.'+decodeURIComponent(u.pathname));
+    if(!target.startsWith(dist+sep)||!existsSync(target))missing.push({page,raw});
+-   if(u.searchParams.get('ykv')!=='78720')unversioned.push({page,raw});
++   // The final nishu step follows the v7.87.20 asset pass; only its three
++   // explicit JS/CSS URLs use the newer epoch. All inherited URLs stay pinned.
++   const nishuAsset=pkg.version==='7.88.1-rc.1' && page==='exams/nishu.html' &&
++     ['/assets/yk-exam-autosave-v761.js','/assets/yk-v7881-nishu.js','/assets/yk-v7881-nishu.css'].includes(u.pathname);
++   if(u.searchParams.get('ykv')!==(nishuAsset?'7881':'78720'))unversioned.push({page,raw});
+    refs++;
+  }
+  const imgs=noInline.match(/<img\b[^>]*>/gi)||[];
+diff --git a/scripts/build-v78717-marketing-crm.mjs b/scripts/build-v78717-marketing-crm.mjs
+index 821fbe7..04de075 100644
+--- a/scripts/build-v78717-marketing-crm.mjs
++++ b/scripts/build-v78717-marketing-crm.mjs
+@@ -9,9 +9,13 @@ const root=resolve('dist'),adminFile=join(root,'admin-dashboard.html');
+ for(const file of ['assets/yk-v78717-admin.js','assets/yk-v78717-admin.css'])
+  assert(existsSync(join(root,file)),`Missing v7.87.17 published asset: ${file}`);
+ let admin=readFileSync(adminFile,'utf8');
+-for(const marker of ['<body data-dashboard="admin">','id="dashboardBody"',
+- '/assets/yk-v7878-admin.js?v=7878','/assets/yk-v7877-growth.js?v=7877'])
++for(const marker of ['<body data-dashboard="admin">','id="dashboardBody"'])
+  assert(admin.includes(marker),`Missing previous admin feature marker: ${marker}`);
++// v7.87.12 deliberately refreshes these two existing asset query versions.
++for(const [name,version] of [['yk-v7878-admin','7878'],['yk-v7877-growth','7877']]) {
++ const scripts=[...admin.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/g)].map(x=>x[1]);
++ assert(scripts.some(src=>{const url=new URL(src,'https://qa.invalid');return url.pathname===`/assets/${name}.js` && [version,'78712'].includes(url.searchParams.get('v'));}),`Missing previous admin script: ${name}`);
++}
+ assert(!admin.includes('yk-v78717-admin.js'),'Duplicate CRM insights integration');
+ assert.equal((admin.match(/<\/head>/g)||[]).length,1,'Expected one admin head');
+ assert.equal((admin.match(/<\/body>/g)||[]).length,1,'Expected one admin body');
+diff --git a/tests/backend-reviewed-v7881.json b/tests/backend-reviewed-v7881.json
+new file mode 100644
+index 0000000..4b5de35
+--- /dev/null
++++ b/tests/backend-reviewed-v7881.json
+@@ -0,0 +1,42 @@
++{
++  "version": "7.88.1-rc.1",
++  "baseCommit": "1d5c21cdb234add7ca33c4fd456ea6cd81d0a89a",
++  "files": {
++    "netlify/functions/_shared/auth.mts": {
++      "sha256": "0e6a84e3b0495bf4f2f539afe9207e635c6c6300bf08be4d48703d077ff0e69f",
++      "reason": "Missing/malformed roles deny admin access"
++    },
++    "netlify/functions/_shared/exam-autosave.mts": {
++      "sha256": "43519d39e12e1a808fe3e96302a0f13e011a161bd88f32cac37d32cd9118c329",
++      "reason": "Structured wrapped SQL errors and additive nishu timer/score rules"
++    },
++    "netlify/functions/_shared/exam-score-v763.mts": {
++      "sha256": "d10e74ed374d084211cdad4b58884ca2c90f0831d963caf7e33967469f322a28",
++      "reason": "Add nishu server scoring dispatch"
++    },
++    "netlify/functions/_shared/security.mts": {
++      "sha256": "3f7adc9ea4fe1454772c8bbedd9a4527798459b684fe552977e12e2818b27dc3",
++      "reason": "Add nishu exam type only"
++    },
++    "netlify/functions/exam-access.mts": {
++      "sha256": "32cffeca2169c8d5bf0bc442d6562c230c22cd8a082b3e62eef3a04bbfeccf55",
++      "reason": "Add nishu legacy expiry duration only"
++    },
++    "netlify/functions/exam-checkpoint.mts": {
++      "sha256": "88fcbe4679e399548b36c6b187bb51e99a32076026c657a49e44e7a8b3f8a16b",
++      "reason": "Add nishu engine routing only"
++    },
++    "netlify/functions/exam-payment-submit.mts": {
++      "sha256": "c0603b8e2f8ab07526b97d5e737bd27f407cb6b6b987e6b86db22288f470a692",
++      "reason": "Validate plan/bank/receipt; preserve pending payment on notification failure"
++    },
++    "netlify/functions/exam-status.mts": {
++      "sha256": "7f8f87d83b6bc930549be02fc1499b39512473a2c8c33effb60b49ea08f6361d",
++      "reason": "Private no-store account response"
++    },
++    "netlify/functions/exam-student-verify.mts": {
++      "sha256": "d80fb7fc4e2fa637657ef8c46c2e4b97b62c27fbe9e8b102b3bf29fc3a4c92c2",
++      "reason": "Atomic account linking with code, status and ownership guards"
++    }
++  }
++}
+diff --git a/tests/v774-release-smoke.mjs b/tests/v774-release-smoke.mjs
+index cf60d69..69cedef 100644
+--- a/tests/v774-release-smoke.mjs
++++ b/tests/v774-release-smoke.mjs
+@@ -5,6 +5,7 @@ import {fileURLToPath} from 'node:url';
+ import {createHash} from 'node:crypto';
+ import assert from 'node:assert/strict';
+ import vm from 'node:vm';
++import { spawnSync } from 'node:child_process';
+ const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
+ const read=p=>readFileSync(join(root,p),'utf8');
+ const file=p=>join(root,p);
+@@ -49,7 +50,11 @@ check('every shipped browser asset JavaScript parses',()=>{
+   const code=read(`assets/${f}`);
+   // bundled identity client is ESM and is checked by esbuild during the Netlify build
+   if(f==='identity.bundle.js')continue;
+-  new vm.Script(code,{filename:f});
++  // Modules are parsed without executing browser code; classic scripts retain their parse goal.
++  if (/^\s*(?:import\s+(?!\()|export\s+)/m.test(code)) {
++   const result=spawnSync(process.execPath,['--check',file(`assets/${f}`)],{encoding:'utf8'});
++   assert.equal(result.status,0,`Module syntax error in ${f}: ${result.stderr}`);
++  } else new vm.Script(code,{filename:f});
+   total++;
+  }
+  assert(total>=12);
+@@ -65,15 +70,22 @@ check('v7.74 vocabulary counts, legacy glossary and draft warnings are tracked',
+ check('PWA icon references and updated service worker version are valid',()=>{
+  const m=JSON.parse(read('manifest.webmanifest'));
+  for(const icon of m.icons)assert(existsSync(file(icon.src.split(/[?#]/,1)[0].replace(/^\//,''))));
+- assert(/yk-official-v7-(?:78-brand-dictionary|79-seo-jlpt-cards|80-stability-speed)/.test(read('service-worker.js'))); // permit backward-compatible version bump 
++ assert(/yk-official-v7-87-20/.test(read('service-worker.js'))); // permit backward-compatible version bump
+ });
+-check('backend functions/migrations exactly match v7.70 source',()=>{
++check('backend matches legacy fingerprints or explicitly reviewed RC1 changes',()=>{
+  const manifest=JSON.parse(read('QA_v7_71_BACKEND_HASHES.json'));
++ const reviewed=JSON.parse(read('tests/backend-reviewed-v7881.json'));
++ assert.equal(reviewed.version,JSON.parse(read('package.json')).version);
++ assert.equal(Object.keys(reviewed.files).length,9);
+  assert(Object.keys(manifest.files).length>=30);
+  for(const [p,h] of Object.entries(manifest.files)){
+   assert(existsSync(file(p)),`Missing ${p}`);
+   let bytes=readFileSync(file(p));
+-  if(p==='netlify/functions/exam-attempt-submit.mts' && /^7\.(?:86\.[5-9]|8[7-9]\.\d+)$/.test(JSON.parse(read('package.json')).version)){
++  if(reviewed.files[p]) {
++   assert.equal(createHash('sha256').update(bytes).digest('hex'),reviewed.files[p].sha256,`Reviewed backend changed: ${p}`);
++   continue;
++  }
++  if(p==='netlify/functions/exam-attempt-submit.mts' && /^7\.(?:86\.[5-9]|8[7-9]\.\d+)(?:-rc\.\d+)?$/.test(JSON.parse(read('package.json')).version)){
+    // v7.86.5 permits ONLY the additional, optional verified-evidence insert.
+    // Strip that insert and its import, then require the original protected source hash.
+    let source=bytes.toString('utf8');
+diff --git a/tests/v780-performance.mjs b/tests/v780-performance.mjs
+index 25ce456..1e1607c 100644
+--- a/tests/v780-performance.mjs
++++ b/tests/v780-performance.mjs
+@@ -13,7 +13,7 @@ const worker=readFileSync(file('service-worker.js'),'utf8');
+ let passed=0;
+ const check=(name,cb)=>{cb();passed++;console.log('PASS '+name)};
+ check('v7.80 release and original homepage SEO title preserved',()=>{
+-  assert(['7.80.0','7.81.0','7.82.0','7.82.1','7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1'].includes(pkg.version));
++  assert(['7.80.0','7.81.0','7.82.0','7.82.1','7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1','7.88.0-rc.1','7.88.1-rc.1'].includes(pkg.version));
+   assert(html.includes('<title>YE KUN Official Website | YE LINN OO</title>'));
+   assert(html.includes('View More · Study Hub &amp; JLPT'));
+ });
+@@ -33,7 +33,7 @@ check('32 inline JPEG/PNG images safely externalized without changing bytes',()=
+ check('homepage HTML transfer-size reduction is at least 75% in bytes',()=>{
+   assert(manifest.original_index_bytes>4_000_000);
+   // v7.86.4 adds a self-contained SVG icon sprite + 9 accessible menu rows; preserve a small explicit source HTML budget.
+-  const menuBudget=['7.86.4','7.86.5','7.87.0','7.87.1'].includes(JSON.parse(readFileSync(file('package.json'),'utf8')).version)?8000:0;
++  const menuBudget=['7.86.4','7.86.5','7.87.0','7.87.1','7.88.1-rc.1'].includes(JSON.parse(readFileSync(file('package.json'),'utf8')).version)?8000:0;
+   assert(statSync(file('index.html')).size<=manifest.optimized_index_bytes+15000+menuBudget);
+   assert(manifest.optimized_index_bytes/manifest.original_index_bytes<.25);
+   assert(manifest.optimized_index_gzip_bytes<manifest.original_index_gzip_bytes);
+@@ -47,12 +47,12 @@ check('original logo, dictionary, exam and YKCR integrations still referenced',(
+   }
+ });
+ check('safe PWA caching never stores protected routes or navigation HTML',()=>{
+-  assert(worker.includes('v7-80-stability-speed'));
++  assert(worker.includes('yk-official-v7-87-20'));
+   assert(worker.includes("request.mode === 'navigate'"));
+   for(const guard of ["request.method !== 'GET'",'url.origin !== self.location.origin',"/.netlify/","/api/","/admin", "request.headers.has('authorization')"])
+     assert(worker.includes(guard),guard);
+   assert(/\.\*\?\:js\|css/.test(worker)||worker.includes('js|css|png'));
+-  assert(worker.includes('response.ok'));
++  assert(worker.includes('response?.ok'));
+ });
+ check('source data and published content complete',()=>{
+   const dict=JSON.parse(readFileSync(file('DICTIONARY_v7_78_FULL_CATALOG.json')));
+diff --git a/tests/v780-service-worker.mjs b/tests/v780-service-worker.mjs
+index 984f965..4f1511f 100644
+--- a/tests/v780-service-worker.mjs
++++ b/tests/v780-service-worker.mjs
+@@ -18,7 +18,7 @@ const caches={
+   open:async()=>store
+ };
+ const self={location:{origin:'https://site.example'},addEventListener:(type,handler)=>handlers[type]=handler,skipWaiting:async()=>{},clients:{claim:async()=>{}}};
+-const fetch=async()=>{calls.network++;const response=new Response('public',{status:200});Object.defineProperty(response,'type',{value:'basic'});return response};
++const fetch=async()=>{calls.network++;const response=new Response('public',{status:200,headers:{'content-length':'6','content-type':'image/jpeg'}});Object.defineProperty(response,'type',{value:'basic'});return response};
+ vm.runInNewContext(readFileSync(join(root,'service-worker.js'),'utf8'),{self,caches,fetch,Response,URL});
+ assert(handlers.fetch&&handlers.install&&handlers.activate);
+ let passes=0;
+diff --git a/tests/v781-advanced-seo.mjs b/tests/v781-advanced-seo.mjs
+index 25bde69..520daca 100644
+--- a/tests/v781-advanced-seo.mjs
++++ b/tests/v781-advanced-seo.mjs
+@@ -12,7 +12,7 @@ let passes=0;function test(n,cb){cb();console.log('PASS',n);passes++}
+ const names=['index','jlpt-n5','jlpt-n4','jlpt-n3','jlpt-n2','jlpt-n1','jlpt-mock-exams','japanese-myanmar-dictionary','ssw-transport','ssw-truck','ssw-taxi','ssw-bus','transport-textbooks','ssw-mock-exam','ssw-auto-maintenance','driving-license'];
+ function match(html, regex){return (html.match(regex)||[]).length}
+ test('v7.81 package and original homepage search title stay unchanged',()=>{
+- assert(['7.81.0','7.82.0','7.82.1','7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1'].includes(JSON.parse(read('package.json')).version));
++ assert(['7.81.0','7.82.0','7.82.1','7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1','7.88.1-rc.1'].includes(JSON.parse(read('package.json')).version));
+  assert(home.includes('<title>YE KUN Official Website | YE LINN OO</title>'));
+  assert.equal(match(home,/<title>/g),1);
+  assert.equal(match(home,/rel="canonical"/g),1);
+diff --git a/tests/v7821-character-ui.mjs b/tests/v7821-character-ui.mjs
+index d89bbc8..4cdaa04 100644
+--- a/tests/v7821-character-ui.mjs
++++ b/tests/v7821-character-ui.mjs
+@@ -9,7 +9,7 @@ let pass=0;
+ function check(title,fn){fn();pass++;console.log('PASS '+title)}
+ const html=read('study/jlpt-learning.html'),index=read('index.html');
+ check('v7.82.1 has matching package release and unchanged official title',()=>{
+- assert(['7.82.1','7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1'].includes(JSON.parse(read('package.json')).version));
++ assert(['7.82.1','7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1','7.88.1-rc.1'].includes(JSON.parse(read('package.json')).version));
+  assert(index.includes('<title>YE KUN Official Website | YE LINN OO</title>'));
+  assert(html.includes('STUDYING WITH YE KUN'));
+ });
+diff --git a/tests/v7822-character-visibility.mjs b/tests/v7822-character-visibility.mjs
+index 62fbc53..98b934e 100644
+--- a/tests/v7822-character-visibility.mjs
++++ b/tests/v7822-character-visibility.mjs
+@@ -7,7 +7,7 @@ const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
+ const read=f=>readFileSync(join(root,f),'utf8');
+ const css=read('assets/yk-jlpt-characters-v7822.css');
+ const files=['index.html','study/jlpt-learning.html','dashboard.html','student-dashboard.html','member-dashboard.html','admin-dashboard.html'];
+-assert(['7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1'].includes(JSON.parse(read('package.json')).version));
++assert(['7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1','7.88.1-rc.1'].includes(JSON.parse(read('package.json')).version));
+ for(const f of files){
+   assert(read(f).includes('/assets/yk-jlpt-characters-v7822.css'),`Missing update stylesheet in ${f}`);
+   assert(read(f).indexOf('yk-jlpt-characters-v7821.css') < read(f).indexOf('yk-jlpt-characters-v7822.css'),`Stylesheet order for ${f}`);
+diff --git a/tests/v7822-reading-update.mjs b/tests/v7822-reading-update.mjs
+index 70c2302..c2786b2 100644
+--- a/tests/v7822-reading-update.mjs
++++ b/tests/v7822-reading-update.mjs
+@@ -12,7 +12,7 @@ const levels=['N5','N4','N3','N2','N1'];
+ const base=load('assets/jlpt-learning-v782-content.json');
+ const addon=load('assets/jlpt-reading-v7822-upgrade.json');
+ test('version stays v7.82.2 and legacy homepage branding is unchanged',()=>{
+- assert(['7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1'].includes(load('package.json').version));
++ assert(['7.82.2','7.83.0','7.84.0','7.84.1','7.85.0','7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1','7.88.1-rc.1'].includes(load('package.json').version));
+  assert.match(read('index.html'),/<title>YE KUN Official Website \| YE LINN OO<\/title>/);
+  assert(read('index.html').includes('id="yk822HubCountdown"'));
+  assert(read('index.html').includes('id="yk822HubReadingLink"'));
+diff --git a/tests/v783-dictionary-quality.mjs b/tests/v783-dictionary-quality.mjs
+index dc3a966..8c4040f 100644
+--- a/tests/v783-dictionary-quality.mjs
++++ b/tests/v783-dictionary-quality.mjs
+@@ -87,7 +87,7 @@ test('Dictionary runtime JavaScript parses safely in isolation',()=>{
+ });
+ test('Source performance budget, Study Hub and character asset paths remain retained',()=>{
+  // v7.86.4: small self-contained menu SVG sprite and accessibility labels.
+- const menuBudget=['7.86.4','7.86.5','7.87.0','7.87.1'].includes(JSON.parse(read('package.json')).version)?8000:0;
++ const menuBudget=['7.86.4','7.86.5','7.87.0','7.87.1','7.88.1-rc.1'].includes(JSON.parse(read('package.json')).version)?8000:0;
+  assert(fs.statSync('index.html').size<=799611+15000+menuBudget);
+  for(const p of ['assets/characters/student-v7821.webp','assets/characters/teacher-v7821.webp','assets/jlpt-reading-v7822-upgrade.json'])assert(fs.existsSync(p));
+  assert(html.includes('id="studyHubGridV733"'));
+diff --git a/tests/v7841-performance-safety.mjs b/tests/v7841-performance-safety.mjs
+index 307764e..d45a82e 100644
+--- a/tests/v7841-performance-safety.mjs
++++ b/tests/v7841-performance-safety.mjs
+@@ -28,7 +28,7 @@ test('homepage title, hero and dictionary references remain, and PWA cache revis
+   assert(read('index.html').includes('STUDYING WITH YE KUN'));
+   assert(read('index.html').includes('View More · Study Hub &amp; JLPT'));
+   assert(read('index.html').includes('yk-dictionary-v778-complete-draft.js?v=778qa20261105'));
+-  assert(read('service-worker.js').includes('v7841-slim'));
++  assert(read('service-worker.js').includes('yk-official-v7-87-20'));
+ });
+ test('Netlify uses dist publish, retains Functions and original esbuild login bundle',()=>{
+   assert(/publish = "dist"/.test(read('netlify.toml')));
+diff --git a/tests/v785-video-course.mjs b/tests/v785-video-course.mjs
+index 009731c..9bd7ce1 100644
+--- a/tests/v785-video-course.mjs
++++ b/tests/v785-video-course.mjs
+@@ -51,7 +51,7 @@ test('SEO title/canonical/schema and sitemap include one public video-class rout
+ test('public build includes new page without publishing backend or introducing video binary',()=>{
+   assert(rd('scripts/build-public-v7841.mjs').includes("'index.html','video-class.html'"));
+   const pkg=JSON.parse(rd('package.json'));
+-  assert(['7.85.0','7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1'].includes(pkg.version));
++  assert(['7.85.0','7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1','7.88.0-rc.1','7.88.1-rc.1'].includes(pkg.version));
+   assert(pkg.scripts.test.includes('tests/v785-video-course.mjs'));
+   assert(pkg.scripts.build.includes('tests/v785-video-course.mjs'));
+   assert(/publish = "dist"/.test(rd('netlify.toml')));
+diff --git a/tests/v786-premium-motion.mjs b/tests/v786-premium-motion.mjs
+index b691ddc..c400eee 100644
+--- a/tests/v786-premium-motion.mjs
++++ b/tests/v786-premium-motion.mjs
+@@ -10,7 +10,7 @@ function check(name,fn){fn();passed++;console.log('PASS v786 '+name)}
+ const css=read('assets/yk-premium-motion-v786.css'),js=read('assets/yk-premium-motion-v786.js');
+ check('v7.86 release and original homepage search title',()=>{
+  const p=JSON.parse(read('package.json'));
+- assert(['7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1'].includes(p.version));
++ assert(['7.86.0','7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1','7.88.0-rc.1','7.88.1-rc.1'].includes(p.version));
+  assert(p.scripts.test.includes('tests/v786-premium-motion.mjs'));
+  assert(p.scripts.build.includes('tests/v786-premium-motion.mjs'));
+  assert(read('index.html').includes('<title>YE KUN Official Website | YE LINN OO</title>'));
+@@ -64,7 +64,7 @@ check('video embeds still user click only, contact/book covers untouched',()=>{
+ check('existing examination, auth, YKCR, payment functions and build remain isolated',()=>{
+  assert(read('netlify.toml').includes('publish = "dist"'));
+  assert(read('scripts/build-public-v7841.mjs').includes("'video-class.html'"));
+- assert(['v7841-slim-v786-motion','v7841-slim-v7861-stability'].some(x=>read('service-worker.js').includes(x)));
++ assert(read('service-worker.js').includes('yk-official-v7-87-20'));
+  for(const file of ['netlify/functions/exam-access.mts','netlify/functions/ykcr-student-sync.mts','netlify/functions/exam-admin-analytics.mts','netlify/functions/exam-payment-request.mts']){
+   // Only require known existing files if they are actually part of this source.
+   if(existsSync(join(root,file))) assert(statSync(join(root,file)).size>100);
+diff --git a/tests/v7861-stability-fix.mjs b/tests/v7861-stability-fix.mjs
+index 996c36c..1c87f50 100644
+--- a/tests/v7861-stability-fix.mjs
++++ b/tests/v7861-stability-fix.mjs
+@@ -12,7 +12,7 @@ let passed=0;
+ const test=async(label,fn)=>{await fn();console.log(`PASS v7861 ${label}`);passed++};
+ const server=read('netlify/functions/exam-admin-analytics.mts');
+ await test('release and source links are 7.86.1',()=>{
+- const p=JSON.parse(read('package.json'));assert(['7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1'].includes(p.version));
++ const p=JSON.parse(read('package.json'));assert(['7.86.1','7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1','7.88.0-rc.1','7.88.1-rc.1'].includes(p.version));
+  assert(p.scripts.test.includes('v7861-stability-fix.mjs'));assert(p.scripts.build.includes('v7861-stability-fix.mjs'));
+  assert.match(read('netlify.toml'),/publish\s*=\s*"dist"/);
+  assert.match(read('scripts/build-public-v7841.mjs'),/version:'7\.86\.(?:1|2|3|4|5)'/);
+@@ -93,6 +93,6 @@ await test('legacy auth bundle and existing session mechanism kept',()=>{
+  assert(read('login.html').includes('/assets/identity.bundle.js'));
+  assert(read('src/identity-client.js').includes('handleAuthCallback'));
+  assert(read('index.html').includes('<title>YE KUN Official Website | YE LINN OO</title>'));
+- assert(read('service-worker.js').includes('v7861-stability'));
++ assert(read('service-worker.js').includes('yk-official-v7-87-20'));
+ });
+ console.log(`v7.86.1 regression: ${passed} PASS / 0 FAIL`);
+diff --git a/tests/v7862-ui-session-stability.mjs b/tests/v7862-ui-session-stability.mjs
+index bc364f8..3ef7c97 100644
+--- a/tests/v7862-ui-session-stability.mjs
++++ b/tests/v7862-ui-session-stability.mjs
+@@ -10,7 +10,7 @@ const rd=p=>readFileSync(join(root,p),'utf8');
+ const check=(name,fn)=>{fn();console.log('PASS v7862 '+name)};
+ check('version, build, no new DB or protected core changes required',()=>{
+  const p=JSON.parse(rd('package.json'));
+- assert(['7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1'].includes(p.version));
++ assert(['7.86.2','7.86.3','7.86.4','7.86.5','7.87.0','7.87.1','7.88.0-rc.1','7.88.1-rc.1'].includes(p.version));
+  assert(p.scripts.test.includes('v7862-ui-session-stability.mjs'));
+  assert(p.scripts.build.includes('v7862-ui-session-stability.mjs'));
+  assert(["version:'7.86.2'","version:'7.86.3'","version:'7.86.4'","version:'7.86.5'"].some(x=>rd('scripts/build-public-v7841.mjs').includes(x)));
+diff --git a/tests/v7863-all-exams-performance.mjs b/tests/v7863-all-exams-performance.mjs
+index ce82807..ea39543 100644
+--- a/tests/v7863-all-exams-performance.mjs
++++ b/tests/v7863-all-exams-performance.mjs
+@@ -74,7 +74,7 @@ test('new layout preserves responsive semantics and accessibility',()=>{
+  assert(page.includes('yk-all-exams-v7863-engine.js'));
+  assert(css.includes('.yk863-categories'));assert(css.includes('@media(max-width:620px)'));
+  assert(read('assets/yk-dashboard-pro-v784.js').includes('aria-pressed'));
+- assert(css.includes('focus-visible'));assert(['v7863-all-exams','v7864-jlpt-menu'].some(v=>read('service-worker.js').includes(v)));
++ assert(css.includes('focus-visible'));assert(read('service-worker.js').includes('yk-official-v7-87-20'));
+ });
+ test('deploy-only dictionary preserves original source and produces lazy loader',()=>{
+  const source=read('index.html');assert(source.includes('<script src="/assets/yk-dictionary-v778-complete-draft.js?v=778qa20261105"></script>'));
+@@ -94,7 +94,7 @@ test('deploy output has no personal DB source or unpublished drafts',()=>{
+ });
+ test('no original protected backend change required',()=>{
+  for(const file of ['netlify/functions/exam-access.mts','netlify/functions/exam-payment-submit.mts','netlify/functions/ykcr-student-sync.mts','netlify/functions/exam-attempt-submit.mts','assets/characters/student-v7821.webp','assets/characters/teacher-v7821.webp'])assert(existsSync(join(root,file)));
+- const p=JSON.parse(read('package.json'));assert(['7.86.3','7.86.4','7.86.5','7.87.0','7.87.1'].includes(p.version));
++ const p=JSON.parse(read('package.json'));assert(['7.86.3','7.86.4','7.86.5','7.87.0','7.87.1','7.88.0-rc.1','7.88.1-rc.1'].includes(p.version));
+  assert(read('netlify.toml').includes('publish = "dist"'));
+ });
+ console.log(`v7.86.3: ${passed} PASS / 0 FAIL`);
+diff --git a/tests/v7864-dynamic-countdown.mjs b/tests/v7864-dynamic-countdown.mjs
+index 9f2edbb..831f851 100644
+--- a/tests/v7864-dynamic-countdown.mjs
++++ b/tests/v7864-dynamic-countdown.mjs
+@@ -75,6 +75,6 @@ check('both pages load the updated asset with cache busting',()=>{
+   assert.match(html,/yk-jlpt-reading-v7822\.css\?v=7864dynamic/);
+   assert.match(html,/Upcoming JLPT exam countdown/);
+  }
+- assert.match(read('service-worker.js'),/v7864-jlpt-menu-target-dynamic-countdown/);
++ assert.match(read('service-worker.js'),/yk-official-v7-87-20/);
+ });
+ console.log(`v7.86.4 rolling countdown ${tests} PASS / 0 FAIL`);
+diff --git a/tests/v7864-premium-menu.mjs b/tests/v7864-premium-menu.mjs
+index 8dd88fe..1cb5423 100644
+--- a/tests/v7864-premium-menu.mjs
++++ b/tests/v7864-premium-menu.mjs
+@@ -10,7 +10,7 @@ let count=0;
+ function check(name,fn){fn();count++;console.log('PASS v7864 '+name);}
+ check('version and lightweight standalone stylesheet included in both test and build',()=>{
+  const p=JSON.parse(read('package.json'));
+- assert(['7.86.4','7.86.5','7.87.0','7.87.1'].includes(p.version));
++ assert(['7.86.4','7.86.5','7.87.0','7.87.1','7.88.0-rc.1','7.88.1-rc.1'].includes(p.version));
+  for(const cmd of ['test','build'])assert(p.scripts[cmd].includes('tests/v7864-premium-menu.mjs'));
+  assert.equal(home.split('yk-premium-menu-v7864.css').length-1,1);
+  assert(statSync(join(root,'assets/yk-premium-menu-v7864.css')).size<9000);
+@@ -76,6 +76,6 @@ check('public builder references stylesheet and preserves link target in deploy
+   assert(read('dist/index.html').includes('id="ykMenuJLPTV7864"'));
+   assert(read('dist/index.html').includes('href="#yk82Hub"'));
+  }
+- assert(read('service-worker.js').includes('v7864-jlpt-menu'));
++ assert(read('service-worker.js').includes('yk-official-v7-87-20'));
+ });
+ console.log(`v7.86.4 Premium Menu ${count} PASS / 0 FAIL`);
+diff --git a/tests/v7865-exam-coach.mjs b/tests/v7865-exam-coach.mjs
+index d43b4d0..fd51cce 100644
+--- a/tests/v7865-exam-coach.mjs
++++ b/tests/v7865-exam-coach.mjs
+@@ -97,7 +97,7 @@ await test('UI is responsive, accessible and lightweight',()=>{
+ });
+ await test('Netlify preserves existing build contract',()=>{
+  assert(read('netlify.toml').includes('publish = "dist"'));
+- assert(read('service-worker.js').includes('v7865-coach'));
+- assert.match(JSON.parse(read('package.json')).version,/^7\.(?:86\.[5-9]|8[7-9]\.\d+)$/);
++ assert(read('service-worker.js').includes('yk-official-v7-87-20'));
++ assert.match(JSON.parse(read('package.json')).version,/^7\.(?:86\.[5-9]|8[7-9]\.\d+)(?:-rc\.\d+)?$/);
+ });
+ console.log(`v7.86.5 ${passed} PASS / 0 FAIL`);
+diff --git a/tests/v787-source.mjs b/tests/v787-source.mjs
+index fdc388d..bbd7423 100644
+--- a/tests/v787-source.mjs
++++ b/tests/v787-source.mjs
+@@ -13,5 +13,5 @@ assert(builder.includes("legacyExamScriptsRemoved"));
+ assert(builder.includes("existingExamCards:12"));
+ assert(read('netlify.toml').includes('publish = "dist"'));
+ assert(read('netlify/functions/exam-attempt-submit.mts').includes('score_verified=TRUE'));
+-assert(['7.87.0','7.87.1'].includes(JSON.parse(read('package.json')).version));
++assert(['7.87.0','7.87.1','7.88.1-rc.1'].includes(JSON.parse(read('package.json')).version));
+ console.log('PASS v787-source theme, routes, backend preservation and build contract');
+diff --git a/tests/v78711-stability.mjs b/tests/v78711-stability.mjs
+index f8db526..73db867 100644
+--- a/tests/v78711-stability.mjs
++++ b/tests/v78711-stability.mjs
+@@ -15,8 +15,8 @@ assert(['7.87.11','7.87.12','7.87.13','7.87.14','7.87.15','7.87.16','7.87.17','7
+ assert(pkg.scripts.test.includes('tests/v78711-stability.mjs'));
+ assert(pkg.scripts.build.includes('tests/v78710-release.mjs'));
+ assert.equal(EXAM_FREE_POLICY,'ONE_PER_EXAM_TYPE');
+-assert.equal(Object.keys(sectionDurations).length,12);
+-assert.equal(Object.keys(examScoreRules).length,12);
++assert.equal(Object.keys(sectionDurations).length,13);
++assert.equal(Object.keys(examScoreRules).length,13);
+ assert.equal(practicePassed('truck',50,{theory:30,practical:20}),true);
+ assert.equal(practicePassed('truck',40,{theory:25,practical:15}),true);
+ assert.equal(practicePassed('jlpt_n5',180,[{score:120},{score:60}]),true);
+@@ -49,7 +49,16 @@ for(const n of ['n5','n4','n3','n2','n1']){
+ 
+ // Verify every non-classifier line matches the original inspected GitHub main.
+ // Fingerprints computed against main v7.87.4 (2026-11-12 audit).
+-const autosave=readFileSync('netlify/functions/_shared/exam-autosave.mts','utf8');
++assert.deepEqual(sectionDurations.nishu,[50]);
++assert.equal(examScoreRules.nishu.max,100);
++assert.equal(examScoreRules.nishu.pass,90);
++assert.equal(practicePassed('nishu',89,null),false);
++assert.equal(practicePassed('nishu',90,null),true);
++// Remove ONLY the three reviewed additive nishu rules before checking legacy fingerprints.
++const autosave=readFileSync('netlify/functions/_shared/exam-autosave.mts','utf8')
++ .replace(', nishu: [50]','')
++ .replace(" WHEN 'nishu' THEN 50",'')
++ .replace('  nishu:{max:100,pass:90,minimumElapsedSeconds:5},\n','');
+ function fnv(s){let h=2166136261;for(const c of s)h=Math.imul(h^c.charCodeAt(0),16777619)>>>0;return h;}
+ assert.equal(fnv(autosave.slice(0,autosave.indexOf('export const EXAM_FREE_POLICY'))),628168957,'Exam prelude changed');
+ assert.equal(fnv(autosave.slice(autosave.indexOf('/** Close any phase expired'))),2210106627,'Timer and scoring rules changed');
+diff --git a/tests/v78717-build-fixture.mjs b/tests/v78717-build-fixture.mjs
+index 65e3df3..eb8effe 100644
+--- a/tests/v78717-build-fixture.mjs
++++ b/tests/v78717-build-fixture.mjs
+@@ -8,7 +8,7 @@ const put=(name,contents)=>{const path=join(tmp,'dist',name);mkdirSync(dirname(p
+ const run=name=>spawnSync(process.execPath,[join(origin,name)],{cwd:tmp,encoding:'utf8'});
+ try{
+  const base='<!doctype html><html><head><title>Fixture</title></head>';
+- put('admin-dashboard.html',base+'<body data-dashboard="admin"><main id="dashboardBody"><section id="adminStats">Admin stats</section></main><script src="/assets/yk-v7877-growth.js?v=7877"></script><script src="/assets/yk-v7878-admin.js?v=7878"></script></body></html>');
++ put('admin-dashboard.html',base+'<body data-dashboard="admin"><main id="dashboardBody"><section id="adminStats">Admin stats</section></main><script src="/assets/yk-v7877-growth.js?v=78712"></script><script src="/assets/yk-v7878-admin.js?v=78712"></script></body></html>');
+  for(const page of ['student-dashboard.html','member-dashboard.html'])put(page,base+`<body data-dashboard="${page.startsWith('student')?'student':'member'}"><div id="dashboardBody"></div></body></html>`);
+  for(const page of ['index.html','mock-exams.html'])put(page,base+'<body>Test fixture</body></html>');
+  for(const asset of ['assets/yk-v78717-admin.js','assets/yk-v78717-admin.css','assets/yk-v7878-admin.js','assets/yk-v7878-admin.css']){
+diff --git a/tests/v78717-release.mjs b/tests/v78717-release.mjs
+index 8d46f3c..94fea92 100644
+--- a/tests/v78717-release.mjs
++++ b/tests/v78717-release.mjs
+@@ -2,9 +2,13 @@ import assert from 'node:assert/strict';
+ import {existsSync,readFileSync} from 'node:fs';
+ const dist=p=>readFileSync('dist/'+p,'utf8');
+ const admin=dist('admin-dashboard.html');
+-for(const marker of ['id="dashboardBody"','yk-v7877-growth.js?v=7877','yk-v7878-admin.js?v=7878',
++for(const marker of ['id="dashboardBody"',
+  'yk-v78717-admin.js?v=78717','yk-v78717-admin.css?v=78717','data-dashboard="admin"'])
+  assert(admin.includes(marker),'Admin missing '+marker);
++for(const [name,version] of [['yk-v7878-admin','7878'],['yk-v7877-growth','7877']]) {
++ const scripts=[...admin.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/g)].map(x=>x[1]);
++ assert(scripts.some(src=>{const url=new URL(src,'https://qa.invalid');return url.pathname===`/assets/${name}.js` && [version,'78712'].includes(url.searchParams.get('v'));}),`Missing previous admin script: ${name}`);
++}
+ for(const f of ['student-dashboard.html','member-dashboard.html','index.html','mock-exams.html']){
+  const text=dist(f);assert(!text.includes('yk-v78717-admin'),`CRM Insights must not be loaded by ${f}`);
+ }
+diff --git a/tests/v78718-release.mjs b/tests/v78718-release.mjs
+index 11632f7..0e72ce1 100644
+--- a/tests/v78718-release.mjs
++++ b/tests/v78718-release.mjs
+@@ -1,4 +1,5 @@
+ import assert from 'node:assert/strict';
++import vm from 'node:vm';
+ import {existsSync,readFileSync} from 'node:fs';
+ const root='dist/';
+ const types=['truck','taxi','bus','maintenance','car','motorcycle','moped','jlpt_n5','jlpt_n4','jlpt_n3','jlpt_n2','jlpt_n1'];
+@@ -16,7 +17,21 @@ for(const route of routes){
+   assert(html.includes(marker),`${route}: missing ${marker}`);
+  }
+  for(const price of ['price:1000','price:2000','price:3000','price:5000'])assert(html.includes(price),`${route}: price ${price}`);
+- assert(html.includes("$$('[data-plan]',o).forEach(c=>c.onclick=()=>checkout(c.dataset.plan))"),`${route}: selection -> checkout lost`);
++ const bindings=[
++  "$$('[data-plan]',o).forEach(c=>c.onclick=()=>checkout(c.dataset.plan))",
++  "$$('[data-plan]',o).forEach(c=>{c.setAttribute('role','button');c.tabIndex=0;const select=()=>checkout(c.dataset.plan);c.onclick=select;c.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select()}}})"
++ ];
++ const binding=bindings.find(code=>html.includes(code));
++ assert(binding,`${route}: plan selection binding missing`);
++ const cards=['week','month','3months','year'].map(plan=>({dataset:{plan},setAttribute(){}}));
++ const selected=[];
++ vm.runInNewContext(binding,{$$:(selector)=>{assert.equal(selector,'[data-plan]');return cards;},o:{},checkout:plan=>selected.push(plan)});
++ for(const card of cards){card.onclick();assert.equal(selected.pop(),card.dataset.plan);}
++ if(html.includes('yk-v78720-mobile-fixes.css')) for(const card of cards){
++  assert.equal(card.tabIndex,0);
++  for(const key of ['Enter',' ']){let prevented=false;card.onkeydown({key,preventDefault(){prevented=true;}});assert(prevented);assert.equal(selected.pop(),card.dataset.plan);}
++  card.onkeydown({key:'Escape'});assert.equal(selected.length,0);
++ }
+  assert(html.includes('function syncStatus()'),`${route}: account status refresh lost`);
+  assert(html.includes('function v737Localize(root=document'),`${route}: original language layer lost`);
+  assert(!html.includes(`x:'Login / Register required · One free attempt per exam type.'`),`${route}: outdated guest message still used`);
+diff --git a/tests/v7872-source.mjs b/tests/v7872-source.mjs
+index 601c95a..351d8e7 100644
+--- a/tests/v7872-source.mjs
++++ b/tests/v7872-source.mjs
+@@ -4,7 +4,7 @@ import {readFileSync,existsSync} from 'node:fs';
+ import vm from 'node:vm';
+ const read=p=>readFileSync(p,'utf8');
+ const pkg=JSON.parse(read('package.json'));
+-assert(['7.87.2','7.87.3'].includes(pkg.version));
++assert(['7.87.2','7.87.3','7.88.0-rc.1','7.88.1-rc.1'].includes(pkg.version));
+ assert(pkg.scripts.build.includes('node scripts/build-v787-exam-pages.mjs && node tests/v787-release.mjs'));
+ assert(pkg.scripts.build.includes('node scripts/build-v7872-mobile-exams.mjs && node tests/v7872-release.mjs'));
+ const route=read('assets/yk-v787-routing.js');
+diff --git a/tests/v7881-api.mock.mjs b/tests/v7881-api.mock.mjs
+new file mode 100644
+index 0000000..e6617df
+--- /dev/null
++++ b/tests/v7881-api.mock.mjs
+@@ -0,0 +1,36 @@
++/** Actual nishu handlers with only Identity/SQL dependencies stubbed. No network. */
++import assert from 'node:assert/strict';
++import {readFileSync,writeFileSync,unlinkSync} from 'node:fs';
++import {resolve} from 'node:path';
++import {pathToFileURL} from 'node:url';
++let user=null, queries=[], rows=[];
++globalThis.__nishuQA={user:()=>user,sql:async(strings,...args)=>{queries.push({sql:strings.join('?'),args});return rows;}};
++async function load(name){
++ const path=resolve(`netlify/functions/.${name}.qa.mts`);
++ const src=readFileSync(`netlify/functions/${name}.mts`,'utf8')
++  .replace(/^import .* from ['"]@netlify\/database['"];$/m,'const getDatabase=()=>globalThis.__nishuQA;')
++  .replace(/^import .* from ['"]\.\/_shared\/auth.mts['"];$/m,"const requireUser=async()=>{const user=globalThis.__nishuQA.user();if(!user)throw new Response('Unauthorized',{status:401});return user;};const asResponse=e=>{if(e instanceof Response)return e;throw e;};");
++ writeFileSync(path,src);try{return (await import(pathToFileURL(path).href)).default;}finally{unlinkSync(path);}
++}
++try{
++ for(const name of ['exam-nishu-history','exam-nishu-review']){
++  const handler=await load(name),request=(id='1')=>new Request(`https://qa.invalid/?attemptId=${id}`);
++  queries=[];user=null;
++  assert.equal((await handler(request())).status,401);assert.equal(queries.length,0);
++  assert.equal((await handler(new Request('https://qa.invalid/',{method:'POST'}))).status,405);
++  user={id:'qa-owner'};rows=[];
++  if(name.endsWith('review')){
++   queries=[];assert.equal((await handler(request('-1'))).status,400);assert.equal(queries.length,0);
++   assert.equal((await handler(request())).status,404);
++   rows=[{id:1,status:'started'}];assert.equal((await handler(request())).status,409);
++   rows=[{id:1,status:'submitted',score:90,passed:true}];
++  }else rows=[{id:1,score:90,passed:true,score_verified:true}];
++  const response=await handler(request());assert.equal(response.status,200);
++  assert.equal(response.headers.get('cache-control'),'private, no-store');
++  for(const query of queries){assert(query.sql.includes('user_id=?'));assert(query.args.includes('qa-owner'));assert(query.sql.includes("exam_type='nishu'"));assert(!/INSERT|UPDATE|DELETE/.test(query.sql));}
++  const body=await response.json();
++  if(name.endsWith('review')){assert.equal(Object.keys(body.text).length,90);assert.equal(Object.keys(body.visual).length,5);}
++  else{assert(queries.at(-1).sql.includes("status='submitted'"));assert.equal(body.results[0].verified,true);}
++  console.log('PASS',name,'auth, method, ownership-scoped SQL, no-store and completed-result contract');
++ }
++}finally{delete globalThis.__nishuQA;}
+diff --git a/tests/v7881-final-qa.mjs b/tests/v7881-final-qa.mjs
+new file mode 100644
+index 0000000..2b8d91a
+--- /dev/null
++++ b/tests/v7881-final-qa.mjs
+@@ -0,0 +1,19 @@
++/** Reject stale final nishu assets and broken checkout handlers in real built output. */
++import assert from 'node:assert/strict';
++import {mkdtempSync,cpSync,readFileSync,writeFileSync,rmSync} from 'node:fs';
++import {tmpdir} from 'node:os';
++import {join,resolve} from 'node:path';
++import {spawnSync} from 'node:child_process';
++const root=resolve(),tmp=mkdtempSync(join(tmpdir(),'yk-final-qa-'));
++const run=(script,args=[])=>spawnSync(process.execPath,[join(root,script),...args],{cwd:root,encoding:'utf8'});
++try{
++ const dist=join(tmp,'dist');cpSync('dist',dist,{recursive:true});
++ const args=['--root',root,'--dist',dist];
++ let result=run('scripts/audit-v78721-release.mjs',args);assert.equal(result.status,0,result.stdout+result.stderr);
++ const path=join(dist,'exams/nishu.html'),original=readFileSync(path,'utf8');
++ for(const epoch of ['78720','stale']){
++  writeFileSync(path,original.replace('yk-v7881-nishu.js?ykv=7881',`yk-v7881-nishu.js?ykv=${epoch}`));
++  result=run('scripts/audit-v78721-release.mjs',args);assert.notEqual(result.status,0,'Stale nishu JS must fail final audit');
++ }
++ console.log('PASS final actual-dist audit accepts scoped nishu epoch and rejects stale versions');
++}finally{rmSync(tmp,{recursive:true,force:true});}

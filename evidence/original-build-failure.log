@@ -1,0 +1,58 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> ye-kun-official-website@7.88.1-rc.1 build
+> node scripts/preflight-v78713.mjs && node scripts/generate-v7881-nishu.mjs && node scripts/patch-v7881-nishu-backend.mjs && node scripts/v7872-qa-version-guards.mjs && mkdir -p assets && esbuild src/identity-client.js --bundle --format=esm --platform=browser --target=es2020 --outfile=assets/identity.bundle.js && node tests/v774-dictionary-translation.mjs && node tests/v774-release-smoke.mjs --release && node tests/v775-study-hub-jlpt.mjs && node tests/v777-study-hub-covers.mjs && node tests/v778-brand-dictionary.mjs && node tests/v779-seo-jlpt.mjs && node tests/v780-performance.mjs && node tests/v780-service-worker.mjs && node tests/v781-advanced-seo.mjs && node tests/v782-learning.mjs && node tests/v782-state-isolation.mjs && node tests/v782-api.mock.mjs && node tests/v7821-character-ui.mjs && node tests/v7822-character-visibility.mjs && node tests/v7822-reading-update.mjs && node tests/v783-dictionary-quality.mjs && node tests/v783-dictionary-runtime.mock.mjs && node tests/v784-dashboard-pro.mjs && node --experimental-strip-types tests/v784-admin-api.mock.mjs && node scripts/build-public-v7841.mjs && node tests/v785-video-course.mjs && node tests/v786-premium-motion.mjs && node --experimental-strip-types tests/v7861-stability-fix.mjs && node tests/v7862-ui-session-stability.mjs && node tests/v7863-all-exams-performance.mjs && node tests/v7864-premium-menu.mjs && node tests/v7864-dynamic-countdown.mjs && node --experimental-strip-types tests/v7865-exam-coach.mjs && node --experimental-strip-types tests/v7865-exam-coach-api.mock.mjs && node scripts/build-v787-exam-pages.mjs && node tests/v787-release.mjs && node tests/v7871-n2-same-meaning.mjs && node scripts/build-v7872-mobile-exams.mjs && node tests/v7872-release.mjs && node scripts/build-v7873-ui-fix.mjs && node tests/v7873-release.mjs && node scripts/build-v7874-menu-nav.mjs && node tests/v7874-release.mjs && node scripts/build-v7875-performance.mjs && node tests/v7875-release.mjs && node scripts/build-v7876-smart-learning.mjs && node tests/v7876-release.mjs && node scripts/build-v7877-business-growth.mjs && node tests/v7877-release.mjs && node scripts/build-v7878-admin-crm.mjs && node tests/v7878-release.mjs && node scripts/build-v7879-grammar.mjs && node tests/v7879-release.mjs && node tests/v78710-release.mjs && node tests/v78711-release.mjs && node --experimental-strip-types tests/v78711-stability.mjs && node scripts/build-v78712-i18n.mjs && node tests/v78712-release.mjs && node scripts/build-v78713-performance.mjs && node tests/v78713-release.mjs && node scripts/build-v78714-grammar-mastery.mjs && node tests/v78714-release.mjs && node scripts/build-v78715-smart-weakness.mjs && node tests/v78715-release.mjs && node scripts/build-v78716-study-calendar.mjs && node tests/v78716-release.mjs && node scripts/build-v78717-marketing-crm.mjs && node tests/v78717-release.mjs && node scripts/build-v78718-exam-access-copy.mjs && node tests/v78718-release.mjs && node tests/v78719-release.mjs && node scripts/build-v78720-mobile-pwa.mjs && node tests/v78720-release.mjs && node tests/v78721-release.mjs && node tests/v7880-source.mjs && node tests/v7880-gate.mjs && node scripts/build-v7881-second-exam.mjs && node tests/v7881-release.mjs
+
+PASS v7.87.13 full checkout preflight: source, 12-exam build chain, backend and DB migration files present
+PASS original nishu bank: 90 unique text + 5 illustrated triplets; official-style 100-point distribution; private/public split
+{
+  "version": "7.88.1-rc.1",
+  "kind": "source_backend_patch",
+  "changes": [
+    {
+      "path": "netlify/functions/_shared/security.mts",
+      "edits": 0
+    },
+    {
+      "path": "netlify/functions/_shared/exam-autosave.mts",
+      "edits": 0
+    },
+    {
+      "path": "netlify/functions/exam-access.mts",
+      "edits": 0
+    },
+    {
+      "path": "netlify/functions/exam-checkpoint.mts",
+      "edits": 0
+    },
+    {
+      "path": "netlify/functions/_shared/exam-score-v763.mts",
+      "edits": 0
+    }
+  ],
+  "allFilesFound": true
+}
+v7.87.13 source QA version allowlist compatibility: 0 files
+v7.87.20 legacy SW expectations updated: 0 (0 when original tests are not staged)
+
+  assets/identity.bundle.js  38.5kb
+
+⚡ Done in 16ms
+v7.74 Dictionary QA PASS: 8542 words, 2350 glosses, 119 new N1 drafts, 6192 pending
+PASS all six website entry routes exist
+PASS all local HTML referenced assets exist, except generated bundle pre-build
+PASS every classic inline script parses
+yk-v78714-engine.js:5
+export const LEVELS = Object.freeze(['N5','N4','N3','N2','N1']);
+^^^^^^
+
+SyntaxError: Unexpected token 'export'
+    at new Script (node:vm:117:7)
+    at file:///workspace/scratch/4fa686e19819/repo/tests/v774-release-smoke.mjs:52:3
+    at check (file:///workspace/scratch/4fa686e19819/repo/tests/v774-release-smoke.mjs:13:26)
+    at file:///workspace/scratch/4fa686e19819/repo/tests/v774-release-smoke.mjs:45:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.22.1
