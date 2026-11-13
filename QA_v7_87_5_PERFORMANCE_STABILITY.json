@@ -1,0 +1,33 @@
+{
+  "project": "YE KUN Official Website",
+  "version": "7.87.5",
+  "source_base": {
+    "repository": "koyekmw2019-web/MY-OFFICAL-WEB",
+    "branch": "main",
+    "version": "7.87.4",
+    "commit": "1d5c21cdb234add7ca33c4fd456ea6cd81d0a89a"
+  },
+  "scope": {
+    "center_pages": 1,
+    "individual_exam_pages": 12,
+    "non_jlpt_routes_skip_unused_jlpt_payload": 7,
+    "jlpt_routes_preserved": 5,
+    "original_exam_engine_and_server_auth_modified": false,
+    "backend_or_database_migrations": false,
+    "unnecessary_pdf_added": false
+  },
+  "qa": {
+    "js_syntax": "PASS",
+    "static_generated_fixture_13_routes": "PASS",
+    "synthetic_12_exam_regression": "PASS",
+    "runtime_offline_and_resource_error_simulation": "PASS",
+    "service_worker_cache_boundary_simulation": "PASS",
+    "chromium_390px_banner_fixture": "PASS",
+    "chromium_1280px_banner_fixture": "PASS",
+    "full_real_repository_npm_test": "NOT RUN — repository unavailable in container",
+    "full_netlify_build": "NOT RUN",
+    "live_backend_e2e": "NOT RUN",
+    "real_device_network_speed_measurement": "NOT RUN"
+  },
+  "release_notes": "Fixture results verify the transformation and runtime behavior, not actual production performance. Existing GitHub main and Netlify production remain unmodified."
+}

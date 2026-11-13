@@ -1,0 +1,109 @@
+{
+  "version": "7.87.20",
+  "title": "Mobile Speed, PWA Cache & Final UI Bug Fix",
+  "source_archive": "YEKUN_v7.87.19_Critical_System_Stability_CUMULATIVE.zip",
+  "source_type": "cumulative_source_patch_not_full_repo",
+  "target_repo": "koyekmw2019-web/MY-OFFICAL-WEB",
+  "last_confirmed_main": "7.87.4",
+  "previous_file_count": 186,
+  "previous_files_missing": [],
+  "previous_files_unchanged": 158,
+  "previous_files_modified": [
+    "package.json",
+    "scripts/build-v78713-performance.mjs",
+    "scripts/build-v7875-performance.mjs",
+    "scripts/preflight-v78713.mjs",
+    "scripts/v7872-qa-version-guards.mjs",
+    "service-worker.js",
+    "tests/v78710-content.mjs",
+    "tests/v78711-stability.mjs",
+    "tests/v78712-source.mjs",
+    "tests/v78713-build-fixture.mjs",
+    "tests/v78713-release.mjs",
+    "tests/v78713-static.mjs",
+    "tests/v78713-sw-runtime.mjs",
+    "tests/v78714-source.mjs",
+    "tests/v78715-source.mjs",
+    "tests/v78716-source.mjs",
+    "tests/v78717-source.mjs",
+    "tests/v78718-source.mjs",
+    "tests/v78719-source.mjs",
+    "tests/v7873-source.mjs",
+    "tests/v7874-source.mjs",
+    "tests/v7875-release.mjs",
+    "tests/v7875-source.mjs",
+    "tests/v7876-release.mjs",
+    "tests/v7876-source.mjs",
+    "tests/v7877-source.mjs",
+    "tests/v7878-source.mjs",
+    "tests/v7879-source.mjs"
+  ],
+  "new_runtime_features": [
+    "PWA public static cache version advanced to yk-official-v7-87-20",
+    "HTML static JS/CSS asset links stamped ?ykv=78720 to bypass an older installed service worker at the first page load",
+    "Public unversioned JS/CSS/Grammar JSON cache-first with once-per-worker background revalidation",
+    "Reject private/no-store/no-cache/set-cookie/HTML MIME fallbacks/oversized assets from cache",
+    "Homepage lower-section YouTube thumbnails use loading=lazy and decoding=async when missing",
+    "Exam Plans cards keyboard selectable (Enter/Space) while click action unchanged",
+    "Mobile Exam/Payment modal viewport/safe-area/overflow/focus-visible CSS"
+  ],
+  "direct_patch_regression": {
+    "selected": 39,
+    "passed": 37,
+    "missing_original_baseline_assets": 2,
+    "failed_due_to_missing_assets": [
+      "v7873-source",
+      "v7874-source"
+    ]
+  },
+  "test_only_staged_regression": {
+    "selected": 39,
+    "passed": 39,
+    "failed": 0,
+    "original_patch_assets_used_only_in_qa": true
+  },
+  "new_tests": {
+    "v78720-source": "PASS",
+    "v78720-sw-runtime": "PASS",
+    "v78720-legacy-guard": "PASS",
+    "v78720-build-fixture": "PASS",
+    "v78720-browser-qa_320_390_1280": "PASS"
+  },
+  "historic_v78713_sw_runtime": "PASS (updated expectation for background revalidation)",
+  "negative_release_gates": [
+    "stale versioned JS",
+    "tampered plan price",
+    "published private backend"
+  ],
+  "gate_result": "PASS (broken cases blocked)",
+  "data_policy": {
+    "grammar_patterns": 509,
+    "exam_types": 12,
+    "one_free_attempt_per_exam_type": true,
+    "prices_yen": {
+      "week": 1000,
+      "month": 2000,
+      "3months": 3000,
+      "year": 5000
+    }
+  },
+  "backend_sql_changed": false,
+  "new_migrations": 0,
+  "new_dependencies": 0,
+  "new_pdf": 0,
+  "mobile_image_bytes_optimized": false,
+  "real_mobile_lcp_inp_cls": "NOT MEASURED",
+  "full_npm_test": "NOT RUN - full original GitHub repository unavailable in local environment",
+  "full_npm_build": "NOT RUN - full original GitHub repository unavailable in local environment",
+  "live_netlify_login_payment_ykcr": "NOT RUN",
+  "deploy_preview": "NOT RUN",
+  "production_stable": "NOT CONFIRMED",
+  "github_deployed": false,
+  "netlify_deployed": false,
+  "sha256_runtime": {
+    "service-worker.js": "fd183b3043c46345757abd13825466b1e8e8fc3f095257b6f9a33294bd45d873",
+    "scripts/build-v78720-mobile-pwa.mjs": "7f36b1efbf0b86987662669b6deb071af6c3fb1be3e6a9c25587f03647023cec",
+    "assets/yk-v78720-mobile-fixes.css": "2faa8f68ac8247b4224ba21076331ae9d492c598ebba63bcceceb6eaf4c5b4b4",
+    "package.json": "40586d80e623e9ec5723edbdef04d4c56227fd00111f16ebaaee7475ad60bbb9"
+  }
+}

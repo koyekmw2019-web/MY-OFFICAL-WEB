@@ -1,0 +1,25 @@
+/** Pre-build checks; no need to log in, trigger an attempt or reach Netlify. */
+import assert from 'node:assert/strict';
+import {readFileSync,existsSync} from 'node:fs';
+import vm from 'node:vm';
+const rd=p=>readFileSync(p,'utf8');
+const p=JSON.parse(rd('package.json'));
+assert(['7.87.5','7.87.6','7.87.7','7.87.8','7.87.9','7.87.10','7.87.11','7.87.12','7.87.13','7.87.14','7.87.15','7.87.16','7.87.17','7.87.18','7.87.19','7.87.20','7.87.21','7.88.0-rc.1','7.88.1-rc.1'].includes(p.version));
+assert(p.scripts.build.includes('node scripts/build-v7875-performance.mjs && node tests/v7875-release.mjs'));
+assert(p.scripts.test.includes('node tests/v7875-source.mjs && node tests/v7875-runtime.mjs'));
+for(const f of ['assets/yk-v7875-stability.js','assets/yk-v7875-stability.css','scripts/build-v7875-performance.mjs','tests/v7875-release.mjs'])assert(existsSync(f),f);
+const b=rd('scripts/build-v7875-performance.mjs');
+assert(b.includes('jlpt-native-mock-bank-v752.js'));
+assert(b.includes("!type.startsWith('jlpt_')"));
+assert(b.includes('serverOrDatabaseChanged:false'));
+assert(!b.includes('netlify/functions/'));
+const ui=rd('assets/yk-v7875-stability.js');
+assert(ui.includes("addEventListener('offline'"));
+assert(ui.includes('isExamRunning()'));
+assert(!ui.includes('fetch(')&&!ui.includes('exam-attempt-submit'));
+new vm.Script(ui,{filename:'yk-v7875-stability.js'});
+const sw=rd('service-worker.js');
+assert(sw.match(/yk-official-v7-87-(?:5|13|20)/));
+assert(sw.includes("url.pathname.startsWith('/.netlify/')"));
+assert(sw.includes("request.mode === 'navigate'"));
+console.log('PASS v7875-source: safe performance, connectivity UX and public cache boundaries');

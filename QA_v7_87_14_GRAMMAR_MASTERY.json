@@ -1,0 +1,196 @@
+{
+  "version": "7.87.14",
+  "project": "YE KUN Official Website",
+  "type": "cumulative source patch; not production deploy",
+  "base_patch": "YEKUN_v7.87.13_Production_Readiness_Performance_CUMULATIVE.zip",
+  "scope": {
+    "grammar_catalog_count": 509,
+    "cloze_example_count": 1018,
+    "curated_multiple_choice_count": 40,
+    "curated_per_level": 8,
+    "levels": [
+      "N5",
+      "N4",
+      "N3",
+      "N2",
+      "N1"
+    ],
+    "student_progress": "browser-local only, unofficial, recall self-evaluated",
+    "exams_payment_ykcr_backend_changed": false,
+    "new_database_migrations": 0
+  },
+  "qa": {
+    "skipped": [
+      {
+        "name": "v7874 source (requires v7.87.4 full GitHub checkout)",
+        "reason": "assets/yk-v7874-nav.css and original v7.87.4 source are not in cumulative PATCH; test must run inside full repo."
+      }
+    ],
+    "passed": 22,
+    "failed": 0,
+    "results": [
+      {
+        "name": "v7875 source",
+        "command": "node tests/v7875-source.mjs",
+        "status": "PASS",
+        "seconds": 0.04,
+        "output_tail": "PASS v7875-source: safe performance, connectivity UX and public cache boundaries\n"
+      },
+      {
+        "name": "v7875 runtime",
+        "command": "node tests/v7875-runtime.mjs",
+        "status": "PASS",
+        "seconds": 0.07,
+        "output_tail": "PASS v7875-runtime: offline, critical script failures, no auto retry, versioned SW cache invalidation and private navigation bypass\n"
+      },
+      {
+        "name": "v7876 source",
+        "command": "node tests/v7876-source.mjs",
+        "status": "PASS",
+        "seconds": 0.04,
+        "output_tail": "PASS v7876-source: cumulative v7875 preserved, student-only journey, no backend changes\n"
+      },
+      {
+        "name": "v7876 engine",
+        "command": "node tests/v7876-engine.mjs",
+        "status": "PASS",
+        "seconds": 0.08,
+        "output_tail": "PASS v7876-engine: 12 subject routes, scoped verified history, date filtering, trusted per-exam scores, no new APIs\n"
+      },
+      {
+        "name": "v7877 source",
+        "command": "node tests/v7877-source.mjs",
+        "status": "PASS",
+        "seconds": 0.04,
+        "output_tail": "PASS v7877-source: cumulative, public click-only, admin-auth data, two isolated tables, previous engine retained\n"
+      },
+      {
+        "name": "v7877 runtime",
+        "command": "node --experimental-strip-types tests/v7877-runtime.mjs",
+        "status": "PASS",
+        "seconds": 0.19,
+        "output_tail": "PASS v7877-runtime: click-only UTM, same-origin, admin auth, manual entries, arithmetic, no fake visitors\n\n(node:7388) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+      },
+      {
+        "name": "v7878 source",
+        "command": "node tests/v7878-source.mjs",
+        "status": "PASS",
+        "seconds": 0.03,
+        "output_tail": "PASS v7878-source: v7877 cumulative retained, admin-only cleanup and CRM, prior backend untouched\n"
+      },
+      {
+        "name": "v7878 CRM",
+        "command": "node tests/v7878-crm.mjs",
+        "status": "PASS",
+        "seconds": 0.05,
+        "output_tail": "PASS v7878-crm: validation, status, optional YKCR reference, dates and length limits\n"
+      },
+      {
+        "name": "v7878 CRM API",
+        "command": "node --experimental-strip-types tests/v7878-crm-api.mock.mjs",
+        "status": "PASS",
+        "seconds": 0.1,
+        "output_tail": "PASS v7878-crm-api.mock: admin auth, origin guard, input checks, CRUD, no YKCR/payment/Exam mutation\n\n(node:7424) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+      },
+      {
+        "name": "v7879 source",
+        "command": "node tests/v7879-source.mjs",
+        "status": "PASS",
+        "seconds": 0.03,
+        "output_tail": "PASS v7879-source: incremental cumulative, source/built route consistency, no exam/payment/YKCR server modification\n"
+      },
+      {
+        "name": "v7879 data",
+        "command": "node tests/v7879-data.mjs",
+        "status": "PASS",
+        "seconds": 0.04,
+        "output_tail": "PASS v7879-data: 509 patterns, 509 original multilingual lesson drafts, 0 explicitly pending, furigana & underline, no backend changes\n"
+      },
+      {
+        "name": "v7879 bridge",
+        "command": "node tests/v7879-bridge.mjs",
+        "status": "PASS",
+        "seconds": 0.04,
+        "output_tail": "PASS v7879-bridge: 30 original grammar lessons available by ?legacy=1, selected JLPT level passed, modifier clicks stay native\n"
+      },
+      {
+        "name": "v78710 content",
+        "command": "node tests/v78710-content.mjs",
+        "status": "PASS",
+        "seconds": 0.04,
+        "output_tail": "PASS v78710-content: 509/509 trilingual original authored lessons, 1,018 JP/MY/EN examples, all highlights present, legacy safe, cache key v78710\n"
+      },
+      {
+        "name": "v78711 stability",
+        "command": "node --experimental-strip-types tests/v78711-stability.mjs",
+        "status": "PASS",
+        "seconds": 0.13,
+        "output_tail": "PASS v78711-stability: wrapped PostgreSQL free-attempt collision recognized, 12 exam rules unchanged, grammar+CRM assets preserved\n\n(node:7484) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+      },
+      {
+        "name": "v78712 source",
+        "command": "node tests/v78712-source.mjs",
+        "status": "PASS",
+        "seconds": 0.03,
+        "output_tail": "PASS v78712-source: additive i18n, no content/backend rewrite, CRM/business confirmations localized\n"
+      },
+      {
+        "name": "v78713 static",
+        "command": "node tests/v78713-static.mjs",
+        "status": "PASS",
+        "seconds": 0.03,
+        "output_tail": "PASS v78713-static: patch chain, all 509 grammar records, previous API/schema retained, SW no private caching, full source preflight present\n"
+      },
+      {
+        "name": "v78713 build fixture",
+        "command": "node tests/v78713-build-fixture.mjs",
+        "status": "PASS",
+        "seconds": 0.15,
+        "output_tail": "PASS v78713-build-fixture: 24-page HTML metadata, inline JS preservation, positive release gate & missing CSS negative test (synthetic fixture only)\n"
+      },
+      {
+        "name": "v78714 engine",
+        "command": "node tests/v78714-engine.mjs",
+        "status": "PASS",
+        "seconds": 0.06,
+        "output_tail": "PASS v78714-engine: 509 original items, 1,018 cloze examples, 40 curated MCQs, no automatically synthesized distractors, review/daily prioritization, per-device progress & session validation\n"
+      },
+      {
+        "name": "v78714 source",
+        "command": "node tests/v78714-source.mjs",
+        "status": "PASS",
+        "seconds": 0.03,
+        "output_tail": "PASS v78714-source: additive student-only integration, no mock exam/identity/payment/YKCR APIs, 509 lesson deep links and patch chain intact\n"
+      },
+      {
+        "name": "v78714 build fixture",
+        "command": "node tests/v78714-build-fixture.mjs",
+        "status": "PASS",
+        "seconds": 0.18,
+        "output_tail": "PASS v78714-build-fixture: isolated publish pass, Admin/Member exclusion, missing JS negative-release gate\n"
+      },
+      {
+        "name": "v78714 browser synthetic",
+        "command": "python tests/v78714-browser-qa.py",
+        "status": "PASS",
+        "seconds": 5.2,
+        "output_tail": "PASS synthetic browser 390×844: recall, reveal, self-grade, weak review, MCQ, 3 languages, local stats, no page overflow\nPASS synthetic browser 1280×900: recall, reveal, self-grade, weak review, MCQ, 3 languages, local stats, no page overflow\n"
+      },
+      {
+        "name": "v78714 student role synthetic",
+        "command": "python tests/v78714-student-browser-qa.py",
+        "status": "PASS",
+        "seconds": 2.04,
+        "output_tail": "PASS synthetic role check: student\nPASS synthetic role check: admin\nPASS synthetic role check: member\n"
+      }
+    ],
+    "limitations": [
+      "Synthetic browser tests use in-memory JSON and a minimal mock dashboard; not a real Netlify production navigation.",
+      "Full original repository not available in this patch-only workspace; npm run test, npm run build, deploy preview and authenticated live login/payment/YKCR require integration with complete GitHub checkout.",
+      "MCQ 40 starter options were manually selected; linguistic correctness/ambiguity of every distractor has not been independently certified.",
+      "Underlying 509 original trilingual grammar lesson drafts have structural completeness QA, not full independent human pedagogical proofreading.",
+      "Student mastery progress is browser-local and may be shared across accounts on the same device/browser; no cloud sync or account attribution."
+    ]
+  },
+  "timestamp_utc": "2026-11-12T07:43:09.642184+00:00"
+}

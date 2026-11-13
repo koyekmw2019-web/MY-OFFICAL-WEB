@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import {readFileSync,existsSync} from 'node:fs';
+const rd=p=>readFileSync(p,'utf8');
+const p=JSON.parse(rd('package.json'));
+assert(['7.87.8','7.87.9','7.87.10','7.87.11','7.87.12','7.87.13','7.87.14','7.87.15','7.87.16','7.87.17','7.87.18','7.87.19','7.87.20','7.87.21','7.88.0-rc.1','7.88.1-rc.1'].includes(p.version));
+assert(p.scripts.build.includes('node scripts/build-v7875-performance.mjs && node tests/v7875-release.mjs'));
+assert(p.scripts.build.includes('node scripts/build-v7876-smart-learning.mjs && node tests/v7876-release.mjs'));
+assert(p.scripts.build.includes('node scripts/build-v7877-business-growth.mjs && node tests/v7877-release.mjs'));
+assert(p.scripts.build.includes('node scripts/build-v7878-admin-crm.mjs && node tests/v7878-release.mjs'));
+assert(p.scripts.test.includes('node tests/v7878-source.mjs && node tests/v7878-crm.mjs && node --experimental-strip-types tests/v7878-crm-api.mock.mjs'));
+for(const f of ['netlify/functions/yk-enrollment-crm.mts','netlify/functions/_shared/yk-crm-validation-v7878.mjs',
+ 'netlify/database/migrations/20261112140000_yk_enrollment_crm.sql','assets/yk-v7878-admin.js','assets/yk-v7878-admin.css',
+ 'scripts/build-v7878-admin-crm.mjs','tests/v7878-release.mjs'])assert(existsSync(f),f);
+const builder=rd('scripts/build-v7878-admin-crm.mjs');
+assert(builder.includes("'admin-dashboard.html'"));
+assert(builder.includes('yk-jlpt-learning-v782-dashboard.js'));
+assert(builder.includes('yk-learning-v760.js'));
+for(const forbidden of ['student-dashboard.html','member-dashboard.html','netlify/functions/exam-access.mts','netlify/functions/ykcr-student-sync'])assert(!builder.includes(`readFileSync('${forbidden}'`));
+const fn=rd('netlify/functions/yk-enrollment-crm.mts');
+assert(fn.includes('await requireAdmin()'));
+assert(fn.includes('private, no-store'));
+assert(!fn.includes('INSERT INTO exam_students'));
+assert(!fn.includes('INSERT INTO exam_payment_requests'));
+assert(!fn.includes('INSERT INTO yk_growth_manual_entries'));
+const sql=rd('netlify/database/migrations/20261112140000_yk_enrollment_crm.sql');
+assert(sql.includes('CREATE TABLE IF NOT EXISTS yk_enrollment_leads'));
+assert(!sql.includes('ALTER TABLE exam_students'));
+assert(!sql.includes('ALTER TABLE exam_payment_requests'));
+assert(rd('assets/yk-v7878-admin.js').includes("dataset.dashboard!=='admin'"));
+console.log('PASS v7878-source: v7877 cumulative retained, admin-only cleanup and CRM, prior backend untouched');

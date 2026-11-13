@@ -1,0 +1,101 @@
+{
+  "version": "7.87.16",
+  "release_name": "Student Learning Calendar & Study Goals",
+  "base": "v7.87.15 cumulative source patch",
+  "source_patch_only": true,
+  "previous_source_files": 132,
+  "previous_files_missing": [],
+  "previous_files_modified": [
+    "package.json",
+    "scripts/preflight-v78713.mjs",
+    "scripts/v7872-qa-version-guards.mjs",
+    "tests/v78710-content.mjs",
+    "tests/v78711-stability.mjs",
+    "tests/v78712-source.mjs",
+    "tests/v78713-static.mjs",
+    "tests/v78714-source.mjs",
+    "tests/v78715-source.mjs",
+    "tests/v7873-source.mjs",
+    "tests/v7874-source.mjs",
+    "tests/v7875-source.mjs",
+    "tests/v7876-source.mjs",
+    "tests/v7877-source.mjs",
+    "tests/v7878-source.mjs",
+    "tests/v7879-source.mjs"
+  ],
+  "new_files": [
+    "QA_v7_87_16_TEST_LOG.txt",
+    "README_v7_87_16_STUDENT_CALENDAR_MY.md",
+    "assets/yk-v78716-student.css",
+    "assets/yk-v78716-calendar.js",
+    "assets/yk-v78716-link.css",
+    "assets/yk-v78716-calendar.css",
+    "assets/yk-v78716-calendar-engine.js",
+    "assets/yk-v78716-student.js",
+    "tests/v78716-source.mjs",
+    "tests/v78716-browser-qa.py",
+    "tests/v78716-engine.mjs",
+    "tests/v78716-build-fixture.mjs",
+    "tests/v78716-release.mjs",
+    "scripts/build-v78716-study-calendar.mjs",
+    "study/jlpt-study-calendar.html"
+  ],
+  "backend_modified": false,
+  "grammar_509_preserved": true,
+  "new_database_migrations": 0,
+  "new_netlify_functions": 0,
+  "local_browser_integration": {
+    "status": "PASS",
+    "viewport_px": [
+      390,
+      1280
+    ],
+    "languages": [
+      "my",
+      "en",
+      "ja"
+    ],
+    "roles": [
+      "student",
+      "admin",
+      "member"
+    ],
+    "flows": [
+      "month navigation",
+      "goal save",
+      "day plan save",
+      "manual check-in and undo",
+      "daily vs weekly distinct counts",
+      "grammar session aggregation",
+      "no XSS in notes",
+      "no layout overflow"
+    ]
+  },
+  "engine_regression": {
+    "status": "PASS",
+    "jobs": 26,
+    "fails": 0
+  },
+  "prior_browser_regression": {
+    "status": "PASS",
+    "versions": [
+      "7.87.14",
+      "7.87.15",
+      "7.87.16"
+    ]
+  },
+  "test_fixture": {
+    "status": "PASS",
+    "dist_fixture_only": true,
+    "negative_missing_asset_blocks": true
+  },
+  "full_repository_build": "NOT_RUN: ZIP is cumulative patch; source checkout required",
+  "netlify_preview": "NOT_RUN",
+  "live_identity_payment_ykcr_exam": "NOT_RUN",
+  "account_cloud_sync": "NOT_IMPLEMENTED",
+  "automatic_reminders": "NOT_IMPLEMENTED",
+  "study_data_scope": "browser-local, potentially shared across users on the same browser",
+  "calendar_auto_tracking": "completed Grammar Practice sessions, up to last 180 sessions",
+  "manual_tracking": "self-reported check-in only; never counted as grammar questions",
+  "production_stable": false
+}

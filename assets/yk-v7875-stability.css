@@ -1,0 +1,24 @@
+/* v7.87.5 — scoped lightweight connectivity notice; honors exam header + mobile. */
+body.yk874-education-menu .yk875-notice[hidden]{display:none!important}
+body.yk874-education-menu .yk875-notice{
+  position:sticky;top:var(--yk-header-h,65px);z-index:39;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;
+  background:#291b20;border-block:1px solid #9c4d60;color:#fff0f2;
+  padding:9px max(12px,calc((100vw - 1080px)/2));font-size:12px;line-height:1.65;
+}
+body.yk874-education-menu .yk875-notice-message{flex:1 1 240px}
+body.yk874-education-menu .yk875-notice-retry{min-height:40px;padding:7px 13px;border-radius:10px;border:1px solid #cf7b8e;background:#401e29;color:white;font-weight:800;cursor:pointer}
+body.yk874-education-menu .yk875-notice-retry[hidden]{display:none!important}
+body.yk874-education-menu .yk875-notice-retry:focus-visible{outline:2px solid #fff;outline-offset:2px}
+@media(max-width:600px){body.yk874-education-menu .yk875-notice{padding:9px 13px;font-size:12px}}
+@media(prefers-reduced-motion:reduce){body.yk874-education-menu .yk875-notice,body.yk874-education-menu .yk875-notice *{animation:none!important;transition:none!important}}
+
+/* Optional below-the-fold card containment for the 12-card directory only.
+ * Individual exam screens remain fully rendered for timer/answer accessibility. */
+@media(max-width:720px){
+ body.yk874-education-menu:not(.yk872-single-exam) .exam-hub::before,
+ body.yk874-education-menu:not(.yk872-single-exam) .exam-hub::after{animation:none!important}
+ @supports(content-visibility:auto){
+  body.yk874-education-menu:not(.yk872-single-exam) .exam-category.v728{content-visibility:auto;contain-intrinsic-size:auto 520px}
+ }
+}

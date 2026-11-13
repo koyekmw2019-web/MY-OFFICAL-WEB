@@ -1,0 +1,100 @@
+{
+  "version": "7.87.17",
+  "name": "Marketing & Enrollment CRM Improvements",
+  "base": "v7.87.16 cumulative source PATCH",
+  "source_patch_only": true,
+  "last_checked_connected_github_main": "7.87.4",
+  "changes": {
+    "admin_only_enrollment_insights": true,
+    "cohort_periods": [
+      7,
+      30,
+      90,
+      "all"
+    ],
+    "cohort_definition": "leads created in selected window, current owner-entered status",
+    "followup_definition": "all active leads irrespective of selected window; oldest 20 shown",
+    "crm_list_filters": "status, course, source, search, due-only over latest 100 modified leads",
+    "anonymous_click_context": "separate from CRM leads; no campaign conversion claims",
+    "languages": [
+      "my",
+      "en",
+      "ja"
+    ],
+    "new_db_migrations": 0,
+    "new_read_only_admin_endpoint": 1
+  },
+  "security": {
+    "admin_required_before_db_access": true,
+    "csrf_mutation_risk": "No mutations on new endpoint",
+    "response_cache_control": "private, no-store",
+    "contact_reference_and_notes_in_new_insights_response": false,
+    "no_automatic_messages": true,
+    "exam_payment_ykcr_tables_untouched": true
+  },
+  "qa": {
+    "selected_regression_jobs_passed": 27,
+    "selected_regression_failed": 0,
+    "backend_api_mock": "PASS",
+    "pure_aggregation": "PASS",
+    "build_fixture_positive_and_missing_asset_gate": "PASS",
+    "browser_390px": "PASS",
+    "browser_1280px": "PASS",
+    "browser_roles": [
+      "admin",
+      "student",
+      "member"
+    ],
+    "form_draft_preservation": "PASS",
+    "mock_untrusted_name_html_escaping": "PASS",
+    "language_switch_my_en_ja": "PASS",
+    "privacy_checks": "PASS",
+    "prior_browser_regressions": [
+      "v7.87.14",
+      "v7.87.15",
+      "v7.87.16"
+    ],
+    "partial_source_test_limit": "v7.87.3/.4 standalone source tests require base GitHub files absent from patch",
+    "full_build": "NOT_RUN: intact original repo not mounted; preflight rejected partial checkout as expected",
+    "live_netlify": "NOT_RUN",
+    "real_db_migration": "NOT_RUN",
+    "production_stable": false
+  },
+  "previous_source_files": 149,
+  "previous_missing": [],
+  "modified_previous_files": [
+    "assets/yk-v7878-admin.css",
+    "assets/yk-v7878-admin.js",
+    "package.json",
+    "scripts/preflight-v78713.mjs",
+    "scripts/v7872-qa-version-guards.mjs",
+    "tests/v78710-content.mjs",
+    "tests/v78711-stability.mjs",
+    "tests/v78712-source.mjs",
+    "tests/v78713-static.mjs",
+    "tests/v78714-source.mjs",
+    "tests/v78715-source.mjs",
+    "tests/v78716-source.mjs",
+    "tests/v7873-source.mjs",
+    "tests/v7874-source.mjs",
+    "tests/v7875-source.mjs",
+    "tests/v7876-source.mjs",
+    "tests/v7877-source.mjs",
+    "tests/v7878-source.mjs",
+    "tests/v7879-source.mjs"
+  ],
+  "new_files_excluding_this_report": [
+    "README_v7_87_17_MARKETING_CRM_MY.md",
+    "assets/yk-v78717-admin.css",
+    "assets/yk-v78717-admin.js",
+    "netlify/functions/_shared/yk-crm-insights-v78717.mjs",
+    "netlify/functions/yk-enrollment-insights.mts",
+    "scripts/build-v78717-marketing-crm.mjs",
+    "tests/v78717-api.mock.mjs",
+    "tests/v78717-browser-qa.py",
+    "tests/v78717-build-fixture.mjs",
+    "tests/v78717-engine.mjs",
+    "tests/v78717-release.mjs",
+    "tests/v78717-source.mjs"
+  ]
+}

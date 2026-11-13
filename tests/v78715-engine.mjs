@@ -1,0 +1,24 @@
+/** v7.87.15 weakness analysis: honest evidence thresholds + legacy compatibility. */
+import assert from 'node:assert/strict';
+import {cleanState,grade,LEVELS,EXPECTED_COUNTS,STORAGE_KEY} from '../assets/yk-v78714-engine.js';
+import {INSIGHTS_KEY,EVENT_LIMIT,cleanEvents,addInsightEvent,classify,buildInsights,allLevelOverview} from '../assets/yk-v78715-insights-engine.js';
+const now=new Date('2026-11-12T06:00:00.000Z').getTime(),day=86400000;
+assert.equal(INSIGHTS_KEY,'yk_grammar_insights_v78715_v1');assert.notEqual(STORAGE_KEY,INSIGHTS_KEY);
+let state=cleanState({});const empty=buildInsights(state,'N5',[],now);assert.equal(empty.practiced,0);assert.equal(empty.reviewCount,0);assert.equal(empty.counts.unpracticed,35);assert.equal(empty.recent.count,0);
+state=grade(state,'N5-grammar-001',false,now-20000);
+let one=buildInsights(state,'N5',[],now);assert.equal(one.counts.oneError,1);assert.equal(one.counts.repeated,0);assert(one.recommendations[0].limited,'Single error must carry limited evidence notice');
+state=grade(state,'N5-grammar-001',false,now-10000);let repeat=buildInsights(state,'N5',[],now);assert.equal(repeat.counts.repeated,1);assert.equal(repeat.recommendations[0].id,'N5-grammar-001');
+state=grade(state,'N5-grammar-001',true,now-1000);let recovered=buildInsights(state,'N5',[],now);assert.equal(recovered.counts.repeated,0);assert.equal(recovered.counts.recovering,1);assert.equal(recovered.recommendations[0].status,'recovering');
+state=grade(state,'N5-grammar-001',true,now-1000);let twoWins=buildInsights(state,'N5',[],now);assert.equal(twoWins.counts.recovering,0);assert.equal(twoWins.reviewCount,0,'Two recent successes should not be presented as active repeated weakness');
+state=grade(state,'N5-grammar-002',true,now-2*day);assert.equal(buildInsights(state,'N5',[],now).counts.due,1,'Study interval heuristic from last success');
+state=grade(state,'N5-grammar-003',false,now-9000);state=grade(state,'N5-grammar-003',false,now-8000);
+let priority=buildInsights(state,'N5',[],now);assert.equal(priority.recommendations[0].id,'N5-grammar-003','Repeated current errors should rank ahead of spaced review');
+let ev=[];ev=addInsightEvent(ev,{id:'N5-grammar-003',correct:false,mode:'recall',method:'self',at:now-1000});ev=addInsightEvent(ev,{id:'N5-grammar-002',correct:true,mode:'choice',method:'choice',at:now-2000});ev=addInsightEvent(ev,{id:'N5-grammar-002',correct:true,mode:'recall',method:'typed',at:now-10*day});
+assert.equal(buildInsights(state,'N5',ev,now).recent.count,2);assert.equal(buildInsights(state,'N5',ev,now).recent.autoChecked,1);assert.equal(buildInsights(state,'N5',ev,now).recent.selfRated,1);
+assert.equal(buildInsights(state,'N4',ev,now).recent.count,0,'Never mix levels');
+const bad=[{id:'N5-grammar-001',correct:'true',method:'typed',mode:'daily',at:now},{id:'../../escape',correct:true,method:'choice',mode:'daily',at:now},{id:'N5-grammar-002',correct:true,method:'wrong',mode:'daily',at:now}];assert.equal(cleanEvents(bad).length,0);
+let overflow=[];for(let i=0;i<EVENT_LIMIT+33;i++)overflow=addInsightEvent(overflow,{id:'N5-grammar-001',correct:i%2===0,method:'typed',mode:'recall',at:now-i});assert.equal(overflow.length,EVENT_LIMIT);
+assert.equal(allLevelOverview(state,ev,now).length,5);assert.equal(allLevelOverview(state,ev,now).reduce((n,x)=>n+x.total,0),509);
+for(const lv of LEVELS)assert.equal(buildInsights(state,lv,[],now).total,EXPECTED_COUNTS[lv]);
+assert.throws(()=>buildInsights(state,'HACK',ev,now));
+console.log('PASS v78715-engine: zero-data honesty, 1-attempt uncertainty, repeated mistakes, recovery, due heuristic, priority, 7-day method splitting, 1200-event cap, 5-level isolation');

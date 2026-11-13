@@ -1,0 +1,94 @@
+{
+  "version": "7.87.18",
+  "title": "Exam Access & Plans UI Copy",
+  "release_type": "cumulative_source_patch",
+  "base": "v7.87.17 cumulative ZIP",
+  "original_zip_files": 163,
+  "original_files_preserved": 163,
+  "original_files_byte_identical": 146,
+  "original_files_modified": [
+    "package.json",
+    "scripts/v7872-qa-version-guards.mjs",
+    "tests/v78710-content.mjs",
+    "tests/v78711-stability.mjs",
+    "tests/v78712-source.mjs",
+    "tests/v78713-static.mjs",
+    "tests/v78714-source.mjs",
+    "tests/v78715-source.mjs",
+    "tests/v78716-source.mjs",
+    "tests/v78717-source.mjs",
+    "tests/v7873-source.mjs",
+    "tests/v7874-source.mjs",
+    "tests/v7875-source.mjs",
+    "tests/v7876-source.mjs",
+    "tests/v7877-source.mjs",
+    "tests/v7878-source.mjs",
+    "tests/v7879-source.mjs"
+  ],
+  "new_files": [
+    "QA_v7_87_18_SELECTED_TEST_LOG.txt",
+    "README_v7_87_18_EXAM_ACCESS_PLANS_UI_MY.md",
+    "assets/yk-v78718-exam-access.css",
+    "scripts/build-v78718-exam-access-copy.mjs",
+    "tests/v78718-build-fixture.mjs",
+    "tests/v78718-release.mjs",
+    "tests/v78718-source.mjs"
+  ],
+  "all_current_files": 170,
+  "selected_regression": {
+    "passed": 25,
+    "failed": 0,
+    "scope": "Node local/source/engine/synthetic build fixtures, not production"
+  },
+  "exam_routes": 13,
+  "plan_prices_yen": {
+    "week": 1000,
+    "month": 2000,
+    "3months": 3000,
+    "year": 5000
+  },
+  "free_attempt_policy": "one free attempt per EXAM TYPE per account (not one total)",
+  "languages": [
+    "my",
+    "en",
+    "ja"
+  ],
+  "readme": "README_v7_87_18_EXAM_ACCESS_PLANS_UI_MY.md",
+  "previous_backend_files_changed": [],
+  "new_database_migrations": 0,
+  "full_npm_build": "not run, repository is partial cumulative patch",
+  "live_netlify_and_auth_payments": "not run",
+  "claims_excluded": [
+    "production stable",
+    "measured mobile load reduction",
+    "live payment confirmed"
+  ],
+  "github_mutated": false,
+  "netlify_mutated": false,
+  "browser_synthetic_test": {
+    "passed": 1,
+    "failed": 0,
+    "viewports": [
+      {
+        "width": 390,
+        "height": 844
+      },
+      {
+        "width": 1280,
+        "height": 850
+      }
+    ],
+    "checks": [
+      "Myanmar guest copy",
+      "per-exam-type free policy",
+      "4 plans prices",
+      "plan selection key",
+      "Myanmar-English-Japanese switching",
+      "no horizontal overflow"
+    ],
+    "method": "Playwright.set_content synthetic HTML fixture; not real production pages"
+  },
+  "selected_test_total_passed": 26,
+  "selected_test_total_failed": 0,
+  "notes": "Static synthetics test successful, full GitHub repository npm test/npm run build and live Netlify auth/payment not tested."
+}

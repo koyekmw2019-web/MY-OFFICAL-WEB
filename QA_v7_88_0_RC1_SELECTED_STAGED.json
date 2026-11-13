@@ -1,0 +1,297 @@
+{
+  "version": "7.87.21",
+  "scope": "SELECTED_REGRESSION_ONLY",
+  "passed": 41,
+  "total": 41,
+  "complete": true,
+  "fullBuildTested": false,
+  "results": [
+    {
+      "test": "v7873-source",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v7873-source route-preserving UI/branding patch\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v7874-source",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v7874-source: 12 isolated exam routes, seven safe home links, no access or backend change\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v7875-source",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v7875-source: safe performance, connectivity UX and public cache boundaries\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v7875-runtime",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v7875-runtime: offline, critical script failures, no auto retry, versioned SW cache invalidation and private navigation bypass\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v7876-source",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v7876-source: cumulative v7875 preserved, student-only journey, no backend changes\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v7876-engine",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v7876-engine: 12 subject routes, scoped verified history, date filtering, trusted per-exam scores, no new APIs\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v7877-source",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v7877-source: cumulative, public click-only, admin-auth data, two isolated tables, previous engine retained\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v7877-runtime",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v7877-runtime: click-only UTM, same-origin, admin auth, manual entries, arithmetic, no fake visitors\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v7878-source",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v7878-source: v7877 cumulative retained, admin-only cleanup and CRM, prior backend untouched\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v7878-crm",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v7878-crm: validation, status, optional YKCR reference, dates and length limits\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v7878-crm-api.mock",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v7878-crm-api.mock: admin auth, origin guard, input checks, CRUD, no YKCR/payment/Exam mutation\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v7879-data",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v7879-data: 509 patterns, 509 original multilingual lesson drafts, 0 explicitly pending, furigana & underline, no backend changes\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v7879-source",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v7879-source: incremental cumulative, source/built route consistency, no exam/payment/YKCR server modification\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v7879-bridge",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v7879-bridge: 30 original grammar lessons available by ?legacy=1, selected JLPT level passed, modifier clicks stay native\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78710-content",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78710-content: 509/509 trilingual original authored lessons, 1,018 JP/MY/EN examples, all highlights present, legacy safe, cache key v78710\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78711-stability",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78711-stability: wrapped PostgreSQL free-attempt collision recognized, 12 exam rules unchanged, grammar+CRM assets preserved\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78712-source",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78712-source: additive i18n, no content/backend rewrite, CRM/business confirmations localized\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78713-static",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78713-static: patch chain, all 509 grammar records, previous API/schema retained, SW no private caching, full source preflight present\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78713-build-fixture",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78713-build-fixture: 24-page HTML metadata, inline JS preservation, positive release gate & missing CSS negative test (synthetic fixture only)\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78714-engine",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78714-engine: 509 original items, 1,018 cloze examples, 40 curated MCQs, no automatically synthesized distractors, review/daily prioritization, per-device progress & session validation\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78714-source",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78714-source: additive student-only integration, no mock exam/identity/payment/YKCR APIs, 509 lesson deep links and patch chain intact\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78714-build-fixture",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78714-build-fixture: isolated publish pass, Admin/Member exclusion, missing JS negative-release gate\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78715-engine",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78715-engine: zero-data honesty, 1-attempt uncertainty, repeated mistakes, recovery, due heuristic, priority, 7-day method splitting, 1200-event cap, 5-level isolation\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78715-source",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78715-source: version chain, new files, student-only role, no backend or personal data network requests\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78715-build-fixture",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78715-build-fixture: positive integration, role separation, missing dependency blocks release\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78716-engine",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78716-engine: strict dates/weekly boundaries, actual sessions vs plans, self-report separation, streak, targets, invalid input and 400-day cap\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78716-source",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78716-source: version/build chain, safe local state, 3 languages, student-only integration, previous backend/grammar preserved\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78716-build-fixture",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78716-build-fixture: prior v7.87.15 builder, additive calendar integration, role isolation, missing-asset release rejection\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78717-engine",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78717-engine: valid windows, scoped pipeline groupings, follow-up counts, no fake conversion\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78717-api.mock",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78717-api.mock: read-only admin permissions, period guard, aggregation, no PII contact leak\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78717-source",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78717-source: build chain, admin-only and no new DB/identity/CRM mutations\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78717-build-fixture",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78717-build-fixture: admin-only build, duplicate prevention and missing CSS gate\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78718-source",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78718-source: cumulative build, exact per-exam policy, no backend/learning changes\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78718-build-fixture",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78718-build-fixture: 13 pages, localization, repeat prevention, price tamper gate\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78719-backend.mock",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "lan -> success pending\nPASS Payment: invalid bank JSON -> failure before storage\nPASS Exam status: authenticated response is private, no-store; per exam type\nPASS Health: non-admin forbidden\nPASS Health: full schema/config, no secrets in output\nPASS Health: missing table yields 503 without writing DB\nPASS v78719-backend mock tests (18) — no live Netlify calls, no real student or payment mutations\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78719-source",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78719-source: critical access/payment safeguards, cumulative backend and exam/learning source present\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78720-source",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78720-source: cache version, build/test chain, 509 grammar, critical exam/payment/YKCR/CRM sources retained\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78720-sw-runtime",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78720-sw-runtime: activation cleanup, private-route bypass, versioned cache speed, unversioned refresh, bad MIME rejection, offline fallback\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78720-build-fixture",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78720-build-fixture: 27 synthetic pages, 54 versioned static links, mobile browser, stale JS / plan price / private leak negative gates\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78721-source",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78721-source: QA wiring, admin health, 509 grammar and audit-only release; original baseline backend checks 0/4 present (full checkout required for missing)\n",
+      "stderrTail": ""
+    },
+    {
+      "test": "v78721-fixture",
+      "passed": true,
+      "exitCode": 0,
+      "stdoutTail": "PASS v78721-fixture: 29 synthetic public routes; positive release audit and real local HTTP smoke; negative missing JS, stale JS, tampered price, missing route, backend leak and missing dist blocked\n",
+      "stderrTail": ""
+    }
+  ]
+}

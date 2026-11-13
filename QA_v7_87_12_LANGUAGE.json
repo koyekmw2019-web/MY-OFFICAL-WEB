@@ -1,0 +1,24 @@
+{
+  "version": "7.87.12",
+  "release_label": "Weekly Cumulative Language QA Patch (not production-stable certification)",
+  "date": "2026-11-12",
+  "base_zip": "YEKUN_v7.87.11_STABILITY_RELEASE_CANDIDATE_CUMULATIVE.zip",
+  "source_zip_includes_prior_versions": "7.87.5-7.87.11",
+  "content_counts": {"grammar_patterns": 509, "example_sentences": 1018, "exam_types": 12},
+  "modified_public_scope": ["Homepage UI", "Mock Exam Center and 12 exam routes", "Admin/Student/Member dashboards", "Grammar Library", "JLPT Learning Center", "Login", "Video Course", "SSW class landing pages"],
+  "selected_language_options": ["my", "en", "ja"],
+  "tested_local_browser": {
+    "engine": "Chromium headless",
+    "viewport_px": [390, 1280],
+    "qa_kind": "local mocked API/HTML fixture; not deployed URL",
+    "passed": ["my-en-ja-my switching", "grammar toolbar labels and static guide", "grammar example Ja/My/En preserved", "bookmark storage preserved", "dynamic admin labels", "legacy language preference persists", "text input value preserved", "user-record name unchanged", "placeholder translation", "no horizontal overflow"]
+  },
+  "unit_regressions_passed": ["v7875-runtime", "v7876-engine", "v7877-runtime mock", "v7878-crm-api mock", "v7879-data", "v78710-content", "v78711-stability", "v78712-source", "v78712-release"],
+  "build_fixture_route_count": 24,
+  "prior_source_file_count": 81,
+  "prior_source_files_preserved": 81,
+  "protected_files_unchanged": ["all five grammar JSON files", "free-attempt classifier and exam scoring rules", "CRM Netlify function", "Business Growth Netlify function", "CRM Database migration"],
+  "live_production_tested": false,
+  "full_repository_build_tested": false,
+  "note": "Partial cumulative patch does not include GitHub main files required for npm run build. Deploy Preview is required for confirmation."
+}

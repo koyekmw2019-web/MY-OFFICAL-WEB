@@ -1,0 +1,884 @@
+{
+ "version": "7.87.10",
+ "level": "N5",
+ "sourceReference": "https://nihongokyoshi-net.com/jlpt-grammars/",
+ "licenseNote": "Grammar pattern titles used as index. All explanations and examples are originally authored, not copied from source; teaching materials need ongoing human editorial review.",
+ "editorialStatus": "complete original authored drafts; not certified official JLPT list",
+ "items": [
+  {
+   "id": "N5-grammar-001",
+   "title": "〜あとで",
+   "level": "N5",
+   "index": 1,
+   "status": "draft",
+   "meaningJa": "ある動作が終わった後に、次の動作をする。",
+   "meaningMy": "တစ်ခုခုလုပ်ပြီးနောက် နောက်တစ်ခုလုပ်ခြင်း။",
+   "meaningEn": "After doing one action, do another.",
+   "formation": "Vた＋あとで / Nの＋あとで",
+   "examples": [
+    {
+     "ja": "宿題をしたあとで、テレビを見ます。",
+     "highlight": "あとで",
+     "my": "အိမ်စာလုပ်ပြီးမှ တီဗီကြည့်မယ်။",
+     "en": "I will watch TV after doing my homework."
+    },
+    {
+     "ja": "食事のあとで、散歩します。",
+     "highlight": "あとで",
+     "my": "ထမင်းစားပြီးနောက် လမ်းလျှောက်မယ်။",
+     "en": "I take a walk after a meal."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-002",
+   "title": "あまり〜ない",
+   "level": "N5",
+   "index": 2,
+   "status": "draft",
+   "meaningJa": "程度や回数が多くないことを表す。",
+   "meaningMy": "သိပ်မ…ဘူး ဆိုတဲ့ အဓိပ္ပာယ်။",
+   "meaningEn": "Not very much; not often.",
+   "formation": "あまり＋否定形",
+   "examples": [
+    {
+     "ja": "私はあまりコーヒーを飲みません。",
+     "highlight": "あまり",
+     "my": "ကျွန်တော် ကော်ဖီ သိပ်မသောက်ဘူး။",
+     "en": "I do not drink much coffee."
+    },
+    {
+     "ja": "今日はあまり寒くないです。",
+     "highlight": "あまり",
+     "my": "ဒီနေ့ သိပ်မအေးဘူး။",
+     "en": "It is not very cold today."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-003",
+   "title": "〜がいちばん",
+   "level": "N5",
+   "index": 3,
+   "status": "draft",
+   "meaningJa": "ある範囲の中で最も程度が高いことを表す。",
+   "meaningMy": "အုပ်စုတစ်ခုထဲမှာ အများဆုံး၊ အကောင်းဆုံး ဖြစ်တာကို ပြောခြင်း။",
+   "meaningEn": "The most or the best among a group.",
+   "formation": "N＋がいちばん＋形容詞",
+   "examples": [
+    {
+     "ja": "果物ではマンゴーがいちばん好きです。",
+     "highlight": "がいちばん",
+     "my": "အသီးတွေထဲမှာ သရက်သီးကို အကြိုက်ဆုံးပါ။",
+     "en": "I like mangoes the most among fruits."
+    },
+    {
+     "ja": "この店のカレーがいちばんおいしいです。",
+     "highlight": "がいちばん",
+     "my": "ဒီဆိုင်ရဲ့ ကာရီက အရသာအကောင်းဆုံးပါ။",
+     "en": "This shop has the most delicious curry."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-004",
+   "title": "〜方",
+   "level": "N5",
+   "index": 4,
+   "status": "draft",
+   "meaningJa": "動詞のます形の語幹に付けて、方法や手順を表す。",
+   "meaningMy": "ကြိယာနောက်မှာ တွဲသုံးပြီး ဘယ်လိုလုပ်ရမလဲဆိုတဲ့ နည်းလမ်းကို ဖော်ပြတယ်။",
+   "meaningEn": "Shows how to do something; the method of an action.",
+   "formation": "Vます形の語幹＋方（かた）",
+   "examples": [
+    {
+     "ja": "この漢字の読み方を教えてください。",
+     "highlight": "読み方",
+     "my": "ဒီခန်းဂျီးကို ဘယ်လိုဖတ်ရလဲ သင်ပေးပါ။",
+     "en": "Please teach me how to read this kanji."
+    },
+    {
+     "ja": "この料理の作り方は簡単です。",
+     "highlight": "作り方",
+     "my": "ဒီဟင်းကို ချက်တဲ့နည်းက လွယ်ပါတယ်။",
+     "en": "The way to make this dish is easy."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-005",
+   "title": "〜が欲しい",
+   "level": "N5",
+   "index": 5,
+   "status": "draft",
+   "meaningJa": "ものを手に入れたい気持ちを表す。",
+   "meaningMy": "ပစ္စည်းတစ်ခုကို လိုချင်တယ်လို့ ပြောခြင်း။",
+   "meaningEn": "To want to have something.",
+   "formation": "N＋が欲しい",
+   "examples": [
+    {
+     "ja": "新しいかばんが欲しいです。",
+     "highlight": "が欲しい",
+     "my": "အိတ်အသစ်တစ်လုံး လိုချင်ပါတယ်။",
+     "en": "I want a new bag."
+    },
+    {
+     "ja": "誕生日には本が欲しいです。",
+     "highlight": "が欲しい",
+     "my": "မွေးနေ့မှာ စာအုပ်လိုချင်ပါတယ်။",
+     "en": "I want a book for my birthday."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-006",
+   "title": "〜から",
+   "level": "N5",
+   "index": 6,
+   "status": "draft",
+   "meaningJa": "理由・原因を伝える。",
+   "meaningMy": "ဘာကြောင့်လဲဆိုတဲ့ အကြောင်းပြချက် ဖော်ပြခြင်း။",
+   "meaningEn": "Because; gives a reason.",
+   "formation": "普通形＋から",
+   "examples": [
+    {
+     "ja": "雨が降るから、傘を持って行きます。",
+     "highlight": "から",
+     "my": "မိုးရွာမလို့ ထီးယူသွားမယ်။",
+     "en": "I will take an umbrella because it will rain."
+    },
+    {
+     "ja": "明日は休みだから、ゆっくり寝ます。",
+     "highlight": "だから",
+     "my": "မနက်ဖြန်နားရက်မို့ ကောင်းကောင်းအိပ်မယ်။",
+     "en": "I will sleep in because tomorrow is a holiday."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-007",
+   "title": "ぜひ",
+   "level": "N5",
+   "index": 7,
+   "status": "draft",
+   "meaningJa": "強い希望や勧めの気持ちを伝える。",
+   "meaningMy": "တကယ်လုပ်ချင်တာ၊ အလေးအနက် ဖိတ်ခေါ်တာကို ဖော်ပြတယ်။",
+   "meaningEn": "Expresses a strong wish or an enthusiastic invitation.",
+   "formation": "ぜひ＋V / ぜひ＋依頼・勧誘表現",
+   "examples": [
+    {
+     "ja": "今度ぜひ遊びに来てください。",
+     "highlight": "ぜひ",
+     "my": "နောက်တစ်ခါ သေချာပေါက် လာလည်ပါနော်။",
+     "en": "Please do come and visit next time."
+    },
+    {
+     "ja": "日本へ行ったら、ぜひ京都を見たいです。",
+     "highlight": "ぜひ",
+     "my": "ဂျပန်ရောက်ရင် ကျိုတိုကို အရမ်းသွားကြည့်ချင်တယ်။",
+     "en": "If I go to Japan, I definitely want to see Kyoto."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-008",
+   "title": "〜だけ",
+   "level": "N5",
+   "index": 8,
+   "status": "draft",
+   "meaningJa": "数量・範囲の限定を表す。",
+   "meaningMy": "…သာ၊ …လောက်ပဲ ဆိုတဲ့ ကန့်သတ်မှုကို ပြခြင်း။",
+   "meaningEn": "Only; limits an amount or range.",
+   "formation": "N＋だけ",
+   "examples": [
+    {
+     "ja": "今日は水だけ飲みました。",
+     "highlight": "だけ",
+     "my": "ဒီနေ့ ရေတစ်မျိုးတည်းပဲ သောက်ခဲ့တယ်။",
+     "en": "Today I drank only water."
+    },
+    {
+     "ja": "一つだけ質問してもいいですか。",
+     "highlight": "だけ",
+     "my": "မေးခွန်းတစ်ခုပဲ မေးလို့ရမလား။",
+     "en": "May I ask just one question?"
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-009",
+   "title": "〜で（手段・方法）",
+   "level": "N5",
+   "index": 9,
+   "status": "draft",
+   "meaningJa": "何を使って行うか、どんな手段で行うかを示す。",
+   "meaningMy": "ဘာကိုသုံးပြီး ဘယ်နည်းလမ်းနဲ့ လုပ်သလဲဆိုတာ ပြတယ်။",
+   "meaningEn": "Marks a tool, means, or method used to do something.",
+   "formation": "名詞＋で＋動詞",
+   "examples": [
+    {
+     "ja": "電車で学校へ行きます。",
+     "highlight": "で",
+     "my": "ရထားနဲ့ ကျောင်းသွားပါတယ်။",
+     "en": "I go to school by train."
+    },
+    {
+     "ja": "日本語で手紙を書きました。",
+     "highlight": "で",
+     "my": "ဂျပန်လို စာရေးခဲ့ပါတယ်။",
+     "en": "I wrote a letter in Japanese."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-010",
+   "title": "〜てから",
+   "level": "N5",
+   "index": 10,
+   "status": "draft",
+   "meaningJa": "先に一つの動作を行い、それから次の動作をする。",
+   "meaningMy": "အရင်တစ်ခုလုပ်ပြီးမှ နောက်တစ်ခုလုပ်ခြင်း။",
+   "meaningEn": "Do one thing first, then another.",
+   "formation": "Vて＋から",
+   "examples": [
+    {
+     "ja": "朝ご飯を食べてから、学校へ行きます。",
+     "highlight": "てから",
+     "my": "မနက်စာစားပြီးမှ ကျောင်းသွားမယ်။",
+     "en": "I go to school after eating breakfast."
+    },
+    {
+     "ja": "手を洗ってから、料理します。",
+     "highlight": "てから",
+     "my": "လက်ဆေးပြီးမှ ဟင်းချက်မယ်။",
+     "en": "I cook after washing my hands."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-011",
+   "title": "〜でしょう（確認・同意）",
+   "level": "N5",
+   "index": 11,
+   "status": "draft",
+   "meaningJa": "相手が同意すると考えて確認する。",
+   "meaningMy": "တစ်ဖက်လူက သဘောတူမယ်လို့ ထင်ပြီး အတည်ပြုမေးခြင်း။",
+   "meaningEn": "Seeks confirmation or agreement about what the speaker expects.",
+   "formation": "普通形＋でしょう（名詞・ナ形容詞は「だ」を付けない）",
+   "examples": [
+    {
+     "ja": "この映画はおもしろいでしょう。",
+     "highlight": "でしょう",
+     "my": "ဒီရုပ်ရှင် စိတ်ဝင်စားစရာကောင်းတယ်မဟုတ်လား။",
+     "en": "This movie is interesting, isn’t it?"
+    },
+    {
+     "ja": "明日は休みでしょう。",
+     "highlight": "でしょう",
+     "my": "မနက်ဖြန် ပိတ်ရက်မဟုတ်လား။",
+     "en": "Tomorrow is a day off, right?"
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-012",
+   "title": "〜てはいけない",
+   "level": "N5",
+   "index": 12,
+   "status": "draft",
+   "meaningJa": "禁止されていることを表す。",
+   "meaningMy": "မလုပ်ရဘူး၊ တားမြစ်ထားတယ်ဆိုတဲ့ အဓိပ္ပာယ်။",
+   "meaningEn": "Must not; something is prohibited.",
+   "formation": "Vて＋はいけない",
+   "examples": [
+    {
+     "ja": "ここで写真を撮ってはいけません。",
+     "highlight": "てはいけません",
+     "my": "ဒီနေရာမှာ ဓာတ်ပုံမရိုက်ရပါဘူး။",
+     "en": "You must not take photos here."
+    },
+    {
+     "ja": "試験中は電話を使ってはいけません。",
+     "highlight": "てはいけません",
+     "my": "စာမေးပွဲဖြေစဉ် ဖုန်းမသုံးရပါဘူး။",
+     "en": "You must not use your phone during the test."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-013",
+   "title": "〜てもいいですか",
+   "level": "N5",
+   "index": 13,
+   "status": "draft",
+   "meaningJa": "許可を求める言い方。",
+   "meaningMy": "တစ်ခုခုလုပ်ခွင့် တောင်းခြင်း။",
+   "meaningEn": "Asking permission to do something.",
+   "formation": "Vて＋もいいですか",
+   "examples": [
+    {
+     "ja": "ここに座ってもいいですか。",
+     "highlight": "てもいいですか",
+     "my": "ဒီမှာ ထိုင်လို့ရမလား။",
+     "en": "May I sit here?"
+    },
+    {
+     "ja": "窓を開けてもいいですか。",
+     "highlight": "てもいいですか",
+     "my": "ပြတင်းပေါက်ဖွင့်လို့ရမလား။",
+     "en": "May I open the window?"
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-014",
+   "title": "〜どうやって",
+   "level": "N5",
+   "index": 14,
+   "status": "draft",
+   "meaningJa": "方法や手順をたずねる疑問表現。",
+   "meaningMy": "ဘယ်လိုလုပ်ပြီး၊ ဘယ်နည်းနဲ့ဆိုတာ မေးမြန်းခြင်း။",
+   "meaningEn": "Asks how something is done or how to reach a place.",
+   "formation": "どうやって＋動詞",
+   "examples": [
+    {
+     "ja": "駅までどうやって行きますか。",
+     "highlight": "どうやって",
+     "my": "ဘူတာကို ဘယ်လိုသွားရမလဲ။",
+     "en": "How do I get to the station?"
+    },
+    {
+     "ja": "このアプリはどうやって使いますか。",
+     "highlight": "どうやって",
+     "my": "ဒီအက်ပ်ကို ဘယ်လိုသုံးရမလဲ။",
+     "en": "How do you use this app?"
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-015",
+   "title": "〜と思う",
+   "level": "N5",
+   "index": 15,
+   "status": "draft",
+   "meaningJa": "自分の考え、判断、推測を述べる。",
+   "meaningMy": "ကိုယ်ထင်တာ၊ ကိုယ်ယူဆတာကို ဖော်ပြခြင်း။",
+   "meaningEn": "States what someone thinks, believes, or guesses.",
+   "formation": "普通形＋と思う（名詞・ナ形容詞は「だ」を付ける）",
+   "examples": [
+    {
+     "ja": "明日は雨が降ると思います。",
+     "highlight": "と思います",
+     "my": "မနက်ဖြန် မိုးရွာမယ်လို့ ထင်ပါတယ်။",
+     "en": "I think it will rain tomorrow."
+    },
+    {
+     "ja": "この問題は難しいと思います。",
+     "highlight": "と思います",
+     "my": "ဒီမေးခွန်းက ခက်တယ်လို့ ထင်ပါတယ်။",
+     "en": "I think this question is difficult."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-016",
+   "title": "とても",
+   "level": "N5",
+   "index": 16,
+   "status": "draft",
+   "meaningJa": "程度が高いことを表す副詞。",
+   "meaningMy": "အလွန်၊ တော်တော် ဆိုတဲ့ ပြင်းထန်မှုကို ဖော်ပြတဲ့စကား။",
+   "meaningEn": "Very; an adverb showing a high degree.",
+   "formation": "とても＋形容詞 / 状態表現",
+   "examples": [
+    {
+     "ja": "今日はとても暑いです。",
+     "highlight": "とても",
+     "my": "ဒီနေ့ အရမ်းပူတယ်။",
+     "en": "It is very hot today."
+    },
+    {
+     "ja": "この説明はとても分かりやすいです。",
+     "highlight": "とても",
+     "my": "ဒီရှင်းပြချက်က အရမ်းနားလည်လွယ်တယ်။",
+     "en": "This explanation is very easy to understand."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-017",
+   "title": "どんな",
+   "level": "N5",
+   "index": 17,
+   "status": "draft",
+   "meaningJa": "物や人の種類、性質、特徴をたずねる。",
+   "meaningMy": "ဘယ်လိုမျိုးလဲ၊ ဘယ်လိုအရည်အသွေးရှိလဲ မေးတဲ့စကား။",
+   "meaningEn": "Asks what kind of person or thing something is.",
+   "formation": "どんな＋名詞",
+   "examples": [
+    {
+     "ja": "どんな音楽が好きですか。",
+     "highlight": "どんな",
+     "my": "ဘယ်လိုဂီတမျိုး ကြိုက်သလဲ။",
+     "en": "What kind of music do you like?"
+    },
+    {
+     "ja": "日本はどんな国ですか。",
+     "highlight": "どんな",
+     "my": "ဂျပန်က ဘယ်လိုနိုင်ငံမျိုးလဲ။",
+     "en": "What kind of country is Japan?"
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-018",
+   "title": "〜たい",
+   "level": "N5",
+   "index": 18,
+   "status": "draft",
+   "meaningJa": "自分の希望・願望を表す。",
+   "meaningMy": "ကိုယ်လုပ်ချင်တဲ့ ဆန္ဒကို ပြောခြင်း။",
+   "meaningEn": "Want to do an action.",
+   "formation": "Vます形の語幹＋たい",
+   "examples": [
+    {
+     "ja": "日本へ旅行したいです。",
+     "highlight": "たい",
+     "my": "ဂျပန်ကို ခရီးသွားချင်တယ်။",
+     "en": "I want to travel to Japan."
+    },
+    {
+     "ja": "週末は映画を見たいです。",
+     "highlight": "たい",
+     "my": "စနေတနင်္ဂနွေမှာ ရုပ်ရှင်ကြည့်ချင်တယ်။",
+     "en": "I want to watch a movie this weekend."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-019",
+   "title": "〜たり〜たり",
+   "level": "N5",
+   "index": 19,
+   "status": "draft",
+   "meaningJa": "代表的な行動をいくつか例として挙げる。",
+   "meaningMy": "လုပ်ဆောင်မှုတွေကို ဥပမာပြပြီး စာရင်းပြုခြင်း။",
+   "meaningEn": "List representative activities, such as doing A and B.",
+   "formation": "Vた＋り、Vた＋り＋する",
+   "examples": [
+    {
+     "ja": "休みの日は本を読んだり、音楽を聞いたりします。",
+     "highlight": "たり",
+     "my": "နားရက်မှာ စာဖတ်တာ၊ သီချင်းနားထောင်တာတွေ လုပ်တယ်။",
+     "en": "On my days off I do things like reading and listening to music."
+    },
+    {
+     "ja": "週末は掃除したり、料理したりしました。",
+     "highlight": "たり",
+     "my": "စနေတနင်္ဂနွေမှာ သန့်ရှင်းရေးလုပ်တာ၊ ဟင်းချက်တာတွေ လုပ်ခဲ့တယ်။",
+     "en": "On the weekend I cleaned and cooked, among other things."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-020",
+   "title": "〜とき",
+   "level": "N5",
+   "index": 20,
+   "status": "draft",
+   "meaningJa": "ある時点・状況を表す。",
+   "meaningMy": "အချိန်၊ အခြေအနေတစ်ခုကို ဖော်ပြခြင်း။",
+   "meaningEn": "When; at the time of an event.",
+   "formation": "普通形＋とき / Nの＋とき",
+   "examples": [
+    {
+     "ja": "日本に来たとき、桜を見ました。",
+     "highlight": "とき",
+     "my": "ဂျပန်ရောက်တဲ့အချိန်မှာ ဆာကူရာပန်းတွေ မြင်ခဲ့တယ်။",
+     "en": "When I came to Japan, I saw cherry blossoms."
+    },
+    {
+     "ja": "暇なとき、本を読みます。",
+     "highlight": "とき",
+     "my": "အားတဲ့အချိန် စာဖတ်ပါတယ်။",
+     "en": "I read books when I am free."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-021",
+   "title": "〜ないで",
+   "level": "N5",
+   "index": 21,
+   "status": "draft",
+   "meaningJa": "ある動作をしないまま、別の動作をする。",
+   "meaningMy": "တစ်ခုကို မလုပ်ဘဲ နောက်တစ်ခု လုပ်ခြင်း။",
+   "meaningEn": "Do something without doing another action.",
+   "formation": "Vない形＋で",
+   "examples": [
+    {
+     "ja": "朝ご飯を食べないで家を出ました。",
+     "highlight": "ないで",
+     "my": "မနက်စာ မစားဘဲ အိမ်ကထွက်ခဲ့တယ်။",
+     "en": "I left home without eating breakfast."
+    },
+    {
+     "ja": "辞書を使わないで、この文を読んでください。",
+     "highlight": "ないで",
+     "my": "အဘိဓာန်မသုံးဘဲ ဒီဝါကျကို ဖတ်ကြည့်ပါ။",
+     "en": "Please read this sentence without using a dictionary."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-022",
+   "title": "〜ないでください",
+   "level": "N5",
+   "index": 22,
+   "status": "draft",
+   "meaningJa": "ある行動をしないように丁寧に依頼する。",
+   "meaningMy": "မလုပ်ပါနဲ့လို့ ယဉ်ကျေးစွာ တောင်းဆိုခြင်း။",
+   "meaningEn": "Politely asks someone not to do something.",
+   "formation": "Vない形＋でください",
+   "examples": [
+    {
+     "ja": "ここで写真を撮らないでください。",
+     "highlight": "ないでください",
+     "my": "ဒီနေရာမှာ ဓာတ်ပုံမရိုက်ပါနဲ့။",
+     "en": "Please do not take photos here."
+    },
+    {
+     "ja": "心配しないでください。",
+     "highlight": "ないでください",
+     "my": "စိတ်မပူပါနဲ့။",
+     "en": "Please do not worry."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-023",
+   "title": "〜ながら",
+   "level": "N5",
+   "index": 23,
+   "status": "draft",
+   "meaningJa": "二つの動作を同時に行う。",
+   "meaningMy": "အလုပ်နှစ်ခုကို တစ်ပြိုင်တည်း လုပ်ခြင်း။",
+   "meaningEn": "Do two actions at the same time.",
+   "formation": "Vます形の語幹＋ながら",
+   "examples": [
+    {
+     "ja": "音楽を聞きながら、走ります。",
+     "highlight": "ながら",
+     "my": "သီချင်းနားထောင်ရင်း ပြေးတယ်။",
+     "en": "I run while listening to music."
+    },
+    {
+     "ja": "母は歌いながら、料理しています。",
+     "highlight": "ながら",
+     "my": "အမေက သီချင်းဆိုရင်း ဟင်းချက်နေတယ်။",
+     "en": "My mother is cooking while singing."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-024",
+   "title": "〜なくてもいい",
+   "level": "N5",
+   "index": 24,
+   "status": "draft",
+   "meaningJa": "その行動をする必要がないことを表す。",
+   "meaningMy": "မလုပ်လည်းရတယ်၊ လုပ်ဖို့မလိုဘူးဆိုတဲ့ အဓိပ္ပာယ်။",
+   "meaningEn": "It is not necessary to do something; you do not have to.",
+   "formation": "Vない形の「ない」→なくてもいい",
+   "examples": [
+    {
+     "ja": "明日は学校に来なくてもいいです。",
+     "highlight": "なくてもいい",
+     "my": "မနက်ဖြန် ကျောင်းမလာလည်း ရပါတယ်။",
+     "en": "You do not have to come to school tomorrow."
+    },
+    {
+     "ja": "全部食べなくてもいいですよ。",
+     "highlight": "なくてもいい",
+     "my": "အကုန်မစားလည်း ရပါတယ်နော်။",
+     "en": "You do not have to eat everything."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-025",
+   "title": "〜なければならない",
+   "level": "N5",
+   "index": 25,
+   "status": "draft",
+   "meaningJa": "義務や必要性を表す。",
+   "meaningMy": "မဖြစ်မနေ လုပ်ရမယ်လို့ ပြောခြင်း။",
+   "meaningEn": "Must do; an obligation or necessity.",
+   "formation": "Vない形の「ない」→なければならない",
+   "examples": [
+    {
+     "ja": "明日までに宿題を出さなければなりません。",
+     "highlight": "なければなりません",
+     "my": "မနက်ဖြန်မတိုင်ခင် အိမ်စာတင်ရမယ်။",
+     "en": "I must submit my homework by tomorrow."
+    },
+    {
+     "ja": "薬を毎日飲まなければなりません。",
+     "highlight": "なければなりません",
+     "my": "ဆေးကို နေ့တိုင်း သောက်ရမယ်။",
+     "en": "I must take the medicine every day."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-026",
+   "title": "〜なる",
+   "level": "N5",
+   "index": 26,
+   "status": "draft",
+   "meaningJa": "状態や性質が変化して別の状態になる。",
+   "meaningMy": "အခြေအနေတစ်ခုကနေ နောက်တစ်ခုကို ပြောင်းလဲသွားခြင်း။",
+   "meaningEn": "Describes becoming or changing into another state.",
+   "formation": "イ形容詞の「い」→くなる / ナ形容詞＋になる / 名詞＋になる",
+   "examples": [
+    {
+     "ja": "春になると暖かくなります。",
+     "highlight": "なる",
+     "my": "နွေဦးရောက်လာရင် နွေးလာတယ်။",
+     "en": "When spring comes, it gets warmer."
+    },
+    {
+     "ja": "日本語が上手になりたいです。",
+     "highlight": "になり",
+     "my": "ဂျပန်စာ ပိုကျွမ်းကျင်လာချင်တယ်။",
+     "en": "I want to become better at Japanese."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-027",
+   "title": "（目的）に行く / 来る / 帰る",
+   "level": "N5",
+   "index": 27,
+   "status": "draft",
+   "meaningJa": "移動する目的を表す。",
+   "meaningMy": "သွားတာ၊ လာတာ၊ ပြန်တာရဲ့ ရည်ရွယ်ချက်ကို ဖော်ပြခြင်း။",
+   "meaningEn": "Expresses the purpose of going, coming, or returning.",
+   "formation": "Vます形の語幹＋に行く / に来る / に帰る",
+   "examples": [
+    {
+     "ja": "図書館へ本を借りに行きます。",
+     "highlight": "に行きます",
+     "my": "စာကြည့်တိုက်ကို စာအုပ်ငှားဖို့ သွားမယ်။",
+     "en": "I am going to the library to borrow books."
+    },
+    {
+     "ja": "友達が私に会いに来ました。",
+     "highlight": "に来ました",
+     "my": "သူငယ်ချင်းက ကျွန်တော့်ကို တွေ့ဖို့ လာခဲ့တယ်။",
+     "en": "My friend came to see me."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-028",
+   "title": "〜はどうですか",
+   "level": "N5",
+   "index": 28,
+   "status": "draft",
+   "meaningJa": "意見・感想をたずねたり、提案したりする。",
+   "meaningMy": "ဘယ်လိုထင်လဲလို့ မေးခြင်း၊ အကြံပြုခြင်း။",
+   "meaningEn": "Asks for an opinion or makes a suggestion.",
+   "formation": "名詞＋はどうですか",
+   "examples": [
+    {
+     "ja": "この本はどうですか。",
+     "highlight": "はどうですか",
+     "my": "ဒီစာအုပ်ကို ဘယ်လိုထင်သလဲ။",
+     "en": "What do you think of this book?"
+    },
+    {
+     "ja": "明日の午後はどうですか。",
+     "highlight": "はどうですか",
+     "my": "မနက်ဖြန် နေ့လယ်ပိုင်းကရော အဆင်ပြေမလား။",
+     "en": "How about tomorrow afternoon?"
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-029",
+   "title": "〜は〜より",
+   "level": "N5",
+   "index": 29,
+   "status": "draft",
+   "meaningJa": "二つのものを比較して一方の特徴を述べる。",
+   "meaningMy": "အရာနှစ်ခုနှိုင်းယှဉ်ပြီး တစ်ခုက ပိုဘယ်လိုဖြစ်တယ်ဆိုတာ ပြတယ်။",
+   "meaningEn": "Compares two things, saying one is more something than the other.",
+   "formation": "名詞 A＋は＋名詞 B＋より＋形容詞",
+   "examples": [
+    {
+     "ja": "今日は昨日より寒いです。",
+     "highlight": "より",
+     "my": "ဒီနေ့က မနေ့ကထက် ပိုအေးတယ်။",
+     "en": "Today is colder than yesterday."
+    },
+    {
+     "ja": "バスはタクシーより安いです。",
+     "highlight": "より",
+     "my": "ဘတ်စ်ကားက တက္ကစီထက် ပိုဈေးချိုတယ်။",
+     "en": "Buses are cheaper than taxis."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-030",
+   "title": "〜前に",
+   "level": "N5",
+   "index": 30,
+   "status": "draft",
+   "meaningJa": "ある出来事や動作より先に別の動作をする。",
+   "meaningMy": "တစ်ခုမလုပ်ခင်၊ တစ်ခုမဖြစ်ခင် အရင်လုပ်ခြင်း။",
+   "meaningEn": "Before doing something or before an event.",
+   "formation": "V辞書形＋前に / 名詞＋の＋前に",
+   "examples": [
+    {
+     "ja": "寝る前に歯を磨きます。",
+     "highlight": "前に",
+     "my": "မအိပ်ခင် သွားတိုက်တယ်။",
+     "en": "I brush my teeth before sleeping."
+    },
+    {
+     "ja": "試験の前に、ノートを見直しました。",
+     "highlight": "前に",
+     "my": "စာမေးပွဲမတိုင်ခင် မှတ်စုတွေ ပြန်ကြည့်ခဲ့တယ်။",
+     "en": "I reviewed my notes before the exam."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-031",
+   "title": "〜ましょう",
+   "level": "N5",
+   "index": 31,
+   "status": "draft",
+   "meaningJa": "相手に一緒の行動を提案したり、誘ったりする。",
+   "meaningMy": "အတူတူလုပ်ကြစို့ဆိုပြီး ဖိတ်ခေါ်၊ အကြံပြုခြင်း။",
+   "meaningEn": "Suggests or invites someone to do something together.",
+   "formation": "Vます形の語幹＋ましょう",
+   "examples": [
+    {
+     "ja": "一緒に日本語を勉強しましょう。",
+     "highlight": "ましょう",
+     "my": "ဂျပန်စာကို အတူတူ လေ့လာကြစို့။",
+     "en": "Let’s study Japanese together."
+    },
+    {
+     "ja": "少し休みましょう。",
+     "highlight": "ましょう",
+     "my": "ခဏနားကြစို့။",
+     "en": "Let’s take a short break."
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-032",
+   "title": "〜ましょうか",
+   "level": "N5",
+   "index": 32,
+   "status": "draft",
+   "meaningJa": "申し出や提案を丁寧にたずねる。",
+   "meaningMy": "ကူညီပေးရမလား၊ အတူလုပ်ကြမလားလို့ ယဉ်ကျေးစွာ မေးခြင်း။",
+   "meaningEn": "Politely offers help or proposes an action.",
+   "formation": "Vます形の語幹＋ましょうか",
+   "examples": [
+    {
+     "ja": "荷物を持ちましょうか。",
+     "highlight": "ましょうか",
+     "my": "အထုပ်ကို သယ်ပေးရမလား။",
+     "en": "Shall I carry your bag?"
+    },
+    {
+     "ja": "一緒に駅まで行きましょうか。",
+     "highlight": "ましょうか",
+     "my": "ဘူတာအထိ အတူတူသွားကြမလား။",
+     "en": "Shall we go to the station together?"
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-033",
+   "title": "〜ませんか",
+   "level": "N5",
+   "index": 33,
+   "status": "draft",
+   "meaningJa": "相手を丁寧に誘う。",
+   "meaningMy": "တစ်ယောက်ယောက်ကို ယဉ်ကျေးစွာ ဖိတ်ခေါ်ခြင်း။",
+   "meaningEn": "Polite invitation: Would you like to...?",
+   "formation": "Vます形＋ませんか",
+   "examples": [
+    {
+     "ja": "一緒に昼ご飯を食べませんか。",
+     "highlight": "ませんか",
+     "my": "နေ့လယ်စာ အတူစားမလား။",
+     "en": "Would you like to have lunch together?"
+    },
+    {
+     "ja": "明日、映画を見ませんか。",
+     "highlight": "ませんか",
+     "my": "မနက်ဖြန် ရုပ်ရှင်အတူကြည့်မလား။",
+     "en": "Would you like to watch a movie tomorrow?"
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-034",
+   "title": "もう〜した",
+   "level": "N5",
+   "index": 34,
+   "status": "draft",
+   "meaningJa": "ある動作がすでに完了していることを表す。",
+   "meaningMy": "လုပ်ပြီးသား၊ ဖြစ်ပြီးသားဆိုတဲ့ အဓိပ္ပာယ်။",
+   "meaningEn": "Indicates an action has already been completed.",
+   "formation": "もう＋Vた形",
+   "examples": [
+    {
+     "ja": "宿題はもう終わりました。",
+     "highlight": "もう",
+     "my": "အိမ်စာ ပြီးသွားပါပြီ။",
+     "en": "I have already finished my homework."
+    },
+    {
+     "ja": "もう昼ご飯を食べましたか。",
+     "highlight": "もう",
+     "my": "နေ့လယ်စာ စားပြီးပြီလား။",
+     "en": "Have you already eaten lunch?"
+    }
+   ]
+  },
+  {
+   "id": "N5-grammar-035",
+   "title": "〜をください",
+   "level": "N5",
+   "index": 35,
+   "status": "draft",
+   "meaningJa": "何かを求めたり注文したりするときの丁寧な言い方。",
+   "meaningMy": "ပစ္စည်းတစ်ခု တောင်းတဲ့အခါ၊ ဝယ်တဲ့အခါ ယဉ်ကျေးစွာ ပြောခြင်း။",
+   "meaningEn": "Politely asks for or orders something.",
+   "formation": "名詞＋をください",
+   "examples": [
+    {
+     "ja": "水を一杯ください。",
+     "highlight": "ください",
+     "my": "ရေတစ်ခွက် ပေးပါ။",
+     "en": "Please give me a glass of water."
+    },
+    {
+     "ja": "この切符を二枚ください。",
+     "highlight": "を二枚ください",
+     "my": "ဒီလက်မှတ် နှစ်စောင်ပေးပါ။",
+     "en": "Two of these tickets, please."
+    }
+   ]
+  }
+ ]
+}

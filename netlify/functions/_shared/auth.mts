@@ -8,7 +8,10 @@ export async function requireUser() {
 
 export async function requireAdmin() {
   const user = await requireUser();
-  if (!user.roles.includes("admin")) throw new Response("Forbidden", { status: 403 });
+  // Netlify Identity may omit roles for ordinary users. Treat absent/malformed
+  // roles as zero privileges, not a TypeError that leaks as HTTP 500.
+  const roles = Array.isArray(user.roles) ? user.roles : [];
+  if (!roles.includes("admin")) throw new Response("Forbidden", { status: 403 });
   return user;
 }
 

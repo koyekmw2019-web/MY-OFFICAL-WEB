@@ -1,0 +1,42 @@
+{
+  "version": "7.87.6",
+  "source_baseline": "GitHub main 7.87.4 plus assistant-delivered v7.87.5 patch",
+  "cumulative_versions": [
+    "7.87.5",
+    "7.87.6"
+  ],
+  "features": [
+    "read-only Student My Study Journey",
+    "verified per-exam last-five score chart",
+    "20-minute session-only checklist",
+    "existing Wrong Answer Review and Coach navigation",
+    "subject-specific lesson links",
+    "Myanmar-English-Japanese labels"
+  ],
+  "scope": {
+    "new_backend_endpoints": 0,
+    "new_database_tables": 0,
+    "changed_netlify_functions": 0,
+    "new_pdf_files": 0,
+    "github_push": false,
+    "production_deploy": false
+  },
+  "qa": {
+    "syntax": "PASS",
+    "v7875-service-worker-and-offline-runtime": "PASS",
+    "v7876-journey-logic": "PASS with original catalog-compatible test fixture",
+    "v7876-source": "PASS",
+    "v7876-generated-student-html-fixture": "PASS",
+    "v7876-12-exam-static-fixture": "PASS",
+    "full_netlify_build": "NOT_RUN: full repo only on GitHub",
+    "live_auth_payment_ykcr": "NOT_RUN",
+    "mobile_real_device": "NOT_RUN"
+  },
+  "limitations": [
+    "v7.87.6 UI uses existing account-scoped latest-50 attempt history, no additional fetch.",
+    "The chart is filtered to server-verified dated records.",
+    "Checkboxes reset when the page reloads.",
+    "This is not an end-to-end production test."
+  ],
+  "repo_workflow": "Accumulate patches; weekly single push of latest cumulative ZIP only."
+}

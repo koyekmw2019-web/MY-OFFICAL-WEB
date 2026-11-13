@@ -1,0 +1,45 @@
+/* v7.87.8 — admin management only; leaves Student/Member dashboards unchanged */
+body[data-dashboard="admin"] .yk878-shell,body[data-dashboard="admin"] .yk878-shell *{box-sizing:border-box}
+body[data-dashboard="admin"] .yk878-shell{color:#f7f6f8;margin:18px 0 24px;min-width:0}
+body[data-dashboard="admin"] .yk878-nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+body[data-dashboard="admin"] .yk878-nav a{background:#1e1b20;border:1px solid #493640;border-radius:11px;color:#f2e9ed;font-weight:800;padding:9px 13px;font-size:12px;text-decoration:none}
+body[data-dashboard="admin"] .yk878-nav a:focus-visible,body[data-dashboard="admin"] .yk878-admin :is(button,input,textarea,select,summary):focus-visible{outline:2px solid #ef8197;outline-offset:3px}
+body[data-dashboard="admin"] .yk878-admin{border:1px solid #44343d;background:#151318;border-radius:20px;margin:13px 0;padding:16px;min-width:0}
+body[data-dashboard="admin"] .yk878-admin>summary{cursor:pointer;list-style:auto;font-size:16px;font-weight:900;line-height:1.5}
+body[data-dashboard="admin"] .yk878-meta{color:#b5aab4;font-size:12px;line-height:1.7;margin:8px 0 13px}
+body[data-dashboard="admin"] .yk878-kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin:14px 0}
+body[data-dashboard="admin"] .yk878-kpi{min-width:0;padding:12px;border:1px solid #403039;background:#1f1b21;border-radius:12px}
+body[data-dashboard="admin"] .yk878-kpi small{font-size:11px;color:#b9b0b9;display:block}
+body[data-dashboard="admin"] .yk878-kpi strong{display:block;font-size:22px;line-height:1.4;color:#fff}
+body[data-dashboard="admin"] .yk878-toolbar{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:12px 0}
+body[data-dashboard="admin"] .yk878-admin :is(button,input,textarea,select){background:#262129;color:#f8f7f9;border:1px solid #5e4954;border-radius:10px;font:inherit;font-size:13px;min-height:43px;padding:9px 11px}
+body[data-dashboard="admin"] .yk878-admin button{cursor:pointer;font-weight:800}
+body[data-dashboard="admin"] .yk878-admin button.yk878-main{background:#b52f4a;border-color:#b52f4a;color:#fff}
+body[data-dashboard="admin"] .yk878-admin button:disabled{cursor:wait;opacity:.6}
+body[data-dashboard="admin"] .yk878-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+body[data-dashboard="admin"] .yk878-grid label{display:grid;gap:6px;min-width:0;font-size:11px;color:#c9c2ca;font-weight:750}
+body[data-dashboard="admin"] .yk878-grid label :is(input,select,textarea){width:100%;min-width:0}
+body[data-dashboard="admin"] .yk878-grid .yk878-full{grid-column:1/-1}
+body[data-dashboard="admin"] .yk878-tablewrap{overflow-x:auto;max-width:100%;border:1px solid #46373e;border-radius:12px}
+body[data-dashboard="admin"] .yk878-table{width:100%;min-width:650px;border-collapse:collapse;font-size:12px;text-align:left}
+body[data-dashboard="admin"] .yk878-table th,body[data-dashboard="admin"] .yk878-table td{padding:10px 9px;vertical-align:top;border-bottom:1px solid #3c3037;overflow-wrap:anywhere}
+body[data-dashboard="admin"] .yk878-table th{color:#cfc6cf;background:#241e25;font-size:11px}
+body[data-dashboard="admin"] .yk878-table td small{display:block;color:#b6abb5}
+body[data-dashboard="admin"] .yk878-due{color:#f6a0ae;font-weight:800}
+body[data-dashboard="admin"] .yk878-controls{display:flex;flex-wrap:wrap;gap:5px}
+body[data-dashboard="admin"] .yk878-controls button{min-height:34px;padding:5px 8px;font-size:11px}
+body[data-dashboard="admin"] .yk878-message{font-size:12px;min-height:22px;color:#ead4d9;margin-top:9px;overflow-wrap:anywhere}
+body[data-dashboard="admin"] .yk878-message.error{color:#ffacb8}
+body[data-dashboard="admin"] .yk878-sep{border:0;border-top:1px solid #3e3039;margin:18px 0}
+body[data-dashboard="admin"] #yk878EducationAnalytics{grid-column:1/-1;background:#1d1b20;border:1px solid #453842;border-radius:16px;padding:12px;min-width:0}
+body[data-dashboard="admin"] #yk878EducationAnalytics>summary{font-size:13px;font-weight:850;cursor:pointer}
+body[data-dashboard="admin"] #yk878EducationAnalytics>.yk84-surface{margin-top:12px}
+@media(max-width:800px){body[data-dashboard="admin"] .yk878-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:530px){body[data-dashboard="admin"] .yk878-admin{padding:12px}body[data-dashboard="admin"] .yk878-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}body[data-dashboard="admin"] .yk878-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){body[data-dashboard="admin"] .yk878-shell *{animation:none!important;transition:none!important}}
+/* v7.87.17: non-destructive filters over latest 100 displayed CRM leads. */
+body[data-dashboard="admin"] .yk878-table tr[hidden]{display:none!important}
+body[data-dashboard="admin"] .yk878-admin .yk878-due-check{display:inline-flex;align-items:center;gap:6px;color:#e5c7d0;font-size:12px}
+body[data-dashboard="admin"] .yk878-admin #yk878DueOnly{width:17px;height:17px;min-height:17px;padding:0;accent-color:#d34d6a}
+body[data-dashboard="admin"] .yk878-admin #yk878Search{width:min(100%,230px)}
+body[data-dashboard="admin"] .yk878-admin #yk878FilterResult{margin:0}

@@ -1,0 +1,12 @@
+{
+  "version": "7.87.21",
+  "source": "full original checkout required",
+  "blocked": true,
+  "passed": false,
+  "checks": [],
+  "liveNetlifyDeployPreviewVerified": false,
+  "notes": [
+    "Local full checkout != Netlify Deploy Preview",
+    "No private payments or real student records modified"
+  ]
+}

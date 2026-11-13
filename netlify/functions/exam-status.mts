@@ -1,6 +1,7 @@
 import { getDatabase } from "@netlify/database";
 import { requireUser, asResponse } from "./_shared/auth.mts";
 
+/** Account-specific access status must never be shared-cached. */
 export default async (req: Request) => {
   try {
     if (req.method !== "GET") return new Response("Method not allowed", { status: 405 });
@@ -19,10 +20,10 @@ export default async (req: Request) => {
       linkedStudent: linkedStudents[0] ?? null,
       paid: paid[0] ?? null,
       pendingPayment: pendingPayments[0] ?? null,
-      freeUsed: !!free.length, // backwards compatibility only; use freeUsedTypes for access UI
+      freeUsed: !!free.length,
       freeUsedTypes: [...new Set(free.map((x:any)=>x.exam_type))],
       freeAttemptLimitPerExamType: 1,
       freeAttempt: free[0] ?? null
-    });
+    }, { headers: { "Cache-Control": "private, no-store" } });
   } catch (e) { return asResponse(e); }
 };

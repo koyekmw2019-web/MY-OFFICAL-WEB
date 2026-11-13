@@ -1,0 +1,1884 @@
+{
+ "version": "7.87.10",
+ "level": "N4",
+ "sourceReference": "https://nihongokyoshi-net.com/jlpt-grammars/",
+ "licenseNote": "Grammar pattern titles used as index. All explanations and examples are originally authored, not copied from source; teaching materials need ongoing human editorial review.",
+ "editorialStatus": "complete original authored drafts; not certified official JLPT list",
+ "items": [
+  {
+   "id": "N4-grammar-001",
+   "title": "〜間",
+   "level": "N4",
+   "index": 1,
+   "status": "draft",
+   "meaningJa": "ある状態や動作が続く期間全体を表す。",
+   "meaningMy": "တစ်ခုခုဖြစ်နေတဲ့ ကာလတစ်လျှောက်လုံးကို ဆိုလိုတယ်။",
+   "meaningEn": "During the whole time an action or state continues.",
+   "formation": "Vている / Aい / Aな / Nの＋間",
+   "examples": [
+    {
+     "ja": "母が料理している間、私は掃除しました。",
+     "highlight": "間",
+     "my": "အမေဟင်းချက်နေတဲ့အချိန်တစ်လျှောက် ကျွန်တော် သန့်ရှင်းရေးလုပ်ခဲ့တယ်။",
+     "en": "I cleaned while my mother was cooking."
+    },
+    {
+     "ja": "夏休みの間、毎日運動しました。",
+     "highlight": "間",
+     "my": "နွေရာသီအားလပ်ရက်တစ်လျှောက် နေ့တိုင်းလေ့ကျင့်ခန်းလုပ်ခဲ့တယ်။",
+     "en": "I exercised every day during summer vacation."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-002",
+   "title": "〜間に",
+   "level": "N4",
+   "index": 2,
+   "status": "draft",
+   "meaningJa": "ある期間の途中で別の出来事が起きる。",
+   "meaningMy": "ကာလတစ်ခုအတွင်း တစ်ချိန်ချိန်မှာ နောက်တစ်ခုဖြစ်ခြင်း။",
+   "meaningEn": "An event happens at some point within a period.",
+   "formation": "Vている / Aい / Aな / Nの＋間に",
+   "examples": [
+    {
+     "ja": "子どもが寝ている間に、仕事を終えました。",
+     "highlight": "間に",
+     "my": "ကလေးအိပ်နေတုန်း အလုပ်ပြီးအောင် လုပ်ခဲ့တယ်။",
+     "en": "I finished work while the child was sleeping."
+    },
+    {
+     "ja": "日本にいる間に、富士山に登りたいです。",
+     "highlight": "間に",
+     "my": "ဂျပန်မှာရှိတုန်း ဖူဂျီတောင် တက်ချင်တယ်။",
+     "en": "I want to climb Mount Fuji while in Japan."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-003",
+   "title": "〜終わる",
+   "level": "N4",
+   "index": 3,
+   "status": "draft",
+   "meaningJa": "動作が最後まで完了することを表す。",
+   "meaningMy": "တစ်ခုခုကို အဆုံးအထိ လုပ်ပြီးခြင်း။",
+   "meaningEn": "Finish doing an action completely.",
+   "formation": "Vます形の語幹＋終わる",
+   "examples": [
+    {
+     "ja": "レポートを書き終わりました。",
+     "highlight": "終わりました",
+     "my": "အစီရင်ခံစာရေးပြီးသွားပြီ။",
+     "en": "I finished writing the report."
+    },
+    {
+     "ja": "本を読み終わったら返します。",
+     "highlight": "終わったら",
+     "my": "စာအုပ်ဖတ်ပြီးမှ ပြန်ပေးမယ်။",
+     "en": "I will return the book when I have finished reading it."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-004",
+   "title": "（疑問詞）〜か",
+   "level": "N4",
+   "index": 4,
+   "status": "draft",
+   "meaningJa": "疑問の内容を文の一部として埋め込む。",
+   "meaningMy": "မေးခွန်းအကြောင်းအရာကို ဝါကျတစ်ခုထဲ ထည့်သုံးခြင်း။",
+   "meaningEn": "Embeds a question inside a larger sentence.",
+   "formation": "疑問詞＋普通形＋か",
+   "examples": [
+    {
+     "ja": "何時に始まるか知っていますか。",
+     "highlight": "か",
+     "my": "ဘယ်နှနာရီ စမလဲဆိုတာ သိလား။",
+     "en": "Do you know what time it starts?"
+    },
+    {
+     "ja": "誰が来るかまだ分かりません。",
+     "highlight": "か",
+     "my": "ဘယ်သူလာမလဲဆိုတာ မသိသေးဘူး။",
+     "en": "I do not know yet who will come."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-005",
+   "title": "〜がする",
+   "level": "N4",
+   "index": 5,
+   "status": "draft",
+   "meaningJa": "感覚で感じる音・におい・味などを表す。",
+   "meaningMy": "အသံ၊ အနံ့၊ အရသာလို အာရုံခံစားချက်ကို ဖော်ပြတယ်။",
+   "meaningEn": "Expresses perceiving a sound, smell, taste, or sensation.",
+   "formation": "音・におい・味などの名詞＋がする",
+   "examples": [
+    {
+     "ja": "外から変な音がします。",
+     "highlight": "がします",
+     "my": "အပြင်က ထူးဆန်းတဲ့အသံကြားရတယ်။",
+     "en": "I hear a strange sound from outside."
+    },
+    {
+     "ja": "台所からいいにおいがします。",
+     "highlight": "がします",
+     "my": "မီးဖိုချောင်က အနံ့ကောင်းရတယ်။",
+     "en": "There is a nice smell coming from the kitchen."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-006",
+   "title": "〜かどうか",
+   "level": "N4",
+   "index": 6,
+   "status": "draft",
+   "meaningJa": "あることが正しいかどうか、二つの可能性を示す。",
+   "meaningMy": "ဟုတ်မဟုတ်၊ လုပ်မလားမလုပ်ဘူးလား စစ်ဆေးခြင်း။",
+   "meaningEn": "Whether or not something is the case.",
+   "formation": "普通形＋かどうか",
+   "examples": [
+    {
+     "ja": "明日雨が降るかどうか、調べます。",
+     "highlight": "かどうか",
+     "my": "မနက်ဖြန်မိုးရွာမလား မရွာဘူးလား စစ်မယ်။",
+     "en": "I will check whether it will rain tomorrow."
+    },
+    {
+     "ja": "彼が来るかどうか、まだ分かりません。",
+     "highlight": "かどうか",
+     "my": "သူလာမလားမသိသေးဘူး။",
+     "en": "I do not know whether he will come yet."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-007",
+   "title": "〜かもしれない",
+   "level": "N4",
+   "index": 7,
+   "status": "draft",
+   "meaningJa": "可能性があるが、確実ではない。",
+   "meaningMy": "ဖြစ်နိုင်တယ်၊ သေချာတော့ မဟုတ်ဘူး။",
+   "meaningEn": "Might; expresses uncertainty.",
+   "formation": "普通形＋かもしれない",
+   "examples": [
+    {
+     "ja": "午後は雨が降るかもしれません。",
+     "highlight": "かもしれません",
+     "my": "နေ့လယ်ပိုင်း မိုးရွာနိုင်တယ်။",
+     "en": "It might rain this afternoon."
+    },
+    {
+     "ja": "あの店はもう閉まったかもしれません。",
+     "highlight": "かもしれません",
+     "my": "အဲဒီဆိုင် ပိတ်ပြီးသွားလောက်ပြီ။",
+     "en": "That shop may already have closed."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-008",
+   "title": "〜ことがある",
+   "level": "N4",
+   "index": 8,
+   "status": "draft",
+   "meaningJa": "以前の経験があることを表す。",
+   "meaningMy": "အရင်က တစ်ခုခုလုပ်ဖူးတဲ့ အတွေ့အကြုံရှိခြင်း။",
+   "meaningEn": "Have experienced doing something.",
+   "formation": "Vた＋ことがある",
+   "examples": [
+    {
+     "ja": "京都に行ったことがあります。",
+     "highlight": "ことがあります",
+     "my": "ကျိုတိုကို သွားဖူးပါတယ်။",
+     "en": "I have been to Kyoto."
+    },
+    {
+     "ja": "日本料理を作ったことがあります。",
+     "highlight": "ことがあります",
+     "my": "ဂျပန်ဟင်းချက်ဖူးပါတယ်။",
+     "en": "I have cooked Japanese food."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-009",
+   "title": "〜ことにする",
+   "level": "N4",
+   "index": 9,
+   "status": "draft",
+   "meaningJa": "自分の意志で決定する。",
+   "meaningMy": "ကိုယ့်ဆန္ဒနဲ့ ဆုံးဖြတ်တာ။",
+   "meaningEn": "Decide to do something oneself.",
+   "formation": "V辞書形 / ない形＋ことにする",
+   "examples": [
+    {
+     "ja": "毎朝運動することにしました。",
+     "highlight": "ことにしました",
+     "my": "မနက်တိုင်း လေ့ကျင့်ခန်းလုပ်ဖို့ ဆုံးဖြတ်ခဲ့တယ်။",
+     "en": "I decided to exercise every morning."
+    },
+    {
+     "ja": "今年は車を買わないことにします。",
+     "highlight": "ことにします",
+     "my": "ဒီနှစ် ကားမဝယ်ဖို့ ဆုံးဖြတ်မယ်။",
+     "en": "I will decide not to buy a car this year."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-010",
+   "title": "〜ことになる",
+   "level": "N4",
+   "index": 10,
+   "status": "draft",
+   "meaningJa": "自分以外の事情・決定でそうなる。",
+   "meaningMy": "ပြင်ပအခြေအနေ၊ ဆုံးဖြတ်ချက်ကြောင့် အဲဒီလို ဖြစ်လာခြင်း။",
+   "meaningEn": "It has been decided; an external decision or arrangement.",
+   "formation": "V辞書形 / ない形＋ことになる",
+   "examples": [
+    {
+     "ja": "来月から大阪で働くことになりました。",
+     "highlight": "ことになりました",
+     "my": "နောက်လကစပြီး အိုဆာကာမှာ အလုပ်လုပ်ဖို့ ဖြစ်လာပါတယ်။",
+     "en": "It has been decided that I will work in Osaka next month."
+    },
+    {
+     "ja": "会議はオンラインで行うことになりました。",
+     "highlight": "ことになりました",
+     "my": "အစည်းအဝေးကို အွန်လိုင်းကနေ လုပ်ဖို့ သတ်မှတ်လိုက်တယ်။",
+     "en": "The meeting will now be held online."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-011",
+   "title": "〜させてください",
+   "level": "N4",
+   "index": 11,
+   "status": "draft",
+   "meaningJa": "自分が行うことについて許可を求める。",
+   "meaningMy": "ကိုယ်လုပ်ခွင့်ပေးပါလို့ တောင်းဆိုခြင်း။",
+   "meaningEn": "Asks permission to be allowed to do something.",
+   "formation": "V使役形＋てください",
+   "examples": [
+    {
+     "ja": "少し説明させてください。",
+     "highlight": "させてください",
+     "my": "နည်းနည်းရှင်းပြခွင့်ပေးပါ။",
+     "en": "Please let me explain briefly."
+    },
+    {
+     "ja": "今日は早く帰らせてください。",
+     "highlight": "らせてください",
+     "my": "ဒီနေ့ စောစောပြန်ခွင့်ပေးပါ။",
+     "en": "Please allow me to go home early today."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-012",
+   "title": "〜しか〜ない",
+   "level": "N4",
+   "index": 12,
+   "status": "draft",
+   "meaningJa": "選択肢や数量がそれだけに限られる。",
+   "meaningMy": "အဲဒါပဲရှိပြီး တခြားမရှိတာကို ဖော်ပြတယ်။",
+   "meaningEn": "Only; nothing or no one besides that.",
+   "formation": "名詞・数量＋しか＋否定形",
+   "examples": [
+    {
+     "ja": "財布に千円しかありません。",
+     "highlight": "しか",
+     "my": "ပိုက်ဆံအိတ်ထဲ ယန်းတစ်ထောင်ပဲရှိတယ်။",
+     "en": "I have only 1,000 yen in my wallet."
+    },
+    {
+     "ja": "今は待つしかありません。",
+     "highlight": "しか",
+     "my": "အခု စောင့်နေရုံပဲ ရှိတယ်။",
+     "en": "All we can do now is wait."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-013",
+   "title": "〜し、〜し",
+   "level": "N4",
+   "index": 13,
+   "status": "draft",
+   "meaningJa": "複数の理由・特徴を並べて述べる。",
+   "meaningMy": "အကြောင်းရင်း၊ လက္ခဏာ အများအပြားကို ဆက်တိုက်ပြောခြင်း။",
+   "meaningEn": "Lists several reasons or characteristics.",
+   "formation": "普通形＋し、普通形＋し",
+   "examples": [
+    {
+     "ja": "この店は安いし、おいしいし、よく来ます。",
+     "highlight": "し",
+     "my": "ဒီဆိုင်က ဈေးလည်းချိုတယ်၊ စားလို့လည်းကောင်းလို့ မကြာခဏလာတယ်။",
+     "en": "This place is cheap and tasty, so I come often."
+    },
+    {
+     "ja": "彼は親切だし、説明も上手です。",
+     "highlight": "し",
+     "my": "သူက သဘောလည်းကောင်းပြီး ရှင်းပြတာလည်း တော်တယ်။",
+     "en": "He is kind and explains things well."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-014",
+   "title": "〜すぎる",
+   "level": "N4",
+   "index": 14,
+   "status": "draft",
+   "meaningJa": "程度や数量が普通より多すぎる。",
+   "meaningMy": "အလွန်အကျွံ၊ လွန်သွားခြင်း။",
+   "meaningEn": "Too much; excessively.",
+   "formation": "Vます形の語幹 / い形容詞語幹＋すぎる",
+   "examples": [
+    {
+     "ja": "昨日は食べすぎました。",
+     "highlight": "すぎました",
+     "my": "မနေ့က အစားအရမ်းစားမိတယ်။",
+     "en": "I ate too much yesterday."
+    },
+    {
+     "ja": "この部屋は暑すぎます。",
+     "highlight": "すぎます",
+     "my": "ဒီအခန်း အရမ်းပူလွန်းတယ်။",
+     "en": "This room is too hot."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-015",
+   "title": "（形容詞）する",
+   "level": "N4",
+   "index": 15,
+   "status": "draft",
+   "meaningJa": "人の働きかけで状態・性質を変える。",
+   "meaningMy": "တစ်ခုရဲ့ အခြေအနေကို ကိုယ်က ပြောင်းပေးတာ။",
+   "meaningEn": "Makes something become a particular state.",
+   "formation": "イ形容詞「い」→くする / ナ形容詞＋にする",
+   "examples": [
+    {
+     "ja": "音を小さくしてください。",
+     "highlight": "小さく",
+     "my": "အသံကို နည်းနည်းတိုးပေးပါ။",
+     "en": "Please make the volume lower."
+    },
+    {
+     "ja": "部屋をきれいにしました。",
+     "highlight": "きれいに",
+     "my": "အခန်းကို သန့်ရှင်းအောင်လုပ်ခဲ့တယ်။",
+     "en": "I made the room clean."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-016",
+   "title": "〜そうです（直前）",
+   "level": "N4",
+   "index": 16,
+   "status": "draft",
+   "meaningJa": "まさにその変化や出来事が起こりそうだと表す。",
+   "meaningMy": "အခုချက်ချင်း ဖြစ်တော့မယ့် အခြေအနေကို ပြတယ်။",
+   "meaningEn": "Looks about to happen at any moment.",
+   "formation": "Vます形の語幹＋そうだ",
+   "examples": [
+    {
+     "ja": "雨が降りそうです。",
+     "highlight": "そうです",
+     "my": "မိုးရွာတော့မယ့်ပုံပဲ။",
+     "en": "It looks like it is about to rain."
+    },
+    {
+     "ja": "コップが落ちそうです。",
+     "highlight": "そうです",
+     "my": "ဖန်ခွက် ပြုတ်ကျတော့မယ်ထင်တယ်။",
+     "en": "The glass looks about to fall."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-017",
+   "title": "〜そうです（伝聞）",
+   "level": "N4",
+   "index": 17,
+   "status": "draft",
+   "meaningJa": "人や情報源から聞いた内容を伝える。",
+   "meaningMy": "သူများဆီက ကြားထားတဲ့သတင်းကို ပြန်ပြောခြင်း။",
+   "meaningEn": "Reports information heard from someone else.",
+   "formation": "普通形＋そうです",
+   "examples": [
+    {
+     "ja": "天気予報によると、明日は晴れるそうです。",
+     "highlight": "そうです",
+     "my": "ရာသီဥတုသတင်းအရ မနက်ဖြန် နေသာမယ်လို့ ကြားတယ်။",
+     "en": "According to the forecast, it will be sunny tomorrow."
+    },
+    {
+     "ja": "先生は来週休むそうです。",
+     "highlight": "そうです",
+     "my": "ဆရာ နောက်အပတ် နားမယ်လို့ ကြားတယ်။",
+     "en": "I heard that the teacher will be absent next week."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-018",
+   "title": "〜そうです（様態）",
+   "level": "N4",
+   "index": 18,
+   "status": "draft",
+   "meaningJa": "見た目から判断した印象を述べる。",
+   "meaningMy": "မြင်ရတဲ့ပုံစံအရ အဲဒီလိုထင်ရတာကို ပြောခြင်း။",
+   "meaningEn": "Describes how something looks or seems.",
+   "formation": "イ形容詞「い」→そう / ナ形容詞＋そう",
+   "examples": [
+    {
+     "ja": "このケーキはおいしそうです。",
+     "highlight": "そうです",
+     "my": "ဒီကိတ်မုန့်က စားလို့ကောင်းမယ့်ပုံပဲ။",
+     "en": "This cake looks delicious."
+    },
+    {
+     "ja": "あの人は元気そうですね。",
+     "highlight": "そう",
+     "my": "အဲဒီလူက ကျန်းမာပျော်ရွှင်တဲ့ပုံပဲနော်။",
+     "en": "That person looks well."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-019",
+   "title": "〜出す",
+   "level": "N4",
+   "index": 19,
+   "status": "draft",
+   "meaningJa": "ある動作や変化が急に始まる。",
+   "meaningMy": "ရုတ်တရက် စလုပ်လာခြင်း၊ စဖြစ်လာခြင်း။",
+   "meaningEn": "Suddenly begins an action or change.",
+   "formation": "Vます形の語幹＋出す",
+   "examples": [
+    {
+     "ja": "赤ちゃんが泣き出しました。",
+     "highlight": "出しました",
+     "my": "ကလေးက ရုတ်တရက် စငိုတယ်။",
+     "en": "The baby suddenly started crying."
+    },
+    {
+     "ja": "電車が急に動き出しました。",
+     "highlight": "出しました",
+     "my": "ရထားက ရုတ်တရက် စရွေ့လာတယ်။",
+     "en": "The train suddenly started moving."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-020",
+   "title": "〜たばかり",
+   "level": "N4",
+   "index": 20,
+   "status": "draft",
+   "meaningJa": "ある動作が終わってから間もないことを表す。",
+   "meaningMy": "လုပ်ပြီးတာ မကြာသေးဘူးဆိုတဲ့ အဓိပ္ပာယ်။",
+   "meaningEn": "Has just done something; only a short time has passed.",
+   "formation": "Vた形＋ばかり",
+   "examples": [
+    {
+     "ja": "日本に来たばかりです。",
+     "highlight": "ばかり",
+     "my": "ဂျပန်ရောက်တာ မကြာသေးဘူး။",
+     "en": "I have only just arrived in Japan."
+    },
+    {
+     "ja": "昼ご飯を食べたばかりです。",
+     "highlight": "ばかり",
+     "my": "နေ့လယ်စာ စားပြီးတာ မကြာသေးဘူး။",
+     "en": "I have just eaten lunch."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-021",
+   "title": "〜ために",
+   "level": "N4",
+   "index": 21,
+   "status": "draft",
+   "meaningJa": "目標を達成する目的を表す。",
+   "meaningMy": "ရည်မှန်းချက်တစ်ခုအတွက် လုပ်ခြင်း။",
+   "meaningEn": "In order to achieve a purpose.",
+   "formation": "V辞書形＋ために / Nの＋ために",
+   "examples": [
+    {
+     "ja": "試験に合格するために毎日勉強します。",
+     "highlight": "ために",
+     "my": "စာမေးပွဲအောင်ဖို့ နေ့တိုင်း စာလေ့လာတယ်။",
+     "en": "I study every day in order to pass the exam."
+    },
+    {
+     "ja": "健康のために運動しています。",
+     "highlight": "ために",
+     "my": "ကျန်းမာရေးအတွက် လေ့ကျင့်ခန်းလုပ်တယ်။",
+     "en": "I exercise for my health."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-022",
+   "title": "〜たらいいですか",
+   "level": "N4",
+   "index": 22,
+   "status": "draft",
+   "meaningJa": "方法や助言を求めてたずねる。",
+   "meaningMy": "ဘယ်လိုလုပ်ရင်ကောင်းမလဲဆိုပြီး အကြံဉာဏ်တောင်းခြင်း။",
+   "meaningEn": "Asks what one should do or how to do it.",
+   "formation": "Vた形＋らいいですか",
+   "examples": [
+    {
+     "ja": "どこで切符を買ったらいいですか。",
+     "highlight": "たらいいですか",
+     "my": "လက်မှတ်ကို ဘယ်မှာဝယ်ရင်ကောင်းမလဲ။",
+     "en": "Where should I buy a ticket?"
+    },
+    {
+     "ja": "日本語を上手に話すには何をしたらいいですか。",
+     "highlight": "たらいいですか",
+     "my": "ဂျပန်လိုကောင်းကောင်းပြောနိုင်ဖို့ ဘာလုပ်ရမလဲ။",
+     "en": "What should I do to speak Japanese well?"
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-023",
+   "title": "〜たらどうですか",
+   "level": "N4",
+   "index": 23,
+   "status": "draft",
+   "meaningJa": "相手にある行動を勧める。",
+   "meaningMy": "တစ်ဖက်လူကို ဒီလိုလုပ်ကြည့်ပါလားလို့ အကြံပေးခြင်း။",
+   "meaningEn": "Suggests that someone try doing something.",
+   "formation": "Vた形＋らどうですか",
+   "examples": [
+    {
+     "ja": "疲れたなら、少し休んだらどうですか。",
+     "highlight": "だらどうですか",
+     "my": "ပင်ပန်းနေရင် ခဏနားကြည့်ပါလား။",
+     "en": "If you are tired, why not take a short break?"
+    },
+    {
+     "ja": "先生に相談したらどうですか。",
+     "highlight": "たらどうですか",
+     "my": "ဆရာနဲ့ တိုင်ပင်ကြည့်ပါလား။",
+     "en": "Why don’t you ask the teacher for advice?"
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-024",
+   "title": "〜続ける",
+   "level": "N4",
+   "index": 24,
+   "status": "draft",
+   "meaningJa": "途中でやめずに動作を継続する。",
+   "meaningMy": "အလယ်မှာမရပ်ဘဲ ဆက်လုပ်ခြင်း။",
+   "meaningEn": "Continues doing something without stopping.",
+   "formation": "Vます形の語幹＋続ける",
+   "examples": [
+    {
+     "ja": "日本語を勉強し続けています。",
+     "highlight": "続けています",
+     "my": "ဂျပန်စာကို ဆက်လေ့လာနေတယ်။",
+     "en": "I keep studying Japanese."
+    },
+    {
+     "ja": "雨が三日間降り続けました。",
+     "highlight": "続けました",
+     "my": "မိုး သုံးရက်ဆက်တိုက် ရွာခဲ့တယ်။",
+     "en": "It kept raining for three days."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-025",
+   "title": "〜って",
+   "level": "N4",
+   "index": 25,
+   "status": "draft",
+   "meaningJa": "会話で引用や話題をくだけて示す。",
+   "meaningMy": "စကားပြောတဲ့အခါ …လို့၊ …ကတော့ ဆိုပြီး ပေါ့ပေါ့ပါးပါးပြောခြင်း။",
+   "meaningEn": "Casually marks a quotation or topic in conversation.",
+   "formation": "普通形＋って / 名詞＋って",
+   "examples": [
+    {
+     "ja": "明日は休みだって聞きました。",
+     "highlight": "って",
+     "my": "မနက်ဖြန် နားရက်လို့ ကြားခဲ့တယ်။",
+     "en": "I heard that tomorrow is a day off."
+    },
+    {
+     "ja": "この言葉ってどういう意味ですか。",
+     "highlight": "って",
+     "my": "ဒီစကားလုံးက ဘာအဓိပ္ပာယ်လဲ။",
+     "en": "What does this word mean?"
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-026",
+   "title": "〜つもりだ",
+   "level": "N4",
+   "index": 26,
+   "status": "draft",
+   "meaningJa": "自分が決めている計画や意志を述べる。",
+   "meaningMy": "ကိုယ်စီစဉ်ထားတဲ့ ရည်ရွယ်ချက်ကို ပြောခြင်း။",
+   "meaningEn": "Expresses one’s plan or intention.",
+   "formation": "V辞書形 / Vない形＋つもりだ",
+   "examples": [
+    {
+     "ja": "来年、日本語能力試験を受けるつもりです。",
+     "highlight": "つもりです",
+     "my": "နောက်နှစ် JLPT ဖြေဖို့ စီစဉ်ထားတယ်။",
+     "en": "I plan to take the JLPT next year."
+    },
+    {
+     "ja": "今日は外出しないつもりです。",
+     "highlight": "つもりです",
+     "my": "ဒီနေ့ အပြင်မထွက်ဖို့ စီစဉ်ထားတယ်။",
+     "en": "I do not intend to go out today."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-027",
+   "title": "〜て（理由・原因）",
+   "level": "N4",
+   "index": 27,
+   "status": "draft",
+   "meaningJa": "前の事柄が後の出来事の理由になる。",
+   "meaningMy": "ရှေ့ကအကြောင်းအရာက နောက်ဖြစ်ရပ်ရဲ့ အကြောင်းရင်းဖြစ်ခြင်း။",
+   "meaningEn": "Uses the te-form to express a reason or cause.",
+   "formation": "Vて / イ形容詞くて / ナ形容詞で",
+   "examples": [
+    {
+     "ja": "道が混んでいて、遅れました。",
+     "highlight": "いて",
+     "my": "လမ်းပိတ်နေလို့ နောက်ကျခဲ့တယ်။",
+     "en": "I was late because the road was crowded."
+    },
+    {
+     "ja": "会えてうれしいです。",
+     "highlight": "て",
+     "my": "တွေ့ရလို့ ဝမ်းသာတယ်။",
+     "en": "I am happy because I could see you."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-028",
+   "title": "〜てある",
+   "level": "N4",
+   "index": 28,
+   "status": "draft",
+   "meaningJa": "誰かが意図的に行った動作の結果が残っている。",
+   "meaningMy": "တစ်ယောက်ယောက်က ရည်ရွယ်ချက်နဲ့ လုပ်ထားတဲ့ အခြေအနေ ကျန်ရှိနေခြင်း။",
+   "meaningEn": "Describes the resulting state of an intentional action.",
+   "formation": "他動詞て形＋ある",
+   "examples": [
+    {
+     "ja": "窓が開けてあります。",
+     "highlight": "てあります",
+     "my": "ပြတင်းပေါက်ကို ဖွင့်ထားတယ်။",
+     "en": "The window has been left open intentionally."
+    },
+    {
+     "ja": "机の上に資料が置いてあります。",
+     "highlight": "てあります",
+     "my": "စားပွဲပေါ်မှာ စာရွက်စာတမ်းတွေ တင်ထားတယ်။",
+     "en": "The documents have been placed on the desk."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-029",
+   "title": "（自動詞）ている",
+   "level": "N4",
+   "index": 29,
+   "status": "draft",
+   "meaningJa": "自然に起きた変化の結果が続いている状態を表す。",
+   "meaningMy": "အလိုအလျောက် ဖြစ်သွားတဲ့ ပြောင်းလဲမှုရဲ့ အခြေအနေ ဆက်ရှိနေခြင်း။",
+   "meaningEn": "Describes a state resulting from an intransitive change.",
+   "formation": "自動詞て形＋いる",
+   "examples": [
+    {
+     "ja": "窓が開いています。",
+     "highlight": "ています",
+     "my": "ပြတင်းပေါက် ပွင့်နေတယ်။",
+     "en": "The window is open."
+    },
+    {
+     "ja": "電気が消えています。",
+     "highlight": "ています",
+     "my": "မီး ပိတ်နေတယ်။",
+     "en": "The light is off."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-030",
+   "title": "〜ていく",
+   "level": "N4",
+   "index": 30,
+   "status": "draft",
+   "meaningJa": "変化や移動が今から未来へ進むことを表す。",
+   "meaningMy": "ယခုကနေ အနာဂတ်ဆီ ဆက်ပြောင်းလဲသွားခြင်း၊ ဝေးသွားခြင်း။",
+   "meaningEn": "A change or movement proceeds away from the present toward the future.",
+   "formation": "Vて＋いく",
+   "examples": [
+    {
+     "ja": "これからもっと日本語を勉強していきます。",
+     "highlight": "ていきます",
+     "my": "ဒီကစပြီး ဂျပန်စာကို ပိုပြီး ဆက်လေ့လာသွားမယ်။",
+     "en": "I will keep studying Japanese from now on."
+    },
+    {
+     "ja": "鳥が遠くへ飛んでいきました。",
+     "highlight": "でいきました",
+     "my": "ငှက်က အဝေးဆီ ပျံသွားခဲ့တယ်။",
+     "en": "The bird flew away into the distance."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-031",
+   "title": "〜ておく",
+   "level": "N4",
+   "index": 31,
+   "status": "draft",
+   "meaningJa": "将来に備えて、あらかじめ何かをする。",
+   "meaningMy": "နောက်အတွက် ကြိုတင်လုပ်ထားခြင်း။",
+   "meaningEn": "Do something in advance in preparation.",
+   "formation": "Vて＋おく",
+   "examples": [
+    {
+     "ja": "試験の前に資料を読んでおきます。",
+     "highlight": "でおきます",
+     "my": "စာမေးပွဲမတိုင်ခင် စာရွက်စာတမ်းကို ကြိုဖတ်ထားမယ်။",
+     "en": "I will read the materials before the exam."
+    },
+    {
+     "ja": "明日のために弁当を作っておきました。",
+     "highlight": "ておきました",
+     "my": "မနက်ဖြန်အတွက် ထမင်းဘူးကို ကြိုလုပ်ထားတယ်။",
+     "en": "I prepared lunch in advance for tomorrow."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-032",
+   "title": "〜ていただけませんか",
+   "level": "N4",
+   "index": 32,
+   "status": "draft",
+   "meaningJa": "目上の人などに丁寧に依頼する。",
+   "meaningMy": "လူကြီး၊ တာဝန်ရှိသူကို ယဉ်ကျေးစွာ တောင်းဆိုခြင်း။",
+   "meaningEn": "Makes a very polite request.",
+   "formation": "Vて＋いただけませんか",
+   "examples": [
+    {
+     "ja": "もう一度説明していただけませんか。",
+     "highlight": "ていただけませんか",
+     "my": "နောက်တစ်ခါ ထပ်ရှင်းပြပေးလို့ရမလား။",
+     "en": "Could you explain it once more, please?"
+    },
+    {
+     "ja": "こちらに名前を書いていただけませんか。",
+     "highlight": "ていただけませんか",
+     "my": "ဒီနေရာမှာ နာမည်ရေးပေးလို့ရမလား။",
+     "en": "Could you please write your name here?"
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-033",
+   "title": "〜てくる（変化・移動）",
+   "level": "N4",
+   "index": 33,
+   "status": "draft",
+   "meaningJa": "変化が以前から今まで進んできたことを表す。",
+   "meaningMy": "အရင်ကနေ အခုအထိ တဖြည်းဖြည်း ပြောင်းလဲလာခြင်း။",
+   "meaningEn": "A change has been developing up to the present.",
+   "formation": "Vて＋くる",
+   "examples": [
+    {
+     "ja": "最近、日本語が分かってきました。",
+     "highlight": "ってきました",
+     "my": "မကြာသေးခင်က ဂျပန်စာကို ပိုနားလည်လာပြီ။",
+     "en": "Recently I have started to understand Japanese better."
+    },
+    {
+     "ja": "だんだん寒くなってきました。",
+     "highlight": "ってきました",
+     "my": "တဖြည်းဖြည်း အေးလာပြီ။",
+     "en": "It has gradually gotten colder."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-034",
+   "title": "〜てくる（行って戻る）",
+   "level": "N4",
+   "index": 34,
+   "status": "draft",
+   "meaningJa": "どこかへ行って動作をし、こちらへ戻る。",
+   "meaningMy": "တစ်နေရာသွားပြီး အလုပ်တစ်ခုလုပ်ကာ ပြန်လာခြင်း။",
+   "meaningEn": "Goes somewhere to do something and then comes back.",
+   "formation": "Vて＋くる",
+   "examples": [
+    {
+     "ja": "ちょっと飲み物を買ってきます。",
+     "highlight": "ってきます",
+     "my": "ခဏ သောက်စရာသွားဝယ်ပြီး ပြန်လာမယ်။",
+     "en": "I will go buy a drink and come back."
+    },
+    {
+     "ja": "先生を呼んできました。",
+     "highlight": "んできました",
+     "my": "ဆရာကို သွားခေါ်ပြီး ပြန်လာခဲ့တယ်။",
+     "en": "I went to get the teacher and came back."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-035",
+   "title": "〜てしまう",
+   "level": "N4",
+   "index": 35,
+   "status": "draft",
+   "meaningJa": "動作の完了、または残念な結果を表す。",
+   "meaningMy": "အလုပ်ပြီးဆုံးသွားခြင်း၊ ဒါမှမဟုတ် မလိုလားအပ်တဲ့ရလဒ်။",
+   "meaningEn": "Complete an action; often expresses regret.",
+   "formation": "Vて＋しまう",
+   "examples": [
+    {
+     "ja": "宿題を全部終わらせてしまいました。",
+     "highlight": "てしまいました",
+     "my": "အိမ်စာကို အကုန်ပြီးသွားပြီ။",
+     "en": "I finished all my homework."
+    },
+    {
+     "ja": "財布を忘れてしまいました。",
+     "highlight": "てしまいました",
+     "my": "ပိုက်ဆံအိတ် မေ့ကျန်ခဲ့မိတယ်။",
+     "en": "I accidentally left my wallet behind."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-036",
+   "title": "〜でしょう",
+   "level": "N4",
+   "index": 36,
+   "status": "draft",
+   "meaningJa": "話し手の推測や見込みを表す。",
+   "meaningMy": "…မယ်ထင်တယ်ဆိုတဲ့ ခန့်မှန်းချက်။",
+   "meaningEn": "Probably; expresses an expectation or prediction.",
+   "formation": "普通形＋でしょう（名詞・ナ形容詞はだなし）",
+   "examples": [
+    {
+     "ja": "明日は暖かくなるでしょう。",
+     "highlight": "でしょう",
+     "my": "မနက်ဖြန် ပိုနွေးလာမယ်ထင်တယ်။",
+     "en": "It will probably be warmer tomorrow."
+    },
+    {
+     "ja": "この道なら十分ほどで着くでしょう。",
+     "highlight": "でしょう",
+     "my": "ဒီလမ်းဆို ဆယ်မိနစ်လောက်နဲ့ ရောက်မယ်ထင်တယ်။",
+     "en": "We will probably arrive in ten minutes by this route."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-037",
+   "title": "〜てみる",
+   "level": "N4",
+   "index": 37,
+   "status": "draft",
+   "meaningJa": "実際に試して確かめる。",
+   "meaningMy": "စမ်းလုပ်ကြည့်ခြင်း။",
+   "meaningEn": "Try doing something to see how it goes.",
+   "formation": "Vて＋みる",
+   "examples": [
+    {
+     "ja": "この料理を食べてみてください。",
+     "highlight": "てみて",
+     "my": "ဒီဟင်းကို စားကြည့်ပါ။",
+     "en": "Please try this dish."
+    },
+    {
+     "ja": "新しい勉強方法を試してみます。",
+     "highlight": "てみます",
+     "my": "စာလေ့လာနည်းအသစ်ကို စမ်းကြည့်မယ်။",
+     "en": "I will try a new study method."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-038",
+   "title": "〜ても",
+   "level": "N4",
+   "index": 38,
+   "status": "draft",
+   "meaningJa": "ある条件でも、結果が変わらないことを表す。",
+   "meaningMy": "…ပေမဲ့ ရလဒ်က မပြောင်းဘူးဆိုတာ ပြခြင်း။",
+   "meaningEn": "Even if something happens, the result still holds.",
+   "formation": "Vて＋も / イ形容詞くても / ナ形容詞でも",
+   "examples": [
+    {
+     "ja": "雨が降っても、出かけます。",
+     "highlight": "っても",
+     "my": "မိုးရွာရင်တောင် အပြင်သွားမယ်။",
+     "en": "I will go out even if it rains."
+    },
+    {
+     "ja": "高くても、このかばんを買いたいです。",
+     "highlight": "くても",
+     "my": "ဈေးကြီးရင်တောင် ဒီအိတ်ကို ဝယ်ချင်တယ်။",
+     "en": "I want this bag even if it is expensive."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-039",
+   "title": "〜と",
+   "level": "N4",
+   "index": 39,
+   "status": "draft",
+   "meaningJa": "一定の条件が満たされると自然な結果が起こる。",
+   "meaningMy": "အခြေအနေတစ်ခုဖြစ်ရင် အလိုအလျောက် နောက်ရလဒ် ဖြစ်တတ်တယ်။",
+   "meaningEn": "When a condition holds, a natural or regular result follows.",
+   "formation": "普通形＋と",
+   "examples": [
+    {
+     "ja": "このボタンを押すと、ドアが開きます。",
+     "highlight": "と",
+     "my": "ဒီခလုတ်နှိပ်ရင် တံခါးပွင့်တယ်။",
+     "en": "When you press this button, the door opens."
+    },
+    {
+     "ja": "春になると、花が咲きます。",
+     "highlight": "と",
+     "my": "နွေဦးရောက်ရင် ပန်းတွေ ပွင့်တယ်။",
+     "en": "When spring comes, flowers bloom."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-040",
+   "title": "〜ところだ",
+   "level": "N4",
+   "index": 40,
+   "status": "draft",
+   "meaningJa": "動作の直前・途中・直後という段階を表す。",
+   "meaningMy": "လုပ်တော့မယ့်၊ လုပ်နေတဲ့၊ လုပ်ပြီးခါစ အဆင့်ကို ပြတယ်။",
+   "meaningEn": "Shows the stage just before, during, or just after an action.",
+   "formation": "V辞書形 / Vている / Vた＋ところだ",
+   "examples": [
+    {
+     "ja": "今から昼ご飯を食べるところです。",
+     "highlight": "ところです",
+     "my": "အခု ထမင်းစားတော့မလို့ပါ။",
+     "en": "I am just about to eat lunch."
+    },
+    {
+     "ja": "今、会議が終わったところです。",
+     "highlight": "ところです",
+     "my": "အခု အစည်းအဝေးပြီးခါစပါ။",
+     "en": "The meeting has just finished."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-041",
+   "title": "〜という",
+   "level": "N4",
+   "index": 41,
+   "status": "draft",
+   "meaningJa": "名前、内容、説明を取り上げる。",
+   "meaningMy": "…လို့ခေါ်တဲ့၊ …ဆိုတဲ့အကြောင်းအရာကို ပြောခြင်း။",
+   "meaningEn": "Called; says that; introduces a name or content.",
+   "formation": "文・名詞＋という＋名詞",
+   "examples": [
+    {
+     "ja": "これは「さくら」という花です。",
+     "highlight": "という",
+     "my": "ဒါက ဆာကူရာလို့ခေါ်တဲ့ ပန်းပါ။",
+     "en": "This is a flower called sakura."
+    },
+    {
+     "ja": "来月引っ越すという話を聞きました。",
+     "highlight": "という",
+     "my": "နောက်လ အိမ်ပြောင်းမယ်ဆိုတဲ့အကြောင်း ကြားခဲ့တယ်။",
+     "en": "I heard that someone will move next month."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-042",
+   "title": "なかなか〜ない",
+   "level": "N4",
+   "index": 42,
+   "status": "draft",
+   "meaningJa": "思うように実現しないことを表す。",
+   "meaningMy": "မျှော်လင့်သလို အလွယ်တကူ မဖြစ်နိုင်ခြင်း။",
+   "meaningEn": "Something does not happen easily despite effort or expectation.",
+   "formation": "なかなか＋否定形",
+   "examples": [
+    {
+     "ja": "バスがなかなか来ません。",
+     "highlight": "なかなか",
+     "my": "ဘတ်စ်ကား တော်တော်နဲ့ မလာဘူး။",
+     "en": "The bus is taking a long time to arrive."
+    },
+    {
+     "ja": "漢字がなかなか覚えられません。",
+     "highlight": "なかなか",
+     "my": "ခန်းဂျီးကို တော်တော်နဲ့ မမှတ်မိနိုင်ဘူး။",
+     "en": "I cannot memorize kanji easily."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-043",
+   "title": "〜なさい",
+   "level": "N4",
+   "index": 43,
+   "status": "draft",
+   "meaningJa": "親や先生が子どもなどに指示する言い方。",
+   "meaningMy": "မိဘ၊ ဆရာက လုပ်ခိုင်းတဲ့ အမိန့်ပုံစံ။",
+   "meaningEn": "An instruction often given by parents or teachers.",
+   "formation": "Vます形の語幹＋なさい",
+   "examples": [
+    {
+     "ja": "早く寝なさい。",
+     "highlight": "なさい",
+     "my": "မြန်မြန်အိပ်တော့။",
+     "en": "Go to bed early."
+    },
+    {
+     "ja": "宿題を先にしなさい。",
+     "highlight": "なさい",
+     "my": "အိမ်စာကို အရင်လုပ်ပါ။",
+     "en": "Do your homework first."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-044",
+   "title": "〜なら",
+   "level": "N4",
+   "index": 44,
+   "status": "draft",
+   "meaningJa": "ある話題や条件を前提にして述べる。",
+   "meaningMy": "တစ်ခုကို အခြေခံပြီး အကြံပေးတာ၊ အခြေအနေဖော်ပြတာ။",
+   "meaningEn": "If that is the case; based on a condition or topic.",
+   "formation": "普通形 / 名詞＋なら",
+   "examples": [
+    {
+     "ja": "日本に行くなら、春がおすすめです。",
+     "highlight": "なら",
+     "my": "ဂျပန်သွားမယ်ဆိုရင် နွေဦးကို အကြံပြုတယ်။",
+     "en": "If you go to Japan, I recommend spring."
+    },
+    {
+     "ja": "時間がないなら、先に帰ってもいいです。",
+     "highlight": "なら",
+     "my": "အချိန်မရှိရင် အရင်ပြန်လို့ရပါတယ်။",
+     "en": "If you have no time, you may leave first."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-045",
+   "title": "〜にくい",
+   "level": "N4",
+   "index": 45,
+   "status": "draft",
+   "meaningJa": "ある動作が難しいことを表す。",
+   "meaningMy": "…ရခက်တယ်ဆိုတဲ့ အဓိပ္ပာယ်။",
+   "meaningEn": "Difficult to do something.",
+   "formation": "Vます形の語幹＋にくい",
+   "examples": [
+    {
+     "ja": "この字は読みにくいです。",
+     "highlight": "にくい",
+     "my": "ဒီစာလုံးက ဖတ်ရခက်တယ်။",
+     "en": "This character is hard to read."
+    },
+    {
+     "ja": "この靴は歩きにくいです。",
+     "highlight": "にくい",
+     "my": "ဒီဖိနပ်နဲ့ လမ်းလျှောက်ရခက်တယ်။",
+     "en": "These shoes are difficult to walk in."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-046",
+   "title": "〜にする",
+   "level": "N4",
+   "index": 46,
+   "status": "draft",
+   "meaningJa": "選んだものや決定した状態を表す。",
+   "meaningMy": "ရွေးချယ်ဆုံးဖြတ်ထားတာကို ပြတယ်။",
+   "meaningEn": "Choose or decide on something.",
+   "formation": "名詞＋にする",
+   "examples": [
+    {
+     "ja": "飲み物はお茶にします。",
+     "highlight": "にします",
+     "my": "သောက်စရာအတွက် လက်ဖက်ရည်ရွေးမယ်။",
+     "en": "I will have tea as my drink."
+    },
+    {
+     "ja": "会議は午後にしましょう。",
+     "highlight": "にしましょう",
+     "my": "အစည်းအဝေးကို နေ့လယ်ပိုင်းလုပ်ကြရအောင်။",
+     "en": "Let us schedule the meeting for the afternoon."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-047",
+   "title": "〜ので",
+   "level": "N4",
+   "index": 47,
+   "status": "draft",
+   "meaningJa": "理由や原因をやわらかく説明する。",
+   "meaningMy": "အကြောင်းရင်းကို ယဉ်ကျေးနူးညံ့စွာ ရှင်းပြခြင်း။",
+   "meaningEn": "Explains a reason in a relatively gentle way.",
+   "formation": "普通形＋ので（名詞・ナ形容詞は「な」＋ので）",
+   "examples": [
+    {
+     "ja": "雨が降っているので、出かけません。",
+     "highlight": "ので",
+     "my": "မိုးရွာနေလို့ အပြင်မထွက်ဘူး။",
+     "en": "I will not go out because it is raining."
+    },
+    {
+     "ja": "今日は静かなので、勉強しやすいです。",
+     "highlight": "なので",
+     "my": "ဒီနေ့ ငြိမ်သက်နေလို့ စာလေ့လာရလွယ်တယ်။",
+     "en": "It is easy to study because it is quiet today."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-048",
+   "title": "〜のに",
+   "level": "N4",
+   "index": 48,
+   "status": "draft",
+   "meaningJa": "予想と異なる結果を示す逆接表現。",
+   "meaningMy": "…ပေမဲ့ မျှော်လင့်ထားတာနဲ့ မတူတဲ့ရလဒ်ကို ဖော်ပြတယ်။",
+   "meaningEn": "Although; shows a result contrary to expectation.",
+   "formation": "普通形＋のに（名詞・ナ形容詞は「な」＋のに）",
+   "examples": [
+    {
+     "ja": "たくさん勉強したのに、間違えました。",
+     "highlight": "のに",
+     "my": "အများကြီးလေ့လာထားပေမဲ့ မှားခဲ့တယ်။",
+     "en": "Although I studied a lot, I made mistakes."
+    },
+    {
+     "ja": "今日は日曜日なのに、仕事があります。",
+     "highlight": "なのに",
+     "my": "ဒီနေ့ တနင်္ဂနွေဖြစ်ပေမဲ့ အလုပ်ရှိတယ်။",
+     "en": "Although it is Sunday, I have work."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-049",
+   "title": "〜のは〜です",
+   "level": "N4",
+   "index": 49,
+   "status": "draft",
+   "meaningJa": "動作や出来事を名詞化して取り上げる。",
+   "meaningMy": "လုပ်ဆောင်မှုတစ်ခုကို ခေါင်းစဉ်လိုယူပြီး ရှင်းပြခြင်း။",
+   "meaningEn": "Nominalizes an action to make it the topic or focus.",
+   "formation": "普通形＋のは＋名詞 / 形容詞＋です",
+   "examples": [
+    {
+     "ja": "私が好きなのは、この曲です。",
+     "highlight": "のは",
+     "my": "ကျွန်တော်ကြိုက်တာ ဒီသီချင်းပါ။",
+     "en": "What I like is this song."
+    },
+    {
+     "ja": "毎朝走るのは健康にいいです。",
+     "highlight": "のは",
+     "my": "မနက်တိုင်း ပြေးတာ ကျန်းမာရေးအတွက် ကောင်းတယ်။",
+     "en": "Running every morning is good for health."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-050",
+   "title": "〜ば",
+   "level": "N4",
+   "index": 50,
+   "status": "draft",
+   "meaningJa": "仮定の条件とその結果を表す。",
+   "meaningMy": "…ရင်ဆိုတဲ့ အခြေအနေကို ပြတယ်။",
+   "meaningEn": "If; expresses a conditional situation.",
+   "formation": "Vば形 / イ形容詞ければ",
+   "examples": [
+    {
+     "ja": "時間があれば、一緒に行きましょう。",
+     "highlight": "れば",
+     "my": "အချိန်ရှိရင် အတူတူသွားကြစို့။",
+     "en": "If you have time, let us go together."
+    },
+    {
+     "ja": "安ければ、買いたいです。",
+     "highlight": "ければ",
+     "my": "ဈေးချိုရင် ဝယ်ချင်တယ်။",
+     "en": "If it is inexpensive, I want to buy it."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-051",
+   "title": "〜は〜が、〜は（対比）",
+   "level": "N4",
+   "index": 51,
+   "status": "draft",
+   "meaningJa": "二つの人物や物事の特徴を対照させる。",
+   "meaningMy": "အရာနှစ်ခုကို နှိုင်းယှဉ်ပြီး မတူတာကို ဖော်ပြခြင်း။",
+   "meaningEn": "Contrasts features of two things or people.",
+   "formation": "名詞 A＋は～が、名詞 B＋は～",
+   "examples": [
+    {
+     "ja": "兄は背が高いですが、弟は低いです。",
+     "highlight": "ですが",
+     "my": "အစ်ကိုက အရပ်ရှည်ပေမဲ့ ညီက အရပ်ပုတယ်။",
+     "en": "My older brother is tall, but my younger brother is short."
+    },
+    {
+     "ja": "冬は寒いですが、夏は暑いです。",
+     "highlight": "ですが",
+     "my": "ဆောင်းက အေးပေမဲ့ နွေက ပူတယ်။",
+     "en": "Winter is cold, whereas summer is hot."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-052",
+   "title": "〜ばかり",
+   "level": "N4",
+   "index": 52,
+   "status": "draft",
+   "meaningJa": "ほとんど同じことや物だけである状態を表す。",
+   "meaningMy": "တစ်မျိုးတည်းလိုလိုပဲ အမြဲဖြစ်နေ၊ လုပ်နေခြင်း။",
+   "meaningEn": "Mostly or nothing but a particular thing.",
+   "formation": "名詞＋ばかり / Vて＋ばかり",
+   "examples": [
+    {
+     "ja": "弟はゲームばかりしています。",
+     "highlight": "ばかり",
+     "my": "ညီက ဂိမ်းပဲ အမြဲကစားနေတယ်။",
+     "en": "My younger brother does nothing but play games."
+    },
+    {
+     "ja": "最近は雨ばかりです。",
+     "highlight": "ばかり",
+     "my": "မကြာသေးခင်က မိုးပဲအမြဲရွာနေတယ်။",
+     "en": "It has been mostly rainy lately."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-053",
+   "title": "〜はずだ",
+   "level": "N4",
+   "index": 53,
+   "status": "draft",
+   "meaningJa": "十分な理由があり、当然そうなると考える。",
+   "meaningMy": "အကြောင်းပြချက်ရှိလို့ အဲဒီလိုဖြစ်သင့်တယ်လို့ ထင်ခြင်း။",
+   "meaningEn": "Should be; expected based on good reason.",
+   "formation": "普通形＋はずだ（名詞は「の」、ナ形容詞は「な」）",
+   "examples": [
+    {
+     "ja": "もう三時だから、彼は家にいるはずです。",
+     "highlight": "はずです",
+     "my": "သုံးနာရီထိုးပြီမို့ သူ အိမ်မှာ ရှိသင့်တယ်။",
+     "en": "It is already three, so he should be home."
+    },
+    {
+     "ja": "今日は祝日なので、店は休みのはずです。",
+     "highlight": "はずです",
+     "my": "ဒီနေ့ အစိုးရပိတ်ရက်မို့ ဆိုင်ပိတ်နေသင့်တယ်။",
+     "en": "Since today is a holiday, the shop should be closed."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-054",
+   "title": "〜始める",
+   "level": "N4",
+   "index": 54,
+   "status": "draft",
+   "meaningJa": "ある動作が始まることを表す。",
+   "meaningMy": "လုပ်ဆောင်မှုတစ်ခု စတင်လာခြင်း။",
+   "meaningEn": "Starts doing an action.",
+   "formation": "Vます形の語幹＋始める",
+   "examples": [
+    {
+     "ja": "子どもたちが歌い始めました。",
+     "highlight": "始めました",
+     "my": "ကလေးတွေ သီချင်း စဆိုလာတယ်။",
+     "en": "The children started singing."
+    },
+    {
+     "ja": "四月から日本語を習い始めます。",
+     "highlight": "始めます",
+     "my": "ဧပြီလကစပြီး ဂျပန်စာ စသင်မယ်။",
+     "en": "I will start learning Japanese in April."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-055",
+   "title": "〜必要がある",
+   "level": "N4",
+   "index": 55,
+   "status": "draft",
+   "meaningJa": "何かをすることが必要である。",
+   "meaningMy": "မဖြစ်မနေ လိုအပ်တယ်ဆိုတာကို ဖော်ပြခြင်း။",
+   "meaningEn": "There is a need to do something.",
+   "formation": "V辞書形＋必要がある",
+   "examples": [
+    {
+     "ja": "申請する前に確認する必要があります。",
+     "highlight": "必要があります",
+     "my": "လျှောက်ထားမယ့်အရင် စစ်ဖို့လိုတယ်။",
+     "en": "You need to check before applying."
+    },
+    {
+     "ja": "毎日運動する必要があります。",
+     "highlight": "必要があります",
+     "my": "နေ့တိုင်း လေ့ကျင့်ခန်းလုပ်ဖို့ လိုပါတယ်။",
+     "en": "You need to exercise every day."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-056",
+   "title": "〜ほうがいい",
+   "level": "N4",
+   "index": 56,
+   "status": "draft",
+   "meaningJa": "助言・おすすめを伝える。",
+   "meaningMy": "…လုပ်တာ ပိုကောင်းမယ်လို့ အကြံပေးခြင်း။",
+   "meaningEn": "You had better; advice.",
+   "formation": "Vた / Vない＋ほうがいい",
+   "examples": [
+    {
+     "ja": "疲れたら、早く寝たほうがいいです。",
+     "highlight": "ほうがいい",
+     "my": "ပင်ပန်းရင် စောစောအိပ်တာ ပိုကောင်းတယ်။",
+     "en": "You should go to bed early if you are tired."
+    },
+    {
+     "ja": "無理をしないほうがいいです。",
+     "highlight": "ほうがいい",
+     "my": "အတင်းမကြိုးစားတာ ပိုကောင်းတယ်။",
+     "en": "You had better not push yourself too hard."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-057",
+   "title": "〜ほど〜ない（比較）",
+   "level": "N4",
+   "index": 57,
+   "status": "draft",
+   "meaningJa": "二つを比較し、一方がもう一方ほどの程度ではないことを表す。",
+   "meaningMy": "နှိုင်းယှဉ်ရာမှာ တစ်ခုက နောက်တစ်ခုလောက် မဖြစ်ဘူးဆိုတာ ပြတယ်။",
+   "meaningEn": "Not as much as; compares a lower degree.",
+   "formation": "名詞 A＋は＋名詞 B＋ほど＋否定形",
+   "examples": [
+    {
+     "ja": "今日は昨日ほど寒くありません。",
+     "highlight": "ほど",
+     "my": "ဒီနေ့က မနေ့ကလောက် မအေးဘူး။",
+     "en": "It is not as cold today as yesterday."
+    },
+    {
+     "ja": "この本はあの本ほど難しくないです。",
+     "highlight": "ほど",
+     "my": "ဒီစာအုပ်က ဟိုစာအုပ်လောက် မခက်ဘူး။",
+     "en": "This book is not as difficult as that one."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-058",
+   "title": "まだ〜ていない",
+   "level": "N4",
+   "index": 58,
+   "status": "draft",
+   "meaningJa": "予想される動作が今まで完了していない。",
+   "meaningMy": "အခုထိ မလုပ်ရသေး၊ မပြီးသေးခြင်း။",
+   "meaningEn": "Has not done something yet.",
+   "formation": "まだ＋Vていない",
+   "examples": [
+    {
+     "ja": "宿題はまだ終わっていません。",
+     "highlight": "まだ",
+     "my": "အိမ်စာ မပြီးသေးဘူး။",
+     "en": "I have not finished my homework yet."
+    },
+    {
+     "ja": "彼はまだ来ていません。",
+     "highlight": "まだ",
+     "my": "သူ မရောက်သေးဘူး။",
+     "en": "He has not arrived yet."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-059",
+   "title": "〜までに",
+   "level": "N4",
+   "index": 59,
+   "status": "draft",
+   "meaningJa": "締め切り・期限までのある時点で終える。",
+   "meaningMy": "သတ်မှတ်ရက်၊ အချိန်မတိုင်မီ ပြီးအောင်လုပ်ခြင်း။",
+   "meaningEn": "By a deadline; at or before a stated time.",
+   "formation": "時点・日時＋までに",
+   "examples": [
+    {
+     "ja": "金曜日までに書類を出してください。",
+     "highlight": "までに",
+     "my": "သောကြာနေ့မတိုင်ခင် စာရွက်စာတမ်းတင်ပါ။",
+     "en": "Please submit the papers by Friday."
+    },
+    {
+     "ja": "八時までに駅へ来てください。",
+     "highlight": "までに",
+     "my": "ရှစ်နာရီမတိုင်ခင် ဘူတာကိုလာပါ။",
+     "en": "Please come to the station by eight."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-060",
+   "title": "〜まま",
+   "level": "N4",
+   "index": 60,
+   "status": "draft",
+   "meaningJa": "状態を変えずに次の行動や状況が続く。",
+   "meaningMy": "အခြေအနေကို မပြောင်းဘဲ ဆက်ထားခြင်း။",
+   "meaningEn": "Leaves a state unchanged.",
+   "formation": "Vた形 / Vない形 / 名詞の＋まま",
+   "examples": [
+    {
+     "ja": "電気をつけたまま寝ました。",
+     "highlight": "まま",
+     "my": "မီးဖွင့်လျက်နဲ့ အိပ်ခဲ့တယ်။",
+     "en": "I fell asleep with the light on."
+    },
+    {
+     "ja": "靴を履いたまま部屋に入らないでください。",
+     "highlight": "まま",
+     "my": "ဖိနပ်စီးလျက်နဲ့ အခန်းထဲမဝင်ပါနဲ့။",
+     "en": "Please do not enter the room with your shoes on."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-061",
+   "title": "〜みたいだ（推量）",
+   "level": "N4",
+   "index": 61,
+   "status": "draft",
+   "meaningJa": "見た情報から推測し、そう思うことを表す。",
+   "meaningMy": "မြင်ရသမျှအပေါ်မူတည်ပြီး အဲဒီလိုထင်ခြင်း။",
+   "meaningEn": "Seems like; a casual inference from evidence.",
+   "formation": "普通形 / 名詞＋みたいだ",
+   "examples": [
+    {
+     "ja": "外がぬれているので、雨が降ったみたいです。",
+     "highlight": "みたいです",
+     "my": "အပြင်မှာ စိုနေလို့ မိုးရွာထားတဲ့ပုံပဲ။",
+     "en": "The ground is wet, so it looks like it rained."
+    },
+    {
+     "ja": "彼は今日は忙しいみたいです。",
+     "highlight": "みたいです",
+     "my": "သူ ဒီနေ့ အလုပ်များနေတဲ့ပုံပဲ။",
+     "en": "He seems busy today."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-062",
+   "title": "〜みたいな / 〜みたいに（例示）",
+   "level": "N4",
+   "index": 62,
+   "status": "draft",
+   "meaningJa": "ある物や人を別のものに例える。",
+   "meaningMy": "တစ်ခုကို နောက်တစ်ခုလိုပုံစံတူ ဥပမာပေးခြင်း။",
+   "meaningEn": "Like; resembles or is similar to something.",
+   "formation": "名詞＋みたいな＋名詞 / 名詞＋みたいに＋動詞",
+   "examples": [
+    {
+     "ja": "雪みたいな白い花が咲いています。",
+     "highlight": "みたいな",
+     "my": "နှင်းလို ဖြူတဲ့ပန်းတွေ ပွင့်နေတယ်။",
+     "en": "White flowers like snow are blooming."
+    },
+    {
+     "ja": "彼は魚みたいに泳ぎます。",
+     "highlight": "みたいに",
+     "my": "သူက ငါးလို ရေကူးတယ်။",
+     "en": "He swims like a fish."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-063",
+   "title": "数量 + も",
+   "level": "N4",
+   "index": 63,
+   "status": "draft",
+   "meaningJa": "予想より量や回数が多いことを強調する。",
+   "meaningMy": "မျှော်မှန်းတာထက် အရေအတွက်များတာကို အလေးပေးပြောခြင်း။",
+   "meaningEn": "Emphasizes that a quantity is surprisingly large.",
+   "formation": "数・数量＋も",
+   "examples": [
+    {
+     "ja": "昨日は十時間も寝ました。",
+     "highlight": "も",
+     "my": "မနေ့က ဆယ်နာရီတောင် အိပ်ခဲ့တယ်။",
+     "en": "I slept for as many as ten hours yesterday."
+    },
+    {
+     "ja": "その店には百人も並んでいました。",
+     "highlight": "も",
+     "my": "အဲဒီဆိုင်မှာ လူတစ်ရာတောင် တန်းစီနေကြတယ်။",
+     "en": "As many as a hundred people were lining up at the shop."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-064",
+   "title": "〜やすい",
+   "level": "N4",
+   "index": 64,
+   "status": "draft",
+   "meaningJa": "ある動作が簡単にできる性質を表す。",
+   "meaningMy": "လုပ်ရလွယ်တယ်ဆိုတာကို ဖော်ပြခြင်း။",
+   "meaningEn": "Easy to do something.",
+   "formation": "Vます形の語幹＋やすい",
+   "examples": [
+    {
+     "ja": "この字は読みやすいです。",
+     "highlight": "やすい",
+     "my": "ဒီစာလုံးက ဖတ်ရလွယ်တယ်။",
+     "en": "This character is easy to read."
+    },
+    {
+     "ja": "この靴は歩きやすいです。",
+     "highlight": "やすい",
+     "my": "ဒီဖိနပ်နဲ့ လမ်းလျှောက်ရလွယ်တယ်။",
+     "en": "These shoes are comfortable to walk in."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-065",
+   "title": "〜ようだ（推量）",
+   "level": "N4",
+   "index": 65,
+   "status": "draft",
+   "meaningJa": "状況から判断して、確実ではないことを述べる。",
+   "meaningMy": "အခြေအနေကြည့်ပြီး သေချာမဟုတ်သေးတဲ့ ခန့်မှန်းချက်ပြောခြင်း။",
+   "meaningEn": "Appears or seems to be the case, based on evidence.",
+   "formation": "普通形 / 名詞の / ナ形容詞な＋ようだ",
+   "examples": [
+    {
+     "ja": "外は雨が降っているようです。",
+     "highlight": "ようです",
+     "my": "အပြင်မှာ မိုးရွာနေတဲ့ပုံပဲ။",
+     "en": "It appears to be raining outside."
+    },
+    {
+     "ja": "彼はもう帰ったようです。",
+     "highlight": "ようです",
+     "my": "သူ ပြန်သွားပြီးတဲ့ပုံပဲ။",
+     "en": "It seems he has already gone home."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-066",
+   "title": "〜ようと思う",
+   "level": "N4",
+   "index": 66,
+   "status": "draft",
+   "meaningJa": "今の考えや意志を述べる。",
+   "meaningMy": "အခုလုပ်ဖို့ စဉ်းစားနေတဲ့ ဆုံးဖြတ်ချက်။",
+   "meaningEn": "I think I will; expresses a current intention.",
+   "formation": "V意向形＋と思う",
+   "examples": [
+    {
+     "ja": "今週末は家で勉強しようと思います。",
+     "highlight": "ようと思います",
+     "my": "ဒီပိတ်ရက် အိမ်မှာစာလေ့လာမယ်လို့ စဉ်းစားထားတယ်။",
+     "en": "I think I will study at home this weekend."
+    },
+    {
+     "ja": "次は別の方法を試そうと思います。",
+     "highlight": "そうと思います",
+     "my": "နောက်တစ်ခါ နည်းလမ်းတစ်မျိုး စမ်းမယ်လို့ စဉ်းစားတယ်။",
+     "en": "I think I will try a different approach next time."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-067",
+   "title": "〜ようと思っている",
+   "level": "N4",
+   "index": 67,
+   "status": "draft",
+   "meaningJa": "ある意志を前から持ち続けていることを表す。",
+   "meaningMy": "အရင်ကတည်းက လုပ်ဖို့ စဉ်းစားထားတာ။",
+   "meaningEn": "Has been intending or planning to do something.",
+   "formation": "V意向形＋と思っている",
+   "examples": [
+    {
+     "ja": "来年、日本へ旅行しようと思っています。",
+     "highlight": "ようと思っています",
+     "my": "နောက်နှစ် ဂျပန်သွားလည်ဖို့ စဉ်းစားထားတယ်။",
+     "en": "I have been planning to travel to Japan next year."
+    },
+    {
+     "ja": "新しいパソコンを買おうと思っています。",
+     "highlight": "おうと思っています",
+     "my": "ကွန်ပျူတာအသစ်ဝယ်ဖို့ စဉ်းစားထားတယ်။",
+     "en": "I am thinking of buying a new computer."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-068",
+   "title": "〜ような / 〜ように（例示）",
+   "level": "N4",
+   "index": 68,
+   "status": "draft",
+   "meaningJa": "似ているものを例に挙げて説明する。",
+   "meaningMy": "တူညီတဲ့အရာနဲ့ ဥပမာပြပြီး ရှင်းခြင်း။",
+   "meaningEn": "Like; compares something to a similar example.",
+   "formation": "名詞の＋ような＋名詞 / 名詞の＋ように＋動詞",
+   "examples": [
+    {
+     "ja": "星のような光が見えます。",
+     "highlight": "ような",
+     "my": "ကြယ်လို အလင်းရောင်ကို မြင်ရတယ်။",
+     "en": "I can see a light like a star."
+    },
+    {
+     "ja": "先生のように話したいです。",
+     "highlight": "ように",
+     "my": "ဆရာလို ပြောတတ်ချင်တယ်။",
+     "en": "I want to speak like the teacher."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-069",
+   "title": "〜ように（目標・期待）",
+   "level": "N4",
+   "index": 69,
+   "status": "draft",
+   "meaningJa": "目的や望む結果が実現することを願う。",
+   "meaningMy": "ရည်ရွယ်ထားတဲ့ရလဒ် ဖြစ်လာစေဖို့ ဆိုလိုခြင်း။",
+   "meaningEn": "So that; expresses a desired goal or result.",
+   "formation": "V辞書形 / Vない形＋ように",
+   "examples": [
+    {
+     "ja": "忘れないようにメモします。",
+     "highlight": "ように",
+     "my": "မမေ့အောင် မှတ်စုရေးမယ်။",
+     "en": "I will take notes so I do not forget."
+    },
+    {
+     "ja": "聞こえるように大きな声で話してください。",
+     "highlight": "ように",
+     "my": "ကြားနိုင်အောင် အသံကျယ်ကျယ်ပြောပါ။",
+     "en": "Please speak loudly so we can hear you."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-070",
+   "title": "〜ようにしている",
+   "level": "N4",
+   "index": 70,
+   "status": "draft",
+   "meaningJa": "努力して習慣として続けている。",
+   "meaningMy": "အလေ့အကျင့်ဖြစ်အောင် ကြိုးစားပြီး ဆက်လုပ်နေခြင်း။",
+   "meaningEn": "Makes an ongoing effort to do something habitually.",
+   "formation": "V辞書形 / Vない形＋ようにしている",
+   "examples": [
+    {
+     "ja": "毎日歩くようにしています。",
+     "highlight": "ようにしています",
+     "my": "နေ့တိုင်း လမ်းလျှောက်ဖို့ ကြိုးစားတယ်။",
+     "en": "I try to walk every day."
+    },
+    {
+     "ja": "夜遅く食べないようにしています。",
+     "highlight": "ようにしています",
+     "my": "ညနောက်ကျမှ မစားဖို့ ကြိုးစားတယ်။",
+     "en": "I try not to eat late at night."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-071",
+   "title": "〜ようにする",
+   "level": "N4",
+   "index": 71,
+   "status": "draft",
+   "meaningJa": "意識してある行動を行うことにする。",
+   "meaningMy": "စိတ်ထားပြီး အဲဒီလိုလုပ်ဖို့ ကြိုးစားဆုံးဖြတ်ခြင်း။",
+   "meaningEn": "Makes a conscious effort to do or avoid something.",
+   "formation": "V辞書形 / Vない形＋ようにする",
+   "examples": [
+    {
+     "ja": "これから早く寝るようにします。",
+     "highlight": "ようにします",
+     "my": "ဒီကစပြီး စောစောအိပ်ဖို့ ကြိုးစားမယ်။",
+     "en": "I will try to go to bed early from now on."
+    },
+    {
+     "ja": "忘れ物をしないようにします。",
+     "highlight": "ようにします",
+     "my": "ပစ္စည်းမမေ့အောင် ကြိုးစားမယ်။",
+     "en": "I will try not to forget things."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-072",
+   "title": "〜ようになる",
+   "level": "N4",
+   "index": 72,
+   "status": "draft",
+   "meaningJa": "能力や習慣などの状態が変化する。",
+   "meaningMy": "စွမ်းရည်၊ အကျင့်အလေ့တွေ ပြောင်းလဲလာခြင်း။",
+   "meaningEn": "Come to be able to; change of habit or state.",
+   "formation": "V辞書形 / Vない形＋ようになる",
+   "examples": [
+    {
+     "ja": "日本語のニュースが分かるようになりました。",
+     "highlight": "ようになりました",
+     "my": "ဂျပန်သတင်းတွေ နားလည်လာပြီ။",
+     "en": "I have become able to understand Japanese news."
+    },
+    {
+     "ja": "最近、早く起きるようになりました。",
+     "highlight": "ようになりました",
+     "my": "အခုတလော စောစောထတဲ့အကျင့် ဖြစ်လာတယ်။",
+     "en": "Recently I have begun getting up early."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-073",
+   "title": "〜予定だ",
+   "level": "N4",
+   "index": 73,
+   "status": "draft",
+   "meaningJa": "決まっている計画や日程を表す。",
+   "meaningMy": "သတ်မှတ်ပြီးသားအစီအစဉ်၊ အချိန်ဇယားကို ပြောခြင်း။",
+   "meaningEn": "Describes a scheduled or fixed plan.",
+   "formation": "V辞書形 / 名詞の＋予定だ",
+   "examples": [
+    {
+     "ja": "来週大阪へ行く予定です。",
+     "highlight": "予定です",
+     "my": "နောက်အပတ် အိုဆာကာသွားဖို့ အစီအစဉ်ရှိတယ်။",
+     "en": "I am scheduled to go to Osaka next week."
+    },
+    {
+     "ja": "会議は二時からの予定です。",
+     "highlight": "予定です",
+     "my": "အစည်းအဝေးကို နှစ်နာရီကစဖို့ စီစဉ်ထားတယ်။",
+     "en": "The meeting is scheduled to start at two."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-074",
+   "title": "〜らしい（推量）",
+   "level": "N4",
+   "index": 74,
+   "status": "draft",
+   "meaningJa": "情報や様子をもとに推測する。",
+   "meaningMy": "ကြားရတဲ့သတင်း၊ မြင်ရတဲ့အခြေအနေအပေါ်မူတည်ပြီး ခန့်မှန်းခြင်း။",
+   "meaningEn": "Apparently; seems likely based on information.",
+   "formation": "普通形＋らしい",
+   "examples": [
+    {
+     "ja": "明日は雪が降るらしいです。",
+     "highlight": "らしい",
+     "my": "မနက်ဖြန် နှင်းကျမယ်လို့ ကြားတယ်။",
+     "en": "Apparently it will snow tomorrow."
+    },
+    {
+     "ja": "あの店は新しく開いたらしいです。",
+     "highlight": "らしい",
+     "my": "အဲဒီဆိုင် အသစ်ဖွင့်ထားတဲ့ပုံပဲ။",
+     "en": "It seems that shop has just opened."
+    }
+   ]
+  },
+  {
+   "id": "N4-grammar-075",
+   "title": "〜らしい（典型）",
+   "level": "N4",
+   "index": 75,
+   "status": "draft",
+   "meaningJa": "その人や物にふさわしい典型的な特徴を表す。",
+   "meaningMy": "အဲဒီလူ၊ အရာနဲ့ ကိုက်ညီတဲ့ပုံစံကို ဖော်ပြခြင်း။",
+   "meaningEn": "Typical of; characteristic of someone or something.",
+   "formation": "名詞＋らしい",
+   "examples": [
+    {
+     "ja": "今日は春らしい暖かさです。",
+     "highlight": "らしい",
+     "my": "ဒီနေ့ နွေဦးလို နွေးထွေးတယ်။",
+     "en": "Today has a warmth typical of spring."
+    },
+    {
+     "ja": "彼は子どもらしい笑顔を見せました。",
+     "highlight": "らしい",
+     "my": "သူက ကလေးပီသတဲ့ အပြုံးပြခဲ့တယ်။",
+     "en": "He showed a smile typical of a child."
+    }
+   ]
+  }
+ ]
+}

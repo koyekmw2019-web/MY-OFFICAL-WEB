@@ -1,0 +1,27 @@
+{
+  "current_version": "7.87.14",
+  "base": "v7.87.13 cumulative PATCH",
+  "previous_count": 97,
+  "previous_files_missing": [],
+  "previous_files_identical": 82,
+  "prior_files_changed_for_v78714": [
+    "assets/yk-v7879-grammar.js",
+    "package.json",
+    "scripts/preflight-v78713.mjs",
+    "scripts/v7872-qa-version-guards.mjs",
+    "tests/v78710-content.mjs",
+    "tests/v78711-stability.mjs",
+    "tests/v78712-source.mjs",
+    "tests/v78713-static.mjs",
+    "tests/v7873-source.mjs",
+    "tests/v7874-source.mjs",
+    "tests/v7875-source.mjs",
+    "tests/v7876-source.mjs",
+    "tests/v7877-source.mjs",
+    "tests/v7878-source.mjs",
+    "tests/v7879-source.mjs"
+  ],
+  "new_file_count_before_manifest": 17,
+  "new_migration_count": 0,
+  "previous_backend_sha256_preserved": true
+}

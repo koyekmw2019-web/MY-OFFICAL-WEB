@@ -1,0 +1,14 @@
+{
+  "version": "7.88.0-rc.1",
+  "runAt": "2026-11-13T04:51:49.960Z",
+  "sourceCommit": null,
+  "source": "full original checkout required",
+  "blocked": true,
+  "passed": false,
+  "checks": [],
+  "liveNetlifyDeployPreviewVerified": false,
+  "notes": [
+    "Local full checkout != Netlify Deploy Preview",
+    "No private payments or real student records modified"
+  ]
+}

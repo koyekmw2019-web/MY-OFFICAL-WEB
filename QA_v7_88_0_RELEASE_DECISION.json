@@ -1,0 +1,97 @@
+{
+  "release": "7.88.0",
+  "candidate": "7.88.0-rc.1",
+  "decision": "NO_GO",
+  "productionStable": false,
+  "reportCreatedAt": "2026-11-13T04:49:56.953Z",
+  "checks": [
+    {
+      "code": "candidate_version",
+      "status": "PASS",
+      "detail": "Evidence accepted"
+    },
+    {
+      "code": "complete_checkout_and_git_sha",
+      "status": "BLOCKED",
+      "detail": "A real checked-out Git repository and original source files are required"
+    },
+    {
+      "code": "lockfile",
+      "status": "BLOCKED",
+      "detail": "Create and verify a package-lock.json before npm ci; GitHub main had no lockfile"
+    },
+    {
+      "code": "full_npm_test_build_and_release",
+      "status": "BLOCKED",
+      "detail": "Full npm test + npm build + release gates must all PASS on the actual repository"
+    },
+    {
+      "code": "generated_dist_source_audit",
+      "status": "BLOCKED",
+      "detail": "Use actual generated dist; synthetic fixtures cannot certify this release"
+    },
+    {
+      "code": "remote_netlify_deploy_preview",
+      "status": "BLOCKED",
+      "detail": "A real deploy-preview-N--site.netlify.app URL and successful remote smoke are required"
+    },
+    {
+      "code": "source_commit_matches_evidence",
+      "status": "BLOCKED",
+      "detail": "The reviewed preview must be built from exactly the source commit being released"
+    },
+    {
+      "code": "isolated_test_database",
+      "status": "BLOCKED",
+      "detail": "Use only test users and isolated non-production payment/DB environment"
+    },
+    {
+      "code": "authenticated_end_to_end",
+      "status": "BLOCKED",
+      "detail": "Missing one or more real preview Login / Student / Exam / Payment / YKCR steps"
+    },
+    {
+      "code": "real_device_verification",
+      "status": "BLOCKED",
+      "detail": "Actual Android and iOS + PWA + mobile performance verification not complete"
+    },
+    {
+      "code": "rollback_and_human_signoff",
+      "status": "BLOCKED",
+      "detail": "Verified rollback, named reviewer and recent sign-off are mandatory"
+    }
+  ],
+  "blockerCount": 10,
+  "blockers": [
+    "complete_checkout_and_git_sha",
+    "lockfile",
+    "full_npm_test_build_and_release",
+    "generated_dist_source_audit",
+    "remote_netlify_deploy_preview",
+    "source_commit_matches_evidence",
+    "isolated_test_database",
+    "authenticated_end_to_end",
+    "real_device_verification",
+    "rollback_and_human_signoff"
+  ],
+  "evidenceFiles": {
+    "full": {
+      "name": "QA_v7_88_0_FULL_REPO.json",
+      "present": false
+    },
+    "audit": {
+      "name": "QA_v7_88_0_RELEASE_AUDIT.json",
+      "present": false
+    },
+    "preview": {
+      "name": "QA_v7_88_0_PREVIEW.json",
+      "present": false
+    },
+    "manual": {
+      "name": "QA_v7_88_0_MANUAL_EVIDENCE.json",
+      "present": false
+    }
+  },
+  "note": "GO_ELIGIBLE_FOR_FINAL_HUMAN_APPROVAL is not permission to automatically deploy. Human approval and controlled promotion are separate. No data was written by this check.",
+  "noDeployPerformed": true
+}

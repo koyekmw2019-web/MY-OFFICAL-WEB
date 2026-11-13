@@ -1,0 +1,41 @@
+/* STUDYING WITH YE KUN v7.87.17 — responsive admin-only insights. */
+body[data-dashboard="admin"] .yk817-panel,body[data-dashboard="admin"] .yk817-panel *{box-sizing:border-box}
+body[data-dashboard="admin"] .yk817-panel{color:#f7f4f6;background:#151217;border:1px solid #493642;border-radius:18px;padding:16px;margin:14px 0;min-width:0}
+body[data-dashboard="admin"] .yk817-panel>summary{font-size:16px;font-weight:850;line-height:1.55;cursor:pointer;list-style:auto}
+body[data-dashboard="admin"] .yk817-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:10px 0}
+body[data-dashboard="admin"] .yk817-top p{font-size:12px;color:#bbb0b8;margin:0;line-height:1.65}
+body[data-dashboard="admin"] .yk817-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+body[data-dashboard="admin"] .yk817-controls label{font-size:12px;color:#dbd0d5}
+body[data-dashboard="admin"] .yk817-panel :is(select,button){background:#272027;color:#fff;border:1px solid #604550;border-radius:10px;font:inherit;font-size:12px;min-height:40px;padding:9px 12px;cursor:pointer}
+body[data-dashboard="admin"] .yk817-panel :is(select,button):focus-visible{outline:2px solid #f189a4;outline-offset:3px}
+body[data-dashboard="admin"] .yk817-panel button.yk817-main{background:#ab2946;border-color:#ab2946}
+body[data-dashboard="admin"] .yk817-note{color:#b8adb4;font-size:11px;line-height:1.65;margin:9px 0}
+body[data-dashboard="admin"] .yk817-status{font-size:12px;color:#b3a8b0;min-height:14px;line-height:1.6}
+body[data-dashboard="admin"] .yk817-status.yk817-error{color:#ff9bae}
+body[data-dashboard="admin"] .yk817-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:10px 0 20px}
+body[data-dashboard="admin"] .yk817-card{background:#231c25;border:1px solid #493544;border-radius:13px;padding:12px;min-width:0}
+body[data-dashboard="admin"] .yk817-card small,body[data-dashboard="admin"] .yk817-card span{display:block;color:#c8bdc5;font-size:11px;line-height:1.5}
+body[data-dashboard="admin"] .yk817-card strong{display:block;font-size:23px;color:#fff;font-variant-numeric:tabular-nums;line-height:1.6}
+body[data-dashboard="admin"] .yk817-panel h3{font-size:15px;margin:15px 0 8px;color:#fff}
+body[data-dashboard="admin"] .yk817-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+body[data-dashboard="admin"] .yk817-box{background:#1f1a22;border:1px solid #44333f;border-radius:14px;min-width:0;padding:13px;margin-top:13px}
+body[data-dashboard="admin"] .yk817-box h3{margin:0 0 9px}
+body[data-dashboard="admin"] .yk817-chartline{margin:10px 0}
+body[data-dashboard="admin"] .yk817-chartline>div:first-child{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12px}
+body[data-dashboard="admin"] .yk817-chartline b{font-weight:800}
+body[data-dashboard="admin"] .yk817-chartline span{color:#cbbdc4;font-size:11px}
+body[data-dashboard="admin"] .yk817-track{height:7px;background:#382e38;border-radius:8px;overflow:hidden;margin-top:6px}
+body[data-dashboard="admin"] .yk817-track span{display:block;height:100%;background:#d95170;border-radius:8px}
+body[data-dashboard="admin"] .yk817-tablewrap{overflow:auto;border:1px solid #4a3642;border-radius:11px;max-width:100%}
+body[data-dashboard="admin"] .yk817-tablewrap table{width:100%;min-width:540px;border-collapse:collapse;font-size:12px}
+body[data-dashboard="admin"] .yk817-tablewrap th,body[data-dashboard="admin"] .yk817-tablewrap td{text-align:left;padding:10px;border-bottom:1px solid #483741;vertical-align:top}
+body[data-dashboard="admin"] .yk817-tablewrap th{background:#2b222c;color:#e5d6dd}
+body[data-dashboard="admin"] .yk817-tablewrap td span{display:block;overflow-wrap:anywhere;max-width:170px}
+body[data-dashboard="admin"] .yk817-empty{font-size:12px;color:#beb1bb}
+body[data-dashboard="admin"] .yk817-clickrow{display:flex;align-items:center;gap:12px;margin:8px 0}
+body[data-dashboard="admin"] .yk817-clickrow strong{font-size:22px}
+body[data-dashboard="admin"] .yk817-clickrow span{font-size:11px;color:#bbb0b6}
+body[data-dashboard="admin"] .yk817-caveat{border-left:3px solid #bc526c;background:#281e27;padding:11px 13px;font-size:11px;line-height:1.85;color:#e6d6df;margin-top:17px}
+@media(max-width:840px){body[data-dashboard="admin"] .yk817-grid{grid-template-columns:1fr}}
+@media(max-width:540px){body[data-dashboard="admin"] .yk817-panel{padding:11px}body[data-dashboard="admin"] .yk817-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}body[data-dashboard="admin"] .yk817-card{padding:10px}body[data-dashboard="admin"] .yk817-card strong{font-size:20px}body[data-dashboard="admin"] .yk817-top{align-items:stretch}body[data-dashboard="admin"] .yk817-controls{width:100%}}
+@media(prefers-reduced-motion:reduce){body[data-dashboard="admin"] .yk817-panel *{transition:none!important;animation:none!important}}

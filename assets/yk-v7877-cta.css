@@ -1,0 +1,10 @@
+/* v7.87.7 — additional class inquiry actions, only on SSW course guide pages. */
+.yk877-class-cta{display:inline-flex;align-items:center;justify-content:center;min-height:45px;
+ padding:11px 17px;margin:10px 8px 3px 0;border:1px solid #c24d63;border-radius:12px;
+ background:#b72b43;color:#fff;font-size:14px;font-weight:850;text-decoration:none;
+ transition:background .2s ease,transform .2s ease,box-shadow .2s ease}
+.yk877-class-cta:hover{background:#d43c56;transform:translateY(-2px);box-shadow:0 7px 20px #b62a3b33}
+.yk877-class-cta:focus-visible{outline:2px solid #ffd5dd;outline-offset:3px}
+.yk877-class-note{display:block;margin:7px 0 0;color:#aaa;font-size:11px;line-height:1.6}
+@media(max-width:540px){.yk877-class-cta{width:100%;margin:12px 0 0}}
+@media(prefers-reduced-motion:reduce){.yk877-class-cta{transition:none!important}}

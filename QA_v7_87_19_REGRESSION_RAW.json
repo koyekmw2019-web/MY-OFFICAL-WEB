@@ -1,0 +1,290 @@
+[
+  {
+    "test": "v7873-source",
+    "passed": false,
+    "code": 1,
+    "seconds": 0.04,
+    "stdout": "",
+    "stderr": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: assets/yk-v7873-auth.css\n    at file:///mnt/data/yk_v78719_workspace/tests/v7873-source.mjs:9:139\n    at ModuleJob.run (node:internal/modules/esm/module_job:274:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:644:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '=='\n}\n\nNode.js v22.16.0\n"
+  },
+  {
+    "test": "v7874-source",
+    "passed": false,
+    "code": 1,
+    "seconds": 0.03,
+    "stdout": "",
+    "stderr": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: assets/yk-v7874-nav.css\n    at file:///mnt/data/yk_v78719_workspace/tests/v7874-source.mjs:9:130\n    at ModuleJob.run (node:internal/modules/esm/module_job:274:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:644:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '=='\n}\n\nNode.js v22.16.0\n"
+  },
+  {
+    "test": "v7875-source",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.04,
+    "stdout": "PASS v7875-source: safe performance, connectivity UX and public cache boundaries\n",
+    "stderr": ""
+  },
+  {
+    "test": "v7875-runtime",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.07,
+    "stdout": "PASS v7875-runtime: offline, critical script failures, no auto retry, versioned SW cache invalidation and private navigation bypass\n",
+    "stderr": ""
+  },
+  {
+    "test": "v7876-source",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.03,
+    "stdout": "PASS v7876-source: cumulative v7875 preserved, student-only journey, no backend changes\n",
+    "stderr": ""
+  },
+  {
+    "test": "v7876-engine",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.06,
+    "stdout": "PASS v7876-engine: 12 subject routes, scoped verified history, date filtering, trusted per-exam scores, no new APIs\n",
+    "stderr": ""
+  },
+  {
+    "test": "v7877-source",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.03,
+    "stdout": "PASS v7877-source: cumulative, public click-only, admin-auth data, two isolated tables, previous engine retained\n",
+    "stderr": ""
+  },
+  {
+    "test": "v7877-runtime",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.18,
+    "stdout": "PASS v7877-runtime: click-only UTM, same-origin, admin auth, manual entries, arithmetic, no fake visitors\n",
+    "stderr": "(node:1907) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+  },
+  {
+    "test": "v7878-source",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.03,
+    "stdout": "PASS v7878-source: v7877 cumulative retained, admin-only cleanup and CRM, prior backend untouched\n",
+    "stderr": ""
+  },
+  {
+    "test": "v7878-crm",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.05,
+    "stdout": "PASS v7878-crm: validation, status, optional YKCR reference, dates and length limits\n",
+    "stderr": ""
+  },
+  {
+    "test": "v7878-crm-api.mock",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.11,
+    "stdout": "PASS v7878-crm-api.mock: admin auth, origin guard, input checks, CRUD, no YKCR/payment/Exam mutation\n",
+    "stderr": "(node:1940) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+  },
+  {
+    "test": "v7879-data",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.04,
+    "stdout": "PASS v7879-data: 509 patterns, 509 original multilingual lesson drafts, 0 explicitly pending, furigana & underline, no backend changes\n",
+    "stderr": ""
+  },
+  {
+    "test": "v7879-source",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.03,
+    "stdout": "PASS v7879-source: incremental cumulative, source/built route consistency, no exam/payment/YKCR server modification\n",
+    "stderr": ""
+  },
+  {
+    "test": "v7879-bridge",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.03,
+    "stdout": "PASS v7879-bridge: 30 original grammar lessons available by ?legacy=1, selected JLPT level passed, modifier clicks stay native\n",
+    "stderr": ""
+  },
+  {
+    "test": "v78710-content",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.04,
+    "stdout": "PASS v78710-content: 509/509 trilingual original authored lessons, 1,018 JP/MY/EN examples, all highlights present, legacy safe, cache key v78710\n",
+    "stderr": ""
+  },
+  {
+    "test": "v78711-stability",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.12,
+    "stdout": "PASS v78711-stability: wrapped PostgreSQL free-attempt collision recognized, 12 exam rules unchanged, grammar+CRM assets preserved\n",
+    "stderr": "(node:1995) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+  },
+  {
+    "test": "v78712-source",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.03,
+    "stdout": "PASS v78712-source: additive i18n, no content/backend rewrite, CRM/business confirmations localized\n",
+    "stderr": ""
+  },
+  {
+    "test": "v78713-static",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.04,
+    "stdout": "PASS v78713-static: patch chain, all 509 grammar records, previous API/schema retained, SW no private caching, full source preflight present\n",
+    "stderr": ""
+  },
+  {
+    "test": "v78713-build-fixture",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.15,
+    "stdout": "PASS v78713-build-fixture: 24-page HTML metadata, inline JS preservation, positive release gate & missing CSS negative test (synthetic fixture only)\n",
+    "stderr": ""
+  },
+  {
+    "test": "v78714-engine",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.06,
+    "stdout": "PASS v78714-engine: 509 original items, 1,018 cloze examples, 40 curated MCQs, no automatically synthesized distractors, review/daily prioritization, per-device progress & session validation\n",
+    "stderr": ""
+  },
+  {
+    "test": "v78714-source",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.03,
+    "stdout": "PASS v78714-source: additive student-only integration, no mock exam/identity/payment/YKCR APIs, 509 lesson deep links and patch chain intact\n",
+    "stderr": ""
+  },
+  {
+    "test": "v78714-build-fixture",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.15,
+    "stdout": "PASS v78714-build-fixture: isolated publish pass, Admin/Member exclusion, missing JS negative-release gate\n",
+    "stderr": ""
+  },
+  {
+    "test": "v78715-engine",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.18,
+    "stdout": "PASS v78715-engine: zero-data honesty, 1-attempt uncertainty, repeated mistakes, recovery, due heuristic, priority, 7-day method splitting, 1200-event cap, 5-level isolation\n",
+    "stderr": ""
+  },
+  {
+    "test": "v78715-source",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.04,
+    "stdout": "PASS v78715-source: version chain, new files, student-only role, no backend or personal data network requests\n",
+    "stderr": ""
+  },
+  {
+    "test": "v78715-build-fixture",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.14,
+    "stdout": "PASS v78715-build-fixture: positive integration, role separation, missing dependency blocks release\n",
+    "stderr": ""
+  },
+  {
+    "test": "v78716-engine",
+    "passed": true,
+    "code": 0,
+    "seconds": 1.25,
+    "stdout": "PASS v78716-engine: strict dates/weekly boundaries, actual sessions vs plans, self-report separation, streak, targets, invalid input and 400-day cap\n",
+    "stderr": ""
+  },
+  {
+    "test": "v78716-source",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.03,
+    "stdout": "PASS v78716-source: version/build chain, safe local state, 3 languages, student-only integration, previous backend/grammar preserved\n",
+    "stderr": ""
+  },
+  {
+    "test": "v78716-build-fixture",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.2,
+    "stdout": "PASS v78716-build-fixture: prior v7.87.15 builder, additive calendar integration, role isolation, missing-asset release rejection\n",
+    "stderr": ""
+  },
+  {
+    "test": "v78717-engine",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.04,
+    "stdout": "PASS v78717-engine: valid windows, scoped pipeline groupings, follow-up counts, no fake conversion\n",
+    "stderr": ""
+  },
+  {
+    "test": "v78717-api.mock",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.13,
+    "stdout": "PASS v78717-api.mock: read-only admin permissions, period guard, aggregation, no PII contact leak\n",
+    "stderr": "(node:2303) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+  },
+  {
+    "test": "v78717-source",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.05,
+    "stdout": "PASS v78717-source: build chain, admin-only and no new DB/identity/CRM mutations\n",
+    "stderr": ""
+  },
+  {
+    "test": "v78717-build-fixture",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.17,
+    "stdout": "PASS v78717-build-fixture: admin-only build, duplicate prevention and missing CSS gate\n",
+    "stderr": ""
+  },
+  {
+    "test": "v78718-source",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.04,
+    "stdout": "PASS v78718-source: cumulative build, exact per-exam policy, no backend/learning changes\n",
+    "stderr": ""
+  },
+  {
+    "test": "v78718-build-fixture",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.19,
+    "stdout": "PASS v78718-build-fixture: 13 pages, localization, repeat prevention, price tamper gate\n",
+    "stderr": ""
+  },
+  {
+    "test": "v78719-backend.mock",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.13,
+    "stdout": "locked by guarded UPDATE\nPASS Student verify: valid claim -> 200, response no-store\nPASS Payment: prototype plan is rejected before storage\nPASS Payment: bad bank choice rejected before storage\nPASS Payment: email outage AFTER DB insert returns success pending\nPASS Payment: healthy email and valid plan -> success pending\nPASS Payment: invalid bank JSON -> failure before storage\nPASS Exam status: authenticated response is private, no-store; per exam type\nPASS Health: non-admin forbidden\nPASS Health: full schema/config, no secrets in output\nPASS Health: missing table yields 503 without writing DB\nPASS v78719-backend mock tests (18) — no live Netlify calls, no real student or payment mutations\n",
+    "stderr": "notification failed after request was saved Error: Resend unavailable\n    at globalThis.__ykSendEmail (file:///mnt/data/yk_v78719_workspace/tests/v78719-backend.mock.mjs:104:53)\n    at sendAdminPaymentEmail (file:///mnt/data/yk_v78719_workspace/netlify/functions/exam-payment-submit.v78719mock1.mts?mock=2:10:57)\n    at default (file:///mnt/data/yk_v78719_workspace/netlify/functions/exam-payment-submit.v78719mock1.mts?mock=2:63:21)\n    at async file:///mnt/data/yk_v78719_workspace/tests/v78719-backend.mock.mjs:105:32\n    at async check (file:///mnt/data/yk_v78719_workspace/tests/v78719-backend.mock.mjs:9:33)\n    at async file:///mnt/data/yk_v78719_workspace/tests/v78719-backend.mock.mjs:103:1\n"
+  },
+  {
+    "test": "v78719-source",
+    "passed": true,
+    "code": 0,
+    "seconds": 0.04,
+    "stdout": "PASS v78719-source: critical access/payment safeguards, cumulative backend and exam/learning source present\n",
+    "stderr": ""
+  }
+]

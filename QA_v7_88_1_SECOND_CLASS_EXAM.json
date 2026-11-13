@@ -1,0 +1,79 @@
+{
+  "version": "7.88.1-rc.1",
+  "releaseName": "普通第二種免許 学科試験 ORIGINAL MOCK",
+  "releaseDecision": "NO_GO",
+  "productionStable": false,
+  "githubMainModified": false,
+  "netlifyModified": false,
+  "databaseModified": false,
+  "parentCumulative": "YEKUN_v7.88.0_RC1_Release_Gate_CUMULATIVE.zip",
+  "sourceType": "CUMULATIVE_PATCH_NOT_COMPLETE_CHECKOUT",
+  "exam": {
+    "type": "nishu",
+    "placement": "immediately after 普通自動車 card",
+    "newRoute": "/exams/nishu.html",
+    "originalQuestions": 90,
+    "originalIllustrations": 5,
+    "illustrationSubquestions": 15,
+    "durationMinutes": 50,
+    "maxScore": 100,
+    "passScore": 90,
+    "scoring": "90 ordinary x 1 + 5 visual x 2 only for complete 3/3",
+    "distribution": {
+      "共通の心得": 13,
+      "運転前の心得": 6,
+      "運転の方法": 30,
+      "危険な場所・悪天候": 9,
+      "高速道路": 8,
+      "旅客自動車の心得": 20,
+      "事故・故障・災害": 3,
+      "車の所有者・使用者": 1
+    },
+    "officialQuestions": false,
+    "writtenAndIllustrationsHumanProofread": false,
+    "imageUsage": "book cover only, permission review before public deployment"
+  },
+  "qa": {
+    "questionBankPublicPrivateSplit": "PASS_LOCAL",
+    "sourceAndPrivacyStatic": "PASS_LOCAL",
+    "serverScoreTwelveAssertions": "PASS_LOCAL",
+    "backendIntegrationIdempotency": "PASS_LOCAL",
+    "cardAfterCarBuildFixture": "PASS_LOCAL",
+    "mobile320px": "PASS_LOCAL_SYNTHETIC",
+    "mobile390px": "PASS_LOCAL_SYNTHETIC",
+    "desktop1280px": "PASS_LOCAL_SYNTHETIC",
+    "scoreHistoryMock": "PASS_LOCAL_SYNTHETIC",
+    "selectedRegression41": {
+      "status": "PASS_STAGED",
+      "passed": 41,
+      "total": 41,
+      "requiresExternalOldUIMocks": true,
+      "fullSuite": false
+    },
+    "fullNpmTest": "NOT_RUN_REQUIRES_FULL_GITHUB_SOURCE",
+    "fullNpmBuild": "BLOCKED_PREFLIGHT_MISSING_FULL_REPOSITORY",
+    "realNetlifyDeployPreview": "NOT_RUN",
+    "realStudentPaymentBackendE2E": "NOT_RUN",
+    "realDatabaseMigration": "NOT_RUN",
+    "legalJapaneseHumanEditorial": "NOT_COMPLETED",
+    "coverImageCopyrightPermission": "NOT_VERIFIED",
+    "mobileComplete95QuestionJourney": "PASS_LOCAL_SYNTHETIC",
+    "illustrationTripletResponsive": "PASS_LOCAL_SYNTHETIC"
+  },
+  "releaseBlockers": [
+    "GitHub full checkout and npm test/build",
+    "Isolated preview database migration",
+    "Live Netlify deploy preview",
+    "Account, Free/Paid/Student access E2E",
+    "Submission, autosave and own history/read-only access E2E",
+    "Japanese editorial and cover image permission review"
+  ],
+  "security": {
+    "privateAnswerKeyNotDist": "STATIC_PASS",
+    "reviewOwnerCheck": "STATIC_PASS",
+    "historyOwnerCheck": "STATIC_PASS",
+    "autoSaveServerTimer": "SYNTHETIC_PASS",
+    "serverGrade": "UNIT_PASS"
+  },
+  "deploymentGuidance": "Testing branch only; no production deployment until all gates PASS"
+}

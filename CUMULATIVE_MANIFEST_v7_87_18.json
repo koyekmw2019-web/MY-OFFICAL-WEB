@@ -1,0 +1,717 @@
+{
+  "version": "7.87.18",
+  "base_zip": "YEKUN_v7.87.17_Marketing_Enrollment_CRM_Improvements_CUMULATIVE.zip",
+  "base_count": 163,
+  "retained_base_files": 163,
+  "backend_unchanged": 9,
+  "altered_base_paths": [
+    "package.json",
+    "scripts/v7872-qa-version-guards.mjs",
+    "tests/v78710-content.mjs",
+    "tests/v78711-stability.mjs",
+    "tests/v78712-source.mjs",
+    "tests/v78713-static.mjs",
+    "tests/v78714-source.mjs",
+    "tests/v78715-source.mjs",
+    "tests/v78716-source.mjs",
+    "tests/v78717-source.mjs",
+    "tests/v7873-source.mjs",
+    "tests/v7874-source.mjs",
+    "tests/v7875-source.mjs",
+    "tests/v7876-source.mjs",
+    "tests/v7877-source.mjs",
+    "tests/v7878-source.mjs",
+    "tests/v7879-source.mjs"
+  ],
+  "files_excluding_manifest": 172,
+  "files": {
+    "CUMULATIVE_MANIFEST_v7_87_14.json": {
+      "bytes": 790,
+      "sha256": "333a03a293921f34687e1c1d5b2cfa5aa1835074eb04add5bddce6c1d88a33ed"
+    },
+    "CUMULATIVE_MANIFEST_v7_87_15.json": {
+      "bytes": 1394,
+      "sha256": "8aade9541297a9fe576b9a707f62233ca1c1b7dcd22132b1958a6a194d57a3cb"
+    },
+    "CUMULATIVE_MANIFEST_v7_87_16.json": {
+      "bytes": 1412,
+      "sha256": "7d0caa9524978e9d493077acdd340b40573332177ab63ea7a82da51635bebad4"
+    },
+    "CUMULATIVE_MANIFEST_v7_87_17.json": {
+      "bytes": 1500,
+      "sha256": "335a8788d0b26cbf2f445c585646d636f56d0d6808e4f846d2c454eaf282ee60"
+    },
+    "QA_v7_87_10_GRAMMAR.json": {
+      "bytes": 2357,
+      "sha256": "6c3c2cc9d2b588af843f03a57c898bdd59c9b0e39a69e24d67e98dac8e9770a6"
+    },
+    "QA_v7_87_11_STABILITY.json": {
+      "bytes": 1900,
+      "sha256": "52a05f48097b6bb6f549338b18e3b2f7e1586ae1fefce9672f6e34300a59f695"
+    },
+    "QA_v7_87_12_LANGUAGE.json": {
+      "bytes": 1852,
+      "sha256": "40fcdb9514734938c3458ab65f2e75b18f9a26611c6095d44035872ae3844f2a"
+    },
+    "QA_v7_87_13_PRODUCTION_READINESS.json": {
+      "bytes": 6335,
+      "sha256": "37683ab8b805a611ec04cfadd2da4d7b2bb724cf13742dd3198ba5633eadd7a2"
+    },
+    "QA_v7_87_14_GRAMMAR_MASTERY.json": {
+      "bytes": 9159,
+      "sha256": "02ac0483f66cfccb46b84311a2d7cbd337634863e9610bd8dc7262373799a64c"
+    },
+    "QA_v7_87_15_SMART_GRAMMAR.json": {
+      "bytes": 3020,
+      "sha256": "f3ff8a056218faad03e5bb61b8bf9a1e2eac4a9603311b32e2cca17d302e7a29"
+    },
+    "QA_v7_87_16_STUDENT_CALENDAR.json": {
+      "bytes": 2842,
+      "sha256": "090fb039238339998b7a5f3ac99e47be5ec523e12733d60c1cd62ccf60ac9a00"
+    },
+    "QA_v7_87_16_TEST_LOG.txt": {
+      "bytes": 4268,
+      "sha256": "1c517ce4c0c80059783fbf8bbbfb966e9a6def44cd789af25f40ee907e647311"
+    },
+    "QA_v7_87_17_MARKETING_CRM.json": {
+      "bytes": 3299,
+      "sha256": "7b3195c2f05d3423ede26313c961a38cf7926da6e1c606522d255b13a5472458"
+    },
+    "QA_v7_87_18_EXAM_ACCESS_UI.json": {
+      "bytes": 2705,
+      "sha256": "42b5800c853bc62b8c78b27301b375166446814d4f6077168d97df7f789575e2"
+    },
+    "QA_v7_87_18_SELECTED_TEST_LOG.txt": {
+      "bytes": 3854,
+      "sha256": "f8b6e9edfbe21210f5f770732651e3a1e436d6fcad88b020d6d413ceff481b17"
+    },
+    "QA_v7_87_5_PERFORMANCE_STABILITY.json": {
+      "bytes": 1284,
+      "sha256": "2bc5339e5cd693c6d5aafeec0713537befa87223743b35f45ba8e310b2ac8dee"
+    },
+    "QA_v7_87_6_SMART_LEARNING.json": {
+      "bytes": 1454,
+      "sha256": "f25da7f9f583222bcbde5757a5d57686c79a8d11d5f10723d6cb4feb4a774f12"
+    },
+    "QA_v7_87_7_BUSINESS_GROWTH.json": {
+      "bytes": 1949,
+      "sha256": "e247dbad76bdbdd72a9101f3bbdcc10a3cdcc3da6193f5a92231b519d19cc769"
+    },
+    "QA_v7_87_8_ADMIN_CRM.json": {
+      "bytes": 1897,
+      "sha256": "bbd56c6b1004d54e101aeec18af641a1785471be7a81181534f84b46c7aed757"
+    },
+    "QA_v7_87_9_GRAMMAR.json": {
+      "bytes": 659,
+      "sha256": "4fcc558d074d00e5ec07c9dc9352ebac3c65f9c8262ff704eed22f2e6c68815c"
+    },
+    "README_v7_87_10_JLPT_GRAMMAR_COMPLETE_MY.md": {
+      "bytes": 4236,
+      "sha256": "d6219b85935ba86abe0d183c7f4a5a877f77f080f78afd6fcced3e03db1c4962"
+    },
+    "README_v7_87_11_STABILITY_RELEASE_CANDIDATE_MY.md": {
+      "bytes": 7005,
+      "sha256": "46cc4182af7b4931538d66623b8977a357c8a398d41cce4af1d478149472b7ef"
+    },
+    "README_v7_87_12_MULTILINGUAL_UI_MY.md": {
+      "bytes": 7092,
+      "sha256": "e88c202bcbc51bbc426e50f0c6ceda9f83bb512c83da30764052b9bda1106095"
+    },
+    "README_v7_87_13_PRODUCTION_READINESS_MY.md": {
+      "bytes": 8705,
+      "sha256": "2e1271d7410bd9e3b35920ab98139a90d24a83452ac17aa7ae2f6827709a716a"
+    },
+    "README_v7_87_14_GRAMMAR_MASTERY_MY.md": {
+      "bytes": 8988,
+      "sha256": "21b1e157e27e6f744eb8a47e5d3264bb7b70e851fe15be1a3ad9116af5ce3f71"
+    },
+    "README_v7_87_15_SMART_GRAMMAR_WEAKNESS_MY.md": {
+      "bytes": 8292,
+      "sha256": "3638f681055e52653996613577643957ea2a81323d97c8d1d9940ed2685b40fa"
+    },
+    "README_v7_87_16_STUDENT_CALENDAR_MY.md": {
+      "bytes": 7125,
+      "sha256": "0eac185520644aaacfd74e5b05b5a78d9c9ede0828435e2625766e620c041eab"
+    },
+    "README_v7_87_17_MARKETING_CRM_MY.md": {
+      "bytes": 7780,
+      "sha256": "4289da7c1de9629a30a4fd49cde466444efe819dc36bab11fda878a99f0fd8de"
+    },
+    "README_v7_87_18_EXAM_ACCESS_PLANS_UI_MY.md": {
+      "bytes": 6692,
+      "sha256": "0b2d9adb78b9fcfb52ed856f5b147f2766fcc4232ccfd7bbd011d4be20278809"
+    },
+    "README_v7_87_5_PERFORMANCE_STABILITY_MY.md": {
+      "bytes": 7664,
+      "sha256": "1ade053abd327b080ce5bdb7be39b82bdb6d04ae519c443f019ed1901099881a"
+    },
+    "README_v7_87_6_SMART_LEARNING_MY.md": {
+      "bytes": 6326,
+      "sha256": "f39323afb0861be2264db3815a03ca01288f197616f1ff30f7df96be6dd5ae56"
+    },
+    "README_v7_87_7_BUSINESS_GROWTH_MY.md": {
+      "bytes": 7161,
+      "sha256": "7682653999743c673049698ed084b45394da95366d5141adae42924bf94020c4"
+    },
+    "README_v7_87_8_ADMIN_CRM_MY.md": {
+      "bytes": 6174,
+      "sha256": "8f5546ba0ce9e0011175b2928ce1cd9ff35df21b87625691bf45cbb3103fa796"
+    },
+    "README_v7_87_9_GRAMMAR_LIBRARY_MY.md": {
+      "bytes": 7435,
+      "sha256": "6f72bccd244e3cd4db584e3fb05cc4900af6f5ec334da7d14c174d77e7257587"
+    },
+    "assets/yk-v78712-i18n.css": {
+      "bytes": 767,
+      "sha256": "b1a913a860cdf66e4327d86aa0e5e969798ee995439b05cd32ee8d7eba463124"
+    },
+    "assets/yk-v78712-i18n.js": {
+      "bytes": 27707,
+      "sha256": "a2fe08f6a6e1c7f578941dc8b022d0a9533cb6b86dbb5a0f2beacb98f13093d7"
+    },
+    "assets/yk-v78714-choice-bank.json": {
+      "bytes": 7890,
+      "sha256": "7e2cadb9401a51b5f26dc4aec660f19a662d1af92afbf411b2b451ad295574a9"
+    },
+    "assets/yk-v78714-engine.js": {
+      "bytes": 6393,
+      "sha256": "f618e5674fdf6bd387ef23265cb7432f33ce9aaa2c7a8b027e74d8d5b263443c"
+    },
+    "assets/yk-v78714-link.css": {
+      "bytes": 420,
+      "sha256": "63423743e533424f0b755804b94e4ae419fc53efca01132b4ac85a3f31235505"
+    },
+    "assets/yk-v78714-practice.css": {
+      "bytes": 7575,
+      "sha256": "b946704f922e2d381b3a881b55cf40563918fd65d5c7b871cebe7ed565db08f1"
+    },
+    "assets/yk-v78714-practice.js": {
+      "bytes": 24780,
+      "sha256": "7880daaef979d6cdf6b3a39818d8cab64c161d5f0313cfa33c96a8a4a52952b0"
+    },
+    "assets/yk-v78714-student.css": {
+      "bytes": 1327,
+      "sha256": "ac7357a2c1afa936130bdcb80b232f850e5b4456a9e6bc6c8149a11e435432d9"
+    },
+    "assets/yk-v78714-student.js": {
+      "bytes": 3957,
+      "sha256": "b541cd780165f964ff4ed633a2a665fa714736da59e3eed63cf5d63e0286edb2"
+    },
+    "assets/yk-v78715-insights-engine.js": {
+      "bytes": 4189,
+      "sha256": "bffb107ef2635bbdaa7f076e2ec861aa7d08bfb7d9f3f189d58987aff3b6ee11"
+    },
+    "assets/yk-v78715-insights.css": {
+      "bytes": 4670,
+      "sha256": "5594b013349a225929df5b4c780578212da4eaac7bfd8078d9aaa08b3abc63e2"
+    },
+    "assets/yk-v78715-insights.js": {
+      "bytes": 11241,
+      "sha256": "5d1bf02ecf76f23e64df8760893dd803215d00481e69e22c3adf3f538b2b948e"
+    },
+    "assets/yk-v78715-link.css": {
+      "bytes": 544,
+      "sha256": "c85943644809a27e5aca98994086877bd066329d590958dfc9aec896e852b17a"
+    },
+    "assets/yk-v78715-student.css": {
+      "bytes": 710,
+      "sha256": "ce8502ff2987fe253654de0f51fce0dde0b0646656b090e9c4ea6363dcc73c46"
+    },
+    "assets/yk-v78715-student.js": {
+      "bytes": 3325,
+      "sha256": "c582bd4e5675b1b58da91a4350ee898bec06ef510bc82bb3ace10c2a37d56e7e"
+    },
+    "assets/yk-v78715-tracker.js": {
+      "bytes": 425,
+      "sha256": "ab4b608b10eb3bb2118c9b2bfbe858eb13b0a0bff80596e4cf0cca3f7b9233ac"
+    },
+    "assets/yk-v78716-calendar-engine.js": {
+      "bytes": 6475,
+      "sha256": "96ad8500ab39963d619c36542cc18b9f9a4e941524bc5d991988c5d60e56cedd"
+    },
+    "assets/yk-v78716-calendar.css": {
+      "bytes": 6688,
+      "sha256": "8365a7815f4687d26b66f52384c6b35644ffd528c3fee3572c71a734315586cf"
+    },
+    "assets/yk-v78716-calendar.js": {
+      "bytes": 17870,
+      "sha256": "6fdc906bf93c1d0a24c9e0f6bce46c5b209c7cfef327c7d3e451251ab064c9e2"
+    },
+    "assets/yk-v78716-link.css": {
+      "bytes": 543,
+      "sha256": "b35d0fc91bbd93160637af8dc3f7299f119a3439ecf14016a149cfe049b22746"
+    },
+    "assets/yk-v78716-student.css": {
+      "bytes": 1031,
+      "sha256": "8f080b0fb42f5952d27072b5d772474a2dff405d070b181c49df73a4fe40b0cf"
+    },
+    "assets/yk-v78716-student.js": {
+      "bytes": 3455,
+      "sha256": "74fb09c9165bf5e3a7423143a7858044e307ebb6102b54898b66646184e135b5"
+    },
+    "assets/yk-v78717-admin.css": {
+      "bytes": 4898,
+      "sha256": "db31aeefe4486ba20b0a69fca6e51d30692db6808292316588d3c8cc81cfade0"
+    },
+    "assets/yk-v78717-admin.js": {
+      "bytes": 13829,
+      "sha256": "69c2282b6cb24b256fd2a62049a5aedd1e0e3ece6300e5617dbab4da7e1a890a"
+    },
+    "assets/yk-v78718-exam-access.css": {
+      "bytes": 1131,
+      "sha256": "adb3778d92c08b81b06b5ccc55bdbd0088687deb0c38ad83174f6d2039a6f0d3"
+    },
+    "assets/yk-v7875-stability.css": {
+      "bytes": 1722,
+      "sha256": "f48fd4fae3d84262f1ed91d30708b6311c6cf78f978fc23f70b17178c2336de6"
+    },
+    "assets/yk-v7875-stability.js": {
+      "bytes": 3776,
+      "sha256": "d60842bd02c5a8541c6c31d5d037a5c1d701888273372ba3868a23c5fe79b714"
+    },
+    "assets/yk-v7876-journey-engine.js": {
+      "bytes": 2399,
+      "sha256": "f0163d869417bf81549e946ce4d91f04707911085175c95f981018c743996db8"
+    },
+    "assets/yk-v7876-journey.css": {
+      "bytes": 3622,
+      "sha256": "3f26654c33141c4dd4b33bfd72eda58910f9e57e80067e3fa63a436d32d99d81"
+    },
+    "assets/yk-v7876-journey.js": {
+      "bytes": 11350,
+      "sha256": "ad34427d37ca7bb1f3426de81ed7df9701bdb0ca7ca504b37ee42be5c46ed1b0"
+    },
+    "assets/yk-v7877-cta.css": {
+      "bytes": 844,
+      "sha256": "adf8d3bf25b0aeb7fe82f115e1eec61df366cfe637fc1ace7f5b12da23bb097e"
+    },
+    "assets/yk-v7877-cta.js": {
+      "bytes": 1727,
+      "sha256": "e3c0cb70cb59d8c4c24a2f0a9699bff3d003fef1a5ea58f5688f61ae6e484f7b"
+    },
+    "assets/yk-v7877-growth.css": {
+      "bytes": 3539,
+      "sha256": "78aa118cbb6dd87f58178fff4ab1fb5f5496c73a3e40283865f1fa8e9885d445"
+    },
+    "assets/yk-v7877-growth.js": {
+      "bytes": 16729,
+      "sha256": "6caee84d64b0294fea942c5fd5c7ac663246cd9304c84b407570ff6c648f14f8"
+    },
+    "assets/yk-v7878-admin.css": {
+      "bytes": 5143,
+      "sha256": "f63fbbd56338dcf2cdbe26756119131f4dcdf95f8afbc32dbcf312f34059c1cf"
+    },
+    "assets/yk-v7878-admin.js": {
+      "bytes": 19102,
+      "sha256": "efff2c9b91f08ada82579f2da02937761fec8b5bffacd7527ba26343f8f7c1e4"
+    },
+    "assets/yk-v7879-grammar-bridge.js": {
+      "bytes": 767,
+      "sha256": "196168fc10a0d2a4c246741ef1b10d8bef1508d73ab347963a508b50633a6c91"
+    },
+    "assets/yk-v7879-grammar-n1.json": {
+      "bytes": 144843,
+      "sha256": "7f41c37f7f02bd83ecab7637c0a350723cc989054e760b3da7d8b1061dbaacc3"
+    },
+    "assets/yk-v7879-grammar-n2.json": {
+      "bytes": 148222,
+      "sha256": "d9c2bc7edb65d66079d6afdf10f782dfb76477fb2f3afaff45e4eb271f363abf"
+    },
+    "assets/yk-v7879-grammar-n3.json": {
+      "bytes": 143004,
+      "sha256": "0cd0029d6501621c69fa899d2f19189069e79677344e01064c8db09b54ad14d0"
+    },
+    "assets/yk-v7879-grammar-n4.json": {
+      "bytes": 76309,
+      "sha256": "2add520c0f2668b5adb542585e3d5b1349ba57c228328d490bc164cef4429bde"
+    },
+    "assets/yk-v7879-grammar-n5.json": {
+      "bytes": 34947,
+      "sha256": "d441bf24028beac897883402ebd2d7ea45c5f8d0163707bdf7016768ff5572e9"
+    },
+    "assets/yk-v7879-grammar.css": {
+      "bytes": 6142,
+      "sha256": "e47c6e9fcd7b3b92795673ff35ee7151710cb9a97e573a900fa85a7dc05e63ef"
+    },
+    "assets/yk-v7879-grammar.js": {
+      "bytes": 11877,
+      "sha256": "06a475d1b55dfaa82d35485c7eacabd4ca2df5f8144ead6f76d8c100cdf135fc"
+    },
+    "netlify/database/migrations/20261112090000_yk_growth_analytics.sql": {
+      "bytes": 1727,
+      "sha256": "5e49f8abb65a3983a4f91b83b865a4f33e1f79c6015b2b49c4df0cc2699eed3b"
+    },
+    "netlify/database/migrations/20261112140000_yk_enrollment_crm.sql": {
+      "bytes": 1425,
+      "sha256": "212f168000bc742a46731135b848b259b19d9f27fcb5da8c1cdf3fc2e892c511"
+    },
+    "netlify/functions/_shared/exam-autosave.mts": {
+      "bytes": 5571,
+      "sha256": "a91d36e5ce451ae22ed6b5de20ffcd73d1ced8ae7fd5641d136d77385cbdc930"
+    },
+    "netlify/functions/_shared/yk-crm-insights-v78717.mjs": {
+      "bytes": 1955,
+      "sha256": "944c47fd2a592a13bc73ceb7e5707b061b2f4a7a3c639477b111e594955605fb"
+    },
+    "netlify/functions/_shared/yk-crm-validation-v7878.mjs": {
+      "bytes": 2606,
+      "sha256": "16dd7b941d4239e5d6f0641bbc41c1a2acc7e229dbde4d4f72cf1c9cce322cf1"
+    },
+    "netlify/functions/yk-business-growth.mts": {
+      "bytes": 8069,
+      "sha256": "c42bada3baa5bf440349ae8ff9e7656bdafbcdf96cc94c415aaa04c12869e25c"
+    },
+    "netlify/functions/yk-enrollment-crm.mts": {
+      "bytes": 4124,
+      "sha256": "447a28ef6bfced93bbd532621df26cd70ba8f464ea3b848113473f864a397198"
+    },
+    "netlify/functions/yk-enrollment-insights.mts": {
+      "bytes": 3664,
+      "sha256": "378f9519fb902a83b34efc5d3628364df0987766dd8765efda7b8b1158d9a36e"
+    },
+    "netlify/functions/yk-growth-event.mts": {
+      "bytes": 2241,
+      "sha256": "dd651de4384166de4718805e5584472b4e129e47fff91fbf025f22f32021c9fc"
+    },
+    "package.json": {
+      "bytes": 6988,
+      "sha256": "ef4dc573e150d860ba2b721198d9b10c60322a5de951ea252e1983b8ddf4d53b"
+    },
+    "scripts/build-v78712-i18n.mjs": {
+      "bytes": 8207,
+      "sha256": "6981833cf286e6fde43df9c8e03e30345b9474a769c9db869d36a383b03ba43f"
+    },
+    "scripts/build-v78713-performance.mjs": {
+      "bytes": 5355,
+      "sha256": "5683bda23ba4db1f827d6093f62253f137e25a682195cfb989bde41bb4ffa086"
+    },
+    "scripts/build-v78714-grammar-mastery.mjs": {
+      "bytes": 2967,
+      "sha256": "b5462a9ce6dd07a7ce5b42086bb19fa6358d38842cb2886cba3dacfb0da5902f"
+    },
+    "scripts/build-v78715-smart-weakness.mjs": {
+      "bytes": 2775,
+      "sha256": "8aae39040c40484fbe858336e475dddb2a79d6987e483b7e49ec642abe50b1e1"
+    },
+    "scripts/build-v78716-study-calendar.mjs": {
+      "bytes": 3591,
+      "sha256": "228b57f64502003ccc2d1514cf161c99d84ceb3a3d1d129ca2b1e014302d9ada"
+    },
+    "scripts/build-v78717-marketing-crm.mjs": {
+      "bytes": 1897,
+      "sha256": "b3e4b0e2e02cbedc4cb5fc28c8b2b35589ed3debd6a9f8e08cd629d23848709f"
+    },
+    "scripts/build-v78718-exam-access-copy.mjs": {
+      "bytes": 10815,
+      "sha256": "c113658227e4ca13418cd2f620d202f06b2f7017ca0672adb739af730c8848b9"
+    },
+    "scripts/build-v7875-performance.mjs": {
+      "bytes": 4574,
+      "sha256": "a21cce97188cfb505eec739ccfc2d4fe5eb39e1e93ad6ffd6c2618018959dae4"
+    },
+    "scripts/build-v7876-smart-learning.mjs": {
+      "bytes": 2015,
+      "sha256": "2f47e8b04ab69dcf00b849facdfd53ee3709ff16288d98397bd2bb6973091642"
+    },
+    "scripts/build-v7877-business-growth.mjs": {
+      "bytes": 4323,
+      "sha256": "f32f648444294092197224140b8f9341b68a8d39fbcf1d7067bfa9e811bc3f54"
+    },
+    "scripts/build-v7878-admin-crm.mjs": {
+      "bytes": 2855,
+      "sha256": "7793bc15a5afac38d36987941e74f691754b33ee86da377771d2e33c3aceef7e"
+    },
+    "scripts/build-v7879-grammar.mjs": {
+      "bytes": 1464,
+      "sha256": "ff63b31d6b4cc9aba633a1aeecf2026c52e58007f2dd936d696d090c457afb52"
+    },
+    "scripts/grammar-v7879/build_grammar_assets.py": {
+      "bytes": 2924,
+      "sha256": "4ed32b824b98c91a14f489a84f0f5210d32b7c9fb06833b465f85d6f1c42bc08"
+    },
+    "scripts/grammar-v7879/catalog_source.py": {
+      "bytes": 11658,
+      "sha256": "db566e5dafae10e4f90f0cf1652ebffef058949028f1155a5a4889cf46244c63"
+    },
+    "scripts/grammar-v7879/curated_grammar.py": {
+      "bytes": 41128,
+      "sha256": "79c830862a8d0d811db42c38785fc5ceaa3a1f9aca9d09b07191bcfe81a44955"
+    },
+    "scripts/grammar-v7879/full_n1.py": {
+      "bytes": 95045,
+      "sha256": "e92593861ad6796327c6c608b3d5cd9a1aff7a5c5c869444ad95f4efcb7eba6d"
+    },
+    "scripts/grammar-v7879/full_n2.py": {
+      "bytes": 95608,
+      "sha256": "532bd562135b5df6a9cf4bee06706345c0ce63d5466a877613c701115b26c86d"
+    },
+    "scripts/grammar-v7879/full_n3.py": {
+      "bytes": 91330,
+      "sha256": "35489b561de25ca860278b5e04fe905a7317ed7fbc133439acfc6d0024f794aa"
+    },
+    "scripts/grammar-v7879/full_n4.py": {
+      "bytes": 44906,
+      "sha256": "b18a7fcfb2dc036d644c5e4663c888ef868fe9be0a5a2df421a6c3d0441c412a"
+    },
+    "scripts/grammar-v7879/full_n5.py": {
+      "bytes": 14142,
+      "sha256": "3e1959119f9bc8552a42115fcce39d67f5867bab7318dc0bed40548a48d89b3c"
+    },
+    "scripts/preflight-v78713.mjs": {
+      "bytes": 1711,
+      "sha256": "9fd52d6f26650217ad5774eebd806b19a4accd97986bc6cba027287e943fcd40"
+    },
+    "scripts/v7872-qa-version-guards.mjs": {
+      "bytes": 1130,
+      "sha256": "3363551ac6523e9ece2e68c79712b5916199216e7615b3ac8214d84e4a10243d"
+    },
+    "service-worker.js": {
+      "bytes": 2490,
+      "sha256": "1b67f54cc2da830ce550aa4d8644491167df010ba478bac40415806697fd0436"
+    },
+    "study/jlpt-grammar-insights.html": {
+      "bytes": 2883,
+      "sha256": "ba136f974eb0c5015305286c8241acd3033105e7a8737ea75bdeb238f374e86d"
+    },
+    "study/jlpt-grammar-library.html": {
+      "bytes": 5202,
+      "sha256": "2223c2abfdc18044dce3ddda7fc9bfa7a1068edb200770e442769e0c2c4d4ae2"
+    },
+    "study/jlpt-grammar-practice.html": {
+      "bytes": 5890,
+      "sha256": "c5150c0dc9635460f96b12625c728b22d41313bfe21243ffbbdbb300af77f568"
+    },
+    "study/jlpt-study-calendar.html": {
+      "bytes": 6588,
+      "sha256": "c1585e2de603adedbbfd25db256f9039a5fcc1a1e28c1d59c876138f4feb6829"
+    },
+    "tests/v78710-browser-qa.py": {
+      "bytes": 3578,
+      "sha256": "783d648b3c599c22e854b52a620ba8c26e4433571ad72ac7f1acdb40333ae370"
+    },
+    "tests/v78710-content.mjs": {
+      "bytes": 3071,
+      "sha256": "4e6b2dece9f6b3eb74f13cc000036aa8e2e1d02bbae5bd44a06695cf6b60869b"
+    },
+    "tests/v78710-release.mjs": {
+      "bytes": 1714,
+      "sha256": "4ec2c500048c064f07fd40ff4f23896b57aded3e56fb21b29f6f2e0b1ff01fcd"
+    },
+    "tests/v78711-release.mjs": {
+      "bytes": 2110,
+      "sha256": "2834592e78386676f27ec8e175a5b4a404d414ea44eb874a70bce2b77470ec15"
+    },
+    "tests/v78711-stability.mjs": {
+      "bytes": 4278,
+      "sha256": "778cf2da637b8bf6e36740a83ff3b8d7c00fb3f3c122a9fcbef7e5be30996370"
+    },
+    "tests/v78712-browser-qa.py": {
+      "bytes": 6158,
+      "sha256": "6d590a065730f3f32930ea14cf1f1144ee392349b0063d74720d4b5641736e9e"
+    },
+    "tests/v78712-release.mjs": {
+      "bytes": 1834,
+      "sha256": "27c58c3b77d6912994e483aed8d16b4088fb4ad0d4b2cc380897b80a686e969f"
+    },
+    "tests/v78712-source.mjs": {
+      "bytes": 1655,
+      "sha256": "d4041ea4d74662e8dbade216324c7c8e7464e7b7c62edccf70e5fc2b0fa8bea2"
+    },
+    "tests/v78713-build-fixture.mjs": {
+      "bytes": 4099,
+      "sha256": "9fb8066cea3b403a9170224ac97351eec36598b2dde402841bc92f72606438d4"
+    },
+    "tests/v78713-release.mjs": {
+      "bytes": 3164,
+      "sha256": "c78df7ff1994f30e502b9ffa8bb34e2c2afaffb88bd160d7486461c839c39ba4"
+    },
+    "tests/v78713-static.mjs": {
+      "bytes": 2602,
+      "sha256": "c2d717f72edf442cd674cc5decd0cdeead48c3a611d8bafde8448696b5ac3877"
+    },
+    "tests/v78713-sw-runtime.mjs": {
+      "bytes": 3565,
+      "sha256": "c18f113f18e936777040e237d29775d18338841677f5c1bec0ddcb48552b41ea"
+    },
+    "tests/v78714-browser-qa.py": {
+      "bytes": 6553,
+      "sha256": "ac6a1c5b69ef57a83be31114910a3acaa720f6849e5da85a2d4fcc0190b60f85"
+    },
+    "tests/v78714-build-fixture.mjs": {
+      "bytes": 2716,
+      "sha256": "e950e9663a340aa3f4886df48112f38f23c18871aa1404683ff09f81ba19fe3d"
+    },
+    "tests/v78714-engine.mjs": {
+      "bytes": 3613,
+      "sha256": "8bfbe2e9627a5b4099199c41fef0de5cdfb470955ac9ddc9dd7c0e12981f5b70"
+    },
+    "tests/v78714-release.mjs": {
+      "bytes": 2491,
+      "sha256": "295e669e4279c30bce7b7361540f98dd07d0336648457dd0899d118f50d5c0bd"
+    },
+    "tests/v78714-source.mjs": {
+      "bytes": 2200,
+      "sha256": "79ed01632ba063c8c990dc8bd847785c9c022fc6a92565a25794f0b169c590a8"
+    },
+    "tests/v78714-student-browser-qa.py": {
+      "bytes": 2546,
+      "sha256": "f4e52d39b7c637a0b49957c1346aeff8d7a3eff41390e1882d4b1282a4b284c6"
+    },
+    "tests/v78715-browser-qa.py": {
+      "bytes": 6472,
+      "sha256": "1ed0a0487249bd9a29d53c28490692c4cb5ff2af462c403aed90f00a3f2c9de8"
+    },
+    "tests/v78715-build-fixture.mjs": {
+      "bytes": 2709,
+      "sha256": "7e13ffb1254fc69588ed12bb16e429e8772388d68eff7d72b7d1770a4c01dae3"
+    },
+    "tests/v78715-engine.mjs": {
+      "bytes": 3668,
+      "sha256": "7acfc66bff1df987bdba18118c4e1be97d623fe209f673ecededf93a780e07a2"
+    },
+    "tests/v78715-release.mjs": {
+      "bytes": 2225,
+      "sha256": "d63682d3ef0c9a421f874b1d5356394c2b89cfeade0f64cca08298cad7b6c2de"
+    },
+    "tests/v78715-source.mjs": {
+      "bytes": 1977,
+      "sha256": "bbade55d74c6a783c76724495046a9707a15404e5e8ea91aea7150d9fcc50390"
+    },
+    "tests/v78716-browser-qa.py": {
+      "bytes": 6230,
+      "sha256": "3f19a9eb53ef4464132ca3080bff7bacd62c2394e48430ca5be07310c51af3bb"
+    },
+    "tests/v78716-build-fixture.mjs": {
+      "bytes": 3006,
+      "sha256": "f4dd98df28bd6d8bf38a60fa5a6036fe2d760cfa5025b72c936418c5bfba4dc4"
+    },
+    "tests/v78716-engine.mjs": {
+      "bytes": 4830,
+      "sha256": "261ca7b625715b64720adb72cb1dcb72fe97c34450abdefaa836b1ab55d296a6"
+    },
+    "tests/v78716-release.mjs": {
+      "bytes": 2182,
+      "sha256": "213d05d7002859e3043d7f313b6a75cb766300162c885b24964af8dca8b760bd"
+    },
+    "tests/v78716-source.mjs": {
+      "bytes": 2115,
+      "sha256": "79742f9bafa16c89a5dfad864b89c493f3ba5a6c5feb8a94651c692ded78cec3"
+    },
+    "tests/v78717-api.mock.mjs": {
+      "bytes": 3971,
+      "sha256": "f59ab3910a6acbbbcf37a42b411c4cb5957cce26b63e1377426bfb0a0ab6918d"
+    },
+    "tests/v78717-browser-qa.py": {
+      "bytes": 7318,
+      "sha256": "23f4440ca6179546310162ba220654cdbd267e17228f5f3dc0c574be7ee89e84"
+    },
+    "tests/v78717-build-fixture.mjs": {
+      "bytes": 2742,
+      "sha256": "8961243d0e09e8288819653b1342abe2cee3787e3646359468ba9c5143fdc541"
+    },
+    "tests/v78717-engine.mjs": {
+      "bytes": 1633,
+      "sha256": "09a86f034b0521c103aad8028edc9f347ee5eb284021f21ae43b728e87384cd6"
+    },
+    "tests/v78717-release.mjs": {
+      "bytes": 1431,
+      "sha256": "9a7c68ef61b969a86e97168057f623facab8d20cefb916c85404f6e8d70ca75a"
+    },
+    "tests/v78717-source.mjs": {
+      "bytes": 1391,
+      "sha256": "8a9e6fd7dfe465898586808a414858251e9781d9fd8a591f716d08613bee343b"
+    },
+    "tests/v78718-browser-qa.py": {
+      "bytes": 8597,
+      "sha256": "66e4b9bc66e971cdba274d023ea58381d54b9337cefb4eded8aec6ac67828c6f"
+    },
+    "tests/v78718-build-fixture.mjs": {
+      "bytes": 4708,
+      "sha256": "b4dab200fea0be8b72fda295c90f9b2de5a75770fbfd13a6e5596cca40c86780"
+    },
+    "tests/v78718-release.mjs": {
+      "bytes": 2256,
+      "sha256": "9e59f5e92267ab46f357c1c5dc37cdcaff841bc8b5461bb458ac61b69f99b4c6"
+    },
+    "tests/v78718-source.mjs": {
+      "bytes": 1582,
+      "sha256": "248c50c79e256b9c607bbc4b56e214ea8d286c7c1918727d77e5262d632394ec"
+    },
+    "tests/v7873-source.mjs": {
+      "bytes": 1379,
+      "sha256": "37263e1cbaaf0d64e42158c3128bb8b6cf5525be4eb67a14ea5723e621d6bd9b"
+    },
+    "tests/v7874-source.mjs": {
+      "bytes": 2806,
+      "sha256": "3f162ca4614ca1a8882cddf159fff9c755b90697daa3eb239fac688abbcda713"
+    },
+    "tests/v7875-release.mjs": {
+      "bytes": 2803,
+      "sha256": "aa991b2ea5778d28cc6e6545b419b594551a92750355a044e77fbde136789e31"
+    },
+    "tests/v7875-runtime.mjs": {
+      "bytes": 3917,
+      "sha256": "c757fa68b15d6c4d29fb7111c051ea33dfc5fa6cdf3064ebc55affcd71f5c79e"
+    },
+    "tests/v7875-source.mjs": {
+      "bytes": 1615,
+      "sha256": "c21d2456588c7d09213c4d3efe8197977d8be86cdd4fee1c4a66bf346250629b"
+    },
+    "tests/v7876-engine.mjs": {
+      "bytes": 3819,
+      "sha256": "94344d41f9a3a41044ae7b83bd11394e38afdf411f4bf7e71c26e773c42ec27d"
+    },
+    "tests/v7876-release.mjs": {
+      "bytes": 1612,
+      "sha256": "4c23128ab11041c3b36cdd644eaeb562afa1bbbdc5d52f45aed5632fbcea677e"
+    },
+    "tests/v7876-source.mjs": {
+      "bytes": 1852,
+      "sha256": "6d4bb183a619fe39466e5695fd5dffd83b155de444e2eda4d8e867b52a141359"
+    },
+    "tests/v7877-release.mjs": {
+      "bytes": 1911,
+      "sha256": "f38dbceb36214f5f931a9930649f23b364311e139f03eae8871b892cf458e54c"
+    },
+    "tests/v7877-runtime.mjs": {
+      "bytes": 7343,
+      "sha256": "c09f76e708d01c961dc6fa0178df80780e67160feaad48e4881d1564d5a814d6"
+    },
+    "tests/v7877-source.mjs": {
+      "bytes": 2323,
+      "sha256": "0a075bfe1c89424ea2f3d35cc9791288033e26f62245090aabd8eb596027ac73"
+    },
+    "tests/v7878-crm-api.mock.mjs": {
+      "bytes": 4356,
+      "sha256": "e4360c7a2ce08641c684e89534bc688fa90f431622c12ab65b39bc33e2b1addc"
+    },
+    "tests/v7878-crm.mjs": {
+      "bytes": 1407,
+      "sha256": "cb2e4ef8f7658c9cbc94d93270730c18cd87cd3bafa693d0f39e6651bea1337e"
+    },
+    "tests/v7878-release.mjs": {
+      "bytes": 1487,
+      "sha256": "5684a22065a485b8edc8e9a53d5605c36c5866a582915efdfd825caf01fe1bba"
+    },
+    "tests/v7878-source.mjs": {
+      "bytes": 2435,
+      "sha256": "67a4311d3eace37d12a439641f69cc25a71d9801c5ae7e25eb12cdeec6d61835"
+    },
+    "tests/v7879-bridge.mjs": {
+      "bytes": 1409,
+      "sha256": "8c76afa488f7eacacf2c85deb618afdf96b3fae90febe961de758bfcade85487"
+    },
+    "tests/v7879-data.mjs": {
+      "bytes": 2093,
+      "sha256": "f21ef76631ce9c763fbb911b4661c77a8270253f032a99a3deed993102973d64"
+    },
+    "tests/v7879-release.mjs": {
+      "bytes": 797,
+      "sha256": "f0f47039d4a9bdb6a20fd234b2ad57f5c4103d8ab638a8c9342460178d22a377"
+    },
+    "tests/v7879-source.mjs": {
+      "bytes": 1496,
+      "sha256": "145466907076b48fe7ffffe4abf42d01b30332b23fae1cd7155c9465edb398d8"
+    }
+  }
+}
