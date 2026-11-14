@@ -1,0 +1,1 @@
+PASS Chromium: Home+Exam spacing at 360/390/430/720px, desktop 721px unchanged, JLPT touch + reduced motion

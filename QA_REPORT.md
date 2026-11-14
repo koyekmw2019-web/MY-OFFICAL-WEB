@@ -1,58 +1,72 @@
-# STUDYING WITH YE KUN — Combined UI Preview v1 QA Report
+# STUDYING WITH YE KUN — v7.87.5-rc1 QA Report
 
-**Status: PREVIEW CANDIDATE ONLY — NOT Production Stable**  
+**Status:** PREVIEW CANDIDATE — NOT STABLE  
 **Date:** 2026-11-14  
-**Baseline:** `koyekmw2019-web/MY-OFFICAL-WEB` `main` at `3d85eba2758031530ddefcd611068d4ba03a2ce7` (independently checked).  
-**Current production:** unchanged by this work. GitHub push, PR creation, deploy and merge **not performed**.
+**Baseline:** `koyekmw2019-web/MY-OFFICAL-WEB` `main` at `bf359245609c015d331d3a3715fb030d144ccf57` (verified twice).  
+**Previous Source ZIP:** `YEKUN_Main_UI_Refresh_Language_Theme_Preview_v1.zip` (SHA256 `a00fa4b785ecee3ca91e8fa93ce1da6adebc062eabc0c4519b634b911f0b5a66`).
 
-## Scope and design intent
+## Exact source comparison — Previous ZIP vs current GitHub
 
-- Mobile Home: compact the whitespace between fixed header and first hero card.
-- Mobile Exam: compact the whitespace above `#online-mock-exam`, without changing exam engine.
-- JLPT Hamburger: fix distant scrolling on mobile while honoring reduced-motion preference; add matching menu press feedback.
-- Language selection: wrap original 3 buttons in a dropdown on the home/exam and login header; leave Dashboard's existing dropdown and Video's existing native select intact. **Do not implement a new translation engine.**
-- Theme: Dark default. Light is white/light-gray background and white panels, crimson active controls, sun/moon toggle next to language and local preference persistence (`yk_ui_theme`).
-- Script and CSS assets are included in all published HTML pages during `postbuild`, preserving the current source HTML files unchanged.
+Nine previous ZIP code paths were compared by their Git object blob SHA with the current `main`:
+`package.json`, `assets/yk-mobile-nav.css`, `assets/yk-ui-preferences.css`,
+`assets/yk-ui-preferences.js`, `scripts/build-mobile-ui-polish.mjs`,
+`scripts/build-ui-preferences.mjs`, `tests/mobile-ui-polish.mjs`,
+`tests/ui-preferences.mjs`, `tests/ui-preferences.runtime.mjs`.
 
-## Baseline and constraints
+**9/9 MATCH.** The production `main` and the previous patch's code files are identical.
+GitHub `main` was independently checked to remain `bf359245609c015d331d3a3715fb030d144ccf57` before packaging.
+No source SHA conflict was found for these nine files. This comparison is not a full repository audit.
 
-Verified `main` commit `3d85eba2`. Original source `index.html` and current `scripts/build-public-v7841.mjs` were inspected through GitHub. The latter automatically copies all non-legacy `assets/*` into `dist`, so these new UI assets are included prior to postbuild injection. Existing `postbuild` / `posttest` remain in place, and their new steps are appended.
+## Root cause analysis
 
-**Code paths added/changed: 9**. No `netlify/functions/**`, `netlify/database/**`, SQL migrations, login backend, payment backend, YKCR backend, exam scoring, exam access, exam attempts, or original HTML source files are contained in the patch. No changes made to GitHub or Netlify.
+1. **Home/Exam space:** The old stylesheet only subtracted 14px / reduced one section margin; the real vertical gap also included wrapper padding, section padding and fixed header offset. In the new patch, mobile-only CSS removes duplicate top padding without altering the header safe-area, and a small JS helper measures the final rendered header-to-content gap and limits the trim to 130px. Target visible gap: about **14px**.
+2. **JLPT tap feedback:** The legacy mobile click handler immediately scrolled to the destination. Red menu feedback using `:hover/:active` was not reliably visible on touch. A capturing handler now adds a temporary class and delays the **original click handler** by 170ms only for normal mobile JLPT clicks. It does not change the link destination. Reduced-motion users bypass the delay.
+3. **Cache concern:** Previous `yk-mobile-nav.css?v=2` could remain cached despite edits. The new assets have unique names with `?v=7875rc1` and are injected once per built page.
 
-## Verification carried out
+## Files delivered
 
-| Test | Result | What it proves |
+| Path | Operation | Reason |
 |---|---|---|
-| JS syntax checking (`node --check`) | PASS | Three newly authored JS files and test scripts have valid syntax |
-| Mobile spacing source guards | PASS | Scope is CSS and one exact JLPT scroll signature |
-| UI Preferences source guards | PASS | No API/network/auth/backend operations in preference injection |
-| Isolated DOM runtime simulation | PASS | Original language options reused; dropdown open/close and theme toggle/storage work in mock DOM |
-| CSS parsing with `tinycss2` | PASS | CSS syntax has no parse errors (not a visual contrast test) |
-| Synthetic build of 42 HTML pages | PASS | Old nav injection, spacing builder, preference builder and release tests all complete |
-| Synthetic built Home / Exam / Video / Login / Dashboard / study pages | PASS | New assets injected once, original nav paths preserved and key DOM signatures retained |
-| Existing 5-tab navigation unit and routing test on synthetic fixture | PASS | Existing mobile nav simulated logic remains intact |
-| Live full source `npm test` and `npm run build` | **NOT RUN** | Full source archive not locally obtainable |
-| Real Chromium / mobile touch / keyboard / screenshots | **NOT VERIFIED** | Browser process did not finish, so no browser PASS claim |
-| Netlify Deploy Preview and production | **NOT RUN** | No connected GitHub changes, PR or deployment performed |
-| Payment / YKCR / Login / Exam end-to-end | **NOT RUN** | These workflows require separately isolated safe QA |
+| `scripts/build-mobile-ui-polish.mjs` | MODIFY | Preserve v1 scroll replacement and inject new versioned CSS/JS into dist HTML |
+| `assets/yk-v7875-rc1-ui.css` | ADD | Mobile spacing, touch-highlight CSS, reduced-motion and light theme treatment |
+| `assets/yk-v7875-rc1-ui.js` | ADD | Actual element gap measurement, original JLPT click replay |
+| `tests/v7875-mobile-fix.mjs` | ADD | Source and generated HTML QA |
+| `tests/v7875-runtime.mjs` | ADD | Isolated click/spacing/accessibility QA |
+| `tests/v7875-browser-smoke.py` | ADD | Optional local headless Chromium smoke tests |
 
-## Known UI limitations / risk to check
+`package.json`, old Mobile Nav CSS/JS and Language/Theme implementation are **not modified**. No backend, migrations, login, payment, YKCR or exam engine files are included.
 
-- Theme overrides cover key pages/cards and use existing text/image layouts, but many legacy components use hardcoded dark colors; **light-theme contrast must be checked visually across actual pages**, including exam questions, JLPT study content, receipt dialogs and admin dashboards.
-- Existing language translation behavior and persistence are reused; do not assume every legacy page translates every string.
-- On mobile, an opening language dropdown must not be hidden under the sticky header, and menus must retain safe-area and keyboard behavior.
-- The light theme keeps video-image hero titles white and intentionally leaves high-contrast exam overlays unchanged, instead of overriding the exam engine UI.
-- `localStorage` may be blocked by user/privacy settings; in that case theme will safely fall back to Dark.
-- If the current `main` or `package.json` differs from baseline, **do not overwrite** without comparing.
+## QA results
 
-## Required acceptance tests before merge
+| Test | Result | Scope |
+|---|---|---|
+| Previous ZIP vs GitHub file-hash comparison | PASS | 9/9 code paths match |
+| Previous source posttest | PASS | Mobile nav, UI polish, Language Dropdown / Theme |
+| New JS syntax (`node --check`) | PASS | New builder, interaction JS and tests |
+| New CSS parser (`tinycss2`) | PASS | Syntactic integrity (not design quality) |
+| 42-page synthetic build | PASS | Old nav build + new builder + UI preferences builder |
+| Legacy release fixture tests | PASS | Mobile Nav, JLPT, Exam DOM, Language and Theme retained |
+| New release source tests | PASS | New assets once per built page; original paths present |
+| Isolated runtime | PASS | 14px target, tap feedback, original click replay, reduced-motion |
+| **Real local Chromium 360/390/430/720px** | **PASS** | Simulated Home/Exam layout, 14px gap, JLPT touch animation |
+| Real local Chromium 721px | PASS | Desktop not changed |
+| Real local Chromium reduced-motion | PASS | No delayed click |
+| Full original repository `npm test` / `npm run build` | **NOT RUN** | Full repository archive not locally available |
+| Netlify Deploy Preview (new RC) | **NOT RUN** | No push/PR/deploy performed |
+| Real Android/iOS devices, production login/payment/YKCR | **NOT RUN** | Explicitly requires Preview QA / isolated backend testing |
 
-1. Full `npm test` + `npm run build` run on the exact current repository and Netlify Deploy Preview Build success.
-2. Real mobile (Android/iOS) 360, 390, 430 and 720px plus desktop: Home/Exam spacing and no overlap with fixed header.
-3. Hamburger JLPT, regular menu scroll and reduced motion; verify correct destinations and selected active states.
-4. Language selection Myanmar/English/Japanese on Home, Exam and Login, plus Video and Dashboard controls; confirm no login-loop/session break.
-5. Dark → Light → navigate across Home, Study, Exam, Video, Account → reload → Dark. Verify button readability and visual contrast throughout.
-6. Verify bottom nav, hamburger modal, logout, keyboard, exam panel/fullscreen hidden rules remain unchanged.
-7. Isolated/test-only Payment / YKCR / Exam permissions end-to-end where available; no production data writes.
-8. Explicit Boss ကြီး approval **after** preview QA, before merge.
+The 42-page fixture is **synthetic**, not a full original-site build. The Chromium layout is an isolated local test page using the new CSS/JS; this does not prove the exact production layout, mobile touch/browser caching or every light-theme contrast case.
+
+## Compatibility / release caution
+
+- `scripts/build-public-v7841.mjs` copies new assets from the normal `assets/` tree into `dist`; the existing `postbuild` already runs `build-mobile-ui-polish.mjs` and `build-ui-preferences.mjs` afterward.
+- The existing source test asserts `package.json` version `7.87.4`; **this RC's version is recorded in `PATCH_MANIFEST.json`**, and package.json is intentionally untouched. Package version bump requires separately updating pre-existing version assertions and complete regression QA.
+- No existing navigation destination is modified. Only standard primary JLPT taps on mobile receive the 170ms visual feedback, using a re-fired native link click. Test in real mobile browsers before merge.
+- Header trim is scoped to first-screen Home and dedicated Exam pages, skips off-screen scrolled content / active exams; visible #home anchors can be trimmed and viewport <=720px only. The JS trim is capped and avoids changes when scrolled down.
+- Light Theme still needs inspection on Login, Admin/Student/Member Dashboards, Exam dialogs and learning sections.
+- Because prior ZIP/GitHub mismatch would invalidate compatibility, **stop if `main` changed beyond `bf359245609c015d331d3a3715fb030d144ccf57`** before applying the files.
+- This version was **not pushed or deployed**. No Stable designation until full build + Deploy Preview + real-device QA and Boss approval.
+
+## Test evidence
+
+See `QA_TEST_LOG.txt` and `BROWSER_QA_LOG.txt` in this ZIP. Browser smoke needs local Chromium + Python Playwright and is optional; ordinary `npm test` and `npm run build` need only the original project dependencies.

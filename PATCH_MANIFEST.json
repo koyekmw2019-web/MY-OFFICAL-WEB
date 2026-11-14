@@ -1,16 +1,49 @@
 {
-  "baseline_repo": "koyekmw2019-web/MY-OFFICAL-WEB",
-  "baseline_main": "3d85eba2758031530ddefcd611068d4ba03a2ce7",
-  "scope": "UI-only; preview candidate",
-  "code_files": {
-    "package.json": "67ff6474824240c0e612d6359c23d451e78382ba2d035fbd6054ad993236aa30",
-    "assets/yk-mobile-nav.css": "cd7687006cde15fd031b8887cf5fdcd4544f214b46582d425374c0eea30225b8",
-    "assets/yk-ui-preferences.css": "3266cfd4a2d206db5418b3691718a73465a58e3d6270f0ceb92a3c6a6dece819",
-    "assets/yk-ui-preferences.js": "69ee178215bc0539afea025c6069df4ac671a766d107052cb6ae3f9d50545b26",
-    "scripts/build-mobile-ui-polish.mjs": "c9a1283e34ff75c750c7d1580ee41236deb4980846ee64d9af7e161032f84dd4",
-    "scripts/build-ui-preferences.mjs": "025f0aa05429e092e845562dfeb212be5eb14edcb12e89efce1799b899f25d3f",
-    "tests/mobile-ui-polish.mjs": "228ee315b72e77b94ea9da5a3513ab8a0bb04bfee1b9ce88ad4352c601f74b13",
-    "tests/ui-preferences.mjs": "a0c8d704d15826f1b4ab6a7f579c6fd5639facc6f24a152e4b9e9ef6e5b822ec",
-    "tests/ui-preferences.runtime.mjs": "dace389a045b5a301c2ba20b7be282db6248648523e3203070ad675770707823"
+  "release_tag": "v7.87.5-rc1",
+  "release_state": "PREVIEW CANDIDATE ONLY; NOT STABLE",
+  "repo": "koyekmw2019-web/MY-OFFICAL-WEB",
+  "verified_base_branch": "main",
+  "verified_base_commit": "bf359245609c015d331d3a3715fb030d144ccf57",
+  "previous_package": "YEKUN_Main_UI_Refresh_Language_Theme_Preview_v1.zip",
+  "previous_package_sha256": "a00fa4b785ecee3ca91e8fa93ce1da6adebc062eabc0c4519b634b911f0b5a66",
+  "previous_package_code_files_crosschecked_with_main": 9,
+  "previous_package_match_result": "9 of 9 GitHub blob SHAs match previous ZIP code entries",
+  "base_project_package_json_version": "7.87.4",
+  "notes": "RC version is the patch version. Existing package.json stays 7.87.4 because other source tests assert that baseline. No package.json replacement.",
+  "changed_existing_files": [
+    "scripts/build-mobile-ui-polish.mjs"
+  ],
+  "new_code_files": [
+    "assets/yk-v7875-rc1-ui.css",
+    "assets/yk-v7875-rc1-ui.js",
+    "tests/v7875-mobile-fix.mjs",
+    "tests/v7875-runtime.mjs",
+    "tests/v7875-browser-smoke.py"
+  ],
+  "no_backend_or_sql_files": true,
+  "production_merge_done": false,
+  "code_files_sha256": {
+    "scripts/build-mobile-ui-polish.mjs": "9b1334150d69265a15765ca4c8bfc487739b23d2f1740b92f7e79c77542260e3",
+    "assets/yk-v7875-rc1-ui.css": "6227bbd8847d2a14b3c70ea947a752d3ed4221fb6577f74c2680c8895a1745f5",
+    "assets/yk-v7875-rc1-ui.js": "f8fb94e2aa953ece3aedaf2cdbe2e039dc6c6c5bb7e4c79e877a04a7148d31e3",
+    "tests/v7875-mobile-fix.mjs": "f400ade453cbb5771923f8d7b29e46a5593b8f65927b3b612d9dfe1689447079",
+    "tests/v7875-runtime.mjs": "c642ffed43ffabc1b27accc79073e9b7a3e438a27fc332ca6a63982b823b078c",
+    "tests/v7875-browser-smoke.py": "8ae2f395a073a05d780c013f011a0d94bf831370aeb1735e20873eb8f53ec2f3"
+  },
+  "tested": {
+    "old_source_posttest": "PASS",
+    "fixture_generated_pages": 42,
+    "fixture_postbuild_pipeline": "PASS",
+    "real_chromium_local_mobile_viewports": [
+      360,
+      390,
+      430,
+      720
+    ],
+    "desktop_721": "PASS",
+    "reduced_motion": "PASS",
+    "full_repo_build": "NOT RUN",
+    "netlify_preview": "NOT RUN",
+    "real_device": "NOT RUN"
   }
 }

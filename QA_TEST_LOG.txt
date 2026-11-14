@@ -1,0 +1,12 @@
+PASS v7.87.5-rc1 source guards
+PASS v7.87.5-rc1 isolated runtime: 14px gap, touch feedback, original click replay and reduced-motion
+
+> ye-kun-official-website@7.87.4 posttest
+> node tests/mobile-nav.mjs && node tests/mobile-ui-polish.mjs && node tests/ui-preferences.mjs && node tests/ui-preferences.runtime.mjs
+
+PASS mobile navigation: HTML and clean URL routing, browser history, visibility, no API/session access
+PASS Mobile UI polish source QA: only spacing and JLPT interactive styling
+PASS source UI: theme/lang selectors, separate language engine, no API/network/data code
+PASS UI runtime mock: existing language action, dropdown, theme toggle, persistence, no network
+PASS v7.87.5-rc1 release fixture: 42 pages, both new assets, original menus/exam preserved
+PASS v7.87.5-rc1 source guards
