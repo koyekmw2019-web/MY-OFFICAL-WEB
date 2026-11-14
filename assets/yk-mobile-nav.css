@@ -7,6 +7,11 @@
   #yk-mobile-nav svg{display:block;width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
   #yk-mobile-nav a[aria-current="page"]{color:#fff;background:#49202a}
   #yk-mobile-nav a[aria-current="page"] svg{color:#ff839b}
+  @media (prefers-reduced-motion:no-preference){
+    #yk-mobile-nav a{transition:background-color .22s ease,color .22s ease}
+    #yk-mobile-nav a svg{transition:color .22s ease,transform .22s ease}
+    #yk-mobile-nav a[aria-current="page"] svg{transform:translateY(-1px)}
+  }
   #yk-mobile-nav a:focus-visible{outline:2px solid #ff839b;outline-offset:1px}
   #yk-mobile-nav[hidden],body.menu-open #yk-mobile-nav,body:has(#examPanel.active) #yk-mobile-nav,body:has(dialog[open]) #yk-mobile-nav,body:has(.exam-v728-overlay.open) #yk-mobile-nav{display:none}
 }
