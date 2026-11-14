@@ -15,3 +15,40 @@
   #yk-mobile-nav a:focus-visible{outline:2px solid #ff839b;outline-offset:1px}
   #yk-mobile-nav[hidden],body.menu-open #yk-mobile-nav,body:has(#examPanel.active) #yk-mobile-nav,body:has(dialog[open]) #yk-mobile-nav,body:has(.exam-v728-overlay.open) #yk-mobile-nav{display:none}
 }
+
+
+/* Mobile UI polish v1 — spacing and JLPT menu interaction only.
+   Keep the fixed header offset, safe-area reserve and bottom navigation intact. */
+@media (max-width: 720px) {
+  /* Home: less empty space between the fixed header and the hero card. */
+  .wrap > .hero#home { margin-top: -14px; padding-top: 6px; }
+
+  /* Exam Center + individual exam pages retain the original exam engine. */
+  body.yk787-exam-page .wrap { padding-top: 6px; }
+  body.yk787-exam-page #online-mock-exam { margin-top: 4px; padding-top: 8px; }
+
+  /* The 7.87 neutral JLPT rule had overridden the same interaction
+     highlight/animation that every other hamburger menu item receives. */
+  .site-menu-nav > a.yk864-menu-jlpt:not([aria-current="page"]):is(:hover, :focus-visible, :active) {
+    transform: translateX(2px);
+    border-color: #b94c5a;
+    background: #251a1e;
+  }
+  .site-menu-nav > a.yk864-menu-jlpt:not([aria-current="page"]):is(:hover, :focus-visible, :active) > .yk864-menu-icon {
+    background: #50222b;
+    border-color: #b94c5a;
+    color: #ff8290;
+  }
+  .site-menu-nav > a.yk864-menu-jlpt:not([aria-current="page"]):is(:hover, :focus-visible, :active) > svg.yk864-menu-chevron {
+    transform: translateX(2px);
+    color: #ff8290;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-menu-nav > a.yk864-menu-jlpt,
+  .site-menu-nav > a.yk864-menu-jlpt > .yk864-menu-icon,
+  .site-menu-nav > a.yk864-menu-jlpt > svg.yk864-menu-chevron {
+    animation: none !important;
+    transition: none !important;
+  }
+}

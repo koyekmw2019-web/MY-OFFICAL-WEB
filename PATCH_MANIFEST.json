@@ -1,0 +1,16 @@
+{
+  "baseline_repo": "koyekmw2019-web/MY-OFFICAL-WEB",
+  "baseline_main": "3d85eba2758031530ddefcd611068d4ba03a2ce7",
+  "scope": "UI-only; preview candidate",
+  "code_files": {
+    "package.json": "67ff6474824240c0e612d6359c23d451e78382ba2d035fbd6054ad993236aa30",
+    "assets/yk-mobile-nav.css": "cd7687006cde15fd031b8887cf5fdcd4544f214b46582d425374c0eea30225b8",
+    "assets/yk-ui-preferences.css": "3266cfd4a2d206db5418b3691718a73465a58e3d6270f0ceb92a3c6a6dece819",
+    "assets/yk-ui-preferences.js": "69ee178215bc0539afea025c6069df4ac671a766d107052cb6ae3f9d50545b26",
+    "scripts/build-mobile-ui-polish.mjs": "c9a1283e34ff75c750c7d1580ee41236deb4980846ee64d9af7e161032f84dd4",
+    "scripts/build-ui-preferences.mjs": "025f0aa05429e092e845562dfeb212be5eb14edcb12e89efce1799b899f25d3f",
+    "tests/mobile-ui-polish.mjs": "228ee315b72e77b94ea9da5a3513ab8a0bb04bfee1b9ce88ad4352c601f74b13",
+    "tests/ui-preferences.mjs": "a0c8d704d15826f1b4ab6a7f579c6fd5639facc6f24a152e4b9e9ef6e5b822ec",
+    "tests/ui-preferences.runtime.mjs": "dace389a045b5a301c2ba20b7be282db6248648523e3203070ad675770707823"
+  }
+}

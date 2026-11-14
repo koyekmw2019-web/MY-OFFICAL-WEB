@@ -1,0 +1,52 @@
+/* STUDYING WITH YE KUN — UI Preferences v1
+   Only layout, palette and lightweight controls. Dark theme remains the default.
+   Existing forms, route handlers, auth, database and exam logic are untouched. */
+.yk-ui-lang-picker{position:relative;display:flex;align-items:center;min-width:0;flex:0 0 auto;z-index:10100}
+.yk-ui-lang-trigger,.yk-ui-theme-toggle{display:inline-flex;align-items:center;justify-content:center;min-height:39px;height:39px;border:1px solid #37373d;border-radius:14px;background:#161619;color:#f5f5f7;font-family:inherit;font-size:12px;font-weight:700;line-height:1.3;cursor:pointer;box-sizing:border-box}
+.yk-ui-lang-trigger{gap:6px;padding:0 10px;white-space:nowrap}
+.yk-ui-lang-trigger .yk-ui-caret{font-size:18px;font-weight:500;line-height:1}
+.yk-ui-theme-toggle{width:39px;min-width:39px;padding:8px;flex:0 0 39px}
+.yk-ui-theme-toggle svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.yk-ui-lang-trigger:focus-visible,.yk-ui-theme-toggle:focus-visible{outline:2px solid #e75b74;outline-offset:2px}
+.yk-ui-lang-picker > .lang-switch,.yk-ui-lang-picker > .auth-languages{display:none!important;position:absolute!important;right:0;top:calc(100% + 8px);z-index:10110;min-width:144px;max-width:min(220px,calc(100vw - 24px));padding:6px!important;gap:4px!important;flex-direction:column!important;border:1px solid #3b3b43;border-radius:15px;background:#17171b;box-shadow:0 18px 40px #0007}
+.yk-ui-lang-picker.yk-ui-lang-open > .lang-switch,.yk-ui-lang-picker.yk-ui-lang-open > .auth-languages{display:flex!important}
+.yk-ui-lang-picker > :is(.lang-switch,.auth-languages) > button{width:100%!important;text-align:left;min-height:38px;border-radius:10px!important;padding:8px 12px!important;white-space:nowrap;font-size:13px!important;background:transparent;color:#f5f5f7;border:1px solid transparent}
+.yk-ui-lang-picker > :is(.lang-switch,.auth-languages) > button.active,.yk-ui-lang-picker > :is(.lang-switch,.auth-languages) > button[aria-pressed="true"]{background:#53222e!important;color:#fff!important;border-color:#934359}
+@media(max-width:430px){.yk-ui-lang-trigger{min-height:36px;height:36px;padding:0 7px;font-size:11px}.yk-ui-theme-toggle{width:36px;min-width:36px;height:36px;min-height:36px;padding:7px}}
+@media(prefers-reduced-motion:no-preference){.yk-ui-lang-trigger,.yk-ui-theme-toggle{transition:background .2s ease,border-color .2s ease,color .2s ease}}
+
+/* Premium light-gray / white palette: opt-in only. Keep brand crimson. */
+html[data-yk-ui-theme="light"]{color-scheme:light;--bg:#f3f4f6;--surface:#fff;--surface-2:#f8f8fa;--surface-3:#eef0f3;--text:#17171b;--muted:#5c6069;--line:#dfe1e6;--line-strong:#cbd0d7;--yk787-black:#f3f4f6;--yk787-panel:#fff;--yk787-wine:#f8e9ed;--yk787-light:#17171b}
+html[data-yk-ui-theme="light"] body{background:#f3f4f6!important;color:#17171b!important}
+html[data-yk-ui-theme="light"] :is(.top,.topbar,.vc-header,.yk-auth-header){background:#fff!important;border-color:#e1e3e7!important;color:#17171b!important}
+html[data-yk-ui-theme="light"] :is(.top,.topbar,.vc-header,.yk-auth-header) :is(a,span,b,strong,small){color:#1e2027}
+html[data-yk-ui-theme="light"] .yk-ui-lang-trigger,html[data-yk-ui-theme="light"] .yk-ui-theme-toggle{background:#fff;color:#252630;border-color:#d5d7dd}
+html[data-yk-ui-theme="light"] .yk-ui-lang-picker > :is(.lang-switch,.auth-languages){background:#fff;border-color:#d5d7dd;box-shadow:0 16px 36px #14182524}
+html[data-yk-ui-theme="light"] .yk-ui-lang-picker > :is(.lang-switch,.auth-languages) > button{color:#22242c}
+html[data-yk-ui-theme="light"] .yk-ui-lang-picker > :is(.lang-switch,.auth-languages) > button.active,html[data-yk-ui-theme="light"] .yk-ui-lang-picker > :is(.lang-switch,.auth-languages) > button[aria-pressed="true"]{background:#f9e8ed!important;color:#a11b34!important;border-color:#e9bcc6}
+html[data-yk-ui-theme="light"] :is(.hero-card,.photo-card,.card,.course,.quote,.portal-launch,.study-hub-v7,.exam-hub,.exam-category,.exam-access-card,.exam-plan-mini,.exam-plans-v728,.yk82-panel,.yk82-tile,.yk84-card,.vc-card,.vc-material,.auth-stage,.auth-form-panel,.dash-card,.stat-card,.panel,.intro,.resource-card,.study-track,.portal-launch-card,.nexlynk-card,.contact-v711,.contact-v711-info,.contact-v711-formwrap){background-color:#fff!important;border-color:#e0e2e7!important;color:#17171b!important;box-shadow:0 8px 30px #2026330b}
+html[data-yk-ui-theme="light"] :is(.hero-card,.card,.course,.quote,.portal-launch,.study-hub-v7,.exam-hub,.exam-category,.exam-access-card,.exam-plan-mini,.yk82-panel,.yk84-card,.vc-card,.vc-material,.auth-stage,.auth-form-panel,.dash-card,.stat-card,.panel,.intro,.resource-card,.study-track,.portal-launch-card,.nexlynk-card,.contact-v711,.contact-v711-info,.contact-v711-formwrap) :is(h1,h2,h3,h4,.title,.subtitle,.eyebrow,.kicker,legend){color:#191a20}
+html[data-yk-ui-theme="light"] :is(.hero-card,.card,.course,.quote,.study-hub-v7,.exam-category,.exam-access-card,.exam-plan-mini,.yk82-panel,.vc-card,.vc-material,.auth-stage,.dash-card,.panel,.resource-card,.study-track) :is(p,.lead,.muted,.description,small){color:#5d616b}
+html[data-yk-ui-theme="light"] :is(.site-menu,.menu-backdrop){border-color:#e0e2e7}
+html[data-yk-ui-theme="light"] .site-menu{background:linear-gradient(180deg,#fff,#f7f8fa)!important;color:#17171b!important}
+html[data-yk-ui-theme="light"] .site-menu-nav>a.yk864-menu-link,html[data-yk-ui-theme="light"] .site-menu-nav>a.yk864-menu-jlpt:not([aria-current="page"]){background:#f7f8fa!important;border-color:#dfe1e7!important;color:#24252a!important}
+html[data-yk-ui-theme="light"] .site-menu-nav>a.yk864-menu-link > .yk864-menu-icon,html[data-yk-ui-theme="light"] .site-menu-nav>a.yk864-menu-jlpt:not([aria-current="page"]) > .yk864-menu-icon{background:#eef0f3!important;color:#4b4e57!important;border-color:#d8dbe1!important}
+html[data-yk-ui-theme="light"] .site-menu :is(.menu-title,.menu-kicker,.site-menu-nav b){color:#24252a}
+html[data-yk-ui-theme="light"] .menu-toggle{background:#f7f8fa!important;border-color:#d9dce2!important}
+html[data-yk-ui-theme="light"] .menu-toggle span{background:#23252c!important}
+html[data-yk-ui-theme="light"] .site-menu :is(.menu-close,.menu-toggle){background:#f6f7f9!important;color:#202127!important;border-color:#dfe1e7!important}
+html[data-yk-ui-theme="light"] .site-menu-nav>a.yk864-menu-link:is(:hover,:focus-visible,:active),html[data-yk-ui-theme="light"] .site-menu-nav>a.yk864-menu-link[aria-current="page"]{background:#f9e7ec!important;border-color:#b94c5a!important;color:#941c32!important}
+html[data-yk-ui-theme="light"] .site-menu-nav>a.yk864-menu-link:is(:hover,:focus-visible,:active) > .yk864-menu-icon,html[data-yk-ui-theme="light"] .site-menu-nav>a.yk864-menu-link[aria-current="page"] > .yk864-menu-icon{background:#f6d9e1!important;color:#9f263f!important;border-color:#d892a1!important}
+html[data-yk-ui-theme="light"] #yk-mobile-nav{background:#fff!important;color:#5c6069!important;border-color:#d7dae0!important;box-shadow:0 14px 32px #0002}
+html[data-yk-ui-theme="light"] #yk-mobile-nav a{color:#616570!important}
+html[data-yk-ui-theme="light"] #yk-mobile-nav a[aria-current="page"]{color:#9d1e36!important;background:#f5e5e9!important}
+html[data-yk-ui-theme="light"] #yk-mobile-nav a[aria-current="page"] svg{color:#b82138!important}
+html[data-yk-ui-theme="light"] :is(input,textarea,select){border-color:#cfd3db;color:#191b21}
+html[data-yk-ui-theme="light"] :is(.yk-auth-main,.shell,.vc-main){background-color:#f3f4f6;color:#1d1e24}
+html[data-yk-ui-theme="light"] :is(.vc-top-actions,.yk-lang-picker,.yk-auth-header-actions) :is(button,select,summary){border-color:#d3d6dc;color:#252630}
+html[data-yk-ui-theme="light"] :is(.vc-brand,.yk-brand-long-v778){background:#17171a;border-radius:12px;padding:3px 8px}
+/* Video hero retains white letters over photo; exam overlay stays high-contrast for scoring. */
+html[data-yk-ui-theme="light"] .vc-hero :is(h1,h2,p,.vc-kicker,.vc-hero-jp,.vc-hero-my,.vc-hero-desc){color:#fff!important}
+html[data-yk-ui-theme="light"] :is(.exam-v728-overlay,.exam-panel.active,.vc-player-modal){color:#f6f6f7}
+html[data-yk-ui-theme="light"] :is(.btn.primary,.btn.green,.vc-btn-red){background:#b82138;color:#fff;border-color:#b82138}
+@media (prefers-reduced-motion:reduce){.yk-ui-theme-toggle,.yk-ui-lang-trigger{transition:none!important}}

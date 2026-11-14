@@ -1,30 +1,58 @@
-# QA Report — Mobile Navigation Preview Candidate
+# STUDYING WITH YE KUN — Combined UI Preview v1 QA Report
 
-Base: main 1d5c21cdb234add7ca33c4fd456ea6cd81d0a89a (7.87.4)
-Local feature commit: 7e35578ef53e494279df08fa475ef3b2c0a034d0
-Scope: five mobile navigation destinations, max-width 720px.
+**Status: PREVIEW CANDIDATE ONLY — NOT Production Stable**  
+**Date:** 2026-11-14  
+**Baseline:** `koyekmw2019-web/MY-OFFICAL-WEB` `main` at `3d85eba2758031530ddefcd611068d4ba03a2ce7` (independently checked).  
+**Current production:** unchanged by this work. GitHub push, PR creation, deploy and merge **not performed**.
 
-| Check | Result | Evidence / limits |
+## Scope and design intent
+
+- Mobile Home: compact the whitespace between fixed header and first hero card.
+- Mobile Exam: compact the whitespace above `#online-mock-exam`, without changing exam engine.
+- JLPT Hamburger: fix distant scrolling on mobile while honoring reduced-motion preference; add matching menu press feedback.
+- Language selection: wrap original 3 buttons in a dropdown on the home/exam and login header; leave Dashboard's existing dropdown and Video's existing native select intact. **Do not implement a new translation engine.**
+- Theme: Dark default. Light is white/light-gray background and white panels, crimson active controls, sun/moon toggle next to language and local preference persistence (`yk_ui_theme`).
+- Script and CSS assets are included in all published HTML pages during `postbuild`, preserving the current source HTML files unchanged.
+
+## Baseline and constraints
+
+Verified `main` commit `3d85eba2`. Original source `index.html` and current `scripts/build-public-v7841.mjs` were inspected through GitHub. The latter automatically copies all non-legacy `assets/*` into `dist`, so these new UI assets are included prior to postbuild injection. Existing `postbuild` / `posttest` remain in place, and their new steps are appended.
+
+**Code paths added/changed: 9**. No `netlify/functions/**`, `netlify/database/**`, SQL migrations, login backend, payment backend, YKCR backend, exam scoring, exam access, exam attempts, or original HTML source files are contained in the patch. No changes made to GitHub or Netlify.
+
+## Verification carried out
+
+| Test | Result | What it proves |
 |---|---|---|
-| Baseline npm test / npm run build | PASS | Baseline logs retained locally |
-| Final full npm test | PASS | Includes all existing tests, plus npm posttest navigation tests |
-| Final npm run build | PASS | Original security/build checks unchanged; postbuild injects navigation |
-| Output routes | PASS | 39 HTML pages; one nav per page; all destination files exist |
-| Runtime navigation | PASS | 12 URL/hash scenarios using isolated Node VM DOM fixture |
-| Exam/menu/input/fullscreen hiding | PASS (unit) | Simulated state events; real browser still pending |
-| Account delegation / Logout | PASS (source/output) | Links to existing dashboard.html; existing logout retained |
-| Backend preservation | PASS | 49 protected files byte-identical to baseline; SHA-256 inventory attached |
-| Existing QA/security assertions | PASS | No old test changes shipped; original test/build scripts preserved |
-| Real mobile visual / touch / keyboard | NOT RUN | Chromium could not launch in execution environment |
-| Netlify preview of this new commit | NOT RUN | No remote push or deployment performed |
-| Auth/payment/YKCR live end-to-end | NOT RUN | No authenticated account or database writes performed |
-| Production merge/deploy | NOT DONE | Explicit approval required |
+| JS syntax checking (`node --check`) | PASS | Three newly authored JS files and test scripts have valid syntax |
+| Mobile spacing source guards | PASS | Scope is CSS and one exact JLPT scroll signature |
+| UI Preferences source guards | PASS | No API/network/auth/backend operations in preference injection |
+| Isolated DOM runtime simulation | PASS | Original language options reused; dropdown open/close and theme toggle/storage work in mock DOM |
+| CSS parsing with `tinycss2` | PASS | CSS syntax has no parse errors (not a visual contrast test) |
+| Synthetic build of 42 HTML pages | PASS | Old nav injection, spacing builder, preference builder and release tests all complete |
+| Synthetic built Home / Exam / Video / Login / Dashboard / study pages | PASS | New assets injected once, original nav paths preserved and key DOM signatures retained |
+| Existing 5-tab navigation unit and routing test on synthetic fixture | PASS | Existing mobile nav simulated logic remains intact |
+| Live full source `npm test` and `npm run build` | **NOT RUN** | Full source archive not locally obtainable |
+| Real Chromium / mobile touch / keyboard / screenshots | **NOT VERIFIED** | Browser process did not finish, so no browser PASS claim |
+| Netlify Deploy Preview and production | **NOT RUN** | No connected GitHub changes, PR or deployment performed |
+| Payment / YKCR / Login / Exam end-to-end | **NOT RUN** | These workflows require separately isolated safe QA |
 
-Release decision: PREVIEW CANDIDATE ONLY. Not certified Stable.
-Remaining blockers: remote Preview build, phone layout/keyboard/fullscreen checks, existing authenticated user flows with isolated test data.
+## Known UI limitations / risk to check
 
-Implementation: ordinary links, scoped CSS, no new runtime dependencies, no API/session/storage access by new navigation. Native browser links remain usable when JavaScript is disabled. Dark rounded bar with crimson active indicator, icons and the five requested English labels. Mobile-only bottom spacer prevents ordinary flowing page content from sitting under the bar. Exam page navigation is hidden while examPanel is active. Existing hamburger and role-based Account routing remain authoritative.
+- Theme overrides cover key pages/cards and use existing text/image layouts, but many legacy components use hardcoded dark colors; **light-theme contrast must be checked visually across actual pages**, including exam questions, JLPT study content, receipt dialogs and admin dashboards.
+- Existing language translation behavior and persistence are reused; do not assume every legacy page translates every string.
+- On mobile, an opening language dropdown must not be hidden under the sticky header, and menus must retain safe-area and keyboard behavior.
+- The light theme keeps video-image hero titles white and intentionally leaves high-contrast exam overlays unchanged, instead of overriding the exam engine UI.
+- `localStorage` may be blocked by user/privacy settings; in that case theme will safely fall back to Dark.
+- If the current `main` or `package.json` differs from baseline, **do not overwrite** without comparing.
 
-Observed QA compatibility fixes: initial appended test/build commands conflicted with historical exact-suffix checks. Final implementation uses npm posttest/postbuild hooks; original checks were not relaxed. Baseline version-guard script rewrites historical version fixtures when invoked; generated fixture edits were excluded from this patch.
+## Required acceptance tests before merge
 
-Files shipped: package.json, assets/yk-mobile-nav.css, assets/yk-mobile-nav.js, scripts/build-mobile-nav.mjs, tests/mobile-nav.mjs. No generated identity bundle, node_modules, dist, RC files or SQL migrations included.
+1. Full `npm test` + `npm run build` run on the exact current repository and Netlify Deploy Preview Build success.
+2. Real mobile (Android/iOS) 360, 390, 430 and 720px plus desktop: Home/Exam spacing and no overlap with fixed header.
+3. Hamburger JLPT, regular menu scroll and reduced motion; verify correct destinations and selected active states.
+4. Language selection Myanmar/English/Japanese on Home, Exam and Login, plus Video and Dashboard controls; confirm no login-loop/session break.
+5. Dark → Light → navigate across Home, Study, Exam, Video, Account → reload → Dark. Verify button readability and visual contrast throughout.
+6. Verify bottom nav, hamburger modal, logout, keyboard, exam panel/fullscreen hidden rules remain unchanged.
+7. Isolated/test-only Payment / YKCR / Exam permissions end-to-end where available; no production data writes.
+8. Explicit Boss ကြီး approval **after** preview QA, before merge.
