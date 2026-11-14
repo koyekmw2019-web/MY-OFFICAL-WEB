@@ -1,0 +1,198 @@
+[
+  {
+    "path": "dashboard.html",
+    "sha256": "d783c0b07d6d64b630e340d4602729d6f9c34d60f216de1fd0853dbad3f2695e"
+  },
+  {
+    "path": "index.html",
+    "sha256": "27be9c06600e53c8d7de25e23a7f3b6887b4f1308fd85b6e6a7ed33d78989783"
+  },
+  {
+    "path": "login.html",
+    "sha256": "4b20d52232b923140c642f24aa8704663da2bd2f02101bac50c5f6fe7838ef20"
+  },
+  {
+    "path": "netlify.toml",
+    "sha256": "edb3b8f4881161b1032d1071e03e4b6ca1eb4c9437a380a42e6a671691bb3634"
+  },
+  {
+    "path": "netlify/database/migrations/20261021131500_exam_backend.sql",
+    "sha256": "61324e168d74a2a87b7ba257a23f892d877ed60ce1cc593dbfe75ee169873fac"
+  },
+  {
+    "path": "netlify/database/migrations/20261021150000_add_maintenance_exam_type.sql",
+    "sha256": "3d76b4d9292a62a37d5c37f09032fcb6a0dce7497dc44bb70cc150a1e4af23ee"
+  },
+  {
+    "path": "netlify/database/migrations/20261027023000_ykcr_student_sync.sql",
+    "sha256": "ce768823d9125d474c512a375f2cb5ab0a8ded59e9aa6604bd18577ee151e6b9"
+  },
+  {
+    "path": "netlify/database/migrations/20261028193000_add_jlpt_n1_exam_type.sql",
+    "sha256": "6f18d2c6308b48d9b3c372417337e782ea2bcf6177596ea8d06595e1ee7e0eda"
+  },
+  {
+    "path": "netlify/database/migrations/20261028203000_add_jlpt_n2_n5_exam_types.sql",
+    "sha256": "c9a3c6f0c2ea40283c6f795935915f78b46e3bf04274dc2f763c880dcc106a16"
+  },
+  {
+    "path": "netlify/database/migrations/20261031090000_payment_soft_delete.sql",
+    "sha256": "87aa5b88e1859370b5110ff5db8afc0586491760f2d933a6e965eb693b1106db"
+  },
+  {
+    "path": "netlify/database/migrations/20261101010000_v760_learning.sql",
+    "sha256": "38d10b7d6d5114365c7bd6990e4a73d48b7fa3203f9cfeb46a81f409d07fec4f"
+  },
+  {
+    "path": "netlify/database/migrations/20261101130000_exam_autosave.sql",
+    "sha256": "12be4f07971f637182655e623edc18ae212dd2ecb413e56155dae5d60cd3e227"
+  },
+  {
+    "path": "netlify/database/migrations/20261101140000_v762_hardening.sql",
+    "sha256": "365145540917220dbc6a643c1bb93267e3a3e189f4ae825e9376d3b654074679"
+  },
+  {
+    "path": "netlify/database/migrations/20261101150000_v763_free_per_exam_type.sql",
+    "sha256": "20abc635effefb4c771ae34e96625dec4336e64e734e88cfced4a024a45b85be"
+  },
+  {
+    "path": "netlify/database/migrations/20261109090000_v782_jlpt_learning_progress.sql",
+    "sha256": "63646ee45af559c0f05c5bea2838406e11e0f337d796d26ee8208a5bd6eca7ec"
+  },
+  {
+    "path": "netlify/database/migrations/20261109150000_v783_dictionary_reports.sql",
+    "sha256": "565ad7daba4049c3caa7f072a9a491e6351d3f6bd504b64c962248868d425813"
+  },
+  {
+    "path": "netlify/database/migrations/20261110190000_v7865_exam_coach.sql",
+    "sha256": "7688ec3870f1e9597e5dc814516ed9424d921f342c9d882cb3d0c9a33482d1ac"
+  },
+  {
+    "path": "netlify/functions/_shared/auth.mts",
+    "sha256": "b1aad966272287e7ea37465126bddd671fd09aa35c0f3ff02443002f5836b28d"
+  },
+  {
+    "path": "netlify/functions/_shared/env.mts",
+    "sha256": "7fbf5c798fbed3a03afc3783fd7b939dd7a0fe9524d55e8eac6eae67aa3c533b"
+  },
+  {
+    "path": "netlify/functions/_shared/exam-answer-key-v763.mts",
+    "sha256": "e463026ae7663097686cffae6f517d298df32b770952474768aa283b711afc31"
+  },
+  {
+    "path": "netlify/functions/_shared/exam-autosave.mts",
+    "sha256": "fa2e2833bc6e4452ec2eb5f17555a7e4092338e6efdff919b8e90c479b8af961"
+  },
+  {
+    "path": "netlify/functions/_shared/exam-coach-evidence-v7865.mts",
+    "sha256": "c00deb942cfd3236c1a93e3343b4f147302bbe73ac0e4ebd14a730ca751c8762"
+  },
+  {
+    "path": "netlify/functions/_shared/exam-score-v763.mts",
+    "sha256": "6577d47ea08451e8b9a1de1db729be824196c4b6852ed801f1e0f420bfd47348"
+  },
+  {
+    "path": "netlify/functions/_shared/notify.mts",
+    "sha256": "68f9d367999bab524d7e862cfd85749269568ac929fe09312f3acfe67ca3a60c"
+  },
+  {
+    "path": "netlify/functions/_shared/security.mts",
+    "sha256": "5723431e38622b573bcebbc4b2e76d384068084234d79653a091dffa243e5c74"
+  },
+  {
+    "path": "netlify/functions/dictionary-overrides.mts",
+    "sha256": "b374fabbe8fc4361ce860fd447f9b387a83d1357187922d3eeab3a6589473478"
+  },
+  {
+    "path": "netlify/functions/dictionary-report.mts",
+    "sha256": "5e9d2169f55d3525b79ccb5e4e77c05f9840619a1a3c397b8585127bfb6defb1"
+  },
+  {
+    "path": "netlify/functions/dictionary-reports-admin.mts",
+    "sha256": "74fd7b29d0969b6473f18faf446735cb2cf060f42c76ffa349dadef06e55c913"
+  },
+  {
+    "path": "netlify/functions/exam-access.mts",
+    "sha256": "066a5e753164350c315d0f73a4f8f440bbdfde97892f0d1c35e0f9dff6150d56"
+  },
+  {
+    "path": "netlify/functions/exam-admin-analytics.mts",
+    "sha256": "94424298dbeac251d28ff9b3229385df337923b696a7a4a28a14d437aba3d783"
+  },
+  {
+    "path": "netlify/functions/exam-admin-import-students.mts",
+    "sha256": "6bf02912abb159d855864fd402d2fafd2028f46ab7d936082689ef68fe76379e"
+  },
+  {
+    "path": "netlify/functions/exam-admin-overview.mts",
+    "sha256": "6fe73049e7d7556685795212ece99171daece9e92f67119040bdbee5b1c9f09b"
+  },
+  {
+    "path": "netlify/functions/exam-admin-payments.mts",
+    "sha256": "cab98bdb33fdc6e21eaa431b055076da77080a3a38ff3b97fb98ff167bbebaf8"
+  },
+  {
+    "path": "netlify/functions/exam-admin-receipt.mts",
+    "sha256": "9c9930eba5e0cc8afe46ed8ece05bac2f26bc0c6756400cfe8a35d47b927eb6f"
+  },
+  {
+    "path": "netlify/functions/exam-attempt-submit.mts",
+    "sha256": "a02b7c6ccf2c9cd30beea416f8142ee7a5e0a4720dc0de1c11a53abd6ef9e7ee"
+  },
+  {
+    "path": "netlify/functions/exam-bank-details.mts",
+    "sha256": "3fae3f64e10f95e0e8db465ab0a41dc6eec6b81de3c39ee2cb3b7e0354b7b285"
+  },
+  {
+    "path": "netlify/functions/exam-checkpoint.mts",
+    "sha256": "9cc989746b6ebe1a9519ed57e7665dfc4ecf599277455473ee6002cfdd300d50"
+  },
+  {
+    "path": "netlify/functions/exam-coach.mts",
+    "sha256": "0ec3fb00c0e481c811493835e3934275b182e63ddd9d97f2f6da1444f68d70ff"
+  },
+  {
+    "path": "netlify/functions/exam-health.mts",
+    "sha256": "ab8b97609d642424838dc89f6445b74892caa93cf08cc6e05fc93f2f5c60ea68"
+  },
+  {
+    "path": "netlify/functions/exam-my-activity.mts",
+    "sha256": "e10cb10056f4ec0f1fc48a00a8993b8fa75c5ff86931b2de525fb120ca8d6e77"
+  },
+  {
+    "path": "netlify/functions/exam-payment-submit.mts",
+    "sha256": "3e178b42bbfad8dde13a9954a716f702a1506cab26f803838375b5ad8f49175f"
+  },
+  {
+    "path": "netlify/functions/exam-status.mts",
+    "sha256": "3bbc031a56037fca901ba90cba2cc7ad599de296a0370e9128173313d526a938"
+  },
+  {
+    "path": "netlify/functions/exam-student-verify.mts",
+    "sha256": "d0d25a5c48861500ebfa71b527700e8936e75833418b06cb84ca86dcf9e77d6e"
+  },
+  {
+    "path": "netlify/functions/jlpt-learning-progress.mts",
+    "sha256": "14ab01f4dc47417d66ad577c456dab6d22208e70f3af5363bf841cf6c033ae6d"
+  },
+  {
+    "path": "netlify/functions/yk-announcement-admin.mts",
+    "sha256": "f2082b2a506894b7427a657e559f5d0a66d165a3dcc8ca0813bbb95414c97c97"
+  },
+  {
+    "path": "netlify/functions/yk-learning.mts",
+    "sha256": "60197ba2ced2ceed31e52e6df2350af82947e3632affc15c2bef1fa7c0156b0d"
+  },
+  {
+    "path": "netlify/functions/ykcr-student-sync.mts",
+    "sha256": "ad2a007d10dc1a89592e909a6f2d5684dc6db985a7fa4bc425d421e13af51ab1"
+  },
+  {
+    "path": "service-worker.js",
+    "sha256": "b8a8d2b22b8839beb9d3a0f5fdcf7b13b5dce9879b6d0b72b09e53dc2ba9a45b"
+  },
+  {
+    "path": "src/identity-client.js",
+    "sha256": "625d1c889cbd36d96f62c8abfed06f0e41d334ccdd5d0717729a475d9c2cdb3f"
+  }
+]
