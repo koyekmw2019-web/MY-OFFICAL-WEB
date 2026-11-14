@@ -1,0 +1,340 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> ye-kun-official-website@7.87.4 test
+> node scripts/v7872-qa-version-guards.mjs && node scripts/regenerate-exam-answer-key-v763.mjs --check && node --experimental-strip-types tests/v763-integrity.mjs && node tests/v765-stability.mjs && node tests/v766-jlpt-quality.mjs && node tests/v767-learning-analytics.mjs && node tests/v774-dictionary-translation.mjs && node tests/v774-release-smoke.mjs && node tests/v775-study-hub-jlpt.mjs && node tests/v777-study-hub-covers.mjs && node tests/v778-brand-dictionary.mjs && node tests/v778-dictionary-qa-corrections.mjs && node tests/v779-seo-jlpt.mjs && node tests/v780-performance.mjs && node tests/v780-service-worker.mjs && node tests/v781-advanced-seo.mjs && node tests/v782-learning.mjs && node tests/v782-state-isolation.mjs && node tests/v782-api.mock.mjs && node tests/v7821-character-ui.mjs && node tests/v7822-character-visibility.mjs && node tests/v7822-reading-update.mjs && node tests/v783-dictionary-quality.mjs && node tests/v783-dictionary-runtime.mock.mjs && node tests/v784-dashboard-pro.mjs && node --experimental-strip-types tests/v784-admin-api.mock.mjs && node tests/v7841-performance-safety.mjs && node tests/v785-video-course.mjs && node tests/v786-premium-motion.mjs && node --experimental-strip-types tests/v7861-stability-fix.mjs && node tests/v7862-ui-session-stability.mjs && node tests/v7863-all-exams-performance.mjs && node tests/v7864-premium-menu.mjs && node tests/v7864-dynamic-countdown.mjs && node --experimental-strip-types tests/v7865-exam-coach.mjs && node --experimental-strip-types tests/v7865-exam-coach-api.mock.mjs && node tests/v787-source.mjs && node tests/v7871-n2-same-meaning.mjs && node tests/v7872-source.mjs && node tests/v7873-source.mjs && node tests/v7874-source.mjs
+
+v7.87.4 accepted-version compatibility: 0 test files
+PASS answer key matches public source bank
+PASS Free policy: one free per exam type and Pg index classifier
+PASS Canonical full-score jlpt_n1
+PASS Canonical full-score jlpt_n2
+PASS Canonical full-score jlpt_n3
+PASS Canonical full-score jlpt_n4
+PASS Canonical full-score jlpt_n5
+PASS Canonical full-score truck
+PASS Canonical full-score taxi
+PASS Canonical full-score bus
+PASS Canonical full-score car
+PASS Canonical full-score motorcycle
+PASS Canonical full-score moped
+PASS Canonical full-score maintenance
+PASS JLPT: fake zero-answer 180 rejected by recomputation
+PASS JLPT: duplicate question IDs fail
+PASS Driving: incorrect source index or duplicate fail
+PASS Canonical source bank contains 500 JLPT questions
+PASS Missing checkpoint prevents 180 spoof
+PASS Early JLPT phase prevents 180 spoof
+PASS Expired last phase prevents full-score spoof
+PASS Forged browser 180 cannot overwrite saved 0-score answers
+PASS Server recomputes and stores valid checkpoint result; duplicate is idempotent
+PASS Final question not reached prevents early submit
+PASS Last listening audio not played prevents early manual submit
+PASS Checkpoint cannot advance a phase after its grace deadline
+PASS Per-type free index collision maps to payment_required without bypass
+PASS Historical 10 migrations remain with additive v7.82 extension
+
+TOTAL 27 PASS / 0 FAIL (mock DB, not production)
+PASS N5 読み方 target cannot reveal 時計 reading
+PASS All 5 JLPT levels: no ruby during 文字・語彙
+PASS Additional direct reading prompts protected regardless of section
+PASS Furigana remains available for non-tested context
+PASS Post-submit review can show annotated target words
+PASS Escaping protects arbitrary text in exam content
+PASS Chart max score mapping by exam type
+PASS Different score scales normalize to comparable percentages
+PASS Legacy unverified, pending, invalid and unknown results excluded
+PASS Filtered chart uses most recent 8 verified attempts
+PASS Dashboard graph helper loaded on all role dashboards
+PASS v7.65 leaves auth, payment, save/resume and YKCR API files in place
+TOTAL 12 PASS / 0 FAIL (static/mocked; not deployed)
+PASS Full JLPT mock: IDs unique; consistent records
+PASS Full JLPT mock: expected counts per level and section
+PASS 直前対策: IDs unique; consistent records
+PASS 直前対策: expected counts per level and section
+PASS Full mock public JS and JSON banks match exactly
+PASS Practice public JS and JSON banks match exactly
+PASS Furigana dictionary has > 250 curated phrases and safely escapes HTML
+PASS All 5 levels protect every live vocabulary question from ruby answer leaks
+PASS Reading target protected even outside vocab and includes kana terms
+PASS Non-reading grammar, including 漢字の書き方, can show ruby
+PASS Furigana preference OFF removes live ruby but review still annotates
+PASS Full mock and 直前対策 use shared formatter and level-specific question context
+PASS Client preload order and existing security files preserved
+v7.66: 13 PASS / 0 FAIL (static test only)
+PASS Existing score module loaded
+PASS 7-day filter includes recent and excludes older
+PASS 30-day filter excludes 45+ days
+PASS 90-day filter includes 50 days not 100 days
+PASS all period includes all without fabricating data
+PASS type filter intersects with window
+PASS normalized averages are not raw 180 versus 50
+PASS unverified and out of range scores excluded
+PASS started attempts excluded from pass rate
+PASS no-data yields null metrics not fake zero
+PASS verified rows chronological
+PASS delta disabled when comparing mixed exam types
+PASS delta of latest 3 versus earlier 3 same type
+PASS delta unavailable with fewer than 6
+PASS last 12 cap enforced with no missing values invented
+PASS performanceByType excludes unknown exam types
+PASS review priorities only own supplied records and filtered by type
+PASS invalid dates never enter bounded periods
+PASS boundary future date excluded for bounded period
+PASS data inputs are not mutated while computing analytics
+PASS shared client module loaded before dashboard runtime
+PASS authorized APIs unchanged and no database migrations added
+PASS dashboard offers date/type filters & focus
+PASS all translations are present for new analytical headings
+TOTAL v7.67: 24 PASS / 0 FAIL (local unit tests)
+v7.74 Dictionary QA PASS: 8542 words, 2350 glosses, 119 new N1 drafts, 6192 pending
+PASS all six website entry routes exist
+PASS all local HTML referenced assets exist, except generated bundle pre-build
+PASS every classic inline script parses
+PASS every shipped browser asset JavaScript parses
+PASS v7.74 vocabulary counts, legacy glossary and draft warnings are tracked
+PASS PWA icon references and updated service worker version are valid
+PASS backend functions/migrations exactly match v7.70 source
+PASS no PDFs or environment secrets packaged for deploy
+PASS npm build contract creates identity client on release
+TOTAL v7.74: 9 PASS / 0 FAIL; 13 inline scripts parsed; 148 local resource links; PRE-BUILD checks
+PASS v7.75 Study Hub functionality retained in later releases
+PASS JLPT cards are *inside* existing Study Hub grid
+PASS every Study Hub JLPT level reuses existing dictionary filter and mock exam
+PASS existing Truck / Taxi / Bus / Maintenance / Car / Motorcycle / Moped are still present
+PASS existing access checks and Dictionary JS are retained
+PASS no new backend migrations/functions are required
+TOTAL v7.75 Study Hub JLPT: 6 PASS / 0 FAIL
+PASS v7.77 or newer package version
+PASS 12 original v7.75 study cards retained in order
+PASS all 12 appropriate book covers are localized WebP assets with proper alt and lazy loading
+PASS collapsed Study Hub uses 3-column preview and shows first three paths
+PASS tablet and mobile grid responsive breakpoints
+PASS View More and View Less labels are stable through language switching
+PASS existing Dictionary, Mock Exam, payment and login are untouched by click routing
+v7.77 Study Hub layout/covers: 7 PASS / 0 FAIL
+PASS 8,542 entries retained; only 56 explicitly audited entries have source-key corrections
+PASS all 5,834 previously missing glosses populated; only audited previous glosses changed
+PASS all 8,542 entries have Burmese draft gloss; quality caveat preserved
+PASS new runtime dictionary is used by website without importing stale version
+PASS requested YK symbol used in site header and login
+PASS white-on-dark wide user logo on all 4 dashboard routes
+PASS PWA icons PNG dimensions and manifest versioning
+v7.78 brand + dictionary QA: 7 PASS / 0 FAIL
+v7.78 targeted QA patch PASS: 56 targeted entries corrected; 8,542 source and runtime entries consistent; 0 blanks; expert verification still pending
+PASS exact historical homepage title preserved across title and OG
+PASS metadata explains existing JLPT, SSW and dictionary study resources
+PASS site schema is valid JSON-LD referencing actual anchored content
+PASS JLPT N5–N1 have permanent Burmese explanation and two-line start CTA
+PASS JLPT last-minute practice is correctly credited and clearly unofficial
+PASS Existing UI/navigation preserved; expanded public index permitted in v7.81
+PASS Current source data still 8542 entries, corrected dataset retained
+TOTAL v7.79: 7 PASS / 0 FAIL
+PASS v7.80 release and original homepage SEO title preserved
+PASS 32 inline JPEG/PNG images safely externalized without changing bytes
+PASS homepage HTML transfer-size reduction is at least 75% in bytes
+PASS original logo, dictionary, exam and YKCR integrations still referenced
+PASS safe PWA caching never stores protected routes or navigation HTML
+PASS source data and published content complete
+TOTAL v7.80 PERFORMANCE: 6 PASS / 0 FAIL
+PASS navigation, login and API calls bypass the cache
+PASS non-GET or bearer-authenticated static asset requests bypass cache
+PASS public image fetch caches and reuses successful response
+PASS HTML and unknown file types never cached
+TOTAL v7.80 SERVICE WORKER: 4 PASS / 0 FAIL
+PASS v7.81 package and original homepage search title stay unchanged
+PASS new guides are unique static Japanese/Myanmar readable content pages
+PASS public sitemap retains all 16 guides and adds JLPT N2 Same Meaning learning page while preserving existing guides
+PASS guides have valid WebPage and BreadcrumbList JSON-LD, not fabricated official Courses
+PASS user-facing website contains discoverable footer links without changing hero design
+PASS all new guides link to a known public homepage anchor, each other and index
+PASS private login and Dashboard pages stay noindex and absent from public sitemap
+PASS SEO update does not modify protected backend entrypoints or dictionary entries
+TOTAL v7.81 SEO: 8 PASS / 0 FAIL
+PASS original content has all five JLPT levels and five real lesson categories
+PASS 152 distinct authored lessons, with no missing Japanese/Myanmar learning text
+PASS STUDY HUB preserves previous 3-card preview and appends level selector with six categories
+PASS new learning page has readable content SEO, real links and explicit unofficial notice
+PASS bookmarks, daily practice and progress are isolated from exam/payment backend
+PASS account-scoped progress endpoint uses server identity and additive migration
+PASS dashboard script shared across admin/member/student/route and old dashboard scripts retained
+PASS new public learning URL appears in sitemap, old pages and brand title unchanged
+PASS all content JSON and JS files are present and nonempty, PWA cache is public-only
+PASS progress merges completed lessons and updates bookmark tombstones by timestamp
+TOTAL v7.82 LEARNING: 10 PASS / 0 FAIL
+PASS v7.82 state account isolation + local persistence + cloud-ready init
+PASS v7.82 mock API authorization, account isolation, state sanitization, merge and bookmark removal
+(node:164) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS v7.82.1 has matching package release and unchanged official title
+PASS Approved student and teacher character assets are lightweight static WebP
+PASS All JLPT levels and original six-card study hub navigation preserved
+PASS Feedback guide has accessible real user-action hooks, no fake progress
+PASS All four dashboard types get non-invasive character branding
+PASS Learning dataset/SEO sitemap and separated private backend remain in original versions
+PASS Reduced-motion and mobile accessibility design rules exist
+TOTAL v7.82.1 CHARACTER UI: 7 PASS / 0 FAIL
+PASS v7.82.2 source, branding, reused images, responsive stylesheet, 152 lessons
+PASS version stays v7.82.2 and legacy homepage branding is unchanged
+PASS 20 original supplemental reading exercises cover the appropriate five levels
+PASS base 152 lessons remain intact and new supplemental count is 172
+PASS reading UI filters, official source link, options, saved and daily practice integrate
+PASS countdown uses the officially confirmed date and Asia/Tokyo day boundaries
+PASS approved student and teacher graphics are still linked and no new private cache routes
+PASS server functions and migrations are never referenced or modified for this update
+TOTAL v7.82.2 READING UPDATE: 7 PASS / 0 FAIL
+PASS 8,542 source words and readings preserved with zero blank Burmese meanings
+PASS Meaning fixes are traceable, targeted, and not mislabeled as expert-verified
+PASS Original Japanese/Myanmar bilingual examples are valid and use optional safe ruby annotations
+PASS v7.83 runtime overlays publish exactly the source corrections without rewriting v7.78 source
+PASS Dictionary UI includes secure report dialog, reading ruby, bilingual examples and stable favorites
+PASS Admin report queue is protected, responses are reviewed and changes server approved
+PASS Dictionary runtime JavaScript parses safely in isolation
+PASS Source performance budget, Study Hub and character asset paths remain retained
+TOTAL v7.83 DICTIONARY QA: 8 PASS / 0 FAIL
+PASS v7.83 Dictionary runtime mocked: search, corrected meaning, ruby, bilingual example, favorite migration, report opening and posting
+PASS v784 engine loaded
+PASS v784 normalizes truck practice score
+PASS v784 normalizes JLPT 180 point score
+PASS v784 unverified scores excluded
+PASS v784 started results excluded
+PASS v784 out-of-range scores excluded
+PASS v784 null scores excluded
+PASS v784 exam weakness requires >=2 verified attempts
+PASS v784 scores by exam never combine scales
+PASS v784 lesson completion is NOT called weak exam score
+PASS v784 prioritize previously missed questions
+PASS v784 do not invent weak subjects from no data
+PASS v784 JLPT Daily Practice accuracy requires real denominator
+PASS v784 date chart zero-fills from backend only
+PASS v784 backend is admin-only and read-only
+PASS v784 dashboard only modifies admin and student pages
+PASS v784 original character assets intact
+PASS v784 student recommendations account scoped and no attempt consumption
+v784 dashboard tests: 18 PASS
+PASS v784 API reject POST
+PASS v784 API deny unauthorized GET before DB query
+PASS v784 API reject invalid date period
+PASS v784 API admin receives only aggregates, verified pass rate, unknown upstream queue
+PASS v784 API query parameters are enum-bound
+PASS v784 API no fake 0% pass rate for no verified exams
+v784 admin API mock: 6 PASS
+(node:220) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS v7841 every one of 8542 dictionary records reconstructed losslessly, including exact optional data
+PASS v7841 homepage title, hero and dictionary references remain, and PWA cache revision bumped
+PASS v7841 Netlify uses dist publish, retains Functions and original esbuild login bundle
+PASS v7841 no source exclusions or destructive database schema edits, PDF or service-worker broad caching
+PASS v7841 explicit production public output does not contain backend source, CSV, QA, secrets or draft catalogues
+v7841 optimization QA: 5 PASS
+PASS v785 homepage hamburger has exactly one in-site Video Course link and leaves existing menu selectors intact
+PASS v785 each user-supplied YouTube video is mapped to the corresponding category and fallback URL
+PASS v785 original three textbook cover files still used and present
+PASS v785 page accessible, localized and offers direct Facebook contact and YouTube fallback
+PASS v785 SEO title/canonical/schema and sitemap include one public video-class route
+PASS v785 public build includes new page without publishing backend or introducing video binary
+PASS v785 responsive layout, safe iframe attributes and reduced motion present
+v7.85 Video Course: 7 PASS
+PASS v786 v7.86 release and original homepage search title
+PASS v786 three intended public pages load same lightweight motion files exactly once
+PASS v786 no new character images and exact original assets still referenced
+PASS v786 prefers-reduced-motion always bypasses JS motion with CSS fallback
+PASS v786 scroll reveals are one-shot and never hide readable content by default
+PASS v786 original JLPT verified answer action and Teacher Tip remain source of truth
+PASS v786 video embeds still user click only, contact/book covers untouched
+PASS v786 existing examination, auth, YKCR, payment functions and build remain isolated
+v7.86 Premium Motion: 8 PASS / 0 FAIL
+PASS v7861 release and source links are 7.86.1
+PASS v7861 PostgreSQL output labels use explicit safe aliases in BOTH date series
+PASS v7861 report output retains day property used by existing dashboard graph
+PASS v7861 SQL mock returns chart dates and preserves verified pass-rate formula
+PASS v7861 database write access, payments, exams and YKCR untouched by analytics patch
+PASS v7861 JLPT nav is a 3-column one-row mobile grid while desktop stays intact
+PASS v7861 login requires explicit button interaction, Enter/form-submit never invokes API
+PASS v7861 legacy auth bundle and existing session mechanism kept
+v7.86.1 regression: 8 PASS / 0 FAIL
+(node:253) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS v7862 version, build, no new DB or protected core changes required
+PASS v7862 mobile dashboard action footer is in document flow not fixed
+PASS v7862 administrator report link gated inside admin-only role-specific panel
+PASS v7862 dictionary source data unchanged while reporting is behind More options
+PASS v7862 Video Course uses education logo and Identity session client
+PASS v7862 Video Course identity account state for signed-in, guest and errors
+PASS v7862 auth UI mocked session/guest/expired behavior
+PASS v7862 saved learning metrics avoid mixed-scale averages while retaining features
+v7.86.2 scoped checks completed
+PASS v7863 12 supported exams and correct independent types/caps
+PASS v7863 truck scores 25/50 and 30/50 average 55 percent
+PASS v7863 do not combine unequal JLPT, driving and SSW point scales
+PASS v7863 unverified, incomplete, null and impossible scores not used
+PASS v7863 unknown or missing pass status is not counted as 0 percent
+PASS v7863 SSW category only counts SSW attempts
+PASS v7863 no evidence is not declared a weak exam
+PASS v7863 wrong answers are filtered to selected exam only
+PASS v7863 UI uses only account-scoped read-only APIs and shared activity request
+PASS v7863 no eager JLPT or mistake fetch on account dashboard initial mount
+PASS v7863 new layout preserves responsive semantics and accessibility
+PASS v7863 deploy-only dictionary preserves original source and produces lazy loader
+PASS v7863 deploy output has no personal DB source or unpublished drafts
+PASS v7863 no original protected backend change required
+v7.86.3: 14 PASS / 0 FAIL
+PASS v7864 version and lightweight standalone stylesheet included in both test and build
+PASS v7864 exactly one JLPT link immediately above Video Course in menu
+PASS v7864 nine icon-based navigation rows use inline SVG and accessible semantic links
+PASS v7864 Study Hub keeps all N5-N1 cards, but menu targets Learning Center Pro
+PASS v7864 menu shortcut scrolls to Learning Center Pro, never the N5 card
+PASS v7864 animations are short, accessible, reduced-motion aware
+PASS v7864 existing login, account, menu close, dictionary, tests retained
+PASS v7864 public builder references stylesheet and preserves link target in deploy preview
+v7.86.4 Premium Menu 8 PASS / 0 FAIL
+PASS v7864-countdown official 2026 December date and JST 26 days from November 10
+PASS v7864-countdown JST midnight changes the day even if UTC date has not yet changed
+PASS v7864-countdown December 6 in Tokyo displays exam day
+PASS v7864-countdown December 7 rolls to July 2027; provisional is not misrepresented as official
+PASS v7864-countdown July 2027 exam auto-rolls to December 2027
+PASS v7864-countdown following year rolls and remains not falsely confirmed
+PASS v7864-countdown countdown refreshes periodically and on tab resume
+PASS v7864-countdown both pages load the updated asset with cache busting
+v7.86.4 rolling countdown 8 PASS / 0 FAIL
+PASS v7865 JLPT real canonical snapshot yields 4 verified topics from ONE attempt
+PASS v7865 TRUCK canonical snapshot yields only theory/practical, no fake topic
+PASS v7865 License gets honest overall evidence only
+PASS v7865 Priorities sorted by lower accuracy, one attempt is enough
+PASS v7865 Invalid topic metadata not manufactured
+PASS v7865 Tokyo midnight and user-entered date durations
+PASS v7865 Short 2-day and exam-day plans without false official claim
+PASS v7865 Server uses account-scoped signed-in user for coaching
+PASS v7865 Topic evidence saved after server submission, never trusting client scores
+PASS v7865 Coach is dashboard only and lazy per selected exam
+PASS v7865 Migration only adds private coaching tables and no public IDs
+PASS v7865 UI is responsive, accessible and lightweight
+PASS v7865 Netlify preserves existing build contract
+v7.86.5 13 PASS / 0 FAIL
+PASS v7865-api GET returns only requested signed-in exam and server evidence
+PASS v7865-api Reject invalid type and client controlled query
+PASS v7865-api POST validates date and uses bound user id
+PASS v7865-api Invalid date and past date rejected before SQL
+PASS v7865-api Missing auth cannot read another student data
+PASS v7865-api Unknown HTTP method refused
+v7.86.5 API mocked 6 PASS / 0 FAIL
+PASS v787-source theme, routes, backend preservation and build contract
+✔ 132 user-provided N2 synonym pairs recorded in order, with original bilingual examples (3.265749ms)
+✔ learning progress uses existing account scope and valid N2-v-ID records (2.844535ms)
+✔ N2 lesson appears in native JLPT Learning Center, N2 SEO guide and sitemap (0.404184ms)
+✔ practice excludes context-review pairs and preserves exam access (5.196186ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 35.381431
+PASS v7872-source independent routes, legacy link and exam button safety
+PASS v7873-source route-preserving UI/branding patch
+PASS v7874-source: 12 isolated exam routes, seven safe home links, no access or backend change
+
+> ye-kun-official-website@7.87.4 posttest
+> node tests/mobile-nav.mjs
+
+PASS mobile navigation: 13 routing scenarios, exam/menu/input/fullscreen visibility, no API or session access
