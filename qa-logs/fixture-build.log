@@ -1,0 +1,3 @@
+PASS v7.87.5: transition CSS injected in 7 approved routes; no login/answer-form route enabled
+PASS v7.87.5 release: seven opted-in pages, theme/nav preserved, login and exam-details excluded
+PASS v7.87.5 source: native navigation, cross-document transitions, reduced-motion safety

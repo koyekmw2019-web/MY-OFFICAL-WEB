@@ -1,0 +1,10 @@
+BASE REFERENCE: GitHub main edf4dd91b89c3908e15338e369d5ea1324ba75d6
+7/7 previous RC1/older source blob SHA matches GitHub main: PASS.
+JS source syntax: PASS.
+Node source guard: PASS.
+CSS parser: PASS.
+Synthetic fixture build: PASS (seven approved pages injected; sensitive route excluded).
+Node generated fixture release check: PASS.
+Real Chromium smoke: BLOCKED by managed enterprise URLBlocklist policy.
+Full original repository npm test / npm run build: NOT RUN (full repo unavailable).
+Netlify Deploy Preview / physical phone QA: NOT RUN.

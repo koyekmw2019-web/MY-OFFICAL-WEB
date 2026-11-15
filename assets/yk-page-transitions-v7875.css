@@ -1,0 +1,38 @@
+/* STUDYING WITH YE KUN — Mobile page transitions v7.87.5
+ * Progressive enhancement: same-origin multi-page navigation only.
+ * No JS click interception, no waits, no touch to auth/payment/exam code.
+ * Both source and destination must include this stylesheet to opt in.
+ */
+
+/* Do not animate on desktop or when the visitor requests reduced motion. */
+@media (max-width: 720px) and (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+
+  /* Snapshot the existing fixed mobile tab bar separately from the page.
+     The actual five anchors and their destinations remain unmodified. */
+  #yk-mobile-nav:not([hidden]) {
+    view-transition-name: yk-v7875-tab-bar;
+  }
+
+  @keyframes yk-v7875-page-out {
+    to { opacity: 0; transform: translate3d(-9px, 0, 0); }
+  }
+  @keyframes yk-v7875-page-in {
+    from { opacity: 0; transform: translate3d(9px, 0, 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
+  }
+
+  ::view-transition-old(root) {
+    animation: 170ms cubic-bezier(.4, 0, 1, 1) both yk-v7875-page-out;
+  }
+  ::view-transition-new(root) {
+    animation: 250ms cubic-bezier(.2, .7, .2, 1) both yk-v7875-page-in;
+  }
+
+  /* The persistent tab bar stays anchored while the new active item blends in. */
+  ::view-transition-old(yk-v7875-tab-bar),
+  ::view-transition-new(yk-v7875-tab-bar) {
+    animation-duration: 200ms;
+    animation-timing-function: ease-in-out;
+  }
+}

@@ -1,49 +1,63 @@
 {
-  "release_tag": "v7.87.5-rc1",
-  "release_state": "PREVIEW CANDIDATE ONLY; NOT STABLE",
-  "repo": "koyekmw2019-web/MY-OFFICAL-WEB",
+  "product": "STUDYING WITH YE KUN — Official Website",
+  "release_version": "7.87.5",
+  "release_channel": "PREVIEW CANDIDATE — not certified stable",
+  "purpose": "Smooth mobile cross-document navigation for Home, Exam, Video and Account using CSS View Transitions",
+  "repository": "koyekmw2019-web/MY-OFFICAL-WEB",
   "verified_base_branch": "main",
-  "verified_base_commit": "bf359245609c015d331d3a3715fb030d144ccf57",
-  "previous_package": "YEKUN_Main_UI_Refresh_Language_Theme_Preview_v1.zip",
-  "previous_package_sha256": "a00fa4b785ecee3ca91e8fa93ce1da6adebc062eabc0c4519b634b911f0b5a66",
-  "previous_package_code_files_crosschecked_with_main": 9,
-  "previous_package_match_result": "9 of 9 GitHub blob SHAs match previous ZIP code entries",
-  "base_project_package_json_version": "7.87.4",
-  "notes": "RC version is the patch version. Existing package.json stays 7.87.4 because other source tests assert that baseline. No package.json replacement.",
-  "changed_existing_files": [
-    "scripts/build-mobile-ui-polish.mjs"
+  "verified_base_commit": "edf4dd91b89c3908e15338e369d5ea1324ba75d6",
+  "previous_release_zip": "YEKUN_Official_Website_v7.87.5-rc1_Mobile_UI_Fix.zip",
+  "previous_release_zip_sha256": "4c7eb861c2b004dc3e3d6dd4067b4cc5a606c93005fd81b0f4b83b6f83adf5aa",
+  "older_previous_zip": "YEKUN_Main_UI_Refresh_Language_Theme_Preview_v1.zip",
+  "older_previous_zip_sha256": "a00fa4b785ecee3ca91e8fa93ce1da6adebc062eabc0c4519b634b911f0b5a66",
+  "previous_code_files_vs_github_main": "7/7 Git blob SHAs matched (six rc1 code paths, and package.json from older UI ZIP)",
+  "package_json_core_version": "7.87.4 (retained due to legacy version-pinned tests)",
+  "release_version_source": "PATCH_MANIFEST.json and ZIP label",
+  "modified_existing": [
+    "package.json"
   ],
-  "new_code_files": [
-    "assets/yk-v7875-rc1-ui.css",
-    "assets/yk-v7875-rc1-ui.js",
-    "tests/v7875-mobile-fix.mjs",
-    "tests/v7875-runtime.mjs",
+  "added_files": [
+    "assets/yk-page-transitions-v7875.css",
+    "scripts/build-page-transitions-v7875.mjs",
+    "tests/v7875-page-transitions.mjs",
     "tests/v7875-browser-smoke.py"
   ],
-  "no_backend_or_sql_files": true,
-  "production_merge_done": false,
-  "code_files_sha256": {
-    "scripts/build-mobile-ui-polish.mjs": "9b1334150d69265a15765ca4c8bfc487739b23d2f1740b92f7e79c77542260e3",
-    "assets/yk-v7875-rc1-ui.css": "6227bbd8847d2a14b3c70ea947a752d3ed4221fb6577f74c2680c8895a1745f5",
-    "assets/yk-v7875-rc1-ui.js": "f8fb94e2aa953ece3aedaf2cdbe2e039dc6c6c5bb7e4c79e877a04a7148d31e3",
-    "tests/v7875-mobile-fix.mjs": "f400ade453cbb5771923f8d7b29e46a5593b8f65927b3b612d9dfe1689447079",
-    "tests/v7875-runtime.mjs": "c642ffed43ffabc1b27accc79073e9b7a3e438a27fc332ca6a63982b823b078c",
-    "tests/v7875-browser-smoke.py": "8ae2f395a073a05d780c013f011a0d94bf831370aeb1735e20873eb8f53ec2f3"
+  "protected_paths_modified": [],
+  "front_end_only": true,
+  "same_origin_only": true,
+  "mobile_max_width_px": 720,
+  "reduced_motion_opt_out": true,
+  "js_click_interception": false,
+  "opted_in_pages": [
+    "index.html",
+    "mock-exams.html",
+    "video-class.html",
+    "dashboard.html",
+    "admin-dashboard.html",
+    "student-dashboard.html",
+    "member-dashboard.html"
+  ],
+  "excluded_pages": [
+    "login.html",
+    "exams/*.html",
+    "other unlisted pages"
+  ],
+  "code_sha256": {
+    "package.json": "0f306c115186ad8d0aa576ebaae98b029fc932b0a38d4e51db3f2e15b61ede3b",
+    "assets/yk-page-transitions-v7875.css": "cc2e4421f77b5e1e56e2fc872c48948145fb3f1f542c3898b97d5ea7071b50dd",
+    "scripts/build-page-transitions-v7875.mjs": "69ec7a0eb165c24e9a6d6ecdf6a528750cd6653c2486d009312f59657066e87f",
+    "tests/v7875-page-transitions.mjs": "0d0af19c073c038d5b7dc0009cb48e189a51ed1753170e9aa47644654336a959",
+    "tests/v7875-browser-smoke.py": "57c45438e8b8a6550fed79d6cf44345e421768e7f6c1052faccbd81a859a2a01"
   },
-  "tested": {
-    "old_source_posttest": "PASS",
-    "fixture_generated_pages": 42,
-    "fixture_postbuild_pipeline": "PASS",
-    "real_chromium_local_mobile_viewports": [
-      360,
-      390,
-      430,
-      720
-    ],
-    "desktop_721": "PASS",
-    "reduced_motion": "PASS",
-    "full_repo_build": "NOT RUN",
-    "netlify_preview": "NOT RUN",
-    "real_device": "NOT RUN"
-  }
+  "qa": {
+    "prior_zip_vs_github": "PASS",
+    "syntax_source_tests": "PASS",
+    "synthetic_dist_build": "PASS",
+    "browser_rendering": "NOT RUN — Chromium URLBlocklist policy blocked localhost",
+    "full_repo_npm_test": "NOT RUN — repository clone unavailable",
+    "full_repo_npm_build": "NOT RUN — repository clone unavailable",
+    "deploy_preview": "NOT RUN — no push/deploy performed",
+    "real_mobile_qa": "NOT RUN"
+  },
+  "production_modified_by_this_package": false
 }

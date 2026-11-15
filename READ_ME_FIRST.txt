@@ -1,57 +1,52 @@
-STUDYING WITH YE KUN | Mobile UI Fix v7.87.5-rc1
-================================================
-အခြေအနေ: PREVIEW CANDIDATE / NOT STABLE
-GitHub Repository: koyekmw2019-web/MY-OFFICAL-WEB
-Base branch: main
-Verified main commit: bf359245609c015d331d3a3715fb030d144ccf57
-Previous source ZIP: YEKUN_Main_UI_Refresh_Language_Theme_Preview_v1.zip
-Previous ZIP code files vs GitHub main: 9/9 MATCH (Git blob hashes)
+STUDYING WITH YE KUN — Official Website
+Update Version: v7.87.5 — Mobile Page Transition (PREVIEW CANDIDATE)
 
-ဒီ ZIP က Full Website ZIP မဟုတ်ပါ။ PATCH ZIP သာဖြစ်ပါတယ်။
-မူလ Project Folder ကို မဖျက်ပါနဲ့။
+Boss ကြီး၊ ဒီ ZIP က Website တစ်ခုလုံးမဟုတ်ဘဲ UI-only PATCH ဖြစ်ပါတယ်။
+Do NOT delete or replace your whole repository. Do NOT deploy directly to production.
 
-ဘာတွေပြောင်းလဲသလဲ
-- Home အပေါ်က Space ကို Fixed Header အတိုင်း ပြန်တွက်ပြီး 14px ဝန်းကျင် ထားနိုင်ရန်
-- Exam Center အပေါ်က Space ကို လျှော့ရန်
-- JLPT Hamburger ကို Touch Highlight 170ms ပြပြီးမှ မူလ Click Handler ကို ခေါ်ရန်
-- Smooth Scroll v1 logic ကို ဆက်ထိန်းရန်
-- Light/Dark Theme နှင့် Language Dropdown ကို မပြင်/မဖျက်ရန်
-- Unique asset names ?v=7875rc1 ဖြင့် Browser Cache အဟောင်းကို ရှောင်ရန်
+BASE SOURCE
+- GitHub repository: koyekmw2019-web/MY-OFFICAL-WEB
+- Verified main HEAD: edf4dd91b89c3908e15338e369d5ea1324ba75d6
+- Previous ZIP: YEKUN_Official_Website_v7.87.5-rc1_Mobile_UI_Fix.zip
+- Previous archive and current GitHub files cross-checked (7/7 paths matched).
+- This ZIP's release label: 7.87.5. package.json's existing core version remains
+  7.87.4 because several old repository source tests explicitly assert that value.
+  The release version is recorded in PATCH_MANIFEST.json.
 
-Code Files (6):
-  MODIFY  scripts/build-mobile-ui-polish.mjs
-  ADD     assets/yk-v7875-rc1-ui.css
-  ADD     assets/yk-v7875-rc1-ui.js
-  ADD     tests/v7875-mobile-fix.mjs
-  ADD     tests/v7875-runtime.mjs
-  ADD     tests/v7875-browser-smoke.py  (Optional local Chromium QA)
+CHANGED / ADDED CODE FILES (exactly 5)
+  package.json                                [MODIFY - postbuild & posttest only]
+  assets/yk-page-transitions-v7875.css       [ADD]
+  scripts/build-page-transitions-v7875.mjs   [ADD]
+  tests/v7875-page-transitions.mjs           [ADD]
+  tests/v7875-browser-smoke.py              [ADD - optional local browser QA]
 
-အရေးကြီး: package.json ကို ZIP မှာ မထည့်ထားပါ။
-Existing npm postbuild/test မှာ build-mobile-ui-polish.mjs ကို ခေါ်ပြီးသားမို့
-အပေါ်ဖိုင် ၆ ခု ထည့်ရုံနဲ့ နောက်ဆုံး Build အချိန်မှာ Patch လည်ပတ်ပါတယ်။
-Release identity v7.87.5-rc1 ကို PATCH_MANIFEST.json ထဲ သတ်မှတ်ထားပါတယ်။
-package.json version 7.87.4 ကို source compatibility အတွက် မပြောင်းသေးပါ။
+WHAT THIS PATCH DOES
+- Add 170–250 ms native CSS View Transitions for same-origin navigation
+  Home ↔ Exam Center ↔ Video Course ↔ Account/Dashboards on mobile <=720px.
+- Keep the bottom menu steady while a new page loads.
+- Use original <a href> navigation; never intercept or delay clicks.
+- Existing Home/Study same-page scroll remains unchanged.
+- Exclude login form and individual timed exam pages from cross-page transition.
+- Disable effects for prefers-reduced-motion and desktop.
+- Unsupported browsers keep normal, usable page navigation.
 
-GitHub Desktop Instructions:
-1. GitHub Desktop မှာ MY-OFFICAL-WEB ကိုရွေးပြီး main ကို Fetch Origin လုပ်ပါ။
-2. main SHA bf359245609c015d331d3a3715fb030d144ccf57 ဟုတ်မဟုတ် စစ်ပါ။
-3. Main SHA ပြောင်းထားရင် STOP: ဖိုင်တွေကို compare ပြန်လုပ်ပြီးမှ ဆက်ပါ။
-4. main ကနေ feature/mobile-ui-v7875-rc1 Branch အသစ်ဖန်တီးပါ။
-5. ZIP ထဲက Code Files ၆ ခုကို ORIGINAL Folder Path အတိုင်း ပေါင်းထည့်ပါ။
-6. GitHub Desktop Changes ၆ files ONLY ဖြစ်ကြောင်း စစ်ပါ။
-   (1 modified + 5 added; README/Logs/Manifest က Repo ထဲ ထည့်စရာမလိုပါ)
-7. Project Root မှာ npm test နှင့် npm run build run လုပ်ပါ။
-   `node tests/v7875-mobile-fix.mjs --release` ကို Build ပြီးမှ Run လုပ်ပါ။
-   `node tests/v7875-runtime.mjs` ကိုလည်း Run ပါ။
-8. Full Test/Build PASS မဖြစ်ရင် Commit/Push မလုပ်ပါနဲ့။
-9. PASS ပြီးရင် Commit & Push → Draft Pull Request → Netlify Deploy Preview → Real Phone QA.
-10. Boss ကြီး အတည်ပြုပြီးမှ main ထဲ Merge လုပ်ပါ။
+GITHUB DESKTOP WORKFLOW (NO PRODUCTION MERGE)
+1. GitHub Desktop: select main, Fetch origin; confirm HEAD SHA above.
+   If main HEAD changed, stop and compare changes before replacing package.json.
+2. Create branch: feature/mobile-page-transition-v7875
+3. Extract ZIP. Copy the 5 code files into the matching repo paths.
+   DO NOT copy these README/QA files over any critical project files.
+4. GitHub Desktop should show 1 modified (package.json), 4 added code files.
+5. Run npm test and npm run build from the COMPLETE ORIGINAL REPOSITORY.
+6. Commit, push feature branch and open a NEW Draft Pull Request.
+7. Open Netlify Deploy Preview and manually test the phone navigation.
+8. Only consider merge after successful Preview, Login/Payment/YKCR isolation checks,
+   and Boss approval. Never use this ZIP alone as a complete Netlify deploy.
 
-Protected systems:
-No modifications to netlify/functions/**, netlify/database/**, migrations,
-Identity, YKCR, Payment, Login, Exam engine, exam access or scoring logic.
-
-QA limitations:
-Full source repo build/Netlify preview/real device testing are still PENDING.
-Local simulated build of 42 HTML pages and local headless Chromium PASS.
-See QA_REPORT.md for precise evidence.
+IMPORTANT
+- This workspace could NOT clone the entire GitHub repository: internet git
+  access was blocked; full npm test/build were not run here.
+- The local Chromium browser was blocked from localhost by enterprise policy:
+  full visual transition was NOT validated and needs Netlify Preview/mobile QA.
+- This patch does NOT touch auth, payments, Netlify Functions, YKCR,
+  SQL migrations, exam attempts, timer, scoring, or active exam sessions.

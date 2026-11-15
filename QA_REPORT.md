@@ -1,72 +1,70 @@
-# STUDYING WITH YE KUN — v7.87.5-rc1 QA Report
+# STUDYING WITH YE KUN — v7.87.5 Page Transition QA
 
-**Status:** PREVIEW CANDIDATE — NOT STABLE  
-**Date:** 2026-11-14  
-**Baseline:** `koyekmw2019-web/MY-OFFICAL-WEB` `main` at `bf359245609c015d331d3a3715fb030d144ccf57` (verified twice).  
-**Previous Source ZIP:** `YEKUN_Main_UI_Refresh_Language_Theme_Preview_v1.zip` (SHA256 `a00fa4b785ecee3ca91e8fa93ce1da6adebc062eabc0c4519b634b911f0b5a66`).
+**Status: PREVIEW CANDIDATE, NOT STABLE**  
+**Scope:** Mobile app-like cross-document animations between the 7 listed public/role-router pages.  
+**Production:** No GitHub push, merge or Netlify deploy performed by this patch.  
+**Baseline:** `main` `edf4dd91b89c3908e15338e369d5ea1324ba75d6`.
 
-## Exact source comparison — Previous ZIP vs current GitHub
+## Root cause and solution
 
-Nine previous ZIP code paths were compared by their Git object blob SHA with the current `main`:
-`package.json`, `assets/yk-mobile-nav.css`, `assets/yk-ui-preferences.css`,
-`assets/yk-ui-preferences.js`, `scripts/build-mobile-ui-polish.mjs`,
-`scripts/build-ui-preferences.mjs`, `tests/mobile-ui-polish.mjs`,
-`tests/ui-preferences.mjs`, `tests/ui-preferences.runtime.mjs`.
+The current `assets/yk-mobile-nav.js` updates the active tab from the URL but uses native links when travelling to separate HTML documents. Those documents are loaded as full pages, so their transition looks abrupt even though `/#home` → `/#study-hub` in-page scrolling looks smooth.
 
-**9/9 MATCH.** The production `main` and the previous patch's code files are identical.
-GitHub `main` was independently checked to remain `bf359245609c015d331d3a3715fb030d144ccf57` before packaging.
-No source SHA conflict was found for these nine files. This comparison is not a full repository audit.
+The v7.87.5 change uses modern CSS cross-document View Transitions. Both pages must opt-in, stay on the same origin, and be supported by the user's browser. It animates the root with a short 170ms outgoing / 250ms incoming fade-and-slide and keeps the 5-tab bar as a named transition element. There are **no JS route interceptors or artificial loading delays**. Original navigation is the fallback in older browsers.
 
-## Root cause analysis
+### Pages included
 
-1. **Home/Exam space:** The old stylesheet only subtracted 14px / reduced one section margin; the real vertical gap also included wrapper padding, section padding and fixed header offset. In the new patch, mobile-only CSS removes duplicate top padding without altering the header safe-area, and a small JS helper measures the final rendered header-to-content gap and limits the trim to 130px. Target visible gap: about **14px**.
-2. **JLPT tap feedback:** The legacy mobile click handler immediately scrolled to the destination. Red menu feedback using `:hover/:active` was not reliably visible on touch. A capturing handler now adds a temporary class and delays the **original click handler** by 170ms only for normal mobile JLPT clicks. It does not change the link destination. Reduced-motion users bypass the delay.
-3. **Cache concern:** Previous `yk-mobile-nav.css?v=2` could remain cached despite edits. The new assets have unique names with `?v=7875rc1` and are injected once per built page.
+`index.html`, `mock-exams.html`, `video-class.html`, `dashboard.html`, `admin-dashboard.html`, `student-dashboard.html`, `member-dashboard.html`. All others, including `login.html` and individual timed `exams/*.html`, remain outside the transition set.
 
-## Files delivered
+### Before/after details
 
-| Path | Operation | Reason |
-|---|---|---|
-| `scripts/build-mobile-ui-polish.mjs` | MODIFY | Preserve v1 scroll replacement and inject new versioned CSS/JS into dist HTML |
-| `assets/yk-v7875-rc1-ui.css` | ADD | Mobile spacing, touch-highlight CSS, reduced-motion and light theme treatment |
-| `assets/yk-v7875-rc1-ui.js` | ADD | Actual element gap measurement, original JLPT click replay |
-| `tests/v7875-mobile-fix.mjs` | ADD | Source and generated HTML QA |
-| `tests/v7875-runtime.mjs` | ADD | Isolated click/spacing/accessibility QA |
-| `tests/v7875-browser-smoke.py` | ADD | Optional local headless Chromium smoke tests |
+- Home/Study in-page scroll: **unchanged**.
+- Home ↔ Exam Center / Video / Account: **opt-in to animated same-origin navigation** on mobile (720px or less) when the browser supports the API.
+- Bottom tabbar: named transition snapshot for continuity; all 5 links untouched.
+- Desktop / prefers-reduced-motion: no effect.
+- Light/dark theme: existing prepaint theme init and CSS remain unchanged.
+- Login / Payment / YKCR / Exam logic and migrations: no modifications included.
 
-`package.json`, old Mobile Nav CSS/JS and Language/Theme implementation are **not modified**. No backend, migrations, login, payment, YKCR or exam engine files are included.
+## Previous ZIP ↔ GitHub comparison
 
-## QA results
+Previous reference: `YEKUN_Official_Website_v7.87.5-rc1_Mobile_UI_Fix.zip` + older `YEKUN_Main_UI_Refresh_Language_Theme_Preview_v1.zip` for package.json. Checked against GitHub `main` on November 15, 2026:
 
-| Test | Result | Scope |
-|---|---|---|
-| Previous ZIP vs GitHub file-hash comparison | PASS | 9/9 code paths match |
-| Previous source posttest | PASS | Mobile nav, UI polish, Language Dropdown / Theme |
-| New JS syntax (`node --check`) | PASS | New builder, interaction JS and tests |
-| New CSS parser (`tinycss2`) | PASS | Syntactic integrity (not design quality) |
-| 42-page synthetic build | PASS | Old nav build + new builder + UI preferences builder |
-| Legacy release fixture tests | PASS | Mobile Nav, JLPT, Exam DOM, Language and Theme retained |
-| New release source tests | PASS | New assets once per built page; original paths present |
-| Isolated runtime | PASS | 14px target, tap feedback, original click replay, reduced-motion |
-| **Real local Chromium 360/390/430/720px** | **PASS** | Simulated Home/Exam layout, 14px gap, JLPT touch animation |
-| Real local Chromium 721px | PASS | Desktop not changed |
-| Real local Chromium reduced-motion | PASS | No delayed click |
-| Full original repository `npm test` / `npm run build` | **NOT RUN** | Full repository archive not locally available |
-| Netlify Deploy Preview (new RC) | **NOT RUN** | No push/PR/deploy performed |
-| Real Android/iOS devices, production login/payment/YKCR | **NOT RUN** | Explicitly requires Preview QA / isolated backend testing |
+**7/7 byte-level Git blob SHA matches** — 6 RC1 code paths (`scripts/build-mobile-ui-polish.mjs`, `assets/yk-v7875-rc1-ui.css`, `assets/yk-v7875-rc1-ui.js`, `tests/v7875-mobile-fix.mjs`, `tests/v7875-runtime.mjs`, `tests/v7875-browser-smoke.py`) + the older ZIP's `package.json`.
 
-The 42-page fixture is **synthetic**, not a full original-site build. The Chromium layout is an isolated local test page using the new CSS/JS; this does not prove the exact production layout, mobile touch/browser caching or every light-theme contrast case.
+The previous release's injected spacing fixes, JLPT animation, language dropdown and theme remain in the repository; this additive patch does not overwrite them.
 
-## Compatibility / release caution
+## Tests performed
 
-- `scripts/build-public-v7841.mjs` copies new assets from the normal `assets/` tree into `dist`; the existing `postbuild` already runs `build-mobile-ui-polish.mjs` and `build-ui-preferences.mjs` afterward.
-- The existing source test asserts `package.json` version `7.87.4`; **this RC's version is recorded in `PATCH_MANIFEST.json`**, and package.json is intentionally untouched. Package version bump requires separately updating pre-existing version assertions and complete regression QA.
-- No existing navigation destination is modified. Only standard primary JLPT taps on mobile receive the 170ms visual feedback, using a re-fired native link click. Test in real mobile browsers before merge.
-- Header trim is scoped to first-screen Home and dedicated Exam pages, skips off-screen scrolled content / active exams; visible #home anchors can be trimmed and viewport <=720px only. The JS trim is capped and avoids changes when scrolled down.
-- Light Theme still needs inspection on Login, Admin/Student/Member Dashboards, Exam dialogs and learning sections.
-- Because prior ZIP/GitHub mismatch would invalidate compatibility, **stop if `main` changed beyond `bf359245609c015d331d3a3715fb030d144ccf57`** before applying the files.
-- This version was **not pushed or deployed**. No Stable designation until full build + Deploy Preview + real-device QA and Boss approval.
+| Test | Result |
+|---|---|
+| Previous ZIP versus GitHub main SHA comparison | **PASS (7/7)** |
+| JavaScript syntax (`node --check`) | **PASS** |
+| New source guard test (`node tests/v7875-page-transitions.mjs`) | **PASS** |
+| CSS parse using tinycss2 | **PASS** |
+| Generated fixture injection into seven expected pages | **PASS** |
+| Generated fixture HTML, route and preservation tests (`--release`) | **PASS** |
+| Real Chrome transitions | **NOT TESTED** — local Chromium blocked localhost via managed `URLBlocklist` policy |
+| Full ORIGINAL repository `npm test`, `npm run build` | **NOT TESTED** — full repository source unavailable in container |
+| Netlify Deploy Preview, Android/iOS UX | **NOT TESTED** — needs feature-branch deployment and user QA |
+| Production Login / Payment / YKCR E2E | **NOT TESTED** — avoid live data writes |
 
-## Test evidence
+The locally generated HTML files were deliberately **synthetic fixtures, not the full original repository output**. Source injection tests cannot certify the full production build or browser experience.
 
-See `QA_TEST_LOG.txt` and `BROWSER_QA_LOG.txt` in this ZIP. Browser smoke needs local Chromium + Python Playwright and is optional; ordinary `npm test` and `npm run build` need only the original project dependencies.
+## Compatibility warnings
+
+1. **`package.json` core version remains `7.87.4`**; repository legacy tests explicitly pin it (including `tests/v7874-source.mjs` and earlier v7.87 tests). The **update release** is named `7.87.5` in the filename and `PATCH_MANIFEST.json`. Avoid changing the legacy package version without updating all pinned tests.
+2. The `postbuild` chain appends the new injection after `build-ui-preferences.mjs`; this preserves the earlier RC1 spacing and JLPT patch, and the language/theme builder. One source file is updated (`package.json`) and 4 are added.
+3. **Cross-document transition support is browser dependent**. The browser skips transitions when navigating to an excluded route, crossing origins, navigating via browser UI, handling redirects, or loading too slowly. The underlying links still work normally.
+4. The bottom menu is hidden while an exam is active or a modal is open by existing code. This patch does not change the hiding logic.
+5. Recheck the verified GitHub base SHA before applying the package; do not blindly overwrite `package.json` if main changed.
+
+## Manual QA before merge
+
+- From mobile Home: tap **Exam**, then **Video**, then **Home**; observe fade-and-slide without blank flashes.
+- From Video: tap **Study** (home section), **Account**, then back; active highlights and URLs correct.
+- Check both Dark and Light themes, especially switching then navigating to another page.
+- Check 360/390/430/720px phones and desktop >720px.
+- Check Android Chrome/Samsung Internet and iPhone Safari if possible; verify `prefers-reduced-motion` disables the effect.
+- Enter an exam only with a safe test account/environment; ensure active exam timer, answer progress, resume and payments are unaffected.
+- Keep the PR in Draft until full npm test/build, Netlify Preview and user acceptance succeed.
+
+Reference: [MDN `@view-transition`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@view-transition) and [Chrome cross-document View Transitions](https://developer.chrome.com/docs/web-platform/view-transitions/cross-document).

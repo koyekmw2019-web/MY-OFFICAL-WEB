@@ -1,0 +1,7 @@
+BROWSER SMOKE — BLOCKED (NOT A PASS)
+Test: python tests/v7875-browser-smoke.py (Playwright + Chromium 144)
+Scenario: open synthetic localhost http://127.0.0.1:<port>/index.html
+Observed: playwright._impl._errors.Error: Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR
+Cause: this environment's managed Chromium URLBlocklist policy is '*' (all URLs blocked).
+Outcome: no cross-document visual/smoothness verification was possible.
+Action: run the included browser smoke on a local development machine or test a Netlify Deploy Preview on a real phone.
