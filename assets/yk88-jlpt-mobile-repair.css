@@ -1,0 +1,40 @@
+/* STUDYING WITH YE KUN v7.87.6 — mobile JLPT overflow / anchor repair.
+ * Progressive UI fix only. Does not modify lesson data, auth, payment or exams.
+ * Designed for existing mobile navigation and sticky learning header. */
+@media (max-width: 900px) {
+  /* A flex-scrolling tabstrip inside a CSS grid must not set the grid's min-content width. */
+  body.yk82-page .yk82-columns { grid-template-columns: minmax(0, 1fr) !important; min-width: 0; max-width: 100%; }
+  body.yk82-page .yk82-columns > div,
+  body.yk82-page .yk82-main,
+  body.yk82-page .yk82-block,
+  body.yk82-page #yk82Content,
+  body.yk82-page .yk82-lesson,
+  body.yk82-page .yk821-lesson-companion { min-width: 0; max-width: 100%; }
+  body.yk82-page #yk82Tabs {
+    display:flex !important;
+    flex-wrap:nowrap !important;
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    overflow-x:auto !important;
+    overflow-y:clip;
+    white-space:nowrap;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior-inline:contain;
+    scroll-snap-type:x proximity;
+  }
+  body.yk82-page #yk82Tabs > .yk82-tab { flex:0 0 auto; scroll-snap-align:start; }
+  body.yk82-page .yk82-top,
+  body.yk82-page .yk82-top-inner { max-width: 100%; }
+}
+@media (max-width: 720px) {
+  /* clip avoids creating an extra scroll container; sticky header still works. */
+  html:has(> body.yk82-page), body.yk82-page { max-width:100%; overflow-x:clip; }
+  body.yk82-page { width:100%; }
+  body.yk82-page .yk82-main { width:100%; padding-bottom:calc(124px + env(safe-area-inset-bottom, 0px)); }
+  body.yk82-page #yk82Title,
+  body.yk82-page #yk82Tabs { scroll-margin-top:var(--yk88-sticky-offset, 150px) !important; }
+  html:has(> body.yk82-page) { scroll-padding-top:var(--yk88-sticky-offset, 150px) !important; }
+  body.yk82-page .yk821-lesson-companion > div { min-width:0; overflow-wrap:anywhere; }
+  body.yk82-page #yk-mobile-nav { max-width: min(520px, calc(100vw - 24px)); }
+}

@@ -38,3 +38,6 @@ console.log(`PASS v7.87.5: transition CSS injected in ${count} approved routes; 
 // v7.87.6: Automatically activate the existing JLPT UX assets in the public output.
 // Runs as part of npm run build: no .bat, Python, or manual editing of large HTML files.
 await import('./build-v7876-jlpt-deploy.mjs');
+
+// v7.87.6 mobile QA repair (after all public assets, menus, and grammar links).
+await import('./build-v7876-jlpt-mobile-repair.mjs');
