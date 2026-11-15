@@ -1,33 +1,38 @@
-# STUDYING WITH YE KUN — v7.87.6 One-Click JLPT UX Correction
+# STUDYING WITH YE KUN — v7.87.6 Auto Build Fix QA
 
-## Why this revision exists
-The previous ZIP contained new assets and a patch script; copying the ZIP into the GitHub repository **did not modify** three existing source files. The website therefore remained visually unchanged. This new ZIP includes an unmistakable **`START_HERE_APPLY_V7876.bat`** launcher that checks and applies the patch with one double-click.
+## Root cause
+The earlier patch installed `yk88` UI assets but the source files
+`index.html`, `study/jlpt-learning.html` and `assets/yk-jlpt-learning-v782-page.js`
+remained unchanged. Also, publishing splits the original homepage into
+`dist/index.html` and `dist/mock-exams.html` *before* postbuild. A single
+source-template patch would not correctly update all published pages.
 
-## Baseline examined
-GitHub official repository `koyekmw2019-web/MY-OFFICAL-WEB`, `main` commit `a4fadc2c826079dda80d0ee8a3cbca939fecdae6`.
+## Solution
+Extend the existing postbuild script (`scripts/build-page-transitions-v7875.mjs`)
+with a safe importer (`scripts/build-v7876-jlpt-deploy.mjs`) that applies
+all expected UI features directly to **generated** public output, including
+13 exam pages (center and 12 individual exams), not just the homepage.
 
-- New supplementary assets already present in `main`.
-- Source files that still needed the patch:
-  - `index.html`
-  - `study/jlpt-learning.html`
-  - `assets/yk-jlpt-learning-v782-page.js`
-- Current Netlify production deploy `6af9c01fea9cdd470f17ca21` (ready) was not changed.
+- `dist/index.html`: only one CTA, lower `Open All Lessons`, localized label
+- `dist/mock-exams.html`: Guest Access explanation, compact plan modal
+- `dist/exams/*.html`: same Guest Access/Plans UI without changing backend
+- `dist/study/jlpt-learning.html`: bilingual Explore CTA, hero-image removal
+- `dist/assets/yk-jlpt-learning-v782-page.js`: grammar-card detail links
+- Brand/grammar detail page: already included in current GitHub source
 
-## Design scope
-- Remove upper duplicate Open All Lessons and replace lower Start Learning with translated Open All Lessons.
-- Visible Myanmar Explore Lessons sublabel, aligned with Daily Practice; remove hero Student/Teacher block; show countdown sooner.
-- Guest Access copy about verified students and nonstudents' free attempt + paid plans. Remove duplicate mini plan box.
-- Compact clickable Exam Plans with bank transfer guidance and existing checkout.
-- Sticky-header scroll offset for lesson heading/tabs, compact horizontally scrollable tabs on mobile, and removal of desktop empty second hero column.
-- Grammar card links to a new page with **STUDYING WITH YE KUN** logo, descriptions in Myanmar+English, ≥3 JA/MY/EN examples with crimson grammar underline and **no MY/EN labels** in examples.
+## Tested now
+- Node `--check` on both build files — PASS
+- Synthetic 7-route existing transition test — PASS
+- Synthetic 13-route exam UI patch + home/JLPT/grammar — PASS (15 assertions)
+- New `tests/v7876-deployed-output.mjs` on synthetic dist — PASS
+- No server/backend protected paths edited — PASS (scope review)
+
+## Not yet tested
+- Full actual website `npm test` and `npm run build`
+- Netlify Draft PR Deploy Preview
+- Real Android phone visual screenshots / backend integration smoke
+- All 30 pattern translations manually proofread by native speakers
 
 ## Safety
-- Launcher prevents applying while on `main`/`master`.
-- Script processes existing source anchors before writing and saves pre-apply backups outside the repository.
-- Modified existing paths: only `index.html`, `study/jlpt-learning.html`, `assets/yk-jlpt-learning-v782-page.js`.
-- No server, Netlify Functions, SQL, authentication or YKCR changes.
-
-## QA status
-- ZIP / syntax / static fixture checks: inspect generation log.
-- Full `npm test`, `npm run build`, Netlify Deploy Preview, real phone checks: **PENDING**. Must not claim Stable or Production-ready.
-- Content editorial proofread: **PENDING**.
+Stops build if expected original anchors or assets differ.
+Does not modify `main`/production automatically or rewrite tracked source HTML.

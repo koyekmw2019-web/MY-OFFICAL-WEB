@@ -1,7 +1,5 @@
-/** STUDYING WITH YE KUN — v7.87.5 additive, public-only page transition build.
- * Runs after the existing mobile navigation, RC1 polish and language/theme builders.
- * Original HTML, navigation JS, database, Identity, YKCR, payment and exams untouched.
- * Opt in ONLY explicitly listed public destinations and role-router shells.
+/** STUDYING WITH YE KUN — existing v7.87.5 page transition build plus v7.87.6 dist-only UX.
+ * Runs after existing mobile nav and UI preferences; protected source/build/tests unchanged.
  */
 import assert from 'node:assert/strict';
 import {readFileSync, writeFileSync, existsSync} from 'node:fs';
@@ -31,9 +29,12 @@ for (const page of pages) {
   assert(source.includes('id="yk-mobile-nav"'), `${page}: original 5-tab navigation missing`);
   assert(source.includes('yk-ui-preferences.css?v=1'), `${page}: original language and theme missing`);
   assert(!source.includes(href), `${page}: transition CSS already injected, refusing duplicate`);
-  // The new CSS is the last stylesheet; original theme and nav CSS remain unchanged.
   writeFileSync(filename, source.replace('</head>', `${link}\n</head>`), 'utf8');
   count++;
 }
 assert.equal(count, pages.length);
 console.log(`PASS v7.87.5: transition CSS injected in ${count} approved routes; no login/answer-form route enabled`);
+
+// v7.87.6: Automatically activate the existing JLPT UX assets in the public output.
+// Runs as part of npm run build: no .bat, Python, or manual editing of large HTML files.
+await import('./build-v7876-jlpt-deploy.mjs');

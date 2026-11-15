@@ -1,30 +1,23 @@
 {
   "project": "STUDYING WITH YE KUN Official Website",
-  "release_ui_version": "v7.87.6",
-  "package": "ONE_CLICK_JLPT_UX_FIX",
-  "package_type": "Incremental QA patch (not a complete website)",
-  "baseline_git_sha": "a4fadc2c826079dda80d0ee8a3cbca939fecdae6",
-  "status": "Preview candidate; full website build and Netlify preview pending",
-  "apply_entrypoint": "START_HERE_APPLY_V7876.bat",
-  "protected_branches": [
-    "main",
-    "master"
+  "version": "v7.87.6",
+  "package": "Auto Build Activation Fix",
+  "type": "QA incremental patch, not full site",
+  "baseline_git_commit": "686c595d401aadfec57f367c72d7c74ebbb5fb8e",
+  "production_modified": false,
+  "modified_files": [
+    "scripts/build-page-transitions-v7875.mjs"
   ],
-  "existing_source_paths_modified_on_apply": [
-    "index.html",
-    "study/jlpt-learning.html",
-    "assets/yk-jlpt-learning-v782-page.js"
+  "new_files": [
+    "scripts/build-v7876-jlpt-deploy.mjs",
+    "tests/v7876-deployed-output.mjs"
   ],
-  "file_sha256": {
-    "QA_REPORT.md": "06e1e31c8a55fcb76ca63d7d10849346713636272a625b1f40c70e3f633e2578",
-    "READ_ME_FIRST.txt": "700d4874cafd11183785a5b2d05861eb30f2dea32546f74a46011f50f06efd26",
-    "START_HERE_APPLY_V7876.bat": "bf0e718b693f98b79d712abd16e27d2eb338f35df50ec2ad1ce8c7b42bb00ae1",
-    "assets/yk88-grammar-detail.js": "b0b79500254cce5a7487a94aaa6b0c0c2eca9720dada2ca50ed5fe2a71635860",
-    "assets/yk88-grammar-details.json": "35030c304c0cb04405e4712a6dd37b38ce02caf561639e055638600739b7c22e",
-    "assets/yk88-index-ux.css": "9300a2ef9a3fcaca5bad051c776a83f9098e3776a125035bd6ec4f3c570e6b53",
-    "assets/yk88-jlpt-ux.css": "7b6cb61dc9d5968b90b79168fdec1f0f24806f78d7d5b222e355596451206747",
-    "study/jlpt-grammar-detail.html": "ae7d3611a2dd7537eacc9ba33c3c0c215d4f52b7d5d38158eb02afb9f698032d",
-    "tests/yk88-jlpt-ux-qa.mjs": "6fe278cb150088a513af628614ffa3308e08bd75c6340027f13874ccfe3c66fe",
-    "tools/apply_jlpt_ux_patch.py": "7f4c84afc2b71ceb34ef509ea4c420b19701a5ca89d0efa51d05d546a2a885ba"
+  "test_status": "fixture PASS; full repo build and live Netlify Preview PENDING",
+  "sha256": {
+    "scripts/build-page-transitions-v7875.mjs": "0d612efdb480321f74010cb2abdcf1b9e3ffdca8074b07a282138d8922d8ffa2",
+    "scripts/build-v7876-jlpt-deploy.mjs": "1d3b00e32e5ac0812afddf56d1084af7d79ec46a8fc65f1471b02657c318b9c1",
+    "tests/v7876-deployed-output.mjs": "6c8fc4056194e57ceba8c3dc44f72f6b77750d447f0f50a464ee937130449875",
+    "READ_ME_FIRST.txt": "60ed7ceafcb76c201a230c8feb5a39cafc05b48436ab425600b3f3958388cee1",
+    "QA_REPORT.md": "0e78821cab47842440492b5943227450de7629b054e265eb2a819d10137698d5"
   }
 }
