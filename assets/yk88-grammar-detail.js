@@ -51,7 +51,7 @@
         </section>
         <section class="yk88-examples" aria-label="Trilingual grammar example sentences">
           <h2>例文 · ဥပမာဝါကျများ · Examples (${examples.length})</h2>
-          ${examples.map((e,i) => `<div class="yk88-example"><span class="yk88-example-count">例文 ${i+1}</span><p lang="ja" class="yk88-ja">${markSentence(e.ja,e.focus)}</p><p lang="my"><span class="yk88-lang-tag">MY</span>${safe(e.my)}</p><p lang="en"><span class="yk88-lang-tag">EN</span>${safe(e.en)}</p></div>`).join('')}
+          ${examples.map((e,i) => `<div class="yk88-example"><span class="yk88-example-count">例文 ${i+1}</span><p lang="ja" class="yk88-ja">${markSentence(e.ja,e.focus)}</p><p lang="my" class="yk88-example-my">${safe(e.my)}</p><p lang="en" class="yk88-example-en">${safe(e.en)}</p></div>`).join('')}
           <p class="yk88-mark-help">အနီရောင် မျဉ်းသားထားတဲ့ စာသားက လေ့လာနေတဲ့ Grammar Pattern ပါ။</p>
         </section>
         <div class="yk88-detail-actions"><button type="button" id="yk88Bookmark" class="yk88-button"></button><button type="button" id="yk88Learned" class="yk88-button yk88-button-primary"></button></div>

@@ -27,8 +27,9 @@
 .yk88-example-count{font-size:12px;letter-spacing:.07em;color:#ee97aa;font-weight:800}
 .yk88-example p{margin:12px 0 0;color:#ddd;line-height:1.8;overflow-wrap:break-word}
 .yk88-example p.yk88-ja{font-size:clamp(19px,3.5vw,25px);color:#fff;line-height:1.95;word-break:normal}
+.yk88-example-my{font-size:18px;color:#f3eef1;font-weight:600}
+.yk88-example-en{font-size:16px;color:#c9c3cb}
 .yk88-pattern-mark{color:#fff;background:transparent;font-weight:850;text-decoration:underline;text-decoration-color:#f45170;text-decoration-thickness:3px;text-underline-offset:6px}
-.yk88-lang-tag{color:#f4a6b4;font-size:11px;font-weight:900;letter-spacing:.1em;margin-right:10px}
 .yk88-mark-help,.yk88-disclaimer{font-size:12px;color:#b1adb7;line-height:1.8}
 .yk88-detail-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px}
 .yk88-button{display:inline-flex;justify-content:center;align-items:center;padding:12px 15px;border-radius:13px;border:1px solid #73616b;background:#30262e;color:#fff;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none}

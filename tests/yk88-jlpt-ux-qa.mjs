@@ -17,6 +17,7 @@ assert(!study.includes('class="yk821-hero-art"'),'Student/Teacher hero art not r
 assert(study.includes('yk88-jlpt-ux.css'),'Responsive fixes not linked');
 assert(page.includes('yk88-grammar-card') && page.includes('/study/jlpt-grammar-detail.html'),'Card does not link to detail page');
 assert(detail.includes('yk88-grammar-detail.js') && script.includes('markSentence'),'Grammar detail view not linked');
+assert(!script.includes('yk88-lang-tag'),'Old MY/EN labels should not remain in examples');
 let count=0;
 for(const level of ['N5','N4','N3','N2','N1']){
   for (const item of original.levels[level].grammar){

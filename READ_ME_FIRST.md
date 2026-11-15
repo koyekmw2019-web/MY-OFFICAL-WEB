@@ -1,38 +1,99 @@
-# STUDYING WITH YE KUN — JLPT UX / Grammar Detail QA Patch (2026-11-15)
+# STUDYING WITH YE KUN — v7.87.6 JLPT UX + Grammar Detail QA Patch
 
-**This is an incremental QA patch, NOT a complete website ZIP and NOT a production release.** The intended source is the existing GitHub `main` website (the checked version when authored was `package.json` 7.87.4). Do not merge or deploy to production without testing.
+**This is an incremental QA patch, NOT a complete website ZIP and NOT a production release.**
+It is intended to be applied on the existing official website source repository in a **QA branch only**.
+Do **not** merge directly into `main` or deploy to production without testing.
 
-## Requested changes
+## Included approved updates
 
-1. Study card: remove duplicate upper `Open All Lessons` and rename lower `Start Learning` to `Open All Lessons`; translate that button with the existing MY / EN / JP language switch.
-2. JLPT Learning main: translate `Explore Lessons` into a visible Burmese sublabel, balance button dimensions, remove the big Student/Teacher hero image section so the countdown appears earlier.
-3. Exam Guest Access: explain eligibility in Myanmar / English / Japanese. Verified, actively enrolled STUDYING WITH YE KUN students have free access; others can choose a paid plan. The redundant Exam Plans mini box is removed. Existing account status and server access logic remain unchanged.
-4. Plans: compact, fully clickable 2-column cards on phone. Add explicit instructions to choose a plan, bank transfer, and wait for Admin receipt approval. The existing `checkout` function and payment APIs are left intact.
-5/6. Explore Lessons anchor: preserve lesson title / tabs below the sticky header with CSS scroll offset. This avoids the heading disappearing at the top on mobile.
-7. Grammar: keep the existing card visual arrangement, make the content clickable to a separate detail page with grammar formation, Japanese/Burmese/English explanation, **three example sentences**, Burmese and English translation, and crimson underlines showing the grammar used. Reuse existing Bookmark / Mark Learned state (no new DB fields).
+1. **Study Hub JLPT card**
+   - Remove the duplicate upper `Open All Lessons` CTA.
+   - Replace the lower `Start Learning` CTA with `Open All Lessons`.
+   - Keep it translatable with the existing MY / EN / JP language system.
 
-This patch adds two **new supplementary examples** to each of the **30 currently displayed grammar cards** (6 for each of N5–N1). It does **not** install the separate archived 509-pattern library. Content is editorial draft and should receive native Japanese + Burmese proofread before publishing.
+2. **JLPT Learning main page**
+   - Add a visible Myanmar sublabel for `Explore Lessons`.
+   - Balance the `Daily Practice` and `Explore Lessons` buttons so they feel visually consistent.
+   - Remove the large Student / Teacher hero image block so the countdown becomes visible earlier on mobile.
 
-## Apply safely (Windows / GitHub Desktop)
+3. **Exam Guest Access**
+   - Add a clear explanation:
+     - active STUDYING WITH YE KUN students can use Student Verify for free access,
+     - non-students can use the one free attempt and then purchase a plan.
+   - Remove the redundant mini Access Plans summary box.
+   - Keep the existing server-side access, login, and payment logic unchanged.
 
-1. Open the existing `MY-OFFICAL-WEB` repository in GitHub Desktop. Before unzipping, **create a new QA branch** from `main` (e.g. `qa/jlpt-ux-grammar-detail`). Do NOT apply directly on production `main`.
-2. Extract this ZIP **into the cloned repository root**, the folder with `index.html` and `package.json`. The ZIP contains only new files and the patch script; existing source files will not be replaced merely by unzipping.
-3. Double-click `APPLY_UPDATE_WINDOWS.bat` (requires Python 3 available through `py -3`). Or from the repository root run:
+4. **Exam Plans modal**
+   - Present plans as compact clickable cards on mobile.
+   - Explain that users should select a plan, transfer by bank, and wait for Admin approval.
+   - Keep the existing `checkout()` flow and backend APIs unchanged.
+
+5. **Explore Lessons anchor / sticky header offset**
+   - Preserve the lesson heading and tabs below the sticky header.
+   - Prevent the top of the learning content from being hidden behind the mobile sticky UI.
+
+6. **Grammar cards → dedicated detail page**
+   - Keep the current grammar card style on the lesson list.
+   - Make each grammar card clickable to a new detail page.
+   - New page header uses the **STUDYING WITH YE KUN** brand and logo.
+   - Show grammar formation, Myanmar explanation, English explanation, and **three example sentences**.
+   - Example block format is:
+     - これは本です。
+     - ဒါက စာအုပ်ဖြစ်ပါတယ်。
+     - This is a book.
+   - **Do not show MY / EN labels** before the example translations.
+   - Underline the grammar pattern in the Japanese sentence with crimson styling.
+   - Reuse existing Bookmark / Mark Learned state. No new DB fields.
+
+## Files included in this ZIP
+
+- `APPLY_UPDATE_WINDOWS.bat`
+- `READ_ME_FIRST.md`
+- `tools/apply_jlpt_ux_patch.py`
+- `study/jlpt-grammar-detail.html`
+- `assets/yk88-grammar-details.json`
+- `assets/yk88-index-ux.css`
+- `assets/yk88-grammar-detail.js`
+- `assets/yk88-jlpt-ux.css`
+- `tests/yk88-jlpt-ux-qa.mjs`
+
+## Safe apply steps
+
+1. In GitHub Desktop, open `MY-OFFICAL-WEB`.
+2. **Fetch / Pull `main` first.**
+3. Create a new QA branch, for example:
+   - `qa/v7.87.6-jlpt-ux-grammar`
+4. Extract this ZIP into the cloned repository root (the folder with `index.html` and `package.json`).
+5. Run:
 
 ```powershell
 python tools/apply_jlpt_ux_patch.py --check
 python tools/apply_jlpt_ux_patch.py
+node tests/yk88-jlpt-ux-qa.mjs
+npm test
+npm run build
 ```
 
-The script refuses to write if expected source anchors differ. It creates backups **next to the repository** (outside GitHub tracking). It modifies only `index.html`, `study/jlpt-learning.html`, `assets/yk-jlpt-learning-v782-page.js`.
-4. Run `node tests/yk88-jlpt-ux-qa.mjs` and the existing `npm test`, `npm run build` in the repository. Fix any failure before continuing.
-5. Push QA branch, inspect Netlify **Deploy Preview** on mobile, including language switching, login states, all 4 plan selections, payment modal (without paying), switching levels/tabs, grammatical highlighting and Back navigation.
-6. Only after approval and QA, consider a PR merge. **Main/production has not been modified by ChatGPT.**
+6. Push the QA branch.
+7. Open a **Draft PR** from the QA branch to `main`.
+8. Check the **Netlify Deploy Preview** on a phone.
+9. Only after QA approval should a merge be considered.
 
 ## Safety boundaries
 
-No SQL, migrations, Netlify functions, student identifiers, YKCR, access authorization, exam attempt counts, bank endpoints, receipt upload, or payment processing logic is changed. The guest explanation describes current policy; server permissions remain the source of truth. A manual Japanese/Myanmar copyedit and real browser tests are needed; do not call this patch Stable until verified.
+This patch is UI/content focused only.
+It does **not** change:
 
-## If a check fails
+- SQL / database schema
+- Netlify functions
+- YKCR sync
+- login / auth flow
+- payment endpoints / receipt upload flow
+- exam attempt rules
+- server-side access control
 
-Do not force the patch or replace unrelated code. The source may have moved since baseline. Keep the current code, and compare changes in GitHub Desktop before proceeding.
+## Status
+
+- Version target: **v7.87.6**
+- Release status: **QA Patch / Preview Candidate**
+- Stable / Production: **NOT YET**
