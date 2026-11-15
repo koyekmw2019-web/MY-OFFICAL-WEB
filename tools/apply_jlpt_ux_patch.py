@@ -6,6 +6,7 @@ changes SQL, auth, Netlify functions, DB or payment endpoints.
 """
 import re
 import sys
+import subprocess
 from pathlib import Path
 from shutil import copy2
 from datetime import datetime
@@ -25,7 +26,7 @@ def patch_index(s):
     s=replace_once(s,'<a class="yk82-pill" href="/study/jlpt-learning.html">Open All Lessons ↗</a>','', 'Remove duplicate CTA')
     s=replace_once(s,'<a class="yk821-hub-open" href="/study/jlpt-learning.html">Start Learning ↗</a>',
         '<a class="yk821-hub-open" href="/study/jlpt-learning.html">Open All Lessons ↗</a>', 'Move CTA below')
-    guide='STUDYING WITH YE KUN students can use the exams free after Student Verification while their course access is active. Non-students can purchase an exam practice plan through View Plans.'
+    guide='STUDYING WITH YE KUN students can use the exams free after Student Verification while their course access is active. Non-students can use one free attempt per exam type, then purchase an exam practice plan through View Plans.'
     old='<span id="examAccessTextV728">One free attempt per exam type · Student verification or paid access is available.</span>'
     new=old+f'<p id="yk88AccessGuide" hidden>{guide}</p>'
     s=replace_once(s,old,new,'Add guest access guide')
@@ -46,21 +47,21 @@ def patch_index(s):
     extra='''/* YK88 UX patch */
 Object.assign(V737_TEXT.my,{
  'Open All Lessons ↗':'သင်ခန်းစာအားလုံး ဖွင့်ရန် ↗',
- 'STUDYING WITH YE KUN students can use the exams free after Student Verification while their course access is active. Non-students can purchase an exam practice plan through View Plans.':'STUDYING WITH YE KUN သင်တန်းသားဖြစ်ပါက Student Verify ဖြင့် အတည်ပြုပြီး သင်တန်းသက်တမ်းရှိနေစဉ် စာမေးပွဲများကို အခမဲ့ အသုံးပြုနိုင်ပါတယ်။ သင်တန်းသားမဟုတ်ပါက စာမေးပွဲလေ့ကျင့်ရန် View Plans မှ Plan ကို ရွေးချယ်ဝယ်ယူနိုင်ပါတယ်။',
+ 'STUDYING WITH YE KUN students can use the exams free after Student Verification while their course access is active. Non-students can use one free attempt per exam type, then purchase an exam practice plan through View Plans.':'STUDYING WITH YE KUN သင်တန်းသားဖြစ်ပါက Student Verify ဖြင့် အတည်ပြုပြီး သင်တန်းသက်တမ်းရှိနေစဉ် စာမေးပွဲများကို အခမဲ့ အသုံးပြုနိုင်ပါတယ်။ သင်တန်းသားမဟုတ်ပါက စာမေးပွဲအမျိုးအစားတစ်ခုလျှင် အခမဲ့ ၁ ကြိမ် ဖြေဆိုနိုင်ပြီး ထပ်မံလေ့ကျင့်ရန် View Plans မှ Plan ကို ရွေးချယ်ဝယ်ယူနိုင်ပါတယ်။',
  'To buy a plan, select the plan you want below. Then follow the bank transfer steps.':'Plan ဝယ်ယူရန် အောက်ပါ Plan များထဲမှ မိမိလိုချင်သော Plan ကို နှိပ်ပြီး ရွေးချယ်ပါ။ ထို့နောက် ဘဏ်ငွေလွှဲရန် လမ်းညွှန်ချက်များအတိုင်း ဆက်လုပ်ပါ။',
  'Select to purchase this plan':'ဒီ Plan ကို ဝယ်ယူရန် နှိပ်ပါ',
  'Access begins only after an Admin approves the payment receipt.':'ငွေလွှဲပြေစာကို Admin က အတည်ပြုပြီးမှသာ Access စတင်အသုံးပြုနိုင်ပါမယ်။'
 });
 Object.assign(V737_TEXT.ja,{
  'Open All Lessons ↗':'すべてのレッスンを開く ↗',
- 'STUDYING WITH YE KUN students can use the exams free after Student Verification while their course access is active. Non-students can purchase an exam practice plan through View Plans.':'STUDYING WITH YE KUN の受講生は在籍期間内に学生認証をすると試験を無料で利用できます。受講生以外の方は「View Plans」から練習用プランを購入できます。',
+ 'STUDYING WITH YE KUN students can use the exams free after Student Verification while their course access is active. Non-students can use one free attempt per exam type, then purchase an exam practice plan through View Plans.':'STUDYING WITH YE KUN の受講生は在籍期間内に学生認証をすると試験を無料で利用できます。受講生以外の方は試験種類ごとに1回無料で受けられ、追加練習には「View Plans」から練習用プランを購入できます。',
  'To buy a plan, select the plan you want below. Then follow the bank transfer steps.':'購入したいプランを下から選択し、銀行振込の案内に従って手続きを進めてください。',
  'Select to purchase this plan':'このプランを選んで購入',
  'Access begins only after an Admin approves the payment receipt.':'振込明細を管理者が承認した後にアクセスが有効になります。'
 });
 '''
     s=replace_once(s,'const V737_ORIGINAL_ATTR = new WeakMap();',extra+'const V737_ORIGINAL_ATTR = new WeakMap();','Localize new text')
-    s=replace_once(s,'</head>','<link rel="stylesheet" href="/assets/yk88-index-ux.css?v=1">\n</head>','Load index CSS')
+    s=replace_once(s,'</head>','<link rel="stylesheet" href="/assets/yk88-index-ux.css?v=7876fix">\n</head>','Load index CSS')
     return s
 
 def patch_study(s):
@@ -72,7 +73,7 @@ def patch_study(s):
     art_start=s.index('  <div class="yk821-hero-art"')
     art_end=s.index('\n</section>',art_start)
     s=s[:art_start]+s[art_end:]
-    s=replace_once(s,'</head>','<link rel="stylesheet" href="/assets/yk88-jlpt-ux.css?v=1">\n</head>','Load JLPT UX CSS')
+    s=replace_once(s,'</head>','<link rel="stylesheet" href="/assets/yk88-jlpt-ux.css?v=7876fix">\n</head>','Load JLPT UX CSS')
     return s
 
 def patch_lesson_js(s):
@@ -96,6 +97,14 @@ def main():
         result[p]=(old,fn(old))
     if '--check' in sys.argv:
         print('PASS: source anchors verified; patch can apply without modifying files.');return
+    # A direct run on production main is forbidden; users must create a QA branch.
+    result_git=subprocess.run(['git','branch','--show-current'],cwd=ROOT,capture_output=True,text=True,check=False)
+    if result_git.returncode!=0 or not result_git.stdout.strip():
+        raise ValueError('Git branch not detected. Open this patch inside the official GitHub repository and switch to a QA branch first.')
+    branch=result_git.stdout.strip()
+    if branch in ('main','master'):
+        raise ValueError('Protected branch: '+branch+'. Create / switch to a QA branch in GitHub Desktop BEFORE applying. No files changed.')
+    print('SAFE QA BRANCH:',branch)
     stamp=datetime.now().strftime('%Y%m%d-%H%M%S')
     backup=ROOT.parent/(ROOT.name+'_YK88_BACKUP_'+stamp)
     for p,(old,new) in result.items():

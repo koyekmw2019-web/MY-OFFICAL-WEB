@@ -1,38 +1,33 @@
-# YEKUN Official Website v7.87.6 — JLPT UX + Grammar Detail QA Patch
+# STUDYING WITH YE KUN — v7.87.6 One-Click JLPT UX Correction
 
-## Package
-- Type: Incremental QA Patch ZIP
-- Version: v7.87.6
-- Scope: Study Hub JLPT CTA cleanup, JLPT main UX polish, Guest Access copy, compact Exam Plans modal, sticky header scroll offset, Grammar Detail Page
+## Why this revision exists
+The previous ZIP contained new assets and a patch script; copying the ZIP into the GitHub repository **did not modify** three existing source files. The website therefore remained visually unchanged. This new ZIP includes an unmistakable **`START_HERE_APPLY_V7876.bat`** launcher that checks and applies the patch with one double-click.
 
-## Included source files
-- tools/apply_jlpt_ux_patch.py
-- study/jlpt-grammar-detail.html
-- assets/yk88-grammar-details.json
-- assets/yk88-index-ux.css
-- assets/yk88-jlpt-ux.css
-- assets/yk88-grammar-detail.js
-- tests/yk88-jlpt-ux-qa.mjs
-- APPLY_UPDATE_WINDOWS.bat
-- READ_ME_FIRST.md
+## Baseline examined
+GitHub official repository `koyekmw2019-web/MY-OFFICAL-WEB`, `main` commit `a4fadc2c826079dda80d0ee8a3cbca939fecdae6`.
 
-## Static QA checks completed in package
-- Patch anchors reviewed against expected existing source: designed to safety-stop if anchors differ
-- Grammar detail data records: 30 / 30 present
-- Example sentence coverage: minimum 3 examples per grammar card
-- Example rendering updated: no MY / EN labels before translations
-- Header branding on detail page: STUDYING WITH YE KUN logo + brand header included
+- New supplementary assets already present in `main`.
+- Source files that still needed the patch:
+  - `index.html`
+  - `study/jlpt-learning.html`
+  - `assets/yk-jlpt-learning-v782-page.js`
+- Current Netlify production deploy `6af9c01fea9cdd470f17ca21` (ready) was not changed.
 
-## Remaining manual QA before merge
-1. Mobile check on Netlify Deploy Preview
-2. Language switching check (MY / EN / JP)
-3. Guest Access guide rendering for logged-out vs logged-in users
-4. Plan selection modal visual check on phone
-5. Explore Lessons anchor scrolling check
-6. Grammar card → detail page navigation
-7. Bookmark / Mark Learned state continuity
-8. Full `npm test` and `npm run build`
+## Design scope
+- Remove upper duplicate Open All Lessons and replace lower Start Learning with translated Open All Lessons.
+- Visible Myanmar Explore Lessons sublabel, aligned with Daily Practice; remove hero Student/Teacher block; show countdown sooner.
+- Guest Access copy about verified students and nonstudents' free attempt + paid plans. Remove duplicate mini plan box.
+- Compact clickable Exam Plans with bank transfer guidance and existing checkout.
+- Sticky-header scroll offset for lesson heading/tabs, compact horizontally scrollable tabs on mobile, and removal of desktop empty second hero column.
+- Grammar card links to a new page with **STUDYING WITH YE KUN** logo, descriptions in Myanmar+English, ≥3 JA/MY/EN examples with crimson grammar underline and **no MY/EN labels** in examples.
 
-## Release policy
-- Do not merge directly into `main`
-- Do not call Stable until Preview QA is complete and approved
+## Safety
+- Launcher prevents applying while on `main`/`master`.
+- Script processes existing source anchors before writing and saves pre-apply backups outside the repository.
+- Modified existing paths: only `index.html`, `study/jlpt-learning.html`, `assets/yk-jlpt-learning-v782-page.js`.
+- No server, Netlify Functions, SQL, authentication or YKCR changes.
+
+## QA status
+- ZIP / syntax / static fixture checks: inspect generation log.
+- Full `npm test`, `npm run build`, Netlify Deploy Preview, real phone checks: **PENDING**. Must not claim Stable or Production-ready.
+- Content editorial proofread: **PENDING**.

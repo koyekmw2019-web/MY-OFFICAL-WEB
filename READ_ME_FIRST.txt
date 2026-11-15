@@ -1,43 +1,49 @@
-STUDYING WITH YE KUN — v7.87.5 Native Smooth Transition Fix 02
-==============================================================
-IMPORTANT: PATCH ZIP, NOT A FULL WEBSITE ZIP.
-Base GitHub main: c842bdde5bb590ac3bb9ad44e87d769b003563c2
-Base release label: v7.87.5. Core package.json still 7.87.4 due legacy compatibility assertions.
+STUDYING WITH YE KUN - v7.87.6 JLPT UX + GRAMMAR DETAIL
+=========================================================
+IMPORTANT: THIS VERSION FIXES THE PREVIOUS ZIP THAT DID NOT CHANGE THE UI.
 
-WHAT CHANGED
-- Removes horizontal movement of entire screen when navigating to Exam / Video / Account.
-- Separately snapshots the existing header and five-tab bottom nav so they stay visually anchored.
-- Soft content fade; dark/light-color canvas prevents a white/black flash behind transitions.
-- Supports reduced-motion fallback, default browser navigation on unsupported browsers.
-- CSS cache bust: ?v=7875native2.
+WHY NOTHING CHANGED BEFORE:
+  The previous ZIP copied new CSS / JS / JSON files, but did NOT edit the 3
+  existing pages. The apply script was not run. Netlify therefore kept showing
+  the old website even though its build succeeded.
 
-GITHUB DESKTOP (DO NOT CHANGE PRODUCTION WITHOUT APPROVAL)
-1. Fetch Origin. Confirm main baseline matches the SHA shown above before replacing files.
-2. Create NEW branch: fix/v7875-native-transition-02
-3. Extract ZIP; overwrite ONLY these THREE code files, preserving folders:
-   assets/yk-page-transitions-v7875.css
-   scripts/build-page-transitions-v7875.mjs
-   tests/v7875-page-transitions.mjs
-   Other files in the ZIP are documentation only.
-4. In GitHub Desktop Changes confirm 3 modified code files. Do not replace project folder.
-5. Run locally from complete repository:
-   npm test
-   npm run build
-   If either fails, DO NOT MERGE, and share the first full error in the log.
-6. Commit to the new branch, Push Origin, open DRAFT Pull Request.
-7. On Netlify Deploy Preview, test Home -> Exam -> Video -> Account -> Home
-   at 360px and 390px, black and white themes; check Android Chrome / Samsung Internet.
-   Check hamburger-menu navigation, screen flashing, five-tab bar, Login, Exam Start,
-   Back button, existing exam auto-save, and motion-reduced setting.
-8. Merge to main/production ONLY after explicit approval and full QA.
+THIS ZIP REQUIRES ONE DOUBLE-CLICK. NO MANUAL COMMANDS TO APPLY THE PATCH.
 
-BUILD FIX 01
-GitHub main already contains the Build Fix 01 change to tests/ui-preferences.mjs.
-This ZIP does NOT revert or replace that file or change package.json scripts.
+Step 1: Open GitHub Desktop. Fetch/Pull main FIRST.
+Step 2: Create NEW branch from main:
+        qa/v7.87.6-jlpt-oneclick
+        (DO NOT work on main.)
+Step 3: Extract this ZIP INTO YOUR REPOSITORY ROOT (same folder as index.html
+        and package.json). Keep folder structure. Do NOT extract into a nested
+        YEKUN_v... subfolder.
+Step 4: Double-click:
+        START_HERE_APPLY_V7876.bat
+Step 5: The window MUST show:
+        UPDATED: index.html
+        UPDATED: study/jlpt-learning.html
+        UPDATED: assets/yk-jlpt-learning-v782-page.js
+        PASS: UI patch applied.
+        PASS QA: ... 30 detail lessons, 90 trilingual examples
+Step 6: Before commit, run from your repository terminal:
+        npm test
+        npm run build
+Step 7: On PASS, commit/push QA branch; open Draft PR and check Netlify Deploy
+        Preview on a real mobile device. DO NOT MERGE TO MAIN UNTIL APPROVED.
 
-KNOWN LIMITATION
-Cross-document View Transitions are not available in all browsers. Without support,
-normal links work with standard navigation; this patch cannot guarantee a native SPA transition.
+Features: one learning CTA, Myanmar sublabels, remove hero images at top of JLPT
+page, guest instructions and one free attempt, compact plans, proper scroll
+anchor and horizontal mobile lesson tabs, Grammar card -> dedicated detail page, 3 examples each in Japanese,
+Myanmar, English without MY/EN labels. Uses existing STUDYING WITH YE KUN logo.
 
-No backend, Netlify Functions, database migrations, SQL, YKCR, payment, login, exam timer,
-or scoring logic files are changed by this patch.
+Notes:
+- If the batch file says you are on main, this is protection, not an error.
+  Switch to QA branch, then double-click again.
+- If it says index.html is missing, you extracted into the wrong folder.
+- If Python is missing, install Python 3, then double-click again.
+- Existing Grammar translation content is an editorial draft. QA browser and
+  human Japanese/Myanmar proofread are still required.
+- No SQL, payment endpoints, backend functions, YKCR logic, exam attempts or
+  Netlify Identity files are modified by the patch script.
+- package.json version remains 7.87.4 for compatibility with legacy build tests;
+  this UI release is labeled v7.87.6 in the ZIP and QA Report.
+- This is a PATCH, not an entire website. The patch needs existing source.

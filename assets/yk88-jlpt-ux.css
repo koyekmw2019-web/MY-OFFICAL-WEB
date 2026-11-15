@@ -37,3 +37,17 @@
 .yk88-button:disabled{opacity:.65;cursor:default}
 .yk88-back{display:inline-block;margin-top:24px;color:#f2b8c6!important;line-height:1.7}
 @media(prefers-reduced-motion:reduce){.yk88-grammar-card *{transition:none!important}}
+
+/* v7.87.6 correction: removing the hero art must also remove its empty desktop column. */
+.yk82-page .yk82-hero.yk821-hero{display:block;min-height:0!important}
+.yk82-page .yk821-hero-copy{max-width:900px}
+.yk82-page .yk821-hero-actions{max-width:650px}
+/* Keep lesson title and tabs visible below the sticky learning header. */
+html:has(body.yk82-page){scroll-padding-top:156px}
+@media(max-width:720px){
+  .yk82-page .yk82-top-inner{gap:7px!important;padding-top:9px!important;padding-bottom:9px!important}
+  .yk82-page #yk82Tabs{display:flex;flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;gap:8px}
+  .yk82-page #yk82Tabs > *{flex:0 0 auto;scroll-snap-align:start}
+  .yk82-page .yk82-main{padding-bottom:calc(112px + env(safe-area-inset-bottom,0px))}
+  html:has(body.yk82-page){scroll-padding-top:147px}
+}
