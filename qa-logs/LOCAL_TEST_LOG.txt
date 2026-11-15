@@ -1,10 +1,29 @@
-BASE REFERENCE: GitHub main edf4dd91b89c3908e15338e369d5ea1324ba75d6
-7/7 previous RC1/older source blob SHA matches GitHub main: PASS.
-JS source syntax: PASS.
-Node source guard: PASS.
-CSS parser: PASS.
-Synthetic fixture build: PASS (seven approved pages injected; sensitive route excluded).
-Node generated fixture release check: PASS.
-Real Chromium smoke: BLOCKED by managed enterprise URLBlocklist policy.
-Full original repository npm test / npm run build: NOT RUN (full repo unavailable).
-Netlify Deploy Preview / physical phone QA: NOT RUN.
+node --check tests/ui-preferences.mjs
+Exit code: 0
+
+
+node tests/ui-preferences.mjs
+Exit code: 0
+PASS source UI: theme/lang selectors, separate language engine, no API/network/data code
+
+node tests/v7875-page-transitions.mjs
+Exit code: 0
+PASS v7.87.5 source: native navigation, cross-document transitions, reduced-motion safety
+
+node tests/mobile-ui-polish.mjs
+Exit code: 0
+PASS Mobile UI polish source QA: only spacing and JLPT interactive styling
+
+node tests/ui-preferences.runtime.mjs
+Exit code: 0
+PASS UI runtime mock: existing language action, dropdown, theme toggle, persistence, no network
+
+node tests/ui-preferences.mjs with previous package.json
+Exit code: 0
+PASS source UI: theme/lang selectors, separate language engine, no API/network/data code
+
+22-page fixture: node scripts/build-page-transitions-v7875.mjs && node tests/v7875-page-transitions.mjs --release
+Exit code: 0
+PASS v7.87.5: transition CSS injected in 7 approved routes; no login/answer-form route enabled
+PASS v7.87.5 release: seven opted-in pages, theme/nav preserved, login and exam-details excluded
+PASS v7.87.5 source: native navigation, cross-document transitions, reduced-motion safety
