@@ -1,0 +1,636 @@
+{
+  "version": "v7.87.5-jlpt-ux",
+  "draftStatus": "Supplemental educational content; review before publishing.",
+  "items": {
+    "N5-g-1": {
+      "formation": "名詞＋です",
+      "explanationMy": "နာမ်နဲ့တွဲပြီး ယဉ်ကျေးစွာ အချက်အလက်ကို ဖော်ပြပါတယ်။",
+      "explanationEn": "Use です after a noun to make a polite statement.",
+      "originalEnglish": "This is a book.",
+      "originalFocus": "です",
+      "more": [
+        {
+          "ja": "田中さんは先生です。",
+          "my": "တနာကာဆရာက ဆရာတစ်ယောက်ပါ။",
+          "en": "Mr. Tanaka is a teacher.",
+          "focus": "です"
+        },
+        {
+          "ja": "今日は月曜日です。",
+          "my": "ဒီနေ့ တနင်္လာနေ့ပါ။",
+          "en": "Today is Monday.",
+          "focus": "です"
+        }
+      ]
+    },
+    "N5-g-2": {
+      "formation": "動詞のます形",
+      "explanationMy": "ကြိယာကို ယဉ်ကျေးတဲ့ပုံစံနဲ့ ပြောတဲ့အခါ သုံးပါတယ်။",
+      "explanationEn": "Use the polite ます verb form for present or future actions.",
+      "originalEnglish": "I study Japanese every day.",
+      "originalFocus": "ます",
+      "more": [
+        {
+          "ja": "毎朝六時に起きます。",
+          "my": "မနက်တိုင်း ခြောက်နာရီမှာ ထပါတယ်။",
+          "en": "I get up at six every morning.",
+          "focus": "ます"
+        },
+        {
+          "ja": "週末に友達と会います。",
+          "my": "ပိတ်ရက်မှာ သူငယ်ချင်းနဲ့ တွေ့ပါတယ်။",
+          "en": "I meet a friend on the weekend.",
+          "focus": "ます"
+        }
+      ]
+    },
+    "N5-g-3": {
+      "formation": "場所＋に／へ＋行きます",
+      "explanationMy": "သွားမယ့်နေရာကို に သို့မဟုတ် へ နဲ့ ဖော်ပြပါတယ်။",
+      "explanationEn": "Mark the destination with に or へ before 行きます.",
+      "originalEnglish": "I go to the station.",
+      "originalFocus": "へ行きます",
+      "more": [
+        {
+          "ja": "来週、京都に行きます。",
+          "my": "လာမယ့်အပတ် ကျိုတိုကို သွားပါမယ်။",
+          "en": "I will go to Kyoto next week.",
+          "focus": "に行きます"
+        },
+        {
+          "ja": "日曜日に図書館へ行きます。",
+          "my": "တနင်္ဂနွေနေ့မှာ စာကြည့်တိုက်ကို သွားပါမယ်။",
+          "en": "I will go to the library on Sunday.",
+          "focus": "へ行きます"
+        }
+      ]
+    },
+    "N5-g-4": {
+      "formation": "名詞＋があります／います",
+      "explanationMy": "သက်မဲ့အရာအတွက် あります၊ လူနဲ့တိရစ္ဆာန်အတွက် います ကို သုံးပါတယ်။",
+      "explanationEn": "Use あります for things and います for people or animals.",
+      "originalEnglish": "There is a book on the desk.",
+      "originalFocus": "があります",
+      "more": [
+        {
+          "ja": "公園に子どもがいます。",
+          "my": "ပန်းခြံထဲမှာ ကလေးရှိပါတယ်။",
+          "en": "There is a child in the park.",
+          "focus": "がいます"
+        },
+        {
+          "ja": "明日は会議があります。",
+          "my": "မနက်ဖြန် အစည်းအဝေးရှိပါတယ်။",
+          "en": "There is a meeting tomorrow.",
+          "focus": "があります"
+        }
+      ]
+    },
+    "N5-g-5": {
+      "formation": "動詞て形＋ください",
+      "explanationMy": "တစ်ယောက်ယောက်ကို ယဉ်ကျေးစွာ တောင်းဆိုတဲ့ပုံစံပါ။",
+      "explanationEn": "Use the te-form plus ください for a polite request.",
+      "originalEnglish": "Please write your name here.",
+      "originalFocus": "てください",
+      "more": [
+        {
+          "ja": "ゆっくり話してください。",
+          "my": "ဖြည်းဖြည်း ပြောပေးပါ။",
+          "en": "Please speak slowly.",
+          "focus": "てください"
+        },
+        {
+          "ja": "ドアを閉めてください。",
+          "my": "တံခါးကို ပိတ်ပေးပါ။",
+          "en": "Please close the door.",
+          "focus": "てください"
+        }
+      ]
+    },
+    "N5-g-6": {
+      "formation": "動詞ます形の語幹＋ませんか",
+      "explanationMy": "တစ်ယောက်ယောက်ကို အတူလုပ်ဖို့ ဖိတ်ခေါ်တဲ့ပုံစံပါ။",
+      "explanationEn": "Invite someone politely to do something together.",
+      "originalEnglish": "Shall we have lunch together?",
+      "originalFocus": "ませんか",
+      "more": [
+        {
+          "ja": "一緒に映画を見ませんか。",
+          "my": "အတူတူ ရုပ်ရှင်ကြည့်ကြမလား။",
+          "en": "Shall we watch a movie together?",
+          "focus": "ませんか"
+        },
+        {
+          "ja": "明日、散歩しませんか。",
+          "my": "မနက်ဖြန် လမ်းလျှောက်ကြမလား။",
+          "en": "Shall we go for a walk tomorrow?",
+          "focus": "ませんか"
+        }
+      ]
+    },
+    "N4-g-1": {
+      "formation": "動詞ます形の語幹＋ながら",
+      "explanationMy": "လုပ်ဆောင်မှုတစ်ခုကို လုပ်ရင်း တခြားတစ်ခုကိုပါ လုပ်တာကို ဖော်ပြပါတယ်။",
+      "explanationEn": "Express two actions done at the same time by one person.",
+      "originalEnglish": "I study while listening to music.",
+      "originalFocus": "ながら",
+      "more": [
+        {
+          "ja": "コーヒーを飲みながら本を読みます。",
+          "my": "ကော်ဖီသောက်ရင်း စာအုပ်ဖတ်ပါတယ်။",
+          "en": "I read a book while drinking coffee.",
+          "focus": "ながら"
+        },
+        {
+          "ja": "歩きながら電話しないでください。",
+          "my": "လမ်းလျှောက်ရင်း ဖုန်းမပြောပါနဲ့။",
+          "en": "Please do not talk on the phone while walking.",
+          "focus": "ながら"
+        }
+      ]
+    },
+    "N4-g-2": {
+      "formation": "動詞た形＋ことがあります",
+      "explanationMy": "အရင်က လုပ်ဖူးတဲ့ အတွေ့အကြုံကို ပြောတဲ့ပုံစံပါ။",
+      "explanationEn": "Describe an experience of having done something before.",
+      "originalEnglish": "I have been to Kyoto.",
+      "originalFocus": "たことがあります",
+      "more": [
+        {
+          "ja": "富士山に登ったことがあります。",
+          "my": "ဖူဂျီတောင်ကို တက်ဖူးပါတယ်။",
+          "en": "I have climbed Mount Fuji.",
+          "focus": "たことがあります"
+        },
+        {
+          "ja": "日本料理を作ったことがあります。",
+          "my": "ဂျပန်ဟင်းချက်ဖူးပါတယ်။",
+          "en": "I have cooked Japanese food before.",
+          "focus": "たことがあります"
+        }
+      ]
+    },
+    "N4-g-3": {
+      "formation": "動詞て形＋おきます",
+      "explanationMy": "နောက်ပိုင်းအတွက် ကြိုတင်ပြင်ဆင်ပြီး လုပ်ထားတာပါ။",
+      "explanationEn": "Do something in advance in preparation for later.",
+      "originalEnglish": "I will prepare ahead of time for tomorrow.",
+      "originalFocus": "ておきます",
+      "more": [
+        {
+          "ja": "旅行の前にホテルを予約しておきます。",
+          "my": "ခရီးမသွားခင် ဟိုတယ် ကြိုတင်ဘွတ်ကင်လုပ်ထားပါမယ်။",
+          "en": "I will book a hotel before the trip.",
+          "focus": "ておきます"
+        },
+        {
+          "ja": "会議の資料を印刷しておきます。",
+          "my": "အစည်းအဝေးစာရွက်တွေကို ကြိုပုံနှိပ်ထားပါမယ်။",
+          "en": "I will print the meeting materials in advance.",
+          "focus": "ておきます"
+        }
+      ]
+    },
+    "N4-g-4": {
+      "formation": "動詞て形＋もいいです",
+      "explanationMy": "ခွင့်ပြုချက်ရှိခြင်း သို့မဟုတ် ခွင့်တောင်းခြင်းအတွက် သုံးပါတယ်။",
+      "explanationEn": "Express or request permission to do something.",
+      "originalEnglish": "You may take photos here.",
+      "originalFocus": "てもいいです",
+      "more": [
+        {
+          "ja": "ここに座ってもいいですか。",
+          "my": "ဒီနေရာမှာ ထိုင်လို့ရမလား။",
+          "en": "May I sit here?",
+          "focus": "てもいいです"
+        },
+        {
+          "ja": "この辞書を使ってもいいです。",
+          "my": "ဒီအဘိဓာန်ကို သုံးလို့ရပါတယ်။",
+          "en": "You may use this dictionary.",
+          "focus": "てもいいです"
+        }
+      ]
+    },
+    "N4-g-5": {
+      "formation": "動詞ない形（ないを外す）＋なければなりません",
+      "explanationMy": "မလုပ်မဖြစ် လိုအပ်တဲ့ တာဝန်ကို ဖော်ပြပါတယ်။",
+      "explanationEn": "Express an obligation: must or have to do something.",
+      "originalEnglish": "I must hand in my homework.",
+      "originalFocus": "なければなりません",
+      "more": [
+        {
+          "ja": "明日までにレポートを書かなければなりません。",
+          "my": "မနက်ဖြန်အထိ အစီရင်ခံစာ ရေးရပါမယ်။",
+          "en": "I must write the report by tomorrow.",
+          "focus": "なければなりません"
+        },
+        {
+          "ja": "薬を毎日飲まなければなりません。",
+          "my": "ဆေးကို နေ့တိုင်း သောက်ရပါမယ်။",
+          "en": "I must take medicine every day.",
+          "focus": "なければなりません"
+        }
+      ]
+    },
+    "N4-g-6": {
+      "formation": "動詞ます形の語幹／い形容詞語幹／な形容詞語幹＋そうです",
+      "explanationMy": "မြင်ရတဲ့ပုံစံအပေါ် မူတည်ပြီး “ဖြစ်မယ့်ပုံ” ကို ခန့်မှန်းပါတယ်။",
+      "explanationEn": "Describe an appearance or impression based on what you see.",
+      "originalEnglish": "This cake looks delicious.",
+      "originalFocus": "そうです",
+      "more": [
+        {
+          "ja": "空が暗いので、雨が降りそうです。",
+          "my": "ကောင်းကင်မှောင်နေလို့ မိုးရွာတော့မယ့်ပုံပါ။",
+          "en": "The sky is dark, so it looks like it will rain.",
+          "focus": "そうです"
+        },
+        {
+          "ja": "その仕事は難しそうです。",
+          "my": "အဲဒီအလုပ်က ခက်မယ့်ပုံပါ။",
+          "en": "That job looks difficult.",
+          "focus": "そうです"
+        }
+      ]
+    },
+    "N3-g-1": {
+      "formation": "動詞辞書形／ない形＋ようにします",
+      "explanationMy": "တစ်ခုခုကို အလေ့အကျင့်လုပ်နိုင်ဖို့ ကြိုးစားတာကို ဖော်ပြပါတယ်။",
+      "explanationEn": "Express an effort to make something a habit.",
+      "originalEnglish": "I try to read the newspaper every day.",
+      "originalFocus": "ようにしています",
+      "more": [
+        {
+          "ja": "毎晩、早く寝るようにしています。",
+          "my": "ညတိုင်း စောစောအိပ်ဖို့ ကြိုးစားပါတယ်။",
+          "en": "I try to go to bed early every night.",
+          "focus": "ようにしています"
+        },
+        {
+          "ja": "甘い物を食べすぎないようにします。",
+          "my": "အချိုတွေ အလွန်မစားမိအောင် ကြိုးစားပါမယ်။",
+          "en": "I will try not to eat too many sweets.",
+          "focus": "ようにします"
+        }
+      ]
+    },
+    "N3-g-2": {
+      "formation": "動詞辞書形／ない形＋ことになっています",
+      "explanationMy": "စည်းမျဉ်း သို့မဟုတ် သတ်မှတ်ချက်တစ်ခုဖြစ်နေကြောင်း ဖော်ပြပါတယ်။",
+      "explanationEn": "Describe an established rule or arrangement.",
+      "originalEnglish": "The rule here is to take off your shoes.",
+      "originalFocus": "ことになっています",
+      "more": [
+        {
+          "ja": "会議では携帯電話を切ることになっています。",
+          "my": "အစည်းအဝေးမှာ ဖုန်းပိတ်ထားရမယ်လို့ သတ်မှတ်ထားပါတယ်။",
+          "en": "Phones must be turned off during meetings.",
+          "focus": "ことになっています"
+        },
+        {
+          "ja": "この寮では夜十時までに帰ることになっています。",
+          "my": "ဒီအဆောင်မှာ ညဆယ်နာရီမတိုင်ခင် ပြန်ရမယ်လို့ သတ်မှတ်ထားပါတယ်။",
+          "en": "Residents of this dorm must return by 10 p.m.",
+          "focus": "ことになっています"
+        }
+      ]
+    },
+    "N3-g-3": {
+      "formation": "動詞辞書形／名詞の＋たびに",
+      "explanationMy": "တစ်ခါလုပ်တိုင်း သို့မဟုတ် ဖြစ်တိုင်း တခြားအရာတစ်ခု ဖြစ်တတ်တာပါ။",
+      "explanationEn": "Express something that happens every time another event occurs.",
+      "originalEnglish": "Every time I visit Japan, I discover something new.",
+      "originalFocus": "たびに",
+      "more": [
+        {
+          "ja": "この写真を見るたびに、家族を思い出します。",
+          "my": "ဒီဓာတ်ပုံကို မြင်တိုင်း မိသားစုကို သတိရပါတယ်။",
+          "en": "Every time I look at this photo, I remember my family.",
+          "focus": "たびに"
+        },
+        {
+          "ja": "試験のたびに緊張します。",
+          "my": "စာမေးပွဲတစ်ခါဖြေတိုင်း စိတ်လှုပ်ရှားပါတယ်။",
+          "en": "I get nervous every time I take an exam.",
+          "focus": "たびに"
+        }
+      ]
+    },
+    "N3-g-4": {
+      "formation": "動詞辞書形／ない形＋うちに",
+      "explanationMy": "အခြေအနေတစ်ခု မပြောင်းခင် သင့်တော်တဲ့အချိန်မှာ လုပ်တာကို ဖော်ပြပါတယ်။",
+      "explanationEn": "Do something while the opportunity or condition lasts.",
+      "originalEnglish": "I will make a note before I forget.",
+      "originalFocus": "うちに",
+      "more": [
+        {
+          "ja": "温かいうちに食べてください。",
+          "my": "ပူနွေးနေတုန်း စားပါ။",
+          "en": "Please eat it while it is still warm.",
+          "focus": "うちに"
+        },
+        {
+          "ja": "雨が降らないうちに帰りましょう。",
+          "my": "မိုးမရွာခင် ပြန်ကြရအောင်။",
+          "en": "Let us go home before it starts raining.",
+          "focus": "うちに"
+        }
+      ]
+    },
+    "N3-g-5": {
+      "formation": "名詞＋のおかげで／動詞普通形＋おかげで",
+      "explanationMy": "တစ်စုံတစ်ယောက် သို့မဟုတ် ကောင်းတဲ့အကြောင်းရင်းကြောင့် ရလဒ်ကောင်းရတာပါ။",
+      "explanationEn": "Attribute a positive result to someone or something.",
+      "originalEnglish": "Thanks to my teacher, I was able to pass.",
+      "originalFocus": "おかげで",
+      "more": [
+        {
+          "ja": "家族のおかげで夢をかなえました。",
+          "my": "မိသားစုကြောင့် အိပ်မက်ကို အကောင်အထည်ဖော်နိုင်ခဲ့ပါတယ်။",
+          "en": "Thanks to my family, I achieved my dream.",
+          "focus": "おかげで"
+        },
+        {
+          "ja": "天気が良かったおかげで、楽しい旅行になりました。",
+          "my": "ရာသီဥတုကောင်းလို့ ပျော်စရာခရီးဖြစ်ခဲ့ပါတယ်။",
+          "en": "Thanks to the good weather, the trip was enjoyable.",
+          "focus": "おかげで"
+        }
+      ]
+    },
+    "N3-g-6": {
+      "formation": "動詞て形＋しまいます",
+      "explanationMy": "ပြီးစီးသွားခြင်း သို့မဟုတ် မလိုလားတဲ့ရလဒ်ကို ဖော်ပြပါတယ်။",
+      "explanationEn": "Express completion or an unintended or regrettable result.",
+      "originalEnglish": "I accidentally lost an important document.",
+      "originalFocus": "てしまいました",
+      "more": [
+        {
+          "ja": "電車の中に傘を忘れてしまいました。",
+          "my": "ရထားပေါ်မှာ ထီးကို မေ့ကျန်ခဲ့မိပါတယ်။",
+          "en": "I accidentally left my umbrella on the train.",
+          "focus": "てしまいました"
+        },
+        {
+          "ja": "宿題を全部終えてしまいました。",
+          "my": "အိမ်စာအားလုံးကို ပြီးအောင်လုပ်လိုက်ပါပြီ။",
+          "en": "I finished all my homework completely.",
+          "focus": "てしまいました"
+        }
+      ]
+    },
+    "N2-g-1": {
+      "formation": "普通形＋わけではない",
+      "explanationMy": "အခြေအနေတစ်ခုကို လုံးဝမဟုတ်ကြောင်းမဟုတ်ဘဲ အချို့အပိုင်းကို ငြင်းဆိုပါတယ်။",
+      "explanationEn": "Deny a general assumption without denying everything.",
+      "originalEnglish": "Just because it is expensive does not mean it is good.",
+      "originalFocus": "わけではありません",
+      "more": [
+        {
+          "ja": "日本語が嫌いなわけではありません。",
+          "my": "ဂျပန်စာကို မကြိုက်တာတော့ မဟုတ်ပါဘူး။",
+          "en": "It is not that I dislike Japanese.",
+          "focus": "わけではありません"
+        },
+        {
+          "ja": "全員が賛成しているわけではない。",
+          "my": "လူတိုင်း သဘောတူနေကြတာတော့ မဟုတ်ပါဘူး။",
+          "en": "Not everyone agrees.",
+          "focus": "わけではない"
+        }
+      ]
+    },
+    "N2-g-2": {
+      "formation": "普通形＋ものの",
+      "explanationMy": "တစ်ခုဖြစ်ပေမဲ့ မျှော်လင့်ထားသလို ဆက်မဖြစ်တဲ့ အခြေအနေကို ဖော်ပြပါတယ်။",
+      "explanationEn": "Contrast an initial fact with an unexpected outcome.",
+      "originalEnglish": "Although I prepared, I did not have enough time.",
+      "originalFocus": "ものの",
+      "more": [
+        {
+          "ja": "申し込んだものの、参加できなかった。",
+          "my": "စာရင်းသွင်းထားပေမဲ့ မပါဝင်နိုင်ခဲ့ဘူး။",
+          "en": "Although I signed up, I could not participate.",
+          "focus": "ものの"
+        },
+        {
+          "ja": "新しいパソコンを買ったものの、使い方がわからない。",
+          "my": "ကွန်ပျူတာအသစ်ဝယ်ထားပေမဲ့ သုံးနည်းမသိဘူး။",
+          "en": "Although I bought a new computer, I do not know how to use it.",
+          "focus": "ものの"
+        }
+      ]
+    },
+    "N2-g-3": {
+      "formation": "名詞＋に伴って",
+      "explanationMy": "အပြောင်းအလဲတစ်ခုနဲ့အတူ နောက်တစ်ခုလည်း ပြောင်းလဲလာတာပါ။",
+      "explanationEn": "Express a change that accompanies another change.",
+      "originalEnglish": "As the population increased, traffic volume also rose.",
+      "originalFocus": "に伴って",
+      "more": [
+        {
+          "ja": "物価の上昇に伴って、生活費も増えています。",
+          "my": "ကုန်ဈေးနှုန်းတက်လာတာနဲ့အတူ နေထိုင်စရိတ်လည်း တိုးလာပါတယ်။",
+          "en": "As prices rise, living costs are also increasing.",
+          "focus": "に伴って"
+        },
+        {
+          "ja": "会社の成長に伴って、社員が増えました。",
+          "my": "ကုမ္ပဏီတိုးတက်လာတာနဲ့အတူ ဝန်ထမ်းတွေတိုးလာပါတယ်။",
+          "en": "As the company grew, it hired more employees.",
+          "focus": "に伴って"
+        }
+      ]
+    },
+    "N2-g-4": {
+      "formation": "名詞＋に限らず",
+      "explanationMy": "ဖော်ပြထားတဲ့အုပ်စုတစ်ခုတည်းမဟုတ်ဘဲ အခြားအုပ်စုတွေလည်း ပါဝင်ကြောင်း ပြောတာပါ။",
+      "explanationEn": "Mean not limited to one group or category.",
+      "originalEnglish": "Not only students but working adults can participate too.",
+      "originalFocus": "に限らず",
+      "more": [
+        {
+          "ja": "平日に限らず、週末も営業しています。",
+          "my": "အလုပ်ရက်တွေသာမက ပိတ်ရက်တွေမှာလည်း ဖွင့်ပါတယ်။",
+          "en": "We are open on weekends as well as weekdays.",
+          "focus": "に限らず"
+        },
+        {
+          "ja": "日本国内に限らず、海外でも人気があります。",
+          "my": "ဂျပန်နိုင်ငံအတွင်းသာမက နိုင်ငံခြားမှာလည်း လူကြိုက်များပါတယ်။",
+          "en": "It is popular not only in Japan but also overseas.",
+          "focus": "に限らず"
+        }
+      ]
+    },
+    "N2-g-5": {
+      "formation": "動詞ない形（ないを除く）＋ざるを得ない ※する→せざる",
+      "explanationMy": "မလိုချင်ပေမဲ့ အခြေအနေကြောင့် မလုပ်မဖြစ် လုပ်ရတာပါ။",
+      "explanationEn": "Have no choice but to do something.",
+      "originalEnglish": "Because of the typhoon, we had no choice but to postpone departure.",
+      "originalFocus": "ざるを得ない",
+      "more": [
+        {
+          "ja": "仕事のため、予定を変更せざるを得ません。",
+          "my": "အလုပ်ကြောင့် အစီအစဉ်ကို မပြောင်းမဖြစ် ဖြစ်သွားပါတယ်။",
+          "en": "Because of work, I have no choice but to change my plans.",
+          "focus": "ざるを得ません"
+        },
+        {
+          "ja": "証拠がある以上、事実を認めざるを得ない。",
+          "my": "သက်သေရှိနေတဲ့အတွက် အမှန်တရားကို လက်ခံရမှာပဲ။",
+          "en": "Given the evidence, there is no choice but to admit the facts.",
+          "focus": "ざるを得ない"
+        }
+      ]
+    },
+    "N2-g-6": {
+      "formation": "名詞＋に先立って",
+      "explanationMy": "အရေးကြီးတဲ့ အလုပ်တစ်ခု မစခင် တခြားတစ်ခု ကြိုလုပ်တာပါ။",
+      "explanationEn": "Describe an action taken before a significant event.",
+      "originalEnglish": "Materials will be distributed before the training session.",
+      "originalFocus": "に先立って",
+      "more": [
+        {
+          "ja": "開会に先立って、注意事項を説明します。",
+          "my": "အစည်းအဝေးဖွင့်ပွဲမစခင် သတိထားစရာတွေ ရှင်းပြပါမယ်။",
+          "en": "Before the opening, I will explain the precautions.",
+          "focus": "に先立って"
+        },
+        {
+          "ja": "出発に先立って、安全点検を行います。",
+          "my": "မထွက်ခွာခင် ဘေးကင်းရေးစစ်ဆေးမှု လုပ်ပါမယ်။",
+          "en": "Before departure, we will conduct a safety inspection.",
+          "focus": "に先立って"
+        }
+      ]
+    },
+    "N1-g-1": {
+      "formation": "名詞＋を皮切りに",
+      "explanationMy": "တစ်ခုကနေ စပြီး နောက်တစ်ဆင့်ဆင့် ဆက်ဖြစ်သွားတာကို ဖော်ပြပါတယ်။",
+      "explanationEn": "Describe the first event in a series that follows.",
+      "originalEnglish": "Starting with a performance in Tokyo, the group will tour the whole country.",
+      "originalFocus": "を皮切りに",
+      "more": [
+        {
+          "ja": "東京を皮切りに、全国で説明会を開きます。",
+          "my": "တိုကျိုကနေစပြီး တစ်နိုင်ငံလုံးမှာ ရှင်းလင်းပွဲတွေ လုပ်ပါမယ်။",
+          "en": "Starting in Tokyo, we will hold information sessions nationwide.",
+          "focus": "を皮切りに"
+        },
+        {
+          "ja": "新商品の発売を皮切りに、事業を拡大した。",
+          "my": "ထုတ်ကုန်အသစ် စတင်ရောင်းချခြင်းကနေစပြီး လုပ်ငန်းကို တိုးချဲ့ခဲ့ပါတယ်။",
+          "en": "Beginning with a new product launch, the business expanded.",
+          "focus": "を皮切りに"
+        }
+      ]
+    },
+    "N1-g-2": {
+      "formation": "名詞＋と相まって",
+      "explanationMy": "အချက်နှစ်ခုက အပြန်အလှန်အားဖြည့်ပြီး ရလဒ်တစ်ခု ဖြစ်စေတာပါ။",
+      "explanationEn": "Two factors reinforce each other and produce a result.",
+      "originalEnglish": "Technological progress combined with growing demand expanded the market.",
+      "originalFocus": "相まって",
+      "more": [
+        {
+          "ja": "暖かい天候と美しい景色が相まって、楽しい旅行になった。",
+          "my": "နွေးတဲ့ရာသီဥတုနဲ့ လှပတဲ့ရှုခင်းတွေ ပေါင်းစပ်ပြီး ပျော်စရာခရီးဖြစ်ခဲ့တယ်။",
+          "en": "Warm weather and beautiful scenery combined to make the trip enjoyable.",
+          "focus": "相まって"
+        },
+        {
+          "ja": "彼女の努力と周囲の支援が相まって、目標を達成した。",
+          "my": "သူမရဲ့ ကြိုးစားမှုနဲ့ ပတ်ဝန်းကျင်က ပံ့ပိုးမှု ပေါင်းစပ်ပြီး ရည်မှန်းချက်ကို အောင်မြင်ခဲ့တယ်။",
+          "en": "Her efforts combined with support from others helped achieve the goal.",
+          "focus": "相まって"
+        }
+      ]
+    },
+    "N1-g-3": {
+      "formation": "普通形＋ないまでも",
+      "explanationMy": "အမြင့်ဆုံးအဆင့်မရောက်တောင် အနည်းဆုံးအဆင့်တစ်ခုတော့ ရှိတာကို ဖော်ပြပါတယ်။",
+      "explanationEn": "Even if something does not reach the ideal level, a lesser level applies.",
+      "originalEnglish": "Even if not perfect, it is a satisfactory achievement.",
+      "originalFocus": "ないまでも",
+      "more": [
+        {
+          "ja": "毎日でないまでも、週に数回は運動したい。",
+          "my": "နေ့တိုင်းမဟုတ်ရင်တောင် တစ်ပတ်မှာ အကြိမ်အနည်းငယ် လေ့ကျင့်ချင်တယ်။",
+          "en": "Even if not every day, I want to exercise a few times a week.",
+          "focus": "ないまでも"
+        },
+        {
+          "ja": "専門家になれないまでも、基本は理解したい。",
+          "my": "ကျွမ်းကျင်သူမဖြစ်နိုင်ရင်တောင် အခြေခံကို နားလည်ချင်တယ်။",
+          "en": "Even if I cannot become an expert, I want to understand the basics.",
+          "focus": "ないまでも"
+        }
+      ]
+    },
+    "N1-g-4": {
+      "formation": "普通形＋のにひきかえ",
+      "explanationMy": "လူနှစ်ယောက်/အခြေအနေနှစ်ခုရဲ့ ကွာခြားချက်ကို နှိုင်းယှဉ်ပါတယ်။",
+      "explanationEn": "Compare two sharply contrasting people or situations.",
+      "originalEnglish": "Unlike his sociable older brother, the younger brother is quiet.",
+      "originalFocus": "なのにひきかえ",
+      "more": [
+        {
+          "ja": "昨年は好調だったのにひきかえ、今年は厳しい。",
+          "my": "မနှစ်က အခြေအနေကောင်းခဲ့ပေမဲ့ ဒီနှစ်က ခက်ခဲနေတယ်။",
+          "en": "Last year went well, whereas this year is difficult.",
+          "focus": "のにひきかえ"
+        },
+        {
+          "ja": "姉が活発なのにひきかえ、弟はおとなしい。",
+          "my": "အစ်မက တက်ကြွပေမဲ့ မောင်က ငြိမ်သက်တယ်။",
+          "en": "Unlike his lively older sister, the younger brother is quiet.",
+          "focus": "なのにひきかえ"
+        }
+      ]
+    },
+    "N1-g-5": {
+      "formation": "動詞ない形（ないを除く）＋ずにはおかない",
+      "explanationMy": "အကျိုးသက်ရောက်မှုတစ်ခု ဖြစ်လာအောင် မလွဲမသွေ လုပ်စေတတ်တာပါ။",
+      "explanationEn": "Express a powerful effect that inevitably makes something happen.",
+      "originalEnglish": "That movie is sure to move its viewers.",
+      "originalFocus": "ずにはおかない",
+      "more": [
+        {
+          "ja": "この事件は社会に大きな影響を与えずにはおかない。",
+          "my": "ဒီဖြစ်ရပ်က လူမှုအသိုင်းအဝိုင်းအပေါ် သက်ရောက်မှုကြီးမားစေမှာ မလွဲပါဘူး။",
+          "en": "This incident is bound to have a major impact on society.",
+          "focus": "ずにはおかない"
+        },
+        {
+          "ja": "彼の言葉は聞く人の心を動かさずにはおかない。",
+          "my": "သူ့စကားတွေက နားထောင်သူတွေရဲ့စိတ်ကို လှုပ်ရှားစေမှာ မလွဲပါဘူး။",
+          "en": "His words inevitably move the hearts of listeners.",
+          "focus": "ずにはおかない"
+        }
+      ]
+    },
+    "N1-g-6": {
+      "formation": "動詞辞書形＋べく（硬い表現）",
+      "explanationMy": "ရည်ရွယ်ချက်တစ်ခုအတွက် ကြိုးစားလုပ်ဆောင်ရာမှာ သုံးတဲ့ တရားဝင်ပုံစံပါ။",
+      "explanationEn": "Express a formal purpose or aim: in order to.",
+      "originalEnglish": "We added an explanation to avoid misunderstandings.",
+      "originalFocus": "べく",
+      "more": [
+        {
+          "ja": "合格するべく、毎日勉強している。",
+          "my": "စာမေးပွဲအောင်ဖို့ နေ့တိုင်းလေ့လာနေတယ်။",
+          "en": "I study every day in order to pass.",
+          "focus": "べく"
+        },
+        {
+          "ja": "事故を防ぐべく、点検を強化した。",
+          "my": "မတော်တဆမှု ကာကွယ်ဖို့ စစ်ဆေးမှုကို တင်းကျပ်ခဲ့တယ်။",
+          "en": "We strengthened inspections to prevent accidents.",
+          "focus": "べく"
+        }
+      ]
+    }
+  }
+}
