@@ -9,7 +9,7 @@ import {resolve, join} from 'node:path';
 
 const out = resolve('dist');
 const asset = 'assets/yk-page-transitions-v7875.css';
-const href = '/assets/yk-page-transitions-v7875.css?v=7875';
+const href = '/assets/yk-page-transitions-v7875.css?v=7875native2';
 const link = `<link rel="stylesheet" href="${href}">`;
 const pages = [
   'index.html',

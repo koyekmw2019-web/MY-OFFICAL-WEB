@@ -1,24 +1,66 @@
 {
-  "release": "7.87.5",
-  "patch_id": "v7.87.5-build-fix-01",
-  "status": "Build verification patch - not production stable",
-  "base_repo": "koyekmw2019-web/MY-OFFICAL-WEB",
+  "brand": "STUDYING WITH YE KUN",
+  "version": "7.87.5",
+  "patch_revision": "Native Smooth Transition Fix 02",
+  "status": "Preview QA candidate; NOT a verified stable release",
+  "git_repository": "koyekmw2019-web/MY-OFFICAL-WEB",
   "base_branch": "main",
-  "base_commit": "c90320d1efa8a6eedfe884700911f9e5712e8013",
-  "failed_netlify_deploy": "6af993fe948af9a779da5689",
-  "changes": [
+  "base_commit": "c842bdde5bb590ac3bb9ad44e87d769b003563c2",
+  "previous_zip": "YEKUN_v7.87.5.zip",
+  "previous_git_blob_comparison": "3/3 exact match on inspected files prior to patch",
+  "package_json": {
+    "modified": false,
+    "legacy_source_version": "7.87.4",
+    "release_label": "7.87.5"
+  },
+  "modified_code_files": [
     {
-      "path": "tests/ui-preferences.mjs",
-      "original_github_blob_sha": "6b05d452c3a0d4d82bbddf33d2b7e70268e647bc",
-      "updated_blob_sha": "3684ba1b7f143f76000b3903c6fee48bae4c0203",
-      "change": "Two anchored regexes now permit subsequent && commands; preserves exact prior step and order"
+      "path": "assets/yk-page-transitions-v7875.css",
+      "old_git_blob_sha": "b358a0c720f8848d90395b99edf2cc390c2e347e",
+      "new_git_blob_sha": "4ed08786fb7a08353d5099d9b45d53a33511bf3d",
+      "sha256": "6bc760f77ce0937b66fcbbce6da068898cf409becf1896e87355a3323327a792",
+      "type": "modified"
+    },
+    {
+      "path": "scripts/build-page-transitions-v7875.mjs",
+      "old_git_blob_sha": "79bc8aceaa0c3dd04e86f95d685f8d26d9890cce",
+      "new_git_blob_sha": "a55b84a2542b627e8e3949e7e5573f45bdeb08e7",
+      "sha256": "1d4e4fdeb7afaa5076334e3c98cdbf179e3f17ab1b10225153cb3dae59334c1a",
+      "type": "modified"
+    },
+    {
+      "path": "tests/v7875-page-transitions.mjs",
+      "old_git_blob_sha": "4155948dca1ce9bdbee5011b1354a0dfa241a21e",
+      "new_git_blob_sha": "3db831ef52c45ad20f29afdfd6def132b4c05da8",
+      "sha256": "3a5fd3700388c30721bb7c7c3f2652c7c8dd49d7a7a7b73d3e126efe20a971c3",
+      "type": "modified"
     }
   ],
-  "protected": "No other code, CI settings, package.json, functions, DB, payments, YKCR, exam behavior modified",
+  "backend_changed": false,
+  "protected_paths_changed": [],
+  "cache_bust": "/assets/yk-page-transitions-v7875.css?v=7875native2",
+  "opt_in_pages": [
+    "index.html",
+    "mock-exams.html",
+    "video-class.html",
+    "dashboard.html",
+    "admin-dashboard.html",
+    "student-dashboard.html",
+    "member-dashboard.html"
+  ],
+  "opt_out_critical_paths": [
+    "login.html",
+    "exams/*.html"
+  ],
   "qa": {
-    "source_node_tests": 6,
-    "22_page_fixture": "PASS",
-    "full_project_build": "NOT RUN",
-    "netlify_redeploy": "NOT RUN"
+    "javascript_syntax": "PASS",
+    "source_assertions": "PASS",
+    "build_fixture_22_pages": "PASS",
+    "browser_css_7_scenarios": "PASS",
+    "full_npm_test": "NOT RUN",
+    "full_npm_build": "NOT RUN",
+    "real_cross_document_navigation": "NOT RUN (browser blocked by administrator)",
+    "netlify_deploy_preview": "NOT RUN",
+    "real_phone": "NOT RUN"
   }
 }

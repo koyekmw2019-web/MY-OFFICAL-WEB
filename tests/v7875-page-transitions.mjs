@@ -5,7 +5,7 @@ const rd = p => readFileSync(p, 'utf8');
 const pkg = JSON.parse(rd('package.json'));
 const builder = rd('scripts/build-page-transitions-v7875.mjs');
 const css = rd('assets/yk-page-transitions-v7875.css');
-const asset = '/assets/yk-page-transitions-v7875.css?v=7875';
+const asset = '/assets/yk-page-transitions-v7875.css?v=7875native2';
 const pages = ['index.html','mock-exams.html','video-class.html',
   'dashboard.html','admin-dashboard.html','student-dashboard.html','member-dashboard.html'];
 assert.equal(pkg.version, '7.87.4', 'Legacy core version remains pinned by existing source tests');
@@ -19,6 +19,14 @@ assert.match(css, /::view-transition-old\(root\)/);
 assert.match(css, /::view-transition-new\(root\)/);
 assert.match(css, /::view-transition-old\(yk-v7875-tab-bar\)/);
 assert.match(css, /::view-transition-new\(yk-v7875-tab-bar\)/);
+// Native-style polish: common chrome is snapshotted separately, not slid.
+assert.match(css, /view-transition-name:\s*yk-v7875-header/);
+assert.match(css, /::view-transition-group\(yk-v7875-header\)/);
+assert.match(css, /::view-transition-group\(yk-v7875-tab-bar\)/);
+assert.match(css, /html\[data-yk-ui-theme="light"\]::view-transition/);
+assert.match(css, /yk-v7875-soft-in/);
+assert.doesNotMatch(css, /translate3d|translateX|translateY|scale3d|scaleX|scaleY/, 'Do not move the full screen');
+
 for (const route of pages) assert(builder.includes(`'${route}'`), `Route not opted in: ${route}`);
 for (const forbidden of ['netlify/functions','netlify/database','identity.bundle.js','exam_attempts','ykcr-student-sync','exam-payment-submit'])
   assert(!builder.includes(forbidden) && !css.includes(forbidden), `Protected code marker: ${forbidden}`);

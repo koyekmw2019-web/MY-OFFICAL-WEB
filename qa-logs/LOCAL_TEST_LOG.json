@@ -1,0 +1,158 @@
+[
+  {
+    "test": "node --check scripts/build-page-transitions-v7875.mjs",
+    "returncode": 0,
+    "out": ""
+  },
+  {
+    "test": "node --check tests/v7875-page-transitions.mjs",
+    "returncode": 0,
+    "out": ""
+  },
+  {
+    "test": "node tests/v7875-page-transitions.mjs",
+    "returncode": 0,
+    "out": "PASS v7.87.5 source: native navigation, cross-document transitions, reduced-motion safety\n"
+  },
+  {
+    "test": "node scripts/build-page-transitions-v7875.mjs",
+    "returncode": 0,
+    "out": "PASS v7.87.5: transition CSS injected in 7 approved routes; no login/answer-form route enabled\n"
+  },
+  {
+    "test": "node tests/v7875-page-transitions.mjs --release",
+    "returncode": 0,
+    "out": "PASS v7.87.5 release: seven opted-in pages, theme/nav preserved, login and exam-details excluded\nPASS v7.87.5 source: native navigation, cross-document transitions, reduced-motion safety\n"
+  },
+  {
+    "test": "node tests/ui-preferences.mjs",
+    "returncode": 0,
+    "out": "PASS source UI: theme/lang selectors, separate language engine, no API/network/data code\n"
+  },
+  {
+    "test": "22-page generated fixture",
+    "result": "PASS",
+    "pages": 22,
+    "transition_routes": [
+      "admin-dashboard.html",
+      "dashboard.html",
+      "index.html",
+      "member-dashboard.html",
+      "mock-exams.html",
+      "student-dashboard.html",
+      "video-class.html"
+    ]
+  },
+  {
+    "test": "Chromium CSS state",
+    "width": 360,
+    "reduced_motion": false,
+    "theme": "dark",
+    "result": "PASS",
+    "computed": {
+      "nav": "yk-v7875-tab-bar",
+      "header": "yk-v7875-header",
+      "rootOld": "yk-v7875-soft-out",
+      "rootNew": "yk-v7875-soft-in",
+      "theme": "rgb(9, 9, 10)",
+      "vtrules": true,
+      "supported": true
+    }
+  },
+  {
+    "test": "Chromium CSS state",
+    "width": 390,
+    "reduced_motion": false,
+    "theme": "dark",
+    "result": "PASS",
+    "computed": {
+      "nav": "yk-v7875-tab-bar",
+      "header": "yk-v7875-header",
+      "rootOld": "yk-v7875-soft-out",
+      "rootNew": "yk-v7875-soft-in",
+      "theme": "rgb(9, 9, 10)",
+      "vtrules": true,
+      "supported": true
+    }
+  },
+  {
+    "test": "Chromium CSS state",
+    "width": 390,
+    "reduced_motion": false,
+    "theme": "light",
+    "result": "PASS",
+    "computed": {
+      "nav": "yk-v7875-tab-bar",
+      "header": "yk-v7875-header",
+      "rootOld": "yk-v7875-soft-out",
+      "rootNew": "yk-v7875-soft-in",
+      "theme": "rgb(243, 244, 246)",
+      "vtrules": true,
+      "supported": true
+    }
+  },
+  {
+    "test": "Chromium CSS state",
+    "width": 430,
+    "reduced_motion": false,
+    "theme": "light",
+    "result": "PASS",
+    "computed": {
+      "nav": "yk-v7875-tab-bar",
+      "header": "yk-v7875-header",
+      "rootOld": "yk-v7875-soft-out",
+      "rootNew": "yk-v7875-soft-in",
+      "theme": "rgb(243, 244, 246)",
+      "vtrules": true,
+      "supported": true
+    }
+  },
+  {
+    "test": "Chromium CSS state",
+    "width": 720,
+    "reduced_motion": false,
+    "theme": "dark",
+    "result": "PASS",
+    "computed": {
+      "nav": "yk-v7875-tab-bar",
+      "header": "yk-v7875-header",
+      "rootOld": "yk-v7875-soft-out",
+      "rootNew": "yk-v7875-soft-in",
+      "theme": "rgb(9, 9, 10)",
+      "vtrules": true,
+      "supported": true
+    }
+  },
+  {
+    "test": "Chromium CSS state",
+    "width": 721,
+    "reduced_motion": false,
+    "theme": "dark",
+    "result": "PASS",
+    "computed": {
+      "nav": "none",
+      "header": "none",
+      "rootOld": "none",
+      "rootNew": "none",
+      "theme": "rgba(0, 0, 0, 0)",
+      "vtrules": true,
+      "supported": true
+    }
+  },
+  {
+    "test": "Chromium CSS state",
+    "width": 390,
+    "reduced_motion": true,
+    "theme": "dark",
+    "result": "PASS",
+    "computed": {
+      "nav": "none",
+      "header": "none",
+      "rootOld": "none",
+      "rootNew": "none",
+      "theme": "rgba(0, 0, 0, 0)",
+      "vtrules": true,
+      "supported": true
+    }
+  }
+]

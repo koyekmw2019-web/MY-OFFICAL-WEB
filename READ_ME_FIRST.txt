@@ -1,26 +1,43 @@
-STUDYING WITH YE KUN — v7.87.5 Build Fix 01
+STUDYING WITH YE KUN — v7.87.5 Native Smooth Transition Fix 02
+==============================================================
+IMPORTANT: PATCH ZIP, NOT A FULL WEBSITE ZIP.
+Base GitHub main: c842bdde5bb590ac3bb9ad44e87d769b003563c2
+Base release label: v7.87.5. Core package.json still 7.87.4 due legacy compatibility assertions.
 
-WHY BUILD FAILED
-Old tests/ui-preferences.mjs asserted the language/theme commands must be the FINAL
-commands in postbuild and posttest. v7.87.5 appended Page Transition tests after
-them, so the tests failed with ERR_ASSERTION even when language/theme worked.
+WHAT CHANGED
+- Removes horizontal movement of entire screen when navigating to Exam / Video / Account.
+- Separately snapshots the existing header and five-tab bottom nav so they stay visually anchored.
+- Soft content fade; dark/light-color canvas prevents a white/black flash behind transitions.
+- Supports reduced-motion fallback, default browser navigation on unsupported browsers.
+- CSS cache bust: ?v=7875native2.
 
-WHAT THIS PATCH CHANGES
-One file ONLY: tests/ui-preferences.mjs
-Two regex lines accept the same exact language/theme command followed by either
-" && " or the end of script. Existing safety and source assertions are intact.
+GITHUB DESKTOP (DO NOT CHANGE PRODUCTION WITHOUT APPROVAL)
+1. Fetch Origin. Confirm main baseline matches the SHA shown above before replacing files.
+2. Create NEW branch: fix/v7875-native-transition-02
+3. Extract ZIP; overwrite ONLY these THREE code files, preserving folders:
+   assets/yk-page-transitions-v7875.css
+   scripts/build-page-transitions-v7875.mjs
+   tests/v7875-page-transitions.mjs
+   Other files in the ZIP are documentation only.
+4. In GitHub Desktop Changes confirm 3 modified code files. Do not replace project folder.
+5. Run locally from complete repository:
+   npm test
+   npm run build
+   If either fails, DO NOT MERGE, and share the first full error in the log.
+6. Commit to the new branch, Push Origin, open DRAFT Pull Request.
+7. On Netlify Deploy Preview, test Home -> Exam -> Video -> Account -> Home
+   at 360px and 390px, black and white themes; check Android Chrome / Samsung Internet.
+   Check hamburger-menu navigation, screen flashing, five-tab bar, Login, Exam Start,
+   Back button, existing exam auto-save, and motion-reduced setting.
+8. Merge to main/production ONLY after explicit approval and full QA.
 
-HOW TO APPLY
-1. In GitHub Desktop, Fetch Origin. The failed main commit is c90320d1...
-2. Create a new branch FROM current main: fix/v7875-ui-preferences-test-guard
-3. Copy tests/ui-preferences.mjs into the existing repo/tests/ directory.
-4. In GitHub Desktop Changes verify EXACTLY 1 modified code file.
-5. Run npm test and npm run build from the full repo. Both must PASS.
-6. Push the FIX branch and create a Draft PR; run Netlify Deploy Preview.
-7. Do not Merge to main or touch production until QA is approved.
+BUILD FIX 01
+GitHub main already contains the Build Fix 01 change to tests/ui-preferences.mjs.
+This ZIP does NOT revert or replace that file or change package.json scripts.
 
-IMPORTANT
-This is an incremental patch, NOT the full website ZIP.
-Do not delete or overwrite other folders. Do not replace package.json.
-The localized/source/22-page tests were run; the full website build and real
-Netlify deploy have NOT yet been executed for this fix.
+KNOWN LIMITATION
+Cross-document View Transitions are not available in all browsers. Without support,
+normal links work with standard navigation; this patch cannot guarantee a native SPA transition.
+
+No backend, Netlify Functions, database migrations, SQL, YKCR, payment, login, exam timer,
+or scoring logic files are changed by this patch.
