@@ -1,38 +1,39 @@
-# STUDYING WITH YE KUN v7.87.6 — Mobile JLPT Repair 03
+# STUDYING WITH YE KUN — v7.87.6 Fix 04 QA Report
 
-## Goal
-Fix two user-reported bugs after the v7.87.6 auto-build update:
-1. Explore Lessons jumps to a horizontally shifted learning page. Tabs / lesson cards / bottom nav appear clipped.
-2. Opening a Grammar Card may not show the newly provided Grammar Pattern detail page.
+**Status: QA Candidate; not deployed, not approved as Stable.**
 
-## Current source basis
-- GitHub repo: `koyekmw2019-web/MY-OFFICAL-WEB`
-- Reviewed main baseline: `f997fdc44eba10b6df5e7162c691b72391571bc4`
-- Reviewed `scripts/build-page-transitions-v7875.mjs` Git blob SHA: `a0d973b4135f955d173eee3c26db1ea76fdf670a`
-- Reviewed existing `scripts/build-v7876-jlpt-deploy.mjs` Git blob SHA: `32ba4eb64eca7e520c3c3d5c22e4d9f5e56c9ca7`
-- New ZIP is incremental and must be applied only to a QA branch based on that commit or a reconciled later revision.
+## Root cause / expected improvement
 
-## Changes in this patch
-- Original v7.87.5 build entrypoint remains intact, with one appended import to a new **dist-only** repair builder.
-- New stylesheet stops document-wide horizontal overflow on mobile via grid min-width fixes and a truly separately scrollable category tabstrip.
-- New page script replaces the default `#yk82Title` anchor jump with a header-offset-aware vertical-only scroll. This preserves all existing category tab and lesson logic.
-- Fallback click navigation handles grammar cards if a stale renderer from older cached JS is displayed, without intercepting Bookmark or Mark Learned buttons.
-- Cache-bust the generated lesson JavaScript, grammar card detail URL and dedicated grammar detail JS (`?v=7876fix03`).
-- Other pages, database, payments, exams and YKCR source files unchanged.
+The prior Fix 03 page uses `#yk82Tabs` with `overflow-x:auto` and a visible scrollbar. On a narrow mobile device, `Reading` is partially cropped. The screenshot from the user shows that exact result. The current fix uses a **two-row compact grid** of all 7 tabs (4 on row 1, 3 on row 2) instead of another horizontal scroll strip. It preserves the already-working page width and bottom navigation. The Grammar Card detail link is given an explicit visual cue and a click target across non-interactive card padding; Bookmark and Mark Learned remain independent.
 
-## Tested locally
-- PASS — 4 JS files (builder, new builder, new page script, test) syntax checks with Node v22.
-- PASS — Git base byte-for-byte SHA comparisons for both existing build scripts.
-- PASS — v7.87.6 simulated `dist` build repair: style/script injection and grammar detail URL cache-bust.
-- PASS — existing v7.87.6 deployed-output regression on simulated 15-page dist: home CTA, exams, JLPT hero, grammar detail markers.
-- PASS — browser isolated DOM (not real live site): Chromium at 360px, 390px, 430px, 720px: page scrollWidth equals viewport, `scrollX=0`, title below sticky header, tabs scroll independently and 5 nav items are in viewport.
-- NOTE — Playwright navigation to localhost in this environment returned `net::ERR_BLOCKED_BY_ADMINISTRATOR`; live cross-page navigation test cannot be counted PASS. In-memory browser DOM test completed.
+## GitHub baseline
 
-## Still required on Netlify Deploy Preview
-- Run the site's full `npm test`, `npm run build`, and `node tests/v7876-mobile-repair.mjs --release`.
-- Open with phone, tap Study → Open All Lessons → Explore Lessons; ensure no horizontal page movement.
-- Tap Grammar → first N5 Grammar Card; verify header brand, pattern, 3 JP/MM/EN examples without MY/EN labels, underline, Bookmark and Mark Learned; verify Back.
-- Test other levels N4, N3, N2, N1 and language/theme preference. Make sure Payment/Guest Access and actual exam flows are unaffected.
-- Check PWA/service worker/phone cache only on Preview; do not promote without signoff.
+- Repository: `koyekmw2019-web/MY-OFFICAL-WEB`
+- `main` at inspection: `620dde8982061c82b0baadc482426d68d5b66f1f`
+- `scripts/build-page-transitions-v7875.mjs` old blob: `f254a0663ab39147c046de5d4e2071ca6694fa74`
+- Applies after existing `build-v7876-jlpt-mobile-repair.mjs` without modifying Fix 03.
 
-**Status: QA Candidate. Not confirmed stable, not deployed or merged by this assistant.**
+## Scope / diff
+
+- **Modified**: `scripts/build-page-transitions-v7875.mjs` — add one build import after Fix 03.
+- **Added**: `scripts/build-v7876-jlpt-tabs-fix04.mjs` — guarded, dist-only HTML asset injection.
+- **Added**: `assets/yk88-jlpt-tabs-fix04.css` — all 7 tabs in 2 rows at <=720px.
+- **Added**: `assets/yk88-jlpt-tabs-fix04.js` — open Detail from non-interactive Grammar Card padding.
+- **Added**: `tests/v7876-tabs-fix04.mjs` — source/output checks.
+
+## Checks actually performed
+
+- `node --check` on both new JS source files and the updated build script: **PASS**.
+- Static source test for builder ordering, CSS scope, assets and backend isolation: **PASS**.
+- Chromium **synthetic page fixture**, widths **320, 360, 390, 430, 720px**: 2 rows, 7 visible tabs, no page horizontal overflow, all 5 bottom navigation items stay visible — **PASS (5/5)**.
+- Chromium synthetic fixture: tapping outside Grammar link but inside Card follows existing link once; Bookmark does not navigate; direct link still works — **PASS**.
+- Synthetic dist-only build injection after Fix 03 with unique CSS/JS URLs — **PASS**.
+- ZIP CRC/integrity: **PASS**.
+
+## Not yet performed
+
+- Full website `npm test` / `npm run build` (whole source tree is not present locally).
+- Deployed Netlify Preview / a real Samsung mobile device.
+- Full end-to-end Grammar Detail page, login, server-side learning progress sync and paid checkout behavior.
+
+**Release decision: Do not merge into main until Netlify Deploy Preview mobile QA passes.**

@@ -41,3 +41,6 @@ await import('./build-v7876-jlpt-deploy.mjs');
 
 // v7.87.6 mobile QA repair (after all public assets, menus, and grammar links).
 await import('./build-v7876-jlpt-mobile-repair.mjs');
+
+// v7.87.6 Fix 04: no clipped JLPT mobile tabs and full-card Grammar Detail click.
+await import('./build-v7876-jlpt-tabs-fix04.mjs');

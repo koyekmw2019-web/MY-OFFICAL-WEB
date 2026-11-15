@@ -1,29 +1,17 @@
 {
-  "release": "7.87.6-mobile-repair-03",
-  "package_type": "incremental-source-patch",
-  "base_commit": "f997fdc44eba10b6df5e7162c691b72391571bc4",
-  "baseline_blobs": {
-    "scripts/build-page-transitions-v7875.mjs": "a0d973b4135f955d173eee3c26db1ea76fdf670a",
-    "scripts/build-v7876-jlpt-deploy.mjs": "32ba4eb64eca7e520c3c3d5c22e4d9f5e56c9ca7"
-  },
-  "production_modified": false,
-  "qa_branch_only": true,
-  "modified_files": [
-    "scripts/build-page-transitions-v7875.mjs"
+  "project": "STUDYING WITH YE KUN Official Website",
+  "version": "7.87.6",
+  "fix": "04",
+  "status": "qa-candidate",
+  "baseline_main_commit": "620dde8982061c82b0baadc482426d68d5b66f1f",
+  "expected_original_builder_blob_sha": "f254a0663ab39147c046de5d4e2071ca6694fa74",
+  "changed_code_files": [
+    {"path": "scripts/build-page-transitions-v7875.mjs", "action": "modify"},
+    {"path": "scripts/build-v7876-jlpt-tabs-fix04.mjs", "action": "add"},
+    {"path": "assets/yk88-jlpt-tabs-fix04.css", "action": "add"},
+    {"path": "assets/yk88-jlpt-tabs-fix04.js", "action": "add"},
+    {"path": "tests/v7876-tabs-fix04.mjs", "action": "add"}
   ],
-  "added_files": [
-    "scripts/build-v7876-jlpt-mobile-repair.mjs",
-    "assets/yk88-jlpt-mobile-repair.css",
-    "assets/yk88-jlpt-mobile-repair.js",
-    "tests/v7876-mobile-repair.mjs"
-  ],
-  "sha256": {
-    "scripts/build-page-transitions-v7875.mjs": "5500e5ecb7de771cad00f1bed4094a916499e8e76b9e55cd0f869c9aa4897b57",
-    "scripts/build-v7876-jlpt-mobile-repair.mjs": "bc1ffe3d6ce7c6e223edebfb3ad39c78f984f042af160677f46d7a743df4039f",
-    "assets/yk88-jlpt-mobile-repair.css": "e6135ed17eb20f904a0890d4e55df2c8223084513ad8363baffb541b6b6ad2b3",
-    "assets/yk88-jlpt-mobile-repair.js": "8f1686c004441db3120fec391263872d3344b779473f0b90741e07ede62d08c3",
-    "tests/v7876-mobile-repair.mjs": "5c76e88df8a58ca52f3ff7a941f19225703d99d5d6033d54834c82969a966e61"
-  },
-  "full_site_build_tested": false,
-  "real_phone_tested": false
+  "production_changed": false,
+  "features": ["Two-row 4+3 compact JLPT tabs", "No horizontal tab scrollbar", "Grammar card padding click", "Preserved bookmark and mark learned"]
 }

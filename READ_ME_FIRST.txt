@@ -1,37 +1,50 @@
-STUDYING WITH YE KUN — v7.87.6 MOBILE JLPT REPAIR 03
+STUDYING WITH YE KUN — v7.87.6 JLPT Mobile Tabs / Grammar Card Fix 04
+=======================================================================
 
-Boss ကြီး — ဒီ ZIP က Explore Lessons ဘေးတိုက်ရွေ့ပြီး UI ပျက်တာနဲ့ Grammar Card Detail မပေါ်တာကို ပြင်ဖို့ ဖြစ်ပါတယ်။
+This is a small QA PATCH, not a full website. It is the next patch AFTER
+v7.87.6 JLPT Mobile Fix 03. It does not need Python or a .bat file.
 
-**ဒီ ZIP သည် Website အပြည့်အစုံ မဟုတ်ဘဲ Source Code PATCH ဖြစ်ပါတယ်။**
-**GitHub main / Production ကို တိုက်ရိုက်မတင်ပါနဲ့။**
+WHY THIS PATCH?
+The Fix 03 mobile tabs are in a horizontally scrolling row. On narrow phones
+Reading gets partly clipped and the native horizontal scrollbar is visible.
+This patch uses a compact two-row 4+3 grid instead, so ALL SEVEN tabs show.
+It also makes the empty padding area of an already-linked Grammar Card clickable
+and adds a visual "Pattern Detail ↗" link indication.
 
-လုပ်ရမယ့်အဆင့်များ:
-1. GitHub Desktop > MY-OFFICAL-WEB > Fetch/Pull `main`.
-2. Create NEW branch `qa/v7.87.6-mobile-repair-03`.
-3. ဒီ ZIP Extract လုပ်ပြီး `package.json` ရှိတဲ့ Repository Folder ထဲက
-   တူညီတဲ့ Folder တွေမှာ ဖိုင် ၅ ခု Copy ကူးပါ။
-4. GitHub Desktop Changes မှာ အောက်ပါ Code ဖိုင်တွေရှိရပါမယ်:
-   MODIFIED  scripts/build-page-transitions-v7875.mjs
-   ADDED     scripts/build-v7876-jlpt-mobile-repair.mjs
-   ADDED     assets/yk88-jlpt-mobile-repair.css
-   ADDED     assets/yk88-jlpt-mobile-repair.js
-   ADDED     tests/v7876-mobile-repair.mjs
-5. Terminal:
+COMPATIBILITY (READ FIRST)
+- Verified against GitHub main commit 620dde8982061c82b0baadc482426d68d5b66f1f.
+- Exact expected original blob for scripts/build-page-transitions-v7875.mjs:
+  f254a0663ab39147c046de5d4e2071ca6694fa74
+- Only apply if you still have the Fix 03 scripts and assets present.
+- If your GitHub main has changed, compare files and do not blindly replace.
+
+TO APPLY IN GITHUB DESKTOP (QA FIRST)
+1. Fetch/Pull main, then CREATE a new QA branch:
+   qa/v7.87.6-tabs-fix04
+2. Extract this ZIP into the project root (where package.json is).
+3. GitHub Desktop Changes MUST show only:
+   MODIFIED scripts/build-page-transitions-v7875.mjs
+   ADDED    scripts/build-v7876-jlpt-tabs-fix04.mjs
+   ADDED    assets/yk88-jlpt-tabs-fix04.css
+   ADDED    assets/yk88-jlpt-tabs-fix04.js
+   ADDED    tests/v7876-tabs-fix04.mjs
+   (README, manifest, QA report are optional docs.)
+4. Run the tests:
    npm test
    npm run build
    node tests/v7876-deployed-output.mjs
    node tests/v7876-mobile-repair.mjs --release
-6. PASS အကုန်ဖြစ်မှ Branch ကို Commit + Push Origin လုပ်ပါ။
-7. GitHub Draft PR -> Netlify Deploy Preview မှာ **Mobile ဖုန်းအစစ်** နဲ့ စစ်ပါ။
-8. Boss ကြီး ခွင့်ပြုမှ main ကို Merge လုပ်ပါ။
+   node tests/v7876-tabs-fix04.mjs --release
+5. Commit and push QA BRANCH only, open Draft PR to main.
+6. Check a Netlify Deploy Preview on a real phone:
+   - tabs fully visible; no cropped Reading label / horizontal scrollbar
+   - tap every tab, switch Grammar, press Pattern Detail and card padding
+   - Bookmark / Mark Learned remain independent
+   - check widths 320, 360, 390, 430 pixels, and dark/light settings
+   - verify bottom navigation and Explore Lessons anchor position
+7. DO NOT merge to main or release to Production until confirmed.
 
-QA TEST
-- Study > Open All Lessons > Explore Lessons
-- Page တစ်ခုလုံး ဘေးတိုက်မရွေ့ရ
-- Tabs 7 ခုကို Tabs နေရာတွင်သာ Scroll ရမည်
-- Bottom nav Home Study Exam Video Account 5 ခုလုံးပေါ်ရမည်
-- Grammar > ～です > Detail Page ကို ဖွင့်ရမည်
-- Header STUDYING WITH YE KUN Logo၊ 例文 ၃ကြောင်း၊ JP/MM/EN၊ MY/EN Labels မရှိ၊ underline ရမည်
+COMMIT SUMMARY
+Fix v7.87.6 mobile JLPT tabs and grammar card navigation
 
-Note: Browser cache `?v=7876fix03` သုံးထားသည်။ Source Html, Database, SQL,
-Identity, YKCR, exam access rules and receipt logic unchanged.
+No SQL / Netlify functions / YKCR / exam scoring / payments / login changes.
