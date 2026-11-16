@@ -1,4 +1,4 @@
-/** STUDYING WITH YE KUN — UI Fix05.3 stand-alone QA regression.
+/** STUDYING WITH YE KUN — UI Fix05.4 stand-alone QA regression.
  * node tests/v7876-ui-fix05.mjs [--release]
  * Tests exact generated-output injection logic against representative original anchors;
  * NOT a substitute for full GitHub repo / real-device QA.
@@ -18,7 +18,8 @@ const fix05="await import('./build-v7876-jlpt-ui-fix05.mjs')";
 assert.equal(builder.split(fix05).length-1,1,'Fix05 import once');
 assert(builder.indexOf(fix04)<builder.indexOf(fix05),'Fix05 after Fix04');
 assert(css.includes('flex:0 0 100%!important')&& css.includes('.yk88-cta-label')&&css.includes('white-space:nowrap!important'), 'Original mobile flex:1 bug must be overridden');
-assert(injector.includes('yk88-fix053-critical') && injector.includes('flex:0 0 100%!important'), 'Critical inline fall-back must fix flex-basis too');
+assert(injector.includes('yk88-fix054-critical') && injector.includes('flex:0 0 100%!important'), 'Mobile full row preserved');
+assert(injector.includes('display:block!important;text-align:center!important') && !injector.includes('<span class="yk88-cta-label">Open All Lessons'), 'Plain block center independent of extra span');
 assert(css.includes('#online-mock-exam>.exam-v728-subtitle {display:none!important;}'), 'Exam subtitle fallback missing');
 assert(injector.includes('introRE') && injector.includes('mock-exams.html') && injector.includes('html.exam'), 'Exam paragraph must be removed in generated HTML');
 assert(css.includes('grid-template-columns:repeat(3,minmax(0,1fr))'),'Existing Grammar buttons single row');
@@ -26,7 +27,7 @@ assert(js.includes('group.append(back)') && js.includes('#yk88Bookmark') && js.i
 assert(!js.includes('preventDefault()') && !js.includes('location.href='), 'Do not override original routes');
 for(const forbidden of ['netlify/database','netlify/functions','checkout(', 'localStorage','sessionStorage','supabase'])
  assert(!js.includes(forbidden) && !injector.includes(forbidden),`Protected API or state logic in patch: ${forbidden}`);
-const root=mkdtempSync(join(tmpdir(),'yk-v7876-fix053-'));
+const root=mkdtempSync(join(tmpdir(),'yk-v7876-fix054-'));
 try {
   const dist=join(root,'dist');
   mkdirSync(join(dist,'study'),{recursive:true});
@@ -47,22 +48,22 @@ try {
   const script=resolve('scripts/build-v7876-jlpt-ui-fix05.mjs');
   const run=()=>spawnSync(process.execPath,[script],{cwd:root,encoding:'utf8'});
   let result=run();
-  assert.equal(result.status,0,'Fix05.3 fixture injection must pass: '+result.stderr);
+  assert.equal(result.status,0,'Fix05.4 fixture injection must pass: '+result.stderr);
   for(const p of Object.keys(fixture)){
     const html=read(join(dist,p));
-    assert.equal(html.split('yk88-jlpt-ui-fix05.css?v=7876ui053').length-1,1,`CSS once on ${p}`);
+    assert.equal(html.split('yk88-jlpt-ui-fix05.css?v=7876ui054').length-1,1,`CSS once on ${p}`);
     if(p==='index.html'){
-      assert(html.includes('<span class="yk88-cta-label">Open All Lessons</span>') && !html.includes('Open All Lessons ↗</a>'), 'Home CTA arrow free');
-      assert(html.includes('yk88-fix053-critical')&&html.includes('flex:0 0 100%!important'),'critical CSS exists and fixes basis');
+      assert(html.includes('style="display:block!important;text-align:center!important;white-space:nowrap!important;box-sizing:border-box!important">Open All Lessons</a>') && !html.includes('<span class="yk88-cta-label">') && !html.includes('Open All Lessons ↗</a>'), 'Plain anchor centered and arrow free');
+      assert(html.includes('yk88-fix054-critical')&&html.includes('flex:0 0 100%!important'),'critical CSS exists and fixes basis');
       assert(html.includes("'Open All Lessons':'သင်ခန်းစာအားလုံးဖွင့်ရန်'")&&html.includes("'Open All Lessons':'すべてのレッスンを開く'"),'translation map preserved');
       assert(html.includes('id="studyHubMoreV733"'),'View More must stay');
     }
     if(p==='mock-exams.html'){
       assert(!html.includes('class="exam-v728-subtitle"') && !html.includes('Mock Exam များကို လေ့ကျင့်နိုင်ပါတယ်။'),'Redundant exam intro removed');
       for(const marker of ['ONLINE EXAM CENTER','STUDYING WITH YE KUN','examAccessTitleV728','yk88AccessGuide','examStudentVerifyV728','examPlansV728'])assert(html.includes(marker),`Exam feature preserved: ${marker}`);
-      assert(!html.includes('yk88-fix053-critical'),'No Home critical CSS on Exam');
+      assert(!html.includes('yk88-fix054-critical'),'No Home critical CSS on Exam');
     }
-    assert.equal(html.split('yk88-jlpt-ui-fix05.js?v=7876ui053').length-1,p.includes('grammar-detail')?1:0,'Detail-only JS');
+    assert.equal(html.split('yk88-jlpt-ui-fix05.js?v=7876ui054').length-1,p.includes('grammar-detail')?1:0,'Detail-only JS');
   }
   const before=read(join(dist,'index.html'));
   result=run();
@@ -80,8 +81,8 @@ try {
   assert.equal(read(join(dist,'mock-exams.html')),fixture['mock-exams.html'],'Changed CTA must not partially update Exam');
   if(process.argv.includes('--release')){
     const expect=['dist/index.html','dist/mock-exams.html','dist/study/jlpt-learning.html','dist/study/jlpt-grammar-detail.html'];
-    for(const p of expect){assert(existsSync(p),`Missing complete built page ${p}`);assert(read(p).includes(css.includes('v=7876ui053')?'v=7876ui053':'yk88-jlpt-ui-fix05.css?v=7876ui053'),`Missing release CSS ${p}`)}
+    for(const p of expect){assert(existsSync(p),`Missing complete built page ${p}`);assert(read(p).includes(css.includes('v=7876ui054')?'v=7876ui054':'yk88-jlpt-ui-fix05.css?v=7876ui054'),`Missing release CSS ${p}`)}
     assert(!read('dist/mock-exams.html').includes('class="exam-v728-subtitle"'), 'Exam intro present in release output');
   }
-  console.log('PASS Fix05.3: baseline guards, full-row Home CTA, no intro Exam, original Access, JLPT and Grammar preserved; duplicate & mismatch fail closed');
+  console.log('PASS Fix05.4: baseline guards, full-row Home CTA, no intro Exam, original Access, JLPT and Grammar preserved; duplicate & mismatch fail closed');
 } finally {rmSync(root,{force:true,recursive:true});}

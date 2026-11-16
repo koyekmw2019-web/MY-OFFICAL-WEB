@@ -1,62 +1,49 @@
-# STUDYING WITH YE KUN — v7.87.6 UI Fix05.3 (QA Patch)
+# STUDYING WITH YE KUN — v7.87.6 UI Fix05.4
 
-**Purpose:** Correct the failed Fix05.2 CTA layout and shorten the dedicated Exam page. This is a *replacement incremental patch* for existing v7.87.6 Fix04. It is **not the complete website**, is **not deployed**, and is **not production-approved**.
+**QA-only minimal correction of the Home JLPT CTA text alignment. Not a full website. No Production approval or release.**
 
-## Verified baseline and scope
+## Proven observations
 
-- Repo: `koyekmw2019-web/MY-OFFICAL-WEB`
-- Reference main Fix04 commit: `010fe4d6c5f108654c17826551ba648092dca96d`
-- Existing Fix04 builder SHA: `660804e12c526830d682873bac74f9a34d65bc94`.
-- This package replaces **all Fix05 / Fix05.1 / Fix05.2 files**, retaining previous Fix05 JLPT Learning and Grammar Detail UI additions.
+- The user-provided Samsung screenshot shows `သင်ခန်းစာအားလုံးဖွင့်ရန်` aligned to the left within the wide CTA button after Fix05.3.
+- A read-only Netlify deployment check showed Fix05.3 deployed from `main` at Git commit `982da776ed2f5eab16e6eb73145f927baf541a50` on November 16, 2026. Deploy `ready` **does not** imply functional correctness.
+- Fix05.3's code contains flex justification and a nested text `<span>`, but without runtime access to the connected Samsung browser, the **exact live computed CSS / source of conflict is not independently proven**.
+- The previous synthetic tests did **not** test the full website and must not be used to assert that Production UI is stable.
 
-### Home, Study tab (the reported screenshot)
+## Only required code change
 
-1. Keep View More, JLPT card, student/teacher images, countdown and bottom navigation intact.
-2. CTA remains `<a href="/study/jlpt-learning.html">` with no arrow; correct labels:
-   - Myanmar: **သင်ခန်းစာအားလုံးဖွင့်ရန်**
-   - English: **Open All Lessons**
-   - Japanese: **すべてのレッスンを開く**
-3. **Root cause fixed:** original mobile `.yk821-hub-open { flex:1 }` narrowed the button next to the student/teacher images despite `width:100%`. Fix05.3 applies `flex:0 0 100%` (whole flex row), then centers and keeps the text on one line. Avoid `overflow-wrap:anywhere` and the previous overly broad normal wrapping.
-4. Reduce accumulated mobile gap only at the View More ↔ JLPT card boundary.
+Replace one existing repo file: `scripts/build-v7876-jlpt-ui-fix05.mjs`. It is based on the **exact prior Git blob SHA** `6c8bdba5b392156dc3801b0107e9e07e3f46e05d`. Stop if current source differs.
 
-### Dedicated Exam page (`mock-exams.html`)
+Instead of `<a ...><span class="yk88-cta-label">Open All Lessons</span></a>`, the generated CTA is now **a simple block link containing its text directly**. Its inline declarations are:
 
-1. Remove the redundant `<p class="exam-v728-subtitle">` directly under `ONLINE EXAM CENTER / STUDYING WITH YE KUN · စာမေးပွဲစင်တာ`.
-2. The existing Guest Access card, Student Verify, View Plans, Login, exam controls, and helpful guest guide **remain present and functional by original logic**. No changes to pricing or access rules.
-3. Tighten the space above the Access container, especially on mobile.
+`style="display:block!important;text-align:center!important;white-space:nowrap!important;box-sizing:border-box!important"`
 
-### Separate JLPT Learning and Grammar Detail pages
+This removes dependence on flex `justify-content` and the extra span; inline `!important` takes precedence over competing author stylesheet rules. The previously supplied Fix05.3 mobile full-row `flex-basis:100%` CSS remains untouched. The translation map is retained:
 
-Maintain Fix05's hidden redundant top pills, full-width Learning hero placement, and the three equal-width Bookmark / Learned / Back buttons. No JS callback, lesson, saved-state or progress code changed.
+- MY: `သင်ခန်းစာအားလုံးဖွင့်ရန်`
+- EN: `Open All Lessons`
+- JA: `すべてのレッスンを開く`
 
-## QA installation — NOT on `main`
+There is no arrow. Clicking the button still opens `/study/jlpt-learning.html`. Existing Exam intro removal, Access card, Login, Student Verify, View Plans, bottom tab bar, JLPT and Grammar are **not modified by this patch**. The generated UI assets' URL query version changes to `v=7876ui054` to avoid reusing prior CSS cache entries.
 
-1. In GitHub Desktop, create or use an isolated QA branch based on **verified Fix04**. Stop if the baseline differs; review the diff first.
-2. Unzip this patch to the repository root (`package.json` directory), keeping `scripts/`, `assets/`, `tests/` paths. Overwrite the same filenames from **Fix05 / Fix05.1 / Fix05.2** if they are present. Do not apply multiple Fix05 ZIPs together; this ZIP is a full replacement of those patches.
-3. The file `scripts/build-page-transitions-v7875.mjs` imports `build-v7876-jlpt-ui-fix05.mjs` **exactly once**, after Fix04. Generated `dist/` output is rewritten only after the normal rebuild. Never hand-patch already-published files.
-4. Local checks (from repo root):
+## Safe local QA procedure
+
+1. Use a separate **local QA branch** from the matching Fix05.3 commit. **Do not modify `main` or Production without separate approval.**
+2. Copy `scripts/build-v7876-jlpt-ui-fix05.mjs` from this ZIP to the repository, preserving paths. The `tests/` files are optional but recommended. **Do not reapply older Fix04, Fix05.1, Fix05.2, Fix05.3 ZIPs on top of this patch.** Existing Fix05.3 assets and other scripts must remain in the full repo.
+3. From the repo root, run:
 
 ```bash
-node --check scripts/build-page-transitions-v7875.mjs
 node --check scripts/build-v7876-jlpt-ui-fix05.mjs
-node --check assets/yk88-jlpt-ui-fix05.js
 node tests/v7876-ui-fix05.mjs
-python tests/v7876-ui-fix05-browser-smoke.py  # optional: requires playwright & local Chromium
+python tests/v7876-ui-fix054-center-browser.py
 npm test
 npm run build
-node tests/v7876-tabs-fix04.mjs --release
-node tests/v7876-ui-fix05.mjs --release
+python tests/v7876-ui-fix054-built-site.py
 ```
 
-5. On an **authorized non-production preview**, confirm actual Android/Samsung phone: CTA one full horizontal row and exactly one line in all MY/EN/JP languages, no arrows or side scroll; View More and images intact; Exam page Access visible immediately below title; Student Verify and View Plans links unchanged; Grammar Detail buttons/actions intact.
-6. Only with separate explicit approval proceed with GitHub commit, push, merge to `main`, or Netlify Production deploy. **None were performed in this package.**
+Python UI tests need `playwright` and Chromium (`python -m playwright install chromium`). The built-site test uses the **actual generated `dist/index.html`**, unlike the earlier mocked tests; it must pass before any QA approval. If any command fails, stop and investigate. The complete repository is not contained in this ZIP, so this test could not be run here.
 
-## Fail-closed baseline guards
+4. Finally, inspect **an authorized non-production Preview on the actual Samsung phone**, with MY/EN/JA labels, no vertical stacking/sideways scroll, and no unintended changes to Guest Access, student verification, exam/pricing, and other routes.
 
-The injector refuses to proceed if the expected Fix04 Home CTA, Exam section/Access, JLPT Tabs, Grammar Detail, or existing localization anchors change, or if the patch was already injected. All target HTML pages are validated before any generated HTML is modified. Only `dist/index.html`, `dist/mock-exams.html`, `dist/study/jlpt-learning.html`, and `dist/study/jlpt-grammar-detail.html` are written by the injector.
+## Safety
 
-## Known testing limits and rollback
-
-Source/fixture checks and synthetic Chromium passed at 320/360/390/430/720px; the browser fixture reproduces the original mobile `flex:1` rule. **Full repository tests/build, actual connected site, real phone and authenticated payment/exam flow remain unverified. Release status: NO-GO / QA only.**
-
-If this patch fails QA, restore Fix04 builder file, remove the Fix05 additions from the QA branch, and rebuild clean. Do not modify production or student data to roll back a presentation-only patch.
+This file is not a release. No commit/push, main merge, Netlify Deploy, database migration, payment/exam API changes, or YKCR mutations were made by this preparation. Retain Fix05.3 as the rollback reference until a better verified stable baseline is established.

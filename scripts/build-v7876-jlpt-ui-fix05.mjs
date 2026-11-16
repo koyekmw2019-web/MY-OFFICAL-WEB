@@ -1,13 +1,13 @@
-/** STUDYING WITH YE KUN — v7.87.6 UI Fix05.3, QA-only.
- * Replaces Fix05.2. Runs after Fix04 and applies limited presentation changes
+/** STUDYING WITH YE KUN — v7.87.6 UI Fix05.4, QA-only.
+ * Minimal correction after Fix05.3. Runs after Fix04 and applies limited presentation changes
  * ONLY to generated dist/ pages. No auth, payment, exam, database or YKCR logic.
  * Verify all anchors before writing any output. */
 import assert from 'node:assert/strict';
 import {existsSync, readFileSync, writeFileSync} from 'node:fs';
 import {join, resolve} from 'node:path';
 const dist = resolve('dist');
-const css = '/assets/yk88-jlpt-ui-fix05.css?v=7876ui053';
-const js  = '/assets/yk88-jlpt-ui-fix05.js?v=7876ui053';
+const css = '/assets/yk88-jlpt-ui-fix05.css?v=7876ui054';
+const js  = '/assets/yk88-jlpt-ui-fix05.js?v=7876ui054';
 const paths = {
   home: join(dist, 'index.html'),
   exam: join(dist, 'mock-exams.html'),
@@ -24,11 +24,11 @@ for(const [key,s] of Object.entries(html)) {
   assert.equal(count(s,'</body>'),1, `${key}: unexpected body structure`);
   assert.equal(count(s,css),0,`${key}: duplicate CSS injection`);
   assert.equal(count(s,js),0,`${key}: duplicate JS injection`);
-  assert(!s.includes('yk88-fix053-critical'),`${key}: duplicate critical CSS`);
+  assert(!s.includes('yk88-fix054-critical'),`${key}: duplicate critical CSS`);
 }
 // Home must be exactly the existing Fix04 source-derived generated output.
 const oldCTA='<a class="yk821-hub-open" href="/study/jlpt-learning.html">Open All Lessons ↗</a>';
-const newCTA='<a class="yk821-hub-open" href="/study/jlpt-learning.html"><span class="yk88-cta-label">Open All Lessons</span></a>';
+const newCTA='<a class="yk821-hub-open" href="/study/jlpt-learning.html" style="display:block!important;text-align:center!important;white-space:nowrap!important;box-sizing:border-box!important">Open All Lessons</a>';
 const langAnchor='const V737_ORIGINAL_ATTR = new WeakMap();';
 assert.equal(count(html.home,oldCTA),1,'Home source CTA changed — stop rather than guessing');
 assert.equal(count(html.home,langAnchor),1,'Home localization anchor missing');
@@ -56,14 +56,14 @@ assert(examHeader.includes('ONLINE EXAM CENTER') && examHeader.includes('STUDYIN
   && html.exam.includes('id="examAccessTitleV728"') && html.exam.includes('id="examStudentVerifyV728"')
   && html.exam.includes('id="examPlansV728"') && html.exam.includes('id="yk88AccessGuide"'),
   'Exam heading, guest Access or Fix04 guide changed — stop');
-const localized=`/* YK88 Fix05.3: arrow-free Home CTA in all three languages. */
+const localized=`/* YK88 Fix05.4: arrow-free Home CTA in all three languages. */
 Object.assign(V737_TEXT.my,{'Open All Lessons':'သင်ခန်းစာအားလုံးဖွင့်ရန်'});
 Object.assign(V737_TEXT.ja,{'Open All Lessons':'すべてのレッスンを開く'});
 `;
-// Critical mobile CSS is embedded in the generated homepage to prevent a stale
-// stylesheet request from reintroducing the narrow, vertical CTA regression.
-// 100% flex BASIS — not width alone — is required in the ORIGINAL flex-wrap row.
-const criticalCSS=`<style id="yk88-fix053-critical">
+// Keep legacy responsive rules for the CTA's full-width flex row.
+// The CTA itself is now a plain block with important inline text centering.
+// This removes dependency on inline-flex justify-content and nested span layout.
+const criticalCSS=`<style id="yk88-fix054-critical">
 @media(max-width:640px){
  #study-hub.study-hub-v7{margin-top:12px!important;padding-top:8px!important}
  #study-hub #studyHubGridV733{row-gap:8px!important}
@@ -100,4 +100,4 @@ output.detail=html.detail.replace('</head>',styleLink+'\n</head>')
   .replace('</body>',detailScript+'\n</body>');
 assert(!output.exam.includes('class="exam-v728-subtitle"'), 'Exam intro unexpectedly remains');
 for(const [key,path] of Object.entries(paths)) writeFileSync(path,output[key],'utf8');
-console.log('PASS Fix05.3: full-row CTA, compact Study spacing, Exam intro removed and Access moved up; protected logic untouched.');
+console.log('PASS Fix05.4: plain block CTA, compact Study spacing, Exam intro removed and Access moved up; protected logic untouched.');

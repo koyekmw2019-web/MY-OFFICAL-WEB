@@ -1,33 +1,18 @@
 {
   "project": "STUDYING WITH YE KUN Official Website",
-  "reference_version": "v7.87.6 Fix04",
-  "baseline_commit": "010fe4d6c5f108654c17826551ba648092dca96d",
-  "patch_version": "Fix05.3",
-  "status": "qa-candidate-not-deployed",
-  "type": "incremental-replacement-patch",
-  "supersedes": ["Fix05", "Fix05.1", "Fix05.2"],
-  "changed_code_files": [
-    "scripts/build-page-transitions-v7875.mjs",
-    "scripts/build-v7876-jlpt-ui-fix05.mjs",
-    "assets/yk88-jlpt-ui-fix05.css"
+  "patch": "v7.87.6 UI Fix05.4",
+  "status": "qa-only-no-go-production",
+  "expected_baseline_main_commit": "982da776ed2f5eab16e6eb73145f927baf541a50",
+  "expected_original_build_script_git_blob": "6c8bdba5b392156dc3801b0107e9e07e3f46e05d",
+  "changed_source_files": ["scripts/build-v7876-jlpt-ui-fix05.mjs"],
+  "additional_test_files": [
+    "tests/v7876-ui-fix05.mjs",
+    "tests/v7876-ui-fix054-center-browser.py",
+    "tests/v7876-ui-fix054-built-site.py"
   ],
-  "unchanged_code_files": ["assets/yk88-jlpt-ui-fix05.js"],
-  "qa_files": ["tests/v7876-ui-fix05.mjs", "tests/v7876-ui-fix05-browser-smoke.py"],
-  "generated_public_pages": [
-    "dist/index.html", "dist/mock-exams.html",
-    "dist/study/jlpt-learning.html", "dist/study/jlpt-grammar-detail.html"
-  ],
-  "fixes": [
-    "full-row one-line centered mobile JLPT CTA without arrow",
-    "redundant Exam subtitle removed and Access moved up",
-    "preserve existing JLPT/Grammar UI improvements"
-  ],
-  "build_and_e2e": "full_repository_and_real_phone_unverified",
+  "preserved": ["authentication", "student_verification", "payment", "exams", "jlpt_content", "grammar_state", "database", "ykcr"],
   "permissions": {
-    "github_commit": false,
-    "github_push": false,
-    "merge_to_main": false,
-    "netlify_production": false,
-    "database_migration": false
+    "commit": false, "push": false, "main_merge": false,
+    "netlify_deploy": false, "production": false
   }
 }
