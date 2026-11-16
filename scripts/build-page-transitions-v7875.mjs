@@ -45,5 +45,5 @@ await import('./build-v7876-jlpt-mobile-repair.mjs');
 // v7.87.6 Fix 04: no clipped JLPT mobile tabs and full-card Grammar Detail click.
 await import('./build-v7876-jlpt-tabs-fix04.mjs');
 
-// v7.87.6 UI Fix 05.2: centered wrapped Home CTA, compact mobile spacing; JLPT header and Grammar actions.
+// v7.87.6 UI Fix 05.3: full-row centered Home CTA; compact Exam intro; retain JLPT/Grammar actions.
 await import('./build-v7876-jlpt-ui-fix05.mjs');

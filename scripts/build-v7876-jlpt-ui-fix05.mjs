@@ -1,62 +1,103 @@
-/** STUDYING WITH YE KUN — v7.87.6 UI Fix 05.2 (QA candidate).
- * Run after Fix04. dist-only CSS and detail action-enhancement injection;
- * never rewrite source pages, auth, payment, exam, YKCR or database logic.
- * Validate ALL target pages before making any write.
- */
+/** STUDYING WITH YE KUN — v7.87.6 UI Fix05.3, QA-only.
+ * Replaces Fix05.2. Runs after Fix04 and applies limited presentation changes
+ * ONLY to generated dist/ pages. No auth, payment, exam, database or YKCR logic.
+ * Verify all anchors before writing any output. */
 import assert from 'node:assert/strict';
 import {existsSync, readFileSync, writeFileSync} from 'node:fs';
 import {join, resolve} from 'node:path';
 const dist = resolve('dist');
-const css = '/assets/yk88-jlpt-ui-fix05.css?v=7876ui052';
-const js = '/assets/yk88-jlpt-ui-fix05.js?v=7876ui052';
+const css = '/assets/yk88-jlpt-ui-fix05.css?v=7876ui053';
+const js  = '/assets/yk88-jlpt-ui-fix05.js?v=7876ui053';
 const paths = {
   home: join(dist, 'index.html'),
+  exam: join(dist, 'mock-exams.html'),
   study: join(dist, 'study/jlpt-learning.html'),
   detail: join(dist, 'study/jlpt-grammar-detail.html'),
 };
-const expectedFiles = [...Object.values(paths), join(dist, 'assets/yk88-jlpt-ui-fix05.css'), join(dist, 'assets/yk88-jlpt-ui-fix05.js')];
-for (const file of expectedFiles) assert(existsSync(file), `Fix05 missing required public file: ${file}`);
-const html = Object.fromEntries(Object.entries(paths).map(([key,path])=>[key,readFileSync(path,'utf8')]));
-const count=(s,text)=>s.split(text).length-1;
-for(const [key,source] of Object.entries(html)){
-  assert.equal(count(source,'</head>'),1,`${key}: expected one head`);
-  assert.equal(count(source,'</body>'),1,`${key}: expected one body`);
-  assert.equal(count(source,css),0,`${key}: duplicate Fix05 CSS`);
-  assert.equal(count(source,js),0,`${key}: duplicate Fix05 JS`);
+const assets = [join(dist, 'assets/yk88-jlpt-ui-fix05.css'), join(dist, 'assets/yk88-jlpt-ui-fix05.js')];
+for(const p of [...Object.values(paths),...assets])
+  assert(existsSync(p), `Fix05.3: missing generated file ${p}`);
+const html = Object.fromEntries(Object.entries(paths).map(([k,p])=>[k,readFileSync(p,'utf8')]));
+const count=(s,t)=>s.split(t).length-1;
+for(const [key,s] of Object.entries(html)) {
+  assert.equal(count(s,'</head>'),1, `${key}: unexpected head structure`);
+  assert.equal(count(s,'</body>'),1, `${key}: unexpected body structure`);
+  assert.equal(count(s,css),0,`${key}: duplicate CSS injection`);
+  assert.equal(count(s,js),0,`${key}: duplicate JS injection`);
+  assert(!s.includes('yk88-fix053-critical'),`${key}: duplicate critical CSS`);
 }
-assert(html.home.includes('class="yk821-hub-open"') && html.home.includes('yk88-index-ux.css'),
- 'Home CTA / existing UX patch not found');
+// Home must be exactly the existing Fix04 source-derived generated output.
+const oldCTA='<a class="yk821-hub-open" href="/study/jlpt-learning.html">Open All Lessons ↗</a>';
+const newCTA='<a class="yk821-hub-open" href="/study/jlpt-learning.html"><span class="yk88-cta-label">Open All Lessons</span></a>';
+const langAnchor='const V737_ORIGINAL_ATTR = new WeakMap();';
+assert.equal(count(html.home,oldCTA),1,'Home source CTA changed — stop rather than guessing');
+assert.equal(count(html.home,langAnchor),1,'Home localization anchor missing');
+assert(html.home.includes('const V737_TEXT = {') && html.home.includes('/* YK88 UX patch */')
+    && html.home.includes('id="studyHubMoreV733"') && html.home.includes('id="yk82Hub"'),
+  'Expected Home Study Hub or locale structure missing');
 assert(html.study.includes('class="yk82-top-links"') && html.study.includes('id="yk82Title"')
   && html.study.includes('/assets/yk88-jlpt-tabs-fix04.css?v=7876fix04'),
- 'Study page must contain original nav, lesson anchor and Fix04 tabs');
-assert(html.detail.includes('class="yk88-detail-page"')
-  || html.detail.includes('yk88-detail-page"'), 'Detail page body marker missing');
-assert(html.detail.includes('id="yk88BackTop"') && html.detail.includes('id="yk88GrammarDetail"')
-  && html.detail.includes('/assets/yk88-grammar-detail.js'),
- 'Detail page original grammar/back handler missing');
-// Home CTA requires a real text and translation update, not just CSS centering.
-// All replacements are scoped to the dist/ home output. The JS localization
-// dictionary must be extended BEFORE its ordinary translation pass starts.
-const ctaOld = '<a class="yk821-hub-open" href="/study/jlpt-learning.html">Open All Lessons ↗</a>';
-const ctaNew = '<a class="yk821-hub-open" href="/study/jlpt-learning.html"><span class="yk88-cta-label">Open All Lessons</span></a>';
-const langAnchor = 'const V737_ORIGINAL_ATTR = new WeakMap();';
-assert.equal(count(html.home,ctaOld),1,'Home CTA original label changed; refusing unsafe patch');
-assert.equal(count(html.home,langAnchor),1,'Home localization anchor missing');
-assert(html.home.includes('const V737_TEXT = {') && html.home.includes('/* YK88 UX patch */'),
-  'Original language system and existing Fix04 UX translation missing');
-const localizedNoArrow = `/* YK88 Fix05.2: Home learning CTA localized without arrow. */
-Object.assign(V737_TEXT.my, {'Open All Lessons':'သင်ခန်းစာအားလုံးဖွင့်ရန်'});
-Object.assign(V737_TEXT.ja, {'Open All Lessons':'すべてのレッスンを開く'});
+  'Fix04 JLPT page structure is required');
+assert(html.detail.includes('yk88-detail-page') && html.detail.includes('id="yk88BackTop"')
+  && html.detail.includes('id="yk88GrammarDetail"') && html.detail.includes('/assets/yk88-grammar-detail.js'),
+  'Original Grammar Detail state/back-navigation structure is required');
+// Exam: remove one and only one introductory paragraph immediately between
+// the Online Exam heading and the existing Access card. Do NOT remove the
+// guest-access explanation inside that card or alter any access functionality.
+const examStart=html.exam.indexOf('<section class="section reveal" id="online-mock-exam">');
+assert(examStart>=0,'Dedicated exam section not found');
+const hubStart=html.exam.indexOf('<div class="exam-hub">',examStart);
+assert(hubStart>examStart && hubStart-examStart<5000,'Exam Access container anchor changed');
+const introRE=/<p class="exam-v728-subtitle"[^>]*>[\s\S]*?<\/p>/g;
+const examHeader=html.exam.slice(examStart,hubStart);
+const intros=[...examHeader.matchAll(introRE)];
+assert.equal(intros.length,1,'Expected exactly one long Exam intro directly above Access');
+assert(examHeader.includes('ONLINE EXAM CENTER') && examHeader.includes('STUDYING WITH YE KUN')
+  && html.exam.includes('id="examAccessTitleV728"') && html.exam.includes('id="examStudentVerifyV728"')
+  && html.exam.includes('id="examPlansV728"') && html.exam.includes('id="yk88AccessGuide"'),
+  'Exam heading, guest Access or Fix04 guide changed — stop');
+const localized=`/* YK88 Fix05.3: arrow-free Home CTA in all three languages. */
+Object.assign(V737_TEXT.my,{'Open All Lessons':'သင်ခန်းစာအားလုံးဖွင့်ရန်'});
+Object.assign(V737_TEXT.ja,{'Open All Lessons':'すべてのレッスンを開く'});
 `;
-const criticalHomeCSS = "<style id=\"yk88-fix052-critical\">\n@media(max-width:640px){\n #study-hub.study-hub-v7{margin-top:12px!important;padding-top:8px!important}\n #study-hub #studyHubGridV733{row-gap:7px!important}\n #study-hub .study-hub-more-wrap{margin-top:0!important;margin-bottom:0!important}\n #study-hub #studyHubMoreV733{min-height:54px!important;padding-block:10px!important}\n #study-hub #yk82Hub.yk82-panel{margin-top:1px!important}\n}\n#yk82Hub a.yk821-hub-open[href=\"/study/jlpt-learning.html\"]{display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important;padding:12px!important;min-height:58px!important;text-align:center!important;white-space:normal!important;font-family:Inter,\"Noto Sans Myanmar\",\"Noto Sans JP\",system-ui,sans-serif!important;font-weight:850!important;font-size:clamp(17px,4.1vw,22px)!important;line-height:1.6!important}\n#yk82Hub a.yk821-hub-open .yk88-cta-label{display:block!important;flex:1 1 100%!important;width:100%!important;min-width:0!important;margin:0 auto!important;padding:0!important;text-align:center!important;white-space:normal!important}\n#yk82Hub a.yk821-hub-open::before,#yk82Hub a.yk821-hub-open::after{content:none!important}\n</style>";
-const stylesheet=`<link rel="stylesheet" href="${css}">`;
-const script=`<script defer src="${js}"></script>`;
-// All validation passed. Keep writes limited to three public HTML files.
-for(const [key,path] of Object.entries(paths)){
-  let output=html[key].replace('</head>',`${stylesheet}\n</head>`);
-  if(key==='home') output=output.replace(ctaOld,ctaNew).replace(langAnchor,localizedNoArrow+langAnchor)
-    .replace(stylesheet+"\n</head>",stylesheet+"\n"+criticalHomeCSS+"\n</head>");
-  if(key==='detail')output=output.replace('</body>',`${script}\n</body>`);
-  writeFileSync(path,output,'utf8');
+// Critical mobile CSS is embedded in the generated homepage to prevent a stale
+// stylesheet request from reintroducing the narrow, vertical CTA regression.
+// 100% flex BASIS — not width alone — is required in the ORIGINAL flex-wrap row.
+const criticalCSS=`<style id="yk88-fix053-critical">
+@media(max-width:640px){
+ #study-hub.study-hub-v7{margin-top:12px!important;padding-top:8px!important}
+ #study-hub #studyHubGridV733{row-gap:8px!important}
+ #study-hub .study-hub-more-wrap{margin-top:0!important;margin-bottom:0!important}
+ #study-hub #studyHubMoreV733{min-height:54px!important;padding-block:10px!important}
+ #study-hub #yk82Hub.yk82-panel{margin-top:0!important}
+ #yk82Hub .yk821-hub-welcome>a.yk821-hub-open[href="/study/jlpt-learning.html"]{
+   order:3!important;flex:0 0 100%!important;align-self:stretch!important;
+   display:flex!important;width:100%!important;min-width:0!important;max-width:100%!important;
+   box-sizing:border-box!important;justify-content:center!important;align-items:center!important;
+   min-height:56px!important;padding:10px 8px!important;text-align:center!important;
+   white-space:nowrap!important;font:850 clamp(13px,4vw,19px)/1.8
+   Inter,"Noto Sans Myanmar","Noto Sans JP",system-ui,sans-serif!important;
+ }
+ #yk82Hub .yk821-hub-welcome>a.yk821-hub-open .yk88-cta-label{
+   display:block!important;flex:0 1 auto!important;width:auto!important;min-width:0!important;
+   text-align:center!important;white-space:nowrap!important;word-break:keep-all!important;
+   overflow-wrap:normal!important;letter-spacing:0!important;
+ }
 }
-console.log('PASS Fix05.2 QA build injection: homepage CTA + two JLPT headers + grammar action bar. No protected endpoints changed.');
+</style>`;
+const styleLink=`<link rel="stylesheet" href="${css}">`;
+const detailScript=`<script defer src="${js}"></script>`;
+// All validation above occurs before a single file is changed.
+const output={...html};
+output.home=html.home.replace(oldCTA,newCTA).replace(langAnchor,localized+langAnchor)
+  .replace('</head>',styleLink+'\n'+criticalCSS+'\n</head>');
+output.exam=html.exam.slice(0,examStart)
+  +html.exam.slice(examStart,hubStart).replace(introRE,'')
+  +html.exam.slice(hubStart);
+output.exam=output.exam.replace('</head>',styleLink+'\n</head>');
+output.study=html.study.replace('</head>',styleLink+'\n</head>');
+output.detail=html.detail.replace('</head>',styleLink+'\n</head>')
+  .replace('</body>',detailScript+'\n</body>');
+assert(!output.exam.includes('class="exam-v728-subtitle"'), 'Exam intro unexpectedly remains');
+for(const [key,path] of Object.entries(paths)) writeFileSync(path,output[key],'utf8');
+console.log('PASS Fix05.3: full-row CTA, compact Study spacing, Exam intro removed and Access moved up; protected logic untouched.');

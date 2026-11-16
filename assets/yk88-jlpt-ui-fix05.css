@@ -1,57 +1,59 @@
-/* STUDYING WITH YE KUN — v7.87.6 UI Fix 05.2, QA candidate.
- * Only linked into homepage and two dedicated JLPT pages.
- * Existing navigation targets, data/state, Identity, exams and payments unchanged. */
+/* STUDYING WITH YE KUN — v7.87.6 UI Fix05.3, QA candidate.
+ * Visual changes only. Fix05.2's narrow flex-item regression is removed. */
 
-/* Fix05.2 HOME (mobile-first): protect a physically centered full-width
-   text wrapper; do not rely on an anonymous CSS grid text item. */
-#yk82Hub a.yk821-hub-open[href="/study/jlpt-learning.html"] {
-  display:flex !important;
-  flex-flow:row nowrap !important;
-  align-items:center !important;
-  justify-content:center !important;
-  width:100% !important;
-  max-width:100% !important;
-  min-height:60px;
-  margin-inline:auto !important;
-  padding:12px 12px !important;
-  box-sizing:border-box !important;
-  font-family:Inter,"Noto Sans Myanmar","Noto Sans JP",system-ui,sans-serif !important;
-  font-size:clamp(17px,4vw,22px) !important;
-  font-weight:850 !important;
-  line-height:1.65 !important;
-  white-space:normal !important;
-  letter-spacing:0 !important;
-  text-align:center !important;
-  text-indent:0 !important;
-  border-radius:14px;
-}
-#yk82Hub a.yk821-hub-open .yk88-cta-label {
-  display:block !important;
-  flex:1 1 100% !important;
-  width:100% !important;
-  min-width:0 !important;
-  margin:0 auto !important;
-  padding:0 !important;
-  text-align:center !important;
-  text-indent:0 !important;
-  white-space:normal !important;
-  overflow-wrap:anywhere;
-}
-#yk82Hub a.yk821-hub-open::before,
-#yk82Hub a.yk821-hub-open::after {content:none !important;}
-
-/* Shrink accumulated outer spacing around the View More -> JLPT card
-   without moving/removing other study cards or affecting desktop. */
+/* Home: this anchor is a flex item inside .yk821-hub-welcome.
+ * width:100% alone cannot beat the original flex:1 mobile rule;
+ * it MUST take a full row via flex-basis:100%. */
 @media(max-width:640px){
-  #study-hub.study-hub-v7 {margin-top:12px !important;padding-top:8px !important;}
-  #study-hub #studyHubGridV733 {row-gap:7px !important;}
-  #study-hub .study-hub-more-wrap {margin-top:0 !important;margin-bottom:0 !important;}
-  #study-hub #studyHubMoreV733 {min-height:54px !important;padding-top:10px !important;padding-bottom:10px !important;}
-  #study-hub #yk82Hub.yk82-panel {margin-top:1px !important;}
-  #yk82Hub a.yk821-hub-open {min-height:58px;font-size:clamp(16px,4.1vw,20px) !important;}
+  #study-hub.study-hub-v7 {margin-top:12px!important;padding-top:8px!important;}
+  #study-hub #studyHubGridV733 {row-gap:8px!important;}
+  #study-hub .study-hub-more-wrap {margin-top:0!important;margin-bottom:0!important;}
+  #study-hub #studyHubMoreV733 {min-height:54px!important;padding-block:10px!important;}
+  #study-hub #yk82Hub.yk82-panel {margin-top:0!important;}
+  #yk82Hub .yk821-hub-welcome>a.yk821-hub-open[href="/study/jlpt-learning.html"] {
+    order:3!important;
+    flex:0 0 100%!important;
+    align-self:stretch!important;
+    display:flex!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    box-sizing:border-box!important;
+    justify-content:center!important;
+    align-items:center!important;
+    text-align:center!important;
+    min-height:56px!important;
+    padding:10px 8px!important;
+    white-space:nowrap!important;
+    font:850 clamp(13px,4vw,19px)/1.8 Inter,"Noto Sans Myanmar","Noto Sans JP",system-ui,sans-serif!important;
+    letter-spacing:0!important;
+    border-radius:14px;
+  }
+  #yk82Hub .yk821-hub-welcome>a.yk821-hub-open .yk88-cta-label {
+    display:block!important;
+    flex:0 1 auto!important;
+    width:auto!important;
+    min-width:0!important;
+    text-align:center!important;
+    white-space:nowrap!important;
+    word-break:keep-all!important;
+    overflow-wrap:normal!important;
+    letter-spacing:0!important;
+    text-indent:0!important;
+  }
+  #yk82Hub a.yk821-hub-open::before,
+  #yk82Hub a.yk821-hub-open::after {content:none!important;}
 }
-@media(max-width:360px){
-  #yk82Hub a.yk821-hub-open {padding-inline:8px !important;font-size:16px !important;}
+
+/* Exam-only: remove redundant long subtitle and bring Guest Access upward.
+ * The guest guide and the Student Verify / View Plans buttons remain. */
+#online-mock-exam>.exam-v728-subtitle {display:none!important;}
+#online-mock-exam>.title {margin-bottom:10px!important;}
+#online-mock-exam .exam-hub {padding-top:clamp(12px,2.7vw,20px)!important;}
+#online-mock-exam .exam-v728-access {margin-top:0!important;}
+@media(max-width:640px){
+  #online-mock-exam .exam-hub {padding:12px!important;}
+  #online-mock-exam .exam-v728-access {margin:0 0 14px!important;}
 }
 
 /* Screenshots 2 & 3: remove ONLY redundant visible top pills; keep the

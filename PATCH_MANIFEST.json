@@ -1,39 +1,33 @@
 {
   "project": "STUDYING WITH YE KUN Official Website",
-  "baseline_version": "v7.87.6 Fix04",
-  "base_commit": "010fe4d6c5f108654c17826551ba648092dca96d",
-  "package_version": "Fix05.2",
+  "reference_version": "v7.87.6 Fix04",
+  "baseline_commit": "010fe4d6c5f108654c17826551ba648092dca96d",
+  "patch_version": "Fix05.3",
   "status": "qa-candidate-not-deployed",
   "type": "incremental-replacement-patch",
-  "supersedes": [
-    "YEKUN_v7.87.6_UI_Fix05_QA_PATCH.zip",
-    "YEKUN_v7.87.6_UI_Fix05_1_CTA_Center_QA_PATCH.zip"
-  ],
-  "permissions": {
-    "git_commit": false,
-    "git_push": false,
-    "production_deploy": false,
-    "database_change": false
-  },
-  "modified_code_files": [
+  "supersedes": ["Fix05", "Fix05.1", "Fix05.2"],
+  "changed_code_files": [
     "scripts/build-page-transitions-v7875.mjs",
     "scripts/build-v7876-jlpt-ui-fix05.mjs",
     "assets/yk88-jlpt-ui-fix05.css"
   ],
-  "unchanged_code_files": [
-    "assets/yk88-jlpt-ui-fix05.js"
+  "unchanged_code_files": ["assets/yk88-jlpt-ui-fix05.js"],
+  "qa_files": ["tests/v7876-ui-fix05.mjs", "tests/v7876-ui-fix05-browser-smoke.py"],
+  "generated_public_pages": [
+    "dist/index.html", "dist/mock-exams.html",
+    "dist/study/jlpt-learning.html", "dist/study/jlpt-grammar-detail.html"
   ],
-  "tests": [
-    "tests/v7876-ui-fix05.mjs",
-    "tests/v7876-ui-fix05-browser-smoke.py"
+  "fixes": [
+    "full-row one-line centered mobile JLPT CTA without arrow",
+    "redundant Exam subtitle removed and Access moved up",
+    "preserve existing JLPT/Grammar UI improvements"
   ],
-  "home_changes": [
-    "mobile compact View More section",
-    "dedicated CTA label span for visual centering",
-    "arrow-free multilingual CTA",
-    "critical CSS inline fallback"
-  ],
-  "full_repository_build": "not_run",
-  "real_mobile_qa": "not_run",
-  "production_changed": false
+  "build_and_e2e": "full_repository_and_real_phone_unverified",
+  "permissions": {
+    "github_commit": false,
+    "github_push": false,
+    "merge_to_main": false,
+    "netlify_production": false,
+    "database_migration": false
+  }
 }

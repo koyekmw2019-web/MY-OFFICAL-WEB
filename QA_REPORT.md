@@ -1,29 +1,33 @@
-# STUDYING WITH YE KUN — UI Fix05.2 QA Report
+# QA REPORT — STUDYING WITH YE KUN UI Fix05.3
 
-**Status:** QA candidate only, NOT deployed. Baseline Fix04 commit `010fe4d6c5f108654c17826551ba648092dca96d`.
+**Package:** v7.87.6 UI Fix05.3 · Replacement patch, QA only  
+**Reference baseline:** GitHub Fix04 main SHA `010fe4d6c5f108654c17826551ba648092dca96d`  
+**Release decision:** **NO-GO** pending full repository build and real-phone authorized Preview.
 
-## Reported screenshot regression
+## Regression / user screenshots
 
-- View More area has too much vertical spacing before/after it on mobile.
-- Arrow-free Burmese CTA still appeared left-weighted after Fix05.1.
+1. Fix05.2 CTA became a narrow vertical button aligned to the right of the student/teacher images: previous `width:100%` did not overcome mobile `.yk821-hub-open {flex:1}`.
+2. Dedicated Exam page shows an unnecessary long subtitle above Guest Access, pushing the Access card below the first mobile screen.
 
-## Fix05.2 implementation
+## Implemented corrections
 
-- Replaces the direct text node with `<span class="yk88-cta-label">Open All Lessons</span>` in generated public `dist/index.html`; existing i18n map localizes that text to Burmese/Japanese. The link destination is unchanged.
-- Center the label using full-width span + flex layout and dedicated scoped rules. An inline critical-style fallback protects from stale/missing CSS request. No extra arrow.
-- Shrink four **mobile-only** spacing sources around the Study Hub / JLPT section without hiding View More.
-- Retain all Fix05.1 Learning and Grammar Detail changes and state/access boundaries.
+- Change mobile CTA flex-item layout to `flex:0 0 100% !important; order:3` within the original wrapped flex container; center the original link's label; enforce single-line no arrow with responsive font size. Keep navigation destination and text mappings for MY/EN/JP.
+- Retain compact gap between View More and JLPT card from Fix05.2; no removal of View More.
+- In **generated `dist/mock-exams.html` only**, remove one verified `exam-v728-subtitle` paragraph directly above `.exam-hub`. Keep Access guide, Student Verify, Login/View Plans and exams intact; adjust container spacing via scoped CSS.
+- Preserve earlier Fix05 Learning and Grammar Detail styles and non-invasive action-bar script.
+- Versions of CSS and detail JS cache-busted to `v=7876ui053`. Critical CSS embedded in generated Home as a failsafe against stale linked CSS.
 
-## Tests actually performed
+## Tests executed in isolated QA working folder
 
-- `node --check` on 4 JS/MJS files: PASS.
-- Synthetic builder with exact fixtures and fail-closed duplicate / changed anchor guards: PASS.
-- Synthetic Chromium: 5 viewport widths × 3 routes, plus 3 languages for Home. Checks text visual center, 3-column detail actions, header removal, no horizontal overflow, and <11px View More-to-panel gap on mobile: PASS.
-- The Home test deliberately injects **only the inline fallback CSS**, not the linked stylesheet, demonstrating the fallback does not need a CSS network request.
-- ZIP CRC/sha256: validated after package creation.
+- `node --check` on the modified build scripts and UI JS: **PASS**.
+- `node tests/v7876-ui-fix05.mjs`: **PASS**. Four-route injection, localized labels, title/Access control preservation, duplicate-injection guard, unexpected Home/Exam anchor change guards; no partial file writes after failed validation.
+- `python tests/v7876-ui-fix05-browser-smoke.py`: **PASS** on synthetic Chromium fixture, at **320, 360, 390, 430, 720 px**. Three languages for CTA at each width: text exactly one line, visually centered, no overflow. Original mobile `flex:1` competition reproduced in fixture. Exam Access directly under title, controls retained; Grammar action bar same row.
+- Package CRC and SHA-256 manifest: check on ZIP creation.
 
-## Tests not performed
+## NOT performed / limitations
 
-Full repository `npm test`/`npm run build`, real Samsung phone, live Netlify deploy preview, authenticated E2E (Login/Payments/Exams/YKCR/learning-state). Do not label stable or production-ready.
+No full original repository checkout available in this working directory. Thus **no complete-site `npm test`, `npm run build`, Netlify preview, Samsung phone screenshot/interaction, login, student-verification, exam attempt, payment, database, or YKCR E2E checks** were performed. All such tests are required before calling it stable.
 
-**Release decision: NO-GO; QA only.**
+## Change boundary
+
+No GitHub branch/push/commit, merge, live deploy, database migrations, exam logic, payment logic, authorization, YKCR, or student records were modified. This ZIP only prepares local source patch files.
