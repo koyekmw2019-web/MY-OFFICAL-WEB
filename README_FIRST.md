@@ -1,14 +1,20 @@
-# STUDYING WITH YE KUN — v7.87.6 UI Fix 05
+# STUDYING WITH YE KUN — v7.87.6 UI Fix 05.1 — CTA Center Correction
 
 **QA-only patch for the already-deployed v7.87.6 Fix04. Not a full website, not a release, and not a Production change.**
 
 ## ပြင်ဆင်ထားတဲ့ UI
 
-1. **Home / Study Hub** — `သင်ခန်းစာအားလုံး ဖွင့်ရန် ↗` CTA ကို button အလယ်တည့်တည့်ထားပြီး font size ပိုကြီး၊ bold လုပ်ထားပါတယ်။ မူရင်း Language Translation နဲ့ link မပြောင်းပါ။
+1. **Home / Study Hub** — `သင်ခန်းစာအားလုံးဖွင့်ရန်` CTA ကို စာသားအမှန်ကိုယ်တိုင်ပြောင်းပြီး မြှား `↗` ဖြုတ်ထားပါတယ်။ Text center, bigger, bold; English `Open All Lessons`, Japanese `すべてのレッスンを開く` မှာလည်း arrow မပါပါ။ Link မပြောင်းပါ။
 2. **JLPT Learning Center** — Logo အောက်က `Study Hub / Dictionary / Mock Exam` pill bar ကို မျက်နှာပြင်ပေါ်မှာဖျောက်ပြီး Hero Card ကို အပေါ်တင်ထားပါတယ်။
 3. **Grammar Detail** — Logo အောက်က `Grammar / Study Hub / Mock Exam` pill bar ကို မျက်နှာပြင်ပေါ်မှာဖျောက်ထားပါတယ်။ အောက်မှာ `☆ Bookmark | ✓ လေ့လာပြီး | ← Grammar သို့` ဆိုပြီး Button ၃ ခုကို တစ်တန်းထဲ ညီညီညာညာ ထားပါတယ်။ Existing Bookmark/Mark learned event handlers, states, stored learning progress, and original Back link URL are preserved.
 
 **Important:** `#yk88BackTop` stays in the DOM (hidden visually), because the original Grammar Detail JavaScript updates its URL. We do not delete it. The original bottom Back anchor is moved into the 3-button bar after rendering. The visible labels are shortened, while accessibility labels and underlying state callbacks are retained.
+
+## Why revision 05.1 (supersedes previous Fix05 ZIP)
+
+The original Fix05 only centered the CTA with CSS; its actual English base label and Myanmar/Japanese translation strings still contained `↗`. This revision changes both the built home HTML label and the existing localization map **after Fix04 and before localization runs in the browser**, while keeping the same href. CSS uses `display:grid;place-items:center` for visual centering. This is a **replacement of Fix05**, not an extra deploy step. If Fix05 was already copied into a QA branch, replace the corresponding files with this package; don't append a second Fix05 import.
+
+If the visible screenshot still shows the original button after QA deployment, verify the actual Preview URL, generated `dist/index.html`, asset cache and browser service worker before calling it a code regression.
 
 ## Compatibility and QA workflow (GitHub Desktop)
 
@@ -17,7 +23,7 @@
 - Original `scripts/build-page-transitions-v7875.mjs` blob SHA: `660804e12c526830d682873bac74f9a34d65bc94`
 - If the current branch has moved or the build script differs, STOP and review instead of blindly overwriting.
 
-**Before extraction:** Use GitHub Desktop to inspect/pull the correct baseline, then create a **LOCAL QA BRANCH**, e.g. `qa/v7.87.6-ui-fix05`. Do not extract directly over `main`.
+**Before extraction:** Use GitHub Desktop to inspect/pull the correct baseline, then create a **LOCAL QA BRANCH**, e.g. `qa/v7.87.6-ui-fix051`. Do not extract directly over `main`.
 
 Unzip into the existing repository ROOT (`package.json` location). There are 5 code changes:
 
@@ -51,7 +57,7 @@ No external Python/BAT script or manual source-HTML changes required to apply.
 ## Preview checklist before further approval
 
 - Test 320 / 360 / 390 / 430 px and desktop.
-- Home CTA centered, visibly bold, link still opens Learning Center; language switching English/Myanmar/Japanese keeps correct text.
+- Home CTA text is exactly `သင်ခန်းစာအားလုံးဖွင့်ရန်` in Myanmar, `Open All Lessons` in English and `すべてのレッスンを開く` in Japanese; centered with no arrow in all three; link still opens Learning Center.
 - JLPT Learning logo remains; top pill bar gone; hero card higher; Daily Practice / Explore Lessons and Fix04 7 tabs work.
 - Grammar Detail example text still loads; 3 equal-height, equal-width buttons in ONE ROW without horizontal overflow; Bookmark toggle and learned-status update work separately; Back returns to same level's Grammar list.
 - Preserve existing 5-tab bottom navigation, dark/light modes where supported, login, payment, exam, and YKCR behavior.

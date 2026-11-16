@@ -62,11 +62,13 @@ with sync_playwright() as p:
         print('PASS STUDY',width,'px: old pills hidden, card aligned near header')
     for width in widths:
         page=browser.new_page(viewport={'width':width,'height':820})
-        page.set_content('''<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0;background:#19161a"><main style="padding:12px 16px"><a class="yk821-hub-open" href="/study/jlpt-learning.html" style="display:block;color:#fff;background:#f04468;border-radius:20px">သင်ခန်းစာအားလုံး ဖွင့်ရန် ↗</a></main></body></html>''')
+        page.set_content('''<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0;background:#19161a"><main style="padding:12px 16px"><a class="yk821-hub-open" href="/study/jlpt-learning.html" style="display:block;color:#fff;background:#f04468;border-radius:20px">သင်ခန်းစာအားလုံးဖွင့်ရန်</a></main></body></html>''')
         page.add_style_tag(path=str(css))
         info=page.evaluate('''() => {const e=document.querySelector('a.yk821-hub-open'),s=getComputedStyle(e);return {justify:s.justifyContent,align:s.alignItems,weight:parseInt(s.fontWeight),font:parseFloat(s.fontSize),scrollW:document.documentElement.scrollWidth}}''')
+        position=page.evaluate('''() => {const e=document.querySelector('.yk821-hub-open'),r=e.getBoundingClientRect();const range=document.createRange();range.selectNodeContents(e);const t=range.getBoundingClientRect();return {buttonCenter:r.left+r.width/2,textCenter:t.left+t.width/2,text:e.textContent.trim()}}''')
+        assert position['text']=='သင်ခန်းစာအားလုံးဖွင့်ရန်' and abs(position['textCenter']-position['buttonCenter'])<2,position
         assert info['justify']=='center' and info['align']=='center' and info['weight']>=800 and info['font']>=17 and info['scrollW']<=width,info
         page.close()
-        print('PASS HOME',width,'px: CTA centered, bigger and bold')
+        print('PASS HOME',width,'px: CTA real text arrow-free, visually centered, bigger and bold')
     browser.close()
 print('PASS synthetic browser smoke: 15 responsive cases, click states, href retained')
