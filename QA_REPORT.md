@@ -1,39 +1,34 @@
-# STUDYING WITH YE KUN — v7.87.6 Fix 04 QA Report
+# STUDYING WITH YE KUN — v7.87.6 UI Fix05 QA Report
 
-**Status: QA Candidate; not deployed, not approved as Stable.**
+**Status: QA candidate only — not deployed, not verified Stable.**
 
-## Root cause / expected improvement
+## Baseline
 
-The prior Fix 03 page uses `#yk82Tabs` with `overflow-x:auto` and a visible scrollbar. On a narrow mobile device, `Reading` is partially cropped. The screenshot from the user shows that exact result. The current fix uses a **two-row compact grid** of all 7 tabs (4 on row 1, 3 on row 2) instead of another horizontal scroll strip. It preserves the already-working page width and bottom navigation. The Grammar Card detail link is given an explicit visual cue and a click target across non-interactive card padding; Bookmark and Mark Learned remain independent.
+- Repo: `koyekmw2019-web/MY-OFFICAL-WEB`
+- Inspected Production Fix04 commit: `010fe4d6c5f108654c17826551ba648092dca96d`
+- Existing builder ZIP/GitHub blob: `660804e12c526830d682873bac74f9a34d65bc94` (verified equal)
+- Changes prepared locally only; no GitHub, Netlify, SQL, YKCR or user data mutations.
 
-## GitHub baseline
+## UI changes implemented
 
-- Repository: `koyekmw2019-web/MY-OFFICAL-WEB`
-- `main` at inspection: `620dde8982061c82b0baadc482426d68d5b66f1f`
-- `scripts/build-page-transitions-v7875.mjs` old blob: `f254a0663ab39147c046de5d4e2071ca6694fa74`
-- Applies after existing `build-v7876-jlpt-mobile-repair.mjs` without modifying Fix 03.
+1. Home `yk821-hub-open` CTA: flex center, bigger bold Myanmar text and wrapping at narrow widths; original href and translation bindings unchanged.
+2. Learning page: hide only the redundant `.yk82-top-links` visually and tighten hero/main top spacing; brand logo and bottom navigation retained.
+3. Grammar Detail: hide redundant `.yk82-top-links` visually but keep its `#yk88BackTop` in DOM, move the already-rendered `.yk88-back` anchor into `.yk88-detail-actions`, shorten display labels and create an equal-width three-column bar. Existing Bookmark and Mark-Learned handlers untouched.
 
-## Scope / diff
+## QA actually run
 
-- **Modified**: `scripts/build-page-transitions-v7875.mjs` — add one build import after Fix 03.
-- **Added**: `scripts/build-v7876-jlpt-tabs-fix04.mjs` — guarded, dist-only HTML asset injection.
-- **Added**: `assets/yk88-jlpt-tabs-fix04.css` — all 7 tabs in 2 rows at <=720px.
-- **Added**: `assets/yk88-jlpt-tabs-fix04.js` — open Detail from non-interactive Grammar Card padding.
-- **Added**: `tests/v7876-tabs-fix04.mjs` — source/output checks.
+- `node --check`: PASS on modified build orchestration, new dist injector, and new JS helper.
+- Source / synthetic builder tests: PASS, including exact import order, assets injection into exactly three HTML routes, JS only on Detail, duplicate detection, unexpected-anchor refusal with no prior writes.
+- Synthetic headless Chromium with widths 320, 360, 390, 430, 720px: PASS 15/15 per-route responsive cases. Detail case verified 3 buttons on same top row, equal calculated width, no horizontal overflow; Bookmark and Learned interaction simulation; existing Back href retained. Learning case verified nav visually hidden and content close to header. Home case verified centered, bold, larger CTA.
+- ZIP integrity / checksum: generated and validated after packaging.
 
-## Checks actually performed
+## Not run / not claimed
 
-- `node --check` on both new JS source files and the updated build script: **PASS**.
-- Static source test for builder ordering, CSS scope, assets and backend isolation: **PASS**.
-- Chromium **synthetic page fixture**, widths **320, 360, 390, 430, 720px**: 2 rows, 7 visible tabs, no page horizontal overflow, all 5 bottom navigation items stay visible — **PASS (5/5)**.
-- Chromium synthetic fixture: tapping outside Grammar link but inside Card follows existing link once; Bookmark does not navigate; direct link still works — **PASS**.
-- Synthetic dist-only build injection after Fix 03 with unique CSS/JS URLs — **PASS**.
-- ZIP CRC/integrity: **PASS**.
+- Full repository `npm test` / `npm run build` (complete site checkout was not supplied in container).
+- Real Netlify Deploy Preview, actual Samsung device, service-worker cache refresh.
+- Full live authenticated E2E of bookmarks / learning-progress sync, payment, exam, or YKCR.
+- Functional Stable / release approval.
 
-## Not yet performed
+## Decision
 
-- Full website `npm test` / `npm run build` (whole source tree is not present locally).
-- Deployed Netlify Preview / a real Samsung mobile device.
-- Full end-to-end Grammar Detail page, login, server-side learning progress sync and paid checkout behavior.
-
-**Release decision: Do not merge into main until Netlify Deploy Preview mobile QA passes.**
+**NO-GO for Production** until QA checkout + full build/test + mobile Deploy Preview + separate explicit release approval. Keep v7.87.6 Fix04 as current baseline.

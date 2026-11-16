@@ -1,17 +1,55 @@
 {
   "project": "STUDYING WITH YE KUN Official Website",
-  "version": "7.87.6",
-  "fix": "04",
-  "status": "qa-candidate",
-  "baseline_main_commit": "620dde8982061c82b0baadc482426d68d5b66f1f",
-  "expected_original_builder_blob_sha": "f254a0663ab39147c046de5d4e2071ca6694fa74",
-  "changed_code_files": [
-    {"path": "scripts/build-page-transitions-v7875.mjs", "action": "modify"},
-    {"path": "scripts/build-v7876-jlpt-tabs-fix04.mjs", "action": "add"},
-    {"path": "assets/yk88-jlpt-tabs-fix04.css", "action": "add"},
-    {"path": "assets/yk88-jlpt-tabs-fix04.js", "action": "add"},
-    {"path": "tests/v7876-tabs-fix04.mjs", "action": "add"}
+  "base_version": "v7.87.6 Fix04",
+  "patch": "UI Fix05",
+  "status": "qa-candidate-not-deployed",
+  "verified_reference_commit": "010fe4d6c5f108654c17826551ba648092dca96d",
+  "mode": "dist-only UI enhancement; no production mutation",
+  "code_files": [
+    {
+      "path": "scripts/build-page-transitions-v7875.mjs",
+      "action": "modify, add after Fix04"
+    },
+    {
+      "path": "scripts/build-v7876-jlpt-ui-fix05.mjs",
+      "action": "add"
+    },
+    {
+      "path": "assets/yk88-jlpt-ui-fix05.css",
+      "action": "add"
+    },
+    {
+      "path": "assets/yk88-jlpt-ui-fix05.js",
+      "action": "add"
+    },
+    {
+      "path": "tests/v7876-ui-fix05.mjs",
+      "action": "add"
+    }
   ],
-  "production_changed": false,
-  "features": ["Two-row 4+3 compact JLPT tabs", "No horizontal tab scrollbar", "Grammar card padding click", "Preserved bookmark and mark learned"]
+  "scopes": [
+    "Home learning CTA",
+    "JLPT Learning Center header",
+    "Grammar Detail header and action bar"
+  ],
+  "exclusions": [
+    "production",
+    "database",
+    "SQL",
+    "YKCR",
+    "login/auth",
+    "payments",
+    "exam scoring",
+    "learning-state code"
+  ],
+  "expected_previous_builder_blob_sha": "660804e12c526830d682873bac74f9a34d65bc94",
+  "reference_repo": "koyekmw2019-web/MY-OFFICAL-WEB",
+  "tested": {
+    "node_syntax": "pass",
+    "static_and_synthetic_builder": "pass",
+    "synthetic_chromium_responsive_15_cases": "pass",
+    "full_website_build": "not_run",
+    "netlify_preview": "not_run",
+    "real_mobile_qa": "not_run"
+  }
 }
