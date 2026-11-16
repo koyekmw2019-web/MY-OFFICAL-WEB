@@ -1,35 +1,58 @@
-/* STUDYING WITH YE KUN — v7.87.6 UI Fix 05.1, QA candidate.
+/* STUDYING WITH YE KUN — v7.87.6 UI Fix 05.2, QA candidate.
  * Only linked into homepage and two dedicated JLPT pages.
  * Existing navigation targets, data/state, Identity, exams and payments unchanged. */
 
-/* Screenshot 1: center the new arrow-free localized CTA from the dist build. */
-a.yk821-hub-open[href="/study/jlpt-learning.html"] {
-  display:grid !important;
-  place-items:center !important;
+/* Fix05.2 HOME (mobile-first): protect a physically centered full-width
+   text wrapper; do not rely on an anonymous CSS grid text item. */
+#yk82Hub a.yk821-hub-open[href="/study/jlpt-learning.html"] {
+  display:flex !important;
+  flex-flow:row nowrap !important;
   align-items:center !important;
   justify-content:center !important;
-  text-align:center !important;
-  text-indent:0 !important;
-  width:100%;
-  max-width:100%;
-  min-height:70px;
-  padding:15px 18px !important;
-  font-family:Inter,"Noto Sans Myanmar","Noto Sans JP",system-ui,sans-serif;
-  font-size:clamp(18px,4vw,23px) !important;
+  width:100% !important;
+  max-width:100% !important;
+  min-height:60px;
+  margin-inline:auto !important;
+  padding:12px 12px !important;
+  box-sizing:border-box !important;
+  font-family:Inter,"Noto Sans Myanmar","Noto Sans JP",system-ui,sans-serif !important;
+  font-size:clamp(17px,4vw,22px) !important;
   font-weight:850 !important;
   line-height:1.65 !important;
   white-space:normal !important;
-  overflow-wrap:break-word;
   letter-spacing:0 !important;
-  box-sizing:border-box;
-  margin-inline:auto;
+  text-align:center !important;
+  text-indent:0 !important;
+  border-radius:14px;
 }
-@media(max-width:380px){
-  a.yk821-hub-open[href="/study/jlpt-learning.html"] {font-size:17.5px !important;padding-inline:12px!important;}
+#yk82Hub a.yk821-hub-open .yk88-cta-label {
+  display:block !important;
+  flex:1 1 100% !important;
+  width:100% !important;
+  min-width:0 !important;
+  margin:0 auto !important;
+  padding:0 !important;
+  text-align:center !important;
+  text-indent:0 !important;
+  white-space:normal !important;
+  overflow-wrap:anywhere;
 }
+#yk82Hub a.yk821-hub-open::before,
+#yk82Hub a.yk821-hub-open::after {content:none !important;}
 
-a.yk821-hub-open[href="/study/jlpt-learning.html"]::before,
-a.yk821-hub-open[href="/study/jlpt-learning.html"]::after {content:none !important;}
+/* Shrink accumulated outer spacing around the View More -> JLPT card
+   without moving/removing other study cards or affecting desktop. */
+@media(max-width:640px){
+  #study-hub.study-hub-v7 {margin-top:12px !important;padding-top:8px !important;}
+  #study-hub #studyHubGridV733 {row-gap:7px !important;}
+  #study-hub .study-hub-more-wrap {margin-top:0 !important;margin-bottom:0 !important;}
+  #study-hub #studyHubMoreV733 {min-height:54px !important;padding-top:10px !important;padding-bottom:10px !important;}
+  #study-hub #yk82Hub.yk82-panel {margin-top:1px !important;}
+  #yk82Hub a.yk821-hub-open {min-height:58px;font-size:clamp(16px,4.1vw,20px) !important;}
+}
+@media(max-width:360px){
+  #yk82Hub a.yk821-hub-open {padding-inline:8px !important;font-size:16px !important;}
+}
 
 /* Screenshots 2 & 3: remove ONLY redundant visible top pills; keep the
    original nav DOM for grammar-detail.js (#yk88BackTop) and preserve logo. */

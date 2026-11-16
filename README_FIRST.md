@@ -1,71 +1,55 @@
-# STUDYING WITH YE KUN — v7.87.6 UI Fix 05.1 — CTA Center Correction
+# STUDYING WITH YE KUN — v7.87.6 UI Fix05.2
 
-**QA-only patch for the already-deployed v7.87.6 Fix04. Not a full website, not a release, and not a Production change.**
+**QA-only Patch (Fix05.2).** This is a complete replacement of Fix05 / Fix05.1 for the existing v7.87.6 Fix04 baseline, **NOT** a full website ZIP and **NOT** a Production deploy.
 
-## ပြင်ဆင်ထားတဲ့ UI
+## Approved user changes
 
-1. **Home / Study Hub** — `သင်ခန်းစာအားလုံးဖွင့်ရန်` CTA ကို စာသားအမှန်ကိုယ်တိုင်ပြောင်းပြီး မြှား `↗` ဖြုတ်ထားပါတယ်။ Text center, bigger, bold; English `Open All Lessons`, Japanese `すべてのレッスンを開く` မှာလည်း arrow မပါပါ။ Link မပြောင်းပါ။
-2. **JLPT Learning Center** — Logo အောက်က `Study Hub / Dictionary / Mock Exam` pill bar ကို မျက်နှာပြင်ပေါ်မှာဖျောက်ပြီး Hero Card ကို အပေါ်တင်ထားပါတယ်။
-3. **Grammar Detail** — Logo အောက်က `Grammar / Study Hub / Mock Exam` pill bar ကို မျက်နှာပြင်ပေါ်မှာဖျောက်ထားပါတယ်။ အောက်မှာ `☆ Bookmark | ✓ လေ့လာပြီး | ← Grammar သို့` ဆိုပြီး Button ၃ ခုကို တစ်တန်းထဲ ညီညီညာညာ ထားပါတယ်။ Existing Bookmark/Mark learned event handlers, states, stored learning progress, and original Back link URL are preserved.
+1. Home mobile: reduce excessive empty space before **View More · Study Hub & JLPT** and between View More and the JLPT Learning Center card; keep the View More button, functionality, hero, student/teacher, countdown and 5-tab bottom navigation.
+2. Home JLPT CTA: display only **သင်ခန်းစာအားလုံးဖွင့်ရန်**, no arrow, visually centered with larger bold Myanmar typography. English: `Open All Lessons`; Japanese: `すべてのレッスンを開く`. Preserve the existing destination `/study/jlpt-learning.html`.
+3. Keep Fix05.1's UI enhancements for the separate JLPT Learning and Grammar Detail pages. All original bookmarks, progress state and back navigation stay untouched.
 
-**Important:** `#yk88BackTop` stays in the DOM (hidden visually), because the original Grammar Detail JavaScript updates its URL. We do not delete it. The original bottom Back anchor is moved into the 3-button bar after rendering. The visible labels are shortened, while accessibility labels and underlying state callbacks are retained.
+## Why a replacement was necessary
 
-## Why revision 05.1 (supersedes previous Fix05 ZIP)
+The previous CSS attempted to center a direct text node in a grid. The user's Samsung screenshot after Fix05.1 showed the correct arrow-free text **but still visibly left-aligned**, and excess top spacing. The Fix05.2 injector now wraps the CTA's original text node in a dedicated `<span class="yk88-cta-label">` so that it spans the full button width and has explicit `text-align:center`. It also adds a short **critical CSS fallback** directly to generated `dist/index.html` (as well as the versioned stylesheet) to protect the CTA and mobile spacing from missing/stale CSS requests. The global translation engine still works on the span's text node. No runtime translation engine or user data is changed.
 
-The original Fix05 only centered the CTA with CSS; its actual English base label and Myanmar/Japanese translation strings still contained `↗`. This revision changes both the built home HTML label and the existing localization map **after Fix04 and before localization runs in the browser**, while keeping the same href. CSS uses `display:grid;place-items:center` for visual centering. This is a **replacement of Fix05**, not an extra deploy step. If Fix05 was already copied into a QA branch, replace the corresponding files with this package; don't append a second Fix05 import.
+The reduced space is caused by stacked original CSS (`.study-hub-v7` padding/margin; `.study-hub-more-wrap` margin; grid row gap; `#yk82Hub.yk82-panel` top margin). Fix05.2 reduces those values for **width <=640px** only; it does **not** hide View More or remove content.
 
-If the visible screenshot still shows the original button after QA deployment, verify the actual Preview URL, generated `dist/index.html`, asset cache and browser service worker before calling it a code regression.
+## Exact baseline and installation
 
-## Compatibility and QA workflow (GitHub Desktop)
+- Repo: `koyekmw2019-web/MY-OFFICAL-WEB`
+- Verified reference commit: `010fe4d6c5f108654c17826551ba648092dca96d` (v7.87.6 Fix04)
+- Fix04 builder blob: `660804e12c526830d682873bac74f9a34d65bc94`
+- Create a **separate local QA branch** in GitHub Desktop. **Do not copy directly to main**.
+- If Fix05 or Fix05.1 files exist in the QA branch, overwrite their corresponding files using this ZIP rather than adding a second import. Fix05.2 is a replacement.
+- Extract into repository root containing `package.json`, retaining folder paths. The main builder keeps exactly one import for `build-v7876-jlpt-ui-fix05.mjs`, executed after Fix04.
+- Source HTML, backend, database, payment, login, exam and YKCR code are not modified. The injection changes **generated dist/ HTML only** after the normal local build.
 
-- Repository: `koyekmw2019-web/MY-OFFICAL-WEB`
-- Exact inspected Fix04 commit: `010fe4d6c5f108654c17826551ba648092dca96d`
-- Original `scripts/build-page-transitions-v7875.mjs` blob SHA: `660804e12c526830d682873bac74f9a34d65bc94`
-- If the current branch has moved or the build script differs, STOP and review instead of blindly overwriting.
+### Changed files
 
-**Before extraction:** Use GitHub Desktop to inspect/pull the correct baseline, then create a **LOCAL QA BRANCH**, e.g. `qa/v7.87.6-ui-fix051`. Do not extract directly over `main`.
+- `scripts/build-page-transitions-v7875.mjs` — 1 import remains, comment updated
+- `scripts/build-v7876-jlpt-ui-fix05.mjs` — validated output-only injection, protected text wrapper, CSS fallback
+- `assets/yk88-jlpt-ui-fix05.css` — stronger CTA centering, mobile spacing, existing learning/detail styles
+- `assets/yk88-jlpt-ui-fix05.js` — unchanged Grammar Detail UI helper
+- `tests/v7876-ui-fix05.mjs` — fixture-based tests
+- `tests/v7876-ui-fix05-browser-smoke.py` — optional synthetic Chromium QA
 
-Unzip into the existing repository ROOT (`package.json` location). There are 5 code changes:
+## Local QA (not Production)
 
-- MODIFIED `scripts/build-page-transitions-v7875.mjs` — one import after Fix04
-- ADDED `scripts/build-v7876-jlpt-ui-fix05.mjs` — guarded public `dist/` HTML injection
-- ADDED `assets/yk88-jlpt-ui-fix05.css` — scope-specific CSS
-- ADDED `assets/yk88-jlpt-ui-fix05.js` — Grammar Detail presentation-only enhancement
-- ADDED `tests/v7876-ui-fix05.mjs` — source / fixture regression checks
-
-Optional extra browser smoke script: `tests/v7876-ui-fix05-browser-smoke.py` (Python + Playwright + Chromium; NOT needed for normal builds).
-
-## Local QA commands
-
-```sh
+```bash
 node --check scripts/build-page-transitions-v7875.mjs
 node --check scripts/build-v7876-jlpt-ui-fix05.mjs
 node --check assets/yk88-jlpt-ui-fix05.js
 node tests/v7876-ui-fix05.mjs
 npm test
 npm run build
-node tests/v7876-deployed-output.mjs
-node tests/v7876-mobile-repair.mjs --release
 node tests/v7876-tabs-fix04.mjs --release
 node tests/v7876-ui-fix05.mjs --release
 ```
 
-`npm run build` must be run on the **local QA branch checkout**, not on a live server. The build copies the new `assets/` files to `dist/`, then this patch injects its CSS into exactly the home, JLPT Learning and Grammar Detail pages. Only the Grammar Detail page loads the new UI JS.
+**Mobile checks:** 320/360/390/430px. Open Home → Study. Look at View More top/bottom space, CTA exact label/center/size and arrow absence, theme & 5-tab nav. Check language switching MY/EN/JP. Check JLPT Learning hero and 7 tabs; Grammar details, Bookmark, Learned and Back. Use **real phone and authorized Deploy Preview** before stable approval.
 
-No external Python/BAT script or manual source-HTML changes required to apply.
+**QA limitation:** Synthetic Chromium/browser and fixture checks are not complete-site/Netlify QA. No real-device screenshot or authenticated flow was validated in this package. **NO-GO for Production** until full repository build, tests, real-mobile QA, separate explicit release approval.
 
-## Preview checklist before further approval
+## Approval boundary
 
-- Test 320 / 360 / 390 / 430 px and desktop.
-- Home CTA text is exactly `သင်ခန်းစာအားလုံးဖွင့်ရန်` in Myanmar, `Open All Lessons` in English and `すべてのレッスンを開く` in Japanese; centered with no arrow in all three; link still opens Learning Center.
-- JLPT Learning logo remains; top pill bar gone; hero card higher; Daily Practice / Explore Lessons and Fix04 7 tabs work.
-- Grammar Detail example text still loads; 3 equal-height, equal-width buttons in ONE ROW without horizontal overflow; Bookmark toggle and learned-status update work separately; Back returns to same level's Grammar list.
-- Preserve existing 5-tab bottom navigation, dark/light modes where supported, login, payment, exam, and YKCR behavior.
-- Run real-device QA + Netlify Deploy Preview **only with separate approval for GitHub push / preview actions**.
-- Separate explicit approval is mandatory before commit, push, merge, Netlify Production, SQL/DB, or student data changes.
-
-## Rollback
-
-On the QA branch, restore `scripts/build-page-transitions-v7875.mjs` to the Fix04 version and remove the three new runtime/source files and Fix05 test. Because this patch only adds a build step and two new assets, the original v7.87.6 Fix04 navigation/logic remains available. For Production rollback, require separate approval and a tested plan.
-
-**Honesty:** Full `npm test`, full `npm run build`, deployed Netlify preview and actual mobile E2E were NOT run in the preparation environment; only syntax, synthetic builder and synthetic Chromium responsive/browser checks were run.
+File creation is authorized by user request. No GitHub commit, push, PR, merge, Netlify Deploy, SQL migration, payment or student-data change was made. Request approval separately for each stage. To roll back from this QA branch, restore the Fix04 builder and remove the added Fix05 assets/helper; keep Production unchanged.

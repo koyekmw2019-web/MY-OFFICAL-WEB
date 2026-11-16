@@ -1,40 +1,29 @@
-# STUDYING WITH YE KUN — v7.87.6 UI Fix05.1 QA Report
+# STUDYING WITH YE KUN — UI Fix05.2 QA Report
 
-**Status: QA candidate only — not deployed, not verified Stable.**
+**Status:** QA candidate only, NOT deployed. Baseline Fix04 commit `010fe4d6c5f108654c17826551ba648092dca96d`.
 
-## Baseline
+## Reported screenshot regression
 
-- Repo: `koyekmw2019-web/MY-OFFICAL-WEB`
-- Inspected Production Fix04 commit: `010fe4d6c5f108654c17826551ba648092dca96d`
-- Existing builder ZIP/GitHub blob: `660804e12c526830d682873bac74f9a34d65bc94` (verified equal)
-- Changes prepared locally only; no GitHub, Netlify, SQL, YKCR or user data mutations.
+- View More area has too much vertical spacing before/after it on mobile.
+- Arrow-free Burmese CTA still appeared left-weighted after Fix05.1.
 
-## UI changes implemented
+## Fix05.2 implementation
 
-1. Home `yk821-hub-open` CTA: centered with CSS grid; remove visible ↗ from built HTML CTA and add arrow-free MY/JA localization mappings before the existing localization pass; original link href and localization engine unchanged.
-2. Learning page: hide only the redundant `.yk82-top-links` visually and tighten hero/main top spacing; brand logo and bottom navigation retained.
-3. Grammar Detail: hide redundant `.yk82-top-links` visually but keep its `#yk88BackTop` in DOM, move the already-rendered `.yk88-back` anchor into `.yk88-detail-actions`, shorten display labels and create an equal-width three-column bar. Existing Bookmark and Mark-Learned handlers untouched.
+- Replaces the direct text node with `<span class="yk88-cta-label">Open All Lessons</span>` in generated public `dist/index.html`; existing i18n map localizes that text to Burmese/Japanese. The link destination is unchanged.
+- Center the label using full-width span + flex layout and dedicated scoped rules. An inline critical-style fallback protects from stale/missing CSS request. No extra arrow.
+- Shrink four **mobile-only** spacing sources around the Study Hub / JLPT section without hiding View More.
+- Retain all Fix05.1 Learning and Grammar Detail changes and state/access boundaries.
 
-## QA actually run
+## Tests actually performed
 
-- `node --check`: PASS on modified build orchestration, new dist injector, and new JS helper.
-- Source / synthetic builder tests: PASS, including exact import order, assets injection into exactly three HTML routes, JS only on Detail, duplicate detection, unexpected-anchor refusal with no prior writes.
-- Synthetic headless Chromium with widths 320, 360, 390, 430, 720px: PASS 15/15 per-route responsive cases. Detail case verified 3 buttons on same top row, equal calculated width, no horizontal overflow; Bookmark and Learned interaction simulation; existing Back href retained. Learning case verified nav visually hidden and content close to header. Home case verified center alignment by actual text bounding box, bold, larger arrow-free CTA.
-- ZIP integrity / checksum: generated and validated after packaging.
+- `node --check` on 4 JS/MJS files: PASS.
+- Synthetic builder with exact fixtures and fail-closed duplicate / changed anchor guards: PASS.
+- Synthetic Chromium: 5 viewport widths × 3 routes, plus 3 languages for Home. Checks text visual center, 3-column detail actions, header removal, no horizontal overflow, and <11px View More-to-panel gap on mobile: PASS.
+- The Home test deliberately injects **only the inline fallback CSS**, not the linked stylesheet, demonstrating the fallback does not need a CSS network request.
+- ZIP CRC/sha256: validated after package creation.
 
-## Not run / not claimed
+## Tests not performed
 
-- Full repository `npm test` / `npm run build` (complete site checkout was not supplied in container).
-- Real Netlify Deploy Preview, actual Samsung device, service-worker cache refresh.
-- Full live authenticated E2E of bookmarks / learning-progress sync, payment, exam, or YKCR.
-- Functional Stable / release approval.
+Full repository `npm test`/`npm run build`, real Samsung phone, live Netlify deploy preview, authenticated E2E (Login/Payments/Exams/YKCR/learning-state). Do not label stable or production-ready.
 
-## Decision
-
-**NO-GO for Production** until QA checkout + full build/test + mobile Deploy Preview + separate explicit release approval. Keep v7.87.6 Fix04 as current baseline.
-
-## Fix05.1 correction
-
-Screenshot still showed left-weighted Myanmar text and ↗. The original Fix05 patch did not remove the arrow from the literal CTA or language map. Fix05.1 replaces the earlier patch ZIP on a QA branch and updates both labels and grid centering; it does not claim that this code has been published or tested on the real website.
-
-**Fix05.1 QA rerun:** node syntax checks PASS (4 files); updated source/fixture injector test PASS; Chromium synthetic widths 320/360/390/430/720 px PASS 15/15, including center measured from text bounding rectangle and zero visible arrow. Full website & real mobile still untested.
+**Release decision: NO-GO; QA only.**

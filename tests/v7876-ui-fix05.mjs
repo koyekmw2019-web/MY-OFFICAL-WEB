@@ -1,4 +1,4 @@
-/** STUDYING WITH YE KUN — v7.87.6 UI Fix05.1 regression (standalone source/fixture).
+/** STUDYING WITH YE KUN — v7.87.6 UI Fix05.2 regression (standalone source/fixture).
  * Run: node tests/v7876-ui-fix05.mjs [--release]
  */
 import assert from 'node:assert/strict';
@@ -15,7 +15,9 @@ const fix04="await import('./build-v7876-jlpt-tabs-fix04.mjs')";
 const fix05="await import('./build-v7876-jlpt-ui-fix05.mjs')";
 assert.equal(builder.split(fix05).length-1,1,'Fix05 import must occur once');
 assert(builder.indexOf(fix04)<builder.indexOf(fix05),'Fix05 must follow Fix04');
-assert(css.includes('a.yk821-hub-open[href="/study/jlpt-learning.html"]') && css.includes('place-items:center !important'),'Homepage learning CTA must be centered by grid');
+assert(css.includes('#yk82Hub a.yk821-hub-open') && css.includes('.yk88-cta-label') && css.includes('text-align:center !important'),'Home CTA wrapper must be explicitly centered');
+assert(css.includes('#study-hub .study-hub-more-wrap') && css.includes('#study-hub #yk82Hub.yk82-panel'),'Mobile spacing must cover both View More and JLPT card');
+assert(injector.includes('yk88-fix052-critical'),'Home critical CSS fallback must be injected in HTML for cache resilience');
 assert(injector.includes('const ctaOld') && injector.includes('localizedNoArrow') && injector.includes('ctaNew'),'Home CTA must remove arrow from real text and preserve localization');
 assert(css.includes('body.yk82-page .yk82-top-links {display:none !important;}'),'Redundant header links not hidden');
 assert(css.includes('grid-template-columns:repeat(3,minmax(0,1fr))'),'Three same-row detail actions required');
@@ -42,15 +44,16 @@ try {
   assert.equal(result.status,0,'Fixture builder must PASS: '+result.stderr);
   for(const path of Object.keys(fixture)){
     const html=read(join(dist,path));
-    assert.equal(html.split('yk88-jlpt-ui-fix05.css?v=7876ui051').length-1,1,`${path}: CSS once`);
+    assert.equal(html.split('yk88-jlpt-ui-fix05.css?v=7876ui052').length-1,1,`${path}: CSS once`);
     assert(!html.includes('style="display:none"'),'Do not remove navigation DOM');
     if(path==='index.html'){
-      assert(html.includes('>Open All Lessons</a>') && !html.includes('>Open All Lessons ↗</a>'),'Remove arrow from HOME CTA real text');
+      assert(html.includes('<span class="yk88-cta-label">Open All Lessons</span></a>') && !html.includes('>Open All Lessons ↗</a>'),'Home CTA wrapped and arrow-free');
+      assert.equal(html.split('id="yk88-fix052-critical"').length-1,1,'Critical fallback CSS must be included exactly once on home');
       assert(html.includes("'Open All Lessons':'သင်ခန်းစာအားလုံးဖွင့်ရန်'"),'Myanmar text mapping must have no arrow');
       assert(html.includes("'Open All Lessons':'すべてのレッスンを開く'"),'Japanese text mapping must have no arrow');
-      assert(html.indexOf('Fix05.1: Home learning CTA') < html.indexOf('const V737_ORIGINAL_ATTR'),'New language mapping must precede original localization');
+      assert(html.indexOf('Fix05.2: Home learning CTA') < html.indexOf('const V737_ORIGINAL_ATTR'),'New language mapping must precede original localization');
     }
-    assert.equal(html.split('yk88-jlpt-ui-fix05.js?v=7876ui051').length-1,path.includes('grammar-detail')?1:0,'JS must be grammar detail only');
+    assert.equal(html.split('yk88-jlpt-ui-fix05.js?v=7876ui052').length-1,path.includes('grammar-detail')?1:0,'JS must be grammar detail only');
   }
   // Guard: refuse second injection, do not rewrite once patched.
   const before=read(join(dist,'index.html'));
@@ -67,8 +70,8 @@ try {
     for(const [path,count] of [['dist/index.html',1],['dist/study/jlpt-learning.html',1],['dist/study/jlpt-grammar-detail.html',1]]){
       assert(existsSync(path),'Missing release output '+path);
       const html=read(path);
-      assert.equal(html.split('/assets/yk88-jlpt-ui-fix05.css?v=7876ui051').length-1,count,`Release CSS injection incorrect: ${path}`);
+      assert.equal(html.split('/assets/yk88-jlpt-ui-fix05.css?v=7876ui052').length-1,count,`Release CSS injection incorrect: ${path}`);
     }
   }
-  console.log('PASS Fix05.1: source order, UI-only scope, three-route injection, duplicate/anchor fail-closed, preservation of original control IDs');
+  console.log('PASS Fix05.2: source order, UI-only scope, three-route injection, duplicate/anchor fail-closed, preservation of original control IDs');
 }finally{rmSync(root,{force:true,recursive:true});}

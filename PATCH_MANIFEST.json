@@ -1,57 +1,39 @@
 {
   "project": "STUDYING WITH YE KUN Official Website",
-  "base_version": "v7.87.6 Fix04",
-  "patch": "UI Fix05.1 (CTA center + arrow-free translation; supersedes Fix05)",
+  "baseline_version": "v7.87.6 Fix04",
+  "base_commit": "010fe4d6c5f108654c17826551ba648092dca96d",
+  "package_version": "Fix05.2",
   "status": "qa-candidate-not-deployed",
-  "verified_reference_commit": "010fe4d6c5f108654c17826551ba648092dca96d",
-  "mode": "dist-only UI enhancement; no production mutation",
-  "code_files": [
-    {
-      "path": "scripts/build-page-transitions-v7875.mjs",
-      "action": "modify, add after Fix04"
-    },
-    {
-      "path": "scripts/build-v7876-jlpt-ui-fix05.mjs",
-      "action": "add"
-    },
-    {
-      "path": "assets/yk88-jlpt-ui-fix05.css",
-      "action": "add"
-    },
-    {
-      "path": "assets/yk88-jlpt-ui-fix05.js",
-      "action": "add"
-    },
-    {
-      "path": "tests/v7876-ui-fix05.mjs",
-      "action": "add"
-    }
+  "type": "incremental-replacement-patch",
+  "supersedes": [
+    "YEKUN_v7.87.6_UI_Fix05_QA_PATCH.zip",
+    "YEKUN_v7.87.6_UI_Fix05_1_CTA_Center_QA_PATCH.zip"
   ],
-  "scopes": [
-    "Home learning CTA",
-    "JLPT Learning Center header",
-    "Grammar Detail header and action bar"
-  ],
-  "exclusions": [
-    "production",
-    "database",
-    "SQL",
-    "YKCR",
-    "login/auth",
-    "payments",
-    "exam scoring",
-    "learning-state code"
-  ],
-  "expected_previous_builder_blob_sha": "660804e12c526830d682873bac74f9a34d65bc94",
-  "reference_repo": "koyekmw2019-web/MY-OFFICAL-WEB",
-  "tested": {
-    "node_syntax": "pass",
-    "static_and_synthetic_builder": "pass",
-    "synthetic_chromium_responsive_15_cases": "pass",
-    "full_website_build": "not_run",
-    "netlify_preview": "not_run",
-    "real_mobile_qa": "not_run"
+  "permissions": {
+    "git_commit": false,
+    "git_push": false,
+    "production_deploy": false,
+    "database_change": false
   },
-  "supersedes": "YEKUN_v7.87.6_UI_Fix05_QA_PATCH.zip",
-  "scope_change": "Built home CTA text and MY/JA localized text corrected; no change to href, original language system or backend"
+  "modified_code_files": [
+    "scripts/build-page-transitions-v7875.mjs",
+    "scripts/build-v7876-jlpt-ui-fix05.mjs",
+    "assets/yk88-jlpt-ui-fix05.css"
+  ],
+  "unchanged_code_files": [
+    "assets/yk88-jlpt-ui-fix05.js"
+  ],
+  "tests": [
+    "tests/v7876-ui-fix05.mjs",
+    "tests/v7876-ui-fix05-browser-smoke.py"
+  ],
+  "home_changes": [
+    "mobile compact View More section",
+    "dedicated CTA label span for visual centering",
+    "arrow-free multilingual CTA",
+    "critical CSS inline fallback"
+  ],
+  "full_repository_build": "not_run",
+  "real_mobile_qa": "not_run",
+  "production_changed": false
 }

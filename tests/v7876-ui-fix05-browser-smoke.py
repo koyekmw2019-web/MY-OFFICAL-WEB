@@ -61,14 +61,46 @@ with sync_playwright() as p:
         page.close()
         print('PASS STUDY',width,'px: old pills hidden, card aligned near header')
     for width in widths:
-        page=browser.new_page(viewport={'width':width,'height':820})
-        page.set_content('''<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0;background:#19161a"><main style="padding:12px 16px"><a class="yk821-hub-open" href="/study/jlpt-learning.html" style="display:block;color:#fff;background:#f04468;border-radius:20px">သင်ခန်းစာအားလုံးဖွင့်ရန်</a></main></body></html>''')
-        page.add_style_tag(path=str(css))
-        info=page.evaluate('''() => {const e=document.querySelector('a.yk821-hub-open'),s=getComputedStyle(e);return {justify:s.justifyContent,align:s.alignItems,weight:parseInt(s.fontWeight),font:parseFloat(s.fontSize),scrollW:document.documentElement.scrollWidth}}''')
-        position=page.evaluate('''() => {const e=document.querySelector('.yk821-hub-open'),r=e.getBoundingClientRect();const range=document.createRange();range.selectNodeContents(e);const t=range.getBoundingClientRect();return {buttonCenter:r.left+r.width/2,textCenter:t.left+t.width/2,text:e.textContent.trim()}}''')
-        assert position['text']=='သင်ခန်းစာအားလုံးဖွင့်ရန်' and abs(position['textCenter']-position['buttonCenter'])<2,position
-        assert info['justify']=='center' and info['align']=='center' and info['weight']>=800 and info['font']>=17 and info['scrollW']<=width,info
+        page=browser.new_page(viewport={'width':width,'height':820},device_scale_factor=1)
+        page.set_content('''<!doctype html><html lang="my"><head><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+          <body style="margin:0;background:#0a0a0a;color:#fff;font-family:system-ui"><header style="height:78px;background:#151515">YK HEADER</header>
+          <section class="study-hub-v7" id="study-hub" style="margin:26px 0 10px;padding:18px;background:#111">
+           <div class="study-hub-grid" id="studyHubGridV733" style="display:grid;gap:14px">
+             <div class="study-hub-more-wrap" style="display:flex;justify-content:center;margin-top:14px"><button id="studyHubMoreV733" style="height:60px;width:100%">View More · Study Hub &amp; JLPT ↓</button></div>
+             <div class="yk82-panel" id="yk82Hub" style="margin-top:24px;padding:20px;background:#321824;border:1px solid #555;border-radius:24px">
+             <div style="height:280px">STUDYING WITH YE KUN · JLPT</div>
+             <div class="yk821-hub-welcome" style="display:flex;flex-direction:column;padding:12px;gap:12px;background:#251920;border-radius:18px">
+             <div style="height:110px">STUDENT &amp; TEACHER</div>
+             <a class="yk821-hub-open" href="/study/jlpt-learning.html" style="display:inline-flex;flex:1;background:#e43b57;color:#fff;padding:11px 16px;border-radius:12px;font-size:12px;font-weight:800;white-space:nowrap"><span class="yk88-cta-label">Open All Lessons</span></a>
+             </div></div></div></section></body></html>''')
+        # Use only the inline critical CSS that the build injector embeds, so
+        # spacing and center work even without an external CSS request.
+        css_text=(root/'scripts/build-v7876-jlpt-ui-fix05.mjs').read_text()
+        critical=css_text.split('const criticalHomeCSS = ',1)[1].split(';\nconst stylesheet=',1)[0]
+        import json
+        page.add_style_tag(content=json.loads(critical).replace('<style id="yk88-fix052-critical">','').replace('</style>',''))
+        for lang,label in [('my','သင်ခန်းစာအားလုံးဖွင့်ရန်'),('en','Open All Lessons'),('ja','すべてのレッスンを開く')]:
+            page.locator('.yk88-cta-label').evaluate('(e,v)=>e.textContent=v',label)
+            metrics=page.evaluate('''() => {
+              const a=document.querySelector('#yk82Hub a.yk821-hub-open');const span=a.querySelector('span');
+              const ar=a.getBoundingClientRect(),sr=span.getBoundingClientRect();
+              const r=document.createRange();r.selectNodeContents(span);const tr=r.getBoundingClientRect();
+              const btn=document.querySelector('#studyHubMoreV733').getBoundingClientRect();
+              const panel=document.querySelector('#yk82Hub').getBoundingClientRect();
+              const section=document.querySelector('#study-hub').getBoundingClientRect();
+              return {text:span.textContent.trim(),center:tr.left+tr.width/2,centerButton:ar.left+ar.width/2,
+                spanCenter:sr.left+sr.width/2, gap:panel.top-btn.bottom,topSpace:btn.top-section.top,
+                scrollW:document.documentElement.scrollWidth,viewport:innerWidth,
+                labelStyle:getComputedStyle(span).textAlign,buttonStyle:getComputedStyle(a).display};} ''')
+            assert metrics['text']==label,metrics
+            assert abs(metrics['center']-metrics['centerButton'])<2.5,metrics
+            assert abs(metrics['spanCenter']-metrics['centerButton'])<2.5,metrics
+            assert metrics['labelStyle']=='center' and metrics['buttonStyle']=='flex',metrics
+            assert metrics['scrollW']<=width,metrics
+            if width<=640:
+                assert metrics['gap']<=11,metrics
+                assert metrics['topSpace']<=30,metrics
+            print('PASS HOME',width,'px',lang, 'centered, no arrow, compact',metrics['gap'])
         page.close()
-        print('PASS HOME',width,'px: CTA real text arrow-free, visually centered, bigger and bold')
     browser.close()
 print('PASS synthetic browser smoke: 15 responsive cases, click states, href retained')
