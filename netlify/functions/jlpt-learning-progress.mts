@@ -4,11 +4,11 @@ const json=(x:unknown,status=200)=>Response.json(x,{status,headers:{"Cache-Contr
 const validId=(x:unknown)=>typeof x==="string"&&/^N[1-5]-[vgkrl]-\d{1,4}$/.test(x);
 function sanitize(raw:any){
  if(!raw||typeof raw!=="object"||Array.isArray(raw))throw new Error("Invalid state");
- const completed=[...new Set((Array.isArray(raw.completed)?raw.completed:[]).filter(validId))].slice(0,500);
+ const completed=[...new Set((Array.isArray(raw.completed)?raw.completed:[]).filter(validId))].slice(0,2000);
  const bookmarkTimestamps:Record<string,number>={};
  if(raw.bookmarkTimestamps && typeof raw.bookmarkTimestamps==="object" && !Array.isArray(raw.bookmarkTimestamps)){
   for(const [key,val] of Object.entries(raw.bookmarkTimestamps)){
-   if(validId(key)&&typeof val==="number"&&Number.isFinite(val)&&Math.abs(val)<9000000000000&&Object.keys(bookmarkTimestamps).length<500)bookmarkTimestamps[key]=Math.trunc(val);
+   if(validId(key)&&typeof val==="number"&&Number.isFinite(val)&&Math.abs(val)<9000000000000&&Object.keys(bookmarkTimestamps).length<2000)bookmarkTimestamps[key]=Math.trunc(val);
   }
  }
  const dailyRuns=(Array.isArray(raw.dailyRuns)?raw.dailyRuns:[]).filter((x:any)=>x&& /^\d{4}-\d{2}-\d{2}$/.test(String(x.day))&&/^N[1-5]$/.test(String(x.level))&&[5,10,20].includes(x.count)&&Number.isInteger(x.correct)&&x.correct>=0&&x.correct<=x.count).slice(-180).map((x:any)=>({day:x.day,level:x.level,count:x.count,correct:x.correct,finishedAt:Math.trunc(Number(x.finishedAt)||0)}));
@@ -19,7 +19,7 @@ function sanitize(raw:any){
 }
 function mergeStates(oldRaw:any,newRaw:any){
  const a=sanitize(oldRaw||{}),b=sanitize(newRaw||{});
- const completed=[...new Set([...a.completed,...b.completed])].slice(0,500);
+ const completed=[...new Set([...a.completed,...b.completed])].slice(0,2000);
  const bookmarkTimestamps:Record<string,number>={};
  for(const id of new Set([...Object.keys(a.bookmarkTimestamps),...Object.keys(b.bookmarkTimestamps)])){
   const older=a.bookmarkTimestamps[id]||0,newer=b.bookmarkTimestamps[id]||0;

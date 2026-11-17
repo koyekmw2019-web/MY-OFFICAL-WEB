@@ -6,10 +6,10 @@
  const empty=()=>({completed:[],bookmarkTimestamps:{},dailyRuns:[],lastLevel:'N5',lastLevelAt:0,updatedAt:0});
  const clean=(value)=>{
   const s=empty(),v=value&&typeof value==='object'?value:{};
-  s.completed=uniq(v.completed,500);
+  s.completed=uniq(v.completed,2000);
   if(v.bookmarkTimestamps&&typeof v.bookmarkTimestamps==='object'&&!Array.isArray(v.bookmarkTimestamps)){
    for(const [id,t] of Object.entries(v.bookmarkTimestamps)){
-    if(/^N[1-5]-[vgkrl]-\d{1,4}$/.test(id) && Number.isFinite(Number(t)) && Math.abs(Number(t))<9000000000000 && Object.keys(s.bookmarkTimestamps).length<500) s.bookmarkTimestamps[id]=Math.trunc(Number(t));
+    if(/^N[1-5]-[vgkrl]-\d{1,4}$/.test(id) && Number.isFinite(Number(t)) && Math.abs(Number(t))<9000000000000 && Object.keys(s.bookmarkTimestamps).length<2000) s.bookmarkTimestamps[id]=Math.trunc(Number(t));
    }
   }
   const daily=Array.isArray(v.dailyRuns)?v.dailyRuns:[];
@@ -20,7 +20,7 @@
  };
  const merge=(local,cloud)=>{
   const a=clean(local),b=clean(cloud),merged=empty();
-  merged.completed=uniq([...a.completed,...b.completed],500);
+  merged.completed=uniq([...a.completed,...b.completed],2000);
   for(const id of new Set([...Object.keys(a.bookmarkTimestamps),...Object.keys(b.bookmarkTimestamps)]))merged.bookmarkTimestamps[id]=Math.abs(a.bookmarkTimestamps[id]||0)>=Math.abs(b.bookmarkTimestamps[id]||0)?a.bookmarkTimestamps[id]:b.bookmarkTimestamps[id];
   const runs=new Map();for(const run of [...b.dailyRuns,...a.dailyRuns]){const key=`${run.day}:${run.level}:${run.count}`,old=runs.get(key);if(!old || run.finishedAt>=old.finishedAt)runs.set(key,run)}
   merged.dailyRuns=[...runs.values()].sort((x,y)=>x.finishedAt-y.finishedAt).slice(-180);
