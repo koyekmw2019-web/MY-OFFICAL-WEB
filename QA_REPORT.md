@@ -1,25 +1,32 @@
-# QA Report — Fix05.4 (2026-11-16)
+# v7.88.0 RC1 — Audit and Correction Report
 
-**Decision: NO-GO for Production.** This package is a local QA-only correction to the generated Home CTA.
+**STUDYING WITH YE KUN** · 2026-11-17 · **NOT STABLE / RELEASE NO-GO**
 
-## Evidence and change
+## Starting point
+Previous consolidated **v7.87.9** contained an inventory-mapped 524 Grammar cards and 1,572 three-language example rows, including 30 legacy cards and 494 authored additions. The prior audit expressly did not claim semantic accuracy or full ruby coverage.
 
-- Reported real Samsung screenshot: CTA text remained left-aligned after Fix05.3.
-- GitHub/Netlify read-only confirmation: production at `982da776ed2f5eab16e6eb73145f927baf541a50` (Fix05.3).
-- The exact runtime CSS cascade on the Android device was **not accessible**, so the precise root cause is not conclusively identified.
-- Fix05.4 removes a nested flex text span and changes the link to simple block text with inline `text-align:center!important`. Other page content and API logic remain unchanged.
+## Verified defects and changes
+1. `assets/yk-jlpt-learning-v782-state.js` on current GitHub main limits completed/bookmarked IDs to 500 (and cloud merge completed to 500). `netlify/functions/jlpt-learning-progress.mts` independently caps sanitization/merge to 500, making 524+ learned/bookmarked items unreliably persistent. The new guarded preparatory script changes exactly three client and three server anchors to **2,000**. This requires source-side application BEFORE the website build and subsequent end-to-end test. Payload upper bound for 2,000 grammar-like IDs + 2,000 bookmark timestamps is approximately 74k JSON chars, within existing 120k server request cap; actual max values and additional fields still require live verification.
+2. N1 `〜んがために`: invalid `真実を知んがために` changed to `真実を知らんがために`, with original Myanmar/English context clarified. Explanation explicitly notes `する→せん`.
+3. N1 `〜だの〜だの`: formation changed from N-only to noun/plain-form inclusion, matching its adjective/verb examples.
+4. N3 `〜にしても〜にしても`: formation now includes verb and adjective forms in addition to nouns.
+5. N4 `〜ようになる`: formation now includes potential verbs, matching its ability-change examples.
+6. N2 `〜ものだから`: revised a stilted Japanese example and corresponding MY/EN translations.
 
-## Tests performed in this session
+All five content edits use an exact existing level/title check; their original Grammar IDs are unchanged. The previous six v7.87.9 targeted repairs remain in the consolidated patch.
 
-1. `node --check` on modified JavaScript files — PASS.
-2. `node tests/v7876-ui-fix05.mjs` injection fixtures — PASS (requires existing Fix05.3 assets in checkout).
-3. `python tests/v7876-ui-fix054-center-browser.py` — PASS: 5 widths × 3 locales = 15 test cases with hostile left-align CSS deliberately applied; 1-line text; visually centered in source-derived isolated markup.
-4. ZIP SHA-256 and CRC validation — recorded in CHECKSUMS_SHA256.txt and validated at packaging.
+## Tests run on local files (evidence)
+- JavaScript syntax checks across `scripts/*.mjs` and `tests/*.mjs`: **PASS**.
+- `node tests/v7880-grammar-rc.test.mjs`: **PASS**. Synthetic 524-card fixture with original data for 494 authored records but placeholders for legacy 30 records; five content fixes, 2,000-capacity guard and one-time application, full example field/count validation, asset cache keys.
+- `node tests/v7878-grammar-source.mjs`: **PASS**. Source counts / coverage schema.
+- `node tests/v7879-reading-coverage.mjs`: **PASS** as a measurement, not full ruby quality review; still identifies **55** authored N2/N1 examples containing Kanji but no ruby.
+- `python tests/v7879-browser-ruby-smoke.py`: **PASS** isolated 320/390/720 px Chromium layout (21 render checks); this did not load an actual full website.
+- ZIP integrity/checksums: checked at packaging.
 
-## Not performed
+## NOT verified
+- Full repository `npm run build` and production-like integration: **NOT RUN** (no full source checkout present; repository network unavailable in local container).
+- All translations, conjugations, JLPT classifications and furigana: **NOT FULLY REVIEWED**.
+- Real Samsung device / Netlify deploy preview / cloud login & progress regression: **NOT RUN**.
+- Main, production, database and student records: **UNCHANGED**.
 
-- Full-repo `npm test`, `npm run build`, Chromium test against **real generated** `dist/index.html`.
-- Direct inspection of live Website computed style or device cache (browser access unavailable in this chat).
-- Netlify Deploy Preview, authenticated/guest E2E, actual Samsung UI verification.
-
-**No GitHub/Netlify Production changes.**
+**Release decision: NO-GO.** A stable label would be misleading. This package is a QA release candidate intended to remove documented release blockers, not a certificate of teaching-content correctness.

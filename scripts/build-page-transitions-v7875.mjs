@@ -47,3 +47,13 @@ await import('./build-v7876-jlpt-tabs-fix04.mjs');
 
 // v7.87.6 UI Fix 05.3: full-row centered Home CTA; compact Exam intro; retain JLPT/Grammar actions.
 await import('./build-v7876-jlpt-ui-fix05.mjs');
+
+// v7.87.7 QA batch: append authored Grammar lessons after existing Fix05.4.
+await import('./build-v7877-grammar-update.mjs');
+
+// v7.87.8: reference-index Grammar completion. Data-only appendix after Batch02, QA only.
+await import('./build-v7878-grammar-complete.mjs');
+// v7.87.9: targeted editorial repairs and conservative Ruby readings (QA only).
+await import('./build-v7879-grammar-editorial-qa.mjs');
+// v7.88.0 RC1 targeted content repair + progress-capacity cross-check. NOT release approved.
+await import('./build-v7880-grammar-rc.mjs');

@@ -1,0 +1,187 @@
+{
+  "version": "7.87.9-qa-editorial-revision",
+  "status": "targeted-corrections-not-full-linguistic-certification",
+  "original30JapaneseExplanations": {
+    "N5-g-1": "名詞の後に「です」を付け、丁寧に物事を説明したり判断を述べたりします。",
+    "N5-g-2": "動詞を丁寧に述べる形です。現在の習慣やこれからの行動などに使います。",
+    "N5-g-3": "「に／へ」で目的地や方向を示し、「行きます」とつなげます。",
+    "N5-g-4": "物の存在には「あります」、人・動物の存在には「います」を使います。",
+    "N5-g-5": "相手に丁寧に行動をお願いする表現です。",
+    "N5-g-6": "相手を誘ったり、一緒に何かをすることを提案したりします。",
+    "N4-g-1": "同じ人が二つの動作を同時に行うことを表します。",
+    "N4-g-2": "過去にある行動を経験したことがあると述べます。",
+    "N4-g-3": "後のために前もって準備したり、ある状態を保ったりする表現です。",
+    "N4-g-4": "行動をしても問題ないという許可を表します。",
+    "N4-g-5": "しなければならない義務や必要性を表します。",
+    "N4-g-6": "見た目や状況から判断した様子・起こりそうなことを表します。",
+    "N3-g-1": "自分で意識して行動を習慣にしようとすることを表します。",
+    "N3-g-2": "規則や他者の決定によって、そうすることが定められていると述べます。",
+    "N3-g-3": "同じ出来事が起きるたびに、別のことが繰り返されることを表します。",
+    "N3-g-4": "ある状態が続いている間に行うこと、または知らないうちに起きる変化を表します。",
+    "N3-g-5": "好ましい結果の理由を感謝の気持ちを込めて述べます。",
+    "N3-g-6": "動作の完了や、意図せず起きた残念な結果を表します。",
+    "N2-g-1": "あることを全面的には認めず、「必ずしも〜ではない」と部分否定します。",
+    "N2-g-2": "前件を認めながら、期待と異なる後件を述べる逆接の表現です。",
+    "N2-g-3": "一つの変化や出来事に伴い、別の変化が起こることを表します。",
+    "N2-g-4": "特定の人や物だけでなく、ほかにも当てはまることを表します。",
+    "N2-g-5": "本当はしたくなくても、状況のためにそうする以外の選択肢がないことを表します。",
+    "N2-g-6": "重要な行事や行動を始める前に何かを行う、改まった言い方です。",
+    "N1-g-1": "ある出来事を最初として、同じような活動が次々に広がることを表します。",
+    "N1-g-2": "二つ以上の要因が影響し合い、結果が強まることを表します。",
+    "N1-g-3": "十分ではない状態を認めつつ、最低限の達成や程度があると述べます。",
+    "N1-g-4": "対照的な二つの事柄を比べ、その違いを強調します。",
+    "N1-g-5": "強い働きかけによって、必ずある結果を引き起こすことを表します。",
+    "N1-g-6": "目的を示す硬い表現で、「〜するために」に近い意味です。"
+  },
+  "lessonCorrections": [
+    {
+      "level": "N3",
+      "title": "〜て済む",
+      "reason": "Source reference groups Vて済む, Nで済む and Vなくて済む as related constructions. Replace a less natural Vて example and make three valid forms explicitly distinct, not falsely label the related forms as grammar errors.",
+      "fields": {
+        "explanationJa": "ある行動や少ない費用で用事が片づくこと、または面倒な行動をせずに済むことを表す。例文では「Vて済む」「Nで済む」「Vなくて済む」の違いを示す。",
+        "explanationMy": "လုပ်ဆောင်မှုတစ်ခုနဲ့ ကိစ္စပြေလည်တာ၊ ငွေနည်းနည်းနဲ့ ပြီးသွားတာ၊ ဒါမှမဟုတ် မလိုလားတဲ့အလုပ်တစ်ခုကို မလုပ်ရဘဲ ပြေလည်တာကို ဖော်ပြပါတယ်။ 例文 တွေမှာ ပုံစံသုံးမျိုးကို ခွဲပြထားပါတယ်။",
+        "explanationEn": "Indicates that an action or modest cost is enough to settle a matter, or that an unpleasant action is avoided. The examples distinguish Vて済む, Nで済む and Vなくて済む.",
+        "formation": "Vて形＋済む／N＋で済む／Vなくて＋済む",
+        "examples": [
+          [
+            "一言謝って済む問題ではありません。",
+            "စကားတစ်ခွန်းတောင်းပန်ရုံနဲ့ ပြေလည်မယ့် ပြဿနာမဟုတ်ပါဘူး။",
+            "This is not a problem that can be solved with a simple apology.",
+            "謝って済む"
+          ],
+          [
+            "修理代は五千円で済みました。",
+            "ပြုပြင်ခက ယန်း ၅,၀၀၀ ပဲ ကုန်ခဲ့ပါတယ်။",
+            "The repair cost only 5,000 yen.",
+            "五千円で済みました"
+          ],
+          [
+            "事前に予約したので、列に並ばなくて済みました。",
+            "ကြိုတင်ဘိုကင်လုပ်ထားလို့ တန်းစီစရာ မလိုခဲ့ပါဘူး။",
+            "Because I booked in advance, I did not have to wait in line.",
+            "並ばなくて済みました"
+          ]
+        ]
+      }
+    },
+    {
+      "level": "N3",
+      "title": "〜込む",
+      "reason": "Former third example 入れ込む was awkward for the physical insertion meaning of compound verbs.",
+      "fields": {
+        "examples": [
+          [
+            "電車に乗り込んだ。",
+            "ရထားထဲ ဝင်တက်ခဲ့တယ်။",
+            "I boarded the train.",
+            "乗り込んだ"
+          ],
+          [
+            "彼は問題について考え込んでいる。",
+            "သူက ပြဿနာအကြောင်း အလွန်လေးနက်စွာ စဉ်းစားနေတယ်။",
+            "He is deep in thought about the problem.",
+            "考え込んでいる"
+          ],
+          [
+            "車が狭い道に入り込んだ。",
+            "ကားက လမ်းကျဉ်းထဲ ဝင်သွားတယ်။",
+            "A car drove into a narrow street.",
+            "入り込んだ"
+          ]
+        ]
+      }
+    },
+    {
+      "level": "N1",
+      "title": "〜もさることながら",
+      "reason": "Former first English translation reversed topic emphasis (taste vs service).",
+      "fields": {
+        "examples": [
+          [
+            "味もさることながら、接客も素晴らしい。",
+            "အစားအစာရဲ့ အရသာကောင်းတာအပြင် ဧည့်ဝတ်ပြုဝန်ဆောင်မှုလည်း အလွန်ကောင်းပါတယ်။",
+            "The food tastes great, and the service is excellent too.",
+            "もさることながら"
+          ],
+          [
+            "値段もさることながら、品質も重要です。",
+            "ဈေးနှုန်းကလည်း အရေးကြီးပေမဲ့ အရည်အသွေးလည်း အရေးကြီးပါတယ်။",
+            "Price matters, but quality is important too.",
+            "もさることながら"
+          ],
+          [
+            "知識もさることながら、経験も必要です。",
+            "အသိပညာသာမက အတွေ့အကြုံလည်း လိုအပ်ပါတယ်။",
+            "Knowledge is important, and experience is necessary as well.",
+            "もさることながら"
+          ]
+        ]
+      }
+    },
+    {
+      "level": "N1",
+      "title": "〜より",
+      "reason": "Reference topic is broad; authored content covers only よりほかない, so narrow the meaning explicitly.",
+      "fields": {
+        "explanationJa": "このレッスンでは「V辞書形＋よりほかない」を扱う。他の手段がなく、その行動を選ぶしかないと述べる。",
+        "explanationMy": "ဒီသင်ခန်းစာမှာ 「〜よりほかない」 ပုံစံကိုပဲ လေ့လာပါမယ်။ တခြားရွေးစရာမရှိလို့ အဲဒီလိုလုပ်ရုံပဲ ရှိတယ်ဆိုတဲ့အဓိပ္ပာယ်ပါ။",
+        "explanationEn": "This lesson specifically covers V + よりほかない, meaning there is no alternative but to do something."
+      }
+    },
+    {
+      "level": "N3",
+      "title": "〜に決まっている",
+      "reason": "English first example assigned an unsupported female pronoun although Japanese sentence omits the subject.",
+      "fields": {
+        "examples": [
+          [
+            "あれだけ勉強したから、合格するに決まっている。",
+            "အဲဒီလောက် စာလုပ်ထားတာဆိုတော့ စာမေးပွဲအောင်မှာ သေချာတယ်။",
+            "After studying that much, passing is practically certain.",
+            "に決まっている"
+          ],
+          [
+            "こんなに安いなら、すぐ売れるに決まっています。",
+            "ဒီလောက်ဈေးသက်သာရင် သေချာပေါက် အမြန်ရောင်းထွက်မယ်။",
+            "At that price, it is sure to sell quickly.",
+            "に決まっています"
+          ],
+          [
+            "彼が怒るに決まっているよ。",
+            "သူ စိတ်ဆိုးမှာ သေချာတယ်။",
+            "He is bound to get angry.",
+            "に決まっている"
+          ]
+        ]
+      }
+    },
+    {
+      "level": "N2",
+      "title": "〜にしては",
+      "reason": "Myanmar interpretation of winter example suggested not winter instead of contrary to normal expectations for winter.",
+      "fields": {
+        "examples": [
+          [
+            "初めてにしては、上手にできました。",
+            "ပထမဆုံးအကြိမ်အတွက်ဆိုရင် ကောင်းကောင်းလုပ်နိုင်ခဲ့တယ်။",
+            "For a first attempt, it went well.",
+            "にしては"
+          ],
+          [
+            "冬にしては、今日は暖かい。",
+            "ဆောင်းရာသီအတွက်ဆို ဒီနေ့က အတော်လေးနွေးနေတယ်။",
+            "It's warm for winter today.",
+            "にしては"
+          ],
+          [
+            "彼は新人にしては、落ち着いている。",
+            "ဝန်ထမ်းအသစ်တစ်ယောက်အတွက်ဆို သူက အတော်လေး တည်ငြိမ်တယ်။",
+            "He is remarkably calm for a newcomer.",
+            "にしては"
+          ]
+        ]
+      }
+    }
+  ]
+}

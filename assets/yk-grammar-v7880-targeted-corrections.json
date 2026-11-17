@@ -1,0 +1,91 @@
+{
+  "version": "7.88.0-rc1-targeted-corrections",
+  "status": "release-no-go-until-full-review",
+  "notes": [
+    "Targeted, manually inspected Japanese and translation changes only; do not extrapolate to all 524 lessons.",
+    "Existing grammar IDs and lesson card UI remain unchanged."
+  ],
+  "corrections": [
+    {
+      "level": "N1",
+      "title": "〜んがために",
+      "why": "知る uses 知らない -> 知らん, not 知ん. Also document する -> せん.",
+      "expectedLastExample": "真実を知んがために、調査を始めた。",
+      "fields": {
+        "formation": "Vない形（ないを除く）＋んがために（する→せんがために）",
+        "examples": [
+          [
+            "夢を実現せんがために、努力を続ける。",
+            "အိပ်မက်အကောင်အထည်ဖော်ဖို့ ဆက်လက်ကြိုးစားတယ်။",
+            "I keep working to realize my dream.",
+            "んがために"
+          ],
+          [
+            "家族を守らんがために、働いた。",
+            "မိသားစုကို ကာကွယ်ဖို့ အလုပ်လုပ်ခဲ့တယ်။",
+            "I worked to protect my family.",
+            "んがために"
+          ],
+          [
+            "真実を知らんがために、調査を始めた。",
+            "အမှန်တရားကို သိရှိဖို့ စုံစမ်းစစ်ဆေးမှု စတင်ခဲ့တယ်။",
+            "I began an investigation in order to learn the truth.",
+            "んがために"
+          ]
+        ]
+      }
+    },
+    {
+      "level": "N1",
+      "title": "〜だの〜だの",
+      "why": "Examples use adjectives and verb phrases, not only nouns.",
+      "fields": {
+        "formation": "名詞／普通形＋だの、名詞／普通形＋だの"
+      }
+    },
+    {
+      "level": "N3",
+      "title": "〜にしても〜にしても",
+      "why": "The first example uses verb dictionary and negative forms; N-only formation is inaccurate.",
+      "fields": {
+        "formation": "名詞／動詞普通形／形容詞＋にしても、名詞／動詞普通形／形容詞＋にしても"
+      }
+    },
+    {
+      "level": "N4",
+      "title": "〜ようになる",
+      "why": "Ability-change examples need the potential form explicitly documented.",
+      "fields": {
+        "formation": "動詞辞書形／ない形／可能形＋ようになる"
+      }
+    },
+    {
+      "level": "N2",
+      "title": "〜ものだから",
+      "why": "Replace unnatural 初めてなものだから with a clear nominal predicate.",
+      "expectedExample": "初めてなものだから、うまくできませんでした。",
+      "fields": {
+        "examples": [
+          [
+            "電車が遅れたものだから、遅刻しました。",
+            "ရထားနောက်ကျခဲ့လို့ ကျွန်တော်လည်း နောက်ကျသွားခဲ့ပါတယ်။",
+            "I was late because the train was delayed.",
+            "ものだから"
+          ],
+          [
+            "初めての仕事だったものだから、うまくできませんでした。",
+            "ပထမဆုံး လုပ်ရတဲ့အလုပ် ဖြစ်ခဲ့တာကြောင့် ကောင်းကောင်း မလုပ်နိုင်ခဲ့ပါဘူး။",
+            "It was my first time doing that job, so I did not do it well.",
+            "ものだから"
+          ],
+          [
+            "忙しかったものだから、連絡できなかった。",
+            "အလုပ်များနေခဲ့တာကြောင့် အဆက်အသွယ်မလုပ်နိုင်ခဲ့ဘူး။",
+            "I could not get in touch because I was busy.",
+            "ものだから"
+          ]
+        ]
+      }
+    }
+  ]
+}

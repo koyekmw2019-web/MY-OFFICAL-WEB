@@ -1,18 +1,22 @@
 {
-  "project": "STUDYING WITH YE KUN Official Website",
-  "patch": "v7.87.6 UI Fix05.4",
-  "status": "qa-only-no-go-production",
-  "expected_baseline_main_commit": "982da776ed2f5eab16e6eb73145f927baf541a50",
-  "expected_original_build_script_git_blob": "6c8bdba5b392156dc3801b0107e9e07e3f46e05d",
-  "changed_source_files": ["scripts/build-v7876-jlpt-ui-fix05.mjs"],
-  "additional_test_files": [
-    "tests/v7876-ui-fix05.mjs",
-    "tests/v7876-ui-fix054-center-browser.py",
-    "tests/v7876-ui-fix054-built-site.py"
-  ],
-  "preserved": ["authentication", "student_verification", "payment", "exams", "jlpt_content", "grammar_state", "database", "ykcr"],
-  "permissions": {
-    "commit": false, "push": false, "main_merge": false,
-    "netlify_deploy": false, "production": false
-  }
+  "product": "STUDYING WITH YE KUN Official Website",
+  "target_release": "v7.88.0 JLPT Grammar Stable Release",
+  "actual_package": "v7.88.0-rc.1 QA RELEASE CANDIDATE",
+  "release_status": "NO-GO_NOT_STABLE",
+  "date": "2026-11-17",
+  "repo": "koyekmw2019-web/MY-OFFICAL-WEB",
+  "read_only_baseline_commit": "14c74891a620f97060ac4c72a140aaf0636262b6",
+  "grammar_cards_expected": 524,
+  "trilingual_examples_expected": 1572,
+  "new_targeted_editorial_corrections": 5,
+  "progress_limits": {"previous_client_and_server": 500, "patched_client_and_server": 2000},
+  "source_patch_must_run_prebuild": "node scripts/apply-v7880-progress-capacity.mjs",
+  "build_script": "scripts/build-page-transitions-v7875.mjs",
+  "source_ui_redesign": false,
+  "data_migration": false,
+  "full_repository_build_tested": false,
+  "linguistic_proofread_completed": false,
+  "real_phone_tested": false,
+  "netlify_preview_tested": false,
+  "production_or_main_modified": false
 }
