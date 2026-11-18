@@ -1,22 +1,32 @@
 {
-  "product": "STUDYING WITH YE KUN Official Website",
-  "target_release": "v7.88.0 JLPT Grammar Stable Release",
-  "actual_package": "v7.88.0-rc.1 QA RELEASE CANDIDATE",
-  "release_status": "NO-GO_NOT_STABLE",
-  "date": "2026-11-17",
-  "repo": "koyekmw2019-web/MY-OFFICAL-WEB",
-  "read_only_baseline_commit": "14c74891a620f97060ac4c72a140aaf0636262b6",
-  "grammar_cards_expected": 524,
-  "trilingual_examples_expected": 1572,
-  "new_targeted_editorial_corrections": 5,
-  "progress_limits": {"previous_client_and_server": 500, "patched_client_and_server": 2000},
-  "source_patch_must_run_prebuild": "node scripts/apply-v7880-progress-capacity.mjs",
-  "build_script": "scripts/build-page-transitions-v7875.mjs",
-  "source_ui_redesign": false,
-  "data_migration": false,
-  "full_repository_build_tested": false,
-  "linguistic_proofread_completed": false,
-  "real_phone_tested": false,
-  "netlify_preview_tested": false,
-  "production_or_main_modified": false
+  "patch": "YEKUN-JLPT-UI-PHASE1-QA",
+  "baseline": "09df1bea6f8780872c68a97b072de983ccad744d",
+  "status": "QA-NO-GO",
+  "backend_changes": false,
+  "source_files": [
+    {
+      "path": "QA_REPORT_PHASE1.md",
+      "sha256": "63e81ac6b7fc19153b4c7eaa1ab3ee77e17d16740c346cd2ca8e87bfb139ba4a"
+    },
+    {
+      "path": "README_PHASE1_QA.md",
+      "sha256": "c32ccaa4df24bcdd30f0123703e554bb33fbda7df3cfce7aaeeb8f12bb811cd3"
+    },
+    {
+      "path": "assets/yk88-jlpt-phase1.css",
+      "sha256": "2a9cec14eba94f80a841c60e2a4f3e05ecaed9ed0d28647850ce5a20520e423c"
+    },
+    {
+      "path": "scripts/build-page-transitions-v7875.mjs",
+      "sha256": "b239cadee02738a69c036c5c90d4e2449d9b6ea09c20df332a5eac55b5617b68"
+    },
+    {
+      "path": "scripts/build-v7880-jlpt-ui-phase1.mjs",
+      "sha256": "3b97061f34e7c35d0cd90afb234d8efb0c60e0ba356bce62b530a6571886b7b8"
+    },
+    {
+      "path": "tests/v7880-jlpt-ui-phase1.test.mjs",
+      "sha256": "d1c5c7f16f0f255e50f0dc2fbbae6941caee7e16264fcb48beef661a408f1c7f"
+    }
+  ]
 }
