@@ -57,3 +57,6 @@ await import('./build-v7878-grammar-complete.mjs');
 await import('./build-v7879-grammar-editorial-qa.mjs');
 // v7.88.0 RC1 targeted content repair + progress-capacity cross-check. NOT release approved.
 await import('./build-v7880-grammar-rc.mjs');
+
+// v7.88.0 JLPT UI Phase 1: presentation-only scoped polish (QA; not stable).
+await import('./build-v7880-jlpt-ui-phase1.mjs');

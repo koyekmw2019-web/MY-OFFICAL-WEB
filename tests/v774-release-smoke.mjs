@@ -1,6 +1,6 @@
 /** v7.72 dictionary progress release static checks; does not replace live Netlify testing */
 import {readFileSync, existsSync, readdirSync} from 'node:fs';
-import {resolve,dirname,join,relative,extname} from 'node:path';
+import {resolve,dirname,join,relative,extname,sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import assert from 'node:assert/strict';
@@ -24,7 +24,9 @@ check('all local HTML referenced assets exist, except generated bundle pre-build
    const resource=url.split(/[?#]/,1)[0].replace(/^\//,'');
    if(!resource)continue;
    const path=resolve(root,resource);
-   assert(path.startsWith(root+'/'),`Disallowed local asset path ${h}: ${url}`);
+   // QA Windows compatibility: require the platform-native separator.
+   // This still rejects paths escaping the repository directory.
+   assert(path.startsWith(root+sep),`Disallowed local asset path ${h}: ${url}`);
    if(!existsSync(path))assert(!release && resource==='assets/identity.bundle.js',`Missing: ${h} ${resource}`);
    fileRefs++;
   }

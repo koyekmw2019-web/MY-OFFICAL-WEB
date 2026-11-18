@@ -1,0 +1,49 @@
+{
+  "name": "YEKUN_JLPT_PHASE1_WINDOWS_QA_CONSOLIDATED",
+  "baseline": "09df1bea6f8780872c68a97b072de983ccad744d",
+  "branch": "qa/jlpt-ui-phase1-7880",
+  "status": "QA_NO_GO",
+  "note": "No backend, database, payment, auth, YKCR, or production modifications. Existing 14 locally modified test files remain untouched.",
+  "files": [
+    {
+      "path": "QA_REPORT_JLPT_PHASE1_WINDOWS.md",
+      "size": 2017,
+      "sha256": "3c5f2904ca970040f64ad4bcc5dae8b5e7d5343075609d26f0fe53b027c3b7e6"
+    },
+    {
+      "path": "README_START_HERE_မြန်မာ.md",
+      "size": 3568,
+      "sha256": "c39d7f1de177935d66da001e07052c207ac3a12681fbaef42e9f140097c5a31d"
+    },
+    {
+      "path": "assets/yk88-jlpt-phase1.css",
+      "size": 10679,
+      "sha256": "2a9cec14eba94f80a841c60e2a4f3e05ecaed9ed0d28647850ce5a20520e423c"
+    },
+    {
+      "path": "package.json",
+      "size": 4610,
+      "sha256": "493943a9434fadac1b0ce3f807a436ac177e39bd0651db36d5c4d85cfad66696"
+    },
+    {
+      "path": "scripts/build-page-transitions-v7875.mjs",
+      "size": 3006,
+      "sha256": "b239cadee02738a69c036c5c90d4e2449d9b6ea09c20df332a5eac55b5617b68"
+    },
+    {
+      "path": "scripts/build-v7880-jlpt-ui-phase1.mjs",
+      "size": 2061,
+      "sha256": "3b97061f34e7c35d0cd90afb234d8efb0c60e0ba356bce62b530a6571886b7b8"
+    },
+    {
+      "path": "tests/v774-release-smoke.mjs",
+      "size": 5464,
+      "sha256": "d39fab06839593d4a4d5a71ca80af8c0c520e6cb6af9ccfed7471e54d0774d32"
+    },
+    {
+      "path": "tests/v7880-jlpt-ui-phase1.test.mjs",
+      "size": 2898,
+      "sha256": "d1c5c7f16f0f255e50f0dc2fbbae6941caee7e16264fcb48beef661a408f1c7f"
+    }
+  ]
+}
