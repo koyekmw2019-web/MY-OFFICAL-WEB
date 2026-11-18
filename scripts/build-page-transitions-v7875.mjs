@@ -60,3 +60,6 @@ await import('./build-v7880-grammar-rc.mjs');
 
 // v7.88.0 JLPT UI Phase 1: presentation-only scoped polish (QA; not stable).
 await import('./build-v7880-jlpt-ui-phase1.mjs');
+
+// QA follow-up: restore stable in-page Explore Lessons navigation without changing other routes.
+await import('./build-v7880-jlpt-explore-rescue.mjs');

@@ -1,0 +1,37 @@
+{
+  "name": "STUDYING WITH YE KUN Explore Lessons QA Repair 02",
+  "status": "QA_ONLY_NOT_STABLE",
+  "source_baseline": "c692f93d2ad84319dfac882c8f1d6cabb4096e8e",
+  "base_script_git_blob_sha": "004f699fcf473cff1da4350998e685e6d0bbf793",
+  "production_rollback": "6afc5b52d6c2e69ac1a4723f",
+  "files": {
+    "QA_REPORT_EXPLORE_REPAIR_02.md": {
+      "bytes": 2328,
+      "sha256": "3ae59599f7093b5ca819adcf1f3a1695bf46ddebf58ef46788d2aec6204f49c5"
+    },
+    "README_FIRST_မြန်မာ.md": {
+      "bytes": 2698,
+      "sha256": "7af15ebf736d28b3b58bea16e0c74fed77e3d013630c23fba6653a6fcfafdbb5"
+    },
+    "assets/yk88-jlpt-explore-rescue-v7880.js": {
+      "bytes": 2486,
+      "sha256": "101d685b0f4a2aef93547713e3ef7e44004f61d89b992cd9d73f894c48c8fbd6"
+    },
+    "scripts/build-page-transitions-v7875.mjs": {
+      "bytes": 3160,
+      "sha256": "881fd1e2bc2916a6ada26cdc03b21dcaa439dfddd09f28ee4c40c9612c0c17e1"
+    },
+    "scripts/build-v7880-jlpt-explore-rescue.mjs": {
+      "bytes": 1764,
+      "sha256": "b4e76b52b58e1f005af6a737e14ce83a41ecc9b4259192503f92ab1597b96bbd"
+    },
+    "tests/browser_explore_qa_02.py": {
+      "bytes": 2564,
+      "sha256": "7838392648178cea62cfdd0618949d2286dbafc89294f2981672d7525c4a1d59"
+    },
+    "tests/v7880-jlpt-explore-rescue.test.mjs": {
+      "bytes": 2357,
+      "sha256": "3ac468f7decade12084c2df34d296097cdd840ffa8d984e38091f7d46846cab3"
+    }
+  }
+}

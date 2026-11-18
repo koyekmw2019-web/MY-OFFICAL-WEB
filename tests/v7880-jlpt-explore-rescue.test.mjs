@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import {mkdtempSync,mkdirSync,writeFileSync,readFileSync,copyFileSync,rmSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join,resolve} from 'node:path';
+import {spawnSync} from 'node:child_process';
+const base=resolve('.');
+const tmp=mkdtempSync(join(tmpdir(),'yk-explore-qa-'));
+const script=join(base,'scripts/build-v7880-jlpt-explore-rescue.mjs');
+const file=join(tmp,'dist/study/jlpt-learning.html');
+const html='<html><head><link rel="stylesheet" href="/assets/yk88-jlpt-phase1.css?v=7880p1qa01"></head><body class="yk82-page"><a class="yk821-button-secondary" href="#yk82Title">Explore Lessons</a><h2 id="yk82Title">Lessons</h2><script defer src="/assets/yk88-jlpt-mobile-repair.js"></script></body></html>';
+try {
+ mkdirSync(join(tmp,'dist/study'),{recursive:true});
+ mkdirSync(join(tmp,'dist/assets'),{recursive:true});
+ copyFileSync(join(base,'assets/yk88-jlpt-explore-rescue-v7880.js'),join(tmp,'dist/assets/yk88-jlpt-explore-rescue-v7880.js'));
+ const run=()=>spawnSync(process.execPath,[script],{cwd:tmp,encoding:'utf8'});
+ writeFileSync(file,html);
+ let x=run();assert.equal(x.status,0,x.stderr);
+ const result=readFileSync(file,'utf8');
+ assert.equal(result.split('yk88-jlpt-explore-rescue-v7880.js').length-1,1);
+ assert.equal(result.replace(/<script defer src="\/assets\/yk88-jlpt-explore-rescue-v7880.js\?v=7880exploreqa02"><\/script>\n/,''),html);
+ x=run();assert.notEqual(x.status,0,'Duplicate injection must fail');
+ assert.equal(readFileSync(file,'utf8'),result);
+ writeFileSync(file,html.replace('id="yk82Title"','id="unexpected"'));
+ x=run();assert.notEqual(x.status,0,'Missing title must fail');
+ const scriptBody=readFileSync(join(base,'assets/yk88-jlpt-explore-rescue-v7880.js'),'utf8');
+ const activeCode=scriptBody.replace(/\/\*[\s\S]*?\*\//g,'').replace(/^\s*\/\/.*$/gm,'');
+ for(const bad of ['localStorage','fetch(','/.netlify/functions/','ykcr','payment','exam-attempt'])assert(!activeCode.includes(bad),`Protected scope: ${bad}`);
+ assert(scriptBody.includes("window.addEventListener('click', followLink, true)"), 'Must beat legacy document-capture handler');
+ console.log('PASS Explore QA — scoped build injection, fail-closed input checks, duplicate guard, early-window capture, no protected-system references');
+} finally {rmSync(tmp,{recursive:true,force:true});}
