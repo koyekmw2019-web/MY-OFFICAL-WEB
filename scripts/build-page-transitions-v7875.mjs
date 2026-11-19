@@ -63,3 +63,6 @@ await import('./build-v7880-jlpt-ui-phase1.mjs');
 
 // QA follow-up: restore stable in-page Explore Lessons navigation without changing other routes.
 await import('./build-v7880-jlpt-explore-rescue.mjs');
+
+// Performance QA: generated public output only; preserve all original page scripts.
+await import('./build-v7880-performance.mjs');
