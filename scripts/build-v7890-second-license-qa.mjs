@@ -46,7 +46,7 @@ assert(!newCard.includes('data-exam-v728="car"') && newCard.includes('href="/moc
 // The same button's height and alignment as the original Car, Motorcycle and Moped cards.
 // No footer actions or notes: preserve the shared white CTA baseline.
 html = html.slice(0,end) + newCard + html.slice(end);
-const styles = \`<style id="yk-second-type-qa-style">#yk-second-type-qa-card .yk-second-type-qa-launch{display:flex;flex-direction:column;align-items:center;justify-content:center;text-decoration:none;min-height:55px;height:55px;box-sizing:border-box}#yk-second-type-qa-card .yk-second-type-qa-launch .exam-button-mm{display:block}#yk-second-type-qa-card{min-width:0}</style>\`;
+const styles = `<style id="yk-second-type-qa-style">#yk-second-type-qa-card .yk-second-type-qa-launch{display:flex;flex-direction:column;align-items:center;justify-content:center;text-decoration:none;min-height:55px;height:55px;box-sizing:border-box}#yk-second-type-qa-card .yk-second-type-qa-launch .exam-button-mm{display:block}#yk-second-type-qa-card{min-width:0}</style>`;
 html = html.replace('</head>',styles+'</head>');
 // Existing three cards have 55px target height; no extra card footer actions.
 writeFileSync(examPath, html, 'utf8');
@@ -54,8 +54,8 @@ let preview = readFileSync(qaSourcePath, 'utf8');
 assert(preview.includes('id="questionData"') && preview.includes('普通第二種免許'), 'Wrong QA exam preview');
 preview = preview.replaceAll('ordinary_second_CARD_QA_PREVIEW.html','/mock-exams.html');
 preview = preview.replaceAll('ordinary_second_exam_QA_PREVIEW.html','/mock-second-license-qa.html');
-preview = preview.replace('</head>', \`<meta name="robots" content="noindex,nofollow"><style>.qa-live-warning{position:fixed;right:12px;bottom:12px;z-index:1000;padding:8px 12px;border:1px solid #ca8656;border-radius:10px;color:#fff;background:#251b18;font:600 11px sans-serif}</style></head>\`);
-preview = preview.replace('</body>',\`<div class="qa-live-warning">\${QA_LABEL} · No production access/payment</div></body>\`);
+preview = preview.replace('</head>', `<meta name="robots" content="noindex,nofollow"><style>.qa-live-warning{position:fixed;right:12px;bottom:12px;z-index:1000;padding:8px 12px;border:1px solid #ca8656;border-radius:10px;color:#fff;background:#251b18;font:600 11px sans-serif}</style></head>`);
+preview = preview.replace('</body>',`<div class="qa-live-warning">${QA_LABEL} · No production access/payment</div></body>`);
 writeFileSync(qaOutputPath,preview,'utf8');
 const cover = preview.match(/id="ordinarySecondCard"[\s\S]*?<img src="data:image\/png;base64,([A-Za-z0-9+/=]+)"/);
 assert(cover, 'Second type cover missing from QA preview');
