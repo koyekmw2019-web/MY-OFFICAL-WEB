@@ -33,3 +33,31 @@ assert(builder.includes('yk-second-type-qa-card'));
 assert(!builder.includes('exam-access.mts'));
 assert(!/netlify\/functions\/|\.netlify\/functions\/|(?:await\s+|=\s*)fetch\s*\(/.test(source),'QA prototype must not call production APIs');
 console.log(JSON.stringify({test:'v7890-second-license-source',status:'PASS',originalText:102,originalIllustrations:10,format:'90 × 1pt + 5 × 2pt',backendChanges:false}));
+
+// Exercise the same generator and scorer called by the page controls.
+const {runInNewContext} = await import('node:vm');
+const engine = source.split('// BEGIN: Ordinary Second Type')[1];
+const definitions = engine.slice(engine.indexOf('const bank'), engine.indexOf("$('#startSecond').onclick"));
+const context = {document:{getElementById:()=>({textContent:raw[1]})}};
+runInNewContext(definitions, context);
+const sample = () => Array.from(runInNewContext('makeExam()', context));
+const first = sample();
+assert.equal(first.length, 95);
+assert.equal(new Set(first).size, 95);
+assert.notDeepEqual(sample(), first);
+for (const expected of [100, 98, 90, 89]) {
+  context.expected = expected;
+  const actual = runInNewContext(`
+    state={questions:makeExam()};
+    state.answers=state.questions.map((id,i)=>{
+      if(i<90){
+        const key=mapText.get(id).answer;
+        return expected!==98 && i<100-expected ? !key : key;
+      }
+      return mapScenes.get(id).statements.map((item,j)=>
+        expected===98 && i===90 && j===0 ? !item.answer : item.answer);
+    });
+    scoreExam().score;`, context);
+  assert.equal(actual, expected);
+}
+console.log('PASS second-license generator and scoring boundaries');
