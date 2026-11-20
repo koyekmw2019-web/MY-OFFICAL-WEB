@@ -61,3 +61,24 @@ for (const expected of [100, 98, 90, 89]) {
   assert.equal(actual, expected);
 }
 console.log('PASS second-license generator and scoring boundaries');
+
+// Verify readings cover the actual bank, including explanations in wrong-answer review.
+const prompts = [
+  ...bank.originalItems.flatMap(q => [q.jp, q.explanationJP]),
+  ...bank.illustrations.flatMap(q => [q.title, ...q.statements.flatMap(s => [s.jp, s.explanationJP])])
+];
+for (const prompt of prompts) {
+  context.prompt = prompt;
+  const markup = runInNewContext('fmt(prompt)', context);
+  const ruby = /<ruby>([^<]+)<rt>([ぁ-ゖー]+)<\/rt><\/ruby>/g;
+  assert(!/[一-龯々]/u.test(markup.replace(ruby, '')), 'Missing reading in '+prompt);
+  assert.equal(markup.replace(ruby, '$1'), prompt);
+}
+for (const [word, reading] of Object.entries({
+  '白杖':'はくじょう', '右左折':'うさせつ', '横風':'よこかぜ', '雪道':'ゆきみち',
+  '急い':'いそい', '急':'きゅう', '飛び出し':'とびだし', '雨の降り始め':'あめのふりはじめ'
+})) {
+  context.prompt = word;
+  assert.equal(runInNewContext('fmt(prompt)', context), '<ruby>'+word+'<rt>'+reading+'</rt></ruby>');
+}
+console.log('PASS ruby text round-trip and coverage for '+prompts.length+' Japanese fields');

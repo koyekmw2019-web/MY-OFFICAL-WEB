@@ -1,0 +1,31 @@
+# ordinary_second · Backend နှင့် isolated QA အစီအစဉ်
+
+**အဆင့်** — အောက်ပါအချက်များသည် အကောင်အထည်ဖော်မည့် အဆိုပြုချက်များဖြစ်သည်။ Hosted site၊ database၊ Identity tenant၊ Blobs store၊ credentials တို့ကို မဖန်တီးရသေးပါ။ SQL သို့မဟုတ် production data ချိတ်ဆက်မှု မလုပ်ထားပါ။
+
+| လုပ်ဆောင်ချက် | Source ထဲတွင် ရှိနေသော အပြုအမူ | ordinary_second အတွက် လိုအပ်ချက် |
+|---|---|---|
+| Identity | _shared/auth.mts က getUser() ဖြင့် signed-in identity စစ်သည်။ Admin role ကို server တွင် စစ်သည်။ | Actor ကို verified server user.id မှသာ ယူရန်။ Guest 401၊ အခြား user ၏ attempt ကို မဖတ်/မရေးနိုင်ခြင်း စမ်းရန်။ |
+| Access | exam-access.mts က EXAM_TYPES ကို စစ်ပြီး unfinished exam ရှိလျှင် တူသော type ကို resume၊ အခြား type တွင် 409 resume_other ပြန်နိုင်သည်။ | ordinary_second ကို သီးသန့် allowlist ထည့်ရန်။ car attempt ဖြင့် ordinary_second တစ်ကြိမ်စာကို မဖြတ်ရန်။ |
+| Free quota | exam_attempts ပေါ်တွင် access_mode='free' အတွက် (user_id,exam_type) partial unique index ရှိသည်။ စတင်ပြီးစွန့်လွှတ်ခြင်းလည်း quota သုံးပြီးဖြစ်သည်။ | Concurrent Start နှစ်ခုသည် တူညီသော attempt ကိုသာ ရစေရန်။ Retry ပြုလုပ်စဉ် manifest ကို အသစ်မဲမနှိုက်ရန်။ |
+| Student | linked_user_id တူ၊ status active ဖြစ်ပြီး CURRENT_DATE သည် class_start–expire_date ကြားဖြစ်မှ student mode ရသည်။ | Server တွင် ရှိပြီးသား entitlement ကိုသုံးရန်။ သက်တမ်းကုန်သည့် နောက်နေ့၊ expiry date တစ်နေ့လုံး၊ timezone boundary နှင့် user မတူလျှင် စမ်းရန်။ |
+| Paid | starts_at ≤ NOW < expires_at ကို စစ်သည်။ Pending receipt တစ်ခုတည်းဖြင့် access မရ။ week/month/3months/year = 7/30/90/365 ရက်၊ ¥1000/2000/3000/5000။ | စမ်းသပ် fixture တွင် active/expired/pending စစ်ရန်။ Window ရှိပြီးသား user ကို access ပေးရာတွင် charge/receipt အသစ် မဖန်တီးရန်။ |
+| Start/Resume | _shared/exam-autosave.mts တွင် timer table နှင့် fallback 80 မိနစ် ရှိသည်။ exam-access.mts နှင့် abandonExpiredAttempts ၏ SQL CASE များတွင်လည်း fallback 80 မိနစ် ရှိသည်။ | နေရာသုံးခုလုံးကို 50 မိနစ်နှင့် ကိုက်ညီစေရန်။ Section တစ်ခု၊ original started_at ကို သုံးရန်။ စက်ပြောင်း/reload လုပ်ခြင်းဖြင့် deadline မရွှေ့ရ။ |
+| Checkpoint | exam-checkpoint.mts က user ownership၊ engine၊ phase၊ deadline၊ payload size နှင့် version စစ်သည်။ | သီးခြား ordinary_second schema ဖြင့် 90 scalar + 5×3 booleans/null ကို လက်ခံရန်။ Initial version၊ two-tab stale save၊ network retry ကို စမ်းရန်။ 60s transport grace သည် အဖြေအသစ်ရွေးချယ်ရန် အချိန်ပို မဖြစ်စေရန် last eligible snapshot နှင့် server deadline policy ကို သတ်မှတ်ရန်။ |
+| Submit | exam-attempt-submit.mts က သိမ်းထားသော checkpoint ကို evaluateSnapshot ဖြင့် ပြန်တွက်ပြီး score_verified=true သတ်မှတ်သည်။ ရှိပြီးသား license လမ်းကြောင်း၏ အများဆုံးအမှတ် car=95 ဖြစ်သည်။ | ဒီ exam အတွက် score 100၊ pass ≥90၊ illustrated triplet သုံးချက်လုံးမှန်မှ 2 မှတ်။ Client score, answer key, selected questions, date/time ကို ယုံကြည်မထားရန်။ 89/90/98/100၊ unanswered၊ retry၊ already submitted၊ account မတူခြင်း စမ်းရန်။ |
+| History/Review | exam-my-activity.mts သည် user-scoped attempts ပြန်ပေးသည်။ exam-status.mts က အသုံးပြုပြီး free exam types များ ပြန်ပေးသည်။ Coach က server-verified topic evidence ယူသည်။ | Label နှင့် filters သီးခြားထားရန်။ 100-point denominator၊ My Mistakes အတွက် question/statement ID၊ hit/miss၊ bank revision နှင့် JP/MM explanation ကို ချိတ်ရန်။ client local practice ကို student history ထဲ မထည့်ရန်။ |
+
+## ခွင့်ပြုချက်ရပြီးမှ အကောင်အထည်ဖော်မည့် migration
+
+1. သီးခြား QA project/database တွင် migrations ကို blank DB သို့ ပြန်တည်ဆောက်ပြီး constraints၊ indexes၊ schema version နှင့် pending migrations ရှိမရှိ စစ်ရန်။ Production dump / student export မသုံးရန်။ Seed အားလုံးကို QA synthetic data ဖြင့်သာ ဖန်တီးရန်။
+2. exam_attempts_exam_type_check ကို မူရင်း enum ၁၂ ခုလုံးနှင့် ordinary_second တစ်ခု ထပ်ပေါင်းသည့် constraint ဖြင့် တိုးချဲ့ရန်။ QA တွင် constraint အသစ်ကို ယာယီအမည်ဖြင့် ADD … NOT VALID၊ VALIDATE ပြီးမှ short transaction တစ်ခုအတွင်း အဟောင်းကို drop၊ အသစ်ကို rename လုပ်ရန်။ Lock timeout၊ competing writer နှင့် client compatibility စစ်ရန်။ မူရင်း partial free index မပြောင်းရ။ car rows ကို backfill မလုပ်ရ။
+3. Proposed exam_attempt_question_sets တွင် attempt_id (primary key + FK), bank_version, ordered question IDs နှင့် illustrated statement IDs/order သိမ်းရန်။ Canonical answer key ကို version ခွဲ၍ server မှ ထိန်းရန်။ Start အတွင်း attempt + manifest ကို transaction တစ်ခုတည်းတွင်ဖန်တီးရန်။ အလယ်တွင် error ဖြစ်လျှင် free quota မဆုံးရှုံးရ။ ပြီးခဲ့သော attempt များ၏ ရလဒ်ကို bank အသစ်ဖြင့် ပြန်မတွက်ရ။
+4. Feature ပိတ်ထားလျက် schema ကို ဦးစွာစမ်းရန်။ Server access၊ checkpoint၊ scoring၊ status/history၊ mistakes/analytics တို့ကို တစ်စုံတည်း အသင့်ဖြစ်မှ isolated QA တွင် feature ဖွင့်ရန်။ Invalid snapshots နှင့် interrupted submit ကို synthetic fixtures ဖြင့် စမ်းရန်။ Score, review evidence နှင့် submitted state တို့ တစ်သမတ်တည်း ဖြစ်စေရန် transaction သို့မဟုတ် idempotent reconciliation သုံးရန်။
+5. Rollback rehearsal တွင် feature ကိုအရင်ပိတ်၊ အသစ်စတင်ခြင်း ရပ်ပါ။ စတင်ပြီး attempts နှင့် historical results ကို သိမ်းထားပါ။ ordinary_second rows ရှိနေလျှင် constraint ကို မကျဉ်းစေရ။ Schema reversal ပြုလုပ်ရန် သီးခြားဆုံးဖြတ်ချက်၊ backup/restore evidence နှင့် compatibility စစ်ဆေးချက် လိုသည်။
+
+## Isolated QA ပြင်ဆင်ပုံနှင့် လက်ခံစမ်းသပ်ရန်အချက်
+
+- ယခု အသုံးပြုနိုင်သည့်အဆင့်မှာ local built HTML၊ source bank၊ backend source နှင့် isolated browser ဖြစ်သည်။ Hosted site နဲ့ database ကို ဖန်တီးခြင်း မပါ။
+- Hosted QA ခွင့်ပြုချက် ရပြီးမှ သီးသန့် Netlify site၊ DB endpoint/role၊ Identity tenant၊ test-only Blobs store ကို သတ်မှတ်ရန်။ Production site ID/DB/Identity endpoint များနှင့် မတူကြောင်း metadata ဖြင့် verify လုပ်ရန်။ Secrets မျှဝေခြင်း မလုပ်ရ။ Production YKCR URL/secret၊ email ပေးပို့မှုနှင့် bank receipt upload ကို မချိတ်ရန်။
+- Build သည် fixture မရှိသေးချိန်တွင် database ကို မပြောင်းနိုင်သည့် role ဖြင့် run ရန်။ Migration သီးသန့် role ကို approved migration step တွင်သာ အသုံးပြုရန်။ Site သစ်အတွက် automatic migrations / integration hooks / shared Blobs scope ကို စစ်ပြီးမှ preview ဖွင့်ရန်။
+- Fixture accounts — guest၊ new user၊ free used for car only၊ ordinary_second free used၊ active/expired student၊ pending/active/expired plan၊ unrelated other account။ Overlapping admin/student/paid roles နှင့် two tabs တွင် တစ်ချိန်တည်း Start, Save, Submit စမ်းရန်။
+- Hosted rehearsal အောင်မြင်မှုကို DB diff၊ attempt count၊ score history၊ synthetic receipt store၊ blocked outbound logs ဖြင့် စစ်ရန်။ ထို့နောက်မှ hosted UAT နှင့် release ခွင့်ပြုချက်ကို သီးခြားတောင်းရန်။
