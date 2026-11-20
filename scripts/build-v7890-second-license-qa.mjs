@@ -42,6 +42,9 @@ let newCard = originalCard.replace('<article class="exam-category v728"',intro)
   .replace(/<button class="exam-launch-v728" data-exam-v728="car">[\s\S]*?<\/button>/,
            '<a class="exam-launch-v728 yk-second-type-qa-launch" href="/mock-second-license-qa.html" aria-label="普通第二種免許 QA Exam">普通第二種免許 Exam を開始<span class="exam-button-mm">ဒုတိယအမျိုးအစား စာမေးပွဲ စတင်မည်</span></a>');
 assert(newCard.includes('id="yk-second-type-qa-card"'));
+assert(newCard.includes('<h3>普通第二種免許'), 'New title was not inserted');
+assert(newCard.includes('src="/assets/yk-second-license-qa-cover.png"'), 'Cover replacement failed');
+assert(!newCard.includes('普通自動車'), 'Original car title survived in new card');
 assert(!newCard.includes('data-exam-v728="car"') && newCard.includes('href="/mock-second-license-qa.html"'));
 // The same button's height and alignment as the original Car, Motorcycle and Moped cards.
 // No footer actions or notes: preserve the shared white CTA baseline.
