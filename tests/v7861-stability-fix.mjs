@@ -89,6 +89,44 @@ await test('login requires explicit button interaction, Enter/form-submit never 
  assert(html.includes('yk-login-v757.js?v=7861'));
  assert(js.includes('clickLogin'));
 });
+await test('explicit successful login returns to the intended same-origin page', async () => {
+ const origin = 'https://preview.example';
+ const elements = new Map();
+ const document = {
+  documentElement: {},
+  querySelectorAll: () => [],
+  getElementById(id) {
+   if (!elements.has(id)) elements.set(id, {
+    classList: {toggle() {}},
+    addEventListener(event, handler) { this[event] = handler; },
+    querySelector: () => ({})
+   });
+   return elements.get(id);
+  }
+ };
+ const destinations = [];
+ const location = {origin, search: '', assign: value => destinations.push(new URL(value, origin).href)};
+ const window = {location, addEventListener() {}, YKIdentity: {async login() {}}};
+ vm.runInNewContext(read('assets/yk-login-v757.js'), {window, document, URL, URLSearchParams});
+ document.getElementById('loginEmail').value = 'learner@example.test';
+ document.getElementById('loginPassword').value = 'fixture';
+ for (const [target, expected] of [
+  ['/mock-exams.html', '/mock-exams.html'],
+  ['/exams/truck.html?lang=my#start', '/exams/truck.html?lang=my#start'],
+  ['/dashboard.html', '/dashboard.html'],
+  [origin + '/study/', '/study/'],
+  ['/#home', '/#home'],
+  [null, '/#home'],
+  ['https://other.example/', '/#home'],
+  ['//other.example/', '/#home'],
+  ['mailto:example@example.test', '/#home']
+ ]) {
+  location.search = target === null ? '' : '?' + new URLSearchParams({return: target});
+  elements.get('loginSubmit').click();
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(destinations.pop(), origin + expected);
+ }
+});
 await test('legacy auth bundle and existing session mechanism kept',()=>{
  assert(read('login.html').includes('/assets/identity.bundle.js'));
  assert(read('src/identity-client.js').includes('handleAuthCallback'));
