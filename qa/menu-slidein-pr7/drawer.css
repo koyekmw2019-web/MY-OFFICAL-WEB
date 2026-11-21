@@ -1,0 +1,139 @@
+/* STUDYING WITH YE KUN · Menu Option B · QA preview only.
+   Scoped to #ykoc-more; no existing page or backend styles affected. */
+
+
+#ykoc-more{--bg:#090909;--card:#111;--tile:#171717;--border:#292929;--text:#fafafa;--muted:#aaa;--muted2:#818181;--accent:#d71920;--circle:#191919;--tabbg:rgba(12,12,12,.96);--divider:#282828; background:var(--bg);color:var(--text);min-height:100dvh;box-sizing:border-box; padding:0 0 calc(104px + env(safe-area-inset-bottom));}
+html[data-yk-ui-theme="light"] #ykoc-more{--bg:#f6f6f4;--card:#fff;--tile:#f0f0ee;--border:#dededa;--text:#171717;--muted:#686868;--muted2:#777;--circle:#efefec;--tabbg:rgba(255,255,255,.96);--divider:#e7e7e5;}
+#ykoc-more *{box-sizing:border-box} #ykoc-more a{color:inherit;text-decoration:none} #ykoc-more button,#ykoc-more input{font:inherit} #ykoc-more button{cursor:pointer;color:inherit} #ykoc-more button:disabled{cursor:not-allowed;opacity:.58}
+#ykoc-more :is(button,a,input,summary):focus-visible{outline:2px solid #e54b5d;outline-offset:3px}
+#ykoc-more .more-content{width:min(100%,510px);margin:0 auto;padding:20px 18px 24px}
+#ykoc-more .more-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:16px}
+#ykoc-more .more-top h1{font-size:31px;letter-spacing:-.045em;margin:0;font-weight:800;line-height:1.18}
+#ykoc-more .top-actions{display:flex;gap:8px}
+#ykoc-more .circle{height:42px;width:42px;border-radius:50%;display:grid;place-items:center;background:var(--circle);border:1px solid var(--border);color:var(--text);font-size:19px}
+#ykoc-more .circle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#ykoc-more .search-panel{margin-bottom:12px;display:none}#ykoc-more .search-panel.open{display:block}
+#ykoc-more .search-input{width:100%;border:1px solid var(--border);background:var(--card);color:var(--text);border-radius:13px;padding:13px 14px;font-size:15px}
+#ykoc-more .card{border:1px solid var(--border);border-radius:22px;background:var(--card);overflow:hidden}
+#ykoc-more .welcome{padding:19px}
+#ykoc-more .brandline{display:flex;align-items:center;gap:10px;letter-spacing:.09em;font-size:11px;font-weight:700;color:var(--muted)}
+#ykoc-more .mark{background:#fff;border-radius:50%;width:32px;height:32px;color:#101010;display:grid;place-items:center;font-weight:900;letter-spacing:-1px;font-size:12px;position:relative;flex:none}
+#ykoc-more .mark:after{position:absolute;content:'';width:7px;height:7px;background:var(--accent);right:0;top:0;border-radius:50%}
+#ykoc-more .welcome h2{font-size:20px;margin:13px 0 8px;font-weight:800}
+#ykoc-more .welcome p{font-size:13.5px;line-height:1.8;color:var(--muted);margin:0}
+#ykoc-more .welcome .actions{display:flex;align-items:center;gap:16px;margin-top:17px}
+#ykoc-more .pill{border-radius:999px;padding:10px 20px;display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-size:13px;font-weight:800;background:#fff;color:#080808}
+html[data-yk-ui-theme="light"] #ykoc-more .pill{background:#151515;color:#fff}
+#ykoc-more .underlink{text-decoration:underline;text-underline-offset:4px;font-size:13px;font-weight:700}
+#ykoc-more .profile{display:flex;align-items:center;gap:12px;padding:18px}
+#ykoc-more .avatar{height:53px;width:53px;flex:none;border-radius:50%;display:grid;place-items:center;background:#fff;color:#171717;font-weight:850;border:2px solid var(--border)}
+#ykoc-more .profile-body{min-width:0;flex:1}
+#ykoc-more .profile strong{font-size:16px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#ykoc-more .profile small{font-size:12px;display:block;color:var(--muted);margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#ykoc-more .profile .account-chip{display:inline-block;margin-top:8px;padding:5px 8px;background:var(--tile);border:1px solid var(--border);border-radius:999px;font-size:11px}
+#ykoc-more .resume-card,#ykoc-more .free-card{margin-top:12px;display:flex;align-items:center;gap:12px;padding:14px}
+#ykoc-more .resume-card div,#ykoc-more .free-card div{flex:1;min-width:0}
+#ykoc-more .resume-card strong,#ykoc-more .free-card strong{display:block;font-size:13.5px}
+#ykoc-more .resume-card span,#ykoc-more .free-card span{display:block;font-size:12px;color:var(--muted);line-height:1.6;margin-top:5px}
+#ykoc-more .small-button{background:#fff;color:#090909!important;border:0;border-radius:999px;padding:9px 15px;font-weight:750;min-height:36px;font-size:12px;flex:none}
+#ykoc-more .eyebrow{margin:24px 2px 11px;color:var(--muted);font-size:11px;font-weight:800;letter-spacing:.125em}
+#ykoc-more .shortcuts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+#ykoc-more .shortcut{padding:14px;min-height:115px;background:var(--tile);border:1px solid var(--border);border-radius:18px;display:flex;flex-direction:column;gap:5px}
+#ykoc-more .shortcut .symbol{font-size:20px;margin-bottom:6px;line-height:1}
+#ykoc-more .shortcut .ja{color:var(--muted);font-size:11px;line-height:1.35}
+#ykoc-more .shortcut b{font-size:13px;line-height:1.4}
+#ykoc-more .shortcut small{color:var(--muted);font-size:11px;line-height:1.45}
+#ykoc-more .rows .item{min-height:68px;display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid var(--divider);width:100%;background:none;border-left:0;border-right:0;border-top:0;text-align:left}
+#ykoc-more .rows .item:last-child{border-bottom:none}
+#ykoc-more .item .ico{width:24px;text-align:center;font-size:20px;flex:none}
+#ykoc-more .item .copy{flex:1;min-width:0}
+#ykoc-more .item .copy b{font-size:13.5px;display:block}
+#ykoc-more .item .copy small{font-size:11.5px;color:var(--muted);line-height:1.5;display:block;margin-top:3px}
+#ykoc-more .item .tail{color:var(--muted);font-size:13px;white-space:nowrap}
+#ykoc-more .item .tail.lock{font-size:11px;padding:4px 6px;background:var(--tile);border-radius:9px}
+#ykoc-more .switch{background:#737373;border:0;border-radius:999px;position:relative;width:56px;height:31px;flex:none}
+#ykoc-more .switch:after{content:'';position:absolute;height:23px;width:23px;left:4px;top:4px;background:#fff;border-radius:50%;transition:left .15s}
+#ykoc-more .switch[aria-checked="true"]{background:#fff}
+#ykoc-more .switch[aria-checked="true"]:after{left:29px;background:#090909}
+html[data-yk-ui-theme="light"] #ykoc-more .switch[aria-checked="true"]{background:#111}
+html[data-yk-ui-theme="light"] #ykoc-more .switch[aria-checked="true"]:after{background:#fff}
+#ykoc-more .lang-list{display:flex;gap:6px;flex-wrap:wrap;padding:9px 12px 13px;border-top:1px solid var(--divider)}
+#ykoc-more .lang-list button{background:var(--tile);border:1px solid var(--border);border-radius:999px;padding:8px 10px;font-size:12px}
+#ykoc-more .lang-list button[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+#ykoc-more .social-card{padding:14px 15px}
+#ykoc-more .social-header{display:flex;align-items:center;gap:11px}
+#ykoc-more .social-header b{font-size:15px;line-height:1.25;flex:1}
+#ykoc-more .social-btns{display:flex;gap:7px}
+#ykoc-more .social-icon{width:39px;height:39px;border:1px solid var(--border);background:var(--tile);border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:850}
+#ykoc-more .social-pages{border-top:1px solid var(--divider);margin-top:15px;padding-top:10px}
+#ykoc-more .social-row{display:flex;align-items:center;gap:12px;min-height:59px}
+#ykoc-more .social-mark{width:43px;height:43px;border-radius:14px;border:1px solid var(--border);display:grid;place-items:center;color:var(--muted);font-size:13px;font-weight:800;background:var(--tile);flex:none}
+#ykoc-more .social-row .link-copy{flex:1;min-width:0}
+#ykoc-more .social-row b{display:block;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#ykoc-more .social-row small{display:block;color:var(--muted);font-size:11px;margin-top:3px}
+#ykoc-more .logout{width:100%;background:var(--card);border:1px solid var(--border);color:#e5484d!important;border-radius:19px;padding:15px;margin-top:15px;min-height:52px;font-weight:800}
+#ykoc-more .footer{text-align:center;color:var(--muted2);font-size:11px;padding:24px 0 4px}
+#ykoc-more .status{margin:13px 0 0;border-radius:10px;background:var(--tile);border:1px solid var(--border);padding:10px 12px;color:var(--muted);font-size:12px;line-height:1.7}
+#ykoc-more .faq-details{padding:12px 15px;border-top:1px solid var(--divider);font-size:12px;line-height:1.8;color:var(--muted)}
+#ykoc-more .faq-details p{margin:6px 0}
+#ykoc-more [hidden]{display:none!important}
+#ykoc-more .search-hidden{display:none!important}
+#ykoc-more a:hover,#ykoc-more button:not(:disabled):hover{filter:brightness(1.09)}
+@media(min-width:770px){#ykoc-more .more-content{padding-top:36px}#ykoc-more{background:linear-gradient(180deg,var(--bg),#101010)}}
+@media(max-width:360px){#ykoc-more .more-content{padding-inline:12px}#ykoc-more .shortcut{padding:11px;min-height:112px}#ykoc-more .social-icon{width:33px;height:33px}}
+@media(prefers-reduced-motion:reduce){#ykoc-more *,#ykoc-more *:before,#ykoc-more *:after{transition:none!important}}
+/* Mobile navigation. Site's existing tab labels and first four routes are retained. */
+#ykoc-more .more-bottom-nav{position:fixed;left:0;right:0;bottom:0;background:var(--tabbg);border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));padding:9px max(8px,env(safe-area-inset-left)) calc(14px + env(safe-area-inset-bottom));z-index:100;backdrop-filter:blur(12px)}
+#ykoc-more .more-bottom-nav a{min-height:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;color:var(--muted);font-size:11px;font-weight:650;position:relative}
+#ykoc-more .more-bottom-nav .symbol{font-size:22px;line-height:1}
+#ykoc-more .more-bottom-nav a[aria-current="page"]{color:var(--text)}
+#ykoc-more .more-bottom-nav a[aria-current="page"]:before{content:'';position:absolute;top:-9px;background:var(--accent);height:3px;width:23px;border-radius:6px}
+#ykoc-more .more-bottom-nav a:focus-visible{outline-offset:-2px}
+
+
+/* YKOC Menu PR#7 -- side drawer, NO new menu page; desktop and mobile. */
+#siteMenu.ykoc-drawer{position:fixed!important;top:0!important;right:0!important;bottom:0!important;left:auto!important;width:min(460px,100vw)!important;max-width:100vw!important;max-height:100dvh!important;height:100dvh!important;padding:0!important;margin:0!important;border:0!important;border-left:1px solid #343033!important;border-radius:0!important;background:#080809!important;color:#fff!important;overflow-y:auto!important;overscroll-behavior:contain!important;z-index:1100!important;transform:translateX(104%)!important;opacity:1!important;visibility:hidden!important;pointer-events:none!important;transition:transform .3s cubic-bezier(.2,.75,.2,1),visibility .3s!important;box-sizing:border-box!important}
+body.menu-open #siteMenu.ykoc-drawer{transform:translateX(0)!important;visibility:visible!important;pointer-events:auto!important}
+#siteMenu.ykoc-drawer .ykoc-drawer-head{display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:2;padding:17px 20px!important;background:#101011;border-bottom:1px solid #28282a;min-height:70px;box-sizing:border-box}
+#siteMenu.ykoc-drawer .menu-kicker{font-size:10px;letter-spacing:.14em;color:#999;margin-bottom:3px}
+#siteMenu.ykoc-drawer .menu-title{font-size:25px;line-height:1.1;letter-spacing:-.035em;font-weight:850;color:#fff}
+#siteMenu.ykoc-drawer .menu-close{display:grid;place-items:center;width:39px;height:39px;border:1px solid #303033;border-radius:50%;background:#202022;color:#fff;font-size:24px;cursor:pointer}
+#siteMenu.ykoc-drawer #ykoc-more{background:#090909;min-height:0!important;padding:0 0 22px!important;color:var(--text);width:100%;display:block;box-sizing:border-box}
+#siteMenu.ykoc-drawer #ykoc-more .more-content{padding:13px 19px 25px;width:100%;max-width:100%;margin:0 auto}
+#siteMenu.ykoc-drawer #ykoc-more .more-top{justify-content:flex-end;margin:0 0 13px}
+#siteMenu.ykoc-drawer #ykoc-more .more-top .top-actions{display:flex}
+#siteMenu.ykoc-drawer #ykoc-more .more-bottom-nav{display:none!important}
+#siteMenu.ykoc-drawer #ykoc-more :where(a,button){-webkit-tap-highlight-color:transparent}
+#siteMenu.ykoc-drawer #ykoc-more .shortcuts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+#siteMenu.ykoc-drawer #ykoc-more .shortcut{min-width:0}
+#siteMenu.ykoc-drawer #ykoc-more [hidden]{display:none!important}
+body.menu-open #menuBackdrop.menu-backdrop{opacity:1;visibility:visible;pointer-events:auto}
+#menuBackdrop.menu-backdrop{z-index:1090}
+/* Override existing narrow drawer rules while preserving original slide direction. */
+@media(max-width:720px){
+ #siteMenu.ykoc-drawer{bottom:calc(73px + env(safe-area-inset-bottom,0px))!important;height:calc(100dvh - 73px - env(safe-area-inset-bottom,0px))!important;max-height:none!important;width:100vw!important;border-left:none!important}
+ #siteMenu.ykoc-drawer #ykoc-more .more-content{padding:11px 17px 30px}
+ #yk-mobile-nav{position:fixed!important;display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;bottom:0!important;left:0!important;right:0!important;max-width:none!important;gap:0!important;margin:0!important;padding:9px 5px calc(7px + env(safe-area-inset-bottom,0px))!important;min-height:calc(73px + env(safe-area-inset-bottom,0px))!important;border-radius:0!important;border:0!important;border-top:1px solid #222!important;background:rgba(10,10,11,.98)!important;box-shadow:0 -4px 20px #0007!important;z-index:1120!important}
+ #yk-mobile-nav > :is(a,button){position:relative;appearance:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;width:100%;min-width:0;min-height:55px;padding:4px 0;border:0;border-radius:9px;background:transparent!important;color:#a3a3a5;font:650 11px/1.2 system-ui,sans-serif;text-decoration:none;cursor:pointer}
+ #yk-mobile-nav > :is(a,button) svg{width:23px;height:23px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+ #yk-mobile-nav > :is(a,button) > span{white-space:nowrap;font-size:11px;letter-spacing:0;font-weight:650}
+ #yk-mobile-nav > :is(a,button)[aria-current="page"],#yk-mobile-nav > button[aria-expanded="true"]{color:#fff!important;background:transparent!important}
+ #yk-mobile-nav > button[aria-expanded="true"]:before{content:"";position:absolute;top:-9px;left:33%;right:33%;height:3px;background:#c51f30;border-radius:10px}
+ #yk-mobile-nav > :is(a,button)[aria-current="page"] svg{color:#f1f1f1!important;transform:none!important}
+ #yk-mobile-nav[hidden]{display:none!important}
+ body.menu-open #yk-mobile-nav:not([hidden]){display:grid!important}
+}
+html[data-yk-ui-theme="light"] #siteMenu.ykoc-drawer{background:#f6f6f4!important;color:#171717!important}
+html[data-yk-ui-theme="light"] #siteMenu.ykoc-drawer .ykoc-drawer-head{background:#fff}
+html[data-yk-ui-theme="light"] #siteMenu.ykoc-drawer .menu-title{color:#171717}
+@media(prefers-reduced-motion:reduce){#siteMenu.ykoc-drawer{transition:none!important}}
+
+#ykDrawerOpen{display:block;margin:8px 12px 8px auto;border:1px solid #555;border-radius:10px;padding:8px 14px;background:#191919;color:white;cursor:pointer}
+#menuBackdrop.menu-backdrop{position:fixed;inset:0;background:#0009;visibility:hidden;opacity:0;pointer-events:none}
+body.menu-open{overflow:hidden}
+@media(max-width:720px){#ykDrawerOpen{display:none}}
+body.menu-open #menuBackdrop.menu-backdrop{z-index:10060!important}
+body.menu-open #siteMenu.ykoc-drawer{z-index:10061!important}
+@media(max-width:720px){body.menu-open #yk-mobile-nav{z-index:10062!important}}
+/* QA targets include standalone documents without cross-document transitions. */
+@view-transition{navigation:none}

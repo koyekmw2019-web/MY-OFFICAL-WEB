@@ -12,7 +12,8 @@
     "postbuild": "node scripts/build-mobile-nav.mjs && node tests/mobile-nav.mjs --release && node scripts/build-mobile-ui-polish.mjs && node tests/mobile-ui-polish.mjs --release && node scripts/build-ui-preferences.mjs && node tests/ui-preferences.mjs --release && node scripts/build-page-transitions-v7875.mjs && node tests/v7875-page-transitions.mjs --release",
     "posttest": "node tests/mobile-nav.mjs && node tests/mobile-ui-polish.mjs && node tests/ui-preferences.mjs && node tests/ui-preferences.runtime.mjs && node tests/v7875-page-transitions.mjs",
     "build:second-license-qa": "npm run build && node scripts/build-v7890-second-license-qa.mjs",
-    "test:second-license-qa": "node tests/v7890-second-license-qa.test.mjs"
+    "test:second-license-qa": "node tests/v7890-second-license-qa.test.mjs",
+    "build:menu-qa": "npm run build:second-license-qa && node qa/menu-slidein-pr7/apply-pr7-menu-qa.mjs"
   },
   "dependencies": {
     "@netlify/database": "2.0.1",
