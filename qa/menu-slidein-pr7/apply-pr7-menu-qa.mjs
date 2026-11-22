@@ -69,7 +69,7 @@ for(const file of pages){
  if(!file.endsWith('mock-second-license-qa.html') && !/<script[^>]+src=["'][^"']*identity\.bundle\.js(?:[?#][^"']*)?["']/i.test(html)){
    html=html.replace('</body>','<script type="module" src="/assets/identity.bundle.js"></script></body>');
  }
- html=html.replace('</body>','<script defer src="/assets/ykoc-pr7-menu-drawer.js?v=pr7menu1"></script></body>');
+ html=html.replace('</body>','<script defer src="/assets/ykoc-pr7-menu-drawer.js?v=pr7menu1"></script><script defer src="/assets/ykoc-pr7-menu-i18n.js?v=pr7menu2"></script></body>');
  assert(html.includes('href="/mock-exams.html"')&&html.includes('>EXAM</span>')&&html.includes('id="ykocBottomMenu"'));
  assert((html.match(/id="yk-mobile-nav"/g)||[]).length===1);
  assert((html.match(/id="siteMenu"/g)||[]).length===1);
@@ -85,5 +85,7 @@ writeFileSync(script,newer,'utf8');
 const assetDir=resolve(dist,'assets'); mkdirSync(assetDir,{recursive:true});
 copyFileSync(resolve(here,'drawer.css'),resolve(assetDir,'ykoc-pr7-menu-drawer.css'));
 copyFileSync(resolve(here,'drawer.js'),resolve(assetDir,'ykoc-pr7-menu-drawer.js'));
+copyFileSync(resolve(here,'menu-i18n.js'),resolve(assetDir,'ykoc-pr7-menu-i18n.js'));
+for(const n of ['studying-with-ye-kun-logo.png','studying-with-ye-kun-wordmark.png'])copyFileSync(resolve(here,n),resolve(assetDir,n));
 const digest=s=>createHash('sha256').update(s).digest('hex');
 console.log(JSON.stringify({status:'QA DIST ONLY',base:'PR#7',changed_html:staged.length,original_side_drawers:sourceDrawer,added_side_drawers:injectedDrawer,new_tabs:['Home','EXAM','Video','Dictionary','Menu'],exam_route:'/mock-exams.html',menu_action:'slide-in on same page',original_exam_card_preserved:readFileSync(exams,'utf8').includes('id="yk-second-type-qa-card"'),changed_nav_sha256:digest(newer),source_or_backend_changed:false,deploy:false}));
