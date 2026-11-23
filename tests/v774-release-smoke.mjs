@@ -69,6 +69,18 @@ check('PWA icon references and updated service worker version are valid',()=>{
  for(const icon of m.icons)assert(existsSync(file(icon.src.split(/[?#]/,1)[0].replace(/^\//,''))));
  assert(/yk-official-v7-(?:78-brand-dictionary|79-seo-jlpt-cards|80-stability-speed)/.test(read('service-worker.js'))); // permit backward-compatible version bump 
 });
+check('PWA entry pages request the same-origin manifest with credentials', () => {
+  const origin = 'https://qa.example';
+  for (const page of ['index.html', 'video-class.html']) {
+    const head = read(page).split('</head>', 1)[0];
+    const links = head.match(/<link\b[^>]*\srel\s*=\s*["']manifest["'][^>]*>/gi) ?? [];
+    assert.equal(links.length, 1, `${page} must declare one manifest`);
+    assert.match(links[0], /\scrossorigin\s*=\s*["']use-credentials["']/i, page);
+    const href = links[0].match(/\shref\s*=\s*["']([^"']+)["']/i)?.[1];
+    assert.ok(href, `${page} must specify the manifest URL`);
+    assert.equal(new URL(href, `${origin}/${page}`).href, `${origin}/manifest.webmanifest`, page);
+  }
+});
 check('backend functions/migrations exactly match v7.70 source',()=>{
  const manifest=JSON.parse(read('QA_v7_71_BACKEND_HASHES.json'));
  assert(Object.keys(manifest.files).length>=30);
