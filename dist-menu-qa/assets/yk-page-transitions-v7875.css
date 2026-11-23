@@ -1,0 +1,63 @@
+/* STUDYING WITH YE KUN — v7.87.5 Native Smooth Transition Fix 02
+ * Pure CSS enhancement of the existing cross-document navigation.
+ * Keep the actual link targets, exam engine, dashboard roles and backend unchanged.
+ * Page content softly blends; header and bottom dock stay visually anchored.
+ * No whole-screen movement and no new JavaScript navigation interception.
+ */
+
+@media (max-width: 720px) and (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+
+  /* The transition overlay always has the user's saved palette behind snapshots,
+     so partially transparent frames cannot expose a white/black browser canvas. */
+  html { background-color: #09090a; }
+  html[data-yk-ui-theme="light"] { background-color: #f3f4f6; }
+  html::view-transition { background-color: #09090a; }
+  html[data-yk-ui-theme="light"]::view-transition { background-color: #f3f4f6; }
+
+  /* Exactly one header per opted-in page: Home/Exam, Video, or Dashboard.
+     Naming it separately removes it from the fading page snapshot. */
+  body > :is(.top, .vc-header, .topbar) {
+    view-transition-name: yk-v7875-header;
+  }
+
+  /* The already-existing five-tab dock keeps its own stable snapshot. */
+  #yk-mobile-nav:not([hidden]) {
+    view-transition-name: yk-v7875-tab-bar;
+  }
+
+  /* No movement or resizing of the shared navigation/header groups. */
+  ::view-transition-group(yk-v7875-header),
+  ::view-transition-group(yk-v7875-tab-bar) {
+    animation-duration: 0s !important;
+  }
+
+  @keyframes yk-v7875-soft-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+  @keyframes yk-v7875-soft-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* The root snapshot is now mostly content, not fixed controls.
+     The two overlapping layers keep the same stable canvas color. */
+  ::view-transition-old(root) {
+    animation: 135ms ease-in both yk-v7875-soft-out;
+  }
+  ::view-transition-new(root) {
+    animation: 190ms cubic-bezier(.2, .75, .25, 1) both yk-v7875-soft-in;
+  }
+
+  /* Avoid the previous bar/header motion and crossfade only the differing UI.
+     Active-tab highlight changes with the arriving page. */
+  ::view-transition-old(yk-v7875-tab-bar),
+  ::view-transition-old(yk-v7875-header) {
+    animation: 90ms ease-in both yk-v7875-soft-out;
+  }
+  ::view-transition-new(yk-v7875-tab-bar),
+  ::view-transition-new(yk-v7875-header) {
+    animation: 115ms ease-out both yk-v7875-soft-in;
+  }
+}

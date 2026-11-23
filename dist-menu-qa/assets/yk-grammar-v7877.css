@@ -1,0 +1,14 @@
+/* Original YK JLPT Grammar Detail UI retained. Inline enhancements only. */
+.yk88-detail .yk7877-detail-head{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.yk88-detail .yk7877-detail-head h2{margin:0}
+.yk88-detail .yk7877-furigana{appearance:none;background:#231c23;color:#f4e2e6;border:1px solid #72505e;border-radius:999px;padding:7px 12px;min-height:38px;font-size:13px;font-weight:750;cursor:pointer}
+.yk88-detail .yk7877-furigana:focus-visible{outline:3px solid #ffa4b7;outline-offset:2px}
+.yk88-detail .yk7877-furigana[aria-pressed="true"]{border-color:#e4566c;background:#542735}
+.yk88-detail .yk7877-explain-ja{color:#eee;font-size:15px;line-height:1.85}
+.yk88-detail .yk88-ja ruby{ruby-position:over}
+.yk88-detail .yk88-ja rt{font-size:.52em;color:#d8b8c5;font-weight:500;text-decoration:none;line-height:1.05}
+.yk88-detail[data-furigana="off"] .yk88-ja rt{display:none}
+.yk88-detail .yk88-pattern-mark{background:none;color:inherit;text-decoration:underline;text-decoration-color:#ee476b;text-underline-offset:5px;text-decoration-thickness:3px}
+.yk88-detail .yk88-pattern-mark ruby{text-decoration:inherit;text-decoration-color:#ee476b;text-underline-offset:5px}
+@media(max-width:420px){.yk88-detail .yk7877-furigana{font-size:12px;padding:6px 10px}}
+@media(prefers-reduced-motion:reduce){.yk88-detail .yk7877-furigana{transition:none}}

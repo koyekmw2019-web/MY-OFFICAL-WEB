@@ -1,0 +1,12 @@
+{
+  "version": "v7.88.1-rc.1",
+  "image_manifest_base": "3eb1c72e7537133e6e027c249f64e8ce2234dd3b",
+  "html_pages": 40,
+  "css_original_links": 148,
+  "css_bundled_links": 21,
+  "css_groups": 21,
+  "new_css_files": 7,
+  "optimized_images": 18,
+  "new_lazy_images": 8,
+  "new_lazy_iframes": 2
+}

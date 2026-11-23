@@ -1,0 +1,18 @@
+/* Scoped non-destructive access / plan / study CTA UX fixes; no service calls. */
+#online-mock-exam .exam-v728-access{grid-template-columns:minmax(0,1fr)!important}
+#online-mock-exam .exam-access-card{display:flex;flex-direction:column;align-items:stretch;gap:16px}
+#online-mock-exam .exam-access-main{align-items:flex-start}
+#online-mock-exam #yk88AccessGuide{font-size:clamp(12px,2.5vw,15px);line-height:1.95;margin:12px 0 0;color:#e2dce0;white-space:normal}
+#online-mock-exam #yk88AccessGuide[hidden]{display:none!important}
+#online-mock-exam .exam-access-actions{width:100%;justify-content:flex-start}
+#online-mock-exam .exam-plan-mini{display:none!important}
+.yk88-plan-instruction{line-height:1.8;color:#eee;margin:2px 0 14px;font-size:14px}
+.exam-v728-modal .exam-plans-v728{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.exam-v728-modal button.exam-plan-card-v728{display:flex;flex-direction:column;align-items:flex-start;text-align:left;min-width:0;min-height:130px;padding:16px;border-radius:16px;color:#fff;background:#17171a;border:1px solid #423841;cursor:pointer;font:inherit}
+.exam-v728-modal button.exam-plan-card-v728 b{font-size:clamp(21px,3.6vw,29px);margin:9px 0;line-height:1.15}
+.exam-v728-modal button.exam-plan-card-v728 small{font-size:13px;color:#e9a5b5}
+.exam-v728-modal button.exam-plan-card-v728 span{font-size:12px;line-height:1.55;color:#c5bfc7}
+.exam-v728-modal button.exam-plan-card-v728:hover,.exam-v728-modal button.exam-plan-card-v728:focus-visible{border-color:#e75a75;background:#281b24;outline:2px solid #e75a7555;outline-offset:2px}
+.exam-v728-modal .exam-backend-note-v728{line-height:1.75}
+@media(max-width:470px){.exam-v728-modal button.exam-plan-card-v728{min-height:116px;padding:14px}.exam-v728-modal .exam-plans-v728{gap:9px}}
+@media(max-width:350px){.exam-v728-modal .exam-plans-v728{grid-template-columns:1fr}}

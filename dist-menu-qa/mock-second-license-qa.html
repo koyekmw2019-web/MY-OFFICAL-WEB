@@ -1,0 +1,2757 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#08080a">
+<title>普通第二種免許 · STUDYING WITH YE KUN</title>
+<style>
+:root{
+  --bg:#090909;
+  --surface:#101010;
+  --surface-2:#151515;
+  --surface-3:#1b1b1b;
+  --text:#ffffff;
+  --muted:#a9a9a9;
+  --line:#262626;
+  --line-strong:#353535;
+  --white:#ffffff;
+  --black:#000000;
+  --shadow:0 18px 55px rgba(0,0,0,.34);
+  --radius:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 12% 4%,rgba(255,255,255,.045),transparent 28%),
+    radial-gradient(circle at 88% 8%,rgba(255,255,255,.03),transparent 25%),
+    #080808;
+  font-family:Inter,Arial,"Noto Sans Myanmar","Noto Sans JP",sans-serif;
+  line-height:1.7;
+}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1120px;margin:auto;padding:24px 18px 70px}
+
+/* Social-style top navigation */
+.top{
+  position:sticky;top:0;z-index:40;
+  background:rgba(8,8,8,.84);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--line);
+}
+.top-in{
+  max-width:1120px;margin:auto;
+  padding:12px 18px;
+  display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:.02em}
+.logo{
+  width:40px;height:40px;border-radius:13px;
+  background:#fff;color:#000;
+  display:grid;place-items:center;font-weight:1000;
+}
+.lang{display:flex;gap:7px;flex-wrap:wrap}
+.lang button{
+  border:1px solid var(--line);
+  background:#111;
+  color:#d9d9d9;
+  padding:8px 13px;
+  border-radius:999px;
+  font-weight:800;
+  cursor:pointer;
+}
+.lang button.active{background:#fff;color:#000;border-color:#fff}
+
+/* Hero = creator profile header */
+.hero{
+  display:grid;
+  grid-template-columns:.82fr 1.18fr;
+  gap:24px;
+  align-items:stretch;
+  padding:34px 0 16px;
+}
+.photo-card,.hero-card,.card,.course,.quote{
+  background:var(--surface);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+}
+.photo-card{
+  padding:14px;
+  border-radius:28px;
+  overflow:hidden;
+}
+.photo{
+  width:100%;
+  aspect-ratio:9/14;
+  border-radius:22px;
+  overflow:hidden;
+  background:#111;
+}
+.photo img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+  /* keep the user's photo in full color */
+  filter:none !important;
+}
+.placeholder{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:20px;color:#d7d7d7;background:#111;
+}
+.avatar{
+  width:96px;height:96px;border-radius:50%;
+  display:grid;place-items:center;background:#fff;color:#000;
+  font-size:36px;font-weight:900;margin-bottom:14px;
+}
+
+.hero-card{
+  border-radius:28px;
+  padding:34px;
+  position:relative;
+  overflow:hidden;
+}
+.hero-card:before{
+  content:"";
+  position:absolute;
+  right:-90px;top:-100px;
+  width:250px;height:250px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.06);
+}
+.eyebrow{
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.16em;
+  color:#9e9e9e;
+}
+h1{
+  font-size:clamp(3.6rem,8vw,7rem);
+  line-height:.9;
+  margin:12px 0 10px;
+  letter-spacing:-.06em;
+  font-weight:950;
+}
+.subtitle{
+  font-size:clamp(1.2rem,2.6vw,1.9rem);
+  font-weight:900;
+  color:#ececec;
+}
+.lead{
+  margin-top:16px;
+  color:var(--muted);
+  font-size:17px;
+  max-width:760px;
+}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.btn{
+  padding:12px 17px;
+  border-radius:13px;
+  font-weight:900;
+  border:1px solid var(--line-strong);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:46px;
+  transition:.2s ease;
+}
+.btn:hover{transform:translateY(-2px);background:#fff;color:#000}
+.btn.primary,.btn.green{
+  background:#fff;color:#000;border-color:#fff
+}
+
+/* Profile-highlight style sections */
+.section{padding:31px 0}
+.kicker{
+  font-size:11px;
+  letter-spacing:.16em;
+  font-weight:900;
+  color:#888;
+  text-transform:uppercase;
+}
+.title{
+  font-size:clamp(1.9rem,4vw,3rem);
+  font-weight:950;
+  line-height:1.12;
+  margin:5px 0 18px;
+}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{
+  padding:24px;
+  border-radius:22px;
+  transition:.22s ease;
+}
+.card:hover{
+  transform:translateY(-3px);
+  border-color:#3a3a3a;
+}
+.card h3{font-size:1.3rem;margin:0 0 9px}
+.card p{margin:0;color:var(--muted)}
+
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.tag{
+  padding:7px 11px;
+  border-radius:999px;
+  background:#181818;
+  border:1px solid #303030;
+  font-size:12px;
+  color:#e5e5e5;
+}
+
+/* Timeline as mini social posts */
+.timeline{display:grid;gap:10px}
+.ti{
+  display:grid;
+  grid-template-columns:82px 1fr;
+  gap:14px;
+  padding:14px;
+  border:1px solid var(--line);
+  background:#141414;
+  border-radius:16px;
+}
+.year{
+  color:#fff;
+  font-weight:950;
+  font-size:13px;
+  letter-spacing:.03em
+}
+
+/* Course feature card */
+.course{
+  padding:28px;
+  border-radius:24px;
+  background:
+    radial-gradient(circle at 90% 10%,rgba(255,255,255,.06),transparent 24%),
+    #101010;
+}
+.course h3{
+  font-size:2rem;
+  margin:0 0 11px;
+  font-weight:950;
+}
+.course ul{margin:17px 0 0;padding-left:22px;color:#e1e1e1}
+.course li{margin:8px 0}
+
+/* Quote / caption style */
+.quote{
+  padding:29px;
+  border-radius:24px;
+  position:relative;
+  background:#0e0e0e;
+}
+.quote:before{
+  content:"“";
+  position:absolute;
+  top:-25px;left:18px;
+  font-size:112px;
+  color:rgba(255,255,255,.055);
+  font-family:serif;
+}
+.quote p{position:relative;margin:0;font-size:17px;color:#ebebeb}
+
+/* One-click links = story highlights */
+.quick{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+.quick a{
+  position:relative;
+  min-height:155px;
+  padding:20px 16px;
+  border-radius:22px;
+  background:#111;
+  border:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  overflow:hidden;
+  transition:.22s ease;
+}
+.quick a:before{
+  content:"";
+  position:absolute;
+  width:76px;height:76px;
+  border-radius:50%;
+  top:17px;left:17px;
+  background:linear-gradient(145deg,#292929,#111);
+  border:1px solid #3a3a3a;
+}
+.quick a > div{
+  position:absolute;
+  top:34px;left:38px;
+  z-index:2;
+  font-size:24px;
+}
+.quick a:hover{
+  transform:translateY(-3px) scale(1.01);
+  border-color:#444;
+}
+.quick strong{display:block;font-size:15px;line-height:1.35}
+.quick small{color:var(--muted);margin-top:4px}
+
+/* Social account area */
+.quick a[href*="facebook"]{
+  background:linear-gradient(160deg,#101010,#131313);
+}
+.quick a[href*="instagram"]{
+  background:linear-gradient(160deg,#101010,#171717);
+}
+.quick a[href*="tiktok"],
+.quick a[href*="youtube"]{
+  background:linear-gradient(160deg,#0d0d0d,#151515);
+}
+
+/* Rate card */
+table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  margin-top:12px;
+  background:#0d0d0d;
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+}
+th,td{
+  padding:15px 14px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  vertical-align:top;
+}
+th{
+  background:#141414;
+  color:#fff;
+  font-size:11px;
+  letter-spacing:.1em;
+}
+td:last-child{font-weight:950;color:#fff}
+tr:last-child td{border-bottom:none}
+.usage-note{
+  margin-top:14px;
+  padding:15px 17px;
+  border-radius:15px;
+  background:#121212;
+  border:1px solid var(--line);
+  color:#d7d7d7;
+}
+
+/* Contact = DM style */
+.section:last-of-type .card{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(255,255,255,.06),transparent 45%),
+    #101010;
+}
+footer{
+  padding:34px 0 52px;
+  color:#6e6e6e;
+  text-align:center;
+  font-size:12px;
+  letter-spacing:.07em;
+}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .photo-card{max-width:520px;margin:auto}
+  .grid2{grid-template-columns:1fr}
+  .quick{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:620px){
+  .quick{grid-template-columns:1fr 1fr}
+  .ti{grid-template-columns:1fr}
+  .hero-card,.card,.course,.quote{padding:20px}
+  .wrap{padding:18px 14px 50px}
+  .hero{padding-top:22px}
+  .quick a{min-height:145px}
+}
+@media(max-width:430px){
+  .quick{grid-template-columns:1fr}
+}
+
+/* ===== ANIMATIONS (UPDATE ONLY) ===== */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to { opacity:1; transform:translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+@keyframes softFloat {
+  0%,100% { transform:translateY(0); }
+  50% { transform:translateY(-7px); }
+}
+@keyframes pulseRing {
+  0% { box-shadow:0 0 0 0 rgba(255,255,255,.16); }
+  70% { box-shadow:0 0 0 10px rgba(255,255,255,0); }
+  100% { box-shadow:0 0 0 0 rgba(255,255,255,0); }
+}
+@keyframes shine {
+  0% { transform:translateX(-130%); }
+  100% { transform:translateX(180%); }
+}
+@keyframes profileReveal {
+  from { opacity:0; transform:scale(.96); }
+  to { opacity:1; transform:scale(1); }
+}
+
+/* initial states for scroll reveal */
+.reveal{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity .7s ease, transform .7s ease;
+}
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* hero entrance */
+.hero-card{
+  animation:fadeUp .85s cubic-bezier(.2,.7,.2,1) both;
+}
+.photo-card{
+  animation:profileReveal .95s cubic-bezier(.2,.7,.2,1) .12s both;
+}
+
+/* profile image subtle movement */
+.photo img{
+  transition:transform .65s cubic-bezier(.2,.7,.2,1);
+}
+.photo-card:hover .photo img{
+  transform:scale(1.035);
+}
+
+/* animated brand mark */
+.logo{
+  animation:pulseRing 2.8s ease-in-out infinite;
+}
+
+/* buttons */
+.btn{
+  position:relative;
+  overflow:hidden;
+}
+.btn:after{
+  content:"";
+  position:absolute;
+  top:-30%;
+  left:-35%;
+  width:28%;
+  height:160%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+  transform:skewX(-18deg);
+  opacity:0;
+}
+.btn:hover:after{
+  opacity:1;
+  animation:shine .75s ease;
+}
+
+/* quick access cards */
+.quick a{
+  will-change:transform;
+}
+.quick a:hover{
+  transform:translateY(-6px) scale(1.015);
+}
+.quick a:active{
+  transform:scale(.985);
+}
+
+/* social / story circles */
+.quick a:before{
+  transition:transform .35s ease, border-color .35s ease;
+}
+.quick a:hover:before{
+  transform:scale(1.08) rotate(4deg);
+  border-color:#666;
+}
+
+/* V4: remove circular icon backdrop in One-Click Access and Official Social Media Accounts */
+.quick a:before{display:none!important;content:none!important;}
+.quick a > div{top:20px;left:20px;}
+
+/* language buttons */
+.lang button{
+  transition:transform .2s ease, background .2s ease, color .2s ease;
+}
+.lang button:hover{
+  transform:translateY(-2px);
+}
+
+/* cards */
+.card,.course,.quote{
+  transition:transform .28s ease, border-color .28s ease, background .28s ease;
+}
+.card:hover,.course:hover,.quote:hover{
+  transform:translateY(-4px);
+  border-color:#3a3a3a;
+}
+
+/* reduced motion accessibility */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation:none !important;
+    transition:none !important;
+    scroll-behavior:auto !important;
+  }
+  .reveal{
+    opacity:1 !important;
+    transform:none !important;
+  }
+}
+
+
+/* ===== POLISHED FEATURED YOUTUBE ===== */
+.yt-feature-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+.yt-feature-card{
+  background:#101010;
+  border:1px solid #252525;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 18px 45px rgba(0,0,0,.28);
+  transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease;
+}
+.yt-feature-card:hover{
+  transform:translateY(-5px);
+  border-color:#444;
+  box-shadow:0 22px 60px rgba(0,0,0,.4);
+}
+.yt-poster{
+  position:relative;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  background:#000;
+  cursor:pointer;
+}
+.yt-poster img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .45s ease,filter .45s ease;
+}
+.yt-feature-card:hover .yt-poster img{
+  transform:scale(1.035);
+  filter:brightness(.82);
+}
+.yt-poster:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 48%,rgba(0,0,0,.58));
+  pointer-events:none;
+}
+.yt-play{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  background:rgba(255,255,255,.96);
+  color:#000;
+  display:grid;
+  place-items:center;
+  font-size:23px;
+  font-weight:950;
+  z-index:2;
+  box-shadow:0 12px 30px rgba(0,0,0,.35);
+  transition:transform .25s ease;
+}
+.yt-feature-card:hover .yt-play{
+  transform:translate(-50%,-50%) scale(1.08);
+}
+.yt-duration{
+  position:absolute;
+  right:10px;
+  bottom:10px;
+  z-index:2;
+  padding:4px 7px;
+  border-radius:6px;
+  background:rgba(0,0,0,.82);
+  color:#fff;
+  font-size:11px;
+  font-weight:900;
+}
+.yt-feature-body{
+  padding:17px 18px 19px;
+}
+.yt-feature-top{
+  display:flex;
+  gap:11px;
+  align-items:flex-start;
+}
+.yt-avatar{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  flex:0 0 42px;
+  overflow:hidden;
+  border:1px solid #333;
+  background:#1b1b1b;
+}
+.yt-avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.yt-feature-copy{min-width:0;flex:1}
+.yt-feature-title{
+  margin:0;
+  color:#fff;
+  font-size:15px;
+  line-height:1.45;
+  font-weight:900;
+}
+.yt-feature-channel,
+.yt-feature-meta{
+  color:#999;
+  font-size:12px;
+  margin-top:4px;
+}
+.yt-feature-badges{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin-top:13px;
+}
+.yt-feature-badge{
+  padding:6px 9px;
+  border-radius:999px;
+  border:1px solid #303030;
+  background:#171717;
+  color:#ddd;
+  font-size:11px;
+  font-weight:850;
+}
+.yt-feature-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:14px;
+  color:#fff;
+  font-size:12px;
+  font-weight:900;
+  opacity:.9;
+}
+.yt-live-frame{
+  width:100%;
+  height:100%;
+  border:0;
+  position:absolute;
+  inset:0;
+  z-index:4;
+  background:#000;
+}
+@media(max-width:760px){
+  .yt-feature-grid{grid-template-columns:1fr}
+}
+
+
+/* ===== PREMIUM CAREER JOURNEY TIMELINE ===== */
+.journey{
+  position:relative;
+  display:grid;
+  gap:18px;
+  margin-top:18px;
+}
+.journey:before{
+  content:"";
+  position:absolute;
+  left:23px;
+  top:8px;
+  bottom:8px;
+  width:1px;
+  background:linear-gradient(180deg,#fff,rgba(255,255,255,.14));
+}
+.journey-item{
+  position:relative;
+  display:grid;
+  grid-template-columns:48px 1fr;
+  gap:16px;
+  align-items:start;
+}
+.journey-dot{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#fff;
+  border:4px solid #0b0b0b;
+  box-shadow:0 0 0 1px #444,0 0 20px rgba(255,255,255,.18);
+  margin:18px auto 0;
+  z-index:2;
+}
+.journey-card{
+  position:relative;
+  padding:22px 24px;
+  border:1px solid #292929;
+  border-radius:20px;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(255,255,255,.06),transparent 30%),
+    linear-gradient(160deg,#111,#0d0d0d);
+  box-shadow:0 18px 40px rgba(0,0,0,.24);
+  overflow:hidden;
+  transition:transform .28s ease,border-color .28s ease;
+}
+.journey-card:hover{
+  transform:translateX(5px);
+  border-color:#444;
+}
+.journey-label{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:10px;
+  color:#fff;
+  font-size:12px;
+  font-weight:950;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.journey-label:after{
+  content:"";
+  width:38px;
+  height:1px;
+  background:#666;
+}
+.journey-card h3{
+  margin:0 0 8px;
+  font-size:1.28rem;
+  line-height:1.3;
+}
+.journey-card p{
+  margin:0;
+  color:#aaa;
+  font-size:15px;
+  line-height:1.75;
+}
+.journey-number{
+  position:absolute;
+  right:16px;
+  bottom:-18px;
+  font-size:76px;
+  font-weight:950;
+  line-height:1;
+  color:rgba(255,255,255,.035);
+  pointer-events:none;
+}
+@media(max-width:620px){
+  .journey:before{left:17px}
+  .journey-item{grid-template-columns:36px 1fr;gap:11px}
+  .journey-card{padding:19px 18px}
+}
+
+
+/* ===== NEXLYNK COURSE FEATURE ===== */
+.nexlynk-showcase{
+  position:relative;
+  padding:28px;
+  border:1px solid #272727;
+  border-radius:28px;
+  background:
+    radial-gradient(circle at top right, rgba(0,180,220,.18), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(0,140,190,.12), transparent 24%),
+    linear-gradient(145deg,#0f1113,#0b0b0c 58%, #101215);
+  overflow:hidden;
+  box-shadow:0 20px 55px rgba(0,0,0,.28);
+}
+.nexlynk-top{
+  display:grid;
+  grid-template-columns: 260px 1fr;
+  gap:24px;
+  align-items:center;
+}
+.nexlynk-logo-box{
+  background:rgba(255,255,255,.97);
+  border-radius:22px;
+  padding:18px;
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 10px 35px rgba(0,0,0,.18);
+}
+.nexlynk-logo-box img{width:100%;height:auto;display:block}
+.nexlynk-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:14px 0 18px;
+}
+.nexlynk-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.09);
+  color:#f0f0f0;
+  font-size:12px;
+  font-weight:800;
+}
+.nexlynk-title{
+  margin:0 0 10px;
+  font-size:1.7rem;
+  line-height:1.25;
+}
+.nexlynk-sub{
+  margin:0;
+  color:#bcbcbc;
+  font-size:15px;
+  line-height:1.8;
+}
+.nexlynk-course-grid{
+  margin-top:26px;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:18px;
+}
+.nexlynk-card{
+  border:1px solid #242424;
+  border-radius:22px;
+  padding:22px;
+  background:rgba(255,255,255,.03);
+  backdrop-filter: blur(4px);
+}
+.nexlynk-card h4{
+  margin:0 0 12px;
+  font-size:1.06rem;
+}
+.nexlynk-list{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:grid;
+  gap:12px;
+}
+.nexlynk-list li{
+  position:relative;
+  padding-left:18px;
+  color:#cfcfcf;
+  line-height:1.7;
+}
+.nexlynk-list li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.7em;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#25c6df,#067ea7);
+  box-shadow:0 0 12px rgba(37,198,223,.48);
+}
+.nexlynk-course-name{
+  font-size:1.2rem;
+  font-weight:900;
+  margin-bottom:12px;
+  color:#fff;
+}
+.nexlynk-cta{
+  margin-top:18px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+.nexlynk-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 18px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:900;
+  text-decoration:none;
+  transition:transform .25s ease, opacity .25s ease;
+}
+.nexlynk-btn:hover{transform:translateY(-2px)}
+.nexlynk-btn.primary{
+  background:linear-gradient(135deg,#21c1db,#0d7fa2);
+  color:#fff;
+}
+.nexlynk-btn.secondary{
+  background:#fff;
+  color:#0a0a0a;
+}
+@media(max-width:860px){
+  .nexlynk-top,
+  .nexlynk-course-grid{grid-template-columns:1fr}
+  .nexlynk-logo-box{max-width:320px}
+}
+
+
+/* ===== About Section Redesign ===== */
+.about-showcase{
+  display:grid;
+  grid-template-columns:1.08fr 0.92fr;
+  gap:22px;
+  align-items:stretch;
+}
+.about-profile-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:28px;
+  padding:28px;
+  background:
+    radial-gradient(circle at top right, rgba(255,255,255,0.12), transparent 32%),
+    linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border:1px solid rgba(255,255,255,0.12);
+  box-shadow:0 18px 60px rgba(0,0,0,0.22);
+}
+.about-profile-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+  transform:translateX(-100%);
+  transition:transform .9s ease;
+}
+.about-profile-card:hover::before{transform:translateX(100%);}
+.about-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.10);
+  color:#d8d8d8;
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:16px;
+}
+.about-heading{
+  font-size:clamp(26px, 4vw, 42px);
+  line-height:1.08;
+  margin:0 0 12px;
+  letter-spacing:-.03em;
+}
+.about-intro{
+  color:rgba(255,255,255,0.78);
+  font-size:15px;
+  line-height:1.9;
+  margin:0 0 18px;
+}
+.about-highlight-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+  margin-top:18px;
+}
+.about-highlight{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:20px;
+  padding:16px;
+}
+.about-highlight small{
+  display:block;
+  color:rgba(255,255,255,0.5);
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-size:11px;
+  margin-bottom:8px;
+}
+.about-highlight strong{
+  display:block;
+  font-size:16px;
+  line-height:1.45;
+}
+.about-quote{
+  margin-top:20px;
+  border-left:3px solid rgba(255,255,255,0.8);
+  padding:10px 0 10px 16px;
+  color:#fff;
+  font-size:15px;
+  line-height:1.8;
+}
+.about-mini-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:18px;
+}
+.about-mini-tags span{
+  padding:9px 14px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.12);
+  background:rgba(255,255,255,0.05);
+  color:#f2f2f2;
+  font-size:13px;
+}
+.about-bottom-card{
+  margin-top:20px;
+  padding:22px 24px;
+  border-radius:24px;
+  background:linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border:1px solid rgba(255,255,255,0.10);
+  display:grid;
+  grid-template-columns: 1fr auto;
+  gap:18px;
+  align-items:center;
+}
+.about-bottom-card p{
+  margin:0;
+  color:rgba(255,255,255,0.78);
+  line-height:1.9;
+}
+.about-bottom-badge{
+  min-width:120px;
+  text-align:center;
+  border-radius:20px;
+  padding:16px 14px;
+  background:#fff;
+  color:#111;
+  font-weight:800;
+  font-size:14px;
+  letter-spacing:.04em;
+}
+@media (max-width: 900px){
+  .about-showcase{grid-template-columns:1fr;}
+  .about-bottom-card{grid-template-columns:1fr;}
+  .about-bottom-badge{width:100%;}
+}
+@media (max-width: 640px){
+  .about-profile-card{padding:22px;}
+  .about-highlight-grid{grid-template-columns:1fr;}
+}
+
+
+/* ===== DRIVER STUDY RESOURCES ===== */
+.resource-hub{
+  position:relative;
+  padding:28px;
+  border:1px solid #252525;
+  border-radius:28px;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(255,255,255,.06),transparent 28%),
+    linear-gradient(145deg,#101010,#0b0b0b);
+  overflow:hidden;
+  box-shadow:0 20px 55px rgba(0,0,0,.28);
+}
+.resource-hub:before{
+  content:"";
+  position:absolute;
+  width:260px;height:260px;
+  border-radius:50%;
+  right:-110px;top:-130px;
+  border:1px solid rgba(255,255,255,.06);
+}
+.resource-intro{
+  position:relative;
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  align-items:flex-end;
+  margin-bottom:20px;
+  flex-wrap:wrap;
+}
+.resource-intro p{
+  margin:0;
+  max-width:700px;
+  color:#aaa;
+  line-height:1.75;
+}
+.resource-count{
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.12em;
+  color:#8d8d8d;
+}
+.resource-grid{
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+.resource-card{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  min-height:118px;
+  padding:18px;
+  border-radius:20px;
+  border:1px solid #292929;
+  background:rgba(255,255,255,.025);
+  transition:transform .25s ease,border-color .25s ease,background .25s ease;
+  overflow:hidden;
+}
+.resource-card:hover{
+  transform:translateY(-4px);
+  border-color:#4a4a4a;
+  background:rgba(255,255,255,.05);
+}
+.resource-icon{
+  flex:0 0 52px;
+  width:52px;height:52px;
+  border-radius:16px;
+  display:grid;
+  place-items:center;
+  background:#fff;
+  color:#000;
+  font-size:23px;
+  font-weight:950;
+}
+.resource-copy{min-width:0;flex:1}
+.resource-type{
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:#777;
+  font-weight:900;
+  margin-bottom:5px;
+}
+.resource-title{
+  font-size:15px;
+  line-height:1.45;
+  font-weight:900;
+  color:#fff;
+}
+.resource-sub{
+  margin-top:5px;
+  font-size:12px;
+  color:#999;
+}
+.resource-arrow{
+  flex:0 0 auto;
+  font-size:22px;
+  color:#eee;
+  transition:transform .25s ease;
+}
+.resource-card:hover .resource-arrow{
+  transform:translate(3px,-3px);
+}
+.resource-card.primary .resource-icon{
+  background:linear-gradient(135deg,#fff,#d8d8d8);
+}
+.resource-card.pdf .resource-icon{
+  background:#171717;
+  color:#fff;
+  border:1px solid #3a3a3a;
+}
+.resource-card.guide .resource-icon{
+  background:linear-gradient(135deg,#ffffff,#e9e9e9);
+  color:#000;
+}
+.resource-card.truck .resource-icon{
+  background:linear-gradient(135deg,#1b1b1b,#0d0d0d);
+  color:#fff;
+  border:1px solid #333;
+}
+.resource-card.taxi .resource-icon{
+  background:linear-gradient(135deg,#ffd84d,#f6b800);
+  color:#111;
+  border:1px solid rgba(0,0,0,.12);
+}
+.resource-card.bus .resource-icon{
+  background:linear-gradient(135deg,#111,#1a1a1a);
+  color:#fff;
+  border:1px solid #333;
+}
+.resource-icon span{
+  display:block;
+  font-size:26px;
+  line-height:1;
+}
+@media(max-width:760px){
+  .resource-grid{grid-template-columns:1fr}
+}
+
+
+/* ===== DRIVING DICTIONARY ===== */
+.dictionary-shell{border:1px solid #252525;border-radius:28px;padding:26px;background:radial-gradient(circle at 92% 0%,rgba(255,255,255,.055),transparent 27%),linear-gradient(145deg,#101010,#0b0b0b);box-shadow:0 20px 55px rgba(0,0,0,.26)}
+.dictionary-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px}.dictionary-head p{margin:0;color:#999;max-width:720px;line-height:1.75}
+.dictionary-search{width:100%;margin:4px 0 18px;display:flex;align-items:center;gap:10px;border:1px solid #2b2b2b;background:#121212;border-radius:16px;padding:12px 14px}.dictionary-search input{width:100%;border:0;outline:0;background:transparent;color:#fff;font:inherit}.dictionary-search input::placeholder{color:#666}
+.dictionary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.dictionary-item{padding:16px 17px;border:1px solid #252525;border-radius:18px;background:rgba(255,255,255,.025);transition:.22s ease}.dictionary-item:hover{transform:translateY(-2px);border-color:#3f3f3f;background:rgba(255,255,255,.045)}
+.dictionary-jp{font-size:16px;font-weight:900;color:#fff}.dictionary-reading{margin-left:7px;color:#777;font-size:12px;font-weight:700}.dictionary-en{margin-top:8px;color:#f2f2f2;line-height:1.55;font-size:13px;font-weight:700}.dictionary-mm{margin-top:5px;color:#bdbdbd;line-height:1.65;font-size:13px}.dictionary-cat{display:inline-flex;margin-top:10px;padding:5px 8px;border-radius:999px;border:1px solid #2e2e2e;background:#151515;color:#888;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.dictionary-empty{display:none;padding:22px;text-align:center;color:#777}@media(max-width:760px){.dictionary-grid{grid-template-columns:1fr}}
+
+.dictionary-results-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin-top:16px;
+}
+@media(max-width:760px){
+  .dictionary-results-grid{grid-template-columns:1fr}
+}
+
+
+.dictionary-source-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:10px;
+}
+
+.dictionary-review-note{
+  margin-top:10px;
+  color:#666;
+  font-size:11px;
+  line-height:1.5;
+}
+
+
+
+/* v7.68 curated dictionary examples, accessible Japanese/Myanmar */
+.dict-v768-example{font-size:12px;color:#dedede;margin-top:11px;padding-top:10px;border-top:1px solid rgba(255,255,255,.09);line-height:1.75}
+.dict-v768-example span{font-size:10px;font-weight:800;color:#b8c2d3;margin-right:8px}
+.dict-v768-example small{font-size:12px;display:block;color:#b8b8bc;margin-top:3px}
+
+/* ===== V5 MOTION & UI POLISH — animation-only enhancement ===== */
+:root{
+  --motion-ease:cubic-bezier(.16,1,.3,1);
+  --glass-line:rgba(255,255,255,.12);
+  --glow-soft:rgba(255,255,255,.08);
+}
+body{position:relative;overflow-x:hidden}
+body::before{
+  content:"";position:fixed;inset:-25vh -20vw;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(circle at 18% 18%,rgba(255,255,255,.055),transparent 28%),
+    radial-gradient(circle at 82% 30%,rgba(255,255,255,.035),transparent 24%),
+    radial-gradient(circle at 52% 86%,rgba(255,255,255,.025),transparent 30%);
+  animation:ambientDrift 18s ease-in-out infinite alternate;
+  transform:translateZ(0);
+}
+@keyframes ambientDrift{
+  0%{transform:translate3d(-1.5%,-1%,0) scale(1)}
+  50%{transform:translate3d(1%,1.5%,0) scale(1.035)}
+  100%{transform:translate3d(1.5%,-.5%,0) scale(1.01)}
+}
+@keyframes cardIn{
+  from{opacity:0;transform:translate3d(0,34px,0) scale(.985);filter:blur(8px)}
+  to{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0)}
+}
+@keyframes titleSweep{
+  0%{background-position:180% 50%}
+  100%{background-position:-80% 50%}
+}
+@keyframes borderPulse{
+  0%,100%{box-shadow:0 20px 55px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.035)}
+  50%{box-shadow:0 26px 72px rgba(0,0,0,.38),0 0 0 1px rgba(255,255,255,.025),inset 0 1px 0 rgba(255,255,255,.065)}
+}
+.reveal{
+  opacity:0;transform:translate3d(0,34px,0) scale(.988);filter:blur(7px);
+  transition:opacity .85s var(--motion-ease),transform .85s var(--motion-ease),filter .85s var(--motion-ease);
+}
+.reveal.visible{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0)}
+.title{position:relative}
+.title::after{
+  content:"";display:block;width:56px;height:2px;margin-top:12px;border-radius:99px;
+  background:linear-gradient(90deg,transparent,#fff,transparent);background-size:220% 100%;
+  animation:titleSweep 4.8s linear infinite;opacity:.65;
+}
+.hero-card,.photo-card,.card,.course,.quote,.dictionary-shell,.resource-card,.yt-feature-card,.quick a{
+  transform:translateZ(0);backface-visibility:hidden;
+  transition:transform .45s var(--motion-ease),border-color .45s ease,box-shadow .45s ease,background .45s ease;
+}
+.hero-card:hover,.photo-card:hover,.card:hover,.course:hover,.quote:hover,.dictionary-shell:hover,.resource-card:hover,.yt-feature-card:hover{
+  transform:translateY(-7px) scale(1.006);border-color:rgba(255,255,255,.22);
+  box-shadow:0 28px 80px rgba(0,0,0,.42),0 0 0 1px rgba(255,255,255,.025);
+}
+.hero-card,.dictionary-shell{animation:borderPulse 6s ease-in-out infinite}
+.photo{overflow:hidden}
+.photo img{transition:transform 1s var(--motion-ease),filter .55s ease}
+.photo-card:hover .photo img{transform:scale(1.055) translateY(-2px);filter:contrast(1.035) saturate(1.025)}
+.quick a{position:relative;overflow:hidden}
+.quick a::after{
+  content:"";position:absolute;inset:auto -35% -90% -35%;height:145%;pointer-events:none;
+  background:radial-gradient(circle,rgba(255,255,255,.10),transparent 58%);
+  opacity:0;transform:translateY(18px);transition:.55s var(--motion-ease);
+}
+.quick a:hover{transform:translateY(-8px) scale(1.018);border-color:rgba(255,255,255,.24);box-shadow:0 22px 55px rgba(0,0,0,.38)}
+.quick a:hover::after{opacity:1;transform:translateY(0)}
+.btn{transition:transform .3s var(--motion-ease),box-shadow .3s ease,border-color .3s ease}
+.btn:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(0,0,0,.32)}
+.dictionary-search{transition:border-color .3s ease,box-shadow .3s ease,transform .3s var(--motion-ease)}
+.dictionary-search:focus-within{border-color:rgba(255,255,255,.34);box-shadow:0 0 0 4px rgba(255,255,255,.045),0 16px 40px rgba(0,0,0,.26);transform:translateY(-2px)}
+.dictionary-item{position:relative;overflow:hidden;transition:transform .34s var(--motion-ease),border-color .34s ease,background .34s ease,box-shadow .34s ease}
+.dictionary-item::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:0;
+  background:linear-gradient(120deg,transparent 22%,rgba(255,255,255,.06) 48%,transparent 72%);
+  transform:translateX(-75%);transition:opacity .3s ease,transform .75s var(--motion-ease);
+}
+.dictionary-item:hover{transform:translateY(-5px) scale(1.01);border-color:rgba(255,255,255,.2);box-shadow:0 18px 42px rgba(0,0,0,.28)}
+.dictionary-item:hover::before{opacity:1;transform:translateX(70%)}
+.resource-icon,.social-logo,.quick img,.quick svg{transition:transform .5s var(--motion-ease),filter .4s ease}
+.resource-card:hover .resource-icon,.quick a:hover img,.quick a:hover svg{transform:scale(1.09) rotate(-2deg)}
+@media(max-width:760px){
+  .hero-card:hover,.photo-card:hover,.card:hover,.course:hover,.quote:hover,.dictionary-shell:hover,.resource-card:hover,.yt-feature-card:hover{transform:translateY(-3px)}
+}
+@media (prefers-reduced-motion: reduce){
+  body::before,.hero-card,.dictionary-shell,.title::after{animation:none!important}
+  .reveal{filter:none!important}
+}
+
+/* ===== V6 ONLINE MOCK EXAM ===== */
+.exam-hub{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.11);background:linear-gradient(145deg,rgba(20,20,20,.96),rgba(9,9,9,.98));border-radius:28px;padding:24px;box-shadow:0 28px 80px rgba(0,0,0,.38)}
+.exam-hub:before{content:"";position:absolute;width:360px;height:360px;border-radius:50%;right:-170px;top:-190px;background:radial-gradient(circle,rgba(49,209,255,.16),transparent 65%);filter:blur(2px);pointer-events:none;animation:examOrb 9s ease-in-out infinite alternate}.exam-hub:after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;left:-160px;bottom:-180px;background:radial-gradient(circle,rgba(123,92,255,.12),transparent 67%);pointer-events:none;animation:examOrb 11s ease-in-out infinite alternate-reverse}@keyframes examOrb{to{transform:translate3d(20px,14px,0) scale(1.08)}}
+.exam-intro{position:relative;z-index:1;display:grid;grid-template-columns:1.25fr .75fr;gap:18px;align-items:stretch}.exam-intro-card{padding:22px;border-radius:22px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08)}.exam-intro-card h3{margin:0 0 10px;font-size:22px}.exam-intro-card p{margin:0;color:var(--muted)}
+.exam-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.exam-stat{padding:14px;border-radius:18px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07);text-align:center}.exam-stat b{display:block;font-size:20px}.exam-stat span{font-size:12px;color:var(--muted)}
+.exam-category-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}.exam-category{position:relative;overflow:hidden;padding:20px;border-radius:24px;border:1px solid rgba(255,255,255,.09);background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.018));transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease}.exam-category:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.2);box-shadow:0 22px 48px rgba(0,0,0,.28)}.exam-category .icon{font-size:34px}.exam-category h3{margin:10px 0 6px}.exam-category p{font-size:13px;color:var(--muted);min-height:46px}.exam-scope{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 16px}.exam-scope span{font-size:11px;padding:6px 9px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08)}.exam-start{width:100%;border:0;border-radius:15px;padding:12px 14px;font-weight:800;cursor:pointer;background:#fff;color:#090909;transition:transform .2s ease,box-shadow .2s ease}.exam-start:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(255,255,255,.12)}
+.exam-note{position:relative;z-index:1;margin-top:14px;font-size:12px;color:#8f8f8f}
+.exam-panel{display:none;position:relative;z-index:2;margin-top:18px;border-radius:25px;border:1px solid rgba(255,255,255,.1);background:rgba(8,8,8,.94);overflow:hidden}.exam-panel.active{display:block;animation:examPanelIn .35s ease both}@keyframes examPanelIn{from{opacity:0;transform:translateY(12px) scale(.99)}to{opacity:1;transform:none}}
+.exam-toolbar{position:sticky;top:72px;z-index:5;display:flex;gap:10px;align-items:center;justify-content:space-between;padding:14px 16px;background:rgba(10,10,10,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08)}.exam-toolbar-left{display:flex;gap:10px;align-items:center;min-width:0}.exam-back{border:1px solid rgba(255,255,255,.12);background:#151515;color:#fff;border-radius:12px;padding:9px 12px;cursor:pointer}.exam-type-pill{font-size:12px;font-weight:800;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.08)}.exam-timer{font-variant-numeric:tabular-nums;font-weight:900;font-size:18px;padding:7px 11px;border-radius:12px;background:#fff;color:#111}.exam-timer.warn{background:#ffda68;color:#151515;animation:timerPulse .9s ease-in-out infinite alternate}@keyframes timerPulse{to{transform:scale(1.04)}}
+.exam-progress-wrap{padding:14px 16px 0}.exam-progress-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:7px}.exam-progress{height:7px;border-radius:999px;background:#202020;overflow:hidden}.exam-progress>span{display:block;height:100%;width:0;background:linear-gradient(90deg,#fff,#8fdcff);transition:width .25s ease}
+.exam-question{padding:20px 16px 22px}.exam-q-number{font-size:12px;color:#9c9c9c;margin-bottom:8px}.exam-q-text{font-size:21px;line-height:1.85;font-weight:800;margin-bottom:10px}.exam-q-text ruby,.exam-choice ruby,.review-q ruby{ruby-align:center}.exam-q-text rt,.exam-choice rt,.review-q rt{font-size:.48em;color:#aab9c8;font-weight:600}.exam-q-media{margin:4px 0 16px;padding:10px;border:1px solid rgba(255,255,255,.10);border-radius:18px;background:#f4f4f4}.exam-q-media img{display:block;width:100%;max-height:430px;object-fit:contain;border-radius:12px;background:#fff}.exam-q-source{margin-top:8px;text-align:right;color:#666;font-size:10px;font-weight:700;letter-spacing:.02em}.exam-visual-badge{display:inline-flex;align-items:center;margin-left:8px;padding:4px 7px;border-radius:999px;background:rgba(143,220,255,.12);border:1px solid rgba(143,220,255,.22);color:#bfeaff;font-size:10px;font-weight:900}.review-item .exam-q-media{margin:10px 0 12px}.review-item .exam-q-media img{max-height:300px}.exam-help{font-size:13px;color:#b7b7b7;margin-bottom:16px}.exam-choices{display:grid;gap:10px}.exam-choice{display:flex;align-items:flex-start;gap:10px;width:100%;text-align:left;border:1px solid rgba(255,255,255,.1);background:#121212;color:#fff;padding:14px;border-radius:17px;cursor:pointer;transition:.2s}.exam-choice:hover{background:#191919;border-color:rgba(255,255,255,.22);transform:translateX(2px)}.exam-choice.selected{background:#f4f4f4;color:#090909;border-color:#fff}.exam-choice-key{flex:0 0 28px;height:28px;border-radius:9px;display:grid;place-items:center;background:rgba(127,127,127,.18);font-weight:900}.exam-nav{display:flex;gap:10px;justify-content:space-between;margin-top:18px}.exam-nav button{border:1px solid rgba(255,255,255,.12);background:#171717;color:#fff;border-radius:14px;padding:11px 16px;font-weight:750;cursor:pointer}.exam-nav .primary-next{margin-left:auto;background:#fff;color:#111}.exam-nav button:disabled{opacity:.35;cursor:not-allowed}.exam-submit{background:linear-gradient(135deg,#fff,#c9ecff)!important;color:#111!important}
+.exam-result{padding:24px 16px 28px;text-align:center}.score-ring{--score:0;width:150px;height:150px;margin:2px auto 16px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#fff calc(var(--score)*1%),#242424 0);position:relative;box-shadow:0 0 55px rgba(255,255,255,.08)}.score-ring:after{content:"";position:absolute;inset:12px;border-radius:50%;background:#0d0d0d}.score-ring-inner{position:relative;z-index:1}.score-ring-inner b{display:block;font-size:30px}.score-ring-inner span{font-size:12px;color:var(--muted)}.result-badge{display:inline-flex;padding:8px 15px;border-radius:999px;font-weight:900;letter-spacing:.08em;border:1px solid rgba(255,255,255,.13)}.result-badge.pass{background:rgba(121,255,169,.12);color:#a7ffc4}.result-badge.fail{background:rgba(255,100,100,.12);color:#ffaaaa}.result-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px auto;max-width:720px}.result-cell{padding:14px;border-radius:18px;background:#131313;border:1px solid rgba(255,255,255,.08)}.result-cell b{display:block;font-size:19px}.result-cell span{font-size:11px;color:var(--muted)}.section-scores{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:720px;margin:0 auto 18px}.section-score{padding:16px;border-radius:18px;background:#111;border:1px solid rgba(255,255,255,.08)}.section-score .bar{height:7px;border-radius:99px;background:#252525;overflow:hidden;margin-top:8px}.section-score .bar span{display:block;height:100%;background:#fff}.result-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:18px}.result-actions button{border:1px solid rgba(255,255,255,.12);background:#161616;color:#fff;border-radius:14px;padding:11px 15px;cursor:pointer;font-weight:800}.result-actions .retry{background:#fff;color:#111}.review-list{display:none;text-align:left;max-width:820px;margin:20px auto 0}.review-list.open{display:grid;gap:10px}.review-item{padding:15px;border-radius:18px;background:#101010;border:1px solid rgba(255,255,255,.08)}.review-item.wrong{border-color:rgba(255,110,110,.28)}.review-item.correct{border-color:rgba(125,255,175,.18)}.review-q{font-weight:800;line-height:1.75}.review-meta{font-size:12px;color:#aaa;margin-top:8px}.review-explain{font-size:13px;color:#d4d4d4;margin-top:8px;line-height:1.65}.review-status{font-weight:900;margin-right:6px}.review-status.ok{color:#a7ffc4}.review-status.ng{color:#ffaaaa}
+@media(max-width:820px){.exam-intro{grid-template-columns:1fr}.exam-category-grid{grid-template-columns:1fr}.exam-category p{min-height:0}.result-grid{grid-template-columns:repeat(2,1fr)}.exam-toolbar{top:64px}.exam-q-text{font-size:18px}.section-scores{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.exam-hub:before,.exam-hub:after,.exam-timer.warn{animation:none}.exam-category,.exam-choice{transition:none}}
+
+
+/* --- V7.10 Textbook Request inline redesign --- */
+.textbook-inline-shell{position:relative;margin-top:22px;max-height:0;opacity:0;overflow:hidden;transform:translateY(18px) scale(.985);pointer-events:none;transition:max-height .65s cubic-bezier(.22,1,.36,1),opacity .4s ease,transform .6s cubic-bezier(.22,1,.36,1),margin-top .35s ease;}
+.textbook-inline-shell.open{max-height:1200px;opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
+.textbook-inline-card{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,.035));border:1px solid rgba(255,255,255,.12);border-radius:28px;padding:26px;box-shadow:0 20px 60px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.06);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);}
+.textbook-inline-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at top right,rgba(255,255,255,.12),transparent 34%),radial-gradient(circle at bottom left,rgba(99,102,241,.18),transparent 26%);pointer-events:none;}
+.textbook-inline-card::after{content:'';position:absolute;left:-20%;top:-35%;width:52%;height:180%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.055),transparent);transform:rotate(18deg);animation:textbookShine 7s linear infinite;pointer-events:none;}
+@keyframes textbookShine{0%{transform:translateX(-18%) rotate(18deg)}100%{transform:translateX(230%) rotate(18deg)}}
+.textbook-inline-top,.textbook-inline-meta,.textbook-inline-steps,.textbook-inline-form-grid,.textbook-inline-actions{position:relative;z-index:1;}
+.textbook-inline-top{display:flex;gap:16px;justify-content:space-between;align-items:flex-start;margin-bottom:16px;}
+.textbook-inline-kicker{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.075);border:1px solid rgba(255,255,255,.08);font-size:.73rem;letter-spacing:.18em;font-weight:800;}
+.textbook-inline-kicker::before{content:'✦';font-size:.85rem;opacity:.95}
+.textbook-inline-top h2{margin:12px 0 8px;font-size:clamp(1.5rem,3.3vw,2.15rem);line-height:1.05;}
+.textbook-inline-desc{margin:0;color:rgba(255,255,255,.72);max-width:680px;line-height:1.75;}
+.textbook-inline-close{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:44px;height:44px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff;font-size:1.35rem;cursor:pointer;transition:transform .25s ease,background .25s ease,border-color .25s ease;}
+.textbook-inline-close:hover{transform:translateY(-1px) scale(1.02);background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.24)}
+.textbook-inline-meta{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0 18px;}
+.textbook-selected{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:16px;background:linear-gradient(135deg,rgba(255,255,255,.11),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.14);font-weight:700;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);}
+.textbook-inline-hint{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:16px;color:rgba(255,255,255,.75);background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08)}
+.textbook-inline-hint::before{content:'📩';}
+.textbook-inline-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:18px;}
+.textbook-step{padding:14px 14px 12px;border-radius:18px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);}
+.textbook-step-no{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#fff;color:#111;font-size:.82rem;font-weight:800;margin-bottom:8px;box-shadow:0 8px 18px rgba(255,255,255,.15)}
+.textbook-step strong{display:block;margin-bottom:4px;font-size:.96rem}
+.textbook-step p{margin:0;color:rgba(255,255,255,.64);font-size:.9rem;line-height:1.45}
+.textbook-inline-form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
+.textbook-field{display:flex;flex-direction:column;gap:8px;}
+.textbook-field span{font-size:.82rem;color:rgba(255,255,255,.7);font-weight:700;letter-spacing:.02em}
+.textbook-field input{width:100%;height:56px;padding:0 16px;border-radius:16px;border:1px solid rgba(255,255,255,.13);background:rgba(12,12,16,.72);color:#fff;outline:none;transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease;}
+.textbook-field input::placeholder{color:rgba(255,255,255,.32)}
+.textbook-field input:focus{border-color:rgba(255,255,255,.3);box-shadow:0 0 0 4px rgba(255,255,255,.06);transform:translateY(-1px)}
+.textbook-consent{display:flex;align-items:flex-start;gap:10px;margin-top:16px;color:rgba(255,255,255,.7);line-height:1.65;}
+.textbook-consent input{margin-top:4px;accent-color:#fff;transform:scale(1.08)}
+.textbook-inline-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:18px;}
+.textbook-submit{height:56px;padding:0 22px;border:none;border-radius:18px;background:linear-gradient(135deg,#ffffff,#e9edf7);color:#0d1117;font-weight:900;cursor:pointer;box-shadow:0 14px 34px rgba(255,255,255,.15);transition:transform .25s ease,box-shadow .25s ease,opacity .25s ease;}
+.textbook-submit:hover{transform:translateY(-2px);box-shadow:0 18px 38px rgba(255,255,255,.19)}
+.textbook-submit:disabled{opacity:.65;cursor:not-allowed;transform:none}
+.textbook-status{min-height:24px;color:rgba(255,255,255,.75);font-size:.95rem}
+.textbook-status.ok{color:#9bf2c7}.textbook-status.err{color:#ffb4b4}
+.textbook-inline-shell[data-book="TRUCK"] .textbook-inline-card{box-shadow:0 20px 60px rgba(0,0,0,.34),0 0 0 1px rgba(59,130,246,.18) inset}
+.textbook-inline-shell[data-book="TAXI"] .textbook-inline-card{box-shadow:0 20px 60px rgba(0,0,0,.34),0 0 0 1px rgba(250,204,21,.18) inset}
+.textbook-inline-shell[data-book="BUS"] .textbook-inline-card{box-shadow:0 20px 60px rgba(0,0,0,.34),0 0 0 1px rgba(52,211,153,.18) inset}
+.textbook-inline-shell[data-book="TRUCK"] .textbook-selected{background:linear-gradient(135deg,rgba(59,130,246,.25),rgba(59,130,246,.08))}
+.textbook-inline-shell[data-book="TAXI"] .textbook-selected{background:linear-gradient(135deg,rgba(250,204,21,.24),rgba(250,204,21,.08))}
+.textbook-inline-shell[data-book="BUS"] .textbook-selected{background:linear-gradient(135deg,rgba(52,211,153,.24),rgba(52,211,153,.08))}
+.textbook-request-trigger.is-active{transform:translateY(-3px);border-color:rgba(255,255,255,.24)!important;box-shadow:0 12px 30px rgba(0,0,0,.25),0 0 0 1px rgba(255,255,255,.1) inset;}
+@media (max-width:920px){.textbook-inline-steps,.textbook-inline-form-grid{grid-template-columns:1fr}.textbook-inline-top{flex-direction:column}.textbook-inline-close{align-self:flex-end}.textbook-submit{width:100%}}
+@media (prefers-reduced-motion:reduce){.textbook-inline-shell,.textbook-inline-card::after,.textbook-request-trigger,.textbook-inline-close,.textbook-submit,.textbook-field input{transition:none!important;animation:none!important}}
+
+
+/* --- V7.11 Appilix-inspired Direct Contact section --- */
+.contact-v711{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:clamp(22px,4vw,38px);background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025));box-shadow:0 24px 70px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.05);}
+.contact-v711::before{content:'';position:absolute;right:-90px;top:-110px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(216,181,109,.17),transparent 68%);pointer-events:none;}
+.contact-v711::after{content:'';position:absolute;left:-110px;bottom:-130px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(94,225,167,.12),transparent 68%);pointer-events:none;}
+.contact-v711>*{position:relative;z-index:1}.contact-v711-intro{max-width:820px;margin-bottom:24px}.contact-v711-intro p{margin:10px 0 0;color:#a9b2be;line-height:1.8;font-size:1rem}.contact-v711-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:18px;align-items:stretch}.contact-v711-side{display:grid;gap:14px;align-content:start}.contact-v711-info{padding:21px;border-radius:22px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);transition:transform .25s ease,border-color .25s ease,background .25s ease}.contact-v711-info:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.16);background:rgba(255,255,255,.065)}.contact-v711-icon{display:flex;width:46px;height:46px;border-radius:15px;align-items:center;justify-content:center;background:rgba(255,255,255,.08);font-size:1.3rem;margin-bottom:14px}.contact-v711-info h3{margin:0 0 8px;font-size:1.05rem}.contact-v711-info p{margin:0;color:#a9b2be;line-height:1.65;font-size:.94rem}.contact-v711-link{display:inline-flex;align-items:center;gap:8px;margin-top:15px;color:#fff;text-decoration:none;font-weight:800}.contact-v711-link span{transition:transform .2s ease}.contact-v711-link:hover span{transform:translateX(3px)}.contact-v711-formwrap{padding:22px;border-radius:24px;background:rgba(9,12,17,.64);border:1px solid rgba(255,255,255,.09)}.contact-v711-formwrap h3{font-size:1.25rem;margin:0 0 18px}.contact-v711-form{display:grid;gap:14px}.contact-v711-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.contact-v711-field{display:grid;gap:7px}.contact-v711-field label{font-size:.8rem;font-weight:800;color:#c3cad4}.contact-v711-field input,.contact-v711-field textarea{width:100%;border:1px solid rgba(255,255,255,.1);border-radius:15px;background:rgba(255,255,255,.045);color:#fff;padding:14px 15px;outline:none;font:inherit;transition:border-color .2s ease,box-shadow .2s ease,background .2s ease}.contact-v711-field input:focus,.contact-v711-field textarea:focus{border-color:rgba(216,181,109,.55);box-shadow:0 0 0 4px rgba(216,181,109,.08);background:rgba(255,255,255,.065)}.contact-v711-field textarea{min-height:145px;resize:vertical;line-height:1.6}.contact-v711-counter{text-align:right;color:#707b88;font-size:.75rem;margin-top:-4px}.contact-v711-submit{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:52px;border:0;border-radius:16px;padding:0 22px;background:linear-gradient(135deg,#d8b56d,#f3db9d);color:#12100b;font-weight:900;cursor:pointer;box-shadow:0 12px 30px rgba(216,181,109,.16);transition:transform .22s ease,box-shadow .22s ease}.contact-v711-submit:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(216,181,109,.22)}.contact-v711-note{margin:0;color:#76818e;font-size:.78rem;line-height:1.5}.contact-v711-email{word-break:break-word;color:#fff;font-weight:900}.contact-v711-badge{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border-radius:999px;background:rgba(94,225,167,.08);border:1px solid rgba(94,225,167,.14);color:#9eeec7;font-size:.74rem;font-weight:800;margin-top:13px}
+@media(max-width:820px){.contact-v711-grid{grid-template-columns:1fr}.contact-v711-row{grid-template-columns:1fr}.contact-v711{border-radius:24px}.contact-v711-formwrap{padding:18px}}
+
+
+/* --- V7.13 Collaboration progressive reveal --- */
+.collab-extra-wrap{max-height:0;opacity:0;overflow:hidden;transform:translateY(12px);transition:max-height .7s cubic-bezier(.22,1,.36,1),opacity .35s ease,transform .55s cubic-bezier(.22,1,.36,1);}
+.collab-extra-wrap.open{max-height:2200px;opacity:1;transform:translateY(0);}
+.collab-extra-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px;}
+.collab-toggle-wrap{display:flex;justify-content:center;margin-top:20px;}
+.collab-toggle{display:inline-flex;align-items:center;gap:10px;padding:13px 20px;border-radius:999px;border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.055);color:#fff;font-weight:800;cursor:pointer;transition:transform .25s ease,background .25s ease,border-color .25s ease;}
+.collab-toggle:hover{transform:translateY(-2px);background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.22)}
+.collab-toggle-icon{display:inline-block;transition:transform .35s ease;}
+.collab-toggle[aria-expanded="true"] .collab-toggle-icon{transform:rotate(180deg)}
+@media (max-width:760px){.collab-extra-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.collab-extra-wrap,.collab-toggle,.collab-toggle-icon{transition:none!important}}
+
+
+
+/* --- V7.14 Mobile Book Request visibility fix --- */
+@media (max-width: 920px){
+  .resource-hub{
+    overflow:visible;
+    padding:22px 18px;
+  }
+  .textbook-inline-shell{
+    width:100%;
+  }
+  .textbook-inline-shell.open{
+    max-height:4200px;
+    overflow:visible;
+  }
+  .textbook-inline-card{
+    overflow:visible;
+    padding:20px 16px 24px;
+    border-radius:22px;
+  }
+  .textbook-inline-card::before,
+  .textbook-inline-card::after{
+    border-radius:inherit;
+  }
+  .textbook-inline-top{
+    margin-bottom:12px;
+  }
+  .textbook-inline-steps{
+    gap:10px;
+  }
+  .textbook-inline-form-grid{
+    gap:16px;
+  }
+  .textbook-field input{
+    min-height:56px;
+    font-size:16px;
+  }
+  .textbook-consent{
+    margin-top:18px;
+  }
+  .textbook-inline-actions{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:12px;
+    padding-bottom:max(4px, env(safe-area-inset-bottom));
+  }
+  .textbook-submit{
+    display:flex;
+    width:100%;
+    min-height:58px;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    z-index:3;
+  }
+  .textbook-status{
+    min-height:0;
+  }
+}
+@media (max-width: 520px){
+  .textbook-inline-shell.open{max-height:5200px;}
+  .textbook-inline-card{padding:18px 14px 22px;}
+  .textbook-inline-kicker{font-size:.66rem;letter-spacing:.12em;}
+  .textbook-inline-top h2{font-size:1.55rem;}
+  .textbook-inline-desc{font-size:.92rem;line-height:1.65;}
+  .textbook-step{padding:12px;}
+}
+
+
+/* ===== V7.15 MOBILE VIEWPORT / HORIZONTAL OVERFLOW FIX ===== */
+html,body{width:100%;max-width:100%;overflow-x:hidden;}
+body{position:relative;}
+img,video,iframe,svg{max-width:100%;}
+.wrap,.top,.top-in,.hero,.section,.card,.course,.quote,.resource-hub,.dictionary-shell,.exam-hub,.contact-v711{min-width:0;max-width:100%;}
+.hero>* ,.grid2>* ,.resource-grid>* ,.nexlynk-course-grid>* ,.contact-v711-grid>* ,.portal-launch-grid>* ,.study-hub-grid>*{min-width:0;}
+
+@media(max-width:760px){
+  .top{width:100%;max-width:100vw;overflow:hidden;}
+  .top-in{
+    width:100%;max-width:100%;padding:9px 10px;gap:6px;
+    flex-wrap:nowrap;justify-content:flex-start;
+  }
+  .brand{flex:0 0 auto;min-width:0;}
+  .logo{width:38px;height:38px;border-radius:12px;font-size:14px;}
+  .header-actions{
+    margin-left:auto;min-width:0;max-width:calc(100% - 44px);flex:1 1 auto;
+    display:flex;align-items:center;justify-content:flex-end;gap:6px;
+  }
+  .lang-switch{display:flex;flex-wrap:nowrap;gap:4px;min-width:0;}
+  .lang-switch button{
+    flex:0 1 auto;min-width:0;white-space:nowrap;
+    padding:7px 8px;font-size:10.5px;line-height:1.2;
+  }
+  .menu-toggle{width:38px;height:38px;flex:0 0 38px;border-radius:12px;}
+  .wrap{width:100%;max-width:100%;padding-left:12px;padding-right:12px;overflow:hidden;}
+  .hero{width:100%;max-width:100%;grid-template-columns:minmax(0,1fr);}
+  .hero-card,.photo-card,.card,.course,.quote{width:100%;max-width:100%;min-width:0;}
+  .hero-card{padding:20px 18px;}
+  h1{font-size:clamp(2.65rem,15vw,4.4rem);max-width:100%;overflow-wrap:anywhere;}
+  .subtitle,.lead,.eyebrow,.title{max-width:100%;overflow-wrap:anywhere;}
+  .actions{width:100%;max-width:100%;}
+  .actions .btn{max-width:100%;white-space:normal;text-align:center;}
+  .resource-card,.study-track,.portal-launch-card,.nexlynk-card,.contact-v711-info,.contact-v711-formwrap{min-width:0;max-width:100%;}
+  .textbook-inline-card{width:100%;max-width:100%;padding:18px 14px;}
+  .textbook-field input{min-width:0;max-width:100%;}
+}
+
+@media(max-width:390px){
+  .top-in{padding:8px 8px;gap:4px;}
+  .logo{width:35px;height:35px;flex:0 0 35px;}
+  .header-actions{max-width:calc(100% - 39px);gap:4px;}
+  .lang-switch{gap:3px;}
+  .lang-switch button{padding:6px 7px;font-size:9.5px;}
+  .menu-toggle{width:35px;height:35px;flex-basis:35px;}
+  .wrap{padding-left:10px;padding-right:10px;}
+  .hero-card{padding:18px 14px;}
+}
+
+.dictionary-review-note{display:block;color:#b8b6a7;font-size:11px;padding-top:4px}
+</style>
+<style>
+/* ===== V7 PORTAL-FIRST UPDATE ===== */
+:root{--yk-panel:#0d0d0e;--yk-soft:#151517;--yk-border:rgba(255,255,255,.10);--yk-muted:#a6a6aa;--yk-blue:#64d8ff;--yk-violet:#9b8cff}
+html{scroll-padding-top:88px}
+.portal-launch{margin:8px 0 18px;padding:18px;border:1px solid var(--yk-border);border-radius:26px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));box-shadow:0 20px 55px rgba(0,0,0,.24)}
+.portal-launch-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+.portal-launch-head h2{margin:0;font-size:clamp(22px,4vw,34px);letter-spacing:-.035em}.portal-launch-head p{margin:0;color:var(--yk-muted);max-width:620px;line-height:1.65}
+.portal-launch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.portal-launch-card{display:flex;align-items:center;gap:14px;min-height:92px;padding:16px;border-radius:20px;border:1px solid var(--yk-border);background:#101012;text-decoration:none;color:#fff;transition:.25s ease}.portal-launch-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.25);background:#151518}.portal-launch-icon{width:46px;height:46px;border-radius:15px;display:grid;place-items:center;background:#fff;color:#000;font-size:22px;flex:0 0 auto}.portal-launch-card b{display:block;font-size:15px}.portal-launch-card span{display:block;color:#999;font-size:12px;margin-top:4px;line-height:1.4}
+#installSiteBtn{display:none;border:1px solid rgba(255,255,255,.16);background:#fff;color:#000;border-radius:999px;padding:10px 14px;font-weight:900;cursor:pointer}
+.study-hub-v7{margin:26px 0 10px;padding:26px;border-radius:30px;border:1px solid var(--yk-border);background:radial-gradient(circle at 90% 0%,rgba(100,216,255,.10),transparent 28%),linear-gradient(145deg,#0f0f11,#09090a);box-shadow:0 24px 70px rgba(0,0,0,.28)}
+.study-hub-head{display:flex;justify-content:space-between;gap:20px;align-items:end;flex-wrap:wrap;margin-bottom:18px}.study-hub-head h2{margin:4px 0 0;font-size:clamp(28px,5vw,44px);letter-spacing:-.04em}.study-hub-head p{max-width:650px;margin:0;color:#aaa;line-height:1.7}
+.study-hub-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.study-track{padding:20px;border:1px solid var(--yk-border);border-radius:22px;background:rgba(255,255,255,.025);position:relative;overflow:hidden}.study-track:after{content:"";position:absolute;width:110px;height:110px;border-radius:50%;right:-52px;top:-52px;background:rgba(255,255,255,.04)}.study-track .track-icon{font-size:28px}.study-track h3{margin:10px 0 6px;font-size:21px}.study-track p{margin:0 0 16px;color:#999;font-size:13px;line-height:1.65;min-height:44px}.track-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.track-actions a,.track-actions button{appearance:none;border:1px solid #2d2d31;background:#151518;color:#fff;border-radius:13px;padding:10px 9px;font:inherit;font-size:12px;font-weight:850;text-align:center;text-decoration:none;cursor:pointer}.track-actions .primary{background:#fff;color:#000;border-color:#fff}
+.dictionary-tools-v7{display:flex;gap:8px;flex-wrap:wrap;margin:-4px 0 14px}.dict-chip,.dict-tool-btn{border:1px solid #2c2c30;background:#141416;color:#cfcfd2;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:800;cursor:pointer}.dict-chip.active,.dict-tool-btn.active{background:#fff;color:#000;border-color:#fff}.dictionary-recent-v7{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}.dictionary-recent-v7:empty{display:none}.dict-recent-chip{border:0;background:#0f0f11;color:#8d8d92;border-radius:999px;padding:7px 10px;font-size:11px;cursor:pointer}.dict-action-row{display:flex;gap:8px;margin-top:11px}.dict-mini-btn{border:1px solid #2b2b2f;background:#111;color:#bbb;border-radius:10px;padding:7px 9px;font-size:11px;font-weight:800;cursor:pointer}.dict-mini-btn.fav.active{background:#fff;color:#000}.dict-count{color:#777;font-size:11px;margin-bottom:10px}
+.exam-feature-row-v7{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0 2px;position:relative;z-index:2}.exam-tool-v7{border:1px solid rgba(255,255,255,.12);background:#121216;color:#eee;border-radius:999px;padding:9px 13px;font:inherit;font-size:12px;font-weight:850;cursor:pointer}.exam-tool-v7.active{background:#fff;color:#000}.exam-history-v7{display:none;margin:14px 0 0;padding:15px;border-radius:18px;border:1px solid rgba(255,255,255,.09);background:#0d0d0f;position:relative;z-index:2}.exam-history-v7.open{display:block}.history-grid-v7{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.history-item-v7{padding:11px;border-radius:14px;background:#151517;border:1px solid rgba(255,255,255,.07);font-size:11px;color:#aaa}.history-item-v7 b{display:block;color:#fff;font-size:14px;margin-bottom:4px}.exam-bookmark-v7{float:right;border:1px solid rgba(255,255,255,.13);background:#101014;color:#bbb;border-radius:12px;padding:8px 10px;font-size:12px;font-weight:900;cursor:pointer}.exam-bookmark-v7.active{background:#fff;color:#000}
+html.furigana-off ruby rt{display:none!important}
+.mobile-nav-v7{display:none}
+@media(max-width:820px){
+body{padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+.portal-launch-grid,.study-hub-grid{grid-template-columns:1fr}
+.study-hub-v7{padding:20px}
+.history-grid-v7{grid-template-columns:repeat(2,minmax(0,1fr))}
+.mobile-nav-v7{
+display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:10px;right:10px;
+bottom:calc(10px + env(safe-area-inset-bottom));z-index:9999;padding:7px;border-radius:20px;
+border:1px solid rgba(255,255,255,.13);background:rgba(10,10,11,.90);
+backdrop-filter:blur(18px);box-shadow:0 16px 45px rgba(0,0,0,.45);
+transition:bottom .28s ease,transform .28s ease
+}
+body.netlify-badge-present{padding-bottom:calc(154px + env(safe-area-inset-bottom))}
+body.netlify-badge-present .mobile-nav-v7{bottom:calc(80px + env(safe-area-inset-bottom))}
+.mobile-nav-v7 a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:48px;text-decoration:none;color:#8f8f94;font-size:9px;font-weight:800}
+.mobile-nav-v7 a span:first-child{font-size:18px}
+.mobile-nav-v7 a:active,.mobile-nav-v7 a:hover{color:#fff}
+.portal-launch{padding:15px}.portal-launch-head{align-items:start}.track-actions{grid-template-columns:1fr 1fr}
+}
+@media(max-width:430px){.track-actions{grid-template-columns:1fr}.portal-launch-card{min-height:82px}.history-grid-v7{grid-template-columns:1fr 1fr}}
+
+/* ===== V7.3 HEADER MENU / DRAWER ===== */
+.header-actions{display:flex;align-items:center;gap:9px}
+.brand-home-link{cursor:pointer;transition:transform .25s ease,opacity .25s ease}
+.brand-home-link:hover{transform:translateY(-2px);opacity:.96}
+.menu-toggle{
+  width:42px;height:42px;border-radius:13px;border:1px solid var(--line);
+  background:#111;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  gap:5px;cursor:pointer;padding:0;transition:transform .22s ease,background .22s ease,border-color .22s ease
+}
+.menu-toggle:hover{transform:translateY(-2px);background:#181818;border-color:#444}
+.menu-toggle span{width:18px;height:2px;border-radius:99px;background:#fff;display:block;transition:transform .32s ease,opacity .22s ease}
+body.menu-open .menu-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+body.menu-open .menu-toggle span:nth-child(2){opacity:0}
+body.menu-open .menu-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.menu-backdrop{
+  position:fixed;inset:0;z-index:79;background:rgba(0,0,0,.58);backdrop-filter:blur(5px);
+  opacity:0;visibility:hidden;transition:opacity .32s ease,visibility .32s ease
+}
+.site-menu{
+  position:fixed;right:14px;top:14px;bottom:14px;width:min(390px,calc(100vw - 28px));z-index:80;
+  background:linear-gradient(180deg,rgba(20,20,20,.98),rgba(9,9,9,.98));border:1px solid #303030;border-radius:26px;
+  box-shadow:0 30px 100px rgba(0,0,0,.65);padding:20px;overflow:auto;
+  transform:translateX(calc(100% + 30px)) scale(.98);opacity:0;
+  transition:transform .42s cubic-bezier(.2,.75,.2,1),opacity .3s ease
+}
+body.menu-open{overflow:hidden}
+body.menu-open .menu-backdrop{opacity:1;visibility:visible}
+body.menu-open .site-menu{transform:translateX(0) scale(1);opacity:1}
+.site-menu-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.menu-kicker{font-size:10px;letter-spacing:.18em;color:#777;font-weight:900}
+.menu-title{font-size:30px;font-weight:950;line-height:1}
+.menu-close{
+  width:42px;height:42px;border-radius:13px;border:1px solid #303030;background:#151515;color:#fff;
+  font-size:27px;line-height:1;cursor:pointer;transition:transform .2s ease,background .2s ease
+}
+.menu-close:hover{transform:rotate(7deg) scale(1.04);background:#202020}
+.site-menu-nav{display:grid;gap:7px}
+.site-menu-nav a{
+  display:flex;align-items:center;gap:12px;padding:12px 13px;border-radius:14px;border:1px solid transparent;
+  background:#111;color:#eee;transition:transform .22s ease,border-color .22s ease,background .22s ease
+}
+.site-menu-nav a span{width:26px;color:#aaa;text-align:center;font-size:16px}
+.site-menu-nav a b{font-size:13px}
+.site-menu-nav a:hover{transform:translateX(5px);border-color:#383838;background:#181818}
+.site-menu-divider{height:1px;background:#2b2b2b;margin:18px 0}
+.menu-social-title{font-size:10px;letter-spacing:.16em;color:#777;font-weight:900;margin-bottom:10px}
+.site-menu-socials{display:grid;gap:8px}
+.site-menu-socials a{
+  display:grid;grid-template-columns:42px 1fr auto;align-items:center;gap:11px;padding:10px;border-radius:14px;
+  background:#101010;border:1px solid #252525;transition:transform .22s ease,border-color .22s ease,background .22s ease
+}
+.site-menu-socials a:hover{transform:translateX(5px);border-color:#3b3b3b;background:#171717}
+.site-menu-socials b{display:block;font-size:12px;color:#fff}
+.site-menu-socials small{display:block;color:#888;font-size:10px;margin-top:1px}
+.site-menu-socials em{font-style:normal;color:#777}
+.menu-social-icon{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;color:#fff;font-weight:950}
+.menu-social-icon.fb{background:#1877F2;font-size:22px;font-family:Arial}
+.menu-social-icon.ig{background:linear-gradient(135deg,#833AB4,#FD1D1D,#FCAF45);font-size:12px}
+.menu-social-icon.tt{background:#000;text-shadow:2px 1px #25F4EE,-2px -1px #FE2C55;font-size:20px}
+.menu-social-icon.yt{background:#FF0000;font-size:17px}
+
+/* ===== V7.3 FEATURED YOUTUBE: 4-CARD PRESENTATION ===== */
+.yt-feature-grid-four{grid-template-columns:repeat(2,minmax(0,1fr))}
+.yt-channel-card{min-height:100%}
+.yt-channel-poster{
+  position:relative;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden;background:
+    radial-gradient(circle at 50% 35%,rgba(255,255,255,.10),transparent 28%),
+    linear-gradient(135deg,#111,#030303);
+  border-bottom:1px solid #222
+}
+.yt-channel-poster:before{
+  content:"";position:absolute;inset:-35%;background:conic-gradient(from 180deg,transparent,rgba(255,255,255,.05),transparent 35%);
+  animation:ytChannelSpin 9s linear infinite
+}
+.yt-channel-orb{
+  position:relative;z-index:2;width:70px;height:70px;border-radius:50%;display:grid;place-items:center;
+  background:#fff;color:#000;font-size:24px;font-weight:950;box-shadow:0 16px 38px rgba(0,0,0,.4);
+  transition:transform .3s ease
+}
+.yt-channel-poster:hover .yt-channel-orb{transform:scale(1.08)}
+.shorts-orb{font-size:18px}
+.yt-channel-label{position:relative;z-index:2;margin-top:15px;font-size:20px;font-weight:950;letter-spacing:.04em}
+.yt-channel-sub{position:relative;z-index:2;margin-top:2px;color:#8d8d8d;font-size:10px;font-weight:900;letter-spacing:.18em}
+.yt-channel-arrow{position:absolute;right:14px;top:12px;color:#777;font-size:18px;z-index:2}
+@keyframes ytChannelSpin{to{transform:rotate(360deg)}}
+
+@media(max-width:760px){
+  .top-in{flex-wrap:nowrap}
+  .brand-home-link>div:last-child{display:none}
+  .header-actions{margin-left:auto;min-width:0}
+  .lang-switch{gap:4px}
+  .lang-switch button{padding:7px 9px;font-size:11px}
+  .menu-toggle{width:39px;height:39px;border-radius:12px;flex:0 0 39px}
+  .site-menu{right:8px;top:8px;bottom:8px;width:calc(100vw - 16px);border-radius:24px}
+  .yt-feature-grid-four{grid-template-columns:1fr}
+}
+
+
+/* ===== V7.16 MOBILE STICKY HEADER FIX ===== */
+@media (max-width: 820px){
+  html{
+    overflow-x:clip !important;
+    scroll-padding-top:72px !important;
+  }
+  body{
+    overflow-x:clip !important;
+    padding-top:64px !important;
+  }
+  .top{
+    position:fixed !important;
+    top:0 !important;
+    left:0 !important;
+    right:0 !important;
+    width:100% !important;
+    max-width:100vw !important;
+    z-index:10050 !important;
+    overflow:visible !important;
+    background:rgba(8,8,8,.94) !important;
+    -webkit-backdrop-filter:blur(20px);
+    backdrop-filter:blur(20px);
+  }
+  .top-in{min-height:64px;}
+  .menu-backdrop{z-index:10060 !important;}
+  .site-menu{z-index:10070 !important;}
+}
+@media (max-width:390px){
+  body{padding-top:60px !important;}
+  .top-in{min-height:60px;}
+}
+
+</style>
+<style id="v720-global-stable-header">
+/* ===== V7.20 GLOBAL STABLE HEADER FIX =====
+   Keep YK logo, language switcher and hamburger visible at all scroll positions
+   on desktop and mobile. Header height is measured by JS below so page content
+   and anchor targets never hide underneath the fixed header. */
+:root{--yk-header-h:65px;}
+html{scroll-padding-top:calc(var(--yk-header-h) + 12px) !important;}
+body{padding-top:var(--yk-header-h) !important;}
+.top{
+  position:fixed !important;
+  top:0 !important;
+  left:0 !important;
+  right:0 !important;
+  width:100% !important;
+  max-width:100vw !important;
+  z-index:10050 !important;
+  overflow:visible !important;
+  background:rgba(8,8,8,.94) !important;
+  -webkit-backdrop-filter:blur(20px);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--line);
+  transform:translateZ(0);
+}
+@media(max-width:820px){
+  body{padding-top:var(--yk-header-h) !important;}
+}
+@media(max-width:390px){
+  body{padding-top:var(--yk-header-h) !important;}
+}
+</style>
+<style id="v757-menu-login-css">
+/* v7.57 Navigation fixes: drawer accessible below fixed header, one scrollbar, clear sticky title */
+:root{--yk-menu-top:calc(var(--yk-header-h, 65px) + 8px)}
+.site-menu{position:fixed!important;top:var(--yk-menu-top)!important;bottom:10px!important;right:10px!important;width:min(390px,calc(100vw - 20px))!important;max-height:calc(100dvh - var(--yk-header-h, 65px) - 18px)!important;overflow-y:auto!important;overflow-x:hidden!important;overscroll-behavior:contain;z-index:10070!important;scrollbar-gutter:stable;-webkit-overflow-scrolling:touch}
+.menu-backdrop{position:fixed!important;z-index:10060!important}
+.site-menu-head{position:sticky;top:-20px;z-index:5;padding:15px 0 12px;margin-top:-6px;background:linear-gradient(180deg,#151515 82%,rgba(21,21,21,.94));border-bottom:1px solid #2d2d2d}
+body.menu-open,html:has(body.menu-open){overflow:hidden!important;overscroll-behavior:none}
+#ykMenuAuthLink{border-color:rgba(255,255,255,.23);background:linear-gradient(120deg,#232327,#131316)}
+#ykMenuAuthLink:hover{border-color:#e1e1e1;background:#232326}
+#ykMenuAuthLink span{font-size:20px;color:#f8f8f8}
+#ykMenuAuthLink b{font-size:14px}
+@media(max-width:560px){.site-menu{right:7px!important;bottom:7px!important;width:calc(100vw - 14px)!important;max-height:calc(100dvh - var(--yk-header-h,65px) - 15px)!important;border-radius:20px;padding:16px}.site-menu-head{top:-16px}}
+
+/* v7.58 : Login / Dashboard / Logout design (English labels in every locale) */
+#ykMenuDashboardLink,#ykMenuAuthLink{background:#242426;border:1px solid rgba(255,255,255,.16);color:#fff;min-height:53px;border-radius:16px;padding:13px 15px}
+#ykMenuDashboardLink:hover,#ykMenuAuthLink:hover{background:#303033;border-color:rgba(255,255,255,.32)}
+#ykMenuDashboardLink b,#ykMenuAuthLink b{font-size:16px;font-weight:850;letter-spacing:.01em}
+#ykMenuDashboardLink span,#ykMenuAuthLink span{font-size:22px;color:#fff;width:28px}
+#ykMenuDashboardLink[hidden]{display:none!important}
+
+</style>
+<style id="yk-menu-premium-v759">
+/* v7.59: premium account actions, distinct from the regular navigation items. */
+.site-menu-nav .yk-account-area-v759{display:grid;gap:10px;margin-top:17px;padding:18px 0 4px;border-top:1px solid rgba(255,255,255,.12);min-width:0;isolation:isolate}
+.site-menu-nav .yk-account-head-v759{display:flex;align-items:center;gap:9px;margin:0 0 4px 2px;color:#8a8b90;font-size:10px;letter-spacing:.19em;font-weight:850}
+.yk-account-dash-v759{width:5px;height:5px;border-radius:50%;background:#d3d3d3;box-shadow:0 0 14px rgba(255,255,255,.35)}
+.yk-account-headline-v759{height:1px;flex:1;background:linear-gradient(90deg,#424246,transparent)}
+.site-menu-nav .yk-account-area-v759 .yk-account-btn-v759{position:relative;display:flex;align-items:center;gap:13px;min-height:70px;width:100%;padding:12px 14px;border:1px solid rgba(255,255,255,.18);border-radius:17px;background:linear-gradient(115deg,#29292c 0%,#1b1b1e 58%,#17171a 100%);color:#fff;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 10px 22px rgba(0,0,0,.18);overflow:hidden;transform:translateZ(0);transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease}
+.site-menu-nav .yk-account-area-v759 .yk-account-btn-v759[hidden]{display:none!important}
+.site-menu-nav .yk-account-area-v759 .yk-account-btn-v759:before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 10%,rgba(255,255,255,.08) 46%,transparent 75%);transform:translateX(-125%);transition:transform .65s ease;pointer-events:none}
+.site-menu-nav .yk-account-area-v759 .yk-account-btn-v759:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.45);background:linear-gradient(115deg,#343438,#222226);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 12px 30px rgba(0,0,0,.27)}
+.site-menu-nav .yk-account-area-v759 .yk-account-btn-v759:hover:before{transform:translateX(125%)}
+.site-menu-nav .yk-account-area-v759 .yk-account-btn-v759:active{transform:scale(.985)}
+.site-menu-nav .yk-account-area-v759 .yk-account-btn-v759:focus-visible{outline:2px solid #eee;outline-offset:3px}
+.site-menu-nav .yk-account-area-v759 .yk-action-icon-v759{display:grid;place-items:center;flex:0 0 43px;width:43px;height:43px;border-radius:13px;background:rgba(255,255,255,.095);color:#f6f6f6;border:1px solid rgba(255,255,255,.11)}
+.site-menu-nav .yk-account-area-v759 .yk-action-icon-v759 svg{width:22px;height:22px;display:block}
+.site-menu-nav .yk-account-area-v759 .yk-account-label-v759{display:grid;gap:1px;min-width:0;flex:1;width:auto;text-align:left}
+.site-menu-nav .yk-account-area-v759 .yk-account-label-v759 b{font-size:16px;line-height:1.25;letter-spacing:.005em;color:#fff;font-weight:850}
+.site-menu-nav .yk-account-area-v759 .yk-account-label-v759 small{font-size:9px;letter-spacing:.16em;color:#a9a9af;font-weight:800}
+.site-menu-nav .yk-account-area-v759 .yk-account-right-v759{margin-left:auto;color:#a4a4ab;font-size:21px;transition:transform .2s ease}
+.site-menu-nav .yk-account-area-v759 .yk-account-btn-v759:hover .yk-account-right-v759{transform:translate(2px,-2px)}
+.site-menu-nav .yk-account-area-v759 .yk-account-dashboard-v759{background:linear-gradient(110deg,#292d32,#1d2026 72%,#171a20);border-color:rgba(209,224,255,.26)}
+.site-menu-nav .yk-account-area-v759 .yk-account-dashboard-v759 .yk-action-icon-v759{background:rgba(196,213,255,.10)}
+.site-menu-nav .yk-account-area-v759 .yk-account-auth-v759.is-logout{border-color:rgba(226,142,142,.23)}
+.yk-ico-logout-v759{display:none!important}.is-logout .yk-ico-login-v759{display:none!important}.is-logout .yk-ico-logout-v759{display:block!important}
+@media(prefers-reduced-motion:reduce){.site-menu-nav .yk-account-area-v759 .yk-account-btn-v759,.site-menu-nav .yk-account-area-v759 .yk-account-btn-v759:before{transition:none!important}}
+</style>
+<style id="yk-brand-v778">.yk-brand-icon-v778{background:#080809!important;color:transparent!important;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.12)}.yk-brand-icon-v778 img{object-fit:cover}</style><link rel="stylesheet" href="/assets/yk-v7874-nav.css?v=7874"><link rel="stylesheet" href="/assets/yk-mobile-nav.css?v=2"><style>
+:root{--base:#09090c;--card:#121218;--elev:#18181f;--muted:#acabb5;--line:#302d35;--red:#e50822;--white:#fafafb;--green:#6fffb3;--yellow:#ffdc7b;font-family:Inter,'Noto Sans JP','Noto Sans Myanmar',system-ui,sans-serif;color:var(--white);background:var(--base)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(600px 200px at 100% 0%,#4b0917 0%,transparent 100%),var(--base);line-height:1.6}button{font:inherit;cursor:pointer}button:disabled{opacity:.42;cursor:not-allowed}button:focus-visible,[tabindex]:focus-visible{outline:3px solid #f58b97;outline-offset:3px}main{max-width:1140px;padding:26px 22px 80px;margin:0 auto}header{padding:14px max(22px,calc((100% - 1096px)/2));display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:#09090ce8;position:sticky;top:0;z-index:15;backdrop-filter:blur(10px)}.logo{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:850;letter-spacing:.12em}.logo span{background:var(--red);color:#fff;border-radius:7px;padding:5px 8px;font-weight:900}.qa{border:1px solid #9a7b36;border-radius:100px;padding:5px 10px;color:var(--yellow);font-size:11px;font-weight:800}.eyebrow{color:#ff7b89;font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}h1{font-size:clamp(27px,5vw,46px);line-height:1.2;margin:7px 0 10px;letter-spacing:-.025em}h2{font-size:24px;margin:0}h3{margin:0;font-size:19px}.lead{color:#d0ccd2;max-width:750px;margin:0 0 28px;font-size:14px}.hero{padding:30px 0 24px}.pill{display:inline-flex;border:1px solid #3e3337;border-radius:40px;padding:6px 10px;font-size:11px;color:#dfd4d7;gap:4px;font-weight:750}.groupheading{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:15px;flex-wrap:wrap}.groupheading p{margin:2px 0;color:#9f9fa8;font-size:12px}.cardgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.exam-card{background:linear-gradient(150deg,#1a191e,#0d0e12);border:1px solid #353038;border-radius:22px;min-height:350px;padding:16px;display:flex;flex-direction:column;box-shadow:0 16px 36px #0003}.exam-card.highlight{border:1.5px solid #b42e40;background:linear-gradient(165deg,#271115,#111015 53%,#0c0c11);box-shadow:0 0 0 1px #5c1720,0 15px 40px #4c091f30}.cardtop{display:flex;align-items:flex-start;gap:10px;justify-content:space-between}.cardcopy{min-width:0}.cardcopy .icon{font-size:27px}.cardcopy h3{line-height:1.35;font-size:18px}.mm{font-size:12px;color:#d0c7ca;line-height:1.55;font-weight:600;display:block;margin-top:5px}.book{width:88px;min-width:88px;height:119px;display:flex;align-items:center;justify-content:center;transform:rotate(3deg);filter:drop-shadow(0 6px 10px #0009)}.book img{width:88px;height:119px;object-fit:cover;border-radius:2px}.carddesc{margin:12px 0 10px;color:#ddd6d8;font-size:12px;line-height:1.75;min-height:66px}.examrule{background:#32202a;border:1px solid #64404a;border-radius:100px;width:max-content;max-width:100%;padding:5px 9px;font-size:11px;font-weight:850}.note{color:#9d9da5;font-size:11px;margin:4px 0 0}.chips{margin:auto 0 12px;display:flex;gap:6px;flex-wrap:wrap}.chips span{background:#29252c;border:1px solid #403844;padding:5px 8px;border-radius:6px;font-size:11px;font-weight:800}.launch{background:#fff;border:1px solid #fff;color:#0c0b0c;border-radius:13px;min-height:58px;font-size:13px;font-weight:900;width:100%;transition:transform .15s,background .15s}.launch:hover{background:#f5d8dd;transform:translateY(-1px)}.launch .mm{color:#4b4144;font-size:10px;margin-top:0}.ghostcard{opacity:.78}.ghostcard .launch{background:#242329;color:#ada8ae;border-color:#38343b;cursor:default;transform:none}.flex{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.infobar{padding:15px 17px;border:1px solid #40363d;border-radius:14px;margin:21px 0;background:#141117;font-size:12px;color:#cdc1c6}.infobar b{color:#fff}.examview{display:none;margin-top:30px}.examview.open{display:block}.exam-shell{border:1px solid #3e2c34;border-radius:23px;background:linear-gradient(165deg,#181118,#0d0d11);overflow:hidden}.examtoolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 17px;border-bottom:1px solid #3d3039}.back{border:1px solid #51434a;color:#e8e2e6;border-radius:9px;background:transparent;padding:8px 12px;font-size:12px;font-weight:800}.examtype{font-size:13px;font-weight:900}.timer{font-weight:900;font-size:21px;color:#fff;font-variant-numeric:tabular-nums}.timer.warn{color:#ff8790}.timer.study{font-size:12px;color:#a6d3aa}.progressarea{padding:13px 17px}.progressinfo{display:flex;justify-content:space-between;color:#d5cfd4;font-size:12px;gap:10px;margin-bottom:8px}.progress{width:100%;height:6px;background:#3a2f37;border-radius:999px;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,#9f101f,#ff4257);transition:width .25s}.examquestion{padding:17px 19px 23px}.qnumber{color:#ee8793;font-size:12px;letter-spacing:.04em;font-weight:900}.qtext{font-size:clamp(18px,3vw,23px);font-weight:850;line-height:1.85;margin:9px 0}.qmm{margin:4px 0 17px;color:#d7cbd1;font-size:14px;padding:12px 14px;border-left:3px solid #a54051;background:#211c22;border-radius:0 10px 10px 0}.answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.answer{background:#181920;color:#fff;border:1px solid #50434d;border-radius:13px;padding:14px;font-size:17px;font-weight:900;min-height:56px}.answer.selected{color:#161012;background:#fff;border-color:#fff}.footeract{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:19px}.ctrl{padding:11px 15px;border-radius:11px;background:#24232a;color:#fff;border:1px solid #47404a;font-size:12px;font-weight:800;min-height:43px}.ctrl.primary{color:#fff;background:var(--red);border-color:var(--red)}.ctrl.subtle{background:none;color:#bfb3bb}.inlineopts{display:flex;gap:12px;flex-wrap:wrap;align-items:center;font-size:12px;color:#ddd7da}.inlineopts input{accent-color:var(--red);width:17px;height:17px;vertical-align:middle}.meta{font-size:11px;color:#a59ca2}.illustration{width:100%;max-width:680px;background:#111822;border:1px solid #5e5b62;border-radius:15px;display:block;margin:8px 0 13px}.scenario-list{display:grid;gap:13px}.scenario-item{padding:12px;background:#1e1b21;border:1px solid #4a3841;border-radius:13px}.scenario-item h4{font-size:15px;margin:0 0 6px;line-height:1.7}.scenario-item p{font-size:12px;color:#c7bac3;margin:0 0 9px}.smallanswers{display:flex;gap:9px}.smallanswers .answer{padding:8px 15px;font-size:13px;min-height:42px;flex:1}.feedback{margin:14px 0 0;border:1px solid #45614d;background:#15201a;border-radius:11px;padding:12px;font-size:12px}.feedback.bad{border-color:#784d4f;background:#281c20}.feedback b{display:block;margin-bottom:4px}.result{text-align:center;padding:26px 19px}.score{font-weight:950;font-size:clamp(50px,9vw,72px);line-height:1.2}.resulttag{display:inline-block;font-size:14px;font-weight:900;border-radius:40px;border:1px solid #76edaa;color:#76edaa;padding:5px 17px;margin:10px auto}.resulttag.fail{border-color:#f099a1;color:#ff98a1}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;max-width:570px;margin:22px auto}.stat{background:#221c23;border:1px solid #4a3846;border-radius:13px;padding:14px 6px}.stat b{display:block;font-size:22px}.stat small{font-size:10px;color:#b3a4b0}.review{max-width:740px;margin:30px auto 0;text-align:left;display:grid;gap:10px}.review-item{border:1px solid #4f353b;border-radius:14px;background:#1c161b;padding:15px}.review-item b{color:#fa98a1;font-size:12px}.review-item h4{font-size:15px;margin:6px 0}.review-item p{margin:5px 0;font-size:12px}.review-item .mm{color:#beb3bb}.review-item .why{border-top:1px solid #4c383e;padding-top:9px;margin-top:9px;color:#ded3dc}.notice{font-size:12px;color:#c6bbc4;padding:13px 15px;margin-top:20px;border-radius:13px;border:1px solid #4a3a43;background:#18131b}[hidden]{display:none!important}ruby rt{font-size:.51em;color:#d7adb5;font-weight:700}.modebuttons{display:flex;gap:7px;flex-wrap:wrap;margin-top:15px}.modebuttons button{font-size:12px;padding:9px 12px}.summaryline{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.foot{color:#8d838b;font-size:11px;padding-top:32px;text-align:center}@media(max-width:870px){.cardgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:610px){header{padding:13px 16px}.logo{font-size:10px;letter-spacing:.03em}main{padding:18px 14px 60px}.hero{padding:12px 0}.cardgrid{grid-template-columns:1fr;gap:12px}.exam-card{min-height:310px}.qtext{font-size:18px}.examquestion{padding:14px}.footeract{gap:7px}.ctrl{padding:9px 11px}.stats{gap:6px}.stat b{font-size:19px}.examtoolbar{padding:12px}.examtype{font-size:11px}.timer{font-size:18px}}
+</style>
+<style>
+/* Original screenshot fidelity layer: no production assets or network calls */
+:root{--base:#090909;--card:#171717;--elev:#1d1d1d;--line:#303030;--red:#e5001c;--muted:#ababab;--white:#fff;color:#fff;background:#090909}
+body{background:#090909;color:#fafafa;font-family:Inter,'Noto Sans JP','Noto Sans Myanmar',system-ui,sans-serif;font-size:13px}
+header.site-header{position:sticky;top:0;z-index:30;height:61px;padding:0 24px;max-width:none;border:0;border-bottom:1px solid #1c1c1c;background:#080808;align-items:center}
+.site-header .logo{letter-spacing:.02em;gap:10px;font-size:12px;font-weight:900}
+.yk-mark{width:38px;height:38px;border:1px solid #353535;border-radius:12px;display:grid;place-items:center;background:#111;color:#fff;letter-spacing:-.1em;font-size:18px;font-weight:1000;transform:none}
+.yk-mark span{color:#df1838!important;background:none!important;padding:0!important}
+.site-actions{display:flex;align-items:center;gap:8px;color:#fff}
+.site-actions .circle,.site-actions .lang{border:1px solid #333;border-radius:13px;background:#151515;padding:8px 10px;font-size:13px;font-weight:700}
+.site-actions .circle{display:inline-grid;place-items:center;min-width:35px;height:35px;font-size:17px}
+.site-actions .qa-tag{border:1px solid #664050;border-radius:8px;background:#1d1014;color:#ffcad4;padding:8px;font-size:9px;font-weight:850}
+main.site-main{padding:17px clamp(20px,2.1vw,42px) 70px;max-width:none;width:100%;margin:0}
+.site-title{font-size:clamp(25px,3.3vw,45px);font-weight:950;letter-spacing:-.025em;line-height:1.25;margin:0 0 20px}
+.account-panel{border:1px solid #303030;background:linear-gradient(110deg,#171717 75%,#0b2526);border-radius:24px;padding:16px;margin:0 0 14px;min-height:111px}
+.access-top{display:flex;align-items:center;gap:10px}
+.access-icon{height:40px;width:40px;display:grid;place-items:center;border-radius:12px;background:#fff;color:#0b0b0b;font-size:21px}
+.access-top b{font-size:14px;display:block}
+.access-top small{font-size:10px;color:#aaa;display:block;margin-top:5px}
+.access-pills{display:flex;gap:7px;margin-top:11px}
+.access-pills span{border:1px solid #343434;border-radius:11px;background:#111;padding:6px 10px;font-size:11px;font-weight:800}
+.access-pills span+span{background:#153027;color:#8dd6ad;border-color:#31523e}
+.topchips{display:flex;gap:8px;margin:12px 0 18px}
+.topchips span{font-size:11px;font-weight:800;padding:8px 12px;border:1px solid #373737;border-radius:30px;color:#ddd;background:#111}
+.topchips span.active{color:#111;background:#fff;border-color:#fff}
+.pagegroup{margin:0 0 28px}
+.pagegroup .groupheading{margin:0 0 14px;align-items:center}
+.pagegroup .groupheading h2{font-size:16px;font-weight:900;line-height:1.25}
+.pagegroup .groupheading p{font-size:11px;color:#9c9c9c;line-height:1.25;margin:5px 0 0}
+.pagegroup .groupheading .mm{font-size:11px;color:#aaa;line-height:1.35}
+.pagegroup .sectionchip{background:#10271e;color:#9ee6bb;border:1px solid #26523b;border-radius:999px;padding:5px 10px;font-size:10px;font-weight:800}
+.pagegroup .cardgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.pagegroup .site-card{background:linear-gradient(125deg,#1d1d1d 0%,#151515 65%,#101010 100%);border:1px solid #333;border-radius:21px;min-height:379px;padding:17px;box-shadow:none;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.pagegroup .site-card#ordinarySecondCard{border:1px solid #333;background:linear-gradient(125deg,#1d1d1d 0%,#151515 65%,#101010 100%);box-shadow:none}
+.site-card .cardtop{display:flex;min-height:145px;align-items:flex-start;gap:7px;justify-content:space-between}
+.site-card .cardcopy{padding-top:8px;min-width:0;flex:1}
+.site-card .cardcopy .icon{font-size:25px;margin-bottom:12px}
+.site-card .cardcopy h3{font-size:16px;line-height:1.35;margin:0;font-weight:900}
+.site-card .cardcopy .mm{font-size:10px;color:#b9b9b9;font-weight:600;line-height:1.55;max-width:245px}
+.site-card .book{width:108px;min-width:108px;height:141px;transform:none;filter:drop-shadow(0 10px 8px #0007);border:0;align-items:flex-start}
+.site-card .book img{width:108px;height:141px;object-fit:contain;border-radius:7px}
+.site-card .carddesc{color:#c9c9c9;font-size:11px;min-height:54px;margin:9px 0 12px;line-height:1.7;flex:1}
+.site-card .carddesc .mm{font-size:10px;color:#b1b1b1;margin-top:5px}
+.site-card .examrule{font-size:10px;font-weight:850;padding:5px 8px;background:#192a30;color:#b6efff;border:1px solid #2a4d5b;border-radius:99px}
+.site-card .note{height:auto;min-height:14px;font-size:10px;color:#a9a9a9;margin:4px 0 5px}
+.site-card .chips{margin:0 0 11px;gap:5px}
+.site-card .chips span{padding:4px 8px;color:#eee;border-radius:22px;border:1px solid #444;background:#282828;font-size:10px;font-weight:700}
+.site-card .launch{background:#fff;color:#0a0a0a;border-radius:12px;border:0;min-height:53px;font-size:13px;font-weight:900;padding:9px 11px;box-shadow:none}
+.site-card .launch .mm{display:block;margin:2px auto 0;font-size:10px;color:#494949}
+.site-card .launch:hover{background:#fff;transform:none}
+.site-card .launch.samplebtn{background:#fff!important;color:#0a0a0a!important;opacity:1;border:0;cursor:not-allowed}
+.site-card .modebuttons{margin-top:9px;gap:7px}
+.site-card .modebuttons .ctrl{border-radius:10px;background:#252525;border:1px solid #454545;font-size:11px;color:#fff;padding:5px 10px;min-height:32px}
+.maint .cardgrid .site-card{max-width:none}
+.exam-license-note{font-size:10px;color:#aaa;margin:6px 0 22px;line-height:1.7}
+#examView{max-width:1000px;margin:22px auto 32px}
+#examView .exam-shell{background:#0d0d0d;border-color:#303030;box-shadow:none}
+#examView .examtoolbar,#examView .scenario-item{border-color:#333}
+#examView .qnumber{color:#afcbdc}
+#examView .ctrl.primary{background:#fff;color:#111;border-color:#fff}
+#examView .answer.selected{background:#fff;color:#111}
+#examView .progress i{background:linear-gradient(90deg,#ae142b,#e5152d)}
+#examView .qmm{background:#1b1b1b;border-color:#474747;color:#ddd}
+.pagegroup.jlpt .cardgrid{grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.jlpt-card{background:linear-gradient(130deg,#202022,#0c0c0f);border:1px solid #37373b;border-radius:20px;padding:15px;min-height:340px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.jlpt-upper{display:flex;justify-content:space-between;gap:6px;min-height:126px}
+.jlpt-upper small{font-size:8px;letter-spacing:.09em;color:#999;font-weight:800}
+.jlpt-upper h3{font-size:42px;font-weight:950;line-height:1.1;margin:12px 0 1px}
+.jlpt-upper b{font-size:12px}
+.jlpt-upper p{font-size:9px;color:#a0a0a0;margin-top:5px}
+.jlpt-upper img{width:74px;height:110px;object-fit:cover;border-radius:8px;border:1px solid #6a7b9f}
+.jlpt-copy{flex:1;border-top:1px solid #333;padding-top:12px;font-size:10px;color:#ddd;line-height:1.6}
+.jlpt-copy p{color:#aaa;font-size:11px}
+.jlpt-trio{display:flex;gap:4px;margin-bottom:7px}
+.jlpt-trio span{flex:1;min-width:0;border:1px solid #343434;border-radius:8px;padding:7px 1px;text-align:center;font-size:9px}
+.jlpt-card .launch{min-height:50px;padding:6px;font-size:12px}
+.jlpt-card .launch .mm{display:block;margin:1px 0 0;color:#555;font-size:9px}
+.site-main .notice{background:#121212;border-color:#343434;color:#aaa;font-size:11px}
+.site-main .foot{color:#777}
+@media(max-width:1200px){.pagegroup.jlpt .cardgrid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:850px){.pagegroup .cardgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.pagegroup.jlpt .cardgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){header.site-header{padding:0 13px;height:58px}.site-actions .lang,.site-actions .circle{display:none}.site-actions .qa-tag{font-size:8px;padding:5px}.site-title{font-size:24px}.site-main{padding:15px 14px 65px}.account-panel{padding:13px;min-height:90px}.pagegroup .cardgrid,.pagegroup.jlpt .cardgrid{grid-template-columns:1fr;gap:12px}.pagegroup .site-card{min-height:350px;padding:15px}.pagegroup .book{width:98px;height:132px;min-width:98px}.pagegroup .book img{width:98px;height:132px}.site-card .cardtop{min-height:136px}.site-card .carddesc{min-height:40px}.site-actions{gap:3px}.account-panel .access-top small{line-height:1.4}.pagegroup .groupheading h2{font-size:15px}.pagegroup .groupheading .sectionchip{font-size:8px}.site-card .modebuttons{margin-top:9px}}
+</style>
+
+<style>
+/* Match production card alignment. No production CSS or backend is changed. */
+.pagegroup .cardgrid{align-items:stretch}
+.pagegroup .site-card{min-height:405px;display:flex;flex-direction:column;justify-content:flex-start}
+.pagegroup .site-card .cardtop{flex:0 0 147px;min-height:147px}
+.pagegroup .site-card .carddesc{flex:1 1 auto;min-height:64px;margin:10px 0 10px}
+.pagegroup .site-card .examrule{align-self:flex-start;flex-shrink:0}
+.pagegroup .site-card .note{height:26px;min-height:26px;display:flex;align-items:flex-start;flex-shrink:0;margin:4px 0 5px}
+.pagegroup .site-card .chips{flex-shrink:0;min-height:27px;align-items:center;margin:0 0 10px}
+.pagegroup .site-card .launch{margin-top:auto;flex:0 0 55px;min-height:55px;max-height:55px;display:flex;align-items:center;justify-content:center;flex-direction:column;width:100%;padding:8px 10px;line-height:1.25}
+.pagegroup .site-card .launch .mm{font-size:10px;margin-top:3px;line-height:1.4}
+.pagegroup .site-card#ordinarySecondCard .launch{border-color:#fff;box-shadow:none}
+#examIntro{display:none}
+body.qa-exam-flow .site-title,body.qa-exam-flow .account-panel,body.qa-exam-flow .topchips,body.qa-exam-flow #cardlist,body.qa-exam-flow .foot{display:none!important}
+body.qa-exam-flow #examIntro{display:block!important}
+body.qa-exam-flow #examView{max-width:1060px;width:100%;margin:20px auto 40px}
+#examIntro .intro-frame{max-width:1060px;margin:30px auto 0;border:1px solid #363636;background:linear-gradient(128deg,#1d1d1d,#101010);border-radius:23px;padding:27px;box-shadow:0 16px 40px #0003}
+#examIntro .intro-top{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}
+#examIntro .intro-top h1{font-size:clamp(21px,3vw,33px);font-weight:900;line-height:1.25;margin:5px 0}
+#examIntro .intro-top p{font-size:12px;color:#b6b6b6;margin:7px 0}
+#examIntro .intro-cover{height:150px;width:118px;object-fit:contain;border-radius:8px}
+#examIntro .intro-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:22px}
+#examIntro .intro-metrics div{padding:14px 6px;background:#101010;border:1px solid #353535;border-radius:13px;text-align:center}
+#examIntro .intro-metrics b{display:block;font-size:22px;color:#fff;line-height:1.2}
+#examIntro .intro-metrics span{font-size:10px;color:#bbb}
+#examIntro .intro-warning{border:1px solid #343434;border-radius:11px;padding:12px 13px;margin:18px 0;color:#bcbcbc;font-size:11px;line-height:1.7}
+#examIntro .intro-cta{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:15px 0}
+#examIntro button{border:1px solid #444;border-radius:11px;min-height:51px;background:#222;color:#fff;font-weight:850;font-size:13px;padding:10px 12px}
+#examIntro button.primary{background:#fff;color:#111;border-color:#fff}
+#examIntro .intro-secondary{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+#examIntro .intro-secondary button{min-height:36px;font-size:11px;padding:7px 12px}
+#examIntro .intro-back{border:0;background:transparent;text-decoration:none;display:inline-flex;color:#aaa;font-size:12px;font-weight:750;margin-bottom:12px}
+#examIntro .intro-back:hover{text-decoration:underline;color:#fff}
+#examIntro[hidden]{display:none!important}
+body.qa-exam-flow #examIntro[hidden]{display:none!important}
+@media(max-width:700px){#examIntro .intro-frame{padding:16px;margin:10px auto 0}#examIntro .intro-cover{height:110px;width:81px}#examIntro .intro-top h1{font-size:20px}#examIntro .intro-metrics{grid-template-columns:repeat(2,1fr)}#examIntro .intro-cta{grid-template-columns:1fr}.pagegroup .site-card{min-height:390px}}
+</style>
+<link rel="stylesheet" href="/assets/yk-page-transitions-v7875.css?v=7875native2"><link rel="stylesheet" href="/assets/yk-ui-preferences.css?v=1"><script>try{document.documentElement.setAttribute('data-yk-ui-theme',localStorage.getItem('yk_ui_theme')==='light'?'light':'dark')}catch{}</script><script defer src="/assets/yk-ui-preferences.js?v=1"></script>
+<style>
+.site-header>a{color:inherit}.site-header{display:flex;justify-content:space-between;gap:8px}
+body.qa-exam-flow .site-main{padding-top:85px;padding-bottom:95px}body:has(#examView.open) #yk-mobile-nav{display:none}
+html[data-yk-ui-theme="light"] body,html[data-yk-ui-theme="light"] :is(header.site-header,#examIntro .intro-frame,#examView .exam-shell,#examView .examquestion,#examView .qmm,#examView .scenario-item,#examView .review-item){background:#fafafa;color:#191919}
+html[data-yk-ui-theme="light"] :is(.qtext,#examIntro .intro-top p,.qnumber,.qmm,.why,.progressinfo,.mm){color:#333}
+</style><meta name="robots" content="noindex,nofollow"><style>.qa-live-warning{position:static;text-align:center;z-index:1000;padding:8px 12px;border:1px solid #ca8656;border-radius:10px;color:#fff;background:#251b18;font:600 11px sans-serif}</style><link rel="stylesheet" href="/assets/ykoc-pr7-menu-drawer.css?v=pr7menu1"></head>
+<body class="qa-exam-flow yk874-education-menu">
+<div class="top">
+<div class="top-in">
+<a class="brand brand-home-link" href="/#home" aria-label="Back to top"><div class="logo yk-brand-icon-v778"><img src="/yk-192.png" alt="YK Logo" width="40" height="40" loading="eager" decoding="async" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block"></div><div>STUDYING WITH YE KUN</div></a>
+<div class="header-actions">
+<div class="lang lang-switch">
+<button class="active" onclick="setLang('my',this)">မြန်မာ</button>
+<button onclick="setLang('en',this)">English</button>
+<button onclick="setLang('ja',this)">日本</button>
+</div>
+<button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-controls="siteMenu" aria-expanded="false">
+<span></span><span></span><span></span>
+</button>
+</div>
+</div>
+</div>
+<div class="menu-backdrop" id="menuBackdrop"></div>
+<aside aria-hidden="true" aria-label="STUDYING WITH YE KUN · Menu" class="site-menu ykoc-drawer" id="siteMenu">
+<div class="site-menu-head ykoc-drawer-head"><div><div class="menu-kicker">STUDYING WITH YE KUN</div><div class="menu-title">MENUS</div></div><button aria-label="Close menu" class="menu-close" data-yk-menu-attr-aria-label="menuClose" id="menuClose" type="button">×</button></div>
+<div class="ykoc-drawer-content" id="ykoc-more">
+<div class="more-content">
+<header class="more-top"><div class="top-actions"><button aria-controls="moreSearchPanel" aria-expanded="false" aria-label="Search menu" class="circle" data-yk-menu-attr-aria-label="moreSearchToggle" id="moreSearchToggle" type="button"><svg viewbox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 5 5"></path></svg></button><button aria-label="Settings" class="circle" data-yk-menu-attr-aria-label="moreSettingsButton" id="moreSettingsButton" type="button">⚙</button></div></header>
+<div class="search-panel" id="moreSearchPanel"><input aria-label="Search menu" autocomplete="off" class="search-input" data-yk-menu-attr-placeholder="moreSearchInput" id="moreSearchInput" placeholder="Search menu…" type="search"/></div>
+<section aria-label="Guest account" class="card welcome" id="moreGuest">
+<div class="brandline"><img alt="STUDYING WITH YE KUN logo" class="yk-logo-icon" src="/assets/studying-with-ye-kun-logo.png"/><span>STUDYING WITH YE KUN</span></div>
+<h2 data-drawer-label="welcome">Welcome to YKOC</h2>
+<p data-drawer-label="guestDesc">Login to continue your exams and sync your progress. Exam attempts follow the existing access rules.</p>
+<div class="actions"><a class="pill" data-drawer-label="login" href="/login.html?return=%2F%23home">Login</a><a class="underlink" data-drawer-label="create" href="/login.html?return=%2F%23home">Create account</a></div>
+</section>
+<section aria-label="Signed-in account" class="card profile" hidden="" id="moreMember">
+<div class="avatar"><img alt="STUDYING WITH YE KUN logo" src="/assets/studying-with-ye-kun-logo.png"/></div><div class="profile-body"><strong id="moreMemberName">Your account</strong><small id="moreMemberEmail"></small><span class="account-chip" data-drawer-label="signed">Signed in · Existing YK Account</span></div><a aria-label="Open dashboard" href="/dashboard.html">↗</a>
+</section>
+<section class="card free-card" id="moreGuestAction"><div><strong data-drawer-label="examExplore">Explore mock exams</strong><span data-drawer-label="examAccess">One free attempt per exam type for eligible non-students. Login required to start.</span></div><a class="small-button" data-drawer-label="start" href="/mock-exams.html">Open</a></section>
+<section class="card resume-card" hidden="" id="moreMemberAction"><div><strong data-drawer-label="continue">Continue learning</strong><span data-drawer-label="continueDesc">Open the existing Study Hub. Your real exam results remain in your dashboard.</span></div><a class="small-button" data-drawer-label="open" href="/#study-hub">Open</a></section>
+<div class="eyebrow" data-drawer-label="shortcuts">SHORTCUTS · ショートカット</div>
+<nav aria-label="Shortcuts" class="shortcuts">
+<a class="shortcut" data-menu-search="Mock Exams စာမေးပွဲ 練習試験" href="/mock-exams.html"><span class="symbol">✎</span><span class="ja" data-yk-menu-i18n="mockAux">模擬試験</span><b data-drawer-label="mock">Mock Exams</b><small data-drawer-label="mockSmall">Start or resume</small></a>
+<a class="shortcut" data-menu-search="Video Course Video သင်ခန်းစာ 動画" href="/video-class.html"><span class="symbol">▷</span><span class="ja" data-yk-menu-i18n="videoAux">動画</span><b data-drawer-label="video">Video Course</b><small data-drawer-label="videoSmall">Truck · Taxi · Bus</small></a>
+<a class="shortcut" data-menu-search="JLPT N5 N4 N3 N2 N1 日本語" href="/#yk82Hub"><span class="symbol">♧</span><span class="ja" data-yk-menu-i18n="jlptAux">JLPT</span><b data-drawer-label="jlpt">JLPT Practice</b><small>JLPT N5–N1</small></a>
+<a class="shortcut" data-menu-search="Dictionary အဘိဓာန် 辞書" href="/study/japanese-myanmar-dictionary.html"><span class="symbol">▤</span><span class="ja" data-yk-menu-i18n="dictionaryAux">辞書</span><b data-drawer-label="dictionary">Dictionary</b><small data-drawer-label="dictionarySmall">Japanese · Myanmar</small></a>
+<a class="shortcut" data-menu-search="Study Learning Hub လေ့လာရေးハブ" href="/#study-hub"><span class="symbol">◇</span><span class="ja" data-yk-menu-i18n="hubAux">学習ハブ</span><b data-drawer-label="hub">Learning Hub</b><small data-drawer-label="hubSmall">Study resources</small></a>
+<a class="shortcut" data-menu-search="Portal YE KUN ポータル" href="/#portal"><span class="symbol">⊞</span><span class="ja" data-yk-menu-i18n="portalAux">ポータル</span><b data-yk-menu-i18n="portal">Portal</b><small>YE KUN Portal</small></a>
+
+
+</nav><details class="yk-other-resources"><summary data-yk-menu-i18n="moreLinks">More study resources</summary><a class="shortcut" data-menu-search="Study Resources" href="/#study-resources"><b data-drawer-label="resources">Study Resources</b></a><a class="shortcut" data-menu-search="Driving Dictionary" href="/#driving-dictionary"><b data-drawer-label="driving">Driving Dictionary</b></a></details>
+<div class="eyebrow" data-drawer-label="account">ACCOUNT</div>
+<section aria-label="Account" class="card rows">
+<a class="item" data-menu-search="My Results Dashboard ရလဒ် 成績" href="/dashboard.html"><span class="ico">▥</span><span class="copy"><b data-drawer-label="results">My Results</b><small data-drawer-label="resultsDesc">Verified exam results in your dashboard</small></span><span class="tail lock" data-yk-menu-i18n="loginLock" hidden="" id="resultsLock">🔒 Login</span><span class="tail">›</span></a>
+<a class="item" data-menu-search="Plans Payment ငွေပေးချေမှု プラン" href="/mock-exams.html#examPlansV728"><span class="ico">▤</span><span class="copy"><b data-drawer-label="plans">Plans &amp; Payment</b><small data-drawer-label="plansDesc">See current access plans in Exam Center</small></span><span class="tail">›</span></a>
+<a class="item" data-menu-search="Student Verify ကျောင်းသားအတည်ပြု 受講生認証" href="/mock-exams.html#examStudentVerifyV728"><span class="ico">♢</span><span class="copy"><b data-drawer-label="verify">Student Verify</b><small data-drawer-label="verifyDesc">Use existing YKCR verification through your account</small></span><span class="tail lock" data-yk-menu-i18n="loginLock" hidden="" id="verifyLock">🔒 Login</span><span class="tail">›</span></a>
+</section>
+<div class="eyebrow" data-drawer-label="settings" id="moreSettings">SETTINGS</div>
+<section aria-label="Settings" class="card rows">
+<div class="item"><span class="ico">◎</span><span class="copy"><b data-drawer-label="language">Language</b><small data-drawer-label="languageDesc">မြန်မာ · English · 日本語</small></span><span class="tail" id="moreLangValue">မြန်မာ</span></div>
+<div aria-label="Choose language" class="lang-list" role="group"><button aria-pressed="true" data-more-lang="my">မြန်မာ</button><button aria-pressed="false" data-more-lang="en">English</button><button aria-pressed="false" data-more-lang="ja">日本語</button></div>
+<div class="item"><span class="ico">☾</span><span class="copy"><b data-drawer-label="dark">Dark Mode</b><small data-drawer-label="darkDesc">Use your existing website theme preference</small></span><button aria-checked="true" aria-label="Dark Mode" class="switch" id="moreDark" role="switch" type="button"></button></div>
+<div class="item"><span class="ico">♧</span><span class="copy"><b data-drawer-label="notifications">Notifications</b><small data-drawer-label="notificationsDesc">Not connected yet · no alerts will be sent</small></span><button aria-checked="false" aria-label="Notifications (local UI preference only)" class="switch" data-yk-menu-attr-aria-label="moreNotifications" id="moreNotifications" role="switch" type="button"></button></div>
+</section>
+<div class="eyebrow" data-drawer-label="support">SUPPORT</div>
+<section aria-label="Support" class="card rows">
+<a class="item" data-menu-search="Contact YE KUN ဆက်သွယ်ရန် 問い合わせ" href="mailto:koyekmw2019@gmail.com"><span class="ico">▢</span><span class="copy"><b data-drawer-label="contact">Contact YE KUN</b></span><span class="tail">↗</span></a>
+<button aria-controls="moreFAQ" aria-expanded="false" class="item" data-menu-search="Help FAQ အကူအညီ" id="moreFAQToggle" type="button"><span class="ico">ⓘ</span><span class="copy"><b data-drawer-label="faq">Help / FAQ</b></span><span class="tail">›</span></button>
+<div class="faq-details" hidden="" id="moreFAQ"><p data-drawer-label="faq1">Q: Can I browse without signing in? Yes. You must log in to take protected mock exams.</p><p data-drawer-label="faq2">Q: How do students access exams? Verified students use the existing student verification system during their valid class period.</p></div>
+<a class="item" data-menu-search="About YKOC STUDYING WITH YE KUN" href="/#about"><span class="ico">ⓘ</span><span class="copy"><b data-drawer-label="about">About YKOC</b></span><span class="tail">›</span></a>
+</section>
+<div class="eyebrow" data-drawer-label="follow">FOLLOW</div>
+<section aria-label="Social media" class="card social-card">
+<div class="social-header"><b data-yk-menu-i18n="followYe">Follow YE<br/>KUN</b><div class="social-btns">
+<a aria-label="Facebook" class="social-icon" href="https://www.facebook.com/share/1G6b9f7LYw/" rel="noopener noreferrer" target="_blank">f</a>
+<a aria-label="Instagram" class="social-icon" href="https://www.instagram.com/yekun.26?igsi=NnNzNzUyMmk4MDhk" rel="noopener noreferrer" target="_blank">IG</a>
+<a aria-label="TikTok" class="social-icon" href="https://www.tiktok.com/@yekun__26?_r=1&amp;_t=ZS-99TBrzRNEqj" rel="noopener noreferrer" target="_blank">♪</a>
+<a aria-label="YouTube" class="social-icon" href="https://youtube.com/@yekun.26?si=qFRYvNJYF0Dsrx6u" rel="noopener noreferrer" target="_blank">▶</a>
+</div></div>
+<div class="social-pages">
+<a class="social-row" href="https://www.facebook.com/share/1GDHn4Qfm4/" rel="noopener noreferrer" target="_blank"><span class="social-mark"><img alt="STUDYING WITH YE KUN" src="/assets/studying-with-ye-kun-logo.png"/></span><span class="link-copy"><b>STUDYING WITH YE KUN</b><small data-yk-menu-i18n="facebookPage">Facebook Page</small></span><span class="tail">↗</span></a>
+<a class="social-row" href="https://www.facebook.com/share/14ohAGHx8FM/" rel="noopener noreferrer" target="_blank"><span class="social-mark">MR</span><span class="link-copy"><b>MRYE, THE MEN'S STYLE</b><small data-yk-menu-i18n="facebookPage">Facebook Page</small></span><span class="tail">↗</span></a>
+</div>
+</section>
+<button class="logout" data-drawer-label="logout" hidden="" id="moreLogout" type="button">⇥ Logout</button>
+<p class="status" hidden="" id="moreStatus" role="status"></p>
+<footer class="footer"><img alt="STUDYING WITH YE KUN · Learn · Grow · A Brighter You" src="/assets/studying-with-ye-kun-wordmark.png"/></footer>
+</div>
+</div>
+</aside>
+<main class="site-main">
+<section id="examIntro"><div class="intro-frame"><a class="intro-back" href="/mock-exams.html">← Exam Center</a><div class="intro-top"><div><small>QA · ဒီစက်ပေါ်တွင်သာ သိမ်းထားမည်</small><h1>普通第二種免許</h1><p>ဒုတိယအမျိုးအစား ယာဉ်မောင်းလိုင်စင်</p></div><img class="intro-cover" src="/assets/yk-second-license-qa-cover.png" alt="第二種免許"></div>
+<p>95問 · 50分 · 90/100点で合格</p><p>စာမေးပွဲတွင် စာသားမေးခွန်း ၉၀ နှင့် ပုံမေးခွန်း ၅ ခု ပါဝင်သည်။ ပုံတစ်ပုံ၏ အဖြေ ၃ ခုလုံးမှန်လျှင် ၂ မှတ်ရမည်။</p>
+<div class="intro-cta"><button class="ctrl primary" id="startSecond">模擬試験 · စတင် / ဆက်ဖြေရန်</button><button class="ctrl" id="studySecond">学習 · လေ့ကျင့်ရန်</button></div></div></section>
+<section id="examView"></section></main><nav id="yk-mobile-nav" aria-label="Main navigation">
+ <a data-tab="home" href="/#home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10H15v-7H9v7H3z"/></svg><span>Home</span></a>
+ <a data-tab="study" href="/study/index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5C6 4 9 4.1 12 6v14c-3-1.8-6-2-9-.5zm18 0c-3-1.5-6-1.4-9 .5v14c3-1.8 6-2 9-.5z"/></svg><span>Study</span></a>
+ <a data-tab="exam" href="/mock-exams.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9M16.4 3.6a2.1 2.1 0 0 1 3 3L7.4 18.6l-4 1 1-4Z"/></svg><span>Exam</span></a>
+ <a data-tab="video" href="/video-class.html"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3z"/></svg><span>Video</span></a>
+ <a data-tab="account" href="/dashboard.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2c0-4.5 3-7 8-7s8 2.5 8 7v2"/></svg><span>Account</span></a>
+</nav><script>
+(function(){
+  const body=document.body;
+  const toggle=document.getElementById('menuToggle');
+  const menu=document.getElementById('siteMenu');
+  const backdrop=document.getElementById('menuBackdrop');
+  const close=document.getElementById('menuClose');
+  if(!toggle||!menu)return;
+  function setOpen(open){
+    body.classList.toggle('menu-open',open);
+    toggle.setAttribute('aria-expanded',open?'true':'false');
+    menu.setAttribute('aria-hidden',open?'false':'true');
+  }
+  toggle.addEventListener('click',()=>setOpen(!body.classList.contains('menu-open')));
+  if(close)close.addEventListener('click',()=>setOpen(false));
+  if(backdrop)backdrop.addEventListener('click',()=>setOpen(false));
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setOpen(false)));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setOpen(false)});
+  document.querySelectorAll('.brand-home-link').forEach(a=>a.addEventListener('click',()=>setOpen(false)));
+})();
+</script>
+<script type="application/json" id="questionData">{"version":"v7.89.0-rc.1-coverage2","type":"ordinary_second","originalItems":[{"id":"N001","type":"text","category":"traffic","answer":true,"jp":"歩行者が横断歩道を渡ろうとしているときは、手前で一時停止して通行を妨げない。","mm":"လူကူးမျဉ်းကျားကို လမ်းလျှောက်သူ ဖြတ်ကူးတော့မည်ဆိုလျှင် မျဉ်းကျားမတိုင်မီ ရပ်ပြီး လမ်းပေးရသည်။","explanationJP":"停止線があればその直前、なければ横断歩道の直前で一時停止します。","explanationMM":"ရပ်မျဉ်းရှိလျှင် ရပ်မျဉ်းမတိုင်မီ၊ မရှိလျှင် လူကူးမျဉ်းကျားမတိုင်မီ ရပ်ပါ။","chapter":5},{"id":"N002","type":"text","category":"traffic","answer":false,"jp":"見通しの悪い交差点では、警音器を鳴らせば安全確認を省略できる。","mm":"မြင်ကွင်းကွယ်နေတဲ့ လမ်းဆုံမှာ ဟွန်းတီးရုံနဲ့ လုံခြုံရေးမစစ်လည်းရတယ်။","explanationJP":"警音器だけでは安全確認の代わりになりません。","explanationMM":"ဟွန်းတီးရုံနဲ့ အန္တရာယ်ကင်းကြောင်း မသေချာပါ။","chapter":5},{"id":"N003","type":"text","category":"traffic","answer":true,"jp":"青信号でも、前方の渋滞で交差点内に止まり、交差する道路の車の通行を妨げるおそれがあるときは、交差点に入ってはいけない。","mm":"မီးစိမ်းနေလည်း ရှေ့မှာကားပိတ်နေ၍ လမ်းဆုံထဲတွင် ရပ်မိပြီး ကန့်လန့်ဖြတ်လမ်းမှ ယာဉ်များကို ပိတ်ဆို့နိုင်လျှင် လမ်းဆုံထဲ မဝင်ရပါ။","explanationJP":"交差点内で停止し、他の交通を妨げることを避けます。","explanationMM":"လမ်းဆုံကို မပိတ်မိအောင် ရှောင်ရပါတယ်။","chapter":5},{"id":"N004","type":"text","category":"traffic","answer":false,"jp":"一時停止の標識がある場所では、周囲に車がなければ徐行だけで通過してよい。","mm":"ရပ်ရန်အမှတ်အသားရှိရင် ကားမရှိသရွေ့ ဖြည်းဖြည်းမောင်းပြီး ဖြတ်လို့ရတယ်။","explanationJP":"一時停止の指定場所では停止が必要です。","explanationMM":"ရပ်ရန်သတ်မှတ်ထားတဲ့နေရာမှာ ရပ်ရပါတယ်။","chapter":1},{"id":"N005","type":"text","category":"traffic","answer":true,"jp":"右左折するときは、歩行者や自転車の動きを確認して安全に曲がる。","mm":"ညာဘယ်ကွေ့ရာမှာ လူနဲ့ စက်ဘီးတွေကိုစစ်ပြီး ကွေ့ရပါတယ်။","explanationJP":"巻き込み事故を防ぐため、周囲の確認が必要です。","explanationMM":"တိုက်မိမှုကာကွယ်ဖို့ ပတ်ဝန်းကျင်စစ်ရပါတယ်။","chapter":5},{"id":"N006","type":"text","category":"traffic","answer":false,"jp":"黄色信号になったら、停止できる状況でも必ず加速して交差点へ入る。","mm":"မီးဝါလာရင် ရပ်လို့ရလည်း အမြဲအရှိန်တိုးပြီး လမ်းဆုံဝင်ရမယ်။","explanationJP":"安全に停止できるときは停止します。","explanationMM":"လုံခြုံစွာရပ်နိုင်ရင် ရပ်ရပါတယ်။","chapter":1},{"id":"N007","type":"text","category":"traffic","answer":true,"jp":"交差点で警察官が交通整理をしている場合は、その指示に従う。","mm":"လမ်းဆုံမှာ ရဲညွှန်ကြားနေရင် သူ့ညွှန်ကြားချက်လိုက်နာရပါတယ်။","explanationJP":"警察官の交通整理に従います。","explanationMM":"ရဲ၏ ယာဉ်ကြောညွှန်ကြားချက်ကို လိုက်နာရပါတယ်။","chapter":1},{"id":"N008","type":"text","category":"traffic","answer":false,"jp":"進路変更の合図を出せば、後方の安全を確認せずに車線を変えてよい。","mm":"ကွေ့အချက်ပြမီး ပြထားလျှင် နောက်ဘက်ကို မစစ်ဘဲ ယာဉ်ကြောပြောင်းလို့ ရသည်။","explanationJP":"合図に加えて安全確認が必要です。","explanationMM":"မီးပြရုံမက နောက်ကိုလည်း စစ်ရပါတယ်။","chapter":5},{"id":"N009","type":"text","category":"traffic","answer":true,"jp":"最高速度が標識で指定されている道路では、その速度を超えて走ってはいけない。","mm":"ဆိုင်းဘုတ်ဖြင့် အမြင့်ဆုံးအမြန်နှုန်း သတ်မှတ်ထားပါက ထိုနှုန်းကို ကျော်၍ မမောင်းရပါ။","explanationJP":"指定された最高速度を超えてはいけません。","explanationMM":"သတ်မှတ်ထားတဲ့ အမြန်နှုန်းထက် မကျော်ရပါ။","chapter":5},{"id":"N010","type":"text","category":"traffic","answer":false,"jp":"前の車が急に止まっても対応できるように、車間距離はできるだけ短くする。","mm":"ရှေ့ကားရုတ်တရက်ရပ်ရင် ပြန်တုံ့ပြန်နိုင်အောင် ကားအကွာအဝေးကို နည်းနည်းထားသင့်တယ်။","explanationJP":"十分な車間距離を取ることが必要です。","explanationMM":"ကားအကြား လုံလောက်တဲ့အကွာအဝေးထားရပါတယ်။","chapter":5},{"id":"N011","type":"text","category":"traffic","answer":true,"jp":"路面に停止線がある場合は、必要な停止をその線の直前で行う。","mm":"ရပ်မျဉ်းရှိသောနေရာတွင် ရပ်ရန်လိုအပ်ပါက မျဉ်းကို မကျော်မီ မျဉ်းကပ်လျက် ရပ်ရသည်။","explanationJP":"停止線を越えて停止してはいけません。","explanationMM":"ရပ်မျဉ်းကို ကျော်ပြီးမရပ်ရပါ။","chapter":1},{"id":"N012","type":"text","category":"traffic","answer":false,"jp":"安全地帯があれば、歩行者が近くにいてもその中を走行してよい。","mm":"လူတွေရှိနေလည်း လုံခြုံရေးကျွန်းထဲကို ကားဝင်မောင်းနိုင်တယ်။","explanationJP":"安全地帯への進入は認められません。","explanationMM":"လူအတွက် လုံခြုံရေးကျွန်းထဲ ကားမဝင်ရပါ။","chapter":5},{"id":"N013","type":"text","category":"traffic","answer":true,"jp":"信号機のない踏切では、踏切の直前（停止線があるときはその直前）で一時停止し、安全を確かめてから進む。","mm":"ယာဉ်ကြောမီးပွိုင့်မရှိသော ရထားလမ်းကူးနေရာတွင် ရထားလမ်းမတိုင်မီ (ရပ်မျဉ်းရှိလျှင် ရပ်မျဉ်းမတိုင်မီ) ရပ်ပြီး လုံခြုံကြောင်း စစ်ဆေးမှ ဖြတ်ကူးရသည်။","explanationJP":"信号機の信号に従って進む場合には、一時停止の例外があります。警報機と信号機は別です。","explanationMM":"ယာဉ်ကြောမီးပွိုင့်၏ အချက်ပြအတိုင်း ဖြတ်ကူးသည့်အခါ မဖြစ်မနေရပ်ရမည့် စည်းမျဉ်း၌ ခြွင်းချက်ရှိသည်။ ရထားလာကြောင်း သတိပေးစက်သည် ယာဉ်ကြောမီးပွိုင့်နှင့် မတူပါ။","chapter":6},{"id":"N014","type":"text","category":"traffic","answer":false,"jp":"渋滞で車が並んでいれば、横断歩道上に停車してもよい。","mm":"ကားပိတ်နေရင် လူကူးမျဉ်းပေါ် ရပ်နေလို့ရတယ်။","explanationJP":"横断歩道をふさいではいけません。","explanationMM":"လူကူးမျဉ်းကို မပိတ်ရပါ။","chapter":5},{"id":"N015","type":"text","category":"safety","answer":true,"jp":"雨の降り始めは路面が滑りやすいことがあるため、早めに減速する。","mm":"မိုးစရွာချိန် လမ်းချော်နိုင်လို့ အရှိန်စောလျှော့ရပါတယ်။","explanationJP":"濡れた路面では制動距離が延びる場合があります。","explanationMM":"လမ်းစိုရင် ဘရိတ်အကွာအဝေးရှည်နိုင်ပါတယ်။","chapter":6},{"id":"N017","type":"text","category":"safety","answer":true,"jp":"カーブに入る前には、道路状況に応じて十分に速度を落とす。","mm":"ကွေ့မဝင်ခင် လမ်းအခြေအနေအလိုက် အရှိန်လျှော့ရပါတယ်။","explanationJP":"カーブ中の急操作は危険です。","explanationMM":"ကွေ့နေချိန် ရုတ်တရက်ထိန်းချုပ်မှုက အန္တရာယ်ရှိပါတယ်။","chapter":6},{"id":"N018","type":"text","category":"safety","answer":false,"jp":"眠気を感じても、窓を開ければ休憩せず運転を続けてよい。","mm":"အိပ်ငိုက်နေရင် ပြတင်းပေါက်ဖွင့်ပြီး မနားဘဲဆက်မောင်းလို့ရတယ်။","explanationJP":"眠気があるときは安全な場所で休息します。","explanationMM":"အိပ်ငိုက်ရင် လုံခြုံရာနေရာမှာ နားရပါတယ်။","chapter":4},{"id":"N019","type":"text","category":"safety","answer":true,"jp":"前方に停車車両があるときは、その陰から人が出る可能性を考える。","mm":"ရှေ့မှာရပ်ထားတဲ့ကားနောက်က လူထွက်လာနိုင်တာကို စဉ်းစားရပါတယ်။","explanationJP":"死角にいる歩行者に注意します。","explanationMM":"ကားကွယ်ရာက လူထွက်လာနိုင်တာကို သတိထားရပါတယ်။","chapter":5},{"id":"N021","type":"text","category":"safety","answer":true,"jp":"車の死角を意識し、発進前に周囲の安全を確認する。","mm":"ကားမြင်ကွယ်နေရာကို စဉ်းစားပြီး မထွက်ခင် စစ်ရပါတယ်။","explanationJP":"ミラーだけで見えない場所もあります。","explanationMM":"မှန်မှာမမြင်ရတဲ့ နေရာတွေလည်းရှိပါတယ်။","chapter":4},{"id":"N022","type":"text","category":"safety","answer":false,"jp":"ブレーキの効きがいつもと違っても、走れれば点検しなくてよい。","mm":"ဘရိတ်ပုံမှန်မဟုတ်ပေမဲ့ မောင်းလို့ရရင် မစစ်လည်းရတယ်။","explanationJP":"制動装置の異常は重大な事故につながります。","explanationMM":"ဘရိတ်ချို့ယွင်းရင် ပြင်းထန်တဲ့မတော်တဆမှုဖြစ်နိုင်ပါတယ်။","chapter":4},{"id":"N023","type":"text","category":"safety","answer":true,"jp":"長時間運転では、疲労をためないよう適切に休憩を取る。","mm":"အချိန်ကြာမောင်းရင် ပင်ပန်းမှုမစုအောင် နားရပါတယ်။","explanationJP":"疲労は判断力や注意力を低下させます。","explanationMM":"ပင်ပန်းမှုက သတိနဲ့ဆုံးဖြတ်နိုင်စွမ်းကို လျော့စေပါတယ်။","chapter":4},{"id":"N025","type":"text","category":"safety","answer":true,"jp":"周囲に子どもがいる場所では、急な飛び出しに備えて運転する。","mm":"ကလေးရှိတဲ့နေရာမှာ ရုတ်တရက်ပြေးထွက်နိုင်တာကို သတိထားရပါတယ်။","explanationJP":"子どもの行動は予測しにくい場合があります。","explanationMM":"ကလေးတွေ ရုတ်တရက်လှုပ်ရှားနိုင်ပါတယ်။","chapter":5},{"id":"N026","type":"text","category":"safety","answer":false,"jp":"タイヤの空気圧が極端に低くても、燃料が入っていれば通常どおり走ってよい。","mm":"တာယာလေဖိအား အရမ်းနည်းလည်း ဆီရှိရင် ပုံမှန်မောင်းလို့ရတယ်။","explanationJP":"タイヤの異常は操縦安定性に影響します。","explanationMM":"တာယာလေဖိအား မမှန်လျှင် ကားကို တည်ငြိမ်အောင် ထိန်းမောင်းရခက်နိုင်သည်။","chapter":4},{"id":"N027","type":"text","category":"safety","answer":true,"jp":"急な割り込みを受けたときは、感情的にならず安全な距離を確保する。","mm":"ကားဖြတ်ဝင်လာရင် စိတ်မဆိုးဘဲ လုံခြုံတဲ့အကွာအဝေးထားရပါတယ်။","explanationJP":"危険を拡大させない冷静な対応が必要です。","explanationMM":"အန္တရာယ်မတိုးအောင် စိတ်အေးအေးထားရပါတယ်။","chapter":1},{"id":"N029","type":"text","category":"passenger","answer":true,"jp":"旅客を乗せる前に、停車場所の周囲に危険がないか確認する。","mm":"ခရီးသည်မတင်မီ ရပ်တဲ့နေရာပတ်လည်မှာ အန္တရာယ်ရှိမရှိ စစ်ရပါတယ်။","explanationJP":"乗降場所の安全確認は旅客保護の基本です。","explanationMM":"တက်ဆင်းနေရာလုံခြုံမှုစစ်ခြင်းက အရေးကြီးပါတယ်။","chapter":9},{"id":"N030","type":"text","category":"passenger","answer":false,"jp":"乗客が急いでいると頼んだ場合は、安全確認を省いて発進してよい。","mm":"ခရီးသည်အလျင်လိုတယ်ပြောရင် လုံခြုံရေးမစစ်ဘဲ ထွက်လို့ရတယ်။","explanationJP":"旅客の希望より安全確認を優先します。","explanationMM":"ခရီးသည်ဆန္ဒထက် လုံခြုံရေးက အရေးကြီးပါတယ်။","chapter":9},{"id":"N031","type":"text","category":"passenger","answer":true,"jp":"乗客の体調が悪そうなときは、安全に配慮し必要な対応を考える。","mm":"ခရီးသည်မကျန်းမာသလိုထင်ရင် လုံခြုံရေးစဉ်းစားပြီး ကူညီရပါတယ်။","explanationJP":"旅客の状況に応じた配慮が必要です。","explanationMM":"ခရီးသည်အခြေအနေအလိုက် ဂရုစိုက်ရပါတယ်။","chapter":9},{"id":"N032","type":"text","category":"passenger","answer":false,"jp":"旅客への説明は運転の妨げになるため、状況を尋ねられても常に無視してよい。","mm":"ခရီးသည်မေးခွန်းက မောင်းနှင်မှုအနှောင့်အယှက်ဖြစ်လို့ အမြဲမဖြေရဘူး။","explanationJP":"安全を保ちながら適切に案内する姿勢が大切です。","explanationMM":"လုံခြုံရေးထိန်းပြီး လိုအပ်သလို ရှင်းပြသင့်ပါတယ်။","chapter":9},{"id":"N033","type":"text","category":"passenger","answer":true,"jp":"乗客が降りる際は、後方から近づく自転車などにも注意する。","mm":"ခရီးသည်ဆင်းရာမှာ နောက်ကလာတဲ့စက်ဘီးတွေကို သတိထားရပါတယ်။","explanationJP":"ドア開放時の接触事故を防ぎます。","explanationMM":"တံခါးဖွင့်ချိန်တိုက်မိမှုကို ကာကွယ်ရပါတယ်။","chapter":9},{"id":"N034","type":"text","category":"passenger","answer":false,"jp":"高齢の乗客が乗るときも、すべての乗客に同じ速さで乗車を求めればよい。","mm":"အသက်ကြီးသူကိုလည်း လူတိုင်းလိုပဲ အမြန်တက်ခိုင်းလို့ရတယ်။","explanationJP":"乗客の状態に応じた時間と配慮が必要です。","explanationMM":"ခရီးသည်အခြေအနေအလိုက် အချိန်ပေးရပါတယ်။","chapter":9},{"id":"N035","type":"text","category":"passenger","answer":true,"jp":"荷物の置き方が危険な場合は、発進前に安全な状態を確かめる。","mm":"ပစ္စည်းထားပုံအန္တရာယ်ရှိရင် မထွက်ခင် ပြင်ဆင်စစ်ရပါတယ်။","explanationJP":"転倒や運転妨害を防ぐためです。","explanationMM":"ပစ္စည်းလဲကျမှု၊ မောင်းနှင်မှုအနှောင့်အယှက်ကို ကာကွယ်ရပါတယ်။","chapter":4},{"id":"N036","type":"text","category":"passenger","answer":false,"jp":"乗客が座り終える前でも、後続車が待っていれば直ちに急発進する。","mm":"ခရီးသည်မထိုင်ရသေးလည်း နောက်ကားစောင့်ရင် ချက်ချင်းအရှိန်နဲ့ထွက်ရမယ်။","explanationJP":"乗客の転倒防止を優先します。","explanationMM":"ခရီးသည်လဲကျမှုကို ကာကွယ်ရပါတယ်။","chapter":9},{"id":"N037","type":"text","category":"passenger","answer":true,"jp":"乗客の忘れ物に気付いたら、定められた取扱いに従って対応する。","mm":"ခရီးသည်ပစ္စည်းမေ့ခဲ့ရင် သတ်မှတ်လုပ်ထုံးလုပ်နည်းအတိုင်း ဆောင်ရွက်ရပါတယ်။","explanationJP":"忘れ物は適切に管理・報告します。","explanationMM":"မေ့ကျန်ပစ္စည်းကို စည်းကမ်းအတိုင်း ကိုင်တွယ်ရပါတယ်။","chapter":9},{"id":"N039","type":"text","category":"passenger","answer":true,"jp":"乗客の安全を守るため、発車前にドアの閉鎖状態を確かめる。","mm":"ခရီးသည်လုံခြုံဖို့ မထွက်ခင် တံခါးပိတ်ထားတာ စစ်ရပါတယ်။","explanationJP":"開いたドアは転落などの危険があります。","explanationMM":"တံခါးဖွင့်နေရင် ပြုတ်ကျနိုင်ပါတယ်။","chapter":9},{"id":"N040","type":"text","category":"passenger","answer":false,"jp":"運転中に客からスマートフォンの画面を見せられたら、前方より画面を優先して見る。","mm":"မောင်းနေတုန်း ခရီးသည်ဖုန်းပြရင် ရှေ့လမ်းထက်ဖုန်းကို ဦးစားပေးကြည့်ရတယ်။","explanationJP":"運転中は前方と周囲の安全確保を優先します。","explanationMM":"မောင်းနေတုန်း ရှေ့လမ်းကို ဦးစားပေးရပါတယ်။","chapter":9},{"id":"N041","type":"text","category":"passenger","answer":true,"jp":"乗客が不安を感じるほどの急加速や急減速を避け、滑らかに運転する。","mm":"ခရီးသည်မကြောက်အောင် ရုတ်တရက်အရှိန်တိုး/လျှော့တာ ရှောင်ရပါတယ်။","explanationJP":"急操作は旅客の転倒・負傷につながります。","explanationMM":"ရုတ်တရက်မောင်းလို့ ခရီးသည်ဒဏ်ရာရနိုင်ပါတယ်။","chapter":9},{"id":"N044","type":"text","category":"professional","answer":false,"jp":"旅客を乗せていない回送中は、交通法規を守らなくてもよい。","mm":"ခရီးသည်မတင်ဘဲ နေရာပြောင်းမောင်းနှင်နေချိန်တွင် ယာဉ်စည်းကမ်း မလိုက်နာလည်းရသည်။","explanationJP":"回送中も道路交通法に従います。","explanationMM":"ခရီးသည်မပါလည်း လမ်းစည်းကမ်းလိုက်နာရပါတယ်။","chapter":9},{"id":"N045","type":"text","category":"professional","answer":true,"jp":"出発前に運転者自身の体調を確認し、不調があれば適切に対応する。","mm":"မထွက်ခင် ကိုယ့်ကျန်းမာရေးစစ်ပြီး မကောင်းရင် လိုအပ်သလိုလုပ်ရပါတယ်။","explanationJP":"体調不良は旅客の安全にも影響します。","explanationMM":"ကျန်းမာရေးမကောင်းရင် ခရီးသည်လုံခြုံရေးထိခိုက်နိုင်ပါတယ်။","chapter":4},{"id":"N047","type":"text","category":"professional","answer":true,"jp":"運転前にミラーや座席位置を調整して、安全に操作できる状態にする。","mm":"မောင်းမီ မှန်နဲ့ထိုင်ခုံကို လုံခြုံစွာထိန်းနိုင်အောင် ပြင်ရပါတယ်။","explanationJP":"適切な運転姿勢と視野を確保します。","explanationMM":"မှန်ကန်တဲ့အနေအထားနဲ့ မြင်ကွင်းရဖို့ပါ။","chapter":4},{"id":"N048","type":"text","category":"professional","answer":false,"jp":"走行中、客から店の予約を頼まれたら、運転者が携帯電話を手に持って店に電話してよい。","mm":"မောင်းနေစဉ် ခရီးသည်က ဆိုင်တွင် ကြိုတင်စာရင်းသွင်းပေးရန် တောင်းဆိုလျှင် ယာဉ်မောင်းက ဖုန်းကို လက်ဖြင့်ကိုင်ပြီး ဆိုင်သို့ ဖုန်းဆက်လို့ရသည်။","explanationJP":"走行中の手持ち通話は原則禁止です。店の予約は緊急やむを得ない通話には当たりません。","explanationMM":"မောင်းနေစဉ် ဖုန်းကို လက်ဖြင့်ကိုင်၍ ပြောဆိုခြင်းကို ယေဘုယျအားဖြင့် တားမြစ်ထားသည်။ ဆိုင်သို့ ကြိုတင်စာရင်းပေးခြင်းသည် မလွှဲမရှောင်သာသော အရေးပေါ်ခေါ်ဆိုမှု မဟုတ်ပါ။","chapter":5},{"id":"N050","type":"text","category":"professional","answer":false,"jp":"タクシーの運転者は、交通ルールよりも乗客の希望する経路を優先してよい。","mm":"တက္ကစီယာဉ်မောင်းက လမ်းစည်းကမ်းထက် ခရီးသည်လိုချင်တဲ့လမ်းကို ဦးစားပေးနိုင်တယ်။","explanationJP":"旅客の希望も交通法規の範囲内で対応します。","explanationMM":"ခရီးသည်ဆန္ဒလည်း ဥပဒေအတွင်းမှာပဲ လိုက်နာရပါတယ်။","chapter":9},{"id":"N051","type":"text","category":"professional","answer":true,"jp":"車両に故障の疑いがある場合は、乗客を危険にさらさないよう対応する。","mm":"ကားချို့ယွင်းမယ်ထင်ရင် ခရီးသည်အန္တရာယ်မဖြစ်အောင် ဆောင်ရွက်ရပါတယ်။","explanationJP":"不具合を無視した運行は危険です。","explanationMM":"ချို့ယွင်းမှုမစစ်ဘဲဆက်မောင်းတာ အန္တရာယ်ရှိပါတယ်။","chapter":9},{"id":"N052","type":"text","category":"professional","answer":false,"jp":"運転中に道に迷った場合は、急停車や急な進路変更を繰り返してよい。","mm":"လမ်းပျောက်ရင် ရုတ်တရက်ရပ်/လမ်းကြောင်းပြောင်းတာ ခဏခဏလုပ်လို့ရတယ်။","explanationJP":"安全な場所で経路を確認します。","explanationMM":"လုံခြုံတဲ့နေရာမှာ လမ်းကြောင်းပြန်စစ်ရပါတယ်။","chapter":9},{"id":"N054","type":"text","category":"professional","answer":false,"jp":"安全を確保できない場所でも、乗客が指定した位置に必ず停車する。","mm":"မလုံခြုံတဲ့နေရာလည်း ခရီးသည်ပြောတဲ့နေရာမှာ မဖြစ်မနေရပ်ရမယ်။","explanationJP":"安全で適法な場所への停車を選びます。","explanationMM":"လုံခြုံပြီး ဥပဒေနဲ့ကိုက်တဲ့နေရာကို ရွေးရပါတယ်။","chapter":9},{"id":"N056","type":"text","category":"boarding","answer":false,"jp":"客を降ろす場所では、後方確認をせずに急に道路へ寄せてよい。","mm":"ခရီးသည်ချမယ့်နေရာမှာ နောက်မကြည့်ဘဲ ရုတ်တရက်ကပ်ရပ်လို့ရတယ်။","explanationJP":"合図と安全確認をしてから停車します。","explanationMM":"မီးပြပြီး နောက်စစ်မှ ရပ်ရပါတယ်။","chapter":5},{"id":"N058","type":"text","category":"boarding","answer":false,"jp":"目的地に着いたら、車が完全に止まる前にドアを開けてよい。","mm":"ရောက်တဲ့အခါ ကားလုံးဝမရပ်ခင် တံခါးဖွင့်လို့ရတယ်။","explanationJP":"完全停止してから安全に乗降させます。","explanationMM":"ကားလုံးဝရပ်ပြီးမှ တက်ဆင်းစေရပါတယ်။","chapter":9},{"id":"N059","type":"text","category":"boarding","answer":true,"jp":"道路の形状に応じて乗客が安全に歩道側へ降りられる位置を選ぶ。","mm":"လမ်းအနေအထားကိုကြည့်၍ ခရီးသည်က လူသွားစင်္ကြံဘက်သို့ ဘေးကင်းစွာ ဆင်းနိုင်မည့်နေရာကို ရွေးသည်။","explanationJP":"乗降時の交通事故を防ぐためです。","explanationMM":"တက်ဆင်းချိန်တိုက်မိမှုကာကွယ်ဖို့ပါ။","chapter":9},{"id":"N061","type":"text","category":"boarding","answer":true,"jp":"車いす利用者が乗車するときは、必要な支援や安全な乗降方法を確認する。","mm":"ဘီးတပ်ကုလားထိုင်အသုံးပြုသူကို ကူညီမှုနဲ့ လုံခြုံတဲ့တက်ဆင်းနည်းစစ်ရပါတယ်။","explanationJP":"個々の状況に合った支援が必要です。","explanationMM":"တစ်ယောက်ချင်းအခြေအနေအလိုက် ကူညီဖို့လိုပါတယ်။","chapter":9},{"id":"N062","type":"text","category":"boarding","answer":false,"jp":"雨の日の乗降では、足元が滑りやすくなることを気にしなくてよい。","mm":"မိုးရွာချိန်တက်ဆင်းရာမှာ ခြေချော်တာကို သတိထားစရာမလိုဘူး။","explanationJP":"雨天は足元の安全確認が重要です。","explanationMM":"မိုးရွာရင် ခြေထောက်ချော်နိုင်လို့ စစ်ရပါတယ်။","chapter":9},{"id":"N063","type":"text","category":"boarding","answer":true,"jp":"乗客の手荷物がドアに挟まれていないか注意する。","mm":"ခရီးသည်အိတ်တံခါးညပ်နေမနေ သတိထားရပါတယ်။","explanationJP":"挟み込みはけがや荷物の破損につながります。","explanationMM":"ညပ်မိရင် ဒဏ်ရာနဲ့ပစ္စည်းပျက်နိုင်ပါတယ်။","chapter":9},{"id":"N065","type":"text","category":"boarding","answer":true,"jp":"子どもが乗降するときは、急に道路へ出る可能性も考える。","mm":"ကလေးတက်ဆင်းရာမှာ ရုတ်တရက်လမ်းပေါ်ထွက်နိုင်တာကို သတိထားရပါတယ်။","explanationJP":"子どもの予測しにくい動きに備えます。","explanationMM":"ကလေးရဲ့ ရုတ်တရက်လှုပ်ရှားမှုကို သတိထားရပါတယ်။","chapter":9},{"id":"N067","type":"text","category":"vulnerable","answer":true,"jp":"高齢者が歩く道路では、横断に時間がかかることを考慮する。","mm":"အသက်ကြီးသူလမ်းလျှောက်ရာမှာ ဖြတ်ကူးချိန်ပိုကြာနိုင်တာကို စဉ်းစားရပါတယ်။","explanationJP":"歩行速度には個人差があります。","explanationMM":"လမ်းလျှောက်နှုန်းက လူတစ်ယောက်ချင်းကွာပါတယ်။","chapter":5},{"id":"N068","type":"text","category":"vulnerable","answer":false,"jp":"白杖を持った人を見かけても、車の進行が優先されるので配慮は不要である。","mm":"တုတ်ဖြူကိုင်သူတွေ့လည်း ကားဦးစားပေးလို့ ဂရုမစိုက်လည်းရတယ်။","explanationJP":"白杖を携えて歩く目の見えない人の通行を妨げないよう、一時停止するか徐行します。","explanationMM":"တုတ်ဖြူကိုင်၍ လမ်းလျှောက်နေသော အမြင်အာရုံမသန်စွမ်းသူကို မနှောင့်ယှက်စေရန် ရပ်ပါ သို့မဟုတ် ချက်ချင်းရပ်နိုင်သည့်အမြန်နှုန်းဖြင့် ဖြည်းဖြည်းမောင်းပါ။","chapter":5},{"id":"N070","type":"text","category":"vulnerable","answer":false,"jp":"車いす利用者が近くにいても、車から見えやすいので安全確認を省いてよい。","mm":"ဘီးတပ်ကုလားထိုင်အသုံးပြုသူဟာ ကားမှမြင်ရလွယ်လို့ စစ်ဖို့မလိုဘူး။","explanationJP":"見え方や移動速度を決めつけず確認します。","explanationMM":"မြင်ရမယ်လို့ မယူဆဘဲ စစ်ရပါတယ်။","chapter":5},{"id":"N073","type":"text","category":"vulnerable","answer":true,"jp":"補助が必要な乗客には、本人の希望も確認しながら丁寧に対応する。","mm":"အကူအညီလိုသူကို သူလိုချင်တာလည်းမေးပြီး သေချာကူညီရပါတယ်။","explanationJP":"安全と本人の意思の両方を尊重します。","explanationMM":"လုံခြုံရေးနဲ့ သူ့ဆန္ဒနှစ်ခုလုံး အရေးကြီးပါတယ်။","chapter":9},{"id":"N074","type":"text","category":"vulnerable","answer":false,"jp":"耳が聞こえにくい乗客には、説明をやめて一方的に発進すればよい。","mm":"အကြားအာရုံအားနည်းသော ခရီးသည်ကို ဆက်မရှင်းပြဘဲ ယာဉ်မောင်းက မိမိသဘောအတိုင်း ကားထွက်လိုက်လျှင် ရသည်။","explanationJP":"伝わる方法を工夫して安全に案内します。","explanationMM":"နားလည်နိုင်တဲ့နည်းနဲ့ ရှင်းပြရပါတယ်။","chapter":9},{"id":"N076","type":"text","category":"vulnerable","answer":false,"jp":"子どもが車の前に立っているときは、背が低いので必ず見えると考える。","mm":"ကလေးက ကားရှေ့ရပ်ရင် အမြဲမြင်နိုင်မယ်လို့ ယူဆတယ်။","explanationJP":"小さい子どもは死角に入りやすいです。","explanationMM":"ကလေးက ကားမြင်ကွယ်ရာဝင်လွယ်ပါတယ်။","chapter":5},{"id":"N079","type":"text","category":"weather","answer":true,"jp":"夜間は歩行者の発見が遅れることがあるため、速度と視線に注意する。","mm":"ညဘက်လူမြင်နောက်ကျနိုင်လို့ အမြန်နှုန်းနဲ့ အမြင်ကိုသတိထားရပါတယ်။","explanationJP":"暗い環境では危険発見が難しくなります。","explanationMM":"အမှောင်မှာ အန္တရာယ်မြင်ရခက်ပါတယ်။","chapter":6},{"id":"N080","type":"text","category":"weather","answer":false,"jp":"霧で前が見えにくいときは、普段どおりの速度を保てば安全である。","mm":"မြူကြောင့်မမြင်ရလည်း ပုံမှန်အရှိန်နဲ့မောင်းတာလုံခြုံတယ်။","explanationJP":"視界不良時は減速と十分な車間距離が必要です。","explanationMM":"မမြင်ရရင် အရှိန်လျှော့ပြီး အကွာအဝေးထားရပါတယ်။","chapter":6},{"id":"N081","type":"text","category":"weather","answer":true,"jp":"雪道では急ブレーキや急ハンドルを避け、滑りやすさに備える。","mm":"နှင်းလမ်းမှာ ရုတ်တရက်ဘရိတ်/ကွေ့တာကို ရှောင်ရပါတယ်။","explanationJP":"路面が滑りやすくなります。","explanationMM":"လမ်းချော်လွယ်ပါတယ်။","chapter":6},{"id":"N082","type":"text","category":"weather","answer":false,"jp":"雨天時は停止距離が短くなるため、車間距離を短くしてよい。","mm":"မိုးရွာနေချိန်တွင် ကားလုံးဝရပ်သွားရန် လိုအပ်သည့်အကွာအဝေး ပိုတိုလာသဖြင့် ရှေ့ကားနှင့် ပိုနီးနီး မောင်းလို့ရသည်။","explanationJP":"濡れた路面では停止距離が延びることがあります。","explanationMM":"လမ်းစိုရင် ရပ်အကွာအဝေးရှည်နိုင်ပါတယ်။","chapter":6},{"id":"N084","type":"text","category":"weather","answer":false,"jp":"夜間に対向車がまぶしいときは、目を閉じたまま走行する。","mm":"ညဘက် မျက်နှာချင်းဆိုင်မှ လာသောကား၏ မီးရောင်စူးလျှင် မျက်စိမှိတ်ထားလျက် ဆက်မောင်းသည်။","explanationJP":"視線や速度を調整して安全を確保します。","explanationMM":"အမြင်နဲ့အမြန်နှုန်းထိန်းပြီး လုံခြုံစေရပါတယ်။","chapter":6},{"id":"N085","type":"text","category":"weather","answer":true,"jp":"水たまりを通るときは、歩行者への水はねにも気を配る。","mm":"ရေအိုင်ဖြတ်ရာမှာ လူတွေဆီရေစင်တာကို သတိထားရပါတယ်။","explanationJP":"歩行者への迷惑や危険を避けます。","explanationMM":"လူတွေကို ထိခိုက်မှုမဖြစ်အောင် ရှောင်ရပါတယ်။","chapter":5},{"id":"N087","type":"text","category":"weather","answer":true,"jp":"強風時には、車体が横から押される可能性に注意する。","mm":"လေပြင်းတိုက်ရင် ကားကို ဘေးမှတွန်းနိုင်တာ သတိထားရပါတယ်။","explanationJP":"横風で進路が乱れることがあります。","explanationMM":"ဘေးလေကြောင့် လမ်းကြောင်းလွဲနိုင်ပါတယ်။","chapter":6},{"id":"N089","type":"text","category":"weather","answer":true,"jp":"夜間に停車する際は、周囲の車両からの見えやすさを考える。","mm":"ညဘက်ရပ်ရင် အခြားကားတွေမြင်နိုင်မလား စဉ်းစားရပါတယ်။","explanationJP":"後続車との事故防止に役立ちます。","explanationMM":"နောက်ကားနဲ့မတိုက်မိအောင် ကူညီပါတယ်။","chapter":6},{"id":"N091","type":"text","category":"emergency","answer":true,"jp":"事故が起きたときは、まず負傷者の救護と二次事故の防止に努める。","mm":"မတော်တဆဖြစ်ရင် ဒဏ်ရာရသူကယ်ဆယ်ရေးနဲ့ ထပ်မံတိုက်မိမှုကာကွယ်ရပါတယ်။","explanationJP":"直ちに停止し、負傷者を救護して道路上の危険を防ぎ、警察に報告します。","explanationMM":"ချက်ချင်းရပ်ပြီး ဒဏ်ရာရသူကို ကူညီပါ။ လမ်းပေါ်တွင် နောက်ထပ်အန္တရာယ်မဖြစ်အောင် ကာကွယ်ပြီး ရဲထံ သတင်းပို့ပါ။","chapter":10},{"id":"N094","type":"text","category":"emergency","answer":false,"jp":"交通事故の直後、車が動けば安全確認をせずにその場から立ち去ってよい。","mm":"တိုက်မိပြီး ကားမောင်းလို့ရရင် မစစ်ဘဲ ထွက်သွားလို့ရတယ်။","explanationJP":"救護・危険防止・報告などの義務があります。","explanationMM":"ကယ်ဆယ်ခြင်း၊ အန္တရာယ်ကာကွယ်ခြင်း၊ တိုင်ကြားခြင်း တာဝန်ရှိပါတယ်။","chapter":10},{"id":"N095","type":"text","category":"emergency","answer":true,"jp":"車両火災の兆候があるときは、周囲と乗客の安全を最優先に対応する。","mm":"ကားမီးလောင်မယ်ထင်ရင် ခရီးသည်နဲ့ပတ်ဝန်းကျင် လုံခြုံရေးဦးစားပေးရပါတယ်။","explanationJP":"安全な場所への避難が必要になる場合があります。","explanationMM":"လိုအပ်ရင် လုံခြုံရာထွက်ခွာရပါတယ်။","chapter":10},{"id":"N097","type":"text","category":"emergency","answer":true,"jp":"故障で停止する場合は、他車との衝突を防ぐ措置を考える。","mm":"ချို့ယွင်းပြီး ရပ်ရရင် အခြားကားတိုက်မိမှုကာကွယ်ဖို့ စဉ်းစားရပါတယ်။","explanationJP":"停止位置と周囲への注意が必要です。","explanationMM":"ရပ်မယ့်နေရာနဲ့ ပတ်ဝန်းကျင်ကို သတိထားရပါတယ်။","chapter":10},{"id":"N099","type":"text","category":"emergency","answer":true,"jp":"緊急車両が近づいてきた場合は、交通状況に応じた適切な方法で進路を譲る。","mm":"အရေးပေါ်ကားလာရင် လမ်းအခြေအနေအလိုက် လမ်းပေးရပါတယ်။","explanationJP":"緊急車両の通行を妨げないようにします。","explanationMM":"အရေးပေါ်ကားလမ်းကို မပိတ်ရပါ။","chapter":5},{"id":"N102","type":"text","category":"emergency","answer":false,"jp":"パンクした直後は、必ず急ブレーキを最大限かけるのが安全である。","mm":"တာယာပေါက်ချက်ချင်း ဘရိတ်အပြင်းဆုံးအုပ်တာ အမြဲလုံခြုံတယ်။","explanationJP":"急な操作を避け、車両を安定させて安全に減速します。","explanationMM":"ရုတ်တရက်မလုပ်ဘဲ ကားကိုထိန်းပြီး အရှိန်လျှော့ရပါတယ်။","chapter":6},{"id":"N103","type":"text","category":"traffic","chapter":1,"jp":"赤信号でも、青い左向きの矢印が点灯していれば、普通車は安全を確認して左折できる。","mm":"မီးနီနေပေမဲ့ ဘယ်ဘက်သို့ မီးစိမ်းမြားပြထားလျှင် သာမန်ကားသည် ဘေးကင်းကြောင်းစစ်ပြီး ဘယ်ကွေ့နိုင်သည်။","answer":true,"explanationJP":"矢印が示す方向への進行が認められる。","explanationMM":"မြားပြသည့်ဘက်သို့ သွားခွင့်ရှိသည်။"},{"id":"N104","type":"text","category":"traffic","chapter":1,"jp":"黄色の点滅信号では、普通車は必ず一時停止してから進む。","mm":"အဝါရောင်မီး မှိတ်တုတ်ပြလျှင် သာမန်ကားသည် အမြဲတမ်း အရင်ရပ်ပြီးမှ ဆက်သွားရသည်။","answer":false,"explanationJP":"周囲の交通に注意して進むことができる。","explanationMM":"အနီးအနား ယာဉ်နှင့်လူတို့ကို သတိပြုပြီး ဆက်သွားနိုင်သည်။"},{"id":"N105","type":"text","category":"traffic","chapter":1,"jp":"赤の点滅信号に向かうタクシーは、歩行者がいなくても一時停止する。","mm":"မှိတ်တုတ်ပြနေသော မီးနီဆီ ချဉ်းကပ်သည့် တက္ကစီသည် လူမရှိလည်း တစ်ကြိမ် အပြည့်အဝရပ်ရသည်။","answer":true,"explanationJP":"赤の点滅は車に一時停止を求める。","explanationMM":"မှိတ်တုတ်ပြသော မီးနီတွင် ယာဉ်ရပ်ရန် လိုသည်။"},{"id":"N106","type":"text","category":"traffic","chapter":1,"jp":"補助標識に時間帯が示されているときは、本標識と合わせて規制の内容を判断する。","mm":"အောက်ခံဆိုင်းဘုတ်တွင် အချိန်ကာလပြထားလျှင် ပင်မဆိုင်းဘုတ်နှင့် တွဲဖတ်ပြီး ကန့်သတ်ချက်ကို ဆုံးဖြတ်ရသည်။","answer":true,"explanationJP":"補助標識は規制の時間や対象などを示す。","explanationMM":"အောက်ခံဆိုင်းဘုတ်က ကန့်သတ်သည့်အချိန်၊ သက်ဆိုင်သည့်ယာဉ် စသည်တို့ကို ဖော်ပြသည်။"},{"id":"N107","type":"text","category":"traffic","chapter":1,"jp":"車両進入禁止の標識がある入口でも、目的地がすぐ先なら普通車で入れる。","mm":"ယာဉ်ဝင်ခွင့်ပိတ်ထားသည့် လမ်းဝ၌ ခရီးဆုံးက အနီးမှာရှိလျှင် သာမန်ကားဖြင့် ဝင်နိုင်သည်။","answer":false,"explanationJP":"目的地までの距離は進入禁止の例外にならない。","explanationMM":"ခရီးဆုံး နီးခြင်းကြောင့် ဝင်ခွင့်မရပါ။"},{"id":"N108","type":"text","category":"traffic","chapter":1,"jp":"道路に荷箱を置いて通行を妨げても、すぐ取りに戻ればよい。","mm":"လမ်းပေါ် ပစ္စည်းသေတ္တာချထားပြီး သွားလာမှုကို ပိတ်ဆို့သော်လည်း ချက်ချင်းပြန်လာယူလျှင် ရသည်။","answer":false,"explanationJP":"交通の妨害になるような物の置き方をしてはいけない。","explanationMM":"သွားလာမှုကို ပိတ်ဆို့စေမည့်ပုံစံဖြင့် ပစ္စည်းချမထားရပါ။"},{"id":"N109","type":"text","category":"traffic","chapter":1,"jp":"走っている車の窓から空き缶を投げてはいけない。","mm":"မောင်းနေသည့်ကားပြတင်းပေါက်မှ ဘူးခွံ ပစ်မချရပါ။","answer":true,"explanationJP":"後続車や歩行者に危険を及ぼす。","explanationMM":"နောက်ကားနှင့် လမ်းသွားသူများကို အန္တရာယ်ဖြစ်စေနိုင်သည်။"},{"id":"N110","type":"text","category":"traffic","chapter":1,"jp":"警察官が腕を横に水平に伸ばしているとき、その胸に向かって進む車には青信号と同じ意味になる。","mm":"ရဲက လက်ကို ဘေးသို့ အလျားလိုက် ဆန့်ထားလျှင် ရဲ၏ရင်ဘတ်ဆီ ဦးတည်လာသည့်ကားအတွက် မီးစိမ်းနှင့် အဓိပ္ပာယ်တူသည်။","answer":false,"explanationJP":"胸や背中に向かう交通には赤信号と同じ意味になる。","explanationMM":"ရဲ၏ ရှေ့တည့်တည့် သို့မဟုတ် နောက်တည့်တည့်မှ လာလျှင် မီးနီနှင့် တူသည်။"},{"id":"N111","type":"text","category":"traffic","chapter":5,"jp":"対面する信号が青でも、右折する車は対向する直進車の進行を妨げてはいけない。","mm":"ရှေ့မီးပွိုင့် စိမ်းနေလည်း ညာကွေ့မည့်ကားက မျက်နှာချင်းဆိုင်မှ တည့်တည့်လာသော ကားကို မပိတ်ဆို့ရပါ။","answer":true,"explanationJP":"青信号は右折車に優先権を与えるものではない。","explanationMM":"မီးစိမ်းခြင်းက ညာကွေ့ကားကို ဦးစားပေးအခွင့် မပေးပါ။"},{"id":"N112","type":"text","category":"traffic","chapter":5,"jp":"歩道を横切って店の駐車場へ入るときは、歩行者が見えなくても歩道の直前で一時停止する。","mm":"ဆိုင်ကားရပ်ကွင်းထဲဝင်ရန် လူသွားစင်္ကြံကို ဖြတ်ရလျှင် လူမမြင်ရလည်း စင်္ကြံမတိုင်မီ အပြည့်အဝရပ်ရသည်။","answer":true,"explanationJP":"歩道を横断する車には停止と歩行者の保護が求められる。","explanationMM":"စင်္ကြံဖြတ်သည့် ယာဉ်သည် ရပ်ပြီး လမ်းသွားသူကို ကာကွယ်ရသည်။"},{"id":"N113","type":"text","category":"traffic","chapter":5,"jp":"交差点で左折するときは、あらかじめできるだけ道路の左端に寄る。","mm":"လမ်းဆုံတွင် ဘယ်ကွေ့မည်ဆိုလျှင် ကြိုတင်၍ တတ်နိုင်သမျှ လမ်းဘယ်စွန်းသို့ ကပ်ထားရသည်။","answer":true,"explanationJP":"左端に寄り、巻き込みに注意して徐行する。","explanationMM":"ဘယ်စွန်းကပ်ပြီး ဘေးမှယာဉ်ကို ကွေ့တိုက်မိခြင်းမရှိစေရန် ဖြည်းဖြည်းကွေ့ရသည်။"},{"id":"N114","type":"text","category":"traffic","chapter":5,"jp":"右折の合図は、交差点に入ってから出せば間に合う。","mm":"ညာကွေ့မည့် အချက်ပြမီးကို လမ်းဆုံထဲရောက်မှ ပြလည်း အချိန်မီသည်။","answer":false,"explanationJP":"右折する地点の約三十メートル手前で合図を出す。","explanationMM":"ကွေ့မည့်နေရာမတိုင်မီ မီတာ ၃၀ ခန့်အလိုကတည်းက အချက်ပြရသည်။"},{"id":"N115","type":"text","category":"traffic","chapter":5,"jp":"歩行者との安全な間隔を取れない狭い道では、その側を通るときに徐行する。","mm":"လမ်းကျဉ်း၌ လမ်းသွားသူနှင့် ဘေးကင်းလောက်သည့် အကွာအဝေး မထားနိုင်လျှင် သူ့ဘေးမှ ဖြည်းဖြည်းဖြတ်ရသည်။","answer":true,"explanationJP":"歩行者との間隔に応じて通り方を変える。","explanationMM":"လမ်းသွားသူနှင့် ကြားအကွာအဝေးအလိုက် ဖြတ်သန်းပုံကို ပြောင်းရသည်။"},{"id":"N116","type":"text","category":"traffic","chapter":5,"jp":"交差点内で待つ客がいれば、短い乗車のために任意に停車できる。","mm":"လမ်းဆုံထဲတွင် ခရီးသည်စောင့်နေလျှင် ခဏတင်ရန် မိမိဆန္ဒအလျောက် ရပ်နိုင်သည်။","answer":false,"explanationJP":"交差点内は乗客を拾うために停車できる場所ではない。","explanationMM":"လမ်းဆုံထဲတွင် ခရီးသည်တင်ရန် ကားမရပ်ရပါ။"},{"id":"N117","type":"text","category":"traffic","chapter":5,"jp":"消火栓から三メートルの場所なら、車を離れて客を迎えに行っても駐車違反にならない。","mm":"မီးသတ်ရေပေးပေါက်မှ သုံးမီတာအကွာတွင် ကားထားခဲ့ပြီး ခရီးသည်သွားခေါ်လျှင် ကားရပ်ထားမှု စည်းကမ်းမချိုးဖောက်ပါ။","answer":false,"explanationJP":"消火栓から五メートル以内は駐車禁止である。","explanationMM":"မီးသတ်ရေပေးပေါက်မှ ငါးမီတာအတွင်း ကားရပ်ထားခွင့် မရှိပါ။"},{"id":"N118","type":"text","category":"traffic","chapter":5,"jp":"坂の頂上付近では、前の車が遅くても追越しをしてはいけない。","mm":"တောင်တက်လမ်း ထိပ်အနီးတွင် ရှေ့ကားနှေးလည်း ကျော်မတက်ရပါ။","answer":true,"explanationJP":"頂上付近は対向交通を見通しにくい追越し禁止場所である。","explanationMM":"လမ်းထိပ်အနီးတွင် ဆန့်ကျင်ဘက်ယာဉ်ကို မမြင်ရလွယ်သဖြင့် ကျော်တက်ခွင့် ပိတ်ထားသည်။"},{"id":"N119","type":"text","category":"traffic","chapter":5,"jp":"後車に追い越されている間は、早く追越しを終わらせるために加速する。","mm":"နောက်ကားက မိမိကို ကျော်တက်နေစဉ် မြန်မြန်ကျော်ပြီးစေရန် မိမိက အရှိန်တင်ရသည်။","answer":false,"explanationJP":"追越しが終わるまで速度を増してはいけない。","explanationMM":"ကျော်တက်မှု မပြီးမချင်း မိမိအရှိန်ကို မတိုးရပါ။"},{"id":"N120","type":"text","category":"traffic","chapter":5,"jp":"オートマチック車では、平らな道でもＤに入れたままブレーキを離すと車が動き出すことがある。","mm":"အော်တိုကားကို D ထားပြီး ဘရိတ်လွှတ်လျှင် လမ်းပြန့်ပေါ်မှာပင် ကားစရွေ့နိုင်သည်။","answer":true,"explanationJP":"クリープ現象があるため、停止中はブレーキを確実に踏む。","explanationMM":"ကားအလိုအလျောက် တရွေ့ရွေ့ သွားနိုင်သဖြင့် ရပ်နေချိန် ဘရိတ်ကို သေချာနင်းထားရသည်။"},{"id":"N121","type":"text","category":"traffic","chapter":5,"jp":"バックするときは、カメラに人が映っていなければ車の左右を見る必要はない。","mm":"နောက်ဆုတ်ချိန် ကင်မရာ၌ လူမပေါ်လျှင် ကားဘယ်ညာကို ကြည့်ရန် မလိုပါ။","answer":false,"explanationJP":"カメラの範囲外も自分で確認する。","explanationMM":"ကင်မရာမမြင်နိုင်သော နေရာကိုလည်း ကိုယ်တိုင် စစ်ဆေးရသည်။"},{"id":"N122","type":"text","category":"traffic","chapter":5,"jp":"追越しのために進路を変える前には、後車がすでに自分を追い越そうとしていないか確かめる。","mm":"ကျော်တက်ရန် လမ်းကြောင်းမပြောင်းမီ နောက်ကားက မိမိကို ကျော်တက်နေပြီလား စစ်ဆေးရသည်။","answer":true,"explanationJP":"後車が先に追越しを始めていると危険である。","explanationMM":"နောက်ကားက အရင်စကျော်နေပါက လမ်းကြောင်းပြောင်းခြင်း အန္တရာယ်ရှိသည်။"},{"id":"N123","type":"text","category":"traffic","chapter":5,"jp":"運行中の路線バスが停留所から発進の合図をした。急ブレーキなどを必要としないときは、その発進を妨げない。","mm":"လိုင်းကားက မှတ်တိုင်မှထွက်ရန် အချက်ပြသည်။ မိမိက ရုတ်တရက် ဘရိတ်အုပ်ရခြင်းမျိုး မလိုလျှင် ၎င်းထွက်ခွာမှုကို မပိတ်ဆို့ရပါ။","answer":true,"explanationJP":"無理のない減速でバスが発進できるようにする。","explanationMM":"အန္တရာယ်မရှိဘဲ အရှိန်လျှော့နိုင်လျှင် ဘတ်စ်ကားထွက်နိုင်ရန် လမ်းပေးရသည်။"},{"id":"N124","type":"text","category":"traffic","chapter":1,"jp":"道路に寝そべって通行を妨げる行為は、車の少ない時間でも許されない。","mm":"ယာဉ်နည်းသည့် အချိန်ဖြစ်လည်း လမ်းပေါ်လှဲလျောင်းပြီး သွားလာမှုကို ပိတ်ဆို့ခွင့် မရှိပါ။","answer":true,"explanationJP":"交通を妨げるように道路で寝そべってはいけない。","explanationMM":"သူတစ်ပါး သွားလာ၍မရအောင် လမ်းပေါ် လှဲမနေရပါ။"},{"id":"N125","type":"text","category":"traffic","chapter":1,"jp":"赤信号で左折できる標示板がある場所では、歩行者に注意して左折できる。","mm":"မီးနီချိန် ဘယ်ကွေ့ခွင့်ပြသည့် သီးသန့်ဆိုင်းဘုတ်ရှိလျှင် လမ်းသွားသူကို သတိပြုပြီး ဘယ်ကွေ့နိုင်သည်။","answer":true,"explanationJP":"左折可の標示板があっても、歩行者などの通行を妨げてはいけない。","explanationMM":"ဘယ်ကွေ့ခွင့်ဆိုင်းဘုတ်ရှိလည်း လမ်းသွားသူတို့ကို မပိတ်ဆို့ရပါ။"},{"id":"N126","type":"text","category":"expressway","chapter":7,"jp":"高速道路に入る前には、次の給油場所まで足りる燃料があるか確認する。","mm":"အမြန်လမ်းမဝင်မီ နောက်တစ်ကြိမ် ဆီဖြည့်နိုင်မည့်နေရာအထိ ဆီလုံလောက်သလား စစ်ရသည်။","answer":true,"explanationJP":"本線での燃料切れを防ぐため、出発前に残量と給油場所を確認する。","explanationMM":"လမ်းမပေါ် ဆီပြတ်ခြင်းကို ကာကွယ်ရန် ခရီးမစမီ ဆီလက်ကျန်နှင့် ဆီဆိုင်နေရာကို စစ်ရသည်။"},{"id":"N127","type":"text","category":"expressway","chapter":7,"jp":"高速道路の加速車線では、本線の交通に合わせられるよう速度を調整する。","mm":"အမြန်လမ်း အရှိန်ယူလမ်းကြော၌ အဓိကလမ်းကြော၏ ယာဉ်စီးဆင်းမှုနှင့် ကိုက်ညီအောင် အရှိန်ညှိရသည်။","answer":true,"explanationJP":"速度差を小さくして安全な間隔を選んで合流する。","explanationMM":"အရှိန်ကွာဟချက်ကို လျှော့ပြီး ဘေးကင်းလောက်သော နေရာလွတ်၌ ဝင်ပေါင်းရသည်။"},{"id":"N128","type":"text","category":"expressway","chapter":7,"jp":"高速道路へ合流するときは、合図を出した車が本線の車より優先される。","mm":"အမြန်လမ်းသို့ ဝင်ပေါင်းချိန် အချက်ပြထားသော ကားက ပင်မလမ်းကြောရှိ ကားထက် ဦးစားပေးခံရသည်။","answer":false,"explanationJP":"合流する側は本線を通行する車の進行を妨げてはいけない。","explanationMM":"ဝင်ပေါင်းသည့်ဘက်က ပင်မလမ်းကြောရှိကား၏ သွားလာမှုကို မပိတ်ဆို့ရပါ။"},{"id":"N129","type":"text","category":"expressway","chapter":7,"jp":"高速道路の出口に減速車線があるときは、そこに入ってから十分に速度を落とす。","mm":"အမြန်လမ်းအထွက်၌ အရှိန်လျှော့လမ်းကြောရှိလျှင် ထိုလမ်းကြောဝင်ပြီးမှ အရှိန်ကို လုံလောက်စွာ လျှော့ရသည်။","answer":true,"explanationJP":"後続車に注意して減速車線に移り、出口のカーブに備える。","explanationMM":"နောက်ကားကို သတိပြုပြီး အရှိန်လျှော့လမ်းကြောထဲ ဝင်ကာ အထွက်လမ်းအကွေ့အတွက် ပြင်ဆင်ရသည်။"},{"id":"N130","type":"text","category":"expressway","chapter":7,"jp":"高速道路の出口を通り過ぎたら、路肩を使って分岐までバックしてよい。","mm":"အမြန်လမ်းအထွက် ကျော်သွားလျှင် လမ်းပခုံးမှ နောက်ဆုတ်ပြီး လမ်းခွဲဆီ ပြန်သွားနိုင်သည်။","answer":false,"explanationJP":"後退せずに次の出口まで進む。","explanationMM":"နောက်မဆုတ်ဘဲ နောက်အထွက်အထိ ဆက်သွားရသည်။"},{"id":"N131","type":"text","category":"expressway","chapter":7,"jp":"高速道路が渋滞していても、普通のタクシーは客を急いで送るために路肩を走ってはいけない。","mm":"အမြန်လမ်းကားပိတ်နေလည်း သာမန်တက္ကစီသည် ခရီးသည်ကို အမြန်ပို့ရန် လမ်းပခုံးပေါ်မှ မမောင်းရပါ။","answer":true,"explanationJP":"路肩は渋滞を追い抜くための走行場所ではない。","explanationMM":"လမ်းပခုံးကို ကားတန်းကျော်ရန် အသုံးမပြုရပါ။"},{"id":"N132","type":"text","category":"expressway","chapter":7,"jp":"高速道路の本線では、乗客に景色を撮らせるためなら短時間停車してよい。","mm":"အမြန်လမ်း ပင်မလမ်းကြော၌ ခရီးသည်ကို ရှုခင်းဓာတ်ပုံရိုက်စေရန် ခဏရပ်ပေးနိုင်သည်။","answer":false,"explanationJP":"撮影は本線に停車できる理由にならない。","explanationMM":"ဓာတ်ပုံရိုက်ခြင်းသည် ပင်မလမ်းကြောပေါ် ရပ်ရန် ခွင့်ပြုထားသည့် အကြောင်းရင်း မဟုတ်ပါ။"},{"id":"N133","type":"text","category":"expressway","chapter":7,"jp":"高速道路で故障し路肩に止めたら、後続車に注意し、乗客とともにガードレールの外など安全な場所に避難する。","mm":"အမြန်လမ်းတွင် ကားပျက်၍ လမ်းပခုံးပေါ် ရပ်ပြီးလျှင် နောက်ကားကို သတိပြုပြီး ခရီးသည်နှင့်အတူ အကာအရံအပြင်ဘက်ကဲ့သို့ ဘေးကင်းရာသို့ ရွှေ့ရသည်။","answer":true,"explanationJP":"停止車両に後続車が衝突する危険があるため、車内で救援を待たない。","explanationMM":"နောက်ကားက ဝင်တိုက်နိုင်သဖြင့် ကားထဲတွင် အကူအညီ မစောင့်ရပါ။"},{"id":"N134","type":"text","category":"expressway","chapter":7,"jp":"高速道路で追越しを終えた後も、空いていれば追越車線をそのまま走り続けてよい。","mm":"အမြန်လမ်း၌ ကျော်တက်ပြီးနောက် လမ်းရှင်းနေလျှင် ကျော်တက်လမ်းကြောထဲ ဆက်တိုက်မောင်းနိုင်သည်။","answer":false,"explanationJP":"追越しを終えたら安全を確認して走行車線へ戻る。","explanationMM":"ကျော်တက်ပြီးလျှင် ဘေးကင်းကြောင်း စစ်ကာ ပုံမှန်မောင်းနှင်သည့် လမ်းကြောသို့ ပြန်ဝင်ရသည်။"},{"id":"N135","type":"text","category":"expressway","chapter":7,"jp":"ＥＴＣレーンは開閉バーが開く予定なので、時速三十キロのまま入ってよい。","mm":"ETC လမ်းကြောရှိ တံခါးတံ တက်ပေးမည်ဖြစ်၍ တစ်နာရီ ၃၀ ကီလိုမီတာနှုန်းဖြင့် ဝင်နိုင်သည်။","answer":false,"explanationJP":"時速二十キロ以下で進入し、前車が止まっても対応できる間隔を取る。","explanationMM":"တစ်နာရီ ၂၀ ကီလိုမီတာနှုန်း သို့မဟုတ် ယင်းထက် နှေးစွာဝင်ပြီး ရှေ့ကားရပ်လျှင် ရပ်နိုင်မည့် အကွာအဝေးထားရသည်။"},{"id":"N136","type":"text","category":"owner","chapter":11,"jp":"車の使用者は、車を使う道路を保管場所として常用してよい。","mm":"ယာဉ်အသုံးပြုသူသည် မောင်းနှင်သည့် လမ်းမကို ကားသိမ်းထားရာ နေရာအဖြစ် ပုံမှန်အသုံးပြုနိုင်သည်။","answer":false,"explanationJP":"車の保管場所は道路以外の場所に確保する。","explanationMM":"ကားသိမ်းထားရန် လမ်းမပေါ်မှအပ အခြားနေရာတွင် စီစဉ်ထားရသည်။"},{"id":"N137","type":"text","category":"owner","chapter":11,"jp":"自動車の使用者は、必要な点検や整備を行い、車が安全に走れる状態を保つ。","mm":"ယာဉ်အသုံးပြုသူက လိုအပ်သည့် စစ်ဆေးမှု၊ ပြုပြင်ထိန်းသိမ်းမှုကို လုပ်ပြီး ကားကို ဘေးကင်းစွာ မောင်းနိုင်သည့် အခြေအနေ ထိန်းထားရသည်။","answer":true,"explanationJP":"使用者には保安基準に適合するよう維持する責任がある。","explanationMM":"ယာဉ်ဘေးကင်းရေး စံနှုန်းနှင့် ကိုက်ညီအောင် ထိန်းသိမ်းရန် အသုံးပြုသူတွင် တာဝန်ရှိသည်။"}],"categories":{"traffic":["基本交通ルール","အခြေခံယာဉ်စည်းကမ်း"],"safety":["安全運転","လုံခြုံစွာမောင်းနှင်ခြင်း"],"passenger":["旅客対応","ခရီးသည်နှင့် ဆက်ဆံမှု"],"professional":["第二種特有ルール","ဒုတိယအမျိုးအစား အထူးစည်းကမ်း"],"boarding":["乗降時の安全","တက်ဆင်းချိန် လုံခြုံရေး"],"vulnerable":["高齢者・子ども・障害者への配慮","သက်ကြီး၊ ကလေး၊ မသန်စွမ်းသူ"],"weather":["夜間・雨天・悪天候","ညပိုင်း၊ မိုးရွာချိန်"],"emergency":["緊急時対応","အရေးပေါ်အခြေအနေ"],"expressway":["高速道路","အမြန်လမ်း"],"owner":["使用者の義務","ယာဉ်အသုံးပြုသူ၏ တာဝန်"]},"illustrations":[{"id":"I01","kind":"crosswalk","title":"横断歩道の前にいる歩行者","mm":"လူကူးမျဉ်းနားမှာ လူရှိနေခြင်း","statements":[{"jp":"歩行者が渡ろうとしている場合は、手前で止まる。","mm":"လူဖြတ်ကူးတော့မယ်ဆိုရင် မျဉ်းရှေ့မှာရပ်ရတယ်။","answer":true,"explanationJP":"歩行者優先です。","explanationMM":"လူကိုဦးစားပေးရပါတယ်။"},{"jp":"前車が横断歩道を通過した後も、自分で横断者の有無を確かめる。","mm":"ရှေ့ကားက လူကူးမျဉ်းကျားကို ကျော်ပြီးလည်း လူကူးနေသလား ကိုယ်တိုင်စစ်ရသည်။","answer":true,"explanationJP":"前車の通過だけでは、自車の前が安全とは判断できない。","explanationMM":"ရှေ့ကားဖြတ်သွားရုံဖြင့် မိမိကားရှေ့ ဘေးကင်းသည်ဟု မဆုံးဖြတ်နိုင်ပါ။"},{"jp":"横断歩道の付近では、飛び出しにも注意する。","mm":"လူကူးမျဉ်းနားမှာ ရုတ်တရက်ထွက်လာနိုင်တာ သတိထားရတယ်။","answer":true,"explanationJP":"見落としを防ぎます。","explanationMM":"မမြင်မိတာကိုကာကွယ်ရပါတယ်။"}]},{"id":"I02","kind":"bicycle","title":"タクシーの左側を走る自転車","mm":"တက္ကစီဘယ်ဘက် စက်ဘီးရှိခြင်း","statements":[{"jp":"方向指示器を出せば、確認せず曲がってよい。","mm":"မီးပြထားရင် မစစ်ဘဲကွေ့လို့ရတယ်။","answer":false,"explanationJP":"合図だけでは不十分です。","explanationMM":"မီးပြရုံနဲ့မလုံလောက်ပါ။"},{"jp":"自転車の進路をふさがないように注意する。","mm":"စက်ဘီးသွားနေသည့် လမ်းကြောင်းကို မပိတ်မိအောင် သတိထားသည်။","answer":true,"explanationJP":"周囲の交通にも配慮します。","explanationMM":"ပတ်ဝန်းကျင်ယာဉ်ကိုလည်း ဂရုစိုက်ရပါတယ်။"},{"jp":"左のミラーから自転車が消えたので、もう左折してよい。","mm":"ဘယ်မှန်ထဲမှ စက်ဘီးပျောက်သွားသဖြင့် ယခု ဘယ်ကွေ့နိုင်ပြီ။","answer":false,"explanationJP":"自転車が死角に入った可能性がある。","explanationMM":"စက်ဘီးက မှန်မှ မမြင်နိုင်သည့် နေရာထဲ ရောက်နေနိုင်သည်။"}]},{"id":"I03","kind":"door","title":"乗客がドアを開けようとしている","mm":"ခရီးသည်တံခါးဖွင့်တော့မယ်","statements":[{"jp":"客が歩道を見ていれば、運転者が後方を見る前にドアを少し開けてもよい。","mm":"ခရီးသည်က လူသွားစင်္ကြံကို ကြည့်နေပါက ယာဉ်မောင်း နောက်ဘက်မစစ်မီ တံခါးအနည်းငယ် ဖွင့်နိုင်သည်။","answer":false,"explanationJP":"少し開いただけでも後ろから来る二輪車に当たるおそれがある。","explanationMM":"အနည်းငယ် ဖွင့်ရုံနှင့်ပင် နောက်မှလာသော နှစ်ဘီးယာဉ်ကို ထိနိုင်သည်။"},{"jp":"後方の二輪車を確認してからドアを開けるようにする。","mm":"နောက်ကဆိုင်ကယ်ကို စစ်ပြီးမှတံခါးဖွင့်စေရတယ်။","answer":true,"explanationJP":"ドア開放事故を防ぎます。","explanationMM":"တံခါးဖွင့်မှုတိုက်မိခြင်း ကာကွယ်ပါတယ်။"},{"jp":"停車中はドアを開けても周囲に危険はない。","mm":"ရပ်ထားရင် တံခါးဖွင့်တာ အန္တရာယ်မရှိဘူး။","answer":false,"explanationJP":"停車中でも周囲に車両がいます。","explanationMM":"ရပ်ထားလည်း အခြားယာဉ်လာနိုင်ပါတယ်။"}]},{"id":"I04","kind":"rain","title":"雨の夜、濡れた道路","mm":"မိုးည လမ်းစိုနေခြင်း","statements":[{"jp":"速度を抑えて走行する。","mm":"အရှိန်လျှော့ပြီးမောင်းရတယ်။","answer":true,"explanationJP":"視界と路面の悪化に備えます。","explanationMM":"မြင်ကွင်းနဲ့ လမ်းချော်မှုကိုသတိထားရပါတယ်။"},{"jp":"制動距離は必ず短くなるので車間を詰める。","mm":"ဘရိတ်အကွာအဝေးတိုလို့ ရှေ့ကားနဲ့နီးနီးမောင်းရတယ်။","answer":false,"explanationJP":"濡れた路面では制動距離が延びます。","explanationMM":"လမ်းစိုရင် ဘရိတ်အကွာအဝေးရှည်နိုင်ပါတယ်။"},{"jp":"路面に映った光だけで歩行者の位置が分かるので、道路の端を見る必要はない。","mm":"လမ်းပေါ်က အလင်းပြန်ရောင်ဖြင့် လူ၏နေရာကို သိနိုင်သဖြင့် လမ်းစွန်းဘက် ကြည့်ရန် မလိုပါ။","answer":false,"explanationJP":"反射で人が見えにくくなることがある。","explanationMM":"အလင်းပြန်ခြင်းကြောင့် လူကို ပိုမြင်ရခက်နိုင်သည်။"}]},{"id":"I05","kind":"school","title":"学校付近の狭い道路","mm":"ကျောင်းနား လမ်းကျဉ်း","statements":[{"jp":"子どもがこちらを見ていても、車に気付いたとは決めつけない。","mm":"ကလေးက မိမိဘက်ကြည့်နေသော်လည်း ကားကို သတိထားမိပြီဟု အတပ်မယူရပါ။","answer":true,"explanationJP":"子どもは車の速さや距離を正しく判断できないことがある。","explanationMM":"ကလေးသည် ကား၏ အရှိန်နှင့် အကွာအဝေးကို အကဲဖြတ်မှားနိုင်သည်။"},{"jp":"安全に停止できる速度で進む。","mm":"လိုရင်ရပ်နိုင်မယ့်အရှိန်နဲ့သွားရတယ်။","answer":true,"explanationJP":"危険に備えて速度を調整します。","explanationMM":"အန္တရာယ်ကာကွယ်ဖို့ အရှိန်ထိန်းရပါတယ်။"},{"jp":"子どもが急に道路に出ることを予測する。","mm":"ကလေးတွေ ရုတ်တရက်လမ်းပေါ်ထွက်နိုင်တာ သတိထားရတယ်။","answer":true,"explanationJP":"子どもの動きを予測します。","explanationMM":"ကလေးလှုပ်ရှားမှုကို ခန့်မှန်းရပါတယ်။"}]},{"id":"I06","kind":"emergency","title":"対面通行の交差点にサイレンを鳴らした救急車が接近","mm":"နှစ်ဖက်သွားလမ်းဆုံသို့ ဥဩသံပေးထားသော လူနာတင်ယာဉ် ချဉ်းကပ်လာသည်။","statements":[{"jp":"急な操作で他車と衝突しないよう注意する。","mm":"ရုတ်တရက်မောင်းလို့ အခြားကားမတိုက်အောင်သတိထားရတယ်။","answer":true,"explanationJP":"安全に進路を譲ることが大切です。","explanationMM":"လုံခြုံစွာလမ်းပေးတာ အရေးကြီးပါတယ်။"},{"jp":"交差点を避け、道路の左側に寄って一時停止する。","mm":"လမ်းဆုံကို ရှောင်၍ လမ်း၏ ဘယ်ဘက်သို့ ကပ်ပြီး ရပ်သည်။","answer":true,"explanationJP":"この図は一方通行ではありません。交差点やその付近では、救急車の進路を空けて停止します。","explanationMM":"ဤပုံသည် နှစ်ဖက်သွားလမ်းဖြစ်သည်။ လမ်းဆုံနှင့် အနီးဝန်းကျင်တွင် လူနာတင်ယာဉ်အတွက် လမ်းဖယ်ပေးပြီး ရပ်ရသည်။"},{"jp":"自分が青信号なら、緊急車両の存在を無視して進む。","mm":"ကိုယ့်မီးစိမ်းရင် လူနာတင်ကားကို လျစ်လျူရှုတယ်။","answer":false,"explanationJP":"周囲の状況に応じて適切に対応します。","explanationMM":"အခြေအနေအလိုက် သင့်လျော်စွာလုပ်ရပါတယ်။"}]},{"id":"I07","kind":"blindspot","title":"停車車両の陰に歩行者","mm":"ရပ်ကားနောက်မှာ လူရှိနိုင်ခြင်း","statements":[{"jp":"歩行者の足が見えなくなれば、停車車両の前を通り過ぎたと判断できる。","mm":"လမ်းသွားသူ၏ ခြေထောက်ကို မမြင်ရတော့လျှင် ရပ်ထားသောကားရှေ့မှ ဖြတ်သွားပြီးပြီဟု ယူဆနိုင်သည်။","answer":false,"explanationJP":"車体に隠れているだけかもしれない。","explanationMM":"ကားကိုယ်ထည်က ကွယ်ထားခြင်းသာ ဖြစ်နိုင်သည်။"},{"jp":"停車車両があれば、その横は必ず安全である。","mm":"ရပ်ကားဘေးဟာ အမြဲလုံခြုံတယ်။","answer":false,"explanationJP":"死角の人を見落とす危険があります。","explanationMM":"မြင်ကွယ်ရာလူကို မမြင်မိနိုင်ပါတယ်။"},{"jp":"状況に応じて速度を落とす。","mm":"အခြေအနေအလိုက် အရှိန်လျှော့ရတယ်။","answer":true,"explanationJP":"危険に備えるためです。","explanationMM":"အန္တရာယ်ကာကွယ်ဖို့ပါ။"}]},{"id":"I08","kind":"busstop","title":"停留所に停車中のバス","mm":"ကားမှတ်တိုင်မှာ ဘတ်စ်ကားရပ်နေခြင်း","statements":[{"jp":"バスの周囲は歩行者がいないと決めつける。","mm":"ဘတ်စ်ကားအနားမှာ လူမရှိဘူးလို့ ယူဆတယ်။","answer":false,"explanationJP":"乗降客が近くにいる可能性があります。","explanationMM":"တက်ဆင်းတဲ့ခရီးသည်ရှိနိုင်ပါတယ်။"},{"jp":"バスの横へ出てから対向車を確かめればよい。","mm":"ဘတ်စ်ကားဘေးသို့ ထွက်ပြီးမှ မျက်နှာချင်းဆိုင် ယာဉ်ရှိမရှိ စစ်လည်း ရသည်။","answer":false,"explanationJP":"横へ出る前に、対向交通と乗降客の動きを確認する。","explanationMM":"ဘေးသို့ မထွက်မီ ဆန့်ကျင်ဘက်ယာဉ်နှင့် အတက်အဆင်းလုပ်သူတို့၏ လှုပ်ရှားမှုကို စစ်ရသည်။"},{"jp":"バスの陰から人が出ることに注意する。","mm":"ဘတ်စ်ကားနောက်က လူထွက်လာနိုင်တာကို သတိထားရတယ်။","answer":true,"explanationJP":"バスの周囲には死角があります。","explanationMM":"ဘတ်စ်ကားဘေးမှာ မြင်ကွယ်ရာရှိပါတယ်။"}]},{"id":"I09","kind":"hospital","title":"病院前で高齢者が横断","mm":"ဆေးရုံရှေ့မှာ အသက်ကြီးသူဖြတ်ကူးခြင်း","statements":[{"jp":"車両を完全に停止できるよう準備する。","mm":"ကားလုံးဝရပ်နိုင်အောင် ပြင်ဆင်ရတယ်။","answer":true,"explanationJP":"横断中の事故防止に努めます。","explanationMM":"လူကူးချိန်တိုက်မိမှုကာကွယ်ရပါတယ်။"},{"jp":"歩行速度に合わせて余裕を持って待つ。","mm":"လမ်းလျှောက်နှုန်းအလိုက် အချိန်ပေးစောင့်ရတယ်။","answer":true,"explanationJP":"歩行者の安全を優先します。","explanationMM":"လမ်းလျှောက်သူလုံခြုံရေးဦးစားပေးရပါတယ်။"},{"jp":"歩行が遅いときは、警音器を鳴らし急がせる。","mm":"ဖြည်းဖြည်းသွားရင် ဟွန်းတီးပြီး အလျင်လိုခိုင်းရတယ်။","answer":false,"explanationJP":"歩行者を威圧する行動は避けます。","explanationMM":"လူကိုဖိအားပေးတာကို ရှောင်ရပါတယ်။"}]},{"id":"I10","kind":"night","title":"夜間の住宅街と自転車","mm":"ညဘက် အိမ်ရာလမ်းနဲ့ စက်ဘီး","statements":[{"jp":"見えにくい自転車を早期に発見できるよう注意する。","mm":"မြင်ရခက်တဲ့စက်ဘီးကို စောစောမြင်အောင် သတိထားရတယ်။","answer":true,"explanationJP":"夜間は発見が遅れることがあります。","explanationMM":"ညဘက် မြင်နောက်ကျနိုင်ပါတယ်။"},{"jp":"街灯が少ない道では、速度を上げた方が安全である。","mm":"လမ်းမီးနည်းရင် အရှိန်တိုးတာ ပိုလုံခြုံတယ်။","answer":false,"explanationJP":"視界不良では速度を控えます。","explanationMM":"မမြင်ရရင် အရှိန်လျှော့ရပါတယ်။"},{"jp":"道路の端から人が出る可能性も考える。","mm":"လမ်းဘေးက လူထွက်လာနိုင်တာကိုလည်း စဉ်းစားရတယ်။","answer":true,"explanationJP":"周辺への注意を保ちます。","explanationMM":"ပတ်ဝန်းကျင်သတိမလျော့ရပါ။"}]}]}</script>
+<script>
+// BEGIN: Ordinary Second Type standalone QA preview. No network calls or production writes.
+const bank = JSON.parse(document.getElementById('questionData').textContent);
+const allText=bank.originalItems, allScenes=bank.illustrations, mapText=new Map(allText.map(q=>[q.id,q])), mapScenes=new Map(allScenes.map(q=>[q.id,q]));
+const STORAGE='yk-second-license-qa-preview-v2';let state=null,clock=null,furigana=true,showMyanmar=true;
+const $=q=>document.querySelector(q);
+const escapeHTML=x=>String(x??'').replace(/[&<>"']/g,v=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[v]));
+const readings={
+  "歩行者": "ほこうしゃ",
+  "横断歩道": "おうだんほどう",
+  "渡": "わた",
+  "手前": "てまえ",
+  "一時停止": "いちじていし",
+  "通行": "つうこう",
+  "妨": "さまた",
+  "停止線": "ていしせん",
+  "直前": "ちょくぜん",
+  "見通": "みとお",
+  "悪": "わる",
+  "交差点": "こうさてん",
+  "警音器": "けいおんき",
+  "鳴": "な",
+  "安全確認": "あんぜんかくにん",
+  "省略": "しょうりゃく",
+  "代": "か",
+  "青信号": "あおしんごう",
+  "前方": "ぜんぽう",
+  "渋滞": "じゅうたい",
+  "交差点内": "こうさてんない",
+  "止": "と",
+  "交差": "こうさ",
+  "道路": "どうろ",
+  "車": "くるま",
+  "入": "はい",
+  "停止": "ていし",
+  "他": "た",
+  "交通": "こうつう",
+  "避": "さ",
+  "標識": "ひょうしき",
+  "場所": "ばしょ",
+  "周囲": "しゅうい",
+  "徐行": "じょこう",
+  "通過": "つうか",
+  "指定場所": "していばしょ",
+  "必要": "ひつよう",
+  "右左折": "うさせつ",
+  "自転車": "じてんしゃ",
+  "動": "うご",
+  "確認": "かくにん",
+  "安全": "あんぜん",
+  "曲": "ま",
+  "巻": "ま",
+  "込": "こ",
+  "事故": "じこ",
+  "防": "ふせ",
+  "黄色信号": "きいろしんごう",
+  "状況": "じょうきょう",
+  "必": "かなら",
+  "加速": "かそく",
+  "警察官": "けいさつかん",
+  "交通整理": "こうつうせいり",
+  "場合": "ばあい",
+  "指示": "しじ",
+  "従": "したが",
+  "進路変更": "しんろへんこう",
+  "合図": "あいず",
+  "出": "で",
+  "後方": "こうほう",
+  "車線": "しゃせん",
+  "変": "か",
+  "加": "くわ",
+  "最高速度": "さいこうそくど",
+  "指定": "してい",
+  "速度": "そくど",
+  "超": "こ",
+  "走": "はし",
+  "前": "まえ",
+  "急": "きゅう",
+  "対応": "たいおう",
+  "車間距離": "しゃかんきょり",
+  "短": "みじか",
+  "十分": "じゅうぶん",
+  "取": "と",
+  "路面": "ろめん",
+  "線": "せん",
+  "行": "おこな",
+  "越": "こ",
+  "安全地帯": "あんぜんちたい",
+  "近": "ちか",
+  "中": "なか",
+  "走行": "そうこう",
+  "進入": "しんにゅう",
+  "認": "みと",
+  "信号機": "しんごうき",
+  "踏切": "ふみきり",
+  "確": "たし",
+  "進": "すす",
+  "信号": "しんごう",
+  "例外": "れいがい",
+  "警報機": "けいほうき",
+  "別": "べつ",
+  "並": "なら",
+  "横断歩道上": "おうだんほどうじょう",
+  "停車": "ていしゃ",
+  "雨": "あめ",
+  "降": "お",
+  "始": "はじ",
+  "滑": "すべ",
+  "早": "はや",
+  "減速": "げんそく",
+  "濡": "ぬ",
+  "制動距離": "せいどうきょり",
+  "延": "の",
+  "道路状況": "どうろじょうきょう",
+  "応": "おう",
+  "落": "お",
+  "急操作": "きゅうそうさ",
+  "危険": "きけん",
+  "眠気": "ねむけ",
+  "感": "かん",
+  "窓": "まど",
+  "開": "あ",
+  "休憩": "きゅうけい",
+  "運転": "うんてん",
+  "続": "つづ",
+  "休息": "きゅうそく",
+  "停車車両": "ていしゃしゃりょう",
+  "陰": "かげ",
+  "人": "ひと",
+  "可能性": "かのうせい",
+  "考": "かんが",
+  "死角": "しかく",
+  "注意": "ちゅうい",
+  "意識": "いしき",
+  "発進前": "はっしんまえ",
+  "見": "み",
+  "効": "き",
+  "違": "ちが",
+  "点検": "てんけん",
+  "制動装置": "せいどうそうち",
+  "異常": "いじょう",
+  "重大": "じゅうだい",
+  "長時間運転": "ちょうじかんうんてん",
+  "疲労": "ひろう",
+  "適切": "てきせつ",
+  "判断力": "はんだんりょく",
+  "注意力": "ちゅういりょく",
+  "低下": "ていか",
+  "子": "こ",
+  "飛": "と",
+  "備": "そな",
+  "行動": "こうどう",
+  "予測": "よそく",
+  "空気圧": "くうきあつ",
+  "極端": "きょくたん",
+  "低": "ひく",
+  "燃料": "ねんりょう",
+  "通常": "つうじょう",
+  "操縦安定性": "そうじゅうあんていせい",
+  "影響": "えいきょう",
+  "割": "わ",
+  "受": "う",
+  "感情的": "かんじょうてき",
+  "距離": "きょり",
+  "確保": "かくほ",
+  "拡大": "かくだい",
+  "冷静": "れいせい",
+  "旅客": "りょかく",
+  "乗": "の",
+  "停車場所": "ていしゃばしょ",
+  "乗降場所": "じょうこうばしょ",
+  "旅客保護": "りょかくほご",
+  "基本": "きほん",
+  "乗客": "じょうきゃく",
+  "頼": "たの",
+  "省": "はぶ",
+  "発進": "はっしん",
+  "希望": "きぼう",
+  "優先": "ゆうせん",
+  "体調": "たいちょう",
+  "配慮": "はいりょ",
+  "説明": "せつめい",
+  "尋": "たず",
+  "常": "つね",
+  "無視": "むし",
+  "保": "たも",
+  "案内": "あんない",
+  "姿勢": "しせい",
+  "大切": "たいせつ",
+  "際": "さい",
+  "開放時": "かいほうじ",
+  "接触事故": "せっしょくじこ",
+  "高齢": "こうれい",
+  "同": "おな",
+  "速": "はや",
+  "乗車": "じょうしゃ",
+  "求": "もと",
+  "状態": "じょうたい",
+  "時間": "じかん",
+  "荷物": "にもつ",
+  "置": "お",
+  "方": "かた",
+  "転倒": "てんとう",
+  "運転妨害": "うんてんぼうがい",
+  "座": "すわ",
+  "終": "お",
+  "後続車": "こうぞくしゃ",
+  "待": "ま",
+  "直": "ただ",
+  "急発進": "きゅうはっしん",
+  "転倒防止": "てんとうぼうし",
+  "忘": "わす",
+  "物": "もの",
+  "気付": "きづ",
+  "定": "さだ",
+  "取扱": "とりあつか",
+  "管理": "かんり",
+  "報告": "ほうこく",
+  "守": "まも",
+  "発車前": "はっしゃまえ",
+  "閉鎖状態": "へいさじょうたい",
+  "転落": "てんらく",
+  "運転中": "うんてんちゅう",
+  "客": "きゃく",
+  "画面": "がめん",
+  "安全確保": "あんぜんかくほ",
+  "不安": "ふあん",
+  "急加速": "きゅうかそく",
+  "急減速": "きゅうげんそく",
+  "負傷": "ふしょう",
+  "回送中": "かいそうちゅう",
+  "交通法規": "こうつうほうき",
+  "道路交通法": "どうろこうつうほう",
+  "出発前": "しゅっぱつまえ",
+  "運転者自身": "うんてんしゃじしん",
+  "不調": "ふちょう",
+  "体調不良": "たいちょうふりょう",
+  "運転前": "うんてんまえ",
+  "座席位置": "ざせきいち",
+  "調整": "ちょうせい",
+  "操作": "そうさ",
+  "運転姿勢": "うんてんしせい",
+  "視野": "しや",
+  "走行中": "そうこうちゅう",
+  "店": "みせ",
+  "予約": "よやく",
+  "運転者": "うんてんしゃ",
+  "携帯電話": "けいたいでんわ",
+  "手": "て",
+  "持": "も",
+  "電話": "でんわ",
+  "手持": "ても",
+  "通話": "つうわ",
+  "原則禁止": "げんそくきんし",
+  "緊急": "きんきゅう",
+  "得": "え",
+  "当": "あ",
+  "経路": "けいろ",
+  "範囲内": "はんいない",
+  "車両": "しゃりょう",
+  "故障": "こしょう",
+  "疑": "うたが",
+  "不具合": "ふぐあい",
+  "運行": "うんこう",
+  "道": "みち",
+  "迷": "まよ",
+  "急停車": "きゅうていしゃ",
+  "繰": "く",
+  "返": "かえ",
+  "位置": "いち",
+  "適法": "てきほう",
+  "選": "えら",
+  "後方確認": "こうほうかくにん",
+  "寄": "よ",
+  "目的地": "もくてきち",
+  "着": "つ",
+  "完全": "かんぜん",
+  "完全停止": "かんぜんていし",
+  "乗降": "じょうこう",
+  "形状": "けいじょう",
+  "歩道側": "ほどうがわ",
+  "乗降時": "じょうこうじ",
+  "交通事故": "こうつうじこ",
+  "利用者": "りようしゃ",
+  "支援": "しえん",
+  "乗降方法": "じょうこうほうほう",
+  "個々": "ここ",
+  "合": "あ",
+  "日": "ひ",
+  "足元": "あしもと",
+  "気": "き",
+  "雨天": "うてん",
+  "重要": "じゅうよう",
+  "手荷物": "てにもつ",
+  "挟": "はさ",
+  "破損": "はそん",
+  "高齢者": "こうれいしゃ",
+  "歩": "ある",
+  "横断": "おうだん",
+  "考慮": "こうりょ",
+  "歩行速度": "ほこうそくど",
+  "個人差": "こじんさ",
+  "白杖": "はくじょう",
+  "進行": "しんこう",
+  "不要": "ふよう",
+  "携": "たずさ",
+  "目": "め",
+  "移動速度": "いどうそくど",
+  "決": "き",
+  "補助": "ほじょ",
+  "本人": "ほんにん",
+  "丁寧": "ていねい",
+  "意思": "いし",
+  "両方": "りょうほう",
+  "尊重": "そんちょう",
+  "耳": "みみ",
+  "聞": "き",
+  "一方的": "いっぽうてき",
+  "伝": "つた",
+  "方法": "ほうほう",
+  "工夫": "くふう",
+  "立": "た",
+  "背": "せ",
+  "小": "ちい",
+  "夜間": "やかん",
+  "発見": "はっけん",
+  "遅": "おく",
+  "視線": "しせん",
+  "暗": "くら",
+  "環境": "かんきょう",
+  "危険発見": "きけんはっけん",
+  "難": "むずか",
+  "霧": "きり",
+  "普段": "ふだん",
+  "視界不良時": "しかいふりょうじ",
+  "雪道": "ゆきみち",
+  "雨天時": "うてんじ",
+  "停止距離": "ていしきょり",
+  "対向車": "たいこうしゃ",
+  "閉": "し",
+  "水": "みず",
+  "通": "とお",
+  "配": "くば",
+  "迷惑": "めいわく",
+  "強風時": "きょうふうじ",
+  "車体": "しゃたい",
+  "横": "よこ",
+  "押": "お",
+  "横風": "よこかぜ",
+  "進路": "しんろ",
+  "乱": "みだ",
+  "事故防止": "じこぼうし",
+  "役立": "やくだ",
+  "起": "お",
+  "負傷者": "ふしょうしゃ",
+  "救護": "きゅうご",
+  "二次事故": "にじじこ",
+  "防止": "ぼうし",
+  "努": "つと",
+  "道路上": "どうろじょう",
+  "警察": "けいさつ",
+  "直後": "ちょくご",
+  "場": "ば",
+  "去": "さ",
+  "危険防止": "きけんぼうし",
+  "義務": "ぎむ",
+  "車両火災": "しゃりょうかさい",
+  "兆候": "ちょうこう",
+  "最優先": "さいゆうせん",
+  "避難": "ひなん",
+  "他車": "たしゃ",
+  "衝突": "しょうとつ",
+  "措置": "そち",
+  "停止位置": "ていしいち",
+  "緊急車両": "きんきゅうしゃりょう",
+  "交通状況": "こうつうじょうきょう",
+  "譲": "ゆず",
+  "最大限": "さいだいげん",
+  "安定": "あんてい",
+  "赤信号": "あかしんごう",
+  "青": "あお",
+  "左向": "ひだりむ",
+  "矢印": "やじるし",
+  "点灯": "てんとう",
+  "普通車": "ふつうしゃ",
+  "左折": "させつ",
+  "示": "しめ",
+  "方向": "ほうこう",
+  "黄色": "きいろ",
+  "点滅信号": "てんめつしんごう",
+  "赤": "あか",
+  "向": "む",
+  "点滅": "てんめつ",
+  "補助標識": "ほじょひょうしき",
+  "時間帯": "じかんたい",
+  "本標識": "ほんひょうしき",
+  "規制": "きせい",
+  "内容": "ないよう",
+  "判断": "はんだん",
+  "対象": "たいしょう",
+  "車両進入禁止": "しゃりょうしんにゅうきんし",
+  "入口": "いりぐち",
+  "先": "さき",
+  "進入禁止": "しんにゅうきんし",
+  "荷箱": "にばこ",
+  "戻": "もど",
+  "妨害": "ぼうがい",
+  "空": "あ",
+  "缶": "かん",
+  "投": "な",
+  "及": "およ",
+  "腕": "うで",
+  "水平": "すいへい",
+  "伸": "の",
+  "胸": "むね",
+  "意味": "いみ",
+  "背中": "せなか",
+  "対面": "たいめん",
+  "右折": "うせつ",
+  "対向": "たいこう",
+  "直進車": "ちょくしんしゃ",
+  "右折車": "うせつしゃ",
+  "優先権": "ゆうせんけん",
+  "与": "あた",
+  "歩道": "ほどう",
+  "横切": "よこぎ",
+  "駐車場": "ちゅうしゃじょう",
+  "保護": "ほご",
+  "左端": "ひだりはし",
+  "間": "あいだ",
+  "地点": "ちてん",
+  "約三十": "やくさんじゅう",
+  "間隔": "かんかく",
+  "狭": "せま",
+  "側": "がわ",
+  "任意": "にんい",
+  "拾": "ひろ",
+  "消火栓": "しょうかせん",
+  "三": "さん",
+  "離": "はな",
+  "迎": "むか",
+  "駐車違反": "ちゅうしゃいはん",
+  "五": "ご",
+  "以内": "いない",
+  "駐車禁止": "ちゅうしゃきんし",
+  "坂": "さか",
+  "頂上付近": "ちょうじょうふきん",
+  "追越": "おいこ",
+  "対向交通": "たいこうこうつう",
+  "禁止場所": "きんしばしょ",
+  "後車": "こうしゃ",
+  "追": "お",
+  "増": "ま",
+  "平": "たい",
+  "現象": "げんしょう",
+  "停止中": "ていしちゅう",
+  "確実": "かくじつ",
+  "踏": "ふ",
+  "映": "うつ",
+  "左右": "さゆう",
+  "範囲外": "はんいがい",
+  "自分": "じぶん",
+  "運行中": "うんこうちゅう",
+  "路線": "ろせん",
+  "停留所": "ていりゅうじょ",
+  "無理": "むり",
+  "寝": "ね",
+  "行為": "こうい",
+  "少": "すく",
+  "許": "ゆる",
+  "標示板": "ひょうじばん",
+  "左折可": "させつか",
+  "高速道路": "こうそくどうろ",
+  "次": "つぎ",
+  "給油場所": "きゅうゆばしょ",
+  "足": "あし",
+  "本線": "ほんせん",
+  "燃料切": "ねんりょうぎ",
+  "残量": "ざんりょう",
+  "加速車線": "かそくしゃせん",
+  "速度差": "そくどさ",
+  "合流": "ごうりゅう",
+  "出口": "でぐち",
+  "減速車線": "げんそくしゃせん",
+  "移": "うつ",
+  "過": "す",
+  "路肩": "ろかた",
+  "使": "つか",
+  "分岐": "ぶんき",
+  "後退": "こうたい",
+  "普通": "ふつう",
+  "送": "おく",
+  "抜": "ぬ",
+  "走行場所": "そうこうばしょ",
+  "景色": "けしき",
+  "撮": "と",
+  "短時間停車": "たんじかんていしゃ",
+  "撮影": "さつえい",
+  "理由": "りゆう",
+  "外": "そと",
+  "停止車両": "ていししゃりょう",
+  "車内": "しゃない",
+  "救援": "きゅうえん",
+  "後": "あと",
+  "追越車線": "おいこししゃせん",
+  "走行車線": "そうこうしゃせん",
+  "開閉": "かいへい",
+  "予定": "よてい",
+  "時速三十": "じそくさんじゅう",
+  "時速二十": "じそくにじゅう",
+  "以下": "いか",
+  "前車": "ぜんしゃ",
+  "使用者": "しようしゃ",
+  "保管場所": "ほかんばしょ",
+  "常用": "じょうよう",
+  "道路以外": "どうろいがい",
+  "自動車": "じどうしゃ",
+  "整備": "せいび",
+  "保安基準": "ほあんきじゅん",
+  "適合": "てきごう",
+  "維持": "いじ",
+  "責任": "せきにん",
+  "歩行者優先": "ほこうしゃゆうせん",
+  "横断者": "おうだんしゃ",
+  "有無": "うむ",
+  "自車": "じしゃ",
+  "付近": "ふきん",
+  "見落": "みお",
+  "左側": "ひだりがわ",
+  "方向指示器": "ほうこうしじき",
+  "不十分": "ふじゅうぶん",
+  "左": "ひだり",
+  "消": "き",
+  "来": "く",
+  "二輪車": "にりんしゃ",
+  "開放事故": "かいほうじこ",
+  "停車中": "ていしゃちゅう",
+  "夜": "よる",
+  "抑": "おさ",
+  "視界": "しかい",
+  "悪化": "あっか",
+  "車間": "しゃかん",
+  "詰": "つ",
+  "光": "ひかり",
+  "分": "わ",
+  "端": "はし",
+  "反射": "はんしゃ",
+  "学校付近": "がっこうふきん",
+  "正": "ただ",
+  "対面通行": "たいめんつうこう",
+  "救急車": "きゅうきゅうしゃ",
+  "接近": "せっきん",
+  "図": "ず",
+  "一方通行": "いっぽうつうこう",
+  "存在": "そんざい",
+  "隠": "かく",
+  "乗降客": "じょうこうきゃく",
+  "病院前": "びょういんまえ",
+  "準備": "じゅんび",
+  "横断中": "おうだんちゅう",
+  "余裕": "よゆう",
+  "歩行": "ほこう",
+  "威圧": "いあつ",
+  "住宅街": "じゅうたくがい",
+  "早期": "そうき",
+  "街灯": "がいとう",
+  "上": "あ",
+  "視界不良": "しかいふりょう",
+  "控": "ひか",
+  "周辺": "しゅうへん",
+  "交通量": "こうつうりょう",
+  "昼間": "ひるま",
+  "減": "へ",
+  "直線道路": "ちょくせんどうろ",
+  "最": "もっと",
+  "予定時刻": "よていじこく",
+  "苦情": "くじょう",
+  "会話": "かいわ",
+  "安全運転": "あんぜんうんてん",
+  "運": "はこ",
+  "一般": "いっぱん",
+  "高": "たか",
+  "安全意識": "あんぜんいしき",
+  "生命": "せいめい",
+  "身体": "しんたい",
+  "預": "あず",
+  "仕事": "しごと",
+  "運行予定": "うんこうよてい",
+  "時間厳守": "じかんげんしゅ",
+  "慌": "あわ",
+  "対処": "たいしょ",
+  "修正操作": "しゅうせいそうさ",
+  "招": "まね",
+  "接客": "せっきゃく",
+  "運転操作": "うんてんそうさ",
+  "周囲確認": "しゅういかくにん",
+  "促": "うなが",
+  "不用意": "ふようい",
+  "開放": "かいほう",
+  "原因": "げんいん",
+  "完了": "かんりょう",
+  "穏": "おだ",
+  "停車位置": "ていしゃいち",
+  "乗降中": "じょうこうちゅう",
+  "学校": "がっこう",
+  "予期": "よき",
+  "病院付近": "びょういんふきん",
+  "不安定": "ふあんてい",
+  "道路利用者": "どうろりようしゃ",
+  "到着時間": "とうちゃくじかん",
+  "関係": "かんけい",
+  "夕暮": "ゆうぐ",
+  "時": "どき",
+  "薄暮時": "はくぼじ",
+  "視認性": "しにんせい",
+  "凍結": "とうけつ",
+  "強": "つよ",
+  "急制動": "きゅうせいどう",
+  "凍結路": "とうけつろ",
+  "非常": "ひじょう",
+  "慎重": "しんちょう",
+  "夕方": "ゆうがた",
+  "混雑": "こんざつ",
+  "到着時刻": "とうちゃくじこく",
+  "車線変更": "しゃせんへんこう",
+  "混雑時": "こんざつじ",
+  "急病人": "きゅうびょうにん",
+  "救急要請": "きゅうきゅうようせい",
+  "故障時": "こしょうじ",
+  "遅延": "ちえん",
+  "何": "なに",
+  "事故現場": "じこげんば",
+  "興味": "きょうみ",
+  "写真": "しゃしん",
+  "集中": "しゅうちゅう",
+  "落下物": "らっかぶつ",
+  "左折前": "させつまえ",
+  "降車": "こうしゃ",
+  "姿": "すがた",
+  "視認": "しにん",
+  "相手": "あいて",
+  "出せ": "だせ",
+  "飛び出し": "とびだし",
+  "動き出し": "うごきだし",
+  "急い": "いそい",
+  "急が": "いそが",
+  "カーブ中": "かーぶちゅう",
+  "雨の降り始め": "あめのふりはじめ",
+  "滑らか": "なめらか",
+  "上げた方": "あげたほう",
+  "遅い": "おそい",
+  "閉じ": "とじ",
+  "夕暮れ時": "ゆうぐれどき",
+  "普通第二種免許": "ふつうだいにしゅめんきょ",
+  "足り": "たり",
+  "後ろ": "うしろ",
+  "その側": "そのそば",
+  "追越し": "おいこし",
+  "開く予定": "ひらくよてい",
+  "開いた": "あいた",
+  "空き缶": "あきかん",
+  "空いて": "あいて",
+  "平ら": "たいら",
+  "消え": "きえ",
+  "映った": "うつった",
+  "客を迎え": "きゃくをむかえ"
+};
+const rubyKeys=Object.keys(readings).sort((a,b)=>b.length-a.length), rubyRE=new RegExp(rubyKeys.map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|'),'g');
+function fmt(jp){ if(!furigana)return escapeHTML(jp); const chunks=[];let start=0;for(const m of jp.matchAll(rubyRE)){chunks.push(escapeHTML(jp.slice(start,m.index)));chunks.push(`<ruby>${escapeHTML(m[0])}<rt>${escapeHTML(readings[m[0]])}</rt></ruby>`);start=m.index+m[0].length;}chunks.push(escapeHTML(jp.slice(start)));return chunks.join(''); }
+const pick=(arr,n)=>{const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a.slice(0,n)};
+// Fukushima Prefectural Police, March 10, 2026, order 133, appendix (第二種).
+const chapterCounts = {1:13, 4:6, 5:30, 6:9, 7:8, 9:20, 10:3, 11:1};
+function makeExam(){
+  const text = [];
+  for (const [chapter, count] of Object.entries(chapterCounts)) {
+    const pool = allText.filter(q => q.chapter === Number(chapter));
+    if (pool.length < count) throw new Error('Insufficient questions for chapter ' + chapter);
+    text.push(...pick(pool, count));
+  }
+  return [...pick(text, text.length), ...pick(allScenes, 5)].map(q => q.id);
+}
+function start(mode='exam',fresh=false){ $('#examIntro').hidden=true; if(clock)clearInterval(clock); if(mode==='exam'&&!fresh){const old=load();if(old&&old.mode==='exam'&&old.questions?.length===95&&!old.completed){if(confirm('保存した試験を再開しますか？\nသိမ်းထားတဲ့စာမေးပွဲ ဆက်ဖြေမလား?')){state=old;render();if(Date.now()>=state.deadline)submit(true);return;}}}
+ const questions=mode==='exam'?makeExam():pick(allText,15).map(q=>q.id);const sceneOrder = Object.fromEntries(questions.filter(id => mapScenes.has(id))
+   .map(id => [id, pick([0, 1, 2], 3)]));
+ state={mode,questions,sceneOrder,answers:questions.map(id=>id.startsWith('I')?[null,null,null]:null),i:0,deadline:mode==='exam'?Date.now()+50*60*1000:null,started:Date.now(),completed:false};save();render();}
+function validChoice(value){return value===null || typeof value==='boolean'}
+function validOrder(order) {
+  return Array.isArray(order) && order.length === 3 && [0, 1, 2].every(index => order.includes(index));
+}
+// The displayed order is stable across reloads. Answers stay indexed by the bank statement.
+function inDisplayOrder(q, format) {
+  return state.sceneOrder[q.id].map((index, position) => format(q.statements[index], index, position));
+}
+function load(){try{const v=JSON.parse(localStorage.getItem(STORAGE)||'null');if(v?.mode==='exam' && !v.completed && Number.isSafeInteger(v.i) && v.i>=0 && v.i<95 &&
+ Number.isFinite(v.deadline) && Array.isArray(v.questions) && v.questions.length===95 &&
+ new Set(v.questions).size===95 && Array.isArray(v.answers) && v.answers.length===95 &&
+ v.questions.every((id,i)=>i<90 ? mapText.has(id) && validChoice(v.answers[i]) :
+ mapScenes.has(id) && validOrder(v.sceneOrder?.[id]) && Array.isArray(v.answers[i]) && v.answers[i].length===3 && v.answers[i].every(validChoice)))return v;}catch(_){}return null}
+function save(){try{if(state?.mode==="exam"&&!state.completed)localStorage.setItem(STORAGE,JSON.stringify(state));}catch(_){}}
+function clearSave(){try{localStorage.removeItem(STORAGE)}catch(_){} }
+function answered(v){return Array.isArray(v)?v.every(x=>x!==null):v!==null}
+function totals(){return state?state.answers.filter(answered).length:0}
+function clockText(){if(!state||state.mode!=='exam')return '学習モード';let x=Math.max(0,Math.ceil((state.deadline-Date.now())/1000));return `${String(Math.floor(x/60)).padStart(2,'0')}:${String(x%60).padStart(2,'0')}`}
+function startClock(){if(clock)clearInterval(clock);if(state?.mode==='exam'&&!state.completed){clock=setInterval(()=>{const e=$('#licenseTimer');if(e){e.textContent=clockText();e.classList.toggle('warn',state.deadline-Date.now()<300000)}if(Date.now()>=state.deadline){clearInterval(clock);submit(true)}},350)}}
+function sceneSvg(kind){const base=`<rect x="0" y="0" width="600" height="278" fill="#bcd0db"/><rect x="0" y="0" width="600" height="57" fill="#819c91"/><rect x="0" y="215" width="600" height="63" fill="#819c91"/><rect x="0" y="57" width="600" height="158" fill="#39434f"/><path d="M10 137 H590" stroke="#e4dfb7" stroke-width="4" stroke-dasharray="28 18"/><g transform="translate(148,147)"><rect x="0" y="0" rx="13" width="148" height="53" fill="#151a28" stroke="#f6f6f6" stroke-width="4"/><rect x="35" y="8" width="71" height="23" rx="7" fill="#65a0c0"/><rect x="55" y="-10" width="49" height="12" rx="3" fill="#eac328"/><text x="79" y="0" font-size="9" text-anchor="middle" fill="#211">TAXI</text><circle cx="34" cy="53" r="9" fill="#171717"/><circle cx="119" cy="53" r="9" fill="#171717"/></g>`;let overlay='';
+ const person=(x,y,color='#e7aa6c')=>`<g transform="translate(${x},${y})"><circle cx="0" cy="-13" r="11" fill="${color}"/><path d="M0 0 L0 30 M0 9 L-14 21 M0 9 L14 21 M0 30 L-14 48 M0 30 L14 48" stroke="#27313c" stroke-width="8" stroke-linecap="round" fill="none"/></g>`;
+ const bike=(x,y)=>`<g transform="translate(${x},${y})"><circle cx="-25" cy="20" r="16" fill="none" stroke="#1d252b" stroke-width="5"/><circle cx="30" cy="20" r="16" fill="none" stroke="#1d252b" stroke-width="5"/><path d="M-25 20 L-2 -3 L12 20 Z M12 20 L30 20 L22 -15" fill="none" stroke="#d33b51" stroke-width="5"/>${person(5,-19)}</g>`;
+ const van=(x,y)=>`<g transform="translate(${x},${y})"><rect width="154" height="64" rx="9" fill="#e9edf2" stroke="#566a7b" stroke-width="4"/><rect x="15" y="12" width="112" height="23" fill="#4f95b7"/><circle cx="28" cy="64" r="10" fill="#252b2d"/><circle cx="120" cy="64" r="10" fill="#252b2d"/></g>`;
+ if(kind==='crosswalk'){for(let i=0;i<6;i++)overlay+=`<rect x="${362+i*23}" y="64" width="15" height="139" fill="#f0efe9"/>`;overlay+=person(413,92)}
+ else if(kind==='bicycle'){overlay=bike(390,175)+'<text x="320" y="240" fill="#101820" font-size="18">左折前・左側の自転車</text><path d="M335 176 L305 176" stroke="#ffe866" stroke-width="6" stroke-dasharray="9 7"/>'}
+ else if(kind==='door'){overlay=bike(380,168)+'<path d="M293 153 L329 120" stroke="#ffcb68" stroke-width="7"/><path d="M285 153 L304 153 L330 120" stroke="#f66173" stroke-width="5" fill="none"/>'}
+ else if(kind==='rain'){overlay='<rect width="600" height="278" fill="#122648" opacity=".48"/>';for(let i=0;i<22;i++)overlay+=`<path d="M${(i*37)%590} ${65+(i*7)%150} l-13 22" stroke="#4daff3" stroke-width="3" opacity=".75"/>`;overlay+='<circle cx="532" cy="41" r="16" fill="#f2dc9a"/>'}
+ else if(kind==='school'){overlay='<rect x="395" y="5" width="100" height="52" fill="#e4c4a2"/><text x="446" y="36" text-anchor="middle" font-size="19" fill="#413b36">学校</text>'+'<g transform="translate(433,190) scale(.68)">'+person(0,0)+'</g>'}
+ else if(kind==='emergency'){overlay='<path d="M405 0h115v278H405z" fill="#39434f"/><path d="M462 0v62m0 145v71" stroke="#e4dfb7" stroke-width="4" stroke-dasharray="13 10"/>'+van(375,112)+'<rect x="425" y="104" width="34" height="15" rx="3" fill="#ea5263"/><text x="451" y="138" font-size="13" fill="#cc354c">救急車</text>'}
+ else if(kind==='blindspot'){overlay=person(513,90)+van(355,70)}
+ else if(kind==='busstop'){overlay=van(369,67)+'<text x="410" y="118" font-size="18" fill="#152938">路線バス</text>'+person(480,180)+'<rect x="542" y="23" width="6" height="88" fill="#5b6268"/><circle cx="545" cy="22" r="18" fill="#edc846"/>'}
+ else if(kind==='hospital'){overlay='<rect x="396" y="0" width="132" height="56" fill="#d7e9ed"/><text x="447" y="36" font-size="29" fill="#db4b56">＋</text>'+person(413,157)+'<path d="M426 173l16 41" stroke="#433420" stroke-width="5"/>'}
+ else if(kind==='night'){overlay='<path d="M365 54V27l27-20 27 20v27zm62 0V30l23-18 23 18v24z" fill="#d8c4aa"/><rect x="0" y="0" width="600" height="278" fill="#0d1e41" opacity=".55"/>'+bike(420,164)+'<circle cx="531" cy="24" r="16" fill="#fbf0bb"/>'}
+ return `<svg class="illustration" role="img" aria-label="危険予測イラスト" viewBox="0 0 600 278" xmlns="http://www.w3.org/2000/svg">${base}${overlay}</svg>`;
+}
+function render(shouldScroll=true){const p=$('#examView');p.classList.add('open');const qid=state.questions[state.i],isc=qid.startsWith('I'),q=isc?mapScenes.get(qid):mapText.get(qid),value=state.answers[state.i],t=totals();if(!q){p.innerHTML='<p>Question data missing</p>';return}
+ let content;if(isc){const items=inDisplayOrder(q,(x,j,position)=>`<div class="scenario-item"><h4>${position+1}. ${fmt(x.jp)}</h4>${showMyanmar?`<p>${escapeHTML(x.mm)}</p>`:''}<div class="smallanswers"><button class="answer ${value[j]===true?'selected':''}" data-sub="${j}" data-choice="true">〇 正しい</button><button class="answer ${value[j]===false?'selected':''}" data-sub="${j}" data-choice="false">✕ 誤り</button></div></div>`).join('');content=`<div class="qnumber">Q${state.i+1} · イラスト危険予測 · 2点</div><div class="qtext">${fmt(q.title)}</div>${showMyanmar?`<div class="qmm">${escapeHTML(q.mm)}</div>`:''}${sceneSvg(q.kind)}<p class="meta">イラスト1問につき3つの〇✕すべて正解で2点。</p><div class="scenario-list">${items}</div>`}
+ else content=`<div class="qnumber">Q${state.i+1} · ○ / × · 1点 · ${escapeHTML(bank.categories[q.category][0])}</div><div class="qtext">${fmt(q.jp)}</div>${showMyanmar?`<div class="qmm">${escapeHTML(q.mm)}</div>`:''}<div class="answers"><button class="answer ${value===true?'selected':''}" data-choice="true">〇 正しい</button><button class="answer ${value===false?'selected':''}" data-choice="false">✕ 誤り</button></div>`;
+ const studyFeedback=state.mode==='study'&&value!==null&&!isc?`<div class="feedback ${value===q.answer?'':'bad'}"><b>${value===q.answer?'✓ 正解':'✕ 不正解'} · ${q.answer?'〇':'✕'}</b>${fmt(q.explanationJP)}<br>${escapeHTML(q.explanationMM)}</div>`:'';
+ p.innerHTML=`<div class="exam-shell"><div class="examtoolbar"><div class="flex"><button class="back" id="closeExam">✕ 閉じる</button><span class="examtype">🚕 普通第二種免許 · ${state.mode==='exam'?'模擬試験':'学習'}</span></div><span class="timer ${state.mode==='study'?'study':''}" id="licenseTimer">${clockText()}</span></div><div class="progressarea"><div class="progressinfo"><span>問題 ${state.i+1} / ${state.questions.length}</span><span>回答済み ${t} / ${state.questions.length}</span></div><div class="progress"><i style="width:${(state.i+1)/state.questions.length*100}%"></i></div></div><div class="examquestion"><div class="inlineopts"><label><input type="checkbox" id="rubyToggle" ${furigana?'checked':''}> ふりがな</label><label><input type="checkbox" id="myToggle" ${showMyanmar?'checked':''}> Myanmar</label><span class="meta">${state.mode==='exam'?'Auto Save · この端末のみ':'学習モード'}</span></div>${content}${studyFeedback}<div class="footeract"><button id="prevQ" class="ctrl" ${state.i===0?'disabled':''}>← 前へ</button><div class="flex"><button class="ctrl ${state.i<state.questions.length-1?'primary':''}" id="nextQ">${state.i===state.questions.length-1?'結果を見る':'次へ →'}</button><button class="ctrl subtle" id="submitExam">${state.mode==='exam'?'試験を提出':'学習を終了'}</button></div></div></div></div>`;
+ $('#rubyToggle').onchange=e=>{furigana=e.target.checked;render(false)};$('#myToggle').onchange=e=>{showMyanmar=e.target.checked;render(false)};$('#closeExam').onclick=()=>{if(confirm('試験画面を閉じますか？\nBrowser ထဲမှာ အဖြေတွေသိမ်းထားပါမယ်။')){$('#examView').classList.remove('open');$('#examIntro').hidden=false;if(clock)clearInterval(clock)}};$('#prevQ').onclick=()=>{state.i--;save();render()};$('#nextQ').onclick=()=>{if(state.i<state.questions.length-1){state.i++;save();render()}else submit(false)};$('#submitExam').onclick=()=>submit(false);
+ for(const b of p.querySelectorAll('[data-choice]'))b.onclick=()=>{if(state.mode==='exam'&&Date.now()>=state.deadline){submit(true);return}const val=b.dataset.choice==='true',sub=b.dataset.sub;if(sub===undefined){state.answers[state.i]=val}else{state.answers[state.i][Number(sub)]=val;}save();render(false)};
+ if(shouldScroll)p.scrollIntoView({behavior:'smooth',block:'start'});startClock();}
+function scoreExam(){let score=0,wrong=[],textHits=0,sceneHits=0;state.questions.forEach((id,i)=>{const isScene=id.startsWith('I'),q=isScene?mapScenes.get(id):mapText.get(id),v=state.answers[i];let ok;if(isScene)ok=q.statements.every((s,j)=>s.answer===v[j]);else ok=q.answer===v;if(ok){score+=isScene?2:1;if(isScene)sceneHits++;else textHits++}else wrong.push({i,id,q,v,isScene})});return {score,wrong,textHits,sceneHits}}
+function submit(auto=false){if(!state||state.completed)return;const unanswered=state.answers.filter(x=>!answered(x)).length;if(!auto&&!confirm(`未回答 ${unanswered} 問があります。提出しますか？\nမဖြေထားတဲ့မေးခွန်း ${unanswered} ခုရှိပါတယ်။ တင်မလား?`))return;
+ clearInterval(clock);state.completed=true;if(state.mode==="exam")clearSave();const {score,wrong,textHits,sceneHits}=scoreExam(),study=state.mode==='study',pass=!study&&score>=90,max=study?state.questions.length:100;
+ const review=wrong.map(({i,q,v,isScene})=>{let detail='';if(isScene){detail=inDisplayOrder(q,(s,j,position)=>`<p>${position+1}. ${fmt(s.jp)}<br><span lang="my">${escapeHTML(s.mm)}</span> · <b>正解 ${s.answer?'〇':'✕'}</b> / あなた ${v[j]===null?'未回答':v[j]?'〇':'✕'}</p><p class="why">${fmt(s.explanationJP)}<br>${escapeHTML(s.explanationMM)}</p>`).join('')}else{detail=`<p class="mm">${escapeHTML(q.mm)}</p><p>正解 <b>${q.answer?'〇':'✕'}</b> / あなた <b>${v===null?'未回答':v?'〇':'✕'}</b></p><p class="why">${fmt(q.explanationJP)}<br>${escapeHTML(q.explanationMM)}</p>`;}return `<article class="review-item"><b>Q${i+1} · ${isScene?'イラスト':'文章'}</b><h4>${fmt(q.jp||q.title)}</h4>${detail}</article>`}).join('');
+ $('#examView').innerHTML=`<div class="exam-shell result"><div class="eyebrow">RESULT · 🚕 普通第二種免許</div><div class="score">${score}<span style="font-size:21px;color:#aaa">/${max}</span></div>${study?'<div class="resulttag">学習モード完了</div>':`<div class="resulttag ${pass?'':'fail'}">${pass?'PASS · 合格':'FAIL · 不合格'}</div>`}<div class="stats"><div class="stat"><b>${textHits}</b><small>文章正解</small></div><div class="stat"><b>${sceneHits}</b><small>イラスト正解</small></div><div class="stat"><b>${wrong.length}</b><small>要復習</small></div></div><p class="mm">${study?'သင်ယူမှု ပြီးဆုံးပါပြီ။':'အောင်မှတ် 90 / 100 · အစစ်စာမေးပွဲ မဟုတ်ပါ။'}</p><div class="flex" style="justify-content:center;margin:22px 0"><button class="ctrl primary" id="retryExam">↻ 新しい Random Exam</button><button class="ctrl" id="reviewToggle">間違えた問題を見る (${wrong.length})</button><button class="ctrl subtle" id="backCards">Card に戻る</button></div><section class="review" id="reviewList" hidden>${review||'<p>間違えた問題はありません。</p>'}</section></div>`;
+ $('#retryExam').onclick=()=>start('exam',true);$('#reviewToggle').onclick=()=>{$('#reviewList').hidden=!$('#reviewList').hidden};$('#backCards').onclick=()=>{$('#examView').classList.remove('open');location.href='/mock-exams.html'};$('#examView').scrollIntoView({behavior:'smooth',block:'start'});}
+$('#startSecond').onclick=()=>start('exam',false);
+$('#studySecond').onclick=()=>start('study',true);
+// END: standalone QA preview. No fetch(), no API calls, no production data writes.
+</script>
+<script>
+const captions = {
+ my:['အစမ်းစာမေးပွဲ စတင် / ဆက်ဖြေရန်','လေ့ကျင့်ရန်','စာမေးပွဲစင်တာ'],
+ en:['Start / resume exam','Study mode','Exam Center'],
+ ja:['模擬試験を開始・再開','学習モード','試験一覧']
+};
+function setLang(lang,button){
+ if(!Object.hasOwn(captions,lang))return;
+ document.documentElement.lang=lang;
+ const [startLabel,studyLabel,centerLabel]=captions[lang];
+ $('#startSecond').textContent=startLabel;
+ $('#studySecond').textContent=studyLabel;
+ $('.intro-back').textContent='← '+centerLabel;
+ for(const option of document.querySelectorAll('.lang-switch button')){
+   option.classList.toggle('active',option===button);
+ }
+ for(const label of document.querySelectorAll('[data-'+lang+']')){
+   label.textContent=label.getAttribute('data-'+lang);
+ }
+ try{localStorage.setItem('yk_lang',lang)}catch{}
+}
+let language='my';
+try{language=localStorage.getItem('yk_lang')||'my'}catch{}
+const languages=['my','en','ja'];
+if(!languages.includes(language))language='my';
+setLang(language,document.querySelectorAll('.lang-switch button')[languages.indexOf(language)]);
+</script><div class="qa-live-warning">QA PREVIEW / NOT PRODUCTION · No production access/payment</div><script defer src="/assets/ykoc-pr7-menu-drawer.js?v=pr7menu1"></script><script defer src="/assets/ykoc-pr7-menu-i18n.js?v=pr7menu2"></script></body></html>

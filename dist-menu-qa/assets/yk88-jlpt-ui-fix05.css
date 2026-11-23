@@ -1,0 +1,151 @@
+/* STUDYING WITH YE KUN — v7.87.6 UI Fix05.3, QA candidate.
+ * Visual changes only. Fix05.2's narrow flex-item regression is removed. */
+
+/* Home: this anchor is a flex item inside .yk821-hub-welcome.
+ * width:100% alone cannot beat the original flex:1 mobile rule;
+ * it MUST take a full row via flex-basis:100%. */
+@media(max-width:640px){
+  #study-hub.study-hub-v7 {margin-top:12px!important;padding-top:8px!important;}
+  #study-hub #studyHubGridV733 {row-gap:8px!important;}
+  #study-hub .study-hub-more-wrap {margin-top:0!important;margin-bottom:0!important;}
+  #study-hub #studyHubMoreV733 {min-height:54px!important;padding-block:10px!important;}
+  #study-hub #yk82Hub.yk82-panel {margin-top:0!important;}
+  #yk82Hub .yk821-hub-welcome>a.yk821-hub-open[href="/study/jlpt-learning.html"] {
+    order:3!important;
+    flex:0 0 100%!important;
+    align-self:stretch!important;
+    display:flex!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    box-sizing:border-box!important;
+    justify-content:center!important;
+    align-items:center!important;
+    text-align:center!important;
+    min-height:56px!important;
+    padding:10px 8px!important;
+    white-space:nowrap!important;
+    font:850 clamp(13px,4vw,19px)/1.8 Inter,"Noto Sans Myanmar","Noto Sans JP",system-ui,sans-serif!important;
+    letter-spacing:0!important;
+    border-radius:14px;
+  }
+  #yk82Hub .yk821-hub-welcome>a.yk821-hub-open .yk88-cta-label {
+    display:block!important;
+    flex:0 1 auto!important;
+    width:auto!important;
+    min-width:0!important;
+    text-align:center!important;
+    white-space:nowrap!important;
+    word-break:keep-all!important;
+    overflow-wrap:normal!important;
+    letter-spacing:0!important;
+    text-indent:0!important;
+  }
+  #yk82Hub a.yk821-hub-open::before,
+  #yk82Hub a.yk821-hub-open::after {content:none!important;}
+}
+
+/* Exam-only: remove redundant long subtitle and bring Guest Access upward.
+ * The guest guide and the Student Verify / View Plans buttons remain. */
+#online-mock-exam>.exam-v728-subtitle {display:none!important;}
+#online-mock-exam>.title {margin-bottom:10px!important;}
+#online-mock-exam .exam-hub {padding-top:clamp(12px,2.7vw,20px)!important;}
+#online-mock-exam .exam-v728-access {margin-top:0!important;}
+@media(max-width:640px){
+  #online-mock-exam .exam-hub {padding:12px!important;}
+  #online-mock-exam .exam-v728-access {margin:0 0 14px!important;}
+}
+
+/* Screenshots 2 & 3: remove ONLY redundant visible top pills; keep the
+   original nav DOM for grammar-detail.js (#yk88BackTop) and preserve logo. */
+body.yk82-page .yk82-top-links {display:none !important;}
+body.yk82-page .yk82-top-inner {
+  flex-direction:row !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  gap:0 !important;
+  min-height:68px;
+  padding:10px 16px !important;
+}
+body.yk82-page .yk82-brand {width:min(190px,63vw) !important;max-width:190px;}
+body.yk82-page .yk82-main {padding-top:clamp(12px,2.2vw,22px) !important;}
+body.yk82-page:not(.yk88-detail-page) .yk82-hero.yk821-hero {
+  margin-top:0 !important;
+  padding-top:12px !important;
+}
+body.yk88-detail-page .yk88-detail {margin-top:0 !important;}
+
+/* Screenshot 3: fixed three-column action bar; same-size, tap-friendly items. */
+body.yk88-detail-page .yk88-detail-actions {
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  align-items:stretch !important;
+  gap:clamp(6px,1.4vw,12px) !important;
+  margin-top:22px !important;
+  width:100%;
+}
+body.yk88-detail-page .yk88-detail-actions > .yk88-button {
+  display:flex !important;
+  width:100%;
+  min-width:0;
+  box-sizing:border-box;
+  min-height:54px;
+  margin:0 !important;
+  padding:8px 5px !important;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  border-radius:14px !important;
+  white-space:normal !important;
+  overflow-wrap:anywhere;
+  font:750 clamp(10px,2.5vw,14px)/1.55 Inter,"Noto Sans Myanmar","Noto Sans JP",system-ui,sans-serif !important;
+  text-decoration:none !important;
+  color:#f7f4f6 !important;
+  background:#282329;
+  border:1px solid #65545e;
+  box-shadow:0 2px 9px #0002;
+  cursor:pointer;
+  transition:background .16s ease,border-color .16s ease,transform .16s ease;
+}
+body.yk88-detail-page .yk88-detail-actions > .yk88-button-primary {
+  color:#fff !important;
+  background:linear-gradient(115deg,#bc274b,#f04468) !important;
+  border-color:#f15f7b !important;
+  font-weight:850 !important;
+}
+body.yk88-detail-page .yk88-detail-actions > .yk88-button-back {
+  color:#f4d1d9 !important;
+  background:#211d23 !important;
+  border-color:#765765 !important;
+}
+body.yk88-detail-page .yk88-detail-actions > .yk88-button[aria-pressed="true"] {
+  border-color:#e487a1 !important;
+  background:#442630 !important;
+}
+body.yk88-detail-page .yk88-detail-actions > .yk88-button-primary:disabled {
+  opacity:0.84;
+  cursor:default;
+  background:#6e3346 !important;
+}
+body.yk88-detail-page .yk88-detail-actions > .yk88-button:focus-visible {
+  outline:2px solid #ffbdcc !important;
+  outline-offset:3px;
+}
+@media(hover:hover){
+  body.yk88-detail-page .yk88-detail-actions > .yk88-button:not(:disabled):hover {
+    transform:translateY(-1px);border-color:#ec8fa6 !important;
+  }
+}
+@media(max-width:380px){
+  body.yk88-detail-page .yk88-detail {padding:13px !important;}
+  body.yk88-detail-page .yk88-detail-actions {gap:5px !important;}
+  body.yk88-detail-page .yk88-detail-actions > .yk88-button {
+    min-height:54px;
+    padding:7px 3px !important;
+    font-size:10.5px !important;
+    border-radius:11px !important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  body.yk88-detail-page .yk88-detail-actions > .yk88-button {transition:none!important;}
+}

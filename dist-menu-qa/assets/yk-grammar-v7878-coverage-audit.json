@@ -1,0 +1,2609 @@
+{
+  "referenceUrl": "https://nihongokyoshi-net.com/jlpt-grammars/",
+  "referenceSnapshot": "2026-11-17",
+  "levels": {
+    "N1": {
+      "inventoryCount": 127,
+      "coverageStatusCounts": {
+        "batch02-existing": 10,
+        "new-authored": 111,
+        "existing-legacy": 6
+      },
+      "patterns": [
+        {
+          "sourceTitle": "〜あっての",
+          "status": "batch02-existing",
+          "mappedTo": "〜あっての"
+        },
+        {
+          "sourceTitle": "〜いかんだ / 〜いかんでは / 〜いかんによっては",
+          "status": "batch02-existing",
+          "mappedTo": "〜いかんでは"
+        },
+        {
+          "sourceTitle": "〜いかんに関わらず / 〜いかんによらず / 〜いかんを問わず",
+          "status": "new-authored",
+          "mappedTo": "〜いかんに関わらず / 〜いかんによらず / 〜いかんを問わず"
+        },
+        {
+          "sourceTitle": "〜かたがた",
+          "status": "batch02-existing",
+          "mappedTo": "〜かたがた"
+        },
+        {
+          "sourceTitle": "〜かたわら",
+          "status": "batch02-existing",
+          "mappedTo": "〜かたわら"
+        },
+        {
+          "sourceTitle": "〜がてら",
+          "status": "batch02-existing",
+          "mappedTo": "〜がてら"
+        },
+        {
+          "sourceTitle": "〜かと思いきや",
+          "status": "batch02-existing",
+          "mappedTo": "〜かと思いきや"
+        },
+        {
+          "sourceTitle": "〜が早いか",
+          "status": "new-authored",
+          "mappedTo": "〜が早いか"
+        },
+        {
+          "sourceTitle": "〜からある / 〜からする / 〜からの",
+          "status": "new-authored",
+          "mappedTo": "〜からある / 〜からする / 〜からの"
+        },
+        {
+          "sourceTitle": "〜かれ〜かれ",
+          "status": "new-authored",
+          "mappedTo": "〜かれ〜かれ"
+        },
+        {
+          "sourceTitle": "〜きっての",
+          "status": "new-authored",
+          "mappedTo": "〜きっての"
+        },
+        {
+          "sourceTitle": "〜きらいがある",
+          "status": "new-authored",
+          "mappedTo": "〜きらいがある"
+        },
+        {
+          "sourceTitle": "〜極まる / 〜極まりない",
+          "status": "new-authored",
+          "mappedTo": "〜極まる / 〜極まりない"
+        },
+        {
+          "sourceTitle": "〜ごとき / ごとく / ごとし",
+          "status": "new-authored",
+          "mappedTo": "〜ごとき / ごとく / ごとし"
+        },
+        {
+          "sourceTitle": "〜こととて",
+          "status": "new-authored",
+          "mappedTo": "〜こととて"
+        },
+        {
+          "sourceTitle": "〜始末だ",
+          "status": "new-authored",
+          "mappedTo": "〜始末だ"
+        },
+        {
+          "sourceTitle": "〜ずくめ",
+          "status": "batch02-existing",
+          "mappedTo": "〜ずくめ"
+        },
+        {
+          "sourceTitle": "〜ずにはおかない / 〜ないではおかない",
+          "status": "existing-legacy",
+          "mappedTo": "N1-g-5"
+        },
+        {
+          "sourceTitle": "〜ずにはすまない / 〜ないではすまない",
+          "status": "new-authored",
+          "mappedTo": "〜ずにはすまない / 〜ないではすまない"
+        },
+        {
+          "sourceTitle": "〜術がない",
+          "status": "new-authored",
+          "mappedTo": "〜術がない"
+        },
+        {
+          "sourceTitle": "〜すら",
+          "status": "batch02-existing",
+          "mappedTo": "〜すら"
+        },
+        {
+          "sourceTitle": "〜そばから",
+          "status": "new-authored",
+          "mappedTo": "〜そばから"
+        },
+        {
+          "sourceTitle": "ただ〜のみ",
+          "status": "new-authored",
+          "mappedTo": "ただ〜のみ"
+        },
+        {
+          "sourceTitle": "〜たためしがない",
+          "status": "new-authored",
+          "mappedTo": "〜たためしがない"
+        },
+        {
+          "sourceTitle": "〜たところで",
+          "status": "new-authored",
+          "mappedTo": "〜たところで"
+        },
+        {
+          "sourceTitle": "〜だに",
+          "status": "new-authored",
+          "mappedTo": "〜だに"
+        },
+        {
+          "sourceTitle": "〜だの〜だの",
+          "status": "new-authored",
+          "mappedTo": "〜だの〜だの"
+        },
+        {
+          "sourceTitle": "〜た弾みに / 〜た拍子に",
+          "status": "new-authored",
+          "mappedTo": "〜た弾みに / 〜た拍子に"
+        },
+        {
+          "sourceTitle": "〜た分だけ",
+          "status": "new-authored",
+          "mappedTo": "〜た分だけ"
+        },
+        {
+          "sourceTitle": "〜たまでだ / 〜たまでのことだ",
+          "status": "new-authored",
+          "mappedTo": "〜たまでだ / 〜たまでのことだ"
+        },
+        {
+          "sourceTitle": "〜たら最後 / 〜たが最後",
+          "status": "new-authored",
+          "mappedTo": "〜たら最後 / 〜たが最後"
+        },
+        {
+          "sourceTitle": "〜たら〜たで",
+          "status": "new-authored",
+          "mappedTo": "〜たら〜たで"
+        },
+        {
+          "sourceTitle": "〜たりとも〜ない",
+          "status": "new-authored",
+          "mappedTo": "〜たりとも〜ない"
+        },
+        {
+          "sourceTitle": "〜たるもの",
+          "status": "new-authored",
+          "mappedTo": "〜たるもの"
+        },
+        {
+          "sourceTitle": "〜尽くす",
+          "status": "new-authored",
+          "mappedTo": "〜尽くす"
+        },
+        {
+          "sourceTitle": "〜つ〜つ",
+          "status": "new-authored",
+          "mappedTo": "〜つ〜つ"
+        },
+        {
+          "sourceTitle": "〜であれ〜であれ",
+          "status": "new-authored",
+          "mappedTo": "〜であれ〜であれ"
+        },
+        {
+          "sourceTitle": "〜てからというもの",
+          "status": "new-authored",
+          "mappedTo": "〜てからというもの"
+        },
+        {
+          "sourceTitle": "〜ではあるまいし / 〜でもあるまいし",
+          "status": "new-authored",
+          "mappedTo": "〜ではあるまいし / 〜でもあるまいし"
+        },
+        {
+          "sourceTitle": "〜てまえ",
+          "status": "new-authored",
+          "mappedTo": "〜てまえ"
+        },
+        {
+          "sourceTitle": "〜てやまない",
+          "status": "new-authored",
+          "mappedTo": "〜てやまない"
+        },
+        {
+          "sourceTitle": "〜と相まって",
+          "status": "existing-legacy",
+          "mappedTo": "N1-g-2"
+        },
+        {
+          "sourceTitle": "〜とあれば",
+          "status": "new-authored",
+          "mappedTo": "〜とあれば"
+        },
+        {
+          "sourceTitle": "〜といい〜といい",
+          "status": "new-authored",
+          "mappedTo": "〜といい〜といい"
+        },
+        {
+          "sourceTitle": "〜といえども",
+          "status": "new-authored",
+          "mappedTo": "〜といえども"
+        },
+        {
+          "sourceTitle": "〜というもの",
+          "status": "new-authored",
+          "mappedTo": "〜というもの"
+        },
+        {
+          "sourceTitle": "〜ときたら",
+          "status": "new-authored",
+          "mappedTo": "〜ときたら"
+        },
+        {
+          "sourceTitle": "〜ところを",
+          "status": "new-authored",
+          "mappedTo": "〜ところを"
+        },
+        {
+          "sourceTitle": "〜とはいえ",
+          "status": "batch02-existing",
+          "mappedTo": "〜とはいえ"
+        },
+        {
+          "sourceTitle": "〜ともあろう",
+          "status": "new-authored",
+          "mappedTo": "〜ともあろう"
+        },
+        {
+          "sourceTitle": "〜ともなく / 〜ともなしに",
+          "status": "new-authored",
+          "mappedTo": "〜ともなく / 〜ともなしに"
+        },
+        {
+          "sourceTitle": "〜ともなると / 〜ともなれば",
+          "status": "new-authored",
+          "mappedTo": "〜ともなると / 〜ともなれば"
+        },
+        {
+          "sourceTitle": "〜ながら",
+          "status": "new-authored",
+          "mappedTo": "〜ながら"
+        },
+        {
+          "sourceTitle": "〜なくしては",
+          "status": "new-authored",
+          "mappedTo": "〜なくしては"
+        },
+        {
+          "sourceTitle": "〜なくもない",
+          "status": "new-authored",
+          "mappedTo": "〜なくもない"
+        },
+        {
+          "sourceTitle": "〜なしに / 〜なしで",
+          "status": "new-authored",
+          "mappedTo": "〜なしに / 〜なしで"
+        },
+        {
+          "sourceTitle": "〜ならでは",
+          "status": "batch02-existing",
+          "mappedTo": "〜ならでは"
+        },
+        {
+          "sourceTitle": "〜ないまでも",
+          "status": "existing-legacy",
+          "mappedTo": "N1-g-3"
+        },
+        {
+          "sourceTitle": "〜なり",
+          "status": "new-authored",
+          "mappedTo": "〜なり"
+        },
+        {
+          "sourceTitle": "〜なりとも",
+          "status": "new-authored",
+          "mappedTo": "〜なりとも"
+        },
+        {
+          "sourceTitle": "〜なり〜なり",
+          "status": "new-authored",
+          "mappedTo": "〜なり〜なり"
+        },
+        {
+          "sourceTitle": "〜なりに",
+          "status": "new-authored",
+          "mappedTo": "〜なりに"
+        },
+        {
+          "sourceTitle": "〜にあって",
+          "status": "new-authored",
+          "mappedTo": "〜にあって"
+        },
+        {
+          "sourceTitle": "〜に至る / 〜に至るまで",
+          "status": "new-authored",
+          "mappedTo": "〜に至る / 〜に至るまで"
+        },
+        {
+          "sourceTitle": "〜に言わせれば",
+          "status": "new-authored",
+          "mappedTo": "〜に言わせれば"
+        },
+        {
+          "sourceTitle": "〜にかかっては / 〜にかかったら / 〜にかかると / 〜にかかれば",
+          "status": "new-authored",
+          "mappedTo": "〜にかかっては / 〜にかかったら / 〜にかかると / 〜にかかれば"
+        },
+        {
+          "sourceTitle": "〜に関わる",
+          "status": "new-authored",
+          "mappedTo": "〜に関わる"
+        },
+        {
+          "sourceTitle": "〜に限ったことではない",
+          "status": "new-authored",
+          "mappedTo": "〜に限ったことではない"
+        },
+        {
+          "sourceTitle": "〜にかこつけて",
+          "status": "new-authored",
+          "mappedTo": "〜にかこつけて"
+        },
+        {
+          "sourceTitle": "〜にかたくない",
+          "status": "new-authored",
+          "mappedTo": "〜にかたくない"
+        },
+        {
+          "sourceTitle": "〜にかまけて",
+          "status": "new-authored",
+          "mappedTo": "〜にかまけて"
+        },
+        {
+          "sourceTitle": "〜にして",
+          "status": "new-authored",
+          "mappedTo": "〜にして"
+        },
+        {
+          "sourceTitle": "〜に忍びない",
+          "status": "new-authored",
+          "mappedTo": "〜に忍びない"
+        },
+        {
+          "sourceTitle": "〜に即して / 〜に則して",
+          "status": "new-authored",
+          "mappedTo": "〜に即して / 〜に則して"
+        },
+        {
+          "sourceTitle": "〜に堪える / 〜に堪えない",
+          "status": "new-authored",
+          "mappedTo": "〜に堪える / 〜に堪えない"
+        },
+        {
+          "sourceTitle": "〜に足る",
+          "status": "new-authored",
+          "mappedTo": "〜に足る"
+        },
+        {
+          "sourceTitle": "〜にとどまらず",
+          "status": "new-authored",
+          "mappedTo": "〜にとどまらず"
+        },
+        {
+          "sourceTitle": "〜に則って",
+          "status": "new-authored",
+          "mappedTo": "〜に則って"
+        },
+        {
+          "sourceTitle": "〜にはあたらない",
+          "status": "new-authored",
+          "mappedTo": "〜にはあたらない"
+        },
+        {
+          "sourceTitle": "〜には及ばない",
+          "status": "new-authored",
+          "mappedTo": "〜には及ばない"
+        },
+        {
+          "sourceTitle": "〜には無理がある",
+          "status": "new-authored",
+          "mappedTo": "〜には無理がある"
+        },
+        {
+          "sourceTitle": "〜にひきかえ",
+          "status": "existing-legacy",
+          "mappedTo": "N1-g-4"
+        },
+        {
+          "sourceTitle": "〜にもほどがある",
+          "status": "new-authored",
+          "mappedTo": "〜にもほどがある"
+        },
+        {
+          "sourceTitle": "〜にもまして",
+          "status": "new-authored",
+          "mappedTo": "〜にもまして"
+        },
+        {
+          "sourceTitle": "〜に〜を重ねて",
+          "status": "new-authored",
+          "mappedTo": "〜に〜を重ねて"
+        },
+        {
+          "sourceTitle": "〜ねばならない",
+          "status": "new-authored",
+          "mappedTo": "〜ねばならない"
+        },
+        {
+          "sourceTitle": "〜の至り",
+          "status": "new-authored",
+          "mappedTo": "〜の至り"
+        },
+        {
+          "sourceTitle": "〜の極み",
+          "status": "new-authored",
+          "mappedTo": "〜の極み"
+        },
+        {
+          "sourceTitle": "〜のやら",
+          "status": "new-authored",
+          "mappedTo": "〜のやら"
+        },
+        {
+          "sourceTitle": "〜はおろか",
+          "status": "new-authored",
+          "mappedTo": "〜はおろか"
+        },
+        {
+          "sourceTitle": "〜ばそれまでだ / 〜たらそれまでだ",
+          "status": "new-authored",
+          "mappedTo": "〜ばそれまでだ / 〜たらそれまでだ"
+        },
+        {
+          "sourceTitle": "〜びる",
+          "status": "new-authored",
+          "mappedTo": "〜びる"
+        },
+        {
+          "sourceTitle": "〜べからず",
+          "status": "new-authored",
+          "mappedTo": "〜べからず"
+        },
+        {
+          "sourceTitle": "〜べく",
+          "status": "existing-legacy",
+          "mappedTo": "N1-g-6"
+        },
+        {
+          "sourceTitle": "〜ほどのことではない",
+          "status": "new-authored",
+          "mappedTo": "〜ほどのことではない"
+        },
+        {
+          "sourceTitle": "〜まじき",
+          "status": "new-authored",
+          "mappedTo": "〜まじき"
+        },
+        {
+          "sourceTitle": "〜までだ / 〜までのことだ",
+          "status": "new-authored",
+          "mappedTo": "〜までだ / 〜までのことだ"
+        },
+        {
+          "sourceTitle": "〜までもない / 〜までもなく",
+          "status": "new-authored",
+          "mappedTo": "〜までもない / 〜までもなく"
+        },
+        {
+          "sourceTitle": "〜まみれ",
+          "status": "new-authored",
+          "mappedTo": "〜まみれ"
+        },
+        {
+          "sourceTitle": "〜めく",
+          "status": "new-authored",
+          "mappedTo": "〜めく"
+        },
+        {
+          "sourceTitle": "〜もさることながら",
+          "status": "new-authored",
+          "mappedTo": "〜もさることながら"
+        },
+        {
+          "sourceTitle": "〜もそこそこに",
+          "status": "new-authored",
+          "mappedTo": "〜もそこそこに"
+        },
+        {
+          "sourceTitle": "〜も同然だ",
+          "status": "new-authored",
+          "mappedTo": "〜も同然だ"
+        },
+        {
+          "sourceTitle": "〜ものを",
+          "status": "new-authored",
+          "mappedTo": "〜ものを"
+        },
+        {
+          "sourceTitle": "〜や否や",
+          "status": "new-authored",
+          "mappedTo": "〜や否や"
+        },
+        {
+          "sourceTitle": "〜ゆえに",
+          "status": "new-authored",
+          "mappedTo": "〜ゆえに"
+        },
+        {
+          "sourceTitle": "〜よう / 〜ようによっては",
+          "status": "new-authored",
+          "mappedTo": "〜よう / 〜ようによっては"
+        },
+        {
+          "sourceTitle": "〜ようが / 〜ようと",
+          "status": "new-authored",
+          "mappedTo": "〜ようが / 〜ようと"
+        },
+        {
+          "sourceTitle": "〜ようにも〜ない",
+          "status": "new-authored",
+          "mappedTo": "〜ようにも〜ない"
+        },
+        {
+          "sourceTitle": "〜より",
+          "status": "new-authored",
+          "mappedTo": "〜より"
+        },
+        {
+          "sourceTitle": "〜わ〜わで",
+          "status": "new-authored",
+          "mappedTo": "〜わ〜わで"
+        },
+        {
+          "sourceTitle": "〜をおいて",
+          "status": "new-authored",
+          "mappedTo": "〜をおいて"
+        },
+        {
+          "sourceTitle": "〜を押して / 〜を押し切って",
+          "status": "new-authored",
+          "mappedTo": "〜を押して / 〜を押し切って"
+        },
+        {
+          "sourceTitle": "〜を顧みず / 〜も顧みず",
+          "status": "new-authored",
+          "mappedTo": "〜を顧みず / 〜も顧みず"
+        },
+        {
+          "sourceTitle": "〜を限りに",
+          "status": "new-authored",
+          "mappedTo": "〜を限りに"
+        },
+        {
+          "sourceTitle": "〜を兼ねて",
+          "status": "new-authored",
+          "mappedTo": "〜を兼ねて"
+        },
+        {
+          "sourceTitle": "〜を皮切りに / 〜を皮切りとして",
+          "status": "existing-legacy",
+          "mappedTo": "N1-g-1"
+        },
+        {
+          "sourceTitle": "〜を禁じ得ない",
+          "status": "new-authored",
+          "mappedTo": "〜を禁じ得ない"
+        },
+        {
+          "sourceTitle": "〜を境に",
+          "status": "new-authored",
+          "mappedTo": "〜を境に"
+        },
+        {
+          "sourceTitle": "〜をもって（期限・手段・基準）",
+          "status": "new-authored",
+          "mappedTo": "〜をもって（期限・手段・基準）"
+        },
+        {
+          "sourceTitle": "〜をものともせず",
+          "status": "new-authored",
+          "mappedTo": "〜をものともせず"
+        },
+        {
+          "sourceTitle": "〜を踏まえて",
+          "status": "new-authored",
+          "mappedTo": "〜を踏まえて"
+        },
+        {
+          "sourceTitle": "〜を経て",
+          "status": "new-authored",
+          "mappedTo": "〜を経て"
+        },
+        {
+          "sourceTitle": "〜を余儀なくされる",
+          "status": "new-authored",
+          "mappedTo": "〜を余儀なくされる"
+        },
+        {
+          "sourceTitle": "〜をよそに",
+          "status": "new-authored",
+          "mappedTo": "〜をよそに"
+        },
+        {
+          "sourceTitle": "〜んがために",
+          "status": "new-authored",
+          "mappedTo": "〜んがために"
+        },
+        {
+          "sourceTitle": "〜んばかりに",
+          "status": "new-authored",
+          "mappedTo": "〜んばかりに"
+        }
+      ]
+    },
+    "N2": {
+      "inventoryCount": 137,
+      "coverageStatusCounts": {
+        "batch02-existing": 9,
+        "new-authored": 123,
+        "existing-legacy-variant": 1,
+        "existing-legacy": 4
+      },
+      "patterns": [
+        {
+          "sourceTitle": "〜あげく",
+          "status": "batch02-existing",
+          "mappedTo": "〜あげく"
+        },
+        {
+          "sourceTitle": "〜あまり",
+          "status": "new-authored",
+          "mappedTo": "〜あまり"
+        },
+        {
+          "sourceTitle": "あまりの〜に",
+          "status": "new-authored",
+          "mappedTo": "あまりの〜に"
+        },
+        {
+          "sourceTitle": "〜以上は",
+          "status": "new-authored",
+          "mappedTo": "〜以上は"
+        },
+        {
+          "sourceTitle": "〜一方で",
+          "status": "batch02-existing",
+          "mappedTo": "〜一方で"
+        },
+        {
+          "sourceTitle": "〜以来",
+          "status": "batch02-existing",
+          "mappedTo": "〜以来"
+        },
+        {
+          "sourceTitle": "〜上で（〜てから）",
+          "status": "new-authored",
+          "mappedTo": "〜上で（〜てから）"
+        },
+        {
+          "sourceTitle": "〜上で（目的）",
+          "status": "new-authored",
+          "mappedTo": "〜上で（目的）"
+        },
+        {
+          "sourceTitle": "〜上は",
+          "status": "new-authored",
+          "mappedTo": "〜上は"
+        },
+        {
+          "sourceTitle": "〜得る / 〜得ない",
+          "status": "new-authored",
+          "mappedTo": "〜得る / 〜得ない"
+        },
+        {
+          "sourceTitle": "〜折に",
+          "status": "new-authored",
+          "mappedTo": "〜折に"
+        },
+        {
+          "sourceTitle": "〜かいがあって / 〜かいもなく",
+          "status": "new-authored",
+          "mappedTo": "〜かいがあって / 〜かいもなく"
+        },
+        {
+          "sourceTitle": "〜限り（限界）",
+          "status": "new-authored",
+          "mappedTo": "〜限り（限界）"
+        },
+        {
+          "sourceTitle": "〜限り（条件の範囲）",
+          "status": "new-authored",
+          "mappedTo": "〜限り（条件の範囲）"
+        },
+        {
+          "sourceTitle": "〜がたい",
+          "status": "new-authored",
+          "mappedTo": "〜がたい"
+        },
+        {
+          "sourceTitle": "〜かと思うと / 〜かと思ったら",
+          "status": "new-authored",
+          "mappedTo": "〜かと思うと / 〜かと思ったら"
+        },
+        {
+          "sourceTitle": "〜か〜ないかのうちに",
+          "status": "new-authored",
+          "mappedTo": "〜か〜ないかのうちに"
+        },
+        {
+          "sourceTitle": "〜かねない",
+          "status": "batch02-existing",
+          "mappedTo": "〜かねない"
+        },
+        {
+          "sourceTitle": "〜かねる",
+          "status": "batch02-existing",
+          "mappedTo": "〜かねる"
+        },
+        {
+          "sourceTitle": "〜かのようだ / 〜かのように",
+          "status": "new-authored",
+          "mappedTo": "〜かのようだ / 〜かのように"
+        },
+        {
+          "sourceTitle": "〜からいうと / 〜からいって / 〜からいえば",
+          "status": "new-authored",
+          "mappedTo": "〜からいうと / 〜からいって / 〜からいえば"
+        },
+        {
+          "sourceTitle": "〜からして",
+          "status": "new-authored",
+          "mappedTo": "〜からして"
+        },
+        {
+          "sourceTitle": "〜からすると",
+          "status": "new-authored",
+          "mappedTo": "〜からすると"
+        },
+        {
+          "sourceTitle": "〜からといって",
+          "status": "new-authored",
+          "mappedTo": "〜からといって"
+        },
+        {
+          "sourceTitle": "〜気味",
+          "status": "new-authored",
+          "mappedTo": "〜気味"
+        },
+        {
+          "sourceTitle": "〜きり",
+          "status": "new-authored",
+          "mappedTo": "〜きり"
+        },
+        {
+          "sourceTitle": "〜くせに / 〜くせして",
+          "status": "new-authored",
+          "mappedTo": "〜くせに / 〜くせして"
+        },
+        {
+          "sourceTitle": "〜くらいなら",
+          "status": "new-authored",
+          "mappedTo": "〜くらいなら"
+        },
+        {
+          "sourceTitle": "〜げ",
+          "status": "new-authored",
+          "mappedTo": "〜げ"
+        },
+        {
+          "sourceTitle": "〜ことだ（助言・忠告）",
+          "status": "new-authored",
+          "mappedTo": "〜ことだ（助言・忠告）"
+        },
+        {
+          "sourceTitle": "〜ことだし",
+          "status": "new-authored",
+          "mappedTo": "〜ことだし"
+        },
+        {
+          "sourceTitle": "〜ことなく",
+          "status": "batch02-existing",
+          "mappedTo": "〜ことなく"
+        },
+        {
+          "sourceTitle": "〜ことだろう / 〜ことか",
+          "status": "new-authored",
+          "mappedTo": "〜ことだろう / 〜ことか"
+        },
+        {
+          "sourceTitle": "〜ことになると / こととなると",
+          "status": "new-authored",
+          "mappedTo": "〜ことになると / こととなると"
+        },
+        {
+          "sourceTitle": "〜ことに（は）",
+          "status": "new-authored",
+          "mappedTo": "〜ことに（は）"
+        },
+        {
+          "sourceTitle": "〜ざるを得ない",
+          "status": "existing-legacy-variant",
+          "mappedTo": "～ざるを得ない"
+        },
+        {
+          "sourceTitle": "〜次第",
+          "status": "new-authored",
+          "mappedTo": "〜次第"
+        },
+        {
+          "sourceTitle": "〜次第だ / 〜次第で",
+          "status": "new-authored",
+          "mappedTo": "〜次第だ / 〜次第で"
+        },
+        {
+          "sourceTitle": "〜末に / 〜末の",
+          "status": "new-authored",
+          "mappedTo": "〜末に / 〜末の"
+        },
+        {
+          "sourceTitle": "〜ずじまい",
+          "status": "new-authored",
+          "mappedTo": "〜ずじまい"
+        },
+        {
+          "sourceTitle": "〜ずにはいられない / 〜ないではいられない",
+          "status": "new-authored",
+          "mappedTo": "〜ずにはいられない / 〜ないではいられない"
+        },
+        {
+          "sourceTitle": "〜そうにない",
+          "status": "new-authored",
+          "mappedTo": "〜そうにない"
+        },
+        {
+          "sourceTitle": "〜だけあって / 〜だけのことはあって",
+          "status": "batch02-existing",
+          "mappedTo": "〜だけあって"
+        },
+        {
+          "sourceTitle": "〜だけに",
+          "status": "new-authored",
+          "mappedTo": "〜だけに"
+        },
+        {
+          "sourceTitle": "〜だけまし",
+          "status": "new-authored",
+          "mappedTo": "〜だけまし"
+        },
+        {
+          "sourceTitle": "〜たて",
+          "status": "new-authored",
+          "mappedTo": "〜たて"
+        },
+        {
+          "sourceTitle": "〜たものではない",
+          "status": "new-authored",
+          "mappedTo": "〜たものではない"
+        },
+        {
+          "sourceTitle": "〜っこない",
+          "status": "new-authored",
+          "mappedTo": "〜っこない"
+        },
+        {
+          "sourceTitle": "〜つつ",
+          "status": "new-authored",
+          "mappedTo": "〜つつ"
+        },
+        {
+          "sourceTitle": "〜つつある",
+          "status": "new-authored",
+          "mappedTo": "〜つつある"
+        },
+        {
+          "sourceTitle": "〜っぽい",
+          "status": "new-authored",
+          "mappedTo": "〜っぽい"
+        },
+        {
+          "sourceTitle": "〜てこのかた",
+          "status": "new-authored",
+          "mappedTo": "〜てこのかた"
+        },
+        {
+          "sourceTitle": "〜てでも",
+          "status": "new-authored",
+          "mappedTo": "〜てでも"
+        },
+        {
+          "sourceTitle": "〜てならない",
+          "status": "new-authored",
+          "mappedTo": "〜てならない"
+        },
+        {
+          "sourceTitle": "〜てはいられない",
+          "status": "new-authored",
+          "mappedTo": "〜てはいられない"
+        },
+        {
+          "sourceTitle": "〜てまで / 〜までして",
+          "status": "new-authored",
+          "mappedTo": "〜てまで / 〜までして"
+        },
+        {
+          "sourceTitle": "〜てみせる",
+          "status": "new-authored",
+          "mappedTo": "〜てみせる"
+        },
+        {
+          "sourceTitle": "〜というものではない",
+          "status": "new-authored",
+          "mappedTo": "〜というものではない"
+        },
+        {
+          "sourceTitle": "〜といった",
+          "status": "new-authored",
+          "mappedTo": "〜といった"
+        },
+        {
+          "sourceTitle": "〜といったら",
+          "status": "new-authored",
+          "mappedTo": "〜といったら"
+        },
+        {
+          "sourceTitle": "〜とかで",
+          "status": "new-authored",
+          "mappedTo": "〜とかで"
+        },
+        {
+          "sourceTitle": "〜どころか",
+          "status": "new-authored",
+          "mappedTo": "〜どころか"
+        },
+        {
+          "sourceTitle": "〜ところだった",
+          "status": "new-authored",
+          "mappedTo": "〜ところだった"
+        },
+        {
+          "sourceTitle": "〜どころではない",
+          "status": "new-authored",
+          "mappedTo": "〜どころではない"
+        },
+        {
+          "sourceTitle": "〜として〜ない",
+          "status": "new-authored",
+          "mappedTo": "〜として〜ない"
+        },
+        {
+          "sourceTitle": "〜とともに（相関関係）",
+          "status": "new-authored",
+          "mappedTo": "〜とともに（相関関係）"
+        },
+        {
+          "sourceTitle": "〜となると / 〜となれば / 〜となったら",
+          "status": "new-authored",
+          "mappedTo": "〜となると / 〜となれば / 〜となったら"
+        },
+        {
+          "sourceTitle": "〜とは（定義）",
+          "status": "new-authored",
+          "mappedTo": "〜とは（定義）"
+        },
+        {
+          "sourceTitle": "〜に越したことはない",
+          "status": "new-authored",
+          "mappedTo": "〜に越したことはない"
+        },
+        {
+          "sourceTitle": "〜に応えて",
+          "status": "new-authored",
+          "mappedTo": "〜に応えて"
+        },
+        {
+          "sourceTitle": "〜に際して",
+          "status": "new-authored",
+          "mappedTo": "〜に際して"
+        },
+        {
+          "sourceTitle": "〜に限って",
+          "status": "new-authored",
+          "mappedTo": "〜に限って"
+        },
+        {
+          "sourceTitle": "〜に相違ない",
+          "status": "new-authored",
+          "mappedTo": "〜に相違ない"
+        },
+        {
+          "sourceTitle": "〜にて",
+          "status": "new-authored",
+          "mappedTo": "〜にて"
+        },
+        {
+          "sourceTitle": "〜のみならず",
+          "status": "new-authored",
+          "mappedTo": "〜のみならず"
+        },
+        {
+          "sourceTitle": "〜っぱなし",
+          "status": "new-authored",
+          "mappedTo": "〜っぱなし"
+        },
+        {
+          "sourceTitle": "〜ぶる",
+          "status": "new-authored",
+          "mappedTo": "〜ぶる"
+        },
+        {
+          "sourceTitle": "〜ないことには〜ない",
+          "status": "new-authored",
+          "mappedTo": "〜ないことには〜ない"
+        },
+        {
+          "sourceTitle": "〜ないことはない / 〜ないこともない",
+          "status": "new-authored",
+          "mappedTo": "〜ないことはない / 〜ないこともない"
+        },
+        {
+          "sourceTitle": "〜ないで済む / 〜ずに済む",
+          "status": "new-authored",
+          "mappedTo": "〜ないで済む / 〜ずに済む"
+        },
+        {
+          "sourceTitle": "〜ないでもない / 〜ないものでもない",
+          "status": "new-authored",
+          "mappedTo": "〜ないでもない / 〜ないものでもない"
+        },
+        {
+          "sourceTitle": "〜ないとも限らない",
+          "status": "new-authored",
+          "mappedTo": "〜ないとも限らない"
+        },
+        {
+          "sourceTitle": "〜ながら（逆説）",
+          "status": "new-authored",
+          "mappedTo": "〜ながら（逆説）"
+        },
+        {
+          "sourceTitle": "〜なんて",
+          "status": "new-authored",
+          "mappedTo": "〜なんて"
+        },
+        {
+          "sourceTitle": "〜にあたり / 〜にあたって",
+          "status": "new-authored",
+          "mappedTo": "〜にあたり / 〜にあたって"
+        },
+        {
+          "sourceTitle": "〜に応じて",
+          "status": "batch02-existing",
+          "mappedTo": "〜に応じて"
+        },
+        {
+          "sourceTitle": "〜に限らず",
+          "status": "existing-legacy",
+          "mappedTo": "N2-g-4"
+        },
+        {
+          "sourceTitle": "〜に限り（限定）",
+          "status": "new-authored",
+          "mappedTo": "〜に限り（限定）"
+        },
+        {
+          "sourceTitle": "〜に加えて",
+          "status": "new-authored",
+          "mappedTo": "〜に加えて"
+        },
+        {
+          "sourceTitle": "〜に先立って / 〜に先立ち",
+          "status": "existing-legacy",
+          "mappedTo": "N2-g-6"
+        },
+        {
+          "sourceTitle": "〜にしたら / 〜にすれば / 〜にしてみたら",
+          "status": "new-authored",
+          "mappedTo": "〜にしたら / 〜にすれば / 〜にしてみたら"
+        },
+        {
+          "sourceTitle": "〜にしては",
+          "status": "new-authored",
+          "mappedTo": "〜にしては"
+        },
+        {
+          "sourceTitle": "〜にすぎない",
+          "status": "new-authored",
+          "mappedTo": "〜にすぎない"
+        },
+        {
+          "sourceTitle": "〜に沿って",
+          "status": "new-authored",
+          "mappedTo": "〜に沿って"
+        },
+        {
+          "sourceTitle": "〜につき",
+          "status": "new-authored",
+          "mappedTo": "〜につき"
+        },
+        {
+          "sourceTitle": "〜につけて",
+          "status": "new-authored",
+          "mappedTo": "〜につけて"
+        },
+        {
+          "sourceTitle": "〜にともなって",
+          "status": "existing-legacy",
+          "mappedTo": "N2-g-3"
+        },
+        {
+          "sourceTitle": "〜にほかならない",
+          "status": "new-authored",
+          "mappedTo": "〜にほかならない"
+        },
+        {
+          "sourceTitle": "〜にも関わらず",
+          "status": "new-authored",
+          "mappedTo": "〜にも関わらず"
+        },
+        {
+          "sourceTitle": "〜に基づいて",
+          "status": "new-authored",
+          "mappedTo": "〜に基づいて"
+        },
+        {
+          "sourceTitle": "〜ぬ",
+          "status": "new-authored",
+          "mappedTo": "〜ぬ"
+        },
+        {
+          "sourceTitle": "〜ぬきにして / 〜ぬきで",
+          "status": "new-authored",
+          "mappedTo": "〜ぬきにして / 〜ぬきで"
+        },
+        {
+          "sourceTitle": "〜ぬく",
+          "status": "new-authored",
+          "mappedTo": "〜ぬく"
+        },
+        {
+          "sourceTitle": "〜の上では / 〜上（じょう）の",
+          "status": "new-authored",
+          "mappedTo": "〜の上では / 〜上（じょう）の"
+        },
+        {
+          "sourceTitle": "〜のことだから",
+          "status": "new-authored",
+          "mappedTo": "〜のことだから"
+        },
+        {
+          "sourceTitle": "〜のもとで",
+          "status": "new-authored",
+          "mappedTo": "〜のもとで"
+        },
+        {
+          "sourceTitle": "〜ばかりか",
+          "status": "new-authored",
+          "mappedTo": "〜ばかりか"
+        },
+        {
+          "sourceTitle": "〜ばかりだ",
+          "status": "new-authored",
+          "mappedTo": "〜ばかりだ"
+        },
+        {
+          "sourceTitle": "〜ばかりに",
+          "status": "new-authored",
+          "mappedTo": "〜ばかりに"
+        },
+        {
+          "sourceTitle": "〜はさておき",
+          "status": "new-authored",
+          "mappedTo": "〜はさておき"
+        },
+        {
+          "sourceTitle": "〜はともかくとして",
+          "status": "new-authored",
+          "mappedTo": "〜はともかくとして"
+        },
+        {
+          "sourceTitle": "〜はまだしも / 〜ならまだしも",
+          "status": "new-authored",
+          "mappedTo": "〜はまだしも / 〜ならまだしも"
+        },
+        {
+          "sourceTitle": "〜はもとより",
+          "status": "new-authored",
+          "mappedTo": "〜はもとより"
+        },
+        {
+          "sourceTitle": "〜反面",
+          "status": "new-authored",
+          "mappedTo": "〜反面"
+        },
+        {
+          "sourceTitle": "〜まい",
+          "status": "new-authored",
+          "mappedTo": "〜まい"
+        },
+        {
+          "sourceTitle": "〜ままに",
+          "status": "new-authored",
+          "mappedTo": "〜ままに"
+        },
+        {
+          "sourceTitle": "〜もかまわず",
+          "status": "new-authored",
+          "mappedTo": "〜もかまわず"
+        },
+        {
+          "sourceTitle": "〜もしない",
+          "status": "new-authored",
+          "mappedTo": "〜もしない"
+        },
+        {
+          "sourceTitle": "〜ものか / 〜ものですか",
+          "status": "new-authored",
+          "mappedTo": "〜ものか / 〜ものですか"
+        },
+        {
+          "sourceTitle": "〜ものがある",
+          "status": "new-authored",
+          "mappedTo": "〜ものがある"
+        },
+        {
+          "sourceTitle": "〜ものだ（感慨）",
+          "status": "new-authored",
+          "mappedTo": "〜ものだ（感慨）"
+        },
+        {
+          "sourceTitle": "〜ものだ（当然 / 忠告・義務）",
+          "status": "new-authored",
+          "mappedTo": "〜ものだ（当然 / 忠告・義務）"
+        },
+        {
+          "sourceTitle": "〜ものだから",
+          "status": "new-authored",
+          "mappedTo": "〜ものだから"
+        },
+        {
+          "sourceTitle": "〜ものなら",
+          "status": "new-authored",
+          "mappedTo": "〜ものなら"
+        },
+        {
+          "sourceTitle": "〜ものの",
+          "status": "existing-legacy",
+          "mappedTo": "N2-g-2"
+        },
+        {
+          "sourceTitle": "〜もん / 〜んだもん",
+          "status": "new-authored",
+          "mappedTo": "〜もん / 〜んだもん"
+        },
+        {
+          "sourceTitle": "〜やら〜やら",
+          "status": "new-authored",
+          "mappedTo": "〜やら〜やら"
+        },
+        {
+          "sourceTitle": "〜ようとしている",
+          "status": "new-authored",
+          "mappedTo": "〜ようとしている"
+        },
+        {
+          "sourceTitle": "〜ようものなら",
+          "status": "new-authored",
+          "mappedTo": "〜ようものなら"
+        },
+        {
+          "sourceTitle": "〜を契機に / 〜を契機として",
+          "status": "new-authored",
+          "mappedTo": "〜を契機に / 〜を契機として"
+        },
+        {
+          "sourceTitle": "〜を頼りに / 〜を頼りとして",
+          "status": "new-authored",
+          "mappedTo": "〜を頼りに / 〜を頼りとして"
+        },
+        {
+          "sourceTitle": "〜を問わず",
+          "status": "batch02-existing",
+          "mappedTo": "〜を問わず"
+        },
+        {
+          "sourceTitle": "〜を除いて / 〜を除き / 〜を除けば",
+          "status": "new-authored",
+          "mappedTo": "〜を除いて / 〜を除き / 〜を除けば"
+        },
+        {
+          "sourceTitle": "〜をはじめ",
+          "status": "new-authored",
+          "mappedTo": "〜をはじめ"
+        },
+        {
+          "sourceTitle": "〜をめぐって",
+          "status": "new-authored",
+          "mappedTo": "〜をめぐって"
+        },
+        {
+          "sourceTitle": "〜をもとに",
+          "status": "new-authored",
+          "mappedTo": "〜をもとに"
+        },
+        {
+          "sourceTitle": "〜んだから / 〜のだから",
+          "status": "new-authored",
+          "mappedTo": "〜んだから / 〜のだから"
+        }
+      ]
+    },
+    "N3": {
+      "inventoryCount": 135,
+      "coverageStatusCounts": {
+        "new-authored": 121,
+        "existing-legacy": 3,
+        "batch02-existing": 10,
+        "existing-legacy-variant": 1
+      },
+      "patterns": [
+        {
+          "sourceTitle": "〜合う",
+          "status": "new-authored",
+          "mappedTo": "〜合う"
+        },
+        {
+          "sourceTitle": "いくら〜ても / どんなに〜ても",
+          "status": "new-authored",
+          "mappedTo": "いくら〜ても / どんなに〜ても"
+        },
+        {
+          "sourceTitle": "〜一方だ",
+          "status": "new-authored",
+          "mappedTo": "〜一方だ"
+        },
+        {
+          "sourceTitle": "〜上に",
+          "status": "new-authored",
+          "mappedTo": "〜上に"
+        },
+        {
+          "sourceTitle": "〜うちに",
+          "status": "existing-legacy",
+          "mappedTo": "N3-g-4"
+        },
+        {
+          "sourceTitle": "〜おかげで",
+          "status": "existing-legacy",
+          "mappedTo": "N3-g-5"
+        },
+        {
+          "sourceTitle": "〜おきに",
+          "status": "new-authored",
+          "mappedTo": "〜おきに"
+        },
+        {
+          "sourceTitle": "〜おそれがある",
+          "status": "batch02-existing",
+          "mappedTo": "〜おそれがある"
+        },
+        {
+          "sourceTitle": "お〜だ",
+          "status": "new-authored",
+          "mappedTo": "お〜だ"
+        },
+        {
+          "sourceTitle": "〜がきっかけで",
+          "status": "batch02-existing",
+          "mappedTo": "〜がきっかけで"
+        },
+        {
+          "sourceTitle": "〜かける / 〜かけの",
+          "status": "new-authored",
+          "mappedTo": "〜かける / 〜かけの"
+        },
+        {
+          "sourceTitle": "〜がち",
+          "status": "batch02-existing",
+          "mappedTo": "〜がち"
+        },
+        {
+          "sourceTitle": "〜かな(あ)",
+          "status": "new-authored",
+          "mappedTo": "〜かな(あ)"
+        },
+        {
+          "sourceTitle": "〜から〜にかけて",
+          "status": "new-authored",
+          "mappedTo": "〜から〜にかけて"
+        },
+        {
+          "sourceTitle": "〜からには",
+          "status": "batch02-existing",
+          "mappedTo": "〜からには"
+        },
+        {
+          "sourceTitle": "〜かわりに（代償・交換条件）",
+          "status": "new-authored",
+          "mappedTo": "〜かわりに（代償・交換条件）"
+        },
+        {
+          "sourceTitle": "〜かわりに（代理・代用）",
+          "status": "new-authored",
+          "mappedTo": "〜かわりに（代理・代用）"
+        },
+        {
+          "sourceTitle": "〜きる",
+          "status": "new-authored",
+          "mappedTo": "〜きる"
+        },
+        {
+          "sourceTitle": "〜くらい（軽視）",
+          "status": "new-authored",
+          "mappedTo": "〜くらい（軽視）"
+        },
+        {
+          "sourceTitle": "〜結果",
+          "status": "batch02-existing",
+          "mappedTo": "〜結果"
+        },
+        {
+          "sourceTitle": "〜こそ",
+          "status": "batch02-existing",
+          "mappedTo": "〜こそ"
+        },
+        {
+          "sourceTitle": "〜こと",
+          "status": "new-authored",
+          "mappedTo": "〜こと"
+        },
+        {
+          "sourceTitle": "〜ごとに",
+          "status": "new-authored",
+          "mappedTo": "〜ごとに"
+        },
+        {
+          "sourceTitle": "〜ことから",
+          "status": "new-authored",
+          "mappedTo": "〜ことから"
+        },
+        {
+          "sourceTitle": "〜ことになっている",
+          "status": "existing-legacy",
+          "mappedTo": "N3-g-2"
+        },
+        {
+          "sourceTitle": "〜ことはない",
+          "status": "new-authored",
+          "mappedTo": "〜ことはない"
+        },
+        {
+          "sourceTitle": "〜込む",
+          "status": "new-authored",
+          "mappedTo": "〜込む"
+        },
+        {
+          "sourceTitle": "〜最中に",
+          "status": "batch02-existing",
+          "mappedTo": "〜最中に"
+        },
+        {
+          "sourceTitle": "〜際に / 〜際の",
+          "status": "new-authored",
+          "mappedTo": "〜際に / 〜際の"
+        },
+        {
+          "sourceTitle": "〜さえ",
+          "status": "new-authored",
+          "mappedTo": "〜さえ"
+        },
+        {
+          "sourceTitle": "〜さえ〜ば",
+          "status": "new-authored",
+          "mappedTo": "〜さえ〜ば"
+        },
+        {
+          "sourceTitle": "〜しかない / 〜ほかない",
+          "status": "new-authored",
+          "mappedTo": "〜しかない / 〜ほかない"
+        },
+        {
+          "sourceTitle": "〜じゃない？",
+          "status": "new-authored",
+          "mappedTo": "〜じゃない？"
+        },
+        {
+          "sourceTitle": "〜ずに",
+          "status": "new-authored",
+          "mappedTo": "〜ずに"
+        },
+        {
+          "sourceTitle": "〜せいで",
+          "status": "batch02-existing",
+          "mappedTo": "〜せいで"
+        },
+        {
+          "sourceTitle": "〜たがる",
+          "status": "new-authored",
+          "mappedTo": "〜たがる"
+        },
+        {
+          "sourceTitle": "〜だけ",
+          "status": "new-authored",
+          "mappedTo": "〜だけ"
+        },
+        {
+          "sourceTitle": "〜だけでなく・・・も",
+          "status": "new-authored",
+          "mappedTo": "〜だけでなく・・・も"
+        },
+        {
+          "sourceTitle": "たとえ〜ても",
+          "status": "new-authored",
+          "mappedTo": "たとえ〜ても"
+        },
+        {
+          "sourceTitle": "〜たところ",
+          "status": "new-authored",
+          "mappedTo": "〜たところ"
+        },
+        {
+          "sourceTitle": "〜たびに",
+          "status": "existing-legacy-variant",
+          "mappedTo": "～たびに"
+        },
+        {
+          "sourceTitle": "〜ために（原因）",
+          "status": "new-authored",
+          "mappedTo": "〜ために（原因）"
+        },
+        {
+          "sourceTitle": "〜たものだ",
+          "status": "new-authored",
+          "mappedTo": "〜たものだ"
+        },
+        {
+          "sourceTitle": "〜だらけ",
+          "status": "new-authored",
+          "mappedTo": "〜だらけ"
+        },
+        {
+          "sourceTitle": "〜だろう",
+          "status": "new-authored",
+          "mappedTo": "〜だろう"
+        },
+        {
+          "sourceTitle": "（なんて）〜だろう",
+          "status": "new-authored",
+          "mappedTo": "（なんて）〜だろう"
+        },
+        {
+          "sourceTitle": "つい〜てしまう",
+          "status": "new-authored",
+          "mappedTo": "つい〜てしまう"
+        },
+        {
+          "sourceTitle": "ついでに",
+          "status": "new-authored",
+          "mappedTo": "ついでに"
+        },
+        {
+          "sourceTitle": "〜っけ",
+          "status": "new-authored",
+          "mappedTo": "〜っけ"
+        },
+        {
+          "sourceTitle": "〜つもりだ（実際とは異なる）",
+          "status": "new-authored",
+          "mappedTo": "〜つもりだ（実際とは異なる）"
+        },
+        {
+          "sourceTitle": "（移動動詞）ている",
+          "status": "new-authored",
+          "mappedTo": "（移動動詞）ている"
+        },
+        {
+          "sourceTitle": "〜ている場合じゃない",
+          "status": "new-authored",
+          "mappedTo": "〜ている場合じゃない"
+        },
+        {
+          "sourceTitle": "〜てからでないと",
+          "status": "new-authored",
+          "mappedTo": "〜てからでないと"
+        },
+        {
+          "sourceTitle": "〜てしかたがない / 〜てしょうがない",
+          "status": "new-authored",
+          "mappedTo": "〜てしかたがない / 〜てしょうがない"
+        },
+        {
+          "sourceTitle": "〜て済む",
+          "status": "new-authored",
+          "mappedTo": "〜て済む"
+        },
+        {
+          "sourceTitle": "〜てたまらない",
+          "status": "new-authored",
+          "mappedTo": "〜てたまらない"
+        },
+        {
+          "sourceTitle": "〜てはいけないから / 〜といけないから",
+          "status": "new-authored",
+          "mappedTo": "〜てはいけないから / 〜といけないから"
+        },
+        {
+          "sourceTitle": "〜てはじめて",
+          "status": "new-authored",
+          "mappedTo": "〜てはじめて"
+        },
+        {
+          "sourceTitle": "〜ても構わない",
+          "status": "new-authored",
+          "mappedTo": "〜ても構わない"
+        },
+        {
+          "sourceTitle": "〜てもしかたがない / 〜てもしょうがない",
+          "status": "new-authored",
+          "mappedTo": "〜てもしかたがない / 〜てもしょうがない"
+        },
+        {
+          "sourceTitle": "〜ても始まらない",
+          "status": "new-authored",
+          "mappedTo": "〜ても始まらない"
+        },
+        {
+          "sourceTitle": "〜といえば",
+          "status": "new-authored",
+          "mappedTo": "〜といえば"
+        },
+        {
+          "sourceTitle": "〜ということだ（伝聞・結論）",
+          "status": "new-authored",
+          "mappedTo": "〜ということだ（伝聞・結論）"
+        },
+        {
+          "sourceTitle": "〜というよりも",
+          "status": "new-authored",
+          "mappedTo": "〜というよりも"
+        },
+        {
+          "sourceTitle": "〜といっても",
+          "status": "new-authored",
+          "mappedTo": "〜といっても"
+        },
+        {
+          "sourceTitle": "〜通す",
+          "status": "new-authored",
+          "mappedTo": "〜通す"
+        },
+        {
+          "sourceTitle": "〜とおりに",
+          "status": "batch02-existing",
+          "mappedTo": "〜とおりに"
+        },
+        {
+          "sourceTitle": "〜とか〜とか",
+          "status": "new-authored",
+          "mappedTo": "〜とか〜とか"
+        },
+        {
+          "sourceTitle": "〜としたら",
+          "status": "new-authored",
+          "mappedTo": "〜としたら"
+        },
+        {
+          "sourceTitle": "〜として",
+          "status": "new-authored",
+          "mappedTo": "〜として"
+        },
+        {
+          "sourceTitle": "〜としても",
+          "status": "new-authored",
+          "mappedTo": "〜としても"
+        },
+        {
+          "sourceTitle": "〜とたん",
+          "status": "new-authored",
+          "mappedTo": "〜とたん"
+        },
+        {
+          "sourceTitle": "〜途中で / 途中に",
+          "status": "new-authored",
+          "mappedTo": "〜途中で / 途中に"
+        },
+        {
+          "sourceTitle": "〜とともに（一緒）",
+          "status": "new-authored",
+          "mappedTo": "〜とともに（一緒）"
+        },
+        {
+          "sourceTitle": "〜とのことだ",
+          "status": "new-authored",
+          "mappedTo": "〜とのことだ"
+        },
+        {
+          "sourceTitle": "〜とは限らない",
+          "status": "new-authored",
+          "mappedTo": "〜とは限らない"
+        },
+        {
+          "sourceTitle": "〜とみえる",
+          "status": "new-authored",
+          "mappedTo": "〜とみえる"
+        },
+        {
+          "sourceTitle": "〜なあ",
+          "status": "new-authored",
+          "mappedTo": "〜なあ"
+        },
+        {
+          "sourceTitle": "〜直す",
+          "status": "new-authored",
+          "mappedTo": "〜直す"
+        },
+        {
+          "sourceTitle": "〜など / なんて / なんか",
+          "status": "new-authored",
+          "mappedTo": "〜など / なんて / なんか"
+        },
+        {
+          "sourceTitle": "〜において / 〜における",
+          "status": "new-authored",
+          "mappedTo": "〜において / 〜における"
+        },
+        {
+          "sourceTitle": "〜に限る",
+          "status": "new-authored",
+          "mappedTo": "〜に限る"
+        },
+        {
+          "sourceTitle": "〜にかけては",
+          "status": "new-authored",
+          "mappedTo": "〜にかけては"
+        },
+        {
+          "sourceTitle": "〜に代わって",
+          "status": "new-authored",
+          "mappedTo": "〜に代わって"
+        },
+        {
+          "sourceTitle": "〜に関して",
+          "status": "new-authored",
+          "mappedTo": "〜に関して"
+        },
+        {
+          "sourceTitle": "〜に決まっている",
+          "status": "new-authored",
+          "mappedTo": "〜に決まっている"
+        },
+        {
+          "sourceTitle": "〜に比べて",
+          "status": "new-authored",
+          "mappedTo": "〜に比べて"
+        },
+        {
+          "sourceTitle": "〜にしたがって",
+          "status": "new-authored",
+          "mappedTo": "〜にしたがって"
+        },
+        {
+          "sourceTitle": "〜にしても〜にしても",
+          "status": "new-authored",
+          "mappedTo": "〜にしても〜にしても"
+        },
+        {
+          "sourceTitle": "〜に対して（対象・対比）",
+          "status": "new-authored",
+          "mappedTo": "〜に対して（対象・対比）"
+        },
+        {
+          "sourceTitle": "〜に違いない",
+          "status": "new-authored",
+          "mappedTo": "〜に違いない"
+        },
+        {
+          "sourceTitle": "〜について",
+          "status": "new-authored",
+          "mappedTo": "〜について"
+        },
+        {
+          "sourceTitle": "〜につき（比率）",
+          "status": "new-authored",
+          "mappedTo": "〜につき（比率）"
+        },
+        {
+          "sourceTitle": "〜につれて",
+          "status": "new-authored",
+          "mappedTo": "〜につれて"
+        },
+        {
+          "sourceTitle": "〜にとって",
+          "status": "new-authored",
+          "mappedTo": "〜にとって"
+        },
+        {
+          "sourceTitle": "〜には",
+          "status": "new-authored",
+          "mappedTo": "〜には"
+        },
+        {
+          "sourceTitle": "〜に反して / 〜に反する",
+          "status": "new-authored",
+          "mappedTo": "〜に反して / 〜に反する"
+        },
+        {
+          "sourceTitle": "〜によって（手段・方法）",
+          "status": "new-authored",
+          "mappedTo": "〜によって（手段・方法）"
+        },
+        {
+          "sourceTitle": "〜によって（対応）",
+          "status": "new-authored",
+          "mappedTo": "〜によって（対応）"
+        },
+        {
+          "sourceTitle": "〜によって（原因・理由）",
+          "status": "new-authored",
+          "mappedTo": "〜によって（原因・理由）"
+        },
+        {
+          "sourceTitle": "〜によっては",
+          "status": "new-authored",
+          "mappedTo": "〜によっては"
+        },
+        {
+          "sourceTitle": "〜によると",
+          "status": "new-authored",
+          "mappedTo": "〜によると"
+        },
+        {
+          "sourceTitle": "〜にわたって",
+          "status": "new-authored",
+          "mappedTo": "〜にわたって"
+        },
+        {
+          "sourceTitle": "〜のでしょうか / 〜んでしょうか",
+          "status": "new-authored",
+          "mappedTo": "〜のでしょうか / 〜んでしょうか"
+        },
+        {
+          "sourceTitle": "数量 + は",
+          "status": "new-authored",
+          "mappedTo": "数量 + は"
+        },
+        {
+          "sourceTitle": "〜場合",
+          "status": "new-authored",
+          "mappedTo": "〜場合"
+        },
+        {
+          "sourceTitle": "〜ばかりなく",
+          "status": "new-authored",
+          "mappedTo": "〜ばかりでなく"
+        },
+        {
+          "sourceTitle": "〜はずがない",
+          "status": "new-authored",
+          "mappedTo": "〜はずがない"
+        },
+        {
+          "sourceTitle": "〜ば〜のに（反実仮想）",
+          "status": "new-authored",
+          "mappedTo": "〜ば〜のに（反実仮想）"
+        },
+        {
+          "sourceTitle": "〜は別として",
+          "status": "new-authored",
+          "mappedTo": "〜は別として"
+        },
+        {
+          "sourceTitle": "〜はもちろん",
+          "status": "new-authored",
+          "mappedTo": "〜はもちろん"
+        },
+        {
+          "sourceTitle": "〜ぶり",
+          "status": "new-authored",
+          "mappedTo": "〜ぶり"
+        },
+        {
+          "sourceTitle": "〜ふりをする",
+          "status": "new-authored",
+          "mappedTo": "〜ふりをする"
+        },
+        {
+          "sourceTitle": "〜べきだ / 〜べきではない",
+          "status": "batch02-existing",
+          "mappedTo": "〜べきだ"
+        },
+        {
+          "sourceTitle": "〜べきだった / 〜べきではなかった",
+          "status": "new-authored",
+          "mappedTo": "〜べきだった / 〜べきではなかった"
+        },
+        {
+          "sourceTitle": "〜ほど（相関関係）",
+          "status": "new-authored",
+          "mappedTo": "〜ほど（相関関係）"
+        },
+        {
+          "sourceTitle": "〜ほど（程度）",
+          "status": "new-authored",
+          "mappedTo": "〜ほど（程度）"
+        },
+        {
+          "sourceTitle": "〜ほど〜はない",
+          "status": "new-authored",
+          "mappedTo": "〜ほど〜はない"
+        },
+        {
+          "sourceTitle": "まるで〜みたいだ（比喩）",
+          "status": "new-authored",
+          "mappedTo": "まるで〜みたいだ（比喩）"
+        },
+        {
+          "sourceTitle": "まるで〜ようだ（比喩）",
+          "status": "new-authored",
+          "mappedTo": "まるで〜ようだ（比喩）"
+        },
+        {
+          "sourceTitle": "〜向きに",
+          "status": "new-authored",
+          "mappedTo": "〜向きに"
+        },
+        {
+          "sourceTitle": "〜向けに",
+          "status": "new-authored",
+          "mappedTo": "〜向けに"
+        },
+        {
+          "sourceTitle": "〜も〜ば〜も",
+          "status": "new-authored",
+          "mappedTo": "〜も〜ば〜も"
+        },
+        {
+          "sourceTitle": "〜ようがない",
+          "status": "new-authored",
+          "mappedTo": "〜ようがない"
+        },
+        {
+          "sourceTitle": "〜ようとする",
+          "status": "new-authored",
+          "mappedTo": "〜ようとする"
+        },
+        {
+          "sourceTitle": "連用中止",
+          "status": "new-authored",
+          "mappedTo": "連用中止"
+        },
+        {
+          "sourceTitle": "〜わけがない",
+          "status": "new-authored",
+          "mappedTo": "〜わけがない"
+        },
+        {
+          "sourceTitle": "〜わけだ / 〜というわけだ",
+          "status": "new-authored",
+          "mappedTo": "〜わけだ / 〜というわけだ"
+        },
+        {
+          "sourceTitle": "〜わけではない / 〜わけじゃない",
+          "status": "new-authored",
+          "mappedTo": "〜わけではない / 〜わけじゃない"
+        },
+        {
+          "sourceTitle": "〜わけにはいかない",
+          "status": "new-authored",
+          "mappedTo": "〜わけにはいかない"
+        },
+        {
+          "sourceTitle": "〜わりに",
+          "status": "new-authored",
+          "mappedTo": "〜わりに"
+        },
+        {
+          "sourceTitle": "〜を込めて",
+          "status": "new-authored",
+          "mappedTo": "〜を込めて"
+        },
+        {
+          "sourceTitle": "〜を中心に",
+          "status": "new-authored",
+          "mappedTo": "〜を中心に"
+        },
+        {
+          "sourceTitle": "〜を通して / 〜を通じて（期間）",
+          "status": "new-authored",
+          "mappedTo": "〜を通して / 〜を通じて（期間）"
+        },
+        {
+          "sourceTitle": "〜を通して / 〜を通じて（手段・媒介）",
+          "status": "new-authored",
+          "mappedTo": "〜を通して / 〜を通じて（手段・媒介）"
+        }
+      ]
+    },
+    "N5": {
+      "inventoryCount": 35,
+      "coverageStatusCounts": {
+        "batch02-existing": 34,
+        "existing-legacy": 1
+      },
+      "patterns": [
+        {
+          "sourceTitle": "〜あとで",
+          "status": "batch02-existing",
+          "mappedTo": "〜あとで"
+        },
+        {
+          "sourceTitle": "あまり〜ない",
+          "status": "batch02-existing",
+          "mappedTo": "あまり〜ない"
+        },
+        {
+          "sourceTitle": "〜がいちばん",
+          "status": "batch02-existing",
+          "mappedTo": "〜がいちばん"
+        },
+        {
+          "sourceTitle": "〜方",
+          "status": "batch02-existing",
+          "mappedTo": "〜方"
+        },
+        {
+          "sourceTitle": "〜が欲しい",
+          "status": "batch02-existing",
+          "mappedTo": "〜が欲しい"
+        },
+        {
+          "sourceTitle": "〜から",
+          "status": "batch02-existing",
+          "mappedTo": "〜から（理由）"
+        },
+        {
+          "sourceTitle": "ぜひ",
+          "status": "batch02-existing",
+          "mappedTo": "ぜひ"
+        },
+        {
+          "sourceTitle": "〜だけ",
+          "status": "batch02-existing",
+          "mappedTo": "〜だけ"
+        },
+        {
+          "sourceTitle": "〜で（手段・方法）",
+          "status": "batch02-existing",
+          "mappedTo": "〜で（手段・方法）"
+        },
+        {
+          "sourceTitle": "〜てから",
+          "status": "batch02-existing",
+          "mappedTo": "〜てから"
+        },
+        {
+          "sourceTitle": "〜でしょう（確認・同意）",
+          "status": "batch02-existing",
+          "mappedTo": "〜でしょう（確認・同意）"
+        },
+        {
+          "sourceTitle": "〜てはいけない",
+          "status": "batch02-existing",
+          "mappedTo": "〜てはいけない"
+        },
+        {
+          "sourceTitle": "〜てもいいですか",
+          "status": "batch02-existing",
+          "mappedTo": "〜てもいいですか"
+        },
+        {
+          "sourceTitle": "〜どうやって",
+          "status": "batch02-existing",
+          "mappedTo": "〜どうやって"
+        },
+        {
+          "sourceTitle": "〜と思う",
+          "status": "batch02-existing",
+          "mappedTo": "〜と思う"
+        },
+        {
+          "sourceTitle": "とても",
+          "status": "batch02-existing",
+          "mappedTo": "とても"
+        },
+        {
+          "sourceTitle": "どんな",
+          "status": "batch02-existing",
+          "mappedTo": "どんな"
+        },
+        {
+          "sourceTitle": "〜たい",
+          "status": "batch02-existing",
+          "mappedTo": "〜たい"
+        },
+        {
+          "sourceTitle": "〜たり〜たり",
+          "status": "batch02-existing",
+          "mappedTo": "〜たり〜たりする"
+        },
+        {
+          "sourceTitle": "〜とき",
+          "status": "batch02-existing",
+          "mappedTo": "〜とき"
+        },
+        {
+          "sourceTitle": "〜ないで",
+          "status": "batch02-existing",
+          "mappedTo": "〜ないで"
+        },
+        {
+          "sourceTitle": "〜ないでください",
+          "status": "batch02-existing",
+          "mappedTo": "〜ないでください"
+        },
+        {
+          "sourceTitle": "〜ながら",
+          "status": "batch02-existing",
+          "mappedTo": "〜ながら"
+        },
+        {
+          "sourceTitle": "〜なくてもいい",
+          "status": "batch02-existing",
+          "mappedTo": "〜なくてもいい"
+        },
+        {
+          "sourceTitle": "〜なければならない",
+          "status": "batch02-existing",
+          "mappedTo": "〜なければならない"
+        },
+        {
+          "sourceTitle": "〜なる",
+          "status": "batch02-existing",
+          "mappedTo": "〜になる"
+        },
+        {
+          "sourceTitle": "（目的）に行く / 来る / 帰る",
+          "status": "batch02-existing",
+          "mappedTo": "〜に行く／来る／帰る（目的）"
+        },
+        {
+          "sourceTitle": "〜はどうですか",
+          "status": "batch02-existing",
+          "mappedTo": "〜はどうですか"
+        },
+        {
+          "sourceTitle": "〜は〜より",
+          "status": "batch02-existing",
+          "mappedTo": "〜は〜より"
+        },
+        {
+          "sourceTitle": "〜前に",
+          "status": "batch02-existing",
+          "mappedTo": "〜前に"
+        },
+        {
+          "sourceTitle": "〜ましょう",
+          "status": "batch02-existing",
+          "mappedTo": "〜ましょう"
+        },
+        {
+          "sourceTitle": "〜ましょうか",
+          "status": "batch02-existing",
+          "mappedTo": "〜ましょうか"
+        },
+        {
+          "sourceTitle": "〜ませんか",
+          "status": "existing-legacy",
+          "mappedTo": "～ませんか"
+        },
+        {
+          "sourceTitle": "もう〜した",
+          "status": "batch02-existing",
+          "mappedTo": "もう〜した"
+        },
+        {
+          "sourceTitle": "〜をください",
+          "status": "batch02-existing",
+          "mappedTo": "〜をください"
+        }
+      ]
+    },
+    "N4": {
+      "inventoryCount": 75,
+      "coverageStatusCounts": {
+        "batch02-existing": 73,
+        "existing-legacy": 2
+      },
+      "patterns": [
+        {
+          "sourceTitle": "〜間",
+          "status": "batch02-existing",
+          "mappedTo": "〜間"
+        },
+        {
+          "sourceTitle": "〜間に",
+          "status": "batch02-existing",
+          "mappedTo": "〜間に"
+        },
+        {
+          "sourceTitle": "〜終わる",
+          "status": "batch02-existing",
+          "mappedTo": "〜終わる"
+        },
+        {
+          "sourceTitle": "（疑問詞）〜か",
+          "status": "batch02-existing",
+          "mappedTo": "（疑問詞）〜か"
+        },
+        {
+          "sourceTitle": "〜がする",
+          "status": "batch02-existing",
+          "mappedTo": "〜がする"
+        },
+        {
+          "sourceTitle": "〜かどうか",
+          "status": "batch02-existing",
+          "mappedTo": "〜かどうか"
+        },
+        {
+          "sourceTitle": "〜かもしれない",
+          "status": "batch02-existing",
+          "mappedTo": "〜かもしれない"
+        },
+        {
+          "sourceTitle": "〜ことがある",
+          "status": "batch02-existing",
+          "mappedTo": "〜ことがある（時々）"
+        },
+        {
+          "sourceTitle": "〜ことにする",
+          "status": "batch02-existing",
+          "mappedTo": "〜ことにする"
+        },
+        {
+          "sourceTitle": "〜ことになる",
+          "status": "batch02-existing",
+          "mappedTo": "〜ことになる"
+        },
+        {
+          "sourceTitle": "〜させてください",
+          "status": "batch02-existing",
+          "mappedTo": "〜させてください"
+        },
+        {
+          "sourceTitle": "〜しか〜ない",
+          "status": "batch02-existing",
+          "mappedTo": "〜しか〜ない"
+        },
+        {
+          "sourceTitle": "〜し、〜し",
+          "status": "batch02-existing",
+          "mappedTo": "〜し、〜し"
+        },
+        {
+          "sourceTitle": "〜すぎる",
+          "status": "batch02-existing",
+          "mappedTo": "〜すぎる"
+        },
+        {
+          "sourceTitle": "（形容詞）する",
+          "status": "batch02-existing",
+          "mappedTo": "（形容詞）する"
+        },
+        {
+          "sourceTitle": "〜そうです（直前）",
+          "status": "batch02-existing",
+          "mappedTo": "〜そうです（直前）"
+        },
+        {
+          "sourceTitle": "〜そうです（伝聞）",
+          "status": "batch02-existing",
+          "mappedTo": "〜そうです（伝聞）"
+        },
+        {
+          "sourceTitle": "〜そうです（様態）",
+          "status": "existing-legacy",
+          "mappedTo": "～そうです（様態）"
+        },
+        {
+          "sourceTitle": "〜出す",
+          "status": "batch02-existing",
+          "mappedTo": "〜出す"
+        },
+        {
+          "sourceTitle": "〜たばかり",
+          "status": "batch02-existing",
+          "mappedTo": "〜たばかり"
+        },
+        {
+          "sourceTitle": "〜ために",
+          "status": "batch02-existing",
+          "mappedTo": "〜ために（目的）"
+        },
+        {
+          "sourceTitle": "〜たらいいですか",
+          "status": "batch02-existing",
+          "mappedTo": "〜たらいいですか"
+        },
+        {
+          "sourceTitle": "〜たらどうですか",
+          "status": "batch02-existing",
+          "mappedTo": "〜たらどうですか"
+        },
+        {
+          "sourceTitle": "〜続ける",
+          "status": "batch02-existing",
+          "mappedTo": "〜続ける"
+        },
+        {
+          "sourceTitle": "〜って",
+          "status": "batch02-existing",
+          "mappedTo": "〜って（引用）"
+        },
+        {
+          "sourceTitle": "〜つもりだ",
+          "status": "batch02-existing",
+          "mappedTo": "〜つもりだ"
+        },
+        {
+          "sourceTitle": "〜て（理由・原因）",
+          "status": "batch02-existing",
+          "mappedTo": "〜て（理由・原因）"
+        },
+        {
+          "sourceTitle": "〜てある",
+          "status": "batch02-existing",
+          "mappedTo": "〜てある"
+        },
+        {
+          "sourceTitle": "（自動詞）ている",
+          "status": "batch02-existing",
+          "mappedTo": "（自動詞）ている（結果の状態）"
+        },
+        {
+          "sourceTitle": "〜ていく",
+          "status": "batch02-existing",
+          "mappedTo": "〜ていく"
+        },
+        {
+          "sourceTitle": "〜ておく",
+          "status": "existing-legacy",
+          "mappedTo": "～ておきます"
+        },
+        {
+          "sourceTitle": "〜ていただけませんか",
+          "status": "batch02-existing",
+          "mappedTo": "〜ていただけませんか"
+        },
+        {
+          "sourceTitle": "〜てくる（変化・移動）",
+          "status": "batch02-existing",
+          "mappedTo": "〜てくる（変化・移動）"
+        },
+        {
+          "sourceTitle": "〜てくる（行って戻る）",
+          "status": "batch02-existing",
+          "mappedTo": "〜てくる（行って戻る）"
+        },
+        {
+          "sourceTitle": "〜てしまう",
+          "status": "batch02-existing",
+          "mappedTo": "〜てしまう"
+        },
+        {
+          "sourceTitle": "〜でしょう",
+          "status": "batch02-existing",
+          "mappedTo": "〜でしょう（推量）"
+        },
+        {
+          "sourceTitle": "〜てみる",
+          "status": "batch02-existing",
+          "mappedTo": "〜てみる"
+        },
+        {
+          "sourceTitle": "〜ても",
+          "status": "batch02-existing",
+          "mappedTo": "〜ても（逆接）"
+        },
+        {
+          "sourceTitle": "〜と",
+          "status": "batch02-existing",
+          "mappedTo": "〜と（条件）"
+        },
+        {
+          "sourceTitle": "〜ところだ",
+          "status": "batch02-existing",
+          "mappedTo": "〜ところだ"
+        },
+        {
+          "sourceTitle": "〜という",
+          "status": "batch02-existing",
+          "mappedTo": "〜という"
+        },
+        {
+          "sourceTitle": "なかなか〜ない",
+          "status": "batch02-existing",
+          "mappedTo": "なかなか〜ない"
+        },
+        {
+          "sourceTitle": "〜なさい",
+          "status": "batch02-existing",
+          "mappedTo": "〜なさい"
+        },
+        {
+          "sourceTitle": "〜なら",
+          "status": "batch02-existing",
+          "mappedTo": "〜なら"
+        },
+        {
+          "sourceTitle": "〜にくい",
+          "status": "batch02-existing",
+          "mappedTo": "〜にくい"
+        },
+        {
+          "sourceTitle": "〜にする",
+          "status": "batch02-existing",
+          "mappedTo": "〜にする（選択）"
+        },
+        {
+          "sourceTitle": "〜ので",
+          "status": "batch02-existing",
+          "mappedTo": "〜ので"
+        },
+        {
+          "sourceTitle": "〜のに",
+          "status": "batch02-existing",
+          "mappedTo": "〜のに（逆接）"
+        },
+        {
+          "sourceTitle": "〜のは〜です",
+          "status": "batch02-existing",
+          "mappedTo": "〜のは〜です"
+        },
+        {
+          "sourceTitle": "〜ば",
+          "status": "batch02-existing",
+          "mappedTo": "〜ば（条件）"
+        },
+        {
+          "sourceTitle": "〜は〜が、〜は（対比）",
+          "status": "batch02-existing",
+          "mappedTo": "〜は〜が、〜は（対比）"
+        },
+        {
+          "sourceTitle": "〜ばかり",
+          "status": "batch02-existing",
+          "mappedTo": "〜ばかり（限定）"
+        },
+        {
+          "sourceTitle": "〜はずだ",
+          "status": "batch02-existing",
+          "mappedTo": "〜はずだ"
+        },
+        {
+          "sourceTitle": "〜始める",
+          "status": "batch02-existing",
+          "mappedTo": "〜始める"
+        },
+        {
+          "sourceTitle": "〜必要がある",
+          "status": "batch02-existing",
+          "mappedTo": "〜必要がある"
+        },
+        {
+          "sourceTitle": "〜ほうがいい",
+          "status": "batch02-existing",
+          "mappedTo": "〜ほうがいい"
+        },
+        {
+          "sourceTitle": "〜ほど〜ない（比較）",
+          "status": "batch02-existing",
+          "mappedTo": "〜ほど〜ない（比較）"
+        },
+        {
+          "sourceTitle": "まだ〜ていない",
+          "status": "batch02-existing",
+          "mappedTo": "まだ〜ていない"
+        },
+        {
+          "sourceTitle": "〜までに",
+          "status": "batch02-existing",
+          "mappedTo": "〜までに"
+        },
+        {
+          "sourceTitle": "〜まま",
+          "status": "batch02-existing",
+          "mappedTo": "〜まま"
+        },
+        {
+          "sourceTitle": "〜みたいだ（推量）",
+          "status": "batch02-existing",
+          "mappedTo": "〜みたいだ（推量）"
+        },
+        {
+          "sourceTitle": "〜みたいな / 〜みたいに（例示）",
+          "status": "batch02-existing",
+          "mappedTo": "〜みたいな／〜みたいに（例示）"
+        },
+        {
+          "sourceTitle": "数量 + も",
+          "status": "batch02-existing",
+          "mappedTo": "数量＋も（多量）"
+        },
+        {
+          "sourceTitle": "〜やすい",
+          "status": "batch02-existing",
+          "mappedTo": "〜やすい"
+        },
+        {
+          "sourceTitle": "〜ようだ（推量）",
+          "status": "batch02-existing",
+          "mappedTo": "〜ようだ（推量）"
+        },
+        {
+          "sourceTitle": "〜ようと思う",
+          "status": "batch02-existing",
+          "mappedTo": "〜ようと思う"
+        },
+        {
+          "sourceTitle": "〜ようと思っている",
+          "status": "batch02-existing",
+          "mappedTo": "〜ようと思っている"
+        },
+        {
+          "sourceTitle": "〜ような / 〜ように （例示）",
+          "status": "batch02-existing",
+          "mappedTo": "〜ような／〜ように（例示）"
+        },
+        {
+          "sourceTitle": "〜ように（目標・期待）",
+          "status": "batch02-existing",
+          "mappedTo": "〜ように（目標・期待）"
+        },
+        {
+          "sourceTitle": "〜ようにしている",
+          "status": "batch02-existing",
+          "mappedTo": "〜ようにしている"
+        },
+        {
+          "sourceTitle": "〜ようにする",
+          "status": "batch02-existing",
+          "mappedTo": "〜ようにする"
+        },
+        {
+          "sourceTitle": "〜ようになる",
+          "status": "batch02-existing",
+          "mappedTo": "〜ようになる"
+        },
+        {
+          "sourceTitle": "〜予定だ",
+          "status": "batch02-existing",
+          "mappedTo": "〜予定だ"
+        },
+        {
+          "sourceTitle": "〜らしい（推量）",
+          "status": "batch02-existing",
+          "mappedTo": "〜らしい（推量）"
+        },
+        {
+          "sourceTitle": "〜らしい（典型）",
+          "status": "batch02-existing",
+          "mappedTo": "〜らしい（典型）"
+        }
+      ]
+    }
+  },
+  "corrections": [
+    {
+      "level": "N3",
+      "sourceTitle": "〜ばかりなく",
+      "displayTitle": "〜ばかりでなく",
+      "reason": "possible source typo; editorial confirmation needed"
+    }
+  ]
+}

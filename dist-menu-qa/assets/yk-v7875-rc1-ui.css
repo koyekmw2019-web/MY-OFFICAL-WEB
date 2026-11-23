@@ -1,0 +1,65 @@
+/* STUDYING WITH YE KUN v7.87.5-rc1 — targeted mobile layout and JLPT feedback.
+ * Additive presentation layer; never change login, exam, payments, YKCR or database.
+ * Loaded AFTER the earlier v7.87.4/mobile CSS; new filename prevents stale-cache reuse.
+ */
+@media (max-width:720px) {
+  /* Fixed header reserves its height on body. Do not change the fixed header or
+     safe-area, just remove repeated padding on the page content beneath it. */
+  body:has(> .wrap > .hero#home) > .wrap {
+    padding-top:0!important;
+  }
+  body > .wrap > .hero#home {
+    padding-top:14px!important;
+    margin-top:calc(0px - var(--yk875-top-trim,0px))!important;
+  }
+  body.yk787-exam-page > .wrap {
+    padding-top:0!important;
+  }
+  body.yk787-exam-page .wrap > #online-mock-exam {
+    padding-top:14px!important;
+    margin-top:calc(0px - var(--yk875-top-trim,0px))!important;
+  }
+  /* The header-to-content trim is refined at runtime from the real rendered
+     header/content positions, capped for safety. This CSS is a fallback. */
+
+  /* Make JLPT visibly respond to touch like the other hamburger menu entries.
+     The actual original destination and existing navigation handlers are kept. */
+  .site-menu-nav > a.yk864-menu-jlpt.yk875-jlpt-pressed,
+  .site-menu-nav > a.yk864-menu-jlpt.yk875-jlpt-pressed:not([aria-current="page"]) {
+    background:#42202a!important;
+    border-color:#e05b72!important;
+    color:#fff!important;
+    box-shadow:0 0 0 2px #bc40544a!important;
+    transform:translateX(4px) scale(.99)!important;
+  }
+  .site-menu-nav > a.yk864-menu-jlpt.yk875-jlpt-pressed > .yk864-menu-icon,
+  .site-menu-nav > a.yk864-menu-jlpt.yk875-jlpt-pressed:not([aria-current="page"]) > .yk864-menu-icon {
+    background:#6d283a!important;
+    border-color:#e05b72!important;
+    color:#ffb0c0!important;
+  }
+  .site-menu-nav > a.yk864-menu-jlpt.yk875-jlpt-pressed > svg.yk864-menu-chevron {
+    transform:translateX(4px)!important;
+    color:#ffb0c0!important;
+  }
+}
+/* Respect accessibility: no extra animation/delay in reduced-motion mode. */
+@media (prefers-reduced-motion:reduce) {
+  .site-menu-nav > a.yk864-menu-jlpt.yk875-jlpt-pressed,
+  .site-menu-nav > a.yk864-menu-jlpt.yk875-jlpt-pressed > :is(.yk864-menu-icon,svg.yk864-menu-chevron) {
+    animation:none!important;
+    transition:none!important;
+  }
+}
+/* Light theme keeps the same visible JLPT press accent without an all-black card. */
+@media (max-width:720px) {
+  html[data-yk-ui-theme="light"] body .site-menu .site-menu-nav > a.yk864-menu-link.yk864-menu-jlpt.yk875-jlpt-pressed {
+    background:#f7dee6!important;
+    color:#871a30!important;
+    border-color:#c64c65!important;
+  }
+  html[data-yk-ui-theme="light"] body .site-menu .site-menu-nav > a.yk864-menu-link.yk864-menu-jlpt.yk875-jlpt-pressed > .yk864-menu-icon {
+    background:#f2c6d3!important;
+    color:#92243b!important;
+  }
+}

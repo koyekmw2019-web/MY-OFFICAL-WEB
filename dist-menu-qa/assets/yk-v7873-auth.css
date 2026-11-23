@@ -1,0 +1,30 @@
+/* v7.87.3 | STUDYING WITH YE KUN — approved YK image + education wordmark.
+ * Only the login page; no authentication mechanism is modified. */
+body.yk873-auth{--yk873-red:#c9233d;--yk873-black:#09090b;}
+body.yk873-auth .yk-auth-brand{gap:9px;min-width:0}
+body.yk873-auth .yk-auth-brand strong{font-size:clamp(11px,1.2vw,15px);line-height:1.24;letter-spacing:.02em;white-space:normal;max-width:240px;overflow-wrap:normal}
+body.yk873-auth .yk-auth-brand small{display:none}
+body.yk873-auth .story-mark.yk873-story-mark{font-size:initial;letter-spacing:normal;line-height:1;display:flex;align-items:center;gap:17px;margin:0 0 24px;max-width:100%;}
+body.yk873-auth .yk873-story-mark img{display:block;width:86px;height:86px;object-fit:contain;border-radius:18px;background:#09090b;flex:none}
+body.yk873-auth .yk873-story-mark strong{font-family:Inter,'Noto Sans Myanmar','Noto Sans JP',sans-serif;font-weight:900;font-size:clamp(16px,1.8vw,24px);line-height:1.23;letter-spacing:.015em;color:#141419;overflow-wrap:anywhere;}
+body.yk873-auth .auth-stage{min-height:660px;}
+body.yk873-auth .auth-stage.is-signup{min-height:710px;}
+body.yk873-auth .auth-stage.yk873-has-notice{min-height:780px;}
+body.yk873-auth .auth-form-inner{padding-top:28px;padding-bottom:30px;}
+body.yk873-auth .auth-status:not([hidden]){display:block!important;position:relative;z-index:3;margin:17px 0 5px;padding:15px 17px;border-radius:12px;background:#24171d;border:1px solid #c54b64;color:#fff;font-size:13px;font-weight:700;line-height:1.75;overflow-wrap:anywhere;box-shadow:0 6px 24px rgba(201,35,61,.12)}
+body.yk873-auth .auth-status.error:not([hidden]){background:#35191d;border-color:#e26c78;color:#ffe6e9}
+body.yk873-auth .auth-submit:focus-visible,body.yk873-auth a:focus-visible{outline-color:#df5370}
+body.yk873-auth .auth-orb{background:#8d273b;opacity:.1}
+@media(max-width:790px) and (min-width:651px){body.yk873-auth .yk873-story-mark{gap:10px}body.yk873-auth .yk873-story-mark img{width:60px;height:60px}body.yk873-auth .yk873-story-mark strong{font-size:16px}}
+@media(max-width:650px){
+ body.yk873-auth .yk-auth-header{flex-wrap:wrap;gap:8px;}
+ body.yk873-auth .yk-auth-brand strong{font-size:11px;line-height:1.3;max-width:150px;}
+ body.yk873-auth .yk-auth-header-actions{margin-left:auto;}
+ body.yk873-auth .auth-stage,body.yk873-auth .auth-stage.is-signup,body.yk873-auth .auth-stage.yk873-has-notice{min-height:0;overflow:visible;}
+ body.yk873-auth .auth-form-inner{padding:25px 19px 30px;}
+ body.yk873-auth .yk873-story-mark img{width:50px;height:50px}
+ body.yk873-auth .yk873-story-mark strong{font-size:15px}
+ body.yk873-auth .story-mark.yk873-story-mark{gap:11px;margin-bottom:8px}
+ body.yk873-auth .auth-status:not([hidden]){margin:14px 0 2px;padding:14px;font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){body.yk873-auth .auth-form-panel,body.yk873-auth .auth-story-panel{transition:none!important}}

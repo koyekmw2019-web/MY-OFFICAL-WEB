@@ -1,0 +1,58 @@
+/* STUDYING WITH YE KUN v7.87 unified crimson / black / white brand treatment */
+:root{--yk787-black:#09090b;--yk787-panel:#17171b;--yk787-wine:#54212d;--yk787-crimson:#c51f30;--yk787-rose:#e35a70;--yk787-light:#f4f4f6}
+html{color-scheme:dark}
+/* Respect existing page structure; unify only interactive accents and feedback. */
+:where(.exam-category,.study-track,.jlpt-card-v745,.jlpt-card-v754,.yk787-home-exam-cta){--yk-accent:var(--yk787-crimson)}
+:where(.exam-category,.study-track,.jlpt-card-v745,.jlpt-card-v754) :where(button,a):focus-visible,
+:where(.yk787-home-exam-cta a):focus-visible{outline:2px solid var(--yk787-rose);outline-offset:3px}
+:where(.exam-launch-v728,.yk787-home-exam-cta .yk787-cta-button):hover{filter:brightness(1.1)}
+:where(.exam-category,.study-track,.jlpt-card-v745,.jlpt-card-v754):hover{border-color:rgba(220,77,96,.48)}
+/* Remove the v7.86.4 always-on JLPT red menu treatment. Only current location gets red. */
+.site-menu-nav>a.yk864-menu-jlpt:not([aria-current="page"]){background:#161619;border-color:#29292e;color:#f5f5f6}
+.site-menu-nav>a.yk864-menu-jlpt:not([aria-current="page"])>.yk864-menu-icon{background:#262629;border-color:#39393d;color:#dedee2}
+.site-menu-nav>a.yk864-menu-jlpt:not([aria-current="page"])>svg.yk864-menu-chevron{color:#85858c}
+.site-menu-nav>a.yk864-menu-link[aria-current="page"]{background:#24191d;border-color:#713344}
+.site-menu-nav>a.yk864-menu-link[aria-current="page"]>.yk864-menu-icon{background:#48212b;color:#ff8493;border-color:#773743}
+.site-menu-nav>a.yk864-menu-link[aria-current="page"]>svg.yk864-menu-chevron{color:#ff8493}
+/* Content colors, not backend/payment logic */
+#yk82Hub .primary,#online-mock-exam .exam-launch-v728,#online-mock-exam .exam-access-actions .primary{accent-color:var(--yk787-crimson)}
+#yk82Hub .primary:hover,#online-mock-exam .exam-launch-v728:hover{box-shadow:0 4px 28px #8d213044}
+/* Homepage glowing ribbon lines are decoration, not a continuous moving background video. */
+.hero-card{position:relative;isolation:isolate;overflow:hidden}
+.hero-card>.yk787-hero-trails{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.48;overflow:hidden}
+.hero-card>.yk787-hero-trails svg{width:100%;height:100%;display:block}
+.hero-card>.yk787-hero-trails .yk787-trail{fill:none;stroke-linecap:round;stroke-width:1.5;stroke:#d4314b;stroke-dasharray:70 1400;stroke-dashoffset:1300;filter:drop-shadow(0 0 4px #cf233e)}
+.hero-card>.yk787-hero-trails .yk787-trail-b{stroke:#802034;stroke-width:3;stroke-dasharray:120 1400;opacity:.55}
+.hero-card>.yk787-hero-trails .yk787-trail-c{stroke:#ea5d6d;stroke-width:1;opacity:.5}
+.hero-card> :not(.yk787-hero-trails){position:relative;z-index:1}
+@media(prefers-reduced-motion:no-preference){
+ .yk787-trail-a{animation:yk787-flow 12s linear infinite}
+ .yk787-trail-b{animation:yk787-flow 17s linear infinite reverse}
+ .yk787-trail-c{animation:yk787-flow 20s linear infinite}
+ @keyframes yk787-flow{to{stroke-dashoffset:-1400}}
+ .study-track:hover,.exam-category:hover{box-shadow:0 12px 28px #991e3121;transition:box-shadow .2s,border-color .2s}
+ .study-hub-v7::before{content:"";position:absolute;top:0;left:0;width:85px;height:2px;background:linear-gradient(90deg,transparent,#d94359,transparent);animation:yk787-divider 1.3s ease-out 1 both}
+ @keyframes yk787-divider{from{transform:translateX(-80px);opacity:0}to{transform:translateX(0);opacity:1}}
+}
+.study-hub-v7{position:relative}
+/* Dedicated exam page renders the *existing* cards/engine, hiding unrelated homepage UI. */
+body.yk787-exam-page .wrap > :not(#online-mock-exam):not(footer){display:none!important}
+body.yk787-exam-page #online-mock-exam{display:block!important;opacity:1!important;visibility:visible!important;transform:none!important;margin:25px auto 42px;scroll-margin-top:90px}
+body.yk787-exam-page #online-mock-exam .exam-category.yk787-exam-target{border-color:#e35770;box-shadow:0 0 0 2px #d4314a55,0 14px 36px #8c203326}
+body.yk787-exam-page .wrap{padding-bottom:24px}
+/* No motion while users read and answer exam questions. */
+body.yk787-exam-page .exam-panel,body.yk787-exam-page .exam-question{animation:none!important;transition:none!important}
+@media(max-width:720px){.yk787-home-exam-cta{padding:20px}.yk787-cta-button{width:100%}.hero-card>.yk787-hero-trails{opacity:.27}}
+@media(prefers-reduced-motion:reduce){.yk787-trail,.study-hub-v7::before,.study-track,.exam-category{animation:none!important;transition:none!important}.hero-card>.yk787-hero-trails{opacity:.2}}
+
+/* JLPT, Dashboard and Video Course use the same restrained crimson brand state. */
+.yk82-page,.yk82-panel{--yk82-accent:var(--yk787-crimson)}
+.yk82-panel{border-color:#54323a}
+.yk82-levels button[aria-pressed="true"],.yk82-tab[aria-selected="true"]{background:var(--yk787-crimson);color:#fff;border-color:#e0576b}
+.yk82-lesson .yk82-read{color:#eba7b2}
+.yk82-tiles .yk82-tile:hover{border-color:#923b4c;background:#2a2025}
+.yk82-progress-fill,.yk84-track i{background:linear-gradient(90deg,#922337,#e45e74)}
+.yk84-title h2 em,.yk84-overline{color:var(--yk787-rose)}
+.vc-btn-red{background:var(--yk787-crimson);border-color:#eb5368}
+.vc-btn-red:hover{box-shadow:0 8px 32px #9b21394d}
+.dict-chip.active,.dict-tool-btn.active{border-color:#b94c60}
