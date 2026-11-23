@@ -1,0 +1,274 @@
+/* STUDYING WITH YE KUN — JLPT UI Phase 1 QA, scoped ONLY to Learning Center.
+ * Ref: GitHub main 09df1bea (v7.88.0 RC1). Visual/layout only; no state,
+ * API, exam, payment, grammar card contents, URLs, or auth changes.
+ * Keep :not(.yk88-detail-page) to avoid touching the dedicated detail screen.
+ */
+body.yk82-page:not(.yk88-detail-page) {
+  --yk-p1-red: #d63b50;
+  --yk-p1-deep: #151418;
+  --yk-p1-edge: #41343d;
+  --yk-p1-text: #f8f7f9;
+}
+body.yk82-page:not(.yk88-detail-page) .yk82-main {
+  max-width: 1120px;
+}
+/* A calmer first screen: avoid the old oversized hero and nested shadows. */
+body.yk82-page:not(.yk88-detail-page) .yk82-hero.yk821-hero {
+  min-height: 0 !important;
+  margin-bottom: 12px;
+  padding: clamp(17px, 2.6vw, 26px) !important;
+  border: 1px solid #543541;
+  border-radius: 21px;
+  background: linear-gradient(117deg, #21191e 0%, #151418 70%, #1d151b 100%);
+  box-shadow: 0 7px 22px #0002;
+}
+body.yk82-page:not(.yk88-detail-page) .yk821-hero-copy {
+  max-width: 900px;
+}
+body.yk82-page:not(.yk88-detail-page) .yk821-hero-copy .yk82-eyebrow {
+  margin-bottom: 4px;
+  letter-spacing: .08em;
+  font-size: 10px;
+}
+body.yk82-page:not(.yk88-detail-page) .yk821-kicker {
+  font-size: 12px;
+  color: #ddccd2;
+}
+body.yk82-page:not(.yk88-detail-page) .yk821-hero-copy h1 {
+  margin: 7px 0 8px;
+  font-size: clamp(28px, 4vw, 37px);
+  line-height: 1.2;
+  letter-spacing: -.025em;
+  overflow-wrap: anywhere;
+}
+body.yk82-page:not(.yk88-detail-page) .yk821-hero-copy p {
+  max-width: 72ch;
+  margin: 5px 0 10px;
+  font-size: clamp(12px, 1.6vw, 13px);
+  line-height: 1.7;
+  color: #d8cbd2;
+}
+/* Keep the existing Daily Practice and Explore Lessons controls and handlers. */
+body.yk82-page:not(.yk88-detail-page) .yk821-hero-actions {
+  max-width: 550px;
+  margin-top: 12px;
+  gap: 8px;
+}
+body.yk82-page:not(.yk88-detail-page) .yk821-hero-actions > :is(button, a) {
+  min-height: 60px;
+  padding: 10px 12px !important;
+  border-radius: 13px;
+  box-shadow: none;
+  touch-action: manipulation;
+}
+body.yk82-page:not(.yk88-detail-page) .yk821-hero-actions small {
+  margin-top: 2px;
+  font-size: 10px;
+  line-height: 1.35;
+}
+body.yk82-page:not(.yk88-detail-page) #yk822LearningCountdown {
+  margin-top: 9px;
+  margin-bottom: 9px;
+}
+body.yk82-page:not(.yk88-detail-page) .yk821-outside-note {
+  margin: 4px 3px 15px;
+  line-height: 1.65;
+  color: #beb5bd;
+}
+/* Single existing level selector / stats section, without duplicating content. */
+body.yk82-page:not(.yk88-detail-page) .yk82-main > section.yk82-block {
+  margin-bottom: 14px;
+  padding: clamp(14px, 2.4vw, 22px);
+  border-radius: 19px;
+  background: #151418;
+  border-color: #3b343c;
+  box-shadow: none;
+}
+body.yk82-page:not(.yk88-detail-page) .yk82-main > section.yk82-block h2 {
+  margin-bottom: 9px;
+  font-size: clamp(17px, 2.3vw, 20px);
+  line-height: 1.55;
+}
+body.yk82-page:not(.yk88-detail-page) #yk82Levels {
+  margin: 8px 0 12px;
+  gap: 8px;
+}
+body.yk82-page:not(.yk88-detail-page) #yk82Levels > button {
+  min-height: 48px;
+  padding: 8px 4px;
+  border-radius: 12px;
+  background: #252429;
+  border-color: #454049;
+  color: #f6f4f6;
+  font-weight: 800;
+  transition: border-color .15s ease, background .15s ease;
+}
+body.yk82-page:not(.yk88-detail-page) #yk82Levels > button[aria-pressed="true"] {
+  background: linear-gradient(110deg, #b62940, #e44759);
+  border-color: #fb8392;
+  color: #fff;
+  box-shadow: 0 3px 13px #b52b4045;
+}
+body.yk82-page:not(.yk88-detail-page) #yk82Stats {
+  gap: 9px;
+  margin: 0 0 8px;
+}
+body.yk82-page:not(.yk88-detail-page) #yk82Stats > .yk82-stat {
+  min-width: 0;
+  padding: 14px;
+  background: #211e24;
+  border: 1px solid #4b3d47;
+  border-radius: 14px;
+  box-shadow: none;
+}
+body.yk82-page:not(.yk88-detail-page) #yk82Stats .yk82-stat strong {
+  color: var(--yk-p1-text);
+  font-size: clamp(20px, 3vw, 25px);
+  line-height: 1.25;
+}
+body.yk82-page:not(.yk88-detail-page) #yk82Stats .yk82-stat small {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #c7c1c9;
+}
+body.yk82-page:not(.yk88-detail-page) #yk82SyncStatus {
+  color: #b9b2bc;
+  font-size: 11px;
+  line-height: 1.65;
+}
+/* Existing categories remain working tabs; this is styling, not navigation rewrite. */
+body.yk82-page:not(.yk88-detail-page) .yk82-columns { gap: 14px; }
+body.yk82-page:not(.yk88-detail-page) .yk82-columns .yk82-block {
+  border-radius: 19px;
+  padding: clamp(15px, 2.1vw, 21px);
+  box-shadow: none;
+}
+body.yk82-page:not(.yk88-detail-page) .yk82-columns .yk82-block > h2 {
+  margin: 0 0 9px;
+  font-size: clamp(17px, 2.2vw, 20px);
+  line-height: 1.45;
+}
+body.yk82-page:not(.yk88-detail-page) #yk82Tabs { gap: 8px; margin: 11px 0 15px; }
+body.yk82-page:not(.yk88-detail-page) #yk82Tabs > .yk82-tab {
+  border: 1px solid #514550;
+  border-radius: 12px;
+  padding: 10px 11px;
+  min-height: 45px;
+  background: #27252a;
+  color: #f6f4f6;
+  font-weight: 750;
+  touch-action: manipulation;
+}
+body.yk82-page:not(.yk88-detail-page) #yk82Tabs > .yk82-tab[aria-selected="true"] {
+  background: linear-gradient(115deg, #b52a40, #e34a5e);
+  color: #fff;
+  border-color: #ee7887;
+}
+/* The existing teacher tip remains readable, with less oversized artwork. */
+body.yk82-page:not(.yk88-detail-page) .yk821-lesson-companion {
+  min-height: 0;
+  margin-bottom: 12px;
+  padding: 11px 13px;
+  border-radius: 13px;
+  background: #241b23;
+  gap: 0;
+}
+body.yk82-page:not(.yk88-detail-page) .yk821-lesson-companion img { display: none; }
+body.yk82-page:not(.yk88-detail-page) .yk821-lesson-companion p {
+  margin-top: 3px;
+  font-size: 12px;
+  line-height: 1.65;
+}
+/* The lesson cards, especially existing Grammar Pattern cards, are intentionally unchanged. */
+@media (max-width: 720px) {
+  body.yk82-page:not(.yk88-detail-page) .yk82-main {
+    padding-inline: 12px;
+    padding-top: 8px !important;
+    padding-bottom: calc(124px + env(safe-area-inset-bottom, 0px));
+  }
+  body.yk82-page:not(.yk88-detail-page) .yk82-hero.yk821-hero {
+    margin-bottom: 8px;
+    padding: 16px 14px !important;
+    border-radius: 17px;
+  }
+  body.yk82-page:not(.yk88-detail-page) .yk821-hero-copy h1 { font-size: clamp(25px, 6.8vw, 31px); }
+  body.yk82-page:not(.yk88-detail-page) .yk821-hero-copy p { font-size: 12px; line-height: 1.6; }
+  body.yk82-page:not(.yk88-detail-page) .yk821-hero-actions { gap: 7px; max-width: 100%; }
+  body.yk82-page:not(.yk88-detail-page) .yk821-hero-actions > :is(button, a) {
+    min-height: 58px;
+    padding: 8px 7px !important;
+    font-size: clamp(11px, 2.9vw, 13px) !important;
+  }
+  body.yk82-page:not(.yk88-detail-page) .yk82-main > section.yk82-block { padding: 13px; }
+  body.yk82-page:not(.yk88-detail-page) #yk82Levels { gap: 6px; }
+  body.yk82-page:not(.yk88-detail-page) #yk82Levels > button { min-height: 44px; font-size: 13px; }
+  body.yk82-page:not(.yk88-detail-page) #yk82Stats { grid-template-columns: repeat(3, minmax(0,1fr)); gap: 7px; }
+  body.yk82-page:not(.yk88-detail-page) #yk82Stats > .yk82-stat { padding: 11px 9px; }
+  body.yk82-page:not(.yk88-detail-page) #yk82Stats .yk82-stat strong { font-size: clamp(18px, 5.6vw, 22px); }
+  body.yk82-page:not(.yk88-detail-page) #yk82Stats .yk82-stat small { font-size: 10px; overflow-wrap: break-word; }
+  /* Preserve seven working buttons in Fix04's explicit 4+3 mobile grid. */
+  body.yk82-page:not(.yk88-detail-page) #yk82Tabs {
+    display: grid !important;
+    grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+    gap: 7px;
+    margin-block: 11px 15px;
+  }
+  body.yk82-page:not(.yk88-detail-page) #yk82Tabs > .yk82-tab {
+    min-width: 0;
+    min-height: 46px;
+    padding: 8px 2px;
+    font-size: clamp(10px, 2.5vw, 12px) !important;
+  }
+}
+@media (max-width: 355px) {
+  body.yk82-page:not(.yk88-detail-page) .yk821-hero-actions { grid-template-columns: 1fr; }
+  body.yk82-page:not(.yk88-detail-page) #yk82Stats > .yk82-stat { padding-inline: 6px; }
+  body.yk82-page:not(.yk88-detail-page) #yk82Stats .yk82-stat small { font-size: 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.yk82-page:not(.yk88-detail-page) #yk82Levels > button { transition: none; }
+}
+/* Light theme preference: keep controls legible without styling other routes. */
+html[data-yk-ui-theme="light"] body.yk82-page:not(.yk88-detail-page) .yk82-hero.yk821-hero,
+html[data-yk-ui-theme="light"] body.yk82-page:not(.yk88-detail-page) .yk82-main > section.yk82-block,
+html[data-yk-ui-theme="light"] body.yk82-page:not(.yk88-detail-page) .yk82-columns .yk82-block {
+  background: #fff;
+  border-color: #e0dce1;
+  color: #1d1b20;
+}
+html[data-yk-ui-theme="light"] body.yk82-page:not(.yk88-detail-page) .yk821-hero-copy :is(h1,p,.yk821-kicker),
+html[data-yk-ui-theme="light"] body.yk82-page:not(.yk88-detail-page) .yk82-main > section.yk82-block h2,
+html[data-yk-ui-theme="light"] body.yk82-page:not(.yk88-detail-page) .yk82-columns .yk82-block > h2 { color: #242129; }
+html[data-yk-ui-theme="light"] body.yk82-page:not(.yk88-detail-page) :is(#yk82Levels > button:not([aria-pressed="true"]),#yk82Tabs > .yk82-tab:not([aria-selected="true"])) {
+  background: #f4f1f4; border-color: #ded7df; color: #28242b;
+}
+html[data-yk-ui-theme="light"] body.yk82-page:not(.yk88-detail-page) #yk82Stats > .yk82-stat {
+  background: #f8f6f8; border-color: #e3dee4;
+}
+html[data-yk-ui-theme="light"] body.yk82-page:not(.yk88-detail-page) #yk82Stats .yk82-stat strong,
+html[data-yk-ui-theme="light"] body.yk82-page:not(.yk88-detail-page) #yk82Stats .yk82-stat small { color: #302b34; }
+html[data-yk-ui-theme="light"] body.yk82-page:not(.yk88-detail-page) .yk821-lesson-companion {
+  background: #f9eef2; border-color: #e9ccd5;
+}
+html[data-yk-ui-theme="light"] body.yk82-page:not(.yk88-detail-page) .yk821-lesson-companion p { color: #3c333b; }
+/* Phase 1 light-mode contrast for the existing info and countdown widgets. */
+html[data-yk-ui-theme="light"] body.yk82-page:not(.yk88-detail-page) .yk821-outside-note,
+html[data-yk-ui-theme="light"] body.yk82-page:not(.yk88-detail-page) #yk82SyncStatus {
+  color: #55505a;
+}
+html[data-yk-ui-theme="light"] body.yk82-page:not(.yk88-detail-page) #yk822LearningCountdown {
+  background: #fff;
+  border-color: #e2d9e1;
+  color: #28242c;
+}
+html[data-yk-ui-theme="light"] body.yk82-page:not(.yk88-detail-page) #yk822LearningCountdown :is(.yk822-countdown-main p,.yk822-countdown-days small,.yk822-countdown-head small,.yk822-countdown-foot,.yk822-countdown-date-status) {
+  color: #55505a;
+}
+html[data-yk-ui-theme="light"] body.yk82-page:not(.yk88-detail-page) #yk822LearningCountdown .yk822-countdown-days {
+  color: #ae243b;
+}
+html[data-yk-ui-theme="light"] body.yk82-page:not(.yk88-detail-page) #yk822LearningCountdown .yk822-countdown-head a {
+  color: #8e1f37 !important;
+}

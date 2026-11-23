@@ -1,0 +1,13 @@
+# 普通第二種免許 · QA branch
+
+Use Node 22–24. Install the versions in package.json. Run npm test, npm run test:second-license-qa, and npm run build:second-license-qa from a clean checkout. The last command completes the regular build before adding the card, cover and static QA route to dist. Regular npm run build excludes this simulation. Existing build scripts update historical version guards in the working copy. Do not commit these generated diffs.
+
+The card follows 普通自動車 on the original exam grid. /mock-second-license-qa.html uses the built site's header, menu, mobile links and theme controls. Practice is bilingual, with optional term readings. Answers and the deadline for the simulated exam persist only on this device. Study cannot overwrite the active exam. No server score, account entitlement, verified student access or free attempt is created.
+
+## Integration proposal requiring approval
+
+1. Reserve ordinary_second as a distinct exam type. In a disposable database, inspect all constraints on exam_type, then extend exam_attempts_exam_type_check while retaining all existing values. Keep the unique partial index (user_id,exam_type) for free attempts. No historical row remapping or car backfill.
+2. Extend _shared/security.mts, exam-autosave.mts, the versioned answer key and exam-score-v763.mts together. Bind each attempt to 90 distinct text IDs and 5 distinct illustration IDs, their statement order and bank version. Validate account ownership, server deadline, checkpoint concurrency and exactly three boolean answers per illustration. Derive results on the server, including 89/90 boundaries, retries and concurrent submit.
+3. Verify free allowance, student and plan entitlements with synthetic accounts, then history, My Mistakes, score verification, analytics and checkpoint recovery in isolation. Set up separate database, receipt store, Identity users and disabled or isolated YKCR outbound integration. Confirm the preview build cannot apply migrations to live data. The existing payment-receipts store is shared across site deploys.
+4. Resolve cover publication permission or replace with owned artwork. Review question-level legal references, Myanmar readings/translations, image cues and repeated topics before publication. The 102 text items and 10 scenes are training material. Exact-duplicate checks do not establish authorship.
+5. Disable the feature route first if a later integration fails. Retain legitimate attempts and the wider constraint while ordinary_second records exist. Do not narrow schema or erase rows as a rollback. QA-only changes can be reverted with a new QA commit. Any main revert or Netlify republish requires separate approval.

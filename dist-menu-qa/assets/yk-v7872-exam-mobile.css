@@ -1,0 +1,49 @@
+/* v7.87.2 -- Phone-first, isolated original mock exam UI. */
+body.yk872-single-exam {background:#090909;color:#f6f6f6;}
+body.yk872-single-exam .wrap {max-width:860px;padding:14px 14px 46px;}
+body.yk872-single-exam .yk872-back{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+body.yk872-single-exam .yk872-back a{font-size:13px;font-weight:700;color:#eee;background:#18181b;border:1px solid #323238;border-radius:12px;padding:10px 12px;}
+body.yk872-single-exam .yk872-back a:focus-visible{outline:2px solid #e35a70;outline-offset:3px;}
+body.yk872-single-exam .yk872-page-title {padding:4px 4px 12px;}
+body.yk872-single-exam .yk872-eyebrow{font-size:11px;letter-spacing:.12em;color:#e35a70;font-weight:800;}
+body.yk872-single-exam .yk872-page-title h1{font-size:clamp(22px,5.6vw,32px);line-height:1.3;margin:5px 0 0;}
+body.yk872-single-exam #online-mock-exam {margin:0 auto!important;padding:6px 0 25px!important;min-width:0;}
+body.yk872-single-exam #online-mock-exam>.kicker,
+body.yk872-single-exam #online-mock-exam>.title,
+body.yk872-single-exam #online-mock-exam>.exam-v728-subtitle,
+body.yk872-single-exam .exam-v728-group-head,
+body.yk872-single-exam .exam-note,
+body.yk872-single-exam .exam-license-note{display:none!important;}
+body.yk872-single-exam .exam-hub {padding:0!important;max-width:100%;}
+body.yk872-single-exam .exam-v728-groups>div:not(:has(.exam-category)),
+body.yk872-single-exam .exam-v728-groups:not(:has(.exam-category)),
+body.yk872-single-exam .jlpt-group-v745:not(:has(.exam-category)){display:none!important;}
+body.yk872-single-exam .exam-v728-groups,
+body.yk872-single-exam .exam-category-grid.v728,
+body.yk872-single-exam .jlpt-grid-v745{display:block!important;grid-template-columns:1fr!important;}
+body.yk872-single-exam .exam-category.v728{width:100%;max-width:100%;min-height:0!important;margin:10px 0!important;padding:17px!important;box-shadow:none!important;border-radius:20px!important;}
+body.yk872-single-exam .exam-book-float-v743,
+body.yk872-single-exam .exam-card-desc-v744{display:none!important;}
+body.yk872-single-exam .exam-card-top-v742{min-height:0!important;margin:0 0 12px!important;}
+body.yk872-single-exam .exam-launch-v728{min-height:56px;touch-action:manipulation;}
+body.yk872-single-exam .exam-panel{scroll-margin-top:calc(var(--yk-header-h,70px) + 12px);max-width:100%;}
+body.yk872-single-exam.yk872-running .yk872-page-title,
+body.yk872-single-exam.yk872-running .exam-v728-groups,
+body.yk872-single-exam.yk872-running .jlpt-group-v745,
+body.yk872-single-exam.yk872-running #ykPrepMountV750,
+body.yk872-single-exam.yk872-running .exam-v728-access,
+body.yk872-single-exam.yk872-running .yk872-back{display:none!important;}
+body.yk872-single-exam.yk872-running #examPanel{margin-top:0;}
+@media(max-width:640px){
+ body.yk872-single-exam .wrap{padding:10px 9px 30px!important;}
+ body.yk872-single-exam .exam-hub{border-radius:17px;padding:10px!important;}
+ body.yk872-single-exam .exam-access-card{padding:12px!important;}
+ body.yk872-single-exam .exam-category.v728{padding:14px!important;}
+ body.yk872-single-exam .exam-panel{border-radius:17px!important;}
+ body.yk872-single-exam .exam-toolbar{top:var(--yk-header-h,70px);}
+ body.yk872-single-exam .exam-launch-v728{width:100%;}
+}
+@media(prefers-reduced-motion:reduce){body.yk872-single-exam *,body.yk872-single-exam *::before,body.yk872-single-exam *::after{scroll-behavior:auto!important;animation-duration:.01ms!important;}}
+/* v7.87's general exam-page hide rule must not hide the new page heading/navigation. */
+body.yk787-exam-page.yk872-single-exam .wrap>.yk872-back{display:flex!important;}
+body.yk787-exam-page.yk872-single-exam .wrap>.yk872-page-title{display:block!important;}

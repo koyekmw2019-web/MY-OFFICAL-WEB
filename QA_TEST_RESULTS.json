@@ -1,0 +1,52 @@
+{
+  "html_navigation_and_i18n": {
+    "status": "PASS",
+    "pages": 41,
+    "tab_order": [
+      "home",
+      "study",
+      "exam",
+      "video",
+      "account"
+    ]
+  },
+  "qa_javascript_syntax": {
+    "status": "PASS",
+    "assets": [
+      "yk-mobile-nav.js",
+      "ykoc-pr7-menu-drawer.js",
+      "ykoc-pr7-menu-i18n.js"
+    ]
+  },
+  "security_scoring_core_unchanged": {
+    "status": "PASS",
+    "files": [
+      "assets/identity.bundle.js",
+      "assets/yk-all-exams-v7863-engine.js",
+      "assets/yk-exam-autosave-v761.js",
+      "service-worker.js"
+    ]
+  },
+  "exam_pages_content_unchanged": {
+    "status": "PASS",
+    "pages": [
+      "mock-second-license-qa.html",
+      "mock-exams.html"
+    ]
+  },
+  "second_license_card_and_timer": {
+    "status": "PASS",
+    "note": "static structure only; server scoring not tested"
+  },
+  "browser_execution": {
+    "status": "BLOCKED",
+    "error": "Chromium environment ERR_BLOCKED_BY_ADMINISTRATOR at loopback localhost"
+  },
+  "hosted_identity": {
+    "status": "BLOCKED",
+    "reason": "Cookie-free POST /verify Team Login compatibility not confirmed"
+  },
+  "production_release": {
+    "status": "NOT AUTHORIZED / NOT PERFORMED"
+  }
+}

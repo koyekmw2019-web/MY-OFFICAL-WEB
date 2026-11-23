@@ -1,0 +1,113 @@
+/* v7.82.1 – STUDYING WITH YE KUN · Original anime study companions.
+   Visual enhancement only. The original learning/quiz/access/payment code is untouched. */
+.yk821-companion-label{display:block;color:#ffb4ba;font-size:10px;font-weight:850;letter-spacing:.12em;line-height:1.65}
+.yk82-page{background:radial-gradient(circle at 90% 1%,#211923 0,transparent 36%),#09090c}
+.yk82-page .yk82-hero.yk821-hero{min-height:310px;overflow:hidden;position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(245px,36%);align-items:center;gap:10px;padding:30px 32px;margin-bottom:12px;background:radial-gradient(circle at 79% 42%,#4a283a 0,transparent 43%),linear-gradient(135deg,#211e26 0%,#141419 57%,#211621 100%);border:1px solid #60404a;border-radius:25px;box-shadow:0 16px 38px #0005}
+.yk821-hero::before{content:'';position:absolute;width:330px;height:330px;border-radius:50%;background:#cf303c2c;filter:blur(55px);right:2%;top:10%;pointer-events:none}
+.yk821-hero-copy{position:relative;z-index:2;max-width:620px}
+.yk821-hero-copy .yk82-eyebrow{color:#faaab3}
+.yk821-hero-copy h1{font-size:clamp(30px,3.4vw,45px);margin:8px 0 12px;line-height:1.2}
+.yk821-hero-copy p{max-width:580px;color:#d9d2d8;font-size:13px;line-height:1.85;margin:10px 0 15px}
+.yk821-kicker{display:block;color:#f5e2e4;font-size:12px;line-height:1.7}
+.yk821-pro{display:inline-block;vertical-align:middle;transform:translateY(-3px);font-size:.34em;letter-spacing:.04em;border-radius:8px;background:linear-gradient(120deg,#d23e4c,#e85d60);color:white;padding:6px 10px;box-shadow:0 5px 15px #c5283830}
+.yk821-hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:18px}
+.yk821-button-primary{appearance:none;border:1px solid #fc9198;background:linear-gradient(120deg,#b72c3d,#ee5c65);box-shadow:0 7px 24px #b5273738;border-radius:13px;color:white;font-weight:800;cursor:pointer;padding:12px 19px;text-align:left;line-height:1.4}
+.yk821-button-primary small{display:block;font-size:10px;font-weight:550;color:#ffe4e6}
+.yk821-button-secondary{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;background:#232027d4;border:1px solid #65515a;border-radius:13px;color:white!important;font-size:12px;font-weight:750;text-decoration:none!important;min-height:47px}
+.yk821-hero-art{position:relative;align-self:stretch;min-height:249px;isolation:isolate}
+.yk821-hero-art img{position:absolute;bottom:-30px;height:auto;object-fit:contain;filter:drop-shadow(0 14px 16px #0005);max-height:302px}
+.yk821-art-student{right:24%;width:min(78%,260px);z-index:2}
+.yk821-art-teacher{right:-25px;width:min(61%,207px);z-index:1}
+.yk821-art-caption{position:absolute;bottom:0;right:8px;z-index:3;padding:3px 10px;border-radius:99px;border:1px solid #fff4;background:#111015dd;color:#eee;font-size:10px;letter-spacing:.02em}
+.yk821-art-caption span{color:#fe858e}
+.yk821-outside-note{color:#b8b3b8;font-size:11px;line-height:1.7;margin:0 3px 22px}
+/* Actual lesson content remains interactive; only the visual hierarchy changes. */
+.yk82-page .yk82-block{background:linear-gradient(160deg,#19191e 0%,#111115 100%);border:1px solid #38353e;box-shadow:0 7px 18px #0002}
+.yk82-page .yk82-levels button[aria-pressed="true"],.yk82-page .yk82-tab[aria-selected="true"]{background:linear-gradient(115deg,#c83443,#eb5560);color:white;border-color:#fa8089;box-shadow:0 5px 17px #a32b3b45}
+.yk82-page .yk82-lesson{background:linear-gradient(160deg,#24232a,#18181d);border-color:#4e4048;transition:border-color .15s,transform .15s}
+.yk82-page .yk82-lesson:hover{border-color:#a65463;transform:translateY(-1px)}
+.yk82-page .yk82-lesson .yk82-eyebrow{color:#f19aa1}
+.yk82-page .yk82-action.primary{background:linear-gradient(120deg,#c13442,#ec5b61);border-color:#f37882;color:white}
+.yk82-page .yk82-quiz .yk82-choice{transition:border-color .15s,background .15s}
+.yk82-page .yk82-lesson .yk82-mm{overflow-wrap:anywhere}
+.yk82-page .yk82-lesson .yk82-sentence{background:#121115;border:1px solid #333139}
+.yk82-page .yk82-stats .yk82-stat{background:linear-gradient(145deg,#28242d,#18191e);border-color:#4a3c44}
+.yk82-page .yk82-progress-fill{background:linear-gradient(90deg,#d43146,#fb7f87)}
+.yk821-lesson-companion{display:flex;align-items:center;gap:12px;background:linear-gradient(110deg,#301a25,#231d25 60%,#19181e);border:1px solid #5f3d4b;border-radius:17px;overflow:hidden;padding:7px 16px 7px 0;margin:0 0 18px;min-height:94px}
+.yk821-lesson-companion img{width:91px;height:88px;object-fit:cover;object-position:50% 16%;align-self:end;flex:none;margin-left:0}
+.yk821-lesson-companion p{font-size:12px;color:#e3d8df;line-height:1.8;margin:3px 0}
+.yk821-reaction:not([hidden]){display:flex;gap:12px;align-items:center;border:1px solid #5a4c56;border-radius:16px;padding:10px 13px;background:linear-gradient(110deg,#27232a,#1e1d22);margin-bottom:15px}
+.yk821-reaction[data-kind="correct"],.yk821-reaction[data-kind="done"]{border-color:#487d69;background:linear-gradient(110deg,#17362c,#1c2226)}
+.yk821-reaction[data-kind="retry"]{border-color:#9a6a46;background:linear-gradient(110deg,#3d2b21,#252027)}
+.yk821-reaction img{width:70px;height:76px;object-fit:cover;object-position:center 18%;border-radius:10px}
+.yk821-reaction strong{font-size:15px;color:#fff}
+.yk821-reaction p{margin:5px 0 0;color:#ded8df;font-size:12px;line-height:1.75}
+.yk821-reaction>div{flex:1;min-width:0}
+.yk821-reaction button{border:0;color:#ddd;background:#ffffff14;border-radius:9px;cursor:pointer;padding:5px 10px;font-size:21px}
+.yk821-aside-companion{display:flex;gap:11px;align-items:center;overflow:hidden;background:linear-gradient(120deg,#3d202a,#1a161b)!important}
+.yk821-aside-companion img{width:91px;height:111px;object-fit:cover;object-position:center top;align-self:flex-end;flex:none}
+.yk821-aside-companion strong{font-size:14px;color:#fff}
+.yk821-aside-companion p{font-size:11px;color:#e4d2d8;line-height:1.8;margin:4px 0 0}
+.yk82-page button:focus-visible,.yk821-button-secondary:focus-visible,.yk821-hub-open:focus-visible{outline:3px solid #f9bec0!important;outline-offset:3px}
+/* Main STUDY HUB: a compact original-character introduction above the original six tiles. */
+.yk82-panel{background:radial-gradient(circle at 98% 0%,#3b1b29 0,transparent 48%),linear-gradient(145deg,#1e1c21,#101013);border-color:#503740}
+.yk82-panel .yk82-levels button[aria-pressed="true"]{background:linear-gradient(125deg,#b72f40,#e15c60);color:white;border-color:#ee858a}
+.yk82-panel .yk82-tile{background:linear-gradient(155deg,#29252a,#202026);border-color:#4c3e46;min-height:107px}
+.yk82-panel .yk82-tile:hover{border-color:#f08a93;background:#30262d}
+.yk82-panel .yk82-tile-top{color:#f9b4bc}
+.yk82-panel .yk82-tile-top small{color:#fff}
+.yk821-hub-welcome{display:flex;align-items:center;gap:16px;min-height:132px;overflow:hidden;border:1px solid #694454;border-radius:18px;background:radial-gradient(circle at 14% 55%,#5a26364a,transparent 32%),linear-gradient(115deg,#2c1f29,#181820);margin:14px 0 16px;padding:0 18px 0 0}
+.yk821-hub-people{width:182px;min-width:182px;height:132px;position:relative;isolation:isolate}
+.yk821-hub-people img{position:absolute;bottom:-6px;object-fit:contain;height:135px;width:auto;max-width:none;filter:drop-shadow(0 5px 11px #0008)}
+.yk821-hub-people img:first-child{left:1px;z-index:2}
+.yk821-hub-people img:last-child{left:73px;z-index:1}
+.yk821-hub-copy{flex:1;min-width:0}
+.yk821-hub-copy strong{display:block;font-size:17px;color:#fff;margin:2px 0 5px}
+.yk821-hub-copy p{font-size:12px;line-height:1.8;color:#ded5d9;margin:0}
+.yk821-hub-open{flex:none;white-space:nowrap;color:#fff!important;text-decoration:none!important;display:inline-flex;padding:11px 16px;border:1px solid #eb7f88;border-radius:12px;background:linear-gradient(105deg,#b72e40,#e25a62);font-size:12px;font-weight:800}
+/* Account dashboards: only the v7.82 JLPT progress section is upgraded. */
+.yk821-dashboard-hero{display:flex;align-items:center;justify-content:space-between;gap:12px;overflow:hidden;background:linear-gradient(105deg,#3b222e,#201c27 70%,#201820);border:1px solid #654453;border-radius:16px;padding:14px 18px 0;margin-bottom:14px}
+.yk821-dashboard-hero h2{font-size:19px;margin:4px 0 9px;color:#fff}
+.yk821-dashboard-hero p{font-size:12px;line-height:1.75;color:#e9d4da;margin:0 0 12px}
+.yk821-dashboard-people{position:relative;min-width:158px;height:121px;overflow:hidden}
+.yk821-dashboard-people img{position:absolute;bottom:-8px;height:137px;width:auto;max-width:none}
+.yk821-dashboard-people img:first-child{left:0;z-index:2}.yk821-dashboard-people img:last-child{left:68px;z-index:1}
+#yk82DashboardPanel .yk82-progress-fill{background:linear-gradient(90deg,#bf3145,#fb8790)}
+/* Small screens keep cards readable and avoid pushing the level selector off-screen. */
+@media(max-width:900px){.yk82-page .yk82-hero.yk821-hero{grid-template-columns:1fr minmax(178px,31%);padding:24px;min-height:320px}.yk821-hub-open{padding:10px}.yk821-hub-welcome{gap:10px}}
+@media(max-width:640px){
+ .yk82-page .yk82-hero.yk821-hero{grid-template-columns:minmax(0,1fr);padding:22px 19px 0;min-height:0;gap:0}
+ .yk821-hero-copy h1{font-size:31px}
+ .yk821-hero-copy p{font-size:12px;line-height:1.75}
+ .yk821-hero-actions{margin-top:12px}
+ .yk821-button-primary{padding:11px 14px;font-size:12px}
+ .yk821-button-secondary{font-size:11px;padding:9px 12px;min-height:44px}
+ .yk821-hero-art{min-height:153px;margin:0 -15px}
+ .yk821-hero-art img{max-height:167px;bottom:-12px}
+ .yk821-art-student{width:164px;right:43%}
+ .yk821-art-teacher{width:135px;right:13%}
+ .yk821-art-caption{right:5%;bottom:12px}
+ .yk821-lesson-companion img{width:75px;height:84px}
+ .yk821-hub-welcome{flex-wrap:wrap;padding:12px 13px;min-height:0;gap:7px}
+ .yk821-hub-people{order:2;width:126px;min-width:126px;height:101px}
+ .yk821-hub-people img{height:105px}
+ .yk821-hub-people img:last-child{left:53px}
+ .yk821-hub-copy{order:1;flex-basis:100%}
+ .yk821-hub-copy strong{font-size:14px}
+ .yk821-hub-copy p{font-size:11px}
+ .yk821-hub-open{order:3;flex:1}
+ .yk821-dashboard-hero{padding:11px 13px 0}
+ .yk821-dashboard-people{min-width:108px;height:95px}
+ .yk821-dashboard-people img{height:104px}
+ .yk821-dashboard-people img:last-child{left:49px}
+ .yk821-dashboard-hero h2{font-size:16px}
+}
+@media(max-width:390px){.yk821-hero-copy h1{font-size:28px}.yk821-hero-actions{gap:7px}.yk821-lesson-companion p{font-size:11px}.yk821-dashboard-people{min-width:90px}}
+@media(prefers-reduced-motion:reduce){.yk82-page .yk82-lesson{transition:none;transform:none!important}}
+/* Keep both primary study actions in one row on standard 390px phones. */
+@media(min-width:375px) and (max-width:640px){
+ .yk821-hero-actions{flex-wrap:nowrap;gap:7px}
+ .yk821-button-primary{font-size:11px;line-height:1.35;padding:10px 12px}
+ .yk821-button-primary small{font-size:9px}
+ .yk821-button-secondary{white-space:nowrap;font-size:10.5px;padding:9px 9px}
+}

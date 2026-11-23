@@ -1,0 +1,10 @@
+{
+  "source": "original Nov21 full QA site + Nov22 latest follow i18n overlay + approved five-tab mobile navigation",
+  "files": 335,
+  "modified_html": 41,
+  "static_site_complete": true,
+  "hosted_qa_verification": false,
+  "production_ready": false,
+  "second_license_backend_integrated": false,
+  "fix03_hosted_compatibility_verified": false
+}

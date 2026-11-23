@@ -1,0 +1,53 @@
+/* STUDYING WITH YE KUN: scoped Mobile JLPT UX + detail. QA only. */
+.yk82-page #yk82Title {scroll-margin-top:156px}
+.yk82-page .yk821-hero-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:10px}
+.yk82-page .yk821-hero-actions > :is(button,a){width:100%;min-width:0;min-height:84px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px!important;line-height:1.35;box-sizing:border-box}
+.yk82-page .yk821-hero-actions small{display:block;font-size:12px;font-weight:600;margin-top:5px;opacity:.94;line-height:1.55}
+.yk82-page .yk88-grammar-card .yk88-grammar-link{display:block;color:inherit;text-decoration:none;border-radius:12px;outline-offset:4px}
+.yk82-page .yk88-grammar-card .yk88-grammar-link:hover h3,.yk82-page .yk88-grammar-card .yk88-grammar-link:focus-visible h3{color:#ffb3c2}
+.yk82-page .yk88-grammar-card .yk88-grammar-link:focus-visible{outline:2px solid #f06d85}
+@media(max-width:620px){
+  .yk82-page .yk821-hero{padding:18px 16px 12px!important}
+  .yk82-page .yk821-hero-actions{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .yk82-page #yk82Title{scroll-margin-top:147px}
+  .yk82-page #yk82Tabs{scroll-margin-top:147px}
+}
+@media(max-width:355px){.yk82-page .yk821-hero-actions{grid-template-columns:1fr}.yk82-page .yk821-hero-actions > :is(button,a){min-height:66px}}
+.yk88-detail-page .yk82-main{max-width:880px}
+.yk88-detail{padding:clamp(16px,4vw,34px)!important;background:linear-gradient(155deg,#1d171d,#131317)!important}
+.yk88-detail h1{font-size:clamp(33px,6vw,52px);line-height:1.3;margin:12px 0;color:#fff}
+.yk88-detail .yk88-meaning{font-size:19px;line-height:1.85;color:#f4b4c0;margin-bottom:22px}
+.yk88-detail h2{font-size:19px;margin:0 0 13px;color:#fff}
+.yk88-explanation{border:1px solid #4f3340;background:#221922;padding:19px;border-radius:18px;margin-bottom:24px}
+.yk88-explanation p{line-height:1.9;margin:9px 0;color:#d9d4da}
+.yk88-explanation .yk88-formation{font-size:21px;line-height:1.6;color:#ffadbf;font-weight:800;overflow-wrap:anywhere}
+.yk88-explanation .yk88-note{color:#b7afb9;font-size:14px}
+.yk88-examples{display:grid;gap:13px}
+.yk88-example{background:#141318;border:1px solid #4a3b45;border-radius:18px;padding:18px}
+.yk88-example-count{font-size:12px;letter-spacing:.07em;color:#ee97aa;font-weight:800}
+.yk88-example p{margin:12px 0 0;color:#ddd;line-height:1.8;overflow-wrap:break-word}
+.yk88-example p.yk88-ja{font-size:clamp(19px,3.5vw,25px);color:#fff;line-height:1.95;word-break:normal}
+.yk88-example-my{font-size:18px;color:#f3eef1;font-weight:600}
+.yk88-example-en{font-size:16px;color:#c9c3cb}
+.yk88-pattern-mark{color:#fff;background:transparent;font-weight:850;text-decoration:underline;text-decoration-color:#f45170;text-decoration-thickness:3px;text-underline-offset:6px}
+.yk88-mark-help,.yk88-disclaimer{font-size:12px;color:#b1adb7;line-height:1.8}
+.yk88-detail-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px}
+.yk88-button{display:inline-flex;justify-content:center;align-items:center;padding:12px 15px;border-radius:13px;border:1px solid #73616b;background:#30262e;color:#fff;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none}
+.yk88-button-primary{background:linear-gradient(110deg,#b92947,#e1536c);border-color:#e1536c}
+.yk88-button:disabled{opacity:.65;cursor:default}
+.yk88-back{display:inline-block;margin-top:24px;color:#f2b8c6!important;line-height:1.7}
+@media(prefers-reduced-motion:reduce){.yk88-grammar-card *{transition:none!important}}
+
+/* v7.87.6 correction: removing the hero art must also remove its empty desktop column. */
+.yk82-page .yk82-hero.yk821-hero{display:block;min-height:0!important}
+.yk82-page .yk821-hero-copy{max-width:900px}
+.yk82-page .yk821-hero-actions{max-width:650px}
+/* Keep lesson title and tabs visible below the sticky learning header. */
+html:has(body.yk82-page){scroll-padding-top:156px}
+@media(max-width:720px){
+  .yk82-page .yk82-top-inner{gap:7px!important;padding-top:9px!important;padding-bottom:9px!important}
+  .yk82-page #yk82Tabs{display:flex;flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;gap:8px}
+  .yk82-page #yk82Tabs > *{flex:0 0 auto;scroll-snap-align:start}
+  .yk82-page .yk82-main{padding-bottom:calc(112px + env(safe-area-inset-bottom,0px))}
+  html:has(body.yk82-page){scroll-padding-top:147px}
+}

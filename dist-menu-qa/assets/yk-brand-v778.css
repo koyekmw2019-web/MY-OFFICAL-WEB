@@ -1,0 +1,6 @@
+/* v7.78 – user-provided YK white horizontal lockup; dashboard shell only. */
+.yk-brand-long-v778{display:inline-flex;flex:0 1 auto;align-items:center;justify-content:flex-start;min-width:0;max-width:235px;text-decoration:none}
+.yk-brand-long-v778 img{width:215px;max-width:100%;height:auto;max-height:73px;object-fit:contain;display:block;filter:drop-shadow(0 3px 11px rgba(0,0,0,.25))}
+.yk-brand-long-v778:hover{opacity:.93}
+@media(max-width:550px){.top-inner{gap:8px}.yk-brand-long-v778{max-width:152px;min-width:0}.yk-brand-long-v778 img{width:150px;max-height:56px}.yk-lang-picker summary{padding:7px 9px;gap:4px}.yk-globe-icon{display:none!important}}
+@media(max-width:370px){.yk-brand-long-v778{max-width:123px}.yk-brand-long-v778 img{width:122px}}

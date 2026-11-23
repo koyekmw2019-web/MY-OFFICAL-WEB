@@ -1,0 +1,140 @@
+{
+  "base_commit": "3eb1c72e7537133e6e027c249f64e8ce2234dd3b",
+  "assets": [
+    {
+      "source": "/assets/embedded-v780/image-01-e6c8e62b0f32.jpg",
+      "optimized": "/assets/yk-perf-images/image-01-e6c8e62b0f32.webp",
+      "source_git_sha": "cfe901e0fc8b737e775fb72b1c4bc5559558f34a",
+      "original_bytes": 541831,
+      "optimized_bytes": 203714,
+      "original_dimensions": [
+        940,
+        1672
+      ],
+      "optimized_dimensions": [
+        780,
+        1387
+      ]
+    },
+    {
+      "source": "/assets/embedded-v780/image-02-d6fe6a3a0fee.png",
+      "optimized": "/assets/yk-perf-images/image-02-d6fe6a3a0fee.webp",
+      "source_git_sha": "b04ad3244d247e1d46026267b5e1632404085295",
+      "original_bytes": 285414,
+      "optimized_bytes": 8532,
+      "original_dimensions": [
+        2048,
+        1448
+      ],
+      "optimized_dimensions": [
+        680,
+        481
+      ]
+    },
+    {
+      "source": "/assets/embedded-v780/image-03-4ab29f582e31.jpg",
+      "optimized": "/assets/yk-perf-images/image-03-4ab29f582e31.webp",
+      "source_git_sha": "98f944b9b39d6be45d832bfbb79c7225d302c4c6",
+      "original_bytes": 124980,
+      "optimized_bytes": 32492,
+      "original_dimensions": [
+        1087,
+        1536
+      ],
+      "optimized_dimensions": [
+        680,
+        961
+      ]
+    },
+    {
+      "source": "/assets/embedded-v780/image-04-7172302766ce.jpg",
+      "optimized": "/assets/yk-perf-images/image-04-7172302766ce.webp",
+      "source_git_sha": "a4e7833cd8e9ba3cd6a9359dd895fcf26ddcccd1",
+      "original_bytes": 146053,
+      "optimized_bytes": 41994,
+      "original_dimensions": [
+        1024,
+        1536
+      ],
+      "optimized_dimensions": [
+        680,
+        1020
+      ]
+    },
+    {
+      "source": "/assets/embedded-v780/image-05-037b033c8e92.jpg",
+      "optimized": "/assets/yk-perf-images/image-05-037b033c8e92.webp",
+      "source_git_sha": "f965e6fe5eae679ca4ee91136ed2feee21812448",
+      "original_bytes": 139109,
+      "optimized_bytes": 36574,
+      "original_dimensions": [
+        1121,
+        1536
+      ],
+      "optimized_dimensions": [
+        680,
+        932
+      ]
+    },
+    {
+      "source": "/assets/embedded-v780/image-06-1e94e865fac0.jpg",
+      "optimized": "/assets/yk-perf-images/image-06-1e94e865fac0.webp",
+      "source_git_sha": "2af623a82ec9ca7fb307f56daf3cd8c4741ac3d1",
+      "original_bytes": 223970,
+      "optimized_bytes": 63420,
+      "original_dimensions": [
+        1092,
+        1536
+      ],
+      "optimized_dimensions": [
+        680,
+        956
+      ]
+    },
+    {
+      "source": "/assets/embedded-v780/image-07-9177e21fe7f7.jpg",
+      "optimized": "/assets/yk-perf-images/image-07-9177e21fe7f7.webp",
+      "source_git_sha": "3a03b0f1f8099a35d7af39afe066b4493cc6cdc5",
+      "original_bytes": 279344,
+      "optimized_bytes": 86230,
+      "original_dimensions": [
+        1083,
+        1536
+      ],
+      "optimized_dimensions": [
+        680,
+        964
+      ]
+    },
+    {
+      "source": "/assets/embedded-v780/image-08-954bd4024881.jpg",
+      "optimized": "/assets/yk-perf-images/image-08-954bd4024881.webp",
+      "source_git_sha": "e7ec59cc7e2fb7c863e90391ca9781cdfa609cae",
+      "original_bytes": 380395,
+      "optimized_bytes": 118626,
+      "original_dimensions": [
+        1110,
+        1536
+      ],
+      "optimized_dimensions": [
+        680,
+        941
+      ]
+    },
+    {
+      "source": "/assets/embedded-v780/image-09-74270ed2f92b.jpg",
+      "optimized": "/assets/yk-perf-images/image-09-74270ed2f92b.webp",
+      "source_git_sha": "4cb1d665f99dd80f00b16207b3dd5877a0c4e947",
+      "original_bytes": 312952,
+      "optimized_bytes": 91432,
+      "original_dimensions": [
+        1101,
+        1536
+      ],
+      "optimized_dimensions": [
+        680,
+        949
+      ]
+    }
+  ]
+}

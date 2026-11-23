@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="my">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b0b0c"><meta name="robots" content="noindex,follow">
+<title>Login / Create Account | YE KUN Official Website</title>
+<link rel="icon" type="image/png" href="/yk-192.png?v=778">
+<link rel="stylesheet" href="/assets/yk-login-v757.css?v=7861">
+<style>.yk-auth-brand-icon-v778{background:#080809!important;overflow:hidden}</style><link rel="stylesheet" href="/assets/yk-v787-unified-theme.css?v=7870">
+<link rel="stylesheet" href="/assets/yk-v7873-auth.css?v=7873">
+<link rel="stylesheet" href="/assets/yk-mobile-nav.css?v=2"><link rel="stylesheet" href="/assets/yk-v7875-rc1-ui.css?v=7875rc1"><script defer src="/assets/yk-v7875-rc1-ui.js?v=7875rc1"></script><script id="yk-ui-theme-init">try{document.documentElement.setAttribute('data-yk-ui-theme',localStorage.getItem('yk_ui_theme')==='light'?'light':'dark')}catch{document.documentElement.setAttribute('data-yk-ui-theme','dark')}</script><link rel="stylesheet" href="/assets/yk-ui-preferences.css?v=1"><link rel="stylesheet" href="/assets/ykoc-pr7-menu-drawer.css?v=pr7menu1"></head>
+<body class="yk873-auth"><button type="button" id="ykDrawerOpen" aria-controls="siteMenu" aria-expanded="false">☰ Menu</button>
+<header class="yk-auth-header">
+ <a class="yk-auth-brand" href="/#home" aria-label="YE KUN Home"><span class="yk-auth-brand-symbol yk-auth-brand-icon-v778"><img src="/yk-192.png" alt="YK" width="42" height="42" style="width:100%;height:100%;display:block;border-radius:inherit;object-fit:cover"></span><strong>STUDYING WITH YE KUN</strong><small>EDUCATION · MOCK EXAMS</small></a>
+ <div class="yk-auth-header-actions"><div class="auth-languages" role="group" aria-label="Languages"><button type="button" data-lang="my">မြန်မာ</button><button type="button" data-lang="en">English</button><button type="button" data-lang="ja">日本語</button></div><a href="/#home" class="yk-auth-home" data-t="back">← Homepage</a></div>
+</header>
+<main class="yk-auth-main">
+ <div class="auth-orb auth-orb-one" aria-hidden="true"></div><div class="auth-orb auth-orb-two" aria-hidden="true"></div>
+ <div class="auth-heading"><span class="auth-eyebrow">STUDYING WITH YE KUN · SECURE LEARNING ACCESS</span><h1 data-t="headline">Welcome to STUDYING WITH YE KUN.</h1><p data-t="strap">Sign in or create an account to access your STUDYING WITH YE KUN learning services and mock exams.</p></div>
+ <section class="auth-stage" id="authStage" aria-label="Login and registration">
+  <div class="auth-form-panel" id="authForms">
+   <div class="auth-form-inner">
+    <div class="form-view" id="viewLogin">
+     <div class="auth-form-kicker" data-t="member">MEMBER LOGIN</div><h2 data-t="signIn">Sign In</h2><p class="form-sub" data-t="loginDesc">Enter your existing account details to continue your study access.</p>
+     <form id="loginForm" novalidate><label for="loginEmail" data-t="email">Email</label><input id="loginEmail" type="email" autocomplete="email" placeholder="name@example.com" required>
+      <label for="loginPassword" data-t="password">Password</label><div class="pass-field"><input id="loginPassword" type="password" autocomplete="current-password" required minlength="8" placeholder="••••••••"><button class="pass-eye" data-target="loginPassword" type="button" aria-label="Show or hide password">◉</button></div>
+      <div class="form-utility"><button type="button" class="link-button" id="forgotSwitch" data-t="forgot">Forgot password?</button></div>
+      <button class="auth-submit" type="button" id="loginSubmit"><span data-t="signIn">Sign In</span><span aria-hidden="true">↗</span></button>
+     </form><p class="form-mobile-switch"><span data-t="newAccount">New here?</span> <button type="button" class="link-button" data-switch="signup" data-t="create">Create Account</button></p>
+    </div>
+    <div class="form-view" id="viewSignup" hidden>
+     <div class="auth-form-kicker" data-t="start">NEW ACCOUNT</div><h2 data-t="create">Create Account</h2><p class="form-sub" data-t="signupDesc">Registration is free. Student verification is a separate secure step.</p>
+     <form id="signupForm" novalidate><label for="suName" data-t="fullName">Full name</label><input id="suName" type="text" autocomplete="name" maxlength="120" required placeholder="Your name">
+      <label for="suEmail" data-t="email">Email</label><input id="suEmail" type="email" autocomplete="email" placeholder="name@example.com" required>
+      <label for="suPassword" data-t="password">Password</label><div class="pass-field"><input id="suPassword" type="password" autocomplete="new-password" required minlength="8" placeholder="8+ characters"><button class="pass-eye" data-target="suPassword" type="button" aria-label="Show or hide password">◉</button></div>
+      <label for="suConfirm" data-t="confirm">Confirm password</label><div class="pass-field"><input id="suConfirm" type="password" autocomplete="new-password" required minlength="8" placeholder="Repeat password"><button class="pass-eye" data-target="suConfirm" type="button" aria-label="Show or hide password">◉</button></div>
+      <button class="auth-submit" type="submit" id="signupSubmit"><span data-t="create">Create Account</span><span aria-hidden="true">↗</span></button>
+     </form><p class="form-mobile-switch"><span data-t="hasAccount">Already have an account?</span> <button type="button" class="link-button" data-switch="login" data-t="signIn">Sign In</button></p>
+    </div>
+    <div class="form-view" id="viewForgot" hidden>
+     <div class="auth-form-kicker" data-t="recoveryTag">ACCOUNT RECOVERY</div><h2 data-t="reset">Reset Password</h2><p class="form-sub" data-t="resetDesc">We will send a password recovery email.</p>
+     <form id="forgotForm" novalidate><label for="forgotEmail" data-t="email">Email</label><input id="forgotEmail" type="email" autocomplete="email" placeholder="name@example.com" required><button class="auth-submit" type="submit" id="forgotSubmit"><span data-t="sendReset">Send Recovery Email</span><span aria-hidden="true">↗</span></button></form>
+     <button type="button" class="link-button" data-switch="login" data-t="backLogin">← Back to Login</button>
+    </div>
+    <div class="form-view" id="viewNewPassword" hidden>
+     <div class="auth-form-kicker" data-t="secure">SECURE ACCOUNT SETUP</div><h2 id="passwordModeTitle" data-t="setPassword">Set New Password</h2><p class="form-sub" id="passwordModeText" data-t="newPassDesc">Create a secure password for your account.</p>
+     <form id="newPasswordForm" novalidate><label for="newPass" data-t="password">Password</label><div class="pass-field"><input id="newPass" type="password" autocomplete="new-password" minlength="8" required><button type="button" class="pass-eye" data-target="newPass" aria-label="Show or hide password">◉</button></div>
+     <label for="newConfirm" data-t="confirm">Confirm password</label><input id="newConfirm" type="password" autocomplete="new-password" minlength="8" required><button class="auth-submit" type="submit"><span data-t="savePass">Save Password</span><span>↗</span></button></form>
+    </div>
+    <div class="auth-status" id="authStatus" role="status" aria-live="polite" hidden></div>
+   </div>
+  </div>
+  <aside class="auth-story-panel" aria-label="Sign In or Create Account">
+    <div class="story-mesh" aria-hidden="true"></div><div class="story-top"><span class="story-dot"></span><span>STUDYING WITH YE KUN / STUDY WITH CONFIDENCE</span></div>
+    <div class="story-content"><div class="story-mark yk873-story-mark" aria-label="STUDYING WITH YE KUN"><img src="/yk-192.png" width="86" height="86" alt="" decoding="async"><strong>STUDYING WITH<br>YE KUN</strong></div><div class="story-change" id="storySignin"><h2 data-t="welcomeBack">Welcome Back.</h2><p data-t="welcomeMsg">Continue learning with the STUDYING WITH YE KUN brand. Your exam access stays connected to your existing account.</p><button type="button" class="story-action" data-switch="signup"><span data-t="newAccount">New here?</span> <b data-t="create">Create Account</b> →</button></div>
+    <div class="story-change" id="storySignup" hidden><h2 data-t="hello">Hello, New Learner.</h2><p data-t="helloMsg">Create a free account for STUDYING WITH YE KUN, then verify your student status using the existing YKCR system if you are enrolled.</p><button type="button" class="story-action" data-switch="login"><span data-t="hasAccount">Already have an account?</span> <b data-t="signIn">Sign In</b> →</button></div>
+    <div class="story-pills"><span>JLPT N1–N5</span><span>SSW · DRIVE</span><span>YKCR</span></div></div>
+    <div class="story-bottom"><span class="status-pulse"></span><span data-t="security">Existing Identity · Existing Student Records · No new database</span></div>
+  </aside>
+ </section>
+ <p class="auth-guest" data-t="guest">You can browse the website without signing in. Login is required to take mock exams.</p>
+</main>
+<footer class="yk-auth-footer"><span>© YE KUN Official Website · STUDYING WITH YE KUN</span><a href="/mock-exams.html" data-t="exams">Explore Mock Exams</a></footer>
+<script src="/assets/yk-login-v757.js?v=7861-login-return" defer></script>
+<script type="module" src="/assets/identity.bundle.js"></script>
+<script src="/assets/yk-v7873-auth-notice.js?v=7873" defer></script>
+<div class="yk-mobile-nav-space" aria-hidden="true"></div><nav id="yk-mobile-nav" aria-label="Main navigation">
+ <a data-tab="home" href="/#home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10H15v-7H9v7H3z"/></svg><span>Home</span></a>
+ <a data-tab="study" href="/study/index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5C6 4 9 4.1 12 6v14c-3-1.8-6-2-9-.5zm18 0c-3-1.5-6-1.4-9 .5v14c3-1.8 6-2 9-.5z"/></svg><span>Study</span></a>
+ <a data-tab="exam" href="/mock-exams.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9M16.4 3.6a2.1 2.1 0 0 1 3 3L7.4 18.6l-4 1 1-4Z"/></svg><span>Exam</span></a>
+ <a data-tab="video" href="/video-class.html"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3z"/></svg><span>Video</span></a>
+ <a data-tab="account" href="/dashboard.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2c0-4.5 3-7 8-7s8 2.5 8 7v2"/></svg><span>Account</span></a>
+</nav><script defer src="/assets/yk-mobile-nav.js?v=2"></script><script defer src="/assets/yk-ui-preferences.js?v=1"></script><div class="menu-backdrop" id="menuBackdrop"></div><aside aria-hidden="true" aria-label="STUDYING WITH YE KUN · Menu" class="site-menu ykoc-drawer" id="siteMenu">
+<div class="site-menu-head ykoc-drawer-head"><div><div class="menu-kicker">STUDYING WITH YE KUN</div><div class="menu-title">MENUS</div></div><button aria-label="Close menu" class="menu-close" data-yk-menu-attr-aria-label="menuClose" id="menuClose" type="button">×</button></div>
+<div class="ykoc-drawer-content" id="ykoc-more">
+<div class="more-content">
+<header class="more-top"><div class="top-actions"><button aria-controls="moreSearchPanel" aria-expanded="false" aria-label="Search menu" class="circle" data-yk-menu-attr-aria-label="moreSearchToggle" id="moreSearchToggle" type="button"><svg viewbox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 5 5"></path></svg></button><button aria-label="Settings" class="circle" data-yk-menu-attr-aria-label="moreSettingsButton" id="moreSettingsButton" type="button">⚙</button></div></header>
+<div class="search-panel" id="moreSearchPanel"><input aria-label="Search menu" autocomplete="off" class="search-input" data-yk-menu-attr-placeholder="moreSearchInput" id="moreSearchInput" placeholder="Search menu…" type="search"/></div>
+<section aria-label="Guest account" class="card welcome" id="moreGuest">
+<div class="brandline"><img alt="STUDYING WITH YE KUN logo" class="yk-logo-icon" src="/assets/studying-with-ye-kun-logo.png"/><span>STUDYING WITH YE KUN</span></div>
+<h2 data-drawer-label="welcome">Welcome to YKOC</h2>
+<p data-drawer-label="guestDesc">Login to continue your exams and sync your progress. Exam attempts follow the existing access rules.</p>
+<div class="actions"><a class="pill" data-drawer-label="login" href="/login.html?return=%2F%23home">Login</a><a class="underlink" data-drawer-label="create" href="/login.html?return=%2F%23home">Create account</a></div>
+</section>
+<section aria-label="Signed-in account" class="card profile" hidden="" id="moreMember">
+<div class="avatar"><img alt="STUDYING WITH YE KUN logo" src="/assets/studying-with-ye-kun-logo.png"/></div><div class="profile-body"><strong id="moreMemberName">Your account</strong><small id="moreMemberEmail"></small><span class="account-chip" data-drawer-label="signed">Signed in · Existing YK Account</span></div><a aria-label="Open dashboard" href="/dashboard.html">↗</a>
+</section>
+<section class="card free-card" id="moreGuestAction"><div><strong data-drawer-label="examExplore">Explore mock exams</strong><span data-drawer-label="examAccess">One free attempt per exam type for eligible non-students. Login required to start.</span></div><a class="small-button" data-drawer-label="start" href="/mock-exams.html">Open</a></section>
+<section class="card resume-card" hidden="" id="moreMemberAction"><div><strong data-drawer-label="continue">Continue learning</strong><span data-drawer-label="continueDesc">Open the existing Study Hub. Your real exam results remain in your dashboard.</span></div><a class="small-button" data-drawer-label="open" href="/#study-hub">Open</a></section>
+<div class="eyebrow" data-drawer-label="shortcuts">SHORTCUTS · ショートカット</div>
+<nav aria-label="Shortcuts" class="shortcuts">
+<a class="shortcut" data-menu-search="Mock Exams စာမေးပွဲ 練習試験" href="/mock-exams.html"><span class="symbol">✎</span><span class="ja" data-yk-menu-i18n="mockAux">模擬試験</span><b data-drawer-label="mock">Mock Exams</b><small data-drawer-label="mockSmall">Start or resume</small></a>
+<a class="shortcut" data-menu-search="Video Course Video သင်ခန်းစာ 動画" href="/video-class.html"><span class="symbol">▷</span><span class="ja" data-yk-menu-i18n="videoAux">動画</span><b data-drawer-label="video">Video Course</b><small data-drawer-label="videoSmall">Truck · Taxi · Bus</small></a>
+<a class="shortcut" data-menu-search="JLPT N5 N4 N3 N2 N1 日本語" href="/#yk82Hub"><span class="symbol">♧</span><span class="ja" data-yk-menu-i18n="jlptAux">JLPT</span><b data-drawer-label="jlpt">JLPT Practice</b><small>JLPT N5–N1</small></a>
+<a class="shortcut" data-menu-search="Dictionary အဘိဓာန် 辞書" href="/study/japanese-myanmar-dictionary.html"><span class="symbol">▤</span><span class="ja" data-yk-menu-i18n="dictionaryAux">辞書</span><b data-drawer-label="dictionary">Dictionary</b><small data-drawer-label="dictionarySmall">Japanese · Myanmar</small></a>
+<a class="shortcut" data-menu-search="Study Learning Hub လေ့လာရေးハブ" href="/#study-hub"><span class="symbol">◇</span><span class="ja" data-yk-menu-i18n="hubAux">学習ハブ</span><b data-drawer-label="hub">Learning Hub</b><small data-drawer-label="hubSmall">Study resources</small></a>
+<a class="shortcut" data-menu-search="Portal YE KUN ポータル" href="/#portal"><span class="symbol">⊞</span><span class="ja" data-yk-menu-i18n="portalAux">ポータル</span><b data-yk-menu-i18n="portal">Portal</b><small>YE KUN Portal</small></a>
+
+
+</nav><details class="yk-other-resources"><summary data-yk-menu-i18n="moreLinks">More study resources</summary><a class="shortcut" data-menu-search="Study Resources" href="/#study-resources"><b data-drawer-label="resources">Study Resources</b></a><a class="shortcut" data-menu-search="Driving Dictionary" href="/#driving-dictionary"><b data-drawer-label="driving">Driving Dictionary</b></a></details>
+<div class="eyebrow" data-drawer-label="account">ACCOUNT</div>
+<section aria-label="Account" class="card rows">
+<a class="item" data-menu-search="My Results Dashboard ရလဒ် 成績" href="/dashboard.html"><span class="ico">▥</span><span class="copy"><b data-drawer-label="results">My Results</b><small data-drawer-label="resultsDesc">Verified exam results in your dashboard</small></span><span class="tail lock" data-yk-menu-i18n="loginLock" hidden="" id="resultsLock">🔒 Login</span><span class="tail">›</span></a>
+<a class="item" data-menu-search="Plans Payment ငွေပေးချေမှု プラン" href="/mock-exams.html#examPlansV728"><span class="ico">▤</span><span class="copy"><b data-drawer-label="plans">Plans &amp; Payment</b><small data-drawer-label="plansDesc">See current access plans in Exam Center</small></span><span class="tail">›</span></a>
+<a class="item" data-menu-search="Student Verify ကျောင်းသားအတည်ပြု 受講生認証" href="/mock-exams.html#examStudentVerifyV728"><span class="ico">♢</span><span class="copy"><b data-drawer-label="verify">Student Verify</b><small data-drawer-label="verifyDesc">Use existing YKCR verification through your account</small></span><span class="tail lock" data-yk-menu-i18n="loginLock" hidden="" id="verifyLock">🔒 Login</span><span class="tail">›</span></a>
+</section>
+<div class="eyebrow" data-drawer-label="settings" id="moreSettings">SETTINGS</div>
+<section aria-label="Settings" class="card rows">
+<div class="item"><span class="ico">◎</span><span class="copy"><b data-drawer-label="language">Language</b><small data-drawer-label="languageDesc">မြန်မာ · English · 日本語</small></span><span class="tail" id="moreLangValue">မြန်မာ</span></div>
+<div aria-label="Choose language" class="lang-list" role="group"><button aria-pressed="true" data-more-lang="my">မြန်မာ</button><button aria-pressed="false" data-more-lang="en">English</button><button aria-pressed="false" data-more-lang="ja">日本語</button></div>
+<div class="item"><span class="ico">☾</span><span class="copy"><b data-drawer-label="dark">Dark Mode</b><small data-drawer-label="darkDesc">Use your existing website theme preference</small></span><button aria-checked="true" aria-label="Dark Mode" class="switch" id="moreDark" role="switch" type="button"></button></div>
+<div class="item"><span class="ico">♧</span><span class="copy"><b data-drawer-label="notifications">Notifications</b><small data-drawer-label="notificationsDesc">Not connected yet · no alerts will be sent</small></span><button aria-checked="false" aria-label="Notifications (local UI preference only)" class="switch" data-yk-menu-attr-aria-label="moreNotifications" id="moreNotifications" role="switch" type="button"></button></div>
+</section>
+<div class="eyebrow" data-drawer-label="support">SUPPORT</div>
+<section aria-label="Support" class="card rows">
+<a class="item" data-menu-search="Contact YE KUN ဆက်သွယ်ရန် 問い合わせ" href="mailto:koyekmw2019@gmail.com"><span class="ico">▢</span><span class="copy"><b data-drawer-label="contact">Contact YE KUN</b></span><span class="tail">↗</span></a>
+<button aria-controls="moreFAQ" aria-expanded="false" class="item" data-menu-search="Help FAQ အကူအညီ" id="moreFAQToggle" type="button"><span class="ico">ⓘ</span><span class="copy"><b data-drawer-label="faq">Help / FAQ</b></span><span class="tail">›</span></button>
+<div class="faq-details" hidden="" id="moreFAQ"><p data-drawer-label="faq1">Q: Can I browse without signing in? Yes. You must log in to take protected mock exams.</p><p data-drawer-label="faq2">Q: How do students access exams? Verified students use the existing student verification system during their valid class period.</p></div>
+<a class="item" data-menu-search="About YKOC STUDYING WITH YE KUN" href="/#about"><span class="ico">ⓘ</span><span class="copy"><b data-drawer-label="about">About YKOC</b></span><span class="tail">›</span></a>
+</section>
+<div class="eyebrow" data-drawer-label="follow">FOLLOW</div>
+<section aria-label="Social media" class="card social-card">
+<div class="social-header"><b data-yk-menu-i18n="followYe">Follow YE<br/>KUN</b><div class="social-btns">
+<a aria-label="Facebook" class="social-icon" href="https://www.facebook.com/share/1G6b9f7LYw/" rel="noopener noreferrer" target="_blank">f</a>
+<a aria-label="Instagram" class="social-icon" href="https://www.instagram.com/yekun.26?igsi=NnNzNzUyMmk4MDhk" rel="noopener noreferrer" target="_blank">IG</a>
+<a aria-label="TikTok" class="social-icon" href="https://www.tiktok.com/@yekun__26?_r=1&amp;_t=ZS-99TBrzRNEqj" rel="noopener noreferrer" target="_blank">♪</a>
+<a aria-label="YouTube" class="social-icon" href="https://youtube.com/@yekun.26?si=qFRYvNJYF0Dsrx6u" rel="noopener noreferrer" target="_blank">▶</a>
+</div></div>
+<div class="social-pages">
+<a class="social-row" href="https://www.facebook.com/share/1GDHn4Qfm4/" rel="noopener noreferrer" target="_blank"><span class="social-mark"><img alt="STUDYING WITH YE KUN" src="/assets/studying-with-ye-kun-logo.png"/></span><span class="link-copy"><b>STUDYING WITH YE KUN</b><small data-yk-menu-i18n="facebookPage">Facebook Page</small></span><span class="tail">↗</span></a>
+<a class="social-row" href="https://www.facebook.com/share/14ohAGHx8FM/" rel="noopener noreferrer" target="_blank"><span class="social-mark">MR</span><span class="link-copy"><b>MRYE, THE MEN'S STYLE</b><small data-yk-menu-i18n="facebookPage">Facebook Page</small></span><span class="tail">↗</span></a>
+</div>
+</section>
+<button class="logout" data-drawer-label="logout" hidden="" id="moreLogout" type="button">⇥ Logout</button>
+<p class="status" hidden="" id="moreStatus" role="status"></p>
+<footer class="footer"><img alt="STUDYING WITH YE KUN · Learn · Grow · A Brighter You" src="/assets/studying-with-ye-kun-wordmark.png"/></footer>
+</div>
+</div>
+</aside><script defer src="/assets/ykoc-pr7-menu-drawer.js?v=pr7menu1"></script><script defer src="/assets/ykoc-pr7-menu-i18n.js?v=pr7menu2"></script></body></html>
