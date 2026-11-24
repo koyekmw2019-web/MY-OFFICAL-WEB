@@ -313,7 +313,9 @@ test('v7.90.0 QA mobile Home is add-on only and keeps existing site routes',asyn
  assert(dashboard.includes("event.stopImmediatePropagation()"));
  assert(dashboard.includes("document.body.classList.remove('yk790-mobile-home')"));
  assert(dashboard.includes("location.assign('/#'+m[1])"));
- assert(dashboard.includes("m[1]==='home'"));
+ assert(dashboard.includes("m[1]==='home'&&isMode()"));
+ assert(dashboard.includes("m[1]!=='home'&&!isMode()"));
+ assert(dashboard.includes("location.assign('/#'+m[1])"));
 
  // No private student or exam fields in the public static template.
  assert(!home.includes('YKST-001'));

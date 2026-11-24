@@ -164,23 +164,29 @@ function onSearch(event){
 // without firing "hashchange". Capture mobile Home -> legacy-anchor navigation
 // before those handlers so the old Study Hub / Dictionary / Portal is visible.
 function openLegacyAnchor(event){
- if(!isMode()||event.defaultPrevented||event.button!==0||event.ctrlKey||
-    event.metaKey||event.altKey||event.shiftKey)return;
+ const homePath=/^\/(?:index(?:\.html)?)?$/.test(location.pathname);
+ if(!mq.matches||!homePath||event.defaultPrevented||event.button!==0||
+    event.ctrlKey||event.metaKey||event.altKey||event.shiftKey)return;
  const link=event.target?.closest?.('a[href]');
  if(!link)return;
  const m=/^\/#([A-Za-z][\w-]*)$/.exec(link.getAttribute('href')||'');
- if(!m||m[1]==='home')return;
+ if(!m)return;
+ // Capture both directions: Dashboard -> Study/Dictionary, and Study -> Home.
+ // Old bottom-nav code calls history.pushState() without a hashchange event.
+ if(m[1]==='home'&&isMode())return;
+ if(m[1]!=='home'&&!isMode())return;
  const target=document.getElementById(m[1]);
  if(!target)return;
  event.preventDefault();
  event.stopImmediatePropagation();
  document.getElementById('menuClose')?.click();
- document.body.classList.remove('yk790-mobile-home');
- root.hidden=true;
- root.setAttribute('aria-hidden','true');
- // Browser's normal anchor navigation now scrolls an actually visible target.
+ if(m[1]!=='home'){
+   document.body.classList.remove('yk790-mobile-home');
+   root.hidden=true;
+   root.setAttribute('aria-hidden','true');
+ }
  location.assign('/#'+m[1]);
- requestAnimationFrame(()=>target.scrollIntoView({behavior:'instant',block:'start'}));
+ if(m[1]!=='home')requestAnimationFrame(()=>target.scrollIntoView({behavior:'instant',block:'start'}));
 }
 function init(){
  // Capture phase is intentional: old menu handlers only listen in bubble phase.
