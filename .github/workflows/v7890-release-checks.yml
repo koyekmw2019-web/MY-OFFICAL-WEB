@@ -11,7 +11,7 @@ on:
       - 'qa/menu-slidein-pr7/**'
       - 'qa/second-license-*'
       - 'assets/yk-ordinary-second-online.js'
-      - 'tests/v7890-production-release.test.mjs'
+      - 'tests/**'
       - 'package.json'
   workflow_dispatch:
 jobs:
