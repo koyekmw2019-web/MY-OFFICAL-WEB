@@ -83,6 +83,9 @@ check('PWA entry pages request the same-origin manifest with credentials', () =>
 });
 check('backend functions/migrations exactly match v7.70 source',()=>{
  const manifest=JSON.parse(read('QA_v7_71_BACKEND_HASHES.json'));
+ const v7890=JSON.parse(read('QA_v7890_APPROVED_BACKEND_HASHES.json'));
+ assert.equal(v7890.release,'v7.89.0');
+ assert.equal(Object.keys(v7890.files).length,5,'Only five audited existing backend files may change');
  assert(Object.keys(manifest.files).length>=30);
  for(const [p,h] of Object.entries(manifest.files)){
   assert(existsSync(file(p)),`Missing ${p}`);
@@ -96,7 +99,8 @@ check('backend functions/migrations exactly match v7.70 source',()=>{
    source=source.replace(/  \/\/ v7\.86\.5: persist section-level evidence[\s\S]*?\n  \/\/ Existing optional review data:/,'  // Existing optional review data:');
    bytes=Buffer.from(source);
   }
-  assert.equal(createHash('sha256').update(bytes).digest('hex'),h,`Source backend changed: ${p}`);
+  const expected=Object.hasOwn(v7890.files,p)?v7890.files[p]:h;
+  assert.equal(createHash('sha256').update(bytes).digest('hex'),expected,`Source backend changed: ${p}`);
  }
 });
 check('no PDFs or environment secrets packaged for deploy',()=>{
