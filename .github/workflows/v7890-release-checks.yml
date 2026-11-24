@@ -1,0 +1,40 @@
+name: YKOC v7.89.0 production release checks
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'netlify/functions/**'
+      - 'netlify/database/migrations/**'
+      - 'scripts/build-v7890-production-release.mjs'
+      - 'scripts/build-v7890-second-license-qa.mjs'
+      - 'qa/menu-slidein-pr7/**'
+      - 'qa/second-license-*'
+      - 'assets/yk-ordinary-second-online.js'
+      - 'tests/v7890-production-release.test.mjs'
+      - 'package.json'
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Existing regression tests
+        run: npm test
+      - name: Generate production deploy directory
+        run: npm run build
+      - name: v7.89.0 production-specific regression tests
+        run: npm run verify:v7890
+      - name: Static-source safety conditions
+        run: |
+          test ! -e dist/mock-second-license-qa.html
+          test -e dist/mock-second-license.html
+          test ! -e dist/.local-menu-build

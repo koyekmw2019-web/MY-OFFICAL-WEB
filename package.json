@@ -11,7 +11,7 @@
     "verify:release": "node tests/v774-release-smoke.mjs --release",
     "postbuild": "node scripts/build-mobile-nav.mjs && node tests/mobile-nav.mjs --release && node scripts/build-mobile-ui-polish.mjs && node tests/mobile-ui-polish.mjs --release && node scripts/build-ui-preferences.mjs && node tests/ui-preferences.mjs --release && node scripts/build-page-transitions-v7875.mjs && node tests/v7875-page-transitions.mjs --release && node scripts/build-v7890-production-release.mjs",
     "posttest": "node tests/mobile-nav.mjs && node tests/mobile-ui-polish.mjs && node tests/ui-preferences.mjs && node tests/ui-preferences.runtime.mjs && node tests/v7875-page-transitions.mjs",
-    "verify:v7890": "node tests/v7890-production-release.test.mjs"
+    "verify:v7890": "node --experimental-strip-types --test tests/v7890-production-release.test.mjs"
   },
   "dependencies": {
     "@netlify/database": "2.0.1",
