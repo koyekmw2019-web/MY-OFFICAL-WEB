@@ -83,24 +83,29 @@ assert(existsSync(join(dist,'mock-second-license.html')));
 assert(!existsSync(join(dist,'mock-second-license-qa.html')));
 // v7.89.1: approved dictionary route, compact mobile layout, tap feedback,
 // and fully covered mobile drawer. Generated output only.
-for (const asset of ['yk-v7891-dictionary-hotfix.css','yk-v7892-navigation.css','yk-v7892-navigation.js','yk-v7895-exam-access.css'])
+for (const asset of ['yk-v7891-dictionary-hotfix.css','yk-v7892-navigation.css','yk-v7892-navigation.js','yk-v7895-exam-access.css','yk-v7896-approved-reference.css'])
  copyFileSync(resolve('assets',asset),join(dist,'assets',asset));
 let accessCardPages=0;
 for (const page of walk(dist)) {
  let body=readFileSync(page,'utf8');
  // Match the original Exam Access markup, regardless of additional classes.
- if(/class=["'][^"']*\bexam-access-card\b/.test(body))accessCardPages++;
+ if(body.includes('class="exam-access-card"')){
+   assert(body.includes("<div class=\"exam-access-actions\"><button id=\"examAccountV735\">👤 Login / Register</button><button id=\"examStudentVerifyV728\">🎓 Student Verify</button><button class=\"primary\" id=\"examPlansV728\">💳 View Plans</button></div>"),'Expected original Exam Access buttons in '+page);
+   body=body.replace('class="exam-access-card"','class="exam-access-card yk-approved-access"')
+     .replace("<div class=\"exam-access-actions\"><button id=\"examAccountV735\">👤 Login / Register</button><button id=\"examStudentVerifyV728\">🎓 Student Verify</button><button class=\"primary\" id=\"examPlansV728\">💳 View Plans</button></div>","<div class=\"yk-audience-card yk-audience-student\" aria-label=\"Student access\">\n  <h3>🎓 ကျောင်းသားများအတွက်</h3>\n  <p>STUDYING WITH YE KUN သင်တန်းသားဖြစ်ပါက Student Verify ဖြင့် အတည်ပြုပြီး သင်တန်းသက်တမ်းအတွင်း အခမဲ့ လေ့ကျင့်နိုင်ပါတယ်။</p>\n  <div class=\"yk-student-actions\"><button id=\"examStudentVerifyV728\">🎓 Student Verify</button></div>\n </div>\n <div class=\"yk-audience-card yk-audience-public\" aria-label=\"Public access\">\n  <h3>♙ အများသုံးအတွက်</h3>\n  <p>စာမေးပွဲအမျိုးအစားတစ်ခုစီအတွက် အခမဲ့ ၁ ကြိမ် ဖြေဆိုနိုင်ပါတယ်။ ထပ်မံလေ့ကျင့်ချင်ရင် Plan ဝယ်နိုင်ပါတယ်။</p>\n  <div class=\"yk-public-actions\"><button id=\"examAccountV735\">👤 Login / Register</button><button class=\"primary\" id=\"examPlansV728\">💳 View Plans</button></div>\n </div>");
+   accessCardPages++;
+ }
  assert(body.includes('id="yk-mobile-nav"')&&body.includes('id="siteMenu"'),
   'Dictionary hotfix requires built navigation: '+page);
  assert(body.includes('</head>')&&body.includes('</body>'));
  assert(!body.includes('data-tab="dictionary" href="/study/japanese-myanmar-dictionary.html"'));
  assert(!body.includes('data-menu-search="Dictionary အဘိဓာန် 辞書" href="/study/japanese-myanmar-dictionary.html"'));
- body=body.replace('</head>','<link rel="stylesheet" href="/assets/yk-v7891-dictionary-hotfix.css?v=7891"><link rel="stylesheet" href="/assets/yk-v7892-navigation.css?v=7895"><link rel="stylesheet" href="/assets/yk-v7895-exam-access.css?v=7895"></head>');
- body=body.replace('</body>','<script defer src="/assets/yk-v7892-navigation.js?v=7895"></script></body>');
+ body=body.replace('</head>','<link rel="stylesheet" href="/assets/yk-v7891-dictionary-hotfix.css?v=7891"><link rel="stylesheet" href="/assets/yk-v7892-navigation.css?v=7895"><link rel="stylesheet" href="/assets/yk-v7896-approved-reference.css?v=7896"></head>');
+ body=body.replace('</body>','<script defer src="/assets/yk-v7892-navigation.js?v=7896"></script></body>');
  writeFileSync(page,body,'utf8');
 }
 assert(accessCardPages>=2,'Exam Access UI missing from generated pages');
-console.log(JSON.stringify({release:'v7.89.5',pages:count,
+console.log(JSON.stringify({release:'v7.89.6',pages:count,
  menu:'V2.1 + approved final polish',ordinary_second:'server-backed',
  bank_publication:'questions only — answers removed from dist',
  existing_site_backend:'preserved',output:'dist'}));

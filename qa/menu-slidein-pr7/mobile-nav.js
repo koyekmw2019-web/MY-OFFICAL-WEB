@@ -8,17 +8,18 @@
   // Netlify Pretty URLs may serve /video-class.html as /video-class (or /video-class/).
   // Normalize only the path used for highlighting; keep every original link intact.
   function activeTab() {
-    const path = (location.pathname.replace(/\/+$/, '').replace(/\.html$/i, '') || '/');
-    if ((path === '/' || path === '/index') && location.hash === '#driving-dictionary') return 'dictionary';
-    if (path === '/study/japanese-myanmar-dictionary') return 'dictionary';
-    if (path === '/mock-second-license-qa' || path === '/mock-exams' || path.startsWith('/exams/')) return 'exam';
-    if (path === '/video-class') return 'video';
-    if (path.startsWith('/study/') || /^\/(login|dashboard|admin-dashboard|student-dashboard|member-dashboard|dictionary-reports)$/.test(path)) return 'menu';
+    const path=(location.pathname.replace(/\\/+$/, '').replace(/\\.html$/i,'')||'/');
+    const home=path==='/'||path==='/index';
+    if ((home && /^#(?:study-hub|yk82Hub|study-resources|driving-dictionary)$/.test(location.hash))
+        || path.startsWith('/study/')) return 'study';
+    if (path==='/mock-exams'||path==='/mock-second-license'||path.startsWith('/exams/')) return 'exam';
+    if (path==='/video-class') return 'video';
+    if (/^\\/(?:login|dashboard|admin-dashboard|student-dashboard|member-dashboard|dictionary-reports)$/.test(path)) return 'account';
     return 'home';
   }
 
   function refresh() {
-    const active = document.body.classList.contains('menu-open') ? 'menu' : activeTab();
+    const active = activeTab();
     for (const link of links) {
       if (link.dataset.tab === active) {
         if (link.getAttribute('aria-current') !== 'page') link.setAttribute('aria-current', 'page');
