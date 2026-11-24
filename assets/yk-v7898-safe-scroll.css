@@ -1,0 +1,74 @@
+/* STUDYING WITH YE KUN v7.89.8 — mobile Exam Center protected scrollport.
+   Previous fixes added bottom padding but left the fixed nav OVER the card.
+   This creates a scrollable viewport that ENDS ABOVE the dock.
+   Existing student/public card and its button IDs remain unchanged. */
+@media (max-width: 720px) {
+  /* Ensure the outer document itself never scrolls under the fixed dock.
+     Only the measured, visible area of the Exam Center scrolls. */
+  body.yk787-exam-page.yk-v7898-safe-scroll:not(.menu-open):not(.yk872-running):not(:has(#examPanel.active,dialog[open],.exam-v728-overlay.open)) {
+    height:100dvh!important;
+    max-height:100dvh!important;
+    overflow:hidden!important;
+  }
+  body.yk787-exam-page.yk-v7898-safe-scroll:not(.menu-open):not(.yk872-running):not(:has(#examPanel.active,dialog[open],.exam-v728-overlay.open)) > .wrap {
+    display:block;
+    box-sizing:border-box!important;
+    height:var(--yk-v7898-scroll-height,calc(100dvh - 140px))!important;
+    max-height:var(--yk-v7898-scroll-height,calc(100dvh - 140px))!important;
+    min-height:0!important;
+    overflow-x:hidden!important;
+    overflow-y:auto!important;
+    overscroll-behavior-y:contain;
+    -webkit-overflow-scrolling:touch;
+    touch-action:pan-y;
+    scrollbar-gutter:stable;
+    /* Actual public buttons are at the end of scrollable content, not behind dock. */
+    padding-bottom:calc(36px + env(safe-area-inset-bottom,0px))!important;
+  }
+  body.yk787-exam-page.yk-v7898-safe-scroll #online-mock-exam .yk-audience-public,
+  body.yk787-exam-page.yk-v7898-safe-scroll #online-mock-exam .yk-public-actions {
+    scroll-margin-bottom:35px;
+  }
+  body.yk787-exam-page.yk-v7898-safe-scroll #online-mock-exam .yk-public-actions button {
+    touch-action:manipulation;
+  }
+}
+/* Save height on short Android browser/custom-tab windows without hiding any content. */
+@media (max-width:720px) and (max-height:820px) {
+  body.yk787-exam-page #online-mock-exam > .kicker {
+    margin-bottom:4px!important;
+    font-size:10px!important;
+    line-height:1.35!important;
+  }
+  body.yk787-exam-page #online-mock-exam > .title {
+    font-size:clamp(21px,5.8vw,25px)!important;
+    line-height:1.20!important;
+    margin:3px 0 11px!important;
+  }
+  body.yk787-exam-page #online-mock-exam .exam-hub {
+    padding:9px!important;
+  }
+  body.yk787-exam-page #online-mock-exam .exam-access-card.yk-approved-access {
+    padding:11px!important;
+    gap:9px!important;
+  }
+  body.yk787-exam-page #online-mock-exam .yk-approved-access .exam-access-main {
+    padding:0!important;
+    gap:9px!important;
+  }
+  body.yk787-exam-page #online-mock-exam .yk-approved-access .yk-audience-card {
+    padding:11px!important;
+    gap:7px!important;
+  }
+  body.yk787-exam-page #online-mock-exam .yk-approved-access .yk-audience-card p {
+    line-height:1.53!important;
+    font-size:clamp(11px,2.95vw,13px)!important;
+  }
+  body.yk787-exam-page #online-mock-exam .yk-approved-access .yk-audience-card h3 {
+    line-height:1.35!important;
+    font-size:clamp(15px,4vw,19px)!important;
+  }
+  body.yk787-exam-page #online-mock-exam .yk-approved-access :is(.yk-student-actions,.yk-public-actions)>button {
+    min-height:44px!important;
+  }
+}

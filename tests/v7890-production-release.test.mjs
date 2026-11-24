@@ -191,7 +191,7 @@ test('v7.89.5 updated mobile PWA assets are cache-busted',()=>{
  assert(html.includes('yk-v7892-navigation.js?v=7896'));
  assert(html.includes('yk-v7892-navigation.css?v=7895'));
  assert(!html.includes('yk-v7892-navigation.js?v=7894'));
- assert(sw.includes('-v7897-mobile-access-visibility'));
+ assert(sw.includes('-v7898-exam-safe-scroll'));
  assert(sw.includes("request.mode === 'navigate'"));
  assert(sw.includes("key.startsWith('yk-public-static-')"));
 });
@@ -254,4 +254,31 @@ test('v7.89.7 mobile access cards fully scroll clear of fixed bottom dock',()=>{
  assert(nav.includes('min-height:calc(73px + env(safe-area-inset-bottom,0px))'));
  for(const tab of ['home','study','exam','video','account'])
    assert(exam.includes('data-tab="'+tab+'"'));
+});
+
+test('v7.89.8 mobile Exam scrollport ENDS ABOVE the fixed nav (not padding only)',()=>{
+ const dist=resolve('dist');
+ const html=readFileSync(join(dist,'mock-exams.html'),'utf8');
+ const css=readFileSync(join(dist,'assets/yk-v7898-safe-scroll.css'),'utf8');
+ const js=readFileSync(join(dist,'assets/yk-v7898-safe-scroll.js'),'utf8');
+ assert(html.includes('/assets/yk-v7898-safe-scroll.css?v=7898'));
+ assert(html.includes('/assets/yk-v7898-safe-scroll.js?v=7898'));
+ assert(html.includes('yk-audience-public')&&html.includes('yk-public-actions'));
+ assert(html.includes('id="examAccountV735"')&&html.includes('id="examPlansV728"'));
+ assert(css.includes('overflow-y:auto!important'));
+ assert(css.includes('height:var(--yk-v7898-scroll-height'));
+ assert(css.includes('scrollbar-gutter:stable'));
+ assert(css.includes('touch-action:pan-y'));
+ assert(css.includes('max-height:100dvh!important'));
+ assert(css.includes('overflow:hidden!important'));
+ assert(css.includes('body.yk787-exam-page.yk-v7898-safe-scroll'));
+ assert(js.includes('navBox.top-wrapBox.top-2'));
+ assert(js.includes('wrap.style.setProperty'));
+ assert(js.includes('ResizeObserver'));
+ assert(js.includes('visualViewport'));
+ assert(js.includes("body.classList.contains('yk872-running')"));
+ assert(js.includes("document.querySelector('#examPanel.active,dialog[open],.exam-v728-overlay.open')"));
+ // The dropdown/links use original IDs. Do not introduce new access actions.
+ assert.equal((html.match(/id="examAccountV735"/g)||[]).length,1);
+ assert.equal((html.match(/id="examPlansV728"/g)||[]).length,1);
 });
