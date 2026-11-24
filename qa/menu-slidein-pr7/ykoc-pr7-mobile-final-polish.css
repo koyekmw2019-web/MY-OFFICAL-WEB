@@ -1,0 +1,219 @@
+/* STUDYING WITH YE KUN · PR7 QA-only mobile polish 2026-11-23.
+   Visual CSS only: original buttons, IDs, auth, payment, exam and data logic untouched. */
+
+/* A smaller, readable exam guest-access card with controls above the bottom nav. */
+#online-mock-exam .exam-v728-access { margin:12px 0 16px; }
+#online-mock-exam .exam-access-card.yk-reference-access {
+  gap:10px; padding:clamp(12px,2.5vw,20px); border-radius:22px;
+}
+#online-mock-exam .yk-reference-access .exam-access-main { gap:12px; padding:0 2px 3px; }
+#online-mock-exam .yk-reference-access .exam-access-icon {
+  width:clamp(49px,12vw,68px); height:clamp(49px,12vw,68px);
+  border-radius:16px; font-size:clamp(24px,5vw,33px);
+}
+#online-mock-exam .yk-reference-access #examAccessTitleV728 {
+  font-family:'Noto Sans Myanmar','Myanmar Text',Pyidaungsu,system-ui,sans-serif;
+  font-size:clamp(16px,3.8vw,22px); line-height:1.42; letter-spacing:0;
+}
+#online-mock-exam .yk-reference-access #examAccessTextV728 {
+  font-size:clamp(11px,2.9vw,13px); line-height:1.5;
+}
+#online-mock-exam .yk-reference-access .yk-guest-guide,
+#online-mock-exam .yk-reference-access .yk-guest-guide:not([hidden]) { gap:10px; }
+#online-mock-exam .yk-reference-access .yk-guest-guide-item {
+  padding:clamp(12px,2.6vw,18px); border-radius:19px;
+}
+#online-mock-exam .yk-reference-access .yk-guest-guide-label {
+  margin-bottom:5px; font-size:clamp(14px,3.55vw,18px); line-height:1.45;
+}
+#online-mock-exam .yk-reference-access .yk-guest-guide-desc {
+  font-size:clamp(12px,2.95vw,14px); line-height:1.58; font-weight:450;
+}
+#online-mock-exam .yk-reference-access .yk-access-student-action,
+#online-mock-exam .yk-reference-access .yk-access-public-actions { margin-top:10px; }
+#online-mock-exam .yk-reference-access #examStudentVerifyV728,
+#online-mock-exam .yk-reference-access #examAccountV735,
+#online-mock-exam .yk-reference-access #examPlansV728 {
+  display:flex; align-items:center; justify-content:center; gap:6px; width:100%;
+  min-height:46px; height:auto; box-sizing:border-box; padding:9px 9px;
+  border-radius:14px; border:1px solid rgba(255,255,255,.28);
+  background:#0b0d10; color:#fff; text-decoration:none; box-shadow:none;
+  font:750 clamp(12px,3.0vw,15px)/1.35 system-ui,'Noto Sans Myanmar','Myanmar Text',sans-serif;
+  white-space:normal; overflow-wrap:normal; text-align:center;
+  cursor:pointer; transition:transform .16s ease,background-color .16s ease,border-color .16s ease,box-shadow .16s ease;
+}
+#online-mock-exam .yk-reference-access #examAccountV735,
+#online-mock-exam .yk-reference-access #examPlansV728 {
+  background:#fff; color:#111317; border:1px solid #fff;
+}
+#online-mock-exam .yk-reference-access #examPlansV728 { text-underline-offset:unset; text-decoration:none; }
+#online-mock-exam .yk-reference-access .yk-access-public-actions {
+  display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:8px; align-items:stretch;
+}
+#online-mock-exam .yk-reference-access :is(#examStudentVerifyV728,#examAccountV735,#examPlansV728):hover:not(:disabled) {
+  transform:translateY(-1px); box-shadow:0 4px 12px rgba(0,0,0,.2);
+}
+#online-mock-exam .yk-reference-access :is(#examStudentVerifyV728,#examAccountV735,#examPlansV728):active:not(:disabled) {transform:scale(.985)}
+#online-mock-exam .yk-reference-access :is(#examStudentVerifyV728,#examAccountV735,#examPlansV728):focus-visible {outline:2px solid #ff606b;outline-offset:3px}
+@media(max-width:350px) {
+  #online-mock-exam .exam-access-card.yk-reference-access {padding:11px;border-radius:18px;gap:9px}
+  #online-mock-exam .yk-reference-access .yk-guest-guide-item {padding:11px;border-radius:15px}
+  #online-mock-exam .yk-reference-access .yk-access-public-actions {gap:7px}
+  #online-mock-exam .yk-reference-access #examAccountV735,
+  #online-mock-exam .yk-reference-access #examPlansV728 {font-size:11.5px;padding:8px 5px}
+}
+
+/* Uniform Menu icons: no mixed Unicode weight, glyph baseline or uneven circles. */
+#siteMenu.ykoc-drawer #ykoc-more .shortcut .symbol,
+#siteMenu.ykoc-drawer #ykoc-more .item .ico {
+  width:28px;height:28px;min-width:28px; flex:0 0 28px;
+  display:inline-grid;place-items:center; margin:0 0 5px; color:inherit;
+  font-family:system-ui,sans-serif;font-size:22px;line-height:1;
+}
+#siteMenu.ykoc-drawer #ykoc-more .item .ico {margin:0}
+#siteMenu.ykoc-drawer #ykoc-more .yk-menu-icon {
+  display:block;width:23px;height:23px;flex:none;
+  fill:none;stroke:currentColor;stroke-width:1.85;
+  stroke-linecap:round;stroke-linejoin:round;
+  transition:transform .2s ease,stroke .2s ease;
+}
+#siteMenu.ykoc-drawer #ykoc-more .circle,
+#siteMenu.ykoc-drawer .menu-close {
+  display:grid;place-items:center;
+  flex:none; padding:0;line-height:1;
+}
+#siteMenu.ykoc-drawer #ykoc-more .circle .yk-menu-icon,
+#siteMenu.ykoc-drawer .menu-close .yk-menu-icon {width:18px;height:18px}
+#siteMenu.ykoc-drawer #ykoc-more .social-icon {
+  display:grid;place-items:center;flex:none;
+  width:40px;height:40px;min-width:40px;line-height:1;
+}
+#siteMenu.ykoc-drawer #ykoc-more .social-icon .yk-menu-icon {width:19px;height:19px}
+#siteMenu.ykoc-drawer #ykoc-more .social-icon[data-platform="instagram"] {font-size:11px}
+
+/* Lightweight physical touch feedback, preserving original links and listeners. */
+#siteMenu.ykoc-drawer #ykoc-more :is(.shortcut,.item,.social-icon,.social-row,.pill,.underlink,.small-button,.circle,.logout,.lang-list button),
+#siteMenu.ykoc-drawer .menu-close {
+  transition:transform .17s cubic-bezier(.2,.85,.2,1),background-color .17s,border-color .17s,box-shadow .17s,filter .17s;
+  transform-origin:center center;
+}
+#siteMenu.ykoc-drawer #ykoc-more :is(.shortcut,.item,.social-icon,.social-row,.pill,.underlink,.small-button,.circle,.logout,.lang-list button):is(:active,.yk-menu-pressed),
+#siteMenu.ykoc-drawer .menu-close:is(:active,.yk-menu-pressed) {transform:scale(.965);filter:brightness(1.13)}
+#siteMenu.ykoc-drawer #ykoc-more .shortcut:is(:hover,:focus-visible,.yk-menu-pressed) {border-color:rgba(215,25,32,.57)!important;background:color-mix(in srgb,var(--tile),#b61e29 12%)!important}
+#siteMenu.ykoc-drawer #ykoc-more .shortcut:is(:hover,:focus-visible,.yk-menu-pressed) .yk-menu-icon {transform:translateY(-2px);stroke:#ed6a71}
+#siteMenu.ykoc-drawer #ykoc-more .item:is(:hover,:focus-visible,.yk-menu-pressed) .yk-menu-icon {stroke:#ee7075}
+#siteMenu.ykoc-drawer #ykoc-more .social-icon:is(:hover,.yk-menu-pressed) {border-color:#ad2933;box-shadow:0 0 0 2px #ad293326}
+
+/* Bottom wordmark is typographic only, no large logo image. */
+#siteMenu.ykoc-drawer #ykoc-more .footer.yk-menu-text-footer {
+  width:100%;padding:23px 8px 26px!important;margin-top:13px;
+  border-top:1px solid var(--divider);text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+}
+#siteMenu.ykoc-drawer #ykoc-more .footer.yk-menu-text-footer:before {content:"";display:block;width:34px;height:2px;background:#d71920;border-radius:99px;margin-bottom:8px}
+#siteMenu.ykoc-drawer #ykoc-more .yk-menu-footer-brand {
+  font:850 clamp(13px,3.4vw,17px)/1.35 system-ui,'Noto Sans Myanmar',sans-serif;
+  letter-spacing:.10em;color:var(--text);overflow-wrap:break-word;
+}
+#siteMenu.ykoc-drawer #ykoc-more .yk-menu-footer-handle {
+  font:700 12px/1.4 system-ui,sans-serif;color:var(--muted);
+  letter-spacing:.15em;
+}
+
+/* Swipe-right drag is enabled by JS only while the user has the drawer open. */
+#siteMenu.ykoc-drawer {touch-action:pan-y}
+body.menu-open #siteMenu.ykoc-drawer.yk-swipe-dragging {
+  transform:translate3d(var(--yk-swipe-x,0px),0,0)!important;
+  transition:none!important;
+}
+body.menu-open #siteMenu.ykoc-drawer.yk-swipe-closing {
+  transform:translateX(104%)!important;
+  transition:transform .2s cubic-bezier(.22,.7,.2,1)!important;
+}
+@media(prefers-reduced-motion:reduce){
+ #siteMenu.ykoc-drawer #ykoc-more *,#siteMenu.ykoc-drawer .menu-close{transition:none!important;animation:none!important}
+ body.menu-open #siteMenu.ykoc-drawer.yk-swipe-closing{transition:none!important}
+ #online-mock-exam .yk-reference-access button{transition:none!important}
+}
+/* Menu close control lives outside #ykoc-more: style its SVG explicitly. */
+#siteMenu.ykoc-drawer .menu-close .yk-menu-icon {
+ display:block;width:18px;height:18px;fill:none;stroke:currentColor;
+ stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;
+}
+
+
+/* QA MICRO POLISH 2026-11-23 · screenshot feedback. Presentation only.
+   The access-card internals, CTA IDs, exam logic and global headings are unchanged. */
+@media (max-width:720px) {
+  /* Keep Exam Center branding, but reclaim only a modest amount of vertical space. */
+  #online-mock-exam > .kicker {
+    font-size:10px;
+    line-height:1.45;
+    letter-spacing:.15em;
+  }
+  #online-mock-exam > .title {
+    font-size:clamp(24px,6.3vw,29px);
+    line-height:1.26;
+    letter-spacing:-.012em;
+    margin:4px 0 9px;
+  }
+  #online-mock-exam .exam-v728-access { margin-top:8px; }
+}
+/* These 3 buttons are moved into the same EXISTING drawer header by the
+   visual-only QA JS. Their original DOM nodes, IDs and handlers are preserved. */
+#siteMenu.ykoc-drawer .ykoc-drawer-head .top-actions {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex:0 0 auto;
+  margin-left:auto;
+  position:static!important;
+}
+#siteMenu.ykoc-drawer .ykoc-drawer-head > .menu-close { margin-left:0; }
+#siteMenu.ykoc-drawer .ykoc-drawer-head :is(.circle,.menu-close) {
+  display:inline-grid;
+  place-items:center;
+  box-sizing:border-box;
+  flex:0 0 38px;
+  width:38px;
+  height:38px;
+  min-width:38px;
+  padding:0;
+  border-radius:50%;
+  border:1px solid #303033;
+  background:#1b1b1d;
+  color:#f7f7f8;
+  line-height:1;
+}
+#siteMenu.ykoc-drawer .ykoc-drawer-head :is(.circle,.menu-close) .yk-menu-icon {
+  display:block;
+  width:19px;
+  height:19px;
+  flex:none;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.85;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  transform:none;
+}
+#siteMenu.ykoc-drawer .ykoc-drawer-head :is(.circle,.menu-close):focus-visible {
+  outline:2px solid #ff606b;
+  outline-offset:3px;
+}
+html[data-yk-ui-theme="light"] #siteMenu.ykoc-drawer .ykoc-drawer-head :is(.circle,.menu-close) {
+  color:#171717;
+  background:#efefed;
+  border-color:#dededc;
+}
+@media (max-width:360px) {
+  #siteMenu.ykoc-drawer .ykoc-drawer-head { padding-inline:12px!important; gap:6px; }
+  #siteMenu.ykoc-drawer .ykoc-drawer-head .top-actions { gap:6px; }
+  #siteMenu.ykoc-drawer .ykoc-drawer-head :is(.circle,.menu-close) {
+    flex-basis:34px;
+    width:34px;
+    min-width:34px;
+    height:34px;
+  }
+}

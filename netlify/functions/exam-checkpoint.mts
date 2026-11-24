@@ -1,6 +1,7 @@
 import { getDatabase } from '@netlify/database';
 import { requireUser, asResponse } from './_shared/auth.mts';
 import { sectionDurations, initialDeadline, maxCheckpointBytes, isValidSnapshot, checkpointGraceSeconds } from './_shared/exam-autosave.mts';
+import { readManifest,validateSnapshot } from './_shared/ordinary-second-engine.mts';
 
 /** Server-authoritative phase, deadline and compare-and-swap checkpoint revision. */
 export default async (req:Request) => {
@@ -31,6 +32,14 @@ export default async (req:Request) => {
   if(req.method==='GET')return Response.json({ok:true,attemptId:id,type:attempt.exam_type,...shape(current)});
   const {snapshot,phase,baseVersion}=payload;
   if(!isValidSnapshot(snapshot)||snapshot.type!==attempt.exam_type)return Response.json({error:'Invalid checkpoint'},{status:400});
+  if(attempt.exam_type==='ordinary_second'){
+    const {rows}=await db.pool.query(
+      'SELECT bank_version,question_ids,illustration_ids,statement_orders FROM exam_attempt_question_sets WHERE attempt_id=$1',
+      [id]);
+    if(!rows.length)return Response.json({error:'missing_question_manifest'},{status:409});
+    try{validateSnapshot(snapshot,readManifest(rows[0]))}
+    catch{return Response.json({error:'invalid_ordinary_second_snapshot'},{status:400})}
+  }
   const engine=attempt.exam_type.startsWith('jlpt_')?'jlpt':
     ['truck','taxi','bus'].includes(attempt.exam_type)?'driving':
     attempt.exam_type==='maintenance'?'maintenance':'license';

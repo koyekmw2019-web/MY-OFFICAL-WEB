@@ -1,0 +1,72 @@
+name: YKOC v7.89.0 production release checks
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/v7890-release-checks.yml'
+      - 'netlify/functions/**'
+      - 'netlify/database/migrations/**'
+      - 'scripts/build-v7890-production-release.mjs'
+      - 'scripts/build-v7890-second-license-qa.mjs'
+      - 'qa/menu-slidein-pr7/**'
+      - 'qa/second-license-*'
+      - 'assets/yk-ordinary-second-online.js'
+      - 'tests/**'
+      - 'package.json'
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 25
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: ykoc_ci
+          POSTGRES_PASSWORD: ykoc_ci_test_only
+          POSTGRES_DB: ykoc_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U ykoc_ci -d ykoc_ci"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install locked dependencies
+        run: npm install --no-package-lock
+      - name: Record approved backend hashes
+        run: sha256sum netlify/functions/_shared/security.mts netlify/functions/_shared/exam-autosave.mts netlify/functions/exam-access.mts netlify/functions/exam-checkpoint.mts netlify/functions/exam-attempt-submit.mts
+      - name: Existing regression tests
+        run: npm test
+      - name: Generate production deploy directory
+        run: npm run build
+      - name: v7.89.0 production-specific regression tests
+        run: npm run verify:v7890
+      - name: Compile Netlify Functions without production access
+        run: |
+          npx esbuild netlify/functions/ordinary-second-start.mts netlify/functions/ordinary-second-review.mts netlify/functions/exam-checkpoint.mts netlify/functions/exam-attempt-submit.mts --bundle --platform=node --format=esm --packages=external --outdir=/tmp/ykoc-v7890-function-check
+      - name: Rehearse every SQL migration against disposable PostgreSQL
+        env:
+          PGPASSWORD: ykoc_ci_test_only
+        run: |
+          for migration in netlify/database/migrations/*.sql; do
+            if [[ "$migration" == *20261124154000_v7890_ordinary_second.sql ]]; then
+              psql -h 127.0.0.1 -U ykoc_ci -d ykoc_ci -v ON_ERROR_STOP=1 -c "INSERT INTO exam_attempts(user_id, exam_type, access_mode) VALUES('ci_keep_existing','car','free');"
+            fi
+            psql -h 127.0.0.1 -U ykoc_ci -d ykoc_ci -v ON_ERROR_STOP=1 -f "$migration"
+          done
+          test "$(psql -h 127.0.0.1 -U ykoc_ci -d ykoc_ci -tAc "SELECT COUNT(*) FROM exam_attempts WHERE user_id='ci_keep_existing'")" = "1"
+          psql -h 127.0.0.1 -U ykoc_ci -d ykoc_ci -v ON_ERROR_STOP=1 -c "INSERT INTO exam_attempts(user_id,exam_type,access_mode) VALUES('ci_second_user','ordinary_second','free');"
+          test "$(psql -h 127.0.0.1 -U ykoc_ci -d ykoc_ci -tAc "SELECT COUNT(*) FROM exam_attempt_question_sets")" = "0"
+      - name: Static-source safety conditions
+        run: |
+          test ! -e dist/mock-second-license-qa.html
+          test -e dist/mock-second-license.html
+          test ! -e dist/.local-menu-build

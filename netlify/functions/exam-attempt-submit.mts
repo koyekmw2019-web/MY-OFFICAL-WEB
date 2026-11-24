@@ -2,6 +2,7 @@ import { getDatabase } from '@netlify/database';
 import { requireUser, asResponse } from './_shared/auth.mts';
 import { examScoreRules, sectionDurations, checkpointGraceSeconds } from './_shared/exam-autosave.mts';
 import { evaluateSnapshot } from './_shared/exam-score-v763.mts';
+import { readManifest,gradeSecond } from './_shared/ordinary-second-engine.mts';
 import { verifiedTopics } from './_shared/exam-coach-evidence-v7865.mts';
 
 /** v7.63 — only server-recomputed practice results can be persisted.
@@ -35,7 +36,17 @@ export default async (req:Request)=>{
   if(!Number.isFinite(deadline)||Date.now()>deadline+checkpointGraceSeconds*1000)
     return Response.json({error:'time_expired',hint:'Submission window ended.'},{status:409});
   let result;
-  try{result=evaluateSnapshot(attempt.exam_type,cp.snapshot)}
+  try{
+    if(attempt.exam_type==='ordinary_second'){
+      const {rows}=await db.pool.query(
+        'SELECT bank_version,question_ids,illustration_ids,statement_orders FROM exam_attempt_question_sets WHERE attempt_id=$1',
+        [id]);
+      if(!rows.length)return Response.json({error:'missing_question_manifest'},{status:409});
+      result=gradeSecond(cp.snapshot,readManifest(rows[0]));
+    } else {
+      result=evaluateSnapshot(attempt.exam_type,cp.snapshot);
+    }
+  }
   catch(e){return Response.json({error:'invalid_checkpoint',detail:String((e as Error).message)},{status:422})}
   const onLastQuestion=cp.snapshot?.index === (attempt.exam_type.startsWith('jlpt_') ? 19 : result.count-1);
   // Earlier submit is legal only when the server timer has expired (automatic submit).
@@ -95,7 +106,9 @@ export default async (req:Request)=>{
     }
    }
   }catch(e){console.error('Optional mistake history insert failed',e)}
-  await db.sql`DELETE FROM exam_attempt_checkpoints WHERE attempt_id=${id} AND user_id=${user.id}`;
+  // Retain the already-submitted second-license checkpoint for private mistake review.
+  if(attempt.exam_type!=='ordinary_second')
+    await db.sql`DELETE FROM exam_attempt_checkpoints WHERE attempt_id=${id} AND user_id=${user.id}`;
   return Response.json({ok:true,score:result.score,passed:result.passed,scoreVerified:true,
        kind:'server-recalculated-practice-result',sections:result.sections});
  }catch(e){return asResponse(e)}

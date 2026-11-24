@@ -5,3 +5,7 @@ node_modules/
 .netlify/
 dist/
 .DS_Store
+
+# v7.89.0 generated working trees
+dist-menu-qa/
+dist-v7890-pre-final/
