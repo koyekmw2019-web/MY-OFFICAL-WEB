@@ -26,6 +26,8 @@ jobs:
           node-version: '22'
       - name: Install locked dependencies
         run: npm install --no-package-lock
+      - name: Record approved backend hashes
+        run: sha256sum netlify/functions/_shared/security.mts netlify/functions/_shared/exam-autosave.mts netlify/functions/exam-access.mts netlify/functions/exam-checkpoint.mts netlify/functions/exam-attempt-submit.mts
       - name: Existing regression tests
         run: npm test
       - name: Generate production deploy directory
