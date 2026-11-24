@@ -160,7 +160,10 @@ test('v7.89.4 Dictionary uses a real same-document fade like cross-page Home/EXA
 
 test('v7.89.5 approved compact Exam Access UI is applied to built pages',()=>{
  const dist=resolve('dist');
- for(const page of ['index.html','mock-exams.html']){
+ // v7.87 route split removes Exam DOM from index.html; the Exam Center is dedicated.
+ const home=readFileSync(join(dist,'index.html'),'utf8');
+ assert(!home.includes('id="examPanel"'));
+ for(const page of ['mock-exams.html']){
    const html=readFileSync(join(dist,page),'utf8');
    assert(/class=["'][^"']*exam-access-card/.test(html),page+' missing original Exam Access class');
    assert(html.includes('/assets/yk-v7895-exam-access.css?v=7895'),page);
