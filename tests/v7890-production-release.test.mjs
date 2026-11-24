@@ -112,7 +112,7 @@ test('v7.89.1 dictionary navigation, mobile layout and full drawer source',()=>{
  assert(js.includes("setTimeout(go,155)"));
 });
 
-test('v7.89.2 fast menu anchors and dictionary bounce are included',()=>{
+test('v7.89.3 fast menu anchors preserve shared Home/EXAM/Dictionary tab appearance',()=>{
  const dist=resolve('dist');
  const html=readFileSync(join(dist,'index.html'),'utf8');
  assert(html.includes('yk-v7892-navigation.js?v=7892'));
@@ -123,8 +123,16 @@ test('v7.89.2 fast menu anchors and dictionary bounce are included',()=>{
  assert(js.includes("['home','driving-dictionary','portal','yk82Hub','study-hub'"));
  assert(js.includes("history.pushState(null,'',next)"));
  assert(js.includes("requestAnimationFrame(()=>jumpNow(id))"));
- assert(js.includes("tab.addEventListener('pointerdown',animate"));
- assert(css.includes('yk-v7892-dict-bounce'));
+ assert(js.includes("tab.addEventListener('click',event=>{"));
+ assert(js.includes("if(atHome())goTo('driving-dictionary')"));
+ assert(!js.includes('yk-v7892-tap'));
+ assert(!js.includes("tab.addEventListener('pointerdown',animate"));
+ assert(!css.includes('yk-v7892-dict-bounce'));
+ assert(!css.includes('yk-v7892-label-bounce'));
+ const mobileCss=readFileSync(join(dist,'assets/yk-v7891-dictionary-hotfix.css'),'utf8');
+ assert(!mobileCss.includes('#yk-mobile-nav > a[data-tab="dictionary"]'));
+ const drawerCss=readFileSync(join(dist,'assets/ykoc-pr7-menu-drawer.css'),'utf8');
+ assert(drawerCss.includes('#yk-mobile-nav > :is(a,button)[aria-current="page"]'));
  assert(css.includes('scroll-behavior:auto!important'));
  assert(nav.includes("observer.observe(document.body, {attributes:true, attributeFilter:['class']})"));
  assert(!nav.includes('subtree:true, childList:true'));

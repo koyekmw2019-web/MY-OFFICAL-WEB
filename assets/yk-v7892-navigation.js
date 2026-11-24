@@ -76,22 +76,14 @@
   });
   if(tab){
     tab.href='/#driving-dictionary';
-    let animationToken=0;
-    const animate=()=>{
-      const token=++animationToken;
-      tab.classList.remove('yk-v7892-tap');
-      void tab.offsetWidth; // restart CSS keyframes for repeated taps
-      tab.classList.add('yk-v7892-tap');
-      setTimeout(()=>{if(token===animationToken)tab.classList.remove('yk-v7892-tap');},520);
-    };
-    tab.addEventListener('pointerdown',animate,{passive:true});
+    // Match Home / EXAM: use the shared nav state instead of dictionary-only
+    // bounce/glow classes and delayed movement. Keep the fast in-page routing.
     tab.addEventListener('click',event=>{
       if(event.defaultPrevented||event.button!==0||event.metaKey||
          event.ctrlKey||event.altKey||event.shiftKey)return;
       event.preventDefault();
-      animate();
       if(atHome())goTo('driving-dictionary');
-      else setTimeout(()=>location.assign('/#driving-dictionary'),210);
+      else location.assign('/#driving-dictionary');
     });
   }
   // Arrivals from standalone pages should land immediately without a long
