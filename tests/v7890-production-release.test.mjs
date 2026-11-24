@@ -99,8 +99,8 @@ test('v7.89.1 dictionary navigation, mobile layout and full drawer source',()=>{
  for(const file of ['index.html','mock-exams.html','video-class.html']) {
    const html=readFileSync(join(dist,file),'utf8');
    assert(html.includes('/assets/yk-v7891-dictionary-hotfix.css?v=7891'));
-   assert(html.includes('/assets/yk-v7892-navigation.js?v=7894'));
-   assert(html.includes('/assets/yk-v7892-navigation.css?v=7894'));
+   assert(html.includes('/assets/yk-v7892-navigation.js?v=7895'));
+   assert(html.includes('/assets/yk-v7892-navigation.css?v=7895'));
  }
  const css=readFileSync(join(dist,'assets/yk-v7891-dictionary-hotfix.css'),'utf8');
  const js=readFileSync(join(dist,'assets/yk-v7891-dictionary-hotfix.js'),'utf8');
@@ -115,8 +115,8 @@ test('v7.89.1 dictionary navigation, mobile layout and full drawer source',()=>{
 test('v7.89.3 fast menu anchors preserve shared Home/EXAM/Dictionary tab appearance',()=>{
  const dist=resolve('dist');
  const html=readFileSync(join(dist,'index.html'),'utf8');
- assert(html.includes('yk-v7892-navigation.js?v=7894'));
- assert(html.includes('yk-v7892-navigation.css?v=7894'));
+ assert(html.includes('yk-v7892-navigation.js?v=7895'));
+ assert(html.includes('yk-v7892-navigation.css?v=7895'));
  const js=readFileSync(join(dist,'assets/yk-v7892-navigation.js'),'utf8');
  const css=readFileSync(join(dist,'assets/yk-v7892-navigation.css'),'utf8');
  const nav=readFileSync(join(dist,'assets/yk-mobile-nav.js'),'utf8');
@@ -141,8 +141,8 @@ test('v7.89.3 fast menu anchors preserve shared Home/EXAM/Dictionary tab appeara
 test('v7.89.4 Dictionary uses a real same-document fade like cross-page Home/EXAM',()=>{
  const dist=resolve('dist');
  const html=readFileSync(join(dist,'index.html'),'utf8');
- assert(html.includes('/assets/yk-v7892-navigation.js?v=7894'));
- assert(html.includes('/assets/yk-v7892-navigation.css?v=7894'));
+ assert(html.includes('/assets/yk-v7892-navigation.js?v=7895'));
+ assert(html.includes('/assets/yk-v7892-navigation.css?v=7895'));
  const js=readFileSync(join(dist,'assets/yk-v7892-navigation.js'),'utf8');
  const css=readFileSync(join(dist,'assets/yk-v7892-navigation.css'),'utf8');
  assert(js.includes('document.startViewTransition(apply)'));
@@ -156,4 +156,32 @@ test('v7.89.4 Dictionary uses a real same-document fade like cross-page Home/EXA
  assert(css.includes('#driving-dictionary.yk-v7894-fade'));
  assert(!css.includes('yk-v7892-dict-bounce'));
  assert(!js.includes('yk-v7892-tap'));
+});
+
+test('v7.89.5 approved compact Exam Access UI is applied to built pages',()=>{
+ const dist=resolve('dist');
+ for(const page of ['index.html','mock-exams.html']){
+   const html=readFileSync(join(dist,page),'utf8');
+   assert(html.includes('class="exam-access-card yk-reference-access"'),page);
+   assert(html.includes('/assets/yk-v7895-exam-access.css?v=7895'),page);
+   for(const id of ['examAccountV735','examStudentVerifyV728','examPlansV728'])
+     assert(html.includes('id="'+id+'"'),page+' missing '+id);
+ }
+ const css=readFileSync(join(dist,'assets/yk-v7895-exam-access.css'),'utf8');
+ assert(css.includes('#online-mock-exam .exam-access-card.yk-reference-access'));
+ assert(css.includes('grid-template-columns:repeat(2,minmax(0,1fr))'));
+ assert(css.includes('grid-column:1/-1'));
+ assert(css.includes('#yk88AccessGuide'));
+ assert(css.includes('button[hidden]'));
+});
+test('v7.89.5 updated mobile PWA assets are cache-busted',()=>{
+ const dist=resolve('dist');
+ const html=readFileSync(join(dist,'index.html'),'utf8');
+ const sw=readFileSync(join(dist,'service-worker.js'),'utf8');
+ assert(html.includes('yk-v7892-navigation.js?v=7895'));
+ assert(html.includes('yk-v7892-navigation.css?v=7895'));
+ assert(!html.includes('yk-v7892-navigation.js?v=7894'));
+ assert(sw.includes('-v7895-compact-ui-pwa-refresh'));
+ assert(sw.includes("request.mode === 'navigate'"));
+ assert(sw.includes("key.startsWith('yk-public-static-')"));
 });
