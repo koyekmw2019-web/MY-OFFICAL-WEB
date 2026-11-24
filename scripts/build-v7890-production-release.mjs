@@ -81,6 +81,21 @@ try{renameSync(staged,dist);rmSync(originalBackup,{recursive:true,force:true});}
 catch(e){renameSync(originalBackup,dist);throw e;}
 assert(existsSync(join(dist,'mock-second-license.html')));
 assert(!existsSync(join(dist,'mock-second-license-qa.html')));
+// v7.89.1: approved dictionary route, compact mobile layout, tap feedback,
+// and fully covered mobile drawer. Generated output only.
+for (const asset of ['yk-v7891-dictionary-hotfix.css','yk-v7891-dictionary-hotfix.js'])
+ copyFileSync(resolve('assets',asset),join(dist,'assets',asset));
+for (const page of walk(dist)) {
+ let body=readFileSync(page,'utf8');
+ assert(body.includes('id="yk-mobile-nav"')&&body.includes('id="siteMenu"'),
+  'Dictionary hotfix requires built navigation: '+page);
+ assert(body.includes('</head>')&&body.includes('</body>'));
+ assert(!body.includes('data-tab="dictionary" href="/study/japanese-myanmar-dictionary.html"'));
+ assert(!body.includes('data-menu-search="Dictionary အဘိဓာန် 辞書" href="/study/japanese-myanmar-dictionary.html"'));
+ body=body.replace('</head>','<link rel="stylesheet" href="/assets/yk-v7891-dictionary-hotfix.css?v=7891"></head>');
+ body=body.replace('</body>','<script defer src="/assets/yk-v7891-dictionary-hotfix.js?v=7891"></script></body>');
+ writeFileSync(page,body,'utf8');
+}
 console.log(JSON.stringify({release:'v7.89.0',pages:count,
  menu:'V2.1 + approved final polish',ordinary_second:'server-backed',
  bank_publication:'questions only — answers removed from dist',
