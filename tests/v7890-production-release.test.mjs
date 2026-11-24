@@ -191,7 +191,7 @@ test('v7.89.5 updated mobile PWA assets are cache-busted',()=>{
  assert(html.includes('yk-v7892-navigation.js?v=7896'));
  assert(html.includes('yk-v7892-navigation.css?v=7895'));
  assert(!html.includes('yk-v7892-navigation.js?v=7894'));
- assert(sw.includes('-v7896-reference-ui-restore'));
+ assert(sw.includes('-v7897-mobile-access-visibility'));
  assert(sw.includes("request.mode === 'navigate'"));
  assert(sw.includes("key.startsWith('yk-public-static-')"));
 });
@@ -232,4 +232,26 @@ test('v7.89.6 generated mobile nav scripts parse and preserve active routes',()=
  assert(nav.includes("return 'account'"));
  assert(routing.includes("goTo('study-hub')"));
  assert(routing.includes("'driving-dictionary'"));
+});
+
+test('v7.89.7 mobile access cards fully scroll clear of fixed bottom dock',()=>{
+ const dist=resolve('dist');
+ const exam=readFileSync(join(dist,'mock-exams.html'),'utf8');
+ const css=readFileSync(join(dist,'assets/yk-v7897-access-visibility.css'),'utf8');
+ const nav=readFileSync(join(dist,'assets/ykoc-pr7-menu-drawer.css'),'utf8');
+ assert(exam.includes('/assets/yk-v7897-access-visibility.css?v=7897'));
+ assert(exam.includes('class="exam-access-card yk-approved-access"'));
+ assert(exam.includes('yk-audience-public'));
+ assert(exam.includes('yk-public-actions'));
+ assert(exam.includes('id="examAccountV735"')&&exam.includes('id="examPlansV728"'));
+ assert(css.includes('padding-bottom:calc(132px + env(safe-area-inset-bottom,0px))!important'));
+ assert(css.includes('min-height:calc(128px + env(safe-area-inset-bottom,0px))!important'));
+ assert(css.includes('max-height:none!important'));
+ assert(css.includes('overflow-y:visible!important'));
+ assert(css.includes('scroll-margin-bottom:calc(108px + env(safe-area-inset-bottom,0px))'));
+ assert(css.includes('@media(max-width:720px) and (max-height:770px)'));
+ assert(!css.includes('display:none!important'));
+ assert(nav.includes('min-height:calc(73px + env(safe-area-inset-bottom,0px))'));
+ for(const tab of ['home','study','exam','video','account'])
+   assert(exam.includes('data-tab="'+tab+'"'));
 });
