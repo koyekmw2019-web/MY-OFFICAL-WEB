@@ -83,7 +83,7 @@ assert(existsSync(join(dist,'mock-second-license.html')));
 assert(!existsSync(join(dist,'mock-second-license-qa.html')));
 // v7.89.1: approved dictionary route, compact mobile layout, tap feedback,
 // and fully covered mobile drawer. Generated output only.
-for (const asset of ['yk-v7891-dictionary-hotfix.css','yk-v7892-navigation.css','yk-v7892-navigation.js','yk-v7895-exam-access.css','yk-v7896-approved-reference.css'])
+for (const asset of ['yk-v7891-dictionary-hotfix.css','yk-v7892-navigation.css','yk-v7892-navigation.js','yk-v7895-exam-access.css','yk-v7896-approved-reference.css','yk-v7897-access-visibility.css'])
  copyFileSync(resolve('assets',asset),join(dist,'assets',asset));
 let accessCardPages=0;
 for (const page of walk(dist)) {
@@ -100,12 +100,12 @@ for (const page of walk(dist)) {
  assert(body.includes('</head>')&&body.includes('</body>'));
  assert(!body.includes('data-tab="dictionary" href="/study/japanese-myanmar-dictionary.html"'));
  assert(!body.includes('data-menu-search="Dictionary အဘိဓာန် 辞書" href="/study/japanese-myanmar-dictionary.html"'));
- body=body.replace('</head>','<link rel="stylesheet" href="/assets/yk-v7891-dictionary-hotfix.css?v=7891"><link rel="stylesheet" href="/assets/yk-v7892-navigation.css?v=7895"><link rel="stylesheet" href="/assets/yk-v7896-approved-reference.css?v=7896"></head>');
+ body=body.replace('</head>','<link rel="stylesheet" href="/assets/yk-v7891-dictionary-hotfix.css?v=7891"><link rel="stylesheet" href="/assets/yk-v7892-navigation.css?v=7895"><link rel="stylesheet" href="/assets/yk-v7896-approved-reference.css?v=7896"><link rel="stylesheet" href="/assets/yk-v7897-access-visibility.css?v=7897"></head>');
  body=body.replace('</body>','<script defer src="/assets/yk-v7892-navigation.js?v=7896"></script></body>');
  writeFileSync(page,body,'utf8');
 }
 assert(accessCardPages>=2,'Exam Access UI missing from generated pages');
-console.log(JSON.stringify({release:'v7.89.6',pages:count,
+console.log(JSON.stringify({release:'v7.89.7',pages:count,
  menu:'V2.1 + approved final polish',ordinary_second:'server-backed',
  bank_publication:'questions only — answers removed from dist',
  existing_site_backend:'preserved',output:'dist'}));
