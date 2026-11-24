@@ -92,11 +92,11 @@ for (const page of walk(dist)) {
  assert(body.includes('</head>')&&body.includes('</body>'));
  assert(!body.includes('data-tab="dictionary" href="/study/japanese-myanmar-dictionary.html"'));
  assert(!body.includes('data-menu-search="Dictionary အဘိဓာန် 辞書" href="/study/japanese-myanmar-dictionary.html"'));
- body=body.replace('</head>','<link rel="stylesheet" href="/assets/yk-v7891-dictionary-hotfix.css?v=7891"><link rel="stylesheet" href="/assets/yk-v7892-navigation.css?v=7892"></head>');
- body=body.replace('</body>','<script defer src="/assets/yk-v7892-navigation.js?v=7892"></script></body>');
+ body=body.replace('</head>','<link rel="stylesheet" href="/assets/yk-v7891-dictionary-hotfix.css?v=7891"><link rel="stylesheet" href="/assets/yk-v7892-navigation.css?v=7894"></head>');
+ body=body.replace('</body>','<script defer src="/assets/yk-v7892-navigation.js?v=7894"></script></body>');
  writeFileSync(page,body,'utf8');
 }
-console.log(JSON.stringify({release:'v7.89.3',pages:count,
+console.log(JSON.stringify({release:'v7.89.4',pages:count,
  menu:'V2.1 + approved final polish',ordinary_second:'server-backed',
  bank_publication:'questions only — answers removed from dist',
  existing_site_backend:'preserved',output:'dist'}));
