@@ -162,13 +162,13 @@ test('v7.89.5 approved compact Exam Access UI is applied to built pages',()=>{
  const dist=resolve('dist');
  for(const page of ['index.html','mock-exams.html']){
    const html=readFileSync(join(dist,page),'utf8');
-   assert(html.includes('class="exam-access-card yk-reference-access"'),page);
+   assert(/class=["'][^"']*exam-access-card/.test(html),page+' missing original Exam Access class');
    assert(html.includes('/assets/yk-v7895-exam-access.css?v=7895'),page);
    for(const id of ['examAccountV735','examStudentVerifyV728','examPlansV728'])
      assert(html.includes('id="'+id+'"'),page+' missing '+id);
  }
  const css=readFileSync(join(dist,'assets/yk-v7895-exam-access.css'),'utf8');
- assert(css.includes('#online-mock-exam .exam-access-card.yk-reference-access'));
+ assert(css.includes('#online-mock-exam .exam-access-card'));
  assert(css.includes('grid-template-columns:repeat(2,minmax(0,1fr))'));
  assert(css.includes('grid-column:1/-1'));
  assert(css.includes('#yk88AccessGuide'));

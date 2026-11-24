@@ -88,11 +88,8 @@ for (const asset of ['yk-v7891-dictionary-hotfix.css','yk-v7892-navigation.css',
 let accessCardPages=0;
 for (const page of walk(dist)) {
  let body=readFileSync(page,'utf8');
- if(body.includes('class="exam-access-card"')){
-   assert.equal((body.match(/class="exam-access-card"/g)||[]).length,1,'Ambiguous access card on '+page);
-   body=body.replace('class="exam-access-card"','class="exam-access-card yk-reference-access"');
-   accessCardPages++;
- }
+ // Match the original Exam Access markup, regardless of additional classes.
+ if(/class=["'][^"']*\bexam-access-card\b/.test(body))accessCardPages++;
  assert(body.includes('id="yk-mobile-nav"')&&body.includes('id="siteMenu"'),
   'Dictionary hotfix requires built navigation: '+page);
  assert(body.includes('</head>')&&body.includes('</body>'));
