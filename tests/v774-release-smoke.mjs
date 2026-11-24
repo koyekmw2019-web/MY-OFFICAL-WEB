@@ -90,7 +90,7 @@ check('backend functions/migrations exactly match v7.70 source',()=>{
  for(const [p,h] of Object.entries(manifest.files)){
   assert(existsSync(file(p)),`Missing ${p}`);
   let bytes=readFileSync(file(p));
-  if(p==='netlify/functions/exam-attempt-submit.mts' && /^7\.(?:86\.[5-9]|8[7-9]\.\d+)$/.test(JSON.parse(read('package.json')).version)){
+  if(p==='netlify/functions/exam-attempt-submit.mts' && !Object.hasOwn(v7890.files,p) && /^7\.(?:86\.[5-9]|8[7-9]\.\d+)$/.test(JSON.parse(read('package.json')).version)){
    // v7.86.5 permits ONLY the additional, optional verified-evidence insert.
    // Strip that insert and its import, then require the original protected source hash.
    let source=bytes.toString('utf8');
