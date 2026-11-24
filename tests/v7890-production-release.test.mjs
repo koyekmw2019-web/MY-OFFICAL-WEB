@@ -89,3 +89,24 @@ test('published dist uses production page with no answer bank or QA page',()=>{
  assert(!html.includes('QA PREVIEW / NOT PRODUCTION'));
  assert(readFileSync(join(dist,'mock-exams.html'),'utf8').includes('/mock-second-license.html'));
 });
+
+test('v7.89.1 dictionary navigation, mobile layout and full drawer source',()=>{
+ const dist=resolve('dist');
+ const home=readFileSync(join(dist,'index.html'),'utf8');
+ assert.match(home,/data-tab="dictionary" href="\/#driving-dictionary"/);
+ assert.match(home,/data-menu-search="Dictionary အဘိဓာန် 辞書" href="\/#driving-dictionary"/);
+ assert.doesNotMatch(home,/data-tab="dictionary" href="\/study\/japanese-myanmar-dictionary.html"/);
+ for(const file of ['index.html','mock-exams.html','video-class.html']) {
+   const html=readFileSync(join(dist,file),'utf8');
+   assert(html.includes('/assets/yk-v7891-dictionary-hotfix.css?v=7891'));
+   assert(html.includes('/assets/yk-v7891-dictionary-hotfix.js?v=7891'));
+ }
+ const css=readFileSync(join(dist,'assets/yk-v7891-dictionary-hotfix.css'),'utf8');
+ const js=readFileSync(join(dist,'assets/yk-v7891-dictionary-hotfix.js'),'utf8');
+ assert(css.includes('body.menu-open #siteMenu.ykoc-drawer'));
+ assert(css.includes('height:100dvh!important'));
+ assert(css.includes('body.menu-open #yk-mobile-nav:not([hidden])'));
+ assert(css.includes('#driving-dictionary .dictionary-tools-v7'));
+ assert(js.includes("location.assign(target)"));
+ assert(js.includes("setTimeout(go,155)"));
+});

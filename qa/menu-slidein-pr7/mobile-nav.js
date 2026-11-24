@@ -9,6 +9,7 @@
   // Normalize only the path used for highlighting; keep every original link intact.
   function activeTab() {
     const path = (location.pathname.replace(/\/+$/, '').replace(/\.html$/i, '') || '/');
+    if ((path === '/' || path === '/index') && location.hash === '#driving-dictionary') return 'dictionary';
     if (path === '/study/japanese-myanmar-dictionary') return 'dictionary';
     if (path === '/mock-second-license-qa' || path === '/mock-exams' || path.startsWith('/exams/')) return 'exam';
     if (path === '/video-class') return 'video';

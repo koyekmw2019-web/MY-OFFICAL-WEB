@@ -1,0 +1,73 @@
+/* YKOC v7.89.1 — Dictionary / Mobile Drawer visual hotfix. */
+@media(max-width:720px) {
+  /* Close the bottom 73px gap exposing underlying page. */
+  body.menu-open #siteMenu.ykoc-drawer {
+    top:0!important;bottom:0!important;height:100dvh!important;
+    max-height:100dvh!important;width:100vw!important;
+    overflow-y:auto!important;overscroll-behavior-y:contain;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:env(safe-area-inset-bottom,0px)!important;
+  }
+  body.menu-open #yk-mobile-nav,
+  body.menu-open #yk-mobile-nav:not([hidden]) {display:none!important}
+  #siteMenu.ykoc-drawer #ykoc-more .more-content {
+    padding-bottom:calc(28px + env(safe-area-inset-bottom,0px))!important;
+  }
+  /* Show the actual dictionary Search UI on the first phone screen. */
+  #driving-dictionary {
+    box-sizing:border-box;
+    scroll-margin-top:calc(var(--yk-header-h,65px) + 8px);
+    padding:18px 12px calc(108px + env(safe-area-inset-bottom,0px))!important;
+    max-width:100%;
+  }
+  #driving-dictionary > .kicker {
+    font-size:11px;letter-spacing:.13em;margin:0 0 8px;
+  }
+  #driving-dictionary > .title {
+    font-size:clamp(23px,5.7vw,31px)!important;
+    line-height:1.32!important;letter-spacing:-.025em!important;
+    overflow-wrap:anywhere;max-width:100%;margin:0 0 17px!important;
+  }
+  #driving-dictionary .dictionary-shell {
+    min-width:0;padding:14px!important;border-radius:20px!important;max-width:100%;
+  }
+  #driving-dictionary .dictionary-search {
+    box-sizing:border-box;width:100%;min-width:0;margin:0 0 13px;
+    padding:11px 13px;border-radius:14px;
+  }
+  #driving-dictionary .dictionary-search input {
+    width:100%;min-width:0;max-width:100%;font-size:15px;line-height:1.5;
+  }
+  #driving-dictionary .dictionary-tools-v7 {
+    display:flex;flex-wrap:nowrap;gap:8px;overflow-x:auto;overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;
+    scroll-snap-type:x proximity;scrollbar-width:thin;
+    padding:2px 0 11px;margin:0 0 10px;max-width:100%;
+  }
+  #driving-dictionary .dictionary-tools-v7 > :is(.dict-chip,.dict-tool-btn) {
+    flex:0 0 auto;white-space:nowrap;min-height:40px;padding:9px 13px;
+    scroll-snap-align:start;
+  }
+  #driving-dictionary #dictionaryResults {min-width:0;max-width:100%}
+  #driving-dictionary #dictionaryResults :is(.dict-card,.dictionary-card) {
+    max-width:100%;overflow-wrap:anywhere;
+  }
+  #yk-mobile-nav > a[data-tab="dictionary"] {
+    transition:transform .16s ease,color .16s ease,background-color .16s ease!important;
+    transform-origin:center bottom;-webkit-tap-highlight-color:transparent;
+  }
+  #yk-mobile-nav > a[data-tab="dictionary"]:is(:active,.yk-dict-pressed) {
+    transform:scale(.89) translateY(1px)!important;
+    color:#fff!important;background:rgba(194,31,49,.20)!important;
+  }
+  #yk-mobile-nav > a[data-tab="dictionary"][aria-current="page"] {
+    color:#fff!important;
+  }
+  #yk-mobile-nav > a[data-tab="dictionary"][aria-current="page"]:before {
+    content:"";position:absolute;left:33%;right:33%;top:-9px;
+    height:3px;border-radius:8px;background:#c51f30;
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  #yk-mobile-nav > a[data-tab="dictionary"] {transition:none!important}
+}

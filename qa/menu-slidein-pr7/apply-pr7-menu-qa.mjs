@@ -33,7 +33,7 @@ const nav=`<nav id="yk-mobile-nav" aria-label="Main navigation">
  <a data-tab="home" href="/#home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10H15v-7H9v7H3z"/></svg><span>Home</span></a>
  <a data-tab="exam" href="/mock-exams.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9M16.4 3.6a2.1 2.1 0 0 1 3 3L7.4 18.6l-4 1 1-4Z"/></svg><span>EXAM</span></a>
  <a data-tab="video" href="/video-class.html"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3z"/></svg><span>Video</span></a>
- <a data-tab="dictionary" href="/study/japanese-myanmar-dictionary.html"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg><span>Dictionary</span></a>
+ <a data-tab="dictionary" href="/#driving-dictionary"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg><span>Dictionary</span></a>
  <button type="button" data-tab="menu" id="ykocBottomMenu" aria-controls="siteMenu" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16M4 12h16M4 19h16"/></svg><span>Menu</span></button>
 </nav>`;
 const navRe=/<nav id="yk-mobile-nav"[^>]*>[\s\S]*?<\/nav>/g;
