@@ -5,7 +5,7 @@
   const HOME_PATH=/^\/(?:index(?:\.html)?)?\/?$/i;
   const IDS=new Set(['home','driving-dictionary','portal','yk82Hub','study-hub','study-resources','about']);
   const nav=document.getElementById('yk-mobile-nav');
-  const tab=nav?.querySelector('a[data-tab="dictionary"]');
+  const studyTab=nav?.querySelector('a[data-tab="study"]');
   const drawer=document.getElementById('siteMenu');
   const html=document.documentElement;
   const atHome=()=>HOME_PATH.test(location.pathname);
@@ -16,7 +16,7 @@
   let jumpCounter=0;
   function showSelected(id){
     if(!nav)return;
-    const tabName=id==='driving-dictionary'?'dictionary':'home';
+    const tabName=['driving-dictionary','study-hub','yk82Hub','study-resources'].includes(id)?'study':'home';
     nav.querySelectorAll('[data-tab]').forEach(node=>{
       if(node.dataset.tab===tabName)node.setAttribute('aria-current','page');
       else node.removeAttribute('aria-current');
@@ -106,18 +106,20 @@
     event.preventDefault();
     goTo(id);
   });
-  if(tab){
-    tab.href='/#driving-dictionary';
-    // Match Home / EXAM: use the shared nav state instead of dictionary-only
-    // bounce/glow classes and delayed movement. Keep the fast in-page routing.
-    tab.addEventListener('click',event=>{
-      if(event.defaultPrevented||event.button!==0||event.metaKey||
-         event.ctrlKey||event.altKey||event.shiftKey)return;
-      event.preventDefault();
-      if(atHome())goTo('driving-dictionary');
-      else location.assign('/#driving-dictionary');
-    });
-  }
+  // The approved bottom navigation is Home · Study · Exam · Video · Account.
+  // Dictionary remains a working fast shortcut in the hamburger drawer.
+  studyTab?.addEventListener('click',event=>{
+    if(event.defaultPrevented||event.button!==0||event.metaKey||
+       event.ctrlKey||event.altKey||event.shiftKey)return;
+    event.preventDefault();
+    if(atHome())goTo('study-hub');
+    else location.assign('/#study-hub');
+  });
+  nav?.querySelector('a[data-tab="home"]')?.addEventListener('click',event=>{
+    if(!atHome()||event.defaultPrevented||event.button!==0||event.metaKey||
+       event.ctrlKey||event.altKey||event.shiftKey)return;
+    event.preventDefault();goTo('home');
+  });
   // Arrivals from standalone pages should land immediately without a long
   // global html{scroll-behavior:smooth} animation down the home page.
   if(atHome()){

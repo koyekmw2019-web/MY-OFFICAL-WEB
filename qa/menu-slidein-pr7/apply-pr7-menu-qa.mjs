@@ -31,10 +31,10 @@ const drawer=readFileSync(resolve(here,'drawer.html'),'utf8');
 assert(drawer.includes('id="siteMenu"')&&drawer.includes('id="ykoc-more"')&&drawer.includes('id="menuClose"'));
 const nav=`<nav id="yk-mobile-nav" aria-label="Main navigation">
  <a data-tab="home" href="/#home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10H15v-7H9v7H3z"/></svg><span>Home</span></a>
- <a data-tab="exam" href="/mock-exams.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9M16.4 3.6a2.1 2.1 0 0 1 3 3L7.4 18.6l-4 1 1-4Z"/></svg><span>EXAM</span></a>
+ <a data-tab="study" href="/#study-hub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v16M3 4c3-1 6-1 9 1 3-2 6-2 9-1v15c-3-1-6-1-9 1-3-2-6-2-9-1z"/></svg><span>Study</span></a>
+ <a data-tab="exam" href="/mock-exams.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9M16.4 3.6a2.1 2.1 0 0 1 3 3L7.4 18.6l-4 1 1-4Z"/></svg><span>Exam</span></a>
  <a data-tab="video" href="/video-class.html"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3z"/></svg><span>Video</span></a>
- <a data-tab="dictionary" href="/#driving-dictionary"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg><span>Dictionary</span></a>
- <button type="button" data-tab="menu" id="ykocBottomMenu" aria-controls="siteMenu" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16M4 12h16M4 19h16"/></svg><span>Menu</span></button>
+ <a data-tab="account" href="/dashboard.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></svg><span>Account</span></a>
 </nav>`;
 const navRe=/<nav id="yk-mobile-nav"[^>]*>[\s\S]*?<\/nav>/g;
 const drawerRe=/<aside\s+class="site-menu"\s+id="siteMenu"[^>]*>[\s\S]*?<\/aside>/g;
@@ -70,7 +70,7 @@ for(const file of pages){
    html=html.replace('</body>','<script type="module" src="/assets/identity.bundle.js"></script></body>');
  }
  html=html.replace('</body>','<script defer src="/assets/ykoc-pr7-menu-drawer.js?v=pr7menu1"></script><script defer src="/assets/ykoc-pr7-menu-i18n.js?v=pr7menu2"></script></body>');
- assert(html.includes('href="/mock-exams.html"')&&html.includes('>EXAM</span>')&&html.includes('id="ykocBottomMenu"'));
+ assert(html.includes('href="/mock-exams.html"')&&html.includes('>Exam</span>')&&html.includes('data-tab="account"')&&!html.includes('id="ykocBottomMenu"'));
  assert((html.match(/id="yk-mobile-nav"/g)||[]).length===1);
  assert((html.match(/id="siteMenu"/g)||[]).length===1);
  staged.push([file,html]);
@@ -88,4 +88,4 @@ copyFileSync(resolve(here,'drawer.js'),resolve(assetDir,'ykoc-pr7-menu-drawer.js
 copyFileSync(resolve(here,'menu-i18n.js'),resolve(assetDir,'ykoc-pr7-menu-i18n.js'));
 for(const n of ['studying-with-ye-kun-logo.png','studying-with-ye-kun-wordmark.png'])copyFileSync(resolve(here,n),resolve(assetDir,n));
 const digest=s=>createHash('sha256').update(s).digest('hex');
-console.log(JSON.stringify({status:'QA DIST ONLY',base:'PR#7',changed_html:staged.length,original_side_drawers:sourceDrawer,added_side_drawers:injectedDrawer,new_tabs:['Home','EXAM','Video','Dictionary','Menu'],exam_route:'/mock-exams.html',menu_action:'slide-in on same page',original_exam_card_preserved:readFileSync(exams,'utf8').includes('id="yk-second-type-qa-card"'),changed_nav_sha256:digest(newer),source_or_backend_changed:false,deploy:false}));
+console.log(JSON.stringify({status:'QA DIST ONLY',base:'PR#7',changed_html:staged.length,original_side_drawers:sourceDrawer,added_side_drawers:injectedDrawer,new_tabs:['Home','Study','Exam','Video','Account'],exam_route:'/mock-exams.html',menu_action:'slide-in on same page',original_exam_card_preserved:readFileSync(exams,'utf8').includes('id="yk-second-type-qa-card"'),changed_nav_sha256:digest(newer),source_or_backend_changed:false,deploy:false}));
