@@ -70,3 +70,34 @@ jobs:
           test ! -e dist/mock-second-license-qa.html
           test -e dist/mock-second-license.html
           test ! -e dist/.local-menu-build
+      # QA static Drop artifact only. A Netlify Drop does not include server
+      # Functions or Identity; account flows require a separate hosted QA deploy.
+      # Only this exact PR branch exports an artifact; nothing is auto-published.
+      - name: Prepare v7.90.0 isolated QA static package
+        if: ${{ github.event_name == 'pull_request' && github.head_ref == 'qa/v7.90.0-mobile-home-dashboard' }}
+        run: |
+          cat > dist/QA_PREVIEW_README.txt <<'EOF'
+          STUDYING WITH YE KUN — v7.90.0 QA Mobile Home
+          Source: QA PR #17 (review-only)
+          This is a static Netlify Drop QA package, NOT a production deployment.
+          Login, Student Verification, paid access, and exam checkpoint functions
+          are unavailable on static-only Drop. Do not claim these were verified.
+          To test authenticated workflows, use an isolated Git-connected Netlify
+          QA deployment with its own Identity and test database.
+          IMPORTANT: Never upload this package to Official Production.
+          EOF
+          test -f dist/index.html
+          test -f dist/assets/yk-v7900-mobile-home.js
+          test -f dist/assets/yk-v7900-mobile-home.css
+          test -f dist/service-worker.js
+      - name: Upload v7.90.0 Netlify Drop QA artifact
+        if: ${{ github.event_name == 'pull_request' && github.head_ref == 'qa/v7.90.0-mobile-home-dashboard' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: YKOC_v7.90.0_QA_STATIC_NETLIFY_DROP
+          path: dist/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 6
+          include-hidden-files: false
+

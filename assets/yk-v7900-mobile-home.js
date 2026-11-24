@@ -121,8 +121,8 @@ async function findResume(attempts,seq){
      const mins=Math.max(0,Math.ceil((deadline-Date.now())/60000));
      text('yk790ResumeTime','◷ '+mins+' min '+label('ကျန်','left','残り'));
      const link=$('yk790ResumeLink');
-     link.href=attempt.exam_type==='ordinary_second'?'/mock-second-license.html':'/mock-exams.html';
-     text('yk790ResumeHint',label('Exam Page ကိုဖွင့်ပြီး မူလစာမေးပွဲကို ရွေး၍ ဆက်ဖြေပါ။','Open the exam page and select the same exam to resume.','試験ページで同じ試験を選んで再開してください。'));
+     link.href=attempt.exam_type==='ordinary_second'?'/mock-second-license.html':'/exams/'+encodeURIComponent(attempt.exam_type)+'.html';
+     text('yk790ResumeHint',label('မူလ Exam Page မှာ Start / Resume ကိုနှိပ်မှ ဆက်ဖြေနိုင်ပါတယ်။','On the exam page, tap Start / Resume to continue the saved attempt.','試験ページの「開始・再開」から続けられます。'));
      return;
    }catch{ /* No checkpoint or user is not entitled: omit Continue card. */ }
  }

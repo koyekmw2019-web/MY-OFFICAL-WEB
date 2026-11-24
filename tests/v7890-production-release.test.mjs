@@ -191,7 +191,7 @@ test('v7.89.5 updated mobile PWA assets are cache-busted',()=>{
  assert(html.includes('yk-v7892-navigation.js?v=7896'));
  assert(html.includes('yk-v7892-navigation.css?v=7895'));
  assert(!html.includes('yk-v7892-navigation.js?v=7894'));
- assert(sw.includes('-v7898-exam-safe-scroll'));
+ assert(sw.includes('-v7900-mobile-home-qa'));
  assert(sw.includes("request.mode === 'navigate'"));
  assert(sw.includes("key.startsWith('yk-public-static-')"));
 });
@@ -302,6 +302,10 @@ test('v7.90.0 QA mobile Home is add-on only and keeps existing site routes',asyn
  assert(css.includes('@media(max-width:720px)')&&css.includes('body.yk790-mobile-home > .wrap{display:none!important}'));
  assert(!css.includes('body > .top{display:none'));
  assert(dashboard.includes('window.YKIdentity')&&dashboard.includes('/.netlify/functions/exam-status'));
+ assert(dashboard.includes("'/exams/'+encodeURIComponent(attempt.exam_type)+'.html'"));
+ assert(dashboard.includes("attempt.exam_type==='ordinary_second'?'/mock-second-license.html'"));
+ assert(!dashboard.includes("link.href=attempt.exam_type==='ordinary_second'?'/mock-second-license.html':'/mock-exams.html'"));
+
  assert(dashboard.includes('/.netlify/functions/exam-my-activity')&&dashboard.includes('/.netlify/functions/exam-checkpoint?attemptId='));
  assert(dashboard.includes("credentials:'same-origin',cache:'no-store'"));
  assert(!dashboard.includes("exam-access','POST'"));
