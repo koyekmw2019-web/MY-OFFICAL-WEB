@@ -29,9 +29,12 @@
     const blocked = document.querySelector('#examPanel.active, dialog[open], .exam-v728-overlay.open');
     nav.hidden = Boolean(editing || blocked || document.fullscreenElement || document.webkitFullscreenElement);
   }
-  // Observe only relevant state attributes. Never read/write user sessions or data.
+  // Observe only the owning body class and exam/modal state elements.
+  // Watching every dictionary result insertion caused unnecessary full-nav scans.
   const observer = new MutationObserver(refresh);
-  observer.observe(document.body, {subtree:true, childList:true, attributes:true, attributeFilter:['class','open']});
+  observer.observe(document.body, {attributes:true, attributeFilter:['class']});
+  document.querySelectorAll('#examPanel,.exam-v728-overlay,dialog').forEach(el=>
+    observer.observe(el, {attributes:true, attributeFilter:['class','open']}));
   for (const event of ['focusin', 'focusout', 'fullscreenchange', 'webkitfullscreenchange']) {
     document.addEventListener(event, () => queueMicrotask(refresh));
   }

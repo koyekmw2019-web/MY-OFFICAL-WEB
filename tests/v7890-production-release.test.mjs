@@ -99,7 +99,8 @@ test('v7.89.1 dictionary navigation, mobile layout and full drawer source',()=>{
  for(const file of ['index.html','mock-exams.html','video-class.html']) {
    const html=readFileSync(join(dist,file),'utf8');
    assert(html.includes('/assets/yk-v7891-dictionary-hotfix.css?v=7891'));
-   assert(html.includes('/assets/yk-v7891-dictionary-hotfix.js?v=7891'));
+   assert(html.includes('/assets/yk-v7892-navigation.js?v=7892'));
+   assert(html.includes('/assets/yk-v7892-navigation.css?v=7892'));
  }
  const css=readFileSync(join(dist,'assets/yk-v7891-dictionary-hotfix.css'),'utf8');
  const js=readFileSync(join(dist,'assets/yk-v7891-dictionary-hotfix.js'),'utf8');
@@ -109,4 +110,22 @@ test('v7.89.1 dictionary navigation, mobile layout and full drawer source',()=>{
  assert(css.includes('#driving-dictionary .dictionary-tools-v7'));
  assert(js.includes("location.assign(target)"));
  assert(js.includes("setTimeout(go,155)"));
+});
+
+test('v7.89.2 fast menu anchors and dictionary bounce are included',()=>{
+ const dist=resolve('dist');
+ const html=readFileSync(join(dist,'index.html'),'utf8');
+ assert(html.includes('yk-v7892-navigation.js?v=7892'));
+ assert(html.includes('yk-v7892-navigation.css?v=7892'));
+ const js=readFileSync(join(dist,'assets/yk-v7892-navigation.js'),'utf8');
+ const css=readFileSync(join(dist,'assets/yk-v7892-navigation.css'),'utf8');
+ const nav=readFileSync(join(dist,'assets/yk-mobile-nav.js'),'utf8');
+ assert(js.includes("['home','driving-dictionary','portal','yk82Hub','study-hub'"));
+ assert(js.includes("history.pushState(null,'',next)"));
+ assert(js.includes("requestAnimationFrame(()=>jumpNow(id))"));
+ assert(js.includes("tab.addEventListener('pointerdown',animate"));
+ assert(css.includes('yk-v7892-dict-bounce'));
+ assert(css.includes('scroll-behavior:auto!important'));
+ assert(nav.includes("observer.observe(document.body, {attributes:true, attributeFilter:['class']})"));
+ assert(!nav.includes('subtree:true, childList:true'));
 });
