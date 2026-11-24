@@ -3,6 +3,13 @@
    This creates a scrollable viewport that ENDS ABOVE the dock.
    Existing student/public card and its button IDs remain unchanged. */
 @media (max-width: 720px) {
+  /* Ensure the outer document itself never scrolls under the fixed dock.
+     Only the measured, visible area of the Exam Center scrolls. */
+  body.yk787-exam-page.yk-v7898-safe-scroll:not(.menu-open):not(.yk872-running):not(:has(#examPanel.active,dialog[open],.exam-v728-overlay.open)) {
+    height:100dvh!important;
+    max-height:100dvh!important;
+    overflow:hidden!important;
+  }
   body.yk787-exam-page.yk-v7898-safe-scroll:not(.menu-open):not(.yk872-running):not(:has(#examPanel.active,dialog[open],.exam-v728-overlay.open)) > .wrap {
     display:block;
     box-sizing:border-box!important;

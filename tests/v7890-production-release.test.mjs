@@ -269,6 +269,8 @@ test('v7.89.8 mobile Exam scrollport ENDS ABOVE the fixed nav (not padding only)
  assert(css.includes('height:var(--yk-v7898-scroll-height'));
  assert(css.includes('scrollbar-gutter:stable'));
  assert(css.includes('touch-action:pan-y'));
+ assert(css.includes('max-height:100dvh!important'));
+ assert(css.includes('overflow:hidden!important'));
  assert(css.includes('body.yk787-exam-page.yk-v7898-safe-scroll'));
  assert(js.includes('navBox.top-wrapBox.top-2'));
  assert(js.includes('wrap.style.setProperty'));
