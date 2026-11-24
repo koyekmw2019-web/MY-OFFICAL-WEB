@@ -311,6 +311,10 @@ test('v7.90.0 QA mobile Home is add-on only and keeps existing site routes',asyn
  assert(!dashboard.includes("exam-access','POST'"));
  assert(!dashboard.includes("localStorage.setItem"));
  assert(dashboard.includes("cp?.snapshot")&&dashboard.includes('deadline<=Date.now()'));
+ assert(dashboard.includes('const phaseCounts={jlpt_n1:2,jlpt_n2:2,jlpt_n3:3,jlpt_n4:3,jlpt_n5:3}'));
+ assert(dashboard.includes('finishedPhases/totalPhases*100'));
+ assert(dashboard.includes("'Completed sections'"));
+
  assert(dashboard.includes("status==='submitted'&&a.score_verified===true"));
  assert(dashboard.includes('document.body.classList.toggle'));
  assert(dashboard.includes("document.addEventListener('click',openLegacyAnchor,true)"));

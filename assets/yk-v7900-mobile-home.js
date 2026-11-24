@@ -114,10 +114,20 @@ async function findResume(attempts,seq){
      $('yk790Resume').hidden=false;$('yk790Daily').hidden=true;
      text('yk790ResumeTitle',examNames[attempt.exam_type]+' — Mock Exam');
      text('yk790ResumeSection',label('သိမ်းထားသော Exam','Saved exam','保存した試験')+(Number.isInteger(cp.phase)?' · Section '+(cp.phase+1):''));
-     const progress=resumePercent(cp.snapshot);
-     text('yk790ResumePercent',progress===null?'':progress+'%');
+     const phaseCounts={jlpt_n1:2,jlpt_n2:2,jlpt_n3:3,jlpt_n4:3,jlpt_n5:3};
+     const totalPhases=phaseCounts[attempt.exam_type];
+     // A completed-section fraction is knowable from the server checkpoint;
+     // do not pretend that it measures answered questions in the active phase.
+     const finishedPhases=totalPhases?Math.max(0,Math.min(totalPhases,Number(cp.phase)||0)):0;
+     const answerProgress=resumePercent(cp.snapshot);
+     const progress=totalPhases?Math.round(finishedPhases/totalPhases*100):answerProgress;
+     const progressLabel=totalPhases?
+       finishedPhases+'/'+totalPhases+' '+label('အပိုင်းပြီး','sections finished','セクション完了'):
+       progress===null?'':progress+'%';
+     text('yk790ResumePercent',progressLabel);
      $('yk790ResumeFill').style.width=(progress===null?0:progress)+'%';
      $('yk790ResumeProgress').setAttribute('aria-valuenow',String(progress??0));
+     $('yk790ResumeProgress').setAttribute('aria-label',totalPhases?'Completed sections':'Saved answer progress');
      const mins=Math.max(0,Math.ceil((deadline-Date.now())/60000));
      text('yk790ResumeTime','◷ '+mins+' min '+label('ကျန်','left','残り'));
      const link=$('yk790ResumeLink');
