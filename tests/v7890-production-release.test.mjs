@@ -309,6 +309,12 @@ test('v7.90.0 QA mobile Home is add-on only and keeps existing site routes',asyn
  assert(dashboard.includes("cp?.snapshot")&&dashboard.includes('deadline<=Date.now()'));
  assert(dashboard.includes("status==='submitted'&&a.score_verified===true"));
  assert(dashboard.includes('document.body.classList.toggle'));
+ assert(dashboard.includes("document.addEventListener('click',openLegacyAnchor,true)"));
+ assert(dashboard.includes("event.stopImmediatePropagation()"));
+ assert(dashboard.includes("document.body.classList.remove('yk790-mobile-home')"));
+ assert(dashboard.includes("location.assign('/#'+m[1])"));
+ assert(dashboard.includes("m[1]==='home'"));
+
  // No private student or exam fields in the public static template.
  assert(!home.includes('YKST-001'));
  const source=readFileSync(join(dist,'assets/yk-v7900-mobile-home.js'),'utf8');

@@ -160,7 +160,31 @@ function onSearch(event){
  }
  text('yk790SearchHint',q?(hits?label('ကိုက်ညီသော Exam '+hits+' ခု','Matching exams: '+hits,'該当試験: '+hits):label('Exam မတွေ့ပါ။ Dictionary မှာ ရှာနိုင်ပါတယ်။','No matching exam. Try the dictionary.','一致する試験はありません。辞書をご利用ください。')):'');
 }
+// The existing bottom Study tab and hamburger shortcuts use history.pushState()
+// without firing "hashchange". Capture mobile Home -> legacy-anchor navigation
+// before those handlers so the old Study Hub / Dictionary / Portal is visible.
+function openLegacyAnchor(event){
+ if(!isMode()||event.defaultPrevented||event.button!==0||event.ctrlKey||
+    event.metaKey||event.altKey||event.shiftKey)return;
+ const link=event.target?.closest?.('a[href]');
+ if(!link)return;
+ const m=/^\/#([A-Za-z][\w-]*)$/.exec(link.getAttribute('href')||'');
+ if(!m||m[1]==='home')return;
+ const target=document.getElementById(m[1]);
+ if(!target)return;
+ event.preventDefault();
+ event.stopImmediatePropagation();
+ document.getElementById('menuClose')?.click();
+ document.body.classList.remove('yk790-mobile-home');
+ root.hidden=true;
+ root.setAttribute('aria-hidden','true');
+ // Browser's normal anchor navigation now scrolls an actually visible target.
+ location.assign('/#'+m[1]);
+ requestAnimationFrame(()=>target.scrollIntoView({behavior:'instant',block:'start'}));
+}
 function init(){
+ // Capture phase is intentional: old menu handlers only listen in bubble phase.
+ document.addEventListener('click',openLegacyAnchor,true);
  $('yk790QuickSearch').addEventListener('submit',onSearch);
  $('yk790Search').addEventListener('input',onSearch);
  todayWord();showView();reload();
