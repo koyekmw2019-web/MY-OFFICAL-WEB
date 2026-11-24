@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {Script} from 'node:vm';
 import {test} from 'node:test';
 import {existsSync,readFileSync,readdirSync} from 'node:fs';
 import {resolve,join} from 'node:path';
@@ -217,4 +218,18 @@ test('v7.89.6 screenshot reference: student card, public card, five expected bot
  assert(exam.indexOf('yk-audience-student')<exam.indexOf('yk-audience-public'));
  assert(exam.includes('yk-public-actions'));
  assert(exam.includes('/assets/yk-v7896-approved-reference.css?v=7896'));
+});
+
+test('v7.89.6 generated mobile nav scripts parse and preserve active routes',()=>{
+ const dist=resolve('dist');
+ const nav=readFileSync(join(dist,'assets/yk-mobile-nav.js'),'utf8');
+ const routing=readFileSync(join(dist,'assets/yk-v7892-navigation.js'),'utf8');
+ new Script(nav,{filename:'yk-mobile-nav.js'});
+ new Script(routing,{filename:'yk-v7892-navigation.js'});
+ assert(nav.includes(String.raw`replace(/\/+$/, '')`));
+ assert(nav.includes(String.raw`replace(/\.html$/i,'')`));
+ assert(nav.includes("return 'study'"));
+ assert(nav.includes("return 'account'"));
+ assert(routing.includes("goTo('study-hub')"));
+ assert(routing.includes("'driving-dictionary'"));
 });
