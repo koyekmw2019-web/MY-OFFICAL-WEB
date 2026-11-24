@@ -1,0 +1,106 @@
+/* STUDYING WITH YE KUN v7.89.5 — approved compact Exam Access UI.
+   Scoped presentation only. Retains all existing action IDs and event handlers. */
+@media(max-width:720px){
+ #online-mock-exam>.title{
+   font-size:clamp(24px,6.4vw,29px)!important;line-height:1.26!important;
+   letter-spacing:-.015em!important;margin:4px 0 10px!important;
+   max-width:100%;overflow-wrap:anywhere;
+ }
+ #online-mock-exam .exam-v728-access{
+   display:block!important;grid-template-columns:minmax(0,1fr)!important;
+   margin:8px 0 12px!important;min-width:0;
+ }
+ #online-mock-exam .exam-access-card{
+   display:flex!important;flex-direction:column!important;align-items:stretch!important;
+   justify-content:flex-start!important;gap:10px!important;min-width:0;
+   padding:clamp(12px,3vw,16px)!important;margin:0!important;border-radius:20px!important;
+ }
+ #online-mock-exam .exam-access-card .exam-access-main{
+   display:flex!important;align-items:flex-start!important;gap:11px!important;
+   padding:0!important;margin:0!important;min-width:0;width:100%;
+ }
+ #online-mock-exam .exam-access-card .exam-access-icon{
+   width:clamp(46px,11vw,56px)!important;height:clamp(46px,11vw,56px)!important;
+   flex:0 0 auto!important;border-radius:14px!important;
+   font-size:clamp(23px,5vw,28px)!important;
+ }
+ #online-mock-exam .exam-access-card .exam-access-copy{
+   min-width:0;flex:1;overflow-wrap:anywhere;
+ }
+ #online-mock-exam .exam-access-card #examAccessTitleV728{
+   display:block!important;margin:0 0 4px!important;
+   font:800 clamp(16px,4vw,20px)/1.4 'Noto Sans Myanmar','Myanmar Text',Pyidaungsu,system-ui,sans-serif!important;
+ }
+ #online-mock-exam .exam-access-card #examAccessTextV728{
+   display:block!important;margin:0!important;font-size:clamp(11px,2.85vw,13px)!important;
+   line-height:1.55!important;font-weight:450!important;color:#bdbec3!important;
+   overflow-wrap:anywhere;white-space:normal!important;
+ }
+ /* Prior long guidance remains available, without dominating the phone screen. */
+ #online-mock-exam .exam-access-card #yk88AccessGuide{
+   display:block;max-width:100%!important;margin:7px 0 0!important;
+   font-size:clamp(11px,2.85vw,13px)!important;line-height:1.55!important;
+   font-weight:450!important;letter-spacing:0!important;
+   overflow-wrap:anywhere;white-space:normal!important;
+ }
+ #online-mock-exam .exam-access-card #yk88AccessGuide[hidden]{display:none!important}
+ #online-mock-exam .exam-access-card .yk-guest-guide,
+ #online-mock-exam .exam-access-card .yk-guest-guide:not([hidden]){
+   gap:8px!important;margin:4px 0!important;
+ }
+ #online-mock-exam .exam-access-card .yk-guest-guide-item{
+   padding:clamp(10px,2.5vw,13px)!important;border-radius:14px!important;
+ }
+ #online-mock-exam .exam-access-card .yk-guest-guide-label{
+   margin:0 0 4px!important;font-size:clamp(13px,3.5vw,16px)!important;line-height:1.45!important;
+ }
+ #online-mock-exam .exam-access-card .yk-guest-guide-desc{
+   margin:0!important;font-size:clamp(11px,2.9vw,13px)!important;line-height:1.55!important;
+ }
+ #online-mock-exam .exam-access-card .exam-access-actions{
+   display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+   gap:8px!important;align-items:stretch!important;width:100%!important;
+   margin:2px 0 0!important;padding:0!important;justify-content:stretch!important;
+ }
+ #online-mock-exam .exam-access-card .exam-access-actions>button{
+   display:flex;align-items:center;justify-content:center;gap:5px;
+   width:100%!important;min-width:0!important;min-height:46px!important;
+   padding:9px 8px!important;border-radius:13px!important;
+   white-space:normal!important;overflow-wrap:anywhere;
+   font:750 clamp(11px,3vw,14px)/1.4 system-ui,'Noto Sans Myanmar',sans-serif!important;
+   text-align:center;cursor:pointer;
+   transition:transform .16s ease,background-color .16s ease,border-color .16s ease!important;
+ }
+ #online-mock-exam .exam-access-card #examAccountV735{
+   grid-column:1!important;color:#111317!important;background:#fff!important;
+   border:1px solid #fff!important;
+ }
+ #online-mock-exam .exam-access-card #examStudentVerifyV728{
+   grid-column:2!important;background:#111216!important;
+   color:#fff!important;border:1px solid #46464a!important;
+ }
+ #online-mock-exam .exam-access-card #examPlansV728{
+   grid-column:1/-1!important;color:#111317!important;background:#fff!important;
+   border:1px solid #fff!important;
+ }
+ #online-mock-exam .exam-access-card .exam-access-actions>button[hidden]{display:none!important}
+ #online-mock-exam .exam-access-card .exam-access-actions>button:active:not(:disabled){
+   transform:scale(.985)!important;
+ }
+ #online-mock-exam .exam-access-card .exam-access-actions>button:focus-visible{
+   outline:2px solid #ff6576!important;outline-offset:2px!important;
+ }
+ #online-mock-exam .exam-access-card .exam-access-actions>button:disabled{
+   opacity:.65!important;cursor:default!important;
+ }
+ #online-mock-exam .exam-plan-mini{display:none!important}
+ #online-mock-exam .exam-feature-row-v7{margin-top:12px!important}
+}
+@media(max-width:360px){
+ #online-mock-exam .exam-access-card{padding:11px!important;gap:8px!important}
+ #online-mock-exam .exam-access-card .exam-access-actions{gap:7px!important}
+ #online-mock-exam .exam-access-card .exam-access-actions>button{padding:8px 5px!important;font-size:11.5px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ #online-mock-exam .exam-access-card .exam-access-actions>button{transition:none!important}
+}
