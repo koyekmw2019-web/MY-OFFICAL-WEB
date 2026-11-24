@@ -1,4 +1,4 @@
-/* STUDYING WITH YE KUN v7.89.2 — fast local navigation and tactile Dictionary tab.
+/* STUDYING WITH YE KUN v7.89.4 — match Dictionary page crossfade to Home / EXAM.
  * Navigation/UI only. No auth, payment, exam, storage, service-worker or API writes.
  */
 (()=>{'use strict';
@@ -56,12 +56,44 @@
     if(!atHome()||!target){location.assign('/#'+id);return;}
     closeDrawer();
     const next='/#'+id;
-    if(location.pathname+location.search+location.hash!==next){
-      history.pushState(null,'',next);
+    const apply=()=>{
+      if(location.pathname+location.search+location.hash!==next){
+        history.pushState(null,'',next);
+      }
+      showSelected(id);
+      // Scroll in the same snapshot update, rather than an unrelated frame.
+      jumpNow(id);
+    };
+    // Home / EXAM change whole documents, so they get native page crossfades.
+    // Dictionary is an anchor on Home: give it the equivalent same-document
+    // content crossfade without delaying navigation or bouncing its icon.
+    const reduced=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    if(id==='driving-dictionary' && !reduced && typeof document.startViewTransition==='function'){
+      html.classList.add('yk-v7894-view');
+      try{
+        const transition=document.startViewTransition(apply);
+        transition.finished.then(
+          ()=>html.classList.remove('yk-v7894-view'),
+          ()=>html.classList.remove('yk-v7894-view')
+        );
+      }catch{
+        html.classList.remove('yk-v7894-view');
+        apply();
+        revealFallback(target);
+      }
+    }else{
+      // Keep the existing immediate routing for other menu shortcuts.
+      requestAnimationFrame(()=>{
+        apply();
+        if(id==='driving-dictionary'&&!reduced)revealFallback(target);
+      });
     }
-    showSelected(id);
-    // Let the drawer release overflow:hidden before computing scroll position.
-    requestAnimationFrame(()=>jumpNow(id));
+  }
+  function revealFallback(target){
+    target.classList.remove('yk-v7894-fade');
+    void target.offsetWidth;
+    target.classList.add('yk-v7894-fade');
+    setTimeout(()=>target.classList.remove('yk-v7894-fade'),260);
   }
   // Shortcuts already have valid hrefs; intercept ONLY existing known home anchors.
   // External links, login, exam pages and ordinary paths keep native navigation.
