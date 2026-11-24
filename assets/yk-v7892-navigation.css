@@ -28,3 +28,27 @@ html.yk-v7892-instant-jump body {scroll-behavior:auto!important}
  #yk-mobile-nav a[data-tab="dictionary"].yk-v7892-tap svg,
  #yk-mobile-nav a[data-tab="dictionary"].yk-v7892-tap:after {animation:none!important}
 }
+
+/* The selected-tab icon has transform:none!important in the existing drawer
+   theme. Animate its label/glow as well so feedback remains visible. */
+@media(max-width:720px){
+ #yk-mobile-nav a[data-tab="dictionary"].yk-v7892-tap > span{
+   display:inline-block;
+   animation:yk-v7892-label-bounce .48s cubic-bezier(.2,.8,.2,1) both!important;
+ }
+ #yk-mobile-nav a[data-tab="dictionary"].yk-v7892-tap svg{
+   animation:yk-v7892-icon-flash .48s ease-out both!important;
+ }
+ @keyframes yk-v7892-label-bounce{
+   0%{transform:scale(1)}30%{transform:scale(.80) translateY(2px)}
+   68%{transform:scale(1.18) translateY(-2px)}100%{transform:scale(1)}
+ }
+ @keyframes yk-v7892-icon-flash{
+   0%{filter:brightness(1)}
+   40%{filter:brightness(2) drop-shadow(0 0 6px rgba(248,66,85,.8))}
+   100%{filter:brightness(1)}
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ #yk-mobile-nav a[data-tab="dictionary"].yk-v7892-tap > span{animation:none!important}
+}
