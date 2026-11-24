@@ -96,7 +96,7 @@ for (const page of walk(dist)) {
  body=body.replace('</body>','<script defer src="/assets/yk-v7892-navigation.js?v=7892"></script></body>');
  writeFileSync(page,body,'utf8');
 }
-console.log(JSON.stringify({release:'v7.89.2',pages:count,
+console.log(JSON.stringify({release:'v7.89.3',pages:count,
  menu:'V2.1 + approved final polish',ordinary_second:'server-backed',
  bank_publication:'questions only — answers removed from dist',
  existing_site_backend:'preserved',output:'dist'}));

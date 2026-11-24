@@ -52,22 +52,4 @@
   #driving-dictionary #dictionaryResults :is(.dict-card,.dictionary-card) {
     max-width:100%;overflow-wrap:anywhere;
   }
-  #yk-mobile-nav > a[data-tab="dictionary"] {
-    transition:transform .16s ease,color .16s ease,background-color .16s ease!important;
-    transform-origin:center bottom;-webkit-tap-highlight-color:transparent;
-  }
-  #yk-mobile-nav > a[data-tab="dictionary"]:is(:active,.yk-dict-pressed) {
-    transform:scale(.89) translateY(1px)!important;
-    color:#fff!important;background:rgba(194,31,49,.20)!important;
-  }
-  #yk-mobile-nav > a[data-tab="dictionary"][aria-current="page"] {
-    color:#fff!important;
-  }
-  #yk-mobile-nav > a[data-tab="dictionary"][aria-current="page"]:before {
-    content:"";position:absolute;left:33%;right:33%;top:-9px;
-    height:3px;border-radius:8px;background:#c51f30;
-  }
-}
-@media(prefers-reduced-motion:reduce) {
-  #yk-mobile-nav > a[data-tab="dictionary"] {transition:none!important}
 }
