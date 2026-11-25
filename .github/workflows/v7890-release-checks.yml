@@ -47,8 +47,14 @@ jobs:
         run: npm test
       - name: Secure QA Identity unit tests
         run: node --test tests/qa-identity-v7902.test.mjs
+      - name: QA database fingerprint unit tests
+        run: node --test tests/qa-db-fingerprint-v7902.test.mjs
+      - name: Compile QA database diagnostic without hosted database access
+        run: npx esbuild netlify/functions/qa-db-fingerprint-v7902.mts --bundle --platform=node --format=esm --packages=external --outdir=/tmp/ykoc-fix02-check
       - name: Generate production deploy directory
         run: npm run build
+      - name: Verify offline helper is not published
+        run: test ! -e dist/qa/fix02/offline-fingerprint.html && test -z "$(find dist -name offline-fingerprint.html -print -quit)"
       - name: Verify generated QA Identity setup assets
         run: |
           test -f dist/assets/qa-identity-setup-v7902.html

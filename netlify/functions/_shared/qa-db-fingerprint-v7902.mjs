@@ -1,0 +1,57 @@
+import { createHash, timingSafeEqual } from 'node:crypto';
+
+export const QA = Object.freeze({
+  origin: 'https://yekun-ordinary-second-qa.netlify.app',
+  site: '56d19e67-cc2c-4bfe-802e-ce3c198494a3',
+  team: '6b00669b8ca1a2a210030417',
+  path: '/.netlify/functions/qa-db-fingerprint-v7902'
+});
+const ALLOWED_OPTIONS = new Set(['sslmode', 'channel_binding', 'connect_timeout', 'application_name']);
+export function endpointParts(raw) {
+  if (typeof raw !== 'string' || raw.length > 8192) throw Error('Invalid connection');
+  const u = new URL(raw.trim());
+  if (!['postgres:', 'postgresql:'].includes(u.protocol) || !/^[a-z0-9.-]+$/i.test(u.hostname) || u.hash || !/^\/[^/]+$/.test(u.pathname)) throw Error('Unsupported endpoint');
+  for (const key of u.searchParams.keys()) if (!ALLOWED_OPTIONS.has(key)) throw Error('Unsupported connection option');
+  const database = decodeURIComponent(u.pathname.slice(1));
+  if (!database || /[\x00-\x1f\x7f/]/.test(database)) throw Error('Invalid database');
+  return { host: u.hostname.toLowerCase(), port: u.port || '5432', database };
+}
+export function endpointFingerprint(parts) {
+  return createHash('sha256').update(JSON.stringify(['YKOC-QA-DB-ENDPOINT-v1', parts.host, parts.port, parts.database]), 'utf8').digest('hex');
+}
+const HEADERS = Object.freeze({ 'Cache-Control': 'private, no-store, max-age=0', 'Pragma': 'no-cache', 'Referrer-Policy': 'no-referrer', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Robots-Tag': 'noindex, nofollow, noarchive', 'Content-Security-Policy': "default-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'" });
+const reply = (status, result) => Response.json(result, { status, headers: HEADERS });
+const FORM = `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>YKOC private QA database check</title><h1>QA database endpoint verification</h1><p>Team login only. Paste the 64-character SHA-256 fingerprint generated offline from the QA dashboard connection. Never paste the connection URL or password here.</p><form method="post" autocomplete="off"><label>Expected QA fingerprint <input name="fingerprint" type="password" required minlength="64" maxlength="64" pattern="[a-f0-9]{64}" autocomplete="off" spellcheck="false"></label><button type="submit">Run read-only verification</button></form><p>Only a SELECT is executed, and only after the endpoint fingerprint matches.</p></html>`;
+async function readExpected(req) {
+  if (req.headers.get('content-type')?.split(';')[0].trim() !== 'application/x-www-form-urlencoded') return null;
+  const reader = req.body?.getReader(); if (!reader) return null;
+  let bytes = 0; const chunks = [];
+  try {
+    while (true) { const {done, value} = await reader.read(); if (done) break; bytes += value.byteLength; if (bytes > 100) { await reader.cancel(); return null; } chunks.push(value); }
+    const values = [...new URLSearchParams(Buffer.concat(chunks).toString('utf8'))];
+    return values.length === 1 && values[0][0] === 'fingerprint' && /^[a-f0-9]{64}$/.test(values[0][1]) ? values[0][1] : null;
+  } finally { reader.releaseLock(); }
+}
+export async function runDiagnostic(req, context, dependencies) {
+  try {
+    // Trusted platform metadata: headers from a visitor cannot grant access.
+    const url = new URL(req.url);
+    if (url.origin !== QA.origin || url.pathname !== QA.path || url.search || url.hash || context?.site?.id !== QA.site || context?.account?.id !== QA.team || context?.deploy?.context !== 'production' || context?.deploy?.published !== true) return reply(404, {status:'blocked'});
+    if (!context?.user?.id) return reply(403, {status:'blocked'});
+    if (req.method === 'GET') return new Response(FORM, {headers:{...HEADERS,'Content-Type':'text/html; charset=utf-8'}});
+    if (req.method !== 'POST') return reply(405, {status:'blocked'});
+    if (req.headers.get('origin') !== QA.origin) return reply(403, {status:'blocked'});
+    const expected = await readExpected(req);
+    if (!expected) return reply(400, {status:'invalid_fingerprint'});
+    // getConnectionString and getDatabase() use the same SDK default environment.
+    // Do not log or return the raw URL, its parts, or either fingerprint.
+    const parts = endpointParts(await dependencies.getConnectionString());
+    const actual = endpointFingerprint(parts);
+    if (!timingSafeEqual(Buffer.from(actual,'hex'),Buffer.from(expected,'hex'))) return reply(409, {status:'endpoint_mismatch', endpointMatch:false, selectExecuted:false});
+    const db = dependencies.getDatabase();
+    // Fixed parameterized SELECT: no row data, no DDL/DML, no dynamic SQL.
+    const rows = await db.sql`SELECT current_database() = ${parts.database} AS database_matches`;
+    if (rows?.length !== 1 || rows[0]?.database_matches !== true) return reply(409, {status:'database_name_mismatch',endpointMatch:true,databaseNameMatch:false});
+    return reply(200, {status:'verified_endpoint_and_database_name',endpointMatch:true,databaseNameMatch:true,readOnlySelect:true});
+  } catch { return reply(503, {status:'unverified'}); } // No raw error or credentials in logs/response.
+}
