@@ -45,8 +45,17 @@ jobs:
         run: sha256sum netlify/functions/_shared/security.mts netlify/functions/_shared/exam-autosave.mts netlify/functions/exam-access.mts netlify/functions/exam-checkpoint.mts netlify/functions/exam-attempt-submit.mts
       - name: Existing regression tests
         run: npm test
+      - name: Secure QA Identity unit tests
+        run: node --test tests/qa-identity-v7902.test.mjs
       - name: Generate production deploy directory
         run: npm run build
+      - name: Verify generated QA Identity setup assets
+        run: |
+          test -f dist/assets/qa-identity-setup-v7902.html
+          test -f dist/assets/qa-identity-setup-v7902.css
+          test -f dist/assets/qa-identity-setup-v7902.mjs
+          test -f dist/assets/identity.bundle.js
+          node --check dist/assets/qa-identity-setup-v7902.mjs
       - name: v7.89.0 production-specific regression tests
         run: npm run verify:v7890
       - name: Compile Netlify Functions without production access
