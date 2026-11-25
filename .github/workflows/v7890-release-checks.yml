@@ -49,6 +49,15 @@ jobs:
         run: node --test tests/qa-identity-v7902.test.mjs
       - name: QA database fingerprint unit tests
         run: node --test tests/qa-db-fingerprint-v7902.test.mjs
+      - name: FIX03 Origin and privacy regression tests
+        run: node --test tests/qa-db-fingerprint-fix03.test.mjs
+      - name: Install Chromium integration test dependencies
+        run: |
+          python3 -m venv "$RUNNER_TEMP/ykoc-fix03-browser"
+          "$RUNNER_TEMP/ykoc-fix03-browser/bin/python" -m pip install playwright==1.57.0
+          "$RUNNER_TEMP/ykoc-fix03-browser/bin/python" -m playwright install --with-deps chromium
+      - name: FIX03 Chromium browser integration tests (synthetic data only)
+        run: '"$RUNNER_TEMP/ykoc-fix03-browser/bin/python" tests/qa-db-fingerprint-fix03-browser.py'
       - name: Compile QA database diagnostic without hosted database access
         run: npx esbuild netlify/functions/qa-db-fingerprint-v7902.mts --bundle --platform=node --format=esm --packages=external --outdir=/tmp/ykoc-fix02-check
       - name: Generate production deploy directory

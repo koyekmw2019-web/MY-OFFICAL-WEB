@@ -38,7 +38,10 @@ export async function runDiagnostic(req, context, dependencies) {
     const url = new URL(req.url);
     if (url.origin !== QA.origin || url.pathname !== QA.path || url.search || url.hash || context?.site?.id !== QA.site || context?.account?.id !== QA.team || context?.deploy?.context !== 'production' || context?.deploy?.published !== true) return reply(404, {status:'blocked'});
     if (!context?.user?.id) return reply(403, {status:'blocked'});
-    if (req.method === 'GET') return new Response(FORM, {headers:{...HEADERS,'Content-Type':'text/html; charset=utf-8'}});
+    // Same-origin referrers are safe here: the exact GET URL has no query or secret.
+    // no-referrer on a native POST form can turn Origin into null in Chromium.
+    // Only the form document changes policy; every JSON response stays no-referrer.
+    if (req.method === 'GET') return new Response(FORM, {headers:{...HEADERS,'Referrer-Policy':'same-origin','Content-Type':'text/html; charset=utf-8'}});
     if (req.method !== 'POST') return reply(405, {status:'blocked'});
     if (req.headers.get('origin') !== QA.origin) return reply(403, {status:'blocked'});
     const expected = await readExpected(req);
