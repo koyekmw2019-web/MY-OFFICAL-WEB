@@ -1,8 +1,8 @@
 // Loopback-only test harness. No Netlify SDK, network DB or real identity.
 import http from 'node:http';
 import { QA, endpointParts, endpointFingerprint, runDiagnostic } from '../netlify/functions/_shared/qa-db-fingerprint-v7902.mjs';
-const connection='postgresql://synthetic:synthetic@qa.example.test/db';
-const fingerprint=endpointFingerprint(endpointParts(connection));
+const connection='postgresql://synthetic:synthetic@qa-pooler.example.test/db';
+const fingerprint=endpointFingerprint(endpointParts('postgresql://readonly:synthetic@qa.example.test/db'));
 const counts={connection:0,client:0,queries:0};
 let last=null;
 const ctx={site:{id:QA.site},account:{id:QA.team},deploy:{context:'production',published:true},user:{id:'synthetic'}};

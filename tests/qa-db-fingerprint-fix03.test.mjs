@@ -23,7 +23,7 @@ test('only clean authorized GET changes referrer policy, retains strict CSP/no-c
     const denied=await runDiagnostic(new Request(u),ctx,d);assert.equal(denied.status,404);assert.equal(denied.headers.get('referrer-policy'),'no-referrer');
   }
 });
-test('successful POST retains no-referrer and unchanged SQL contract',async()=>{
-  let queries=0;const r=await runDiagnostic(new Request(url,{method:'POST',headers:{origin:QA.origin,'content-type':'application/x-www-form-urlencoded'},body:'fingerprint='+fingerprint}),ctx,{getConnectionString:()=>connection,getDatabase:()=>({sql:async(strings,...params)=>{queries++;assert.deepEqual([...strings],['SELECT current_database() = ',' AS database_matches']);assert.deepEqual(params,['db']);return [{database_matches:true}];}})});
-  assert.equal(r.status,200);assert.equal(queries,1);assert.equal(r.headers.get('referrer-policy'),'no-referrer');assert.equal((await r.json()).status,'verified_endpoint_and_database_name');
+test('successful POST retains no-referrer and never initializes a DB client',async()=>{
+  let clients=0;const r=await runDiagnostic(new Request(url,{method:'POST',headers:{origin:QA.origin,'content-type':'application/x-www-form-urlencoded'},body:'fingerprint='+fingerprint}),ctx,{getConnectionString:()=>connection,getDatabase:()=>{clients++;throw Error('must not call');}});
+  assert.equal(r.status,200);assert.equal(clients,0);assert.equal(r.headers.get('referrer-policy'),'no-referrer');assert.deepEqual(await r.json(),{status:'verified_normalized_endpoint',endpointMatch:true,selectExecuted:false,runtimeUsesPooler:false});
 });

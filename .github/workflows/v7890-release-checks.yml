@@ -51,6 +51,8 @@ jobs:
         run: node --test tests/qa-db-fingerprint-v7902.test.mjs
       - name: FIX03 Origin and privacy regression tests
         run: node --test tests/qa-db-fingerprint-fix03.test.mjs
+      - name: FIX04 normalized endpoint and no-SQL regression tests
+        run: node --test tests/qa-db-fingerprint-fix04.test.mjs
       - name: Install Chromium integration test dependencies
         run: |
           python3 -m venv "$RUNNER_TEMP/ykoc-fix03-browser"

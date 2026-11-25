@@ -29,7 +29,7 @@ class BrowserIntegration(unittest.TestCase):
     def test_01_legacy_reproduces_403(self):
         before=self.state();status,data,after=self.submit('/legacy',before['fingerprint']);self.assertEqual(status,403);self.assertEqual(data,{'status':'blocked'});self.assertEqual(after['last']['origin'],'null');self.assertEqual(before['counts'],after['counts'])
     def test_02_fixed_native_form_succeeds(self):
-        before=self.state();status,data,after=self.submit('/fixed',before['fingerprint']);self.assertEqual(status,200);self.assertEqual(data,{'status':'verified_endpoint_and_database_name','endpointMatch':True,'databaseNameMatch':True,'readOnlySelect':True});self.assertEqual(after['last']['origin'],self.base);self.assertEqual(after['last']['referer'],self.base+'/fixed');self.assertEqual(after['counts']['queries'],before['counts']['queries']+1)
+        before=self.state();status,data,after=self.submit('/fixed',before['fingerprint']);self.assertEqual(status,200);self.assertEqual(data,{'status':'verified_normalized_endpoint','endpointMatch':True,'selectExecuted':False,'runtimeUsesPooler':True});self.assertEqual(after['last']['origin'],self.base);self.assertEqual(after['last']['referer'],self.base+'/fixed');self.assertEqual(after['counts']['queries'],before['counts']['queries']);self.assertEqual(after['counts']['client'],before['counts']['client'])
     def test_03_wrong_fingerprint_no_sql(self):
         before=self.state();status,data,after=self.submit('/fixed','0'*64);self.assertEqual(status,409);self.assertEqual(data['status'],'endpoint_mismatch');self.assertEqual(before['counts']['queries'],after['counts']['queries']);self.assertEqual(before['counts']['client'],after['counts']['client'])
     def test_04_cross_origin_form_denied(self):
