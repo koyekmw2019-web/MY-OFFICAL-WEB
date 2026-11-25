@@ -116,8 +116,8 @@ let mobileHomeHtml=readFileSync(mobileHomeFile,'utf8');
 assert(mobileHomeHtml.includes('<div class="wrap">')&&mobileHomeHtml.includes('id="study-hub"')&&mobileHomeHtml.includes('id="driving-dictionary"')&&mobileHomeHtml.includes('id="yk-mobile-nav"'));
 assert(!mobileHomeHtml.includes('id="yk790MobileHome"'),'Mobile dashboard already installed');
 mobileHomeHtml=mobileHomeHtml.replace('<div class="wrap">',mobileHomeTemplate+'\n<div class="wrap">');
-mobileHomeHtml=mobileHomeHtml.replace('</head>','<link rel="stylesheet" href="/assets/yk-v7900-mobile-home.css?v=7900qa"></head>');
-mobileHomeHtml=mobileHomeHtml.replace('</body>','<script defer src="/assets/yk-v7900-mobile-home.js?v=7900qa"></script></body>');
+mobileHomeHtml=mobileHomeHtml.replace('</head>','<link rel="stylesheet" href="/assets/yk-v7900-mobile-home.css?v=7901qa"></head>');
+mobileHomeHtml=mobileHomeHtml.replace('</body>','<script defer src="/assets/yk-v7900-mobile-home.js?v=7901qa"></script></body>');
 writeFileSync(mobileHomeFile,mobileHomeHtml,'utf8');
 console.log(JSON.stringify({release:'v7.89.8',pages:count,
  menu:'V2.1 + approved final polish',ordinary_second:'server-backed',

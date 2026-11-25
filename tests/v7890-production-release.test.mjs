@@ -191,7 +191,7 @@ test('v7.89.5 updated mobile PWA assets are cache-busted',()=>{
  assert(html.includes('yk-v7892-navigation.js?v=7896'));
  assert(html.includes('yk-v7892-navigation.css?v=7895'));
  assert(!html.includes('yk-v7892-navigation.js?v=7894'));
- assert(sw.includes('-v7900-mobile-home-qa'));
+ assert(sw.includes('-v7901-mobile-home-polish-qa'));
  assert(sw.includes("request.mode === 'navigate'"));
  assert(sw.includes("key.startsWith('yk-public-static-')"));
 });
@@ -294,11 +294,14 @@ test('v7.90.0 QA mobile Home is add-on only and keeps existing site routes',asyn
  assert(home.includes('id="yk790MobileHome"'));
  assert(home.includes('id="study-hub"')&&home.includes('id="driving-dictionary"')&&home.includes('id="portal"'));
  assert(home.includes('id="siteMenu"')&&home.includes('id="yk-mobile-nav"'));
- assert(home.includes('yk-v7900-mobile-home.js?v=7900qa'));
- assert(home.includes('yk-v7900-mobile-home.css?v=7900qa'));
+ assert(home.includes('yk-v7900-mobile-home.js?v=7901qa'));
+ assert(home.includes('yk-v7900-mobile-home.css?v=7901qa'));
  assert(!exam.includes('id="yk790MobileHome"'),'Exam page must remain unchanged');
  assert.equal((home.match(/id="yk790MobileHome"/g)||[]).length,1);
  assert.equal((home.match(/id="yk-mobile-nav"/g)||[]).length,1);
+ assert(css.includes('body.yk790-mobile-home{padding-bottom:0!important}'));
+ assert(css.includes('padding:14px 16px 16px'));
+ assert(css.includes('prefers-reduced-motion:reduce'));
  assert(css.includes('@media(max-width:720px)')&&css.includes('body.yk790-mobile-home > .wrap{display:none!important}'));
  assert(!css.includes('body > .top{display:none'));
  assert(dashboard.includes('window.YKIdentity')&&dashboard.includes('/.netlify/functions/exam-status'));
