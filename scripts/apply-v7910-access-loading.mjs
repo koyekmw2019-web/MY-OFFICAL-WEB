@@ -12,14 +12,16 @@ function yk791PresentAccess(state){
   const publicCard=card.querySelector('.yk-audience-public');
   const account=$('#examAccountV735'),compact=$('#yk791CompactAccount');
   const publicActions=publicCard?.querySelector('.yk-public-actions');
-  const isStudent=state==='student';
+  const compactAccess=['admin','student','paid'].includes(state);
   if(account&&compact&&publicActions){
-    if(isStudent)compact.append(account);
+    if(compactAccess)compact.append(account);
     else if(account.parentElement===compact)publicActions.prepend(account);
   }
-  if(student)student.hidden=isStudent||state==='loading'||state==='error';
-  if(publicCard)publicCard.hidden=isStudent||state==='loading'||state==='error';
-  if(compact)compact.hidden=!isStudent;
+  if(student)student.hidden=compactAccess||state==='loading'||state==='error';
+  if(publicCard)publicCard.hidden=compactAccess||state==='loading'||state==='error';
+  if(compact)compact.hidden=!compactAccess;
+  const guide=$('#yk88AccessGuide'),mini=$('#examPlanMiniV739');
+  if(state==='loading'||state==='error'){if(guide)guide.hidden=true;if(mini)mini.hidden=true;}
   const retry=$('#yk791AccessRetry');
   if(retry){retry.hidden=state!=='error';retry.onclick=()=>syncStatus();}
 }
@@ -57,12 +59,14 @@ async function syncStatus(){
   }
 }
 `;
-const styleLink='<link rel="stylesheet" href="/assets/yk-v7910-access-loading.css?v=7910ui">';
+const styleLink='<link rel="stylesheet" href="/assets/yk-v7910-access-loading.css?v=7911ui">';
 function replaceOnce(html,from,to){
   assert.equal(html.split(from).length,2,'Unexpected UI build anchor: '+from.slice(0,100));
   return html.replace(from,()=>to);
 }
 export function applyExamLoading(html){
+  // Only the authenticated exam-status response determines the displayed Admin state.
+  html=replaceOnce(html,'const roles=Array.isArray(user.roles)?user.roles:(Array.isArray(s?.roles)?s.roles:[]);','const roles=s?.authenticated===true&&Array.isArray(s.roles)?s.roles:[];');
   const card='<div class="exam-access-card yk-approved-access">';
   html=replaceOnce(html,card,card.slice(0,-1)+' data-yk-access-state="loading" aria-busy="true">'+examSkeleton);
   const publicActions='<div class="yk-public-actions"><button id="examAccountV735">';
@@ -78,5 +82,5 @@ export function applyExamLoading(html){
 }
 export function applyHomeLoading(html){
   html=replaceOnce(html,'id="yk790MobileHome" aria-label=', 'id="yk790MobileHome" data-yk-home-loading="true" aria-busy="true" aria-label=');
-  return replaceOnce(replaceOnce(html,'yk-v7900-mobile-home.js?v=7901qa','yk-v7900-mobile-home.js?v=7901qa-ui7910'),'</head>',styleLink+'</head>');
+  return replaceOnce(replaceOnce(html,'yk-v7900-mobile-home.js?v=7901qa','yk-v7900-mobile-home.js?v=7901qa-ui7911'),'</head>',styleLink+'</head>');
 }

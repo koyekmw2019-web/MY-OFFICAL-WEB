@@ -1,4 +1,4 @@
-/* Presentation only: real pending state, compact verified student, no entitlement changes. */
+/* Presentation only: real pending state, compact entitled users, no entitlement changes. */
 :root{--yk791-sk-base:#24282f;--yk791-sk-glow:#3e444d;--yk791-sk-surface:#151a20}
 :root[data-yk-ui-theme="light"]{--yk791-sk-base:#d8dee5;--yk791-sk-glow:#f1f3f6;--yk791-sk-surface:#f5f7fa}
 @keyframes yk791Shimmer{from{background-position:120% 0}to{background-position:-120% 0}}
@@ -24,26 +24,26 @@
 #online-mock-exam .yk-approved-access .yk-audience-card[hidden],
 #online-mock-exam .yk-approved-access #yk791CompactAccount[hidden],
 #online-mock-exam .yk-approved-access #yk791AccessRetry[hidden]{display:none!important}
-#online-mock-exam .yk-approved-access[data-yk-access-state="student"]{
+#online-mock-exam .yk-approved-access:is([data-yk-access-state="student"],[data-yk-access-state="admin"],[data-yk-access-state="paid"]){
  gap:8px!important;padding:12px!important;min-height:0!important;
 }
-#online-mock-exam .yk-approved-access[data-yk-access-state="student"] .exam-access-main{align-items:center!important;padding:0!important;gap:10px!important}
-#online-mock-exam .yk-approved-access[data-yk-access-state="student"] .exam-access-icon{
+#online-mock-exam .yk-approved-access:is([data-yk-access-state="student"],[data-yk-access-state="admin"],[data-yk-access-state="paid"]) .exam-access-main{align-items:center!important;padding:0!important;gap:10px!important}
+#online-mock-exam .yk-approved-access:is([data-yk-access-state="student"],[data-yk-access-state="admin"],[data-yk-access-state="paid"]) .exam-access-icon{
  width:42px!important;height:42px!important;flex:0 0 42px!important;border-radius:12px!important;font-size:23px!important;
 }
-#online-mock-exam .yk-approved-access[data-yk-access-state="student"] #examAccessTitleV728{font-size:clamp(14px,3.8vw,19px)!important;line-height:1.45!important}
-#online-mock-exam .yk-approved-access[data-yk-access-state="student"] #examAccessTextV728{font-size:clamp(11px,2.9vw,13px)!important;line-height:1.5!important}
+#online-mock-exam .yk-approved-access:is([data-yk-access-state="student"],[data-yk-access-state="admin"],[data-yk-access-state="paid"]) #examAccessTitleV728{font-size:clamp(14px,3.8vw,19px)!important;line-height:1.45!important}
+#online-mock-exam .yk-approved-access:is([data-yk-access-state="student"],[data-yk-access-state="admin"],[data-yk-access-state="paid"]) #examAccessTextV728{font-size:clamp(11px,2.9vw,13px)!important;line-height:1.5!important}
 #online-mock-exam .yk-approved-access #yk791CompactAccount{display:flex;justify-content:flex-end}
 #online-mock-exam .yk-approved-access #yk791CompactAccount #examAccountV735,
 #online-mock-exam .yk-approved-access #yk791AccessRetry{
  width:auto!important;min-height:40px!important;max-width:100%;padding:8px 14px!important;border-radius:12px!important;
  font-size:12px!important;font-weight:750!important;cursor:pointer;
 }
-html[data-yk-ui-theme="light"] #online-mock-exam .yk-approved-access:is([data-yk-access-state="student"],[data-yk-access-state="loading"],[data-yk-access-state="error"]){
+html[data-yk-ui-theme="light"] #online-mock-exam .yk-approved-access:is([data-yk-access-state="student"],[data-yk-access-state="admin"],[data-yk-access-state="paid"],[data-yk-access-state="loading"],[data-yk-access-state="error"]){
  background:var(--yk791-sk-surface)!important;border-color:#cbd5e1!important;
 }
-html[data-yk-ui-theme="light"] #online-mock-exam .yk-approved-access:is([data-yk-access-state="student"],[data-yk-access-state="error"]) #examAccessTitleV728{color:#17212e!important}
-html[data-yk-ui-theme="light"] #online-mock-exam .yk-approved-access:is([data-yk-access-state="student"],[data-yk-access-state="error"]) #examAccessTextV728{color:#475569!important}
+html[data-yk-ui-theme="light"] #online-mock-exam .yk-approved-access:is([data-yk-access-state="student"],[data-yk-access-state="admin"],[data-yk-access-state="paid"],[data-yk-access-state="error"]) #examAccessTitleV728{color:#17212e!important}
+html[data-yk-ui-theme="light"] #online-mock-exam .yk-approved-access:is([data-yk-access-state="student"],[data-yk-access-state="admin"],[data-yk-access-state="paid"],[data-yk-access-state="error"]) #examAccessTextV728{color:#475569!important}
 /* Mobile Home: only the account-derived portions shimmer, not static learning links. */
 #yk790MobileHome[data-yk-home-loading="true"] #yk790Membership>*{display:none!important}
 #yk790MobileHome[data-yk-home-loading="true"] #yk790Membership::before{display:block;content:"";width:28px;height:28px;border-radius:50%;flex:0 0 28px}
@@ -65,3 +65,5 @@ html[data-yk-ui-theme="light"] #online-mock-exam .yk-approved-access:is([data-yk
  #yk790MobileHome[data-yk-home-loading="true"] *::before,
  #yk790MobileHome[data-yk-home-loading="true"] *::after{animation:none!important}
 }
+
+#yk790Membership:is([data-yk-access-state="admin"],[data-yk-access-state="student"],[data-yk-access-state="paid"]) .yk790-dot{background:#22c55e;box-shadow:0 0 0 3px rgba(34,197,94,.15)}
