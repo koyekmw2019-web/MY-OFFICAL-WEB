@@ -1,0 +1,30 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { createHash, webcrypto } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import vm from 'node:vm';
+import { QA, endpointParts, endpointFingerprint, runDiagnostic } from '../netlify/functions/_shared/qa-db-fingerprint-v7902.mjs';
+const direct='postgresql://readonly:synthetic@ep-qa.example.test:5432/qa_db?sslmode=require';
+const pooled='postgresql://owner:synthetic@ep-qa-pooler.example.test/qa_db?channel_binding=require';
+const hash=(s)=>endpointFingerprint(endpointParts(s));
+const expected=createHash('sha256').update(JSON.stringify(['YKOC-QA-DB-ENDPOINT-v2','ep-qa.example.test','5432','qa_db'])).digest('hex');
+const context={site:{id:QA.site},account:{id:QA.team},deploy:{context:'production',published:true},user:{id:'synthetic'}};
+const request=(digest)=>new Request(QA.origin+QA.path,{method:'POST',headers:{origin:QA.origin,'content-type':'application/x-www-form-urlencoded'},body:'fingerprint='+digest});
+function deps(connection){let urlCalls=0,dbCalls=0;return {getConnectionString(){urlCalls++;return connection;},getDatabase(){dbCalls++;throw Error('No DB client allowed');},counts:()=>({urlCalls,dbCalls})};}
+const html=readFileSync(new URL('../qa/fix02/offline-fingerprint.html',import.meta.url),'utf8');
+async function offline(value){const raw={value},result={textContent:''},make={disabled:true,addEventListener(_,f){this.click=f;}};vm.runInNewContext(html.match(/<script>([\s\S]*?)<\/script>/)[1],{document:{getElementById:k=>({raw,result,make})[k]},location:{protocol:'file:'},window:{isSecureContext:true,addEventListener(){}},crypto:webcrypto,URL,TextEncoder,Uint8Array});assert.equal(make.disabled,false);await make.click();assert.equal(raw.value,'');return result.textContent;}
+test('support-guided direct/pooled equivalence; independent v2 digest',()=>{assert.equal(hash(direct),expected);assert.equal(hash(pooled),expected);assert.equal(endpointParts(direct).runtimeUsesPooler,false);assert.equal(endpointParts(pooled).runtimeUsesPooler,true);});
+for(const [name,connection] of [
+ ['different first label','postgres://x:y@ep-official-pooler.example.test/qa_db'],
+ ['different suffix/domain','postgres://x:y@ep-qa-pooler.other.test/qa_db'],
+ ['different port','postgres://x:y@ep-qa-pooler.example.test:5433/qa_db'],
+ ['different database name','postgres://x:y@ep-qa-pooler.example.test/official_db'],
+ ['pooler in middle of first label','postgres://x:y@ep-qa-pooler-extra.example.test/qa_db'],
+ ['pooler in later label','postgres://x:y@ep-qa.example-pooler.test/qa_db'],
+ ['double suffix not stripped twice','postgres://x:y@ep-qa-pooler-pooler.example.test/qa_db'],
+])test(name+' must differ; offline/runtime parity; no DB',async()=>{const digest=hash(connection);assert.notEqual(digest,expected);assert.equal(await offline(connection),digest);const d=deps(connection),r=await runDiagnostic(request(expected),context,d);assert.equal(r.status,409);assert.equal((await r.json()).selectExecuted,false);assert.deepEqual(d.counts(),{urlCalls:1,dbCalls:0});});
+for(const [name,connection] of [['empty alias base','postgres://x:y@-pooler.example.test/qa_db'],['alternate host query','postgres://x:y@ep-qa-pooler.example.test/qa_db?host=other'],['multi-host','postgres://x:y@ep-qa-pooler.example.test,other.test/qa_db'],['empty hostname label','postgres://x:y@ep-qa-pooler..test/qa_db'],['encoded host','postgres://x:y@ep-qa-pooler%2Eexample.test/qa_db']])test(name+' rejected by both implementations; generic response',async()=>{assert.throws(()=>hash(connection));assert.match(await offline(connection),/^Unverified:/);const d=deps(connection),r=await runDiagnostic(request(expected),context,d);assert.equal(r.status,503);assert.deepEqual(await r.json(),{status:'unverified'});assert.deepEqual(d.counts(),{urlCalls:1,dbCalls:0});});
+for(const connection of [direct,pooled])test('offline and runtime parity; successful authorized match without SQL '+(connection===direct?'direct':'pooled'),async()=>{assert.equal(await offline(connection),expected);const d=deps(connection),r=await runDiagnostic(request(expected),context,d);assert.equal(r.status,200);assert.deepEqual(await r.json(),{status:'verified_normalized_endpoint',endpointMatch:true,selectExecuted:false,runtimeUsesPooler:connection===pooled});assert.deepEqual(d.counts(),{urlCalls:1,dbCalls:0});});
+test('old v1 fingerprint cannot be accepted even with direct hostname',async()=>{const old=createHash('sha256').update(JSON.stringify(['YKOC-QA-DB-ENDPOINT-v1','ep-qa.example.test','5432','qa_db'])).digest('hex');const d=deps(direct),r=await runDiagnostic(request(old),context,d);assert.equal(r.status,409);assert.equal((await r.json()).selectExecuted,false);assert.deepEqual(d.counts(),{urlCalls:1,dbCalls:0});});
+test('GET and responses do not expose connection material or actual fingerprints',async()=>{const d=deps(pooled);const get=await runDiagnostic(new Request(QA.origin+QA.path),context,d);assert.equal(get.status,200);assert.match(await get.text(),/FIX04/);assert.deepEqual(d.counts(),{urlCalls:0,dbCalls:0});for(const input of [expected,'0'.repeat(64)]){const r=await runDiagnostic(request(input),context,d);const body=await r.text();for(const secret of [expected,pooled,'ep-qa','qa_db','synthetic','owner'])assert.ok(!body.includes(secret));assert.equal(r.headers.get('referrer-policy'),'no-referrer');assert.match(r.headers.get('cache-control'),/no-store/);}assert.equal(d.counts().dbCalls,0);});
+test('actual function imports only getConnectionString; no SQL in handler or shared module',()=>{const entry=readFileSync(new URL('../netlify/functions/qa-db-fingerprint-v7902.mts',import.meta.url),'utf8');const shared=readFileSync(new URL('../netlify/functions/_shared/qa-db-fingerprint-v7902.mjs',import.meta.url),'utf8');assert.match(entry,/import \{ getConnectionString \} from '@netlify\/database'/);for(const code of [entry,shared]){assert.doesNotMatch(code,/\bgetDatabase\b|\.sql\b|current_database\s*\(/);}assert.match(html,/connect-src 'none'/);});

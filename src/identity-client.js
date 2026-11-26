@@ -8,7 +8,9 @@ import {
   acceptInvite,
   requestPasswordRecovery,
   updateUser,
-  refreshSession
+  refreshSession,
+  confirmEmail,
+  recoverPassword
 } from '@netlify/identity';
 
 const api = {
@@ -24,11 +26,16 @@ const api = {
   lastCallback: null
 };
 
+const isQaSetup = location.origin === 'https://yekun-ordinary-second-qa.netlify.app'
+  && location.pathname === '/assets/qa-identity-setup-v7902.html';
+if (isQaSetup) Object.assign(api, { confirmEmail, recoverPassword });
 window.YKIdentity = api;
 window.dispatchEvent(new CustomEvent('yk-identity-ready'));
 
 (async () => {
   try {
+    // QA setup explicitly redeems pasted email tokens only after submit.
+    if (isQaSetup) return;
     // Required for invite, confirmation, recovery and email-change links.
     const result = await handleAuthCallback();
     if (!result) return;

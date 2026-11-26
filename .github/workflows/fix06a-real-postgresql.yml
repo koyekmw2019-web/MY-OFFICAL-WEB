@@ -1,0 +1,59 @@
+name: FIX06-A disposable PostgreSQL integration
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/fix06a-real-postgresql.yml'
+      - 'tests/fix06a-pgqa/**'
+      - 'tests/fix06b/**'
+      - 'tests/fix06c/**'
+      - 'qa/fix06b/**'
+      - 'netlify/functions/**'
+      - 'netlify/database/migrations/**'
+permissions:
+  contents: read
+jobs:
+  real-postgresql:
+    if: github.event.pull_request.number == 18 && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'qa/v7.90.2-secure-identity'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: ykoc_fixture
+          POSTGRES_PASSWORD: synthetic-only-fixture
+          POSTGRES_DB: ykoc_fixture
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U ykoc_fixture -d ykoc_fixture"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+      - name: Install real CSV parser and PostgreSQL client
+        run: npm install --ignore-scripts --no-package-lock --no-save --no-audit --no-fund pg@8.16.3
+      - name: Confirm fixture dependencies
+        run: npm ls pg csv-parse --depth=0
+      - name: FIX06-B local policy and adapter simulation tests
+        run: node --experimental-strip-types --test tests/fix06b/*.test.mjs
+      - name: Run 40 integration tests using only disposable PostgreSQL
+        env:
+          YKOC_LOCAL_QA: disposable-v1
+          YKOC_FIX06B_DISPOSABLE_SQL_APPROVED: 'yes'
+        run: node --experimental-strip-types --test --test-concurrency=1 tests/fix06a-pgqa/integration.test.mjs
+      - name: FIX06-C local maintenance and readiness tests
+        run: node --test tests/fix06c/maintenance.test.mjs
+      - name: FIX06-C real PostgreSQL maintenance tests (same disposable schema)
+        env:
+          YKOC_LOCAL_QA: disposable-v1
+          YKOC_FIX06B_DISPOSABLE_SQL_APPROVED: 'yes'
+        run: node --test --test-concurrency=1 tests/fix06a-pgqa/fix06c-maintenance.test.mjs

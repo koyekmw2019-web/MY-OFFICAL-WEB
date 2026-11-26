@@ -1,5 +1,6 @@
 import { getDatabase } from "@netlify/database";
 import { requireUser, asResponse } from "./_shared/auth.mts";
+import { hasAdminRole } from "./_shared/admin-role.mts";
 import { EXAM_TYPES } from "./_shared/security.mts";
 import { abandonExpiredAttempts, isFreeUniqueViolation, isMissingCheckpointTable } from "./_shared/exam-autosave.mts";
 
@@ -9,6 +10,7 @@ export default async (req: Request) => {
   const user=await requireUser();
   const {examType}=await req.json();
   if(!EXAM_TYPES.has(examType))return Response.json({error:'Invalid exam type'},{status:400});
+  const isAdmin=hasAdminRole(user.roles);
   const db=getDatabase();
   // Degrade gracefully if a new migration has not yet run.
   let unfinished:any[]=[];
@@ -16,7 +18,12 @@ export default async (req: Request) => {
     await abandonExpiredAttempts(db,user.id);
     unfinished=await db.sql<any>`SELECT a.id,a.exam_type,a.access_mode,c.saved_at
       FROM exam_attempts a LEFT JOIN exam_attempt_checkpoints c ON c.attempt_id=a.id
-      WHERE a.user_id=${user.id} AND a.status='started' AND (c.attempt_id IS NOT NULL OR a.access_mode='free')
+      WHERE a.user_id=${user.id} AND a.status='started' AND (c.attempt_id IS NOT NULL OR a.access_mode='free' OR (a.access_mode='student' AND a.exam_type=${examType}))
+        AND (a.access_mode<>'admin' OR ${isAdmin})
+        AND NOW() <= COALESCE(c.ends_at, a.started_at +
+          (CASE a.exam_type WHEN 'jlpt_n1' THEN 110 WHEN 'jlpt_n2' THEN 105 WHEN 'jlpt_n3' THEN 30
+           WHEN 'jlpt_n4' THEN 25 WHEN 'jlpt_n5' THEN 20 WHEN 'car' THEN 50
+           WHEN 'motorcycle' THEN 50 WHEN 'moped' THEN 30 WHEN 'ordinary_second' THEN 50 ELSE 80 END * INTERVAL '1 minute')) + INTERVAL '60 seconds'
       ORDER BY (c.attempt_id IS NOT NULL) DESC,a.started_at DESC LIMIT 1`;
   } catch(e) {
     if(!isMissingCheckpointTable(e))throw e;
@@ -37,19 +44,24 @@ export default async (req: Request) => {
   }
   if(unfinished.length){
     const a=unfinished[0];
+    if(a.access_mode==='admin'&&!isAdmin)return Response.json({allowed:false,reason:'admin_required'},{status:403});
     if(a.exam_type!==examType){
       // Old non-checkpoint student/paid attempts may have been left behind by prior builds.
       // A free attempt is never bypassed; it must be resumed or closed.
       if(a.access_mode==='free'||a.saved_at)return Response.json({allowed:false,reason:'resume_other',resumeType:a.exam_type},{status:409});
     }else return Response.json({allowed:true,mode:a.access_mode,attemptId:a.id,resumed:true});
   }
-  const isAdmin=Array.isArray(user.roles)&&user.roles.includes('admin');
   let mode:'admin'|'student'|'paid'|'free'='free';
   if(isAdmin) mode='admin';
   else {
-    const students=await db.sql<any>`SELECT 1 FROM exam_students WHERE linked_user_id=${user.id} AND status='active' AND CURRENT_DATE BETWEEN class_start AND expire_date LIMIT 1`;
-    if(students.length)mode='student';
-    else {
+    const students=await db.sql<any>`SELECT 1 FROM exam_students WHERE linked_user_id=${user.id} AND status='active' AND (CURRENT_TIMESTAMP AT TIME ZONE 'Asia/Tokyo')::date BETWEEN class_start AND expire_date LIMIT 1`;
+    if(students.length){
+      const [studentAttempt]=await db.sql<any>`INSERT INTO exam_attempts(user_id,exam_type,access_mode)
+        SELECT ${user.id},${examType},'student' WHERE EXISTS (SELECT 1 FROM exam_students
+          WHERE linked_user_id=${user.id} AND status='active' AND (CURRENT_TIMESTAMP AT TIME ZONE 'Asia/Tokyo')::date BETWEEN class_start AND expire_date) RETURNING id`;
+      if(studentAttempt)return Response.json({allowed:true,mode:'student',attemptId:studentAttempt.id,resumed:false});
+    }
+    {
       const paid=await db.sql<any>`SELECT 1 FROM exam_paid_access WHERE user_id=${user.id} AND starts_at<=NOW() AND expires_at>NOW() LIMIT 1`;
       if(paid.length)mode='paid';
     }

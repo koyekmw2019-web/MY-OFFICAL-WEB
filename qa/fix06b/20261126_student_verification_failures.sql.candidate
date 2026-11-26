@@ -1,0 +1,16 @@
+-- REVIEW CANDIDATE ONLY. NOT in Netlify migrations. DO NOT EXECUTE without approval.
+-- Additive only: no alteration of exam_students, exams, payments or YKCR tables.
+BEGIN;
+SET LOCAL lock_timeout = '2000ms';
+SET LOCAL statement_timeout = '10000ms';
+CREATE TABLE public.exam_student_verification_failures (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  account_key TEXT NOT NULL CHECK (account_key ~ '^[0-9a-f]{64}$'),
+  pair_key TEXT NOT NULL CHECK (pair_key ~ '^[0-9a-f]{64}$'),
+  recorded_at TIMESTAMPTZ NOT NULL
+);
+CREATE INDEX exam_student_verification_failures_account_time_idx
+  ON public.exam_student_verification_failures(account_key,recorded_at,id);
+CREATE INDEX exam_student_verification_failures_retention_idx
+  ON public.exam_student_verification_failures(recorded_at,id);
+COMMIT;

@@ -16,7 +16,7 @@ on:
   workflow_dispatch:
 jobs:
   verify:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
     timeout-minutes: 25
@@ -45,8 +45,38 @@ jobs:
         run: sha256sum netlify/functions/_shared/security.mts netlify/functions/_shared/exam-autosave.mts netlify/functions/exam-access.mts netlify/functions/exam-checkpoint.mts netlify/functions/exam-attempt-submit.mts
       - name: Existing regression tests
         run: npm test
+      - name: Secure QA Identity unit tests
+        run: node --test tests/qa-identity-v7902.test.mjs
+      - name: QA database fingerprint unit tests
+        run: node --test tests/qa-db-fingerprint-v7902.test.mjs
+      - name: FIX03 Origin and privacy regression tests
+        run: node --test tests/qa-db-fingerprint-fix03.test.mjs
+      - name: FIX04 normalized endpoint and no-SQL regression tests
+        run: node --test tests/qa-db-fingerprint-fix04.test.mjs
+      - name: FIX05 strict admin roles and pre-DB authorization tests
+        run: node --test tests/qa-admin-role-fix05.test.mjs
+      - name: FIX06-A synthetic student security tests
+        run: node --test tests/qa-student-security-fix06a.test.mjs
+      - name: Install Chromium integration test dependencies
+        run: |
+          python3 -m venv "$RUNNER_TEMP/ykoc-fix03-browser"
+          "$RUNNER_TEMP/ykoc-fix03-browser/bin/python" -m pip install playwright==1.57.0
+          "$RUNNER_TEMP/ykoc-fix03-browser/bin/python" -m playwright install --with-deps chromium
+      - name: FIX03 Chromium browser integration tests (synthetic data only)
+        run: '"$RUNNER_TEMP/ykoc-fix03-browser/bin/python" tests/qa-db-fingerprint-fix03-browser.py'
+      - name: Compile QA database diagnostic without hosted database access
+        run: npx esbuild netlify/functions/qa-db-fingerprint-v7902.mts --bundle --platform=node --format=esm --packages=external --outdir=/tmp/ykoc-fix02-check
       - name: Generate production deploy directory
         run: npm run build
+      - name: Verify offline helper is not published
+        run: test ! -e dist/qa/fix02/offline-fingerprint.html && test -z "$(find dist -name offline-fingerprint.html -print -quit)"
+      - name: Verify generated QA Identity setup assets
+        run: |
+          test -f dist/assets/qa-identity-setup-v7902.html
+          test -f dist/assets/qa-identity-setup-v7902.css
+          test -f dist/assets/qa-identity-setup-v7902.mjs
+          test -f dist/assets/identity.bundle.js
+          node --check dist/assets/qa-identity-setup-v7902.mjs
       - name: v7.89.0 production-specific regression tests
         run: npm run verify:v7890
       - name: Compile Netlify Functions without production access

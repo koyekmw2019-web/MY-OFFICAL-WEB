@@ -4,7 +4,7 @@
   "files": {
     "netlify/functions/_shared/security.mts": "96df91431a3eff22d3f3235d11bf45a1e919b20d685b416c9aacf1f2738a7548",
     "netlify/functions/_shared/exam-autosave.mts": "e01b0b92d8dbb34430826b5ee69c003e3922ac66bcca97dc1fd3c586bedf6c1d",
-    "netlify/functions/exam-access.mts": "21f2d1cf8ee2327111a076a4d8c52e8a310ccfb2a34fec0aaaac02726b618fb0",
+    "netlify/functions/exam-access.mts": "482cf5e737d3340f45c88c0d42e56f04f7fd8b111cd811d8c1b5e234de1a4e21",
     "netlify/functions/exam-checkpoint.mts": "4fffae555eae46a8fce58f53db75bea2016d1c0e956f76d18808f91c363d4abf",
     "netlify/functions/exam-attempt-submit.mts": "e51f0ce9854ada24659d3f48ed2aec6c93c764295435d45439d30c6f2d6dc844"
   }

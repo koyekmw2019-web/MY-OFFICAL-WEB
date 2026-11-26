@@ -11,6 +11,9 @@ const dict={en:base,ja:{...base,...ja},my:{...base,...my}};let lang='my';try{con
 function changeLang(x){if(!dict[x])return;lang=x;document.documentElement.lang=x;try{localStorage.setItem('yk_lang',x)}catch{}document.querySelectorAll('[data-t]').forEach(el=>{const txt=dict[x][el.dataset.t];if(txt)el.textContent=txt});document.querySelectorAll('[data-lang]').forEach(b=>{b.classList.toggle('active',b.dataset.lang===x);b.setAttribute('aria-pressed',String(b.dataset.lang===x))});}
 document.querySelectorAll('[data-lang]').forEach(el=>el.addEventListener('click',()=>changeLang(el.dataset.lang)));changeLang(lang);
 let busy=false,mode=null,inviteToken=null;
+const qaOrigin=window.location?.origin==='https://yekun-ordinary-second-qa.netlify.app';
+function friendlyError(e){const msg=e?.message||String(e);if(qaOrigin&&/email not confirmed/i.test(msg))return ({my:'Email အတည်ပြုခြင်း မပြီးသေးပါ။ QA Account Setup ကို အသုံးပြုပါ။',ja:'メール認証が完了していません。QAアカウント設定をご利用ください。',en:'Email not confirmed. Use QA Account Setup.'})[lang];return msg;}
+if(qaOrigin){const a=document.createElement('a');a.href='/assets/qa-identity-setup-v7902.html';a.textContent='QA Account Setup';a.className='link-button';$('forgotSwitch').parentElement.appendChild(a);}
 const note=(message,error=false)=>{status.textContent=message;status.classList.toggle('error',error);status.hidden=!message};
 function show(view){if(busy||!views[view])return;stage.classList.toggle('is-signup',view==='signup');for(const [name,el] of Object.entries(views))el.hidden=name!==view;$('storySignin').hidden=view==='signup';$('storySignup').hidden=view!=='signup';note('');}
 document.querySelectorAll('[data-switch]').forEach(el=>el.addEventListener('click',()=>show(el.dataset.switch)));$('forgotSwitch').addEventListener('click',()=>show('forgot'));
@@ -18,7 +21,7 @@ document.querySelectorAll('.pass-eye').forEach(el=>el.addEventListener('click',(
 function idClient(){if(window.YKIdentity)return Promise.resolve(window.YKIdentity);return new Promise((resolve,reject)=>{const timeout=setTimeout(()=>{window.removeEventListener('yk-identity-ready',ok);reject(new Error('Identity client unavailable; please deploy the Netlify build and retry.'))},10000);function ok(){clearTimeout(timeout);window.removeEventListener('yk-identity-ready',ok);resolve(window.YKIdentity)}window.addEventListener('yk-identity-ready',ok)})}
 const validEmail=s=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
 function checkEmail(e){if(!e||!validEmail(e)){note(L(e?'invalid':'missing'),true);return false}return true}
-function run(form,action){if(busy)return;busy=true;const btn=form.querySelector('[type=submit],#loginSubmit');btn.disabled=true;note(L('working'));idClient().then(action).catch(e=>note(e?.message||String(e),true)).finally(()=>{busy=false;btn.disabled=false})}
+function run(form,action){if(busy)return;busy=true;const btn=form.querySelector('[type=submit],#loginSubmit');btn.disabled=true;note(L('working'));idClient().then(action).catch(e=>note(friendlyError(e),true)).finally(()=>{busy=false;btn.disabled=false})}
 const home=()=>window.location.assign('/#home');
 function loginDestination() {
   const fallback = '/#home';
