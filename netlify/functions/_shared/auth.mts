@@ -8,7 +8,10 @@ export async function requireUser() {
 
 export async function requireAdmin() {
   const user = await requireUser();
-  if (!user.roles.includes("admin")) throw new Response("Forbidden", { status: 403 });
+  const roles = user.roles;
+  // Missing or malformed role claims must fail closed before any admin operation.
+  if (!Array.isArray(roles) || !Array.from(roles).every(role => typeof role === "string") ||
+      !roles.includes("admin")) throw new Response("Forbidden", { status: 403 });
   return user;
 }
 
