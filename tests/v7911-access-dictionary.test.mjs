@@ -50,6 +50,8 @@ await run('Logout: old student verification accent and data removed',async()=>{c
 await run('Late failed checkpoint cannot hide newer account resume',async()=>{const f=fixture({user:student,status:S,attempts:[start],checkpoints:{4:checkpoint}});let rejectOld;f.state.checkpointOverride=path=>path.endsWith('=4')?new Promise((resolve,reject)=>rejectOld=reject):null;await tick();assert.equal(typeof rejectOld,'function');f.state.user=paid;f.state.status=P;f.state.attempts=[{...start,id:5}];f.state.checkpoints={5:checkpoint};f.winEvents['yk-identity-callback']();await tick();assert.equal(f.byId('yk790Resume').hidden,false);rejectOld(Error('Synthetic old request rejected'));await tick();assert.equal(f.byId('yk790Resume').hidden,false);assert.match(f.byId('yk790MemberText').textContent,/Paid Plan/)});
 await run('Generated Exam: compact admin/student/paid, restore member/guest and hide loading/error offers',async()=>{
  const exam=fs.readFileSync('dist/mock-exams.html','utf8');
+ assert(!exam.includes('အကောင့်တစ်ခုလျှင် အခမဲ့စာမေးပွဲ စုစုပေါင်း 1 ကြိမ် ရရှိပါတယ်။'));
+ assert(exam.includes('စာမေးပွဲအမျိုးအစားတစ်ခုစီအတွက် အခမဲ့ 1 ကြိမ် ဖြေဆိုနိုင်ပါတယ်။'));
  const fragment=exam.slice(exam.indexOf('function fmtDateV739('),exam.indexOf('async function studentModal(){'));
  const nodes=new Map();const get=id=>{if(!nodes.has(id))nodes.set(id,new E(id));return nodes.get(id)};
  const card=get('#online-mock-exam .yk-approved-access'),studentCard=get('.yk-audience-student'),publicCard=get('.yk-audience-public'),actions=get('.yk-public-actions'),compact=get('#yk791CompactAccount'),account=get('#examAccountV735');
