@@ -6,10 +6,11 @@ import { readFileSync } from 'node:fs';
 import { stripTypeScriptTypes } from 'node:module';
 import vm from 'node:vm';
 const read = path => readFileSync(new URL('../'+path, import.meta.url),'utf8');
+const roleSource = stripTypeScriptTypes(read('netlify/functions/_shared/admin-role.mts'),{mode:'strip'}).replace(/^export /gm,'');
 const auth = read('netlify/functions/_shared/auth.mts');
 const health = read('netlify/functions/exam-health.mts');
 const authSource = stripTypeScriptTypes(auth,{mode:'strip'})
-  .replace(/^import \{ getUser \} from "@netlify\/identity";$/m,'')
+  .replace(/^import .*;$/gm,'')
   .replace(/^export /gm,'');
 const healthSource = stripTypeScriptTypes(health,{mode:'strip'})
   .replace(/^import .*;$/gm,'')
@@ -26,7 +27,7 @@ function fixture(user, {schemaReady=true}={}) {
     }};},
     console:{error:()=>{calls.errors++;}}
   });
-  vm.runInContext(authSource+'\n'+healthSource+'\nglobalThis.api={requireUser,requireAdmin,asResponse,healthHandler};',ctx);
+  vm.runInContext(roleSource+'\n'+authSource+'\n'+healthSource+'\nglobalThis.api={requireUser,requireAdmin,asResponse,healthHandler};',ctx);
   return {api:ctx.api,calls};
 }
 const req=method=>new Request('https://qa.example.test/.netlify/functions/exam-health',{method});

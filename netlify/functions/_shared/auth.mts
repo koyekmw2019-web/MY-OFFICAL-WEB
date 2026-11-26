@@ -1,4 +1,5 @@
 import { getUser } from "@netlify/identity";
+import { hasAdminRole } from "./admin-role.mts";
 
 export async function requireUser() {
   const user = await getUser();
@@ -8,10 +9,8 @@ export async function requireUser() {
 
 export async function requireAdmin() {
   const user = await requireUser();
-  const roles = user.roles;
   // Missing or malformed role claims must fail closed before any admin operation.
-  if (!Array.isArray(roles) || !Array.from(roles).every(role => typeof role === "string") ||
-      !roles.includes("admin")) throw new Response("Forbidden", { status: 403 });
+  if (!hasAdminRole(user.roles)) throw new Response("Forbidden", { status: 403 });
   return user;
 }
 

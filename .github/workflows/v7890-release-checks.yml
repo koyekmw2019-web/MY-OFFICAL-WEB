@@ -55,6 +55,8 @@ jobs:
         run: node --test tests/qa-db-fingerprint-fix04.test.mjs
       - name: FIX05 strict admin roles and pre-DB authorization tests
         run: node --test tests/qa-admin-role-fix05.test.mjs
+      - name: FIX06-A synthetic student security tests
+        run: node --test tests/qa-student-security-fix06a.test.mjs
       - name: Install Chromium integration test dependencies
         run: |
           python3 -m venv "$RUNNER_TEMP/ykoc-fix03-browser"

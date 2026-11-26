@@ -21,9 +21,9 @@ export default async (req: Request) => {
     const db = getDatabase();
     const [students, payments, totals, byType, trend, sync, practice, learning] = await Promise.all([
       db.sql<any>`SELECT COUNT(*)::int total,
-        COUNT(*) FILTER (WHERE status='active' AND CURRENT_DATE BETWEEN class_start AND expire_date)::int active,
-        COUNT(*) FILTER (WHERE status<>'active' OR expire_date<CURRENT_DATE)::int inactive_or_expired,
-        COUNT(*) FILTER (WHERE status='active' AND class_start>CURRENT_DATE)::int upcoming
+        COUNT(*) FILTER (WHERE status='active' AND (CURRENT_TIMESTAMP AT TIME ZONE 'Asia/Tokyo')::date BETWEEN class_start AND expire_date)::int active,
+        COUNT(*) FILTER (WHERE status<>'active' OR expire_date<(CURRENT_TIMESTAMP AT TIME ZONE 'Asia/Tokyo')::date)::int inactive_or_expired,
+        COUNT(*) FILTER (WHERE status='active' AND class_start>(CURRENT_TIMESTAMP AT TIME ZONE 'Asia/Tokyo')::date)::int upcoming
         FROM exam_students`,
       db.sql<any>`SELECT COUNT(*) FILTER (WHERE status='pending')::int pending,
         COUNT(*) FILTER (WHERE status='approved')::int approved,
