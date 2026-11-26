@@ -10,7 +10,16 @@ export function lazyDictionaryHTML(html){
  if(!html.includes(dataScript)||!html.includes(overlayScript)||start<0)throw Error('v7863 dictionary lazy transform: missing original runtime markers');
  const begin=html.indexOf('<script>',start),end=html.indexOf('</script>',begin);
  if(begin<0||end<0)throw Error('v7863 dictionary runtime script not found');
- const code=html.slice(begin+8,end);
+ let code=html.slice(begin+8,end);
+ // Keep the authored dictionary immutable; add the Home handoff to the deployed runtime.
+ const handoff='  renderRecent();\n  syncToolState();\n  render();';
+ if(code.split(handoff).length!==2)throw Error('v7911 dictionary query handoff: unexpected runtime');
+ code=code.replace(handoff,`  // Read the exact Home query on the Dictionary route only.
+  if(window.location?.hash==='#driving-dictionary'){
+    const q=new URLSearchParams(window.location.search||'').get('yk_dictionary_q');
+    if(q!==null)input.value=q.trim().slice(0,80);
+  }
+`+handoff);
  if(!code.includes('Array.isArray(window.YK_DICTIONARY_V778)')||!code.includes('function openDictionaryReport(t)'))throw Error('v7863 dictionary: original QA/runtime not recognized');
  const loader=`<!-- v7.86.3: Load the dictionary only when the dictionary is close to the viewport or opened. -->
 <script id="yk863-dictionary-loader">\n(()=>{
@@ -30,7 +39,7 @@ export function lazyDictionaryHTML(html){
   if(status)status.innerHTML='<p class="dictionary-empty" role="status">Loading dictionary… · စကားလုံးဒေတာ ဖွင့်နေပါသည်…</p>';
   loading=script('/assets/yk-dictionary-v778-complete-draft.js?v=7841packed')
    .then(()=>script('/assets/yk-dictionary-v783-overlay.js?v=783qa20261109'))
-   .then(()=>script('/assets/yk-dictionary-runtime-v7863.js?v=7863'))
+   .then(()=>script('/assets/yk-dictionary-runtime-v7863.js?v=7863-v7911'))
    .then(()=>{ready=true; if(pending&&pending.isConnected){const node=pending;pending=null;node.click()}})
    .catch(()=>{loading=null; if(status){status.innerHTML='<p class="dictionary-empty" role="status">Dictionary unavailable. <button id="yk863RetryDictionary" type="button">Retry</button></p>';document.getElementById('yk863RetryDictionary')?.addEventListener('click',load)}});
   return loading;

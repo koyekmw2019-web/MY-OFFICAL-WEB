@@ -26,7 +26,7 @@ const wordList=[
 function todayWord(){
  const date=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
  const day=Number(date.replace(/\D/g,''))||1;
- const w=wordList[day%wordList.length];text('yk790WordJP',w[0]);text('yk790WordReading',w[1]);text('yk790WordMM',w[2]);
+ const w=wordList[day%wordList.length];text('yk790WordJP',w[0]);text('yk790WordReading',w[1]);text('yk790WordMM',w[2]);const link=$('yk790DailyWordLink');if(link)link.href=dictionaryURL(w[0]);
 }
 function showView(){
  const on=isMode();
@@ -41,11 +41,16 @@ function showView(){
    if(target&&target!==root)requestAnimationFrame(()=>target.scrollIntoView({behavior:'instant',block:'start'}));
  }
 }
-function member(msg,expire){text('yk790MemberText',msg);text('yk790ExpireText',expire||'');}
+function member(msg,expire,state='member'){text('yk790MemberText',msg);text('yk790ExpireText',expire||'');$('yk790Membership').dataset.ykAccessState=state;}
+const isAdmin=status=>status?.authenticated===true&&Array.isArray(status.roles)&&status.roles.includes('admin');
+function unavailable(){
+ member(label('အကောင့် အခြေအနေမရသေး','Account status unavailable','アカウント状態を確認できません'),'','error');
+ document.querySelectorAll('#yk790ExamCards .yk790-pill').forEach(e=>{e.textContent=label('စစ်ဆေးမရသေး','Access unavailable','アクセス確認不可');e.classList.toggle('is-verified',false);});
+}
 function resetAccountView(){
  latestUser=null;
  text('yk790WelcomeName','');
- member(label('အကောင့် စစ်ဆေးနေသည်…','Checking your access…','アクセス確認中…'),'');
+ member(label('အကောင့် စစ်ဆေးနေသည်…','Checking your access…','アクセス確認中…'),'','loading');
  document.querySelectorAll('#yk790ExamCards .yk790-pill').forEach(e=>{
    e.textContent=label('အသုံးပြုခွင့် စစ်ဆေးနေသည်…','Checking access…','アクセス確認中…');
    e.classList.toggle('is-verified',false);
@@ -55,7 +60,7 @@ function resetAccountView(){
 }
 function guest(){
  resetAccountView();
- member(label('ဧည့်သည် · Login / Register','Guest · Login / Register','ゲスト · ログイン登録'),'');
+ member(label('ဧည့်သည် · Login / Register','Guest · Login / Register','ゲスト · ログイン登録'),'','guest');
  document.querySelectorAll('#yk790ExamCards .yk790-pill').forEach(e=>e.textContent=label('Login ဝင်ရန်','Login required','ログインが必要'));
 }
 function clearProgress(){text('yk790ScoreValue','—');text('yk790ScoreNote',label('အတည်ပြု Result မရှိသေးပါ','No verified results yet','検証済み結果はまだありません'));$('yk790ScoreBars').replaceChildren();}
@@ -65,18 +70,20 @@ async function fetchJson(path){
  return res.json();
 }
 function accessBadges(status){
+ const admin=isAdmin(status);
  const verified=!!status?.student;
  const paid=!!status?.paid;
  const used=new Set(Array.isArray(status?.freeUsedTypes)?status.freeUsedTypes:[]);
  for(const card of document.querySelectorAll('#yk790ExamCards [data-exam-type]')){
    const exam=card.dataset.examType, pill=card.querySelector('.yk790-pill');
    if(!pill)continue;
-   const free=verified||paid||!used.has(exam);
-   pill.textContent=verified?label('Student Access','Student Access','学生アクセス'):
+   const free=admin||verified||paid||!used.has(exam);
+   pill.textContent=admin?label('Admin Unlimited','Admin Unlimited','管理者 · 無制限'):
+     verified?label('Student Access','Student Access','学生アクセス'):
      paid?label('Plan Active','Plan Active','プラン有効'):
      free?label('အခမဲ့ ၁ ကြိမ်','1 free attempt','無料1回'):
      label('Plan လိုအပ်','Plan required','プランが必要');
-   pill.classList.toggle('is-verified',verified||paid);
+   pill.classList.toggle('is-verified',admin||verified||paid);
  }
 }
 function renderAccount(status,user){
@@ -84,9 +91,13 @@ function renderAccount(status,user){
  const linked=status?.linkedStudent;
  const displayName=student?.name||linked?.name||user?.user_metadata?.full_name||user?.user_metadata?.name||'';
  text('yk790WelcomeName',displayName?(', '+String(displayName).slice(0,80)):'');
- if(student){member('Student · '+(student.class_name||'Verified'),student.expire_date?label('သက်တမ်း','Valid to','期限')+': '+String(student.expire_date).slice(0,10):'');}
- else if(status?.paid){member(label('Paid Plan · အသုံးပြုနိုင်','Paid Plan · Active','有料プラン · 有効'),String(status.paid.expires_at||'').slice(0,10));}
- else if(linked?.access_state==='expired'){member(label('Student · သက်တမ်းကုန်','Student · Expired','学生 · 期限切れ'),'');}
+ if(isAdmin(status)){member(label('Admin Access · စာမေးပွဲ အကန့်အသတ်မရှိ','Admin Access · Unlimited Exams','管理者アクセス · 試験無制限'),'','admin');}
+ else if(student){member('Student · '+(student.class_name||'Verified'),student.expire_date?label('သက်တမ်း','Valid to','期限')+': '+String(student.expire_date).slice(0,10):'','student');}
+ else if(status?.paid){member(label('Paid Plan · အသုံးပြုနိုင်','Paid Plan · Active','有料プラン · 有効'),String(status.paid.expires_at||'').slice(0,10),'paid');}
+ else if(status?.pendingPayment){member(label('Payment Pending · စစ်ဆေးနေသည်','Payment Pending','支払い確認中'),'','pending');}
+ else if(linked?.access_state==='scheduled'){member(label('Student · စတင်မည့်ရက်','Student · Scheduled','学生 · 開始予定'),String(linked.class_start||'').slice(0,10),'scheduled');}
+ else if(['inactive','deleted'].includes(linked?.access_state)){member(label('Student · အသုံးပြုခွင့်မရှိ','Student · Inactive','学生 · 無効'),'','inactive');}
+ else if(linked?.access_state==='expired'){member(label('Student · သက်တမ်းကုန်','Student · Expired','学生 · 期限切れ'),'','expired');}
  else{member(label('Account · Student Verify လုပ်နိုင်','Account · Verify student','アカウント · 学生認証'),'');}
  accessBadges(status);
 }
@@ -181,28 +192,31 @@ async function reload(){
    latestUser=user;
    const [s,a]=await Promise.allSettled([fetchJson('/.netlify/functions/exam-status'),fetchJson('/.netlify/functions/exam-my-activity')]);
    if(seq!==requestSeq)return;
-   const statusOK=s.status==='fulfilled'&&s.value?.authenticated;
+   const statusOK=s.status==='fulfilled'&&s.value?.authenticated===true;
    if(statusOK)renderAccount(s.value,user);
-   else member(label('အကောင့် အခြေအနေမရသေး','Account status unavailable','アカウント状態を確認できません'),'');
+   else unavailable();
    if(a.status==='fulfilled'){renderProgress(a.value?.attempts);await findResume(a.value?.attempts,seq);}
    else{clearProgress();$('yk790Resume').hidden=true;$('yk790Daily').hidden=false;}
    if(seq===requestSeq)yk791HomeRetry(!statusOK||a.status!=='fulfilled');
  }catch{
-   if(seq===requestSeq){member(label('အကောင့် စစ်ဆေးမရသေး','Account unavailable','アカウントを確認できません'),'');clearProgress();yk791HomeRetry(true);}
+   if(seq===requestSeq){unavailable();clearProgress();yk791HomeRetry(true);}
  }finally{
    if(seq===requestSeq)yk791HomeBusy(false);
  }
 }
-function onSearch(event){
- event?.preventDefault();
- const q=String($('yk790Search').value||'').trim().toLowerCase();
- const cards=[...document.querySelectorAll('#yk790ExamCards [data-exam-type]')];
- let hits=0;
- for(const a of cards){
-  const show=!q||String(a.dataset.tags||'').toLowerCase().includes(q);
-  a.hidden=!show;if(show)hits++;
- }
- text('yk790SearchHint',q?(hits?label('ကိုက်ညီသော Exam '+hits+' ခု','Matching exams: '+hits,'該当試験: '+hits):label('Exam မတွေ့ပါ။ Dictionary မှာ ရှာနိုင်ပါတယ်။','No matching exam. Try the dictionary.','一致する試験はありません。辞書をご利用ください。')):'');
+function dictionaryURL(value){
+ const q=String(value||'').trim().slice(0,80);
+ return q?'/?'+new URLSearchParams({yk_dictionary_q:q}).toString()+'#driving-dictionary':'/#driving-dictionary';
+}
+function onSearch(){
+ const q=String($('yk790Search').value||'').trim();
+ const link=$('yk790DictionaryLink');
+ if(link)link.href=dictionaryURL(q);
+ text('yk790SearchHint',q?label('↗ ကိုနှိပ်၍ အဘိဓာန်တွင် ရှာပါ','Tap ↗ to search the dictionary','↗ で辞書を検索'):'');
+}
+function submitSearch(event){
+ event.preventDefault();
+ location.assign(dictionaryURL($('yk790Search').value));
 }
 // The existing bottom Study tab and hamburger shortcuts use history.pushState()
 // without firing "hashchange". Capture mobile Home -> legacy-anchor navigation
@@ -235,7 +249,7 @@ function openLegacyAnchor(event){
 function init(){
  // Capture phase is intentional: old menu handlers only listen in bubble phase.
  document.addEventListener('click',openLegacyAnchor,true);
- $('yk790QuickSearch').addEventListener('submit',onSearch);
+ $('yk790QuickSearch').addEventListener('submit',submitSearch);
  $('yk790Search').addEventListener('input',onSearch);
  todayWord();showView();reload();
  window.addEventListener('hashchange',()=>{showView();if(isMode())reload();});
