@@ -191,7 +191,7 @@ test('v7.89.5 updated mobile PWA assets are cache-busted',()=>{
  assert(html.includes('yk-v7892-navigation.js?v=7896'));
  assert(html.includes('yk-v7892-navigation.css?v=7895'));
  assert(!html.includes('yk-v7892-navigation.js?v=7894'));
- assert(sw.includes('-v7898-exam-safe-scroll'));
+ assert(sw.includes('-v7901-mobile-home-polish-qa'));
  assert(sw.includes("request.mode === 'navigate'"));
  assert(sw.includes("key.startsWith('yk-public-static-')"));
 });
@@ -281,4 +281,56 @@ test('v7.89.8 mobile Exam scrollport ENDS ABOVE the fixed nav (not padding only)
  // The dropdown/links use original IDs. Do not introduce new access actions.
  assert.equal((html.match(/id="examAccountV735"/g)||[]).length,1);
  assert.equal((html.match(/id="examPlansV728"/g)||[]).length,1);
+});
+
+test('v7.90.0 QA mobile Home is add-on only and keeps existing site routes',async()=>{
+ const dist=resolve('dist');
+ const home=readFileSync(join(dist,'index.html'),'utf8');
+ const exam=readFileSync(join(dist,'mock-exams.html'),'utf8');
+ const dashboard=readFileSync(join(dist,'assets/yk-v7900-mobile-home.js'),'utf8');
+ const css=readFileSync(join(dist,'assets/yk-v7900-mobile-home.css'),'utf8');
+ const originalLogo='<img src="/yk-192.png" alt="YK Logo"';
+ assert(home.includes(originalLogo),'Official YK logo changed');
+ assert(home.includes('id="yk790MobileHome"'));
+ assert(home.includes('id="study-hub"')&&home.includes('id="driving-dictionary"')&&home.includes('id="portal"'));
+ assert(home.includes('id="siteMenu"')&&home.includes('id="yk-mobile-nav"'));
+ assert(home.includes('yk-v7900-mobile-home.js?v=7901qa'));
+ assert(home.includes('yk-v7900-mobile-home.css?v=7901qa'));
+ assert(!exam.includes('id="yk790MobileHome"'),'Exam page must remain unchanged');
+ assert.equal((home.match(/id="yk790MobileHome"/g)||[]).length,1);
+ assert.equal((home.match(/id="yk-mobile-nav"/g)||[]).length,1);
+ assert(css.includes('body.yk790-mobile-home{padding-bottom:0!important}'));
+ assert(css.includes('padding:14px 16px 16px'));
+ assert(css.includes('prefers-reduced-motion:reduce'));
+ assert(css.includes('@media(max-width:720px)')&&css.includes('body.yk790-mobile-home > .wrap{display:none!important}'));
+ assert(!css.includes('body > .top{display:none'));
+ assert(dashboard.includes('window.YKIdentity')&&dashboard.includes('/.netlify/functions/exam-status'));
+ assert(dashboard.includes("'/exams/'+encodeURIComponent(attempt.exam_type)+'.html'"));
+ assert(dashboard.includes("attempt.exam_type==='ordinary_second'?'/mock-second-license.html'"));
+ assert(!dashboard.includes("link.href=attempt.exam_type==='ordinary_second'?'/mock-second-license.html':'/mock-exams.html'"));
+
+ assert(dashboard.includes('/.netlify/functions/exam-my-activity')&&dashboard.includes('/.netlify/functions/exam-checkpoint?attemptId='));
+ assert(dashboard.includes("credentials:'same-origin',cache:'no-store'"));
+ assert(!dashboard.includes("exam-access','POST'"));
+ assert(!dashboard.includes("localStorage.setItem"));
+ assert(dashboard.includes("cp?.snapshot")&&dashboard.includes('deadline<=Date.now()'));
+ assert(dashboard.includes('const phaseCounts={jlpt_n1:2,jlpt_n2:2,jlpt_n3:3,jlpt_n4:3,jlpt_n5:3}'));
+ assert(dashboard.includes('finishedPhases/totalPhases*100'));
+ assert(dashboard.includes("'Completed sections'"));
+
+ assert(dashboard.includes("status==='submitted'&&a.score_verified===true"));
+ assert(dashboard.includes('document.body.classList.toggle'));
+ assert(dashboard.includes("document.addEventListener('click',openLegacyAnchor,true)"));
+ assert(dashboard.includes("event.stopImmediatePropagation()"));
+ assert(dashboard.includes("document.body.classList.remove('yk790-mobile-home')"));
+ assert(dashboard.includes("location.assign('/#'+m[1])"));
+ assert(dashboard.includes("m[1]==='home'&&isMode()"));
+ assert(dashboard.includes("m[1]!=='home'&&!isMode()"));
+ assert(dashboard.includes("location.assign('/#'+m[1])"));
+
+ // No private student or exam fields in the public static template.
+ assert(!home.includes('YKST-001'));
+ const source=readFileSync(join(dist,'assets/yk-v7900-mobile-home.js'),'utf8');
+ const {Script}=await import('node:vm');
+ new Script(source,{filename:'yk-v7900-mobile-home.js'});
 });

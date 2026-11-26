@@ -105,6 +105,20 @@ for (const page of walk(dist)) {
  writeFileSync(page,body,'utf8');
 }
 assert(accessCardPages>=2,'Exam Access UI missing from generated pages');
+// QA-only v7.90.0 mobile Home: reuse the existing Official YK header and
+// bottom nav and keep every legacy Home/Study/Dictionary DOM node intact.
+for(const asset of ['yk-v7900-mobile-home.css','yk-v7900-mobile-home.js'])
+ copyFileSync(resolve('assets',asset),join(dist,'assets',asset));
+const mobileHomeTemplate=readFileSync(resolve('qa/mobile-home-v7900/dashboard.html'),'utf8');
+assert(mobileHomeTemplate.includes('id="yk790MobileHome"'),'Mobile Home template missing');
+const mobileHomeFile=join(dist,'index.html');
+let mobileHomeHtml=readFileSync(mobileHomeFile,'utf8');
+assert(mobileHomeHtml.includes('<div class="wrap">')&&mobileHomeHtml.includes('id="study-hub"')&&mobileHomeHtml.includes('id="driving-dictionary"')&&mobileHomeHtml.includes('id="yk-mobile-nav"'));
+assert(!mobileHomeHtml.includes('id="yk790MobileHome"'),'Mobile dashboard already installed');
+mobileHomeHtml=mobileHomeHtml.replace('<div class="wrap">',mobileHomeTemplate+'\n<div class="wrap">');
+mobileHomeHtml=mobileHomeHtml.replace('</head>','<link rel="stylesheet" href="/assets/yk-v7900-mobile-home.css?v=7901qa"></head>');
+mobileHomeHtml=mobileHomeHtml.replace('</body>','<script defer src="/assets/yk-v7900-mobile-home.js?v=7901qa"></script></body>');
+writeFileSync(mobileHomeFile,mobileHomeHtml,'utf8');
 console.log(JSON.stringify({release:'v7.89.8',pages:count,
  menu:'V2.1 + approved final polish',ordinary_second:'server-backed',
  bank_publication:'questions only — answers removed from dist',
