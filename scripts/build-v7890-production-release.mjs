@@ -4,6 +4,7 @@
  * Only modifies generated dist. Existing backend/identity/payment code remains.
  */
 import assert from 'node:assert/strict';
+import {applyExamLoading,applyHomeLoading} from './apply-v7910-access-loading.mjs';
 import { execFileSync } from 'node:child_process';
 import { readFileSync,writeFileSync,existsSync,copyFileSync,rmSync,renameSync,
          readdirSync,statSync } from 'node:fs';
@@ -118,7 +119,11 @@ assert(!mobileHomeHtml.includes('id="yk790MobileHome"'),'Mobile dashboard alread
 mobileHomeHtml=mobileHomeHtml.replace('<div class="wrap">',mobileHomeTemplate+'\n<div class="wrap">');
 mobileHomeHtml=mobileHomeHtml.replace('</head>','<link rel="stylesheet" href="/assets/yk-v7900-mobile-home.css?v=7901qa"></head>');
 mobileHomeHtml=mobileHomeHtml.replace('</body>','<script defer src="/assets/yk-v7900-mobile-home.js?v=7901qa"></script></body>');
-writeFileSync(mobileHomeFile,mobileHomeHtml,'utf8');
+// v7.91 UI-only follow-up: existing verified student state drives a compact card.
+copyFileSync(resolve('assets/yk-v7910-access-loading.css'),join(dist,'assets/yk-v7910-access-loading.css'));
+const examLoadingFile=join(dist,'mock-exams.html');
+writeFileSync(examLoadingFile,applyExamLoading(readFileSync(examLoadingFile,'utf8')),'utf8');
+writeFileSync(mobileHomeFile,applyHomeLoading(mobileHomeHtml),'utf8');
 console.log(JSON.stringify({release:'v7.89.8',pages:count,
  menu:'V2.1 + approved final polish',ordinary_second:'server-backed',
  bank_publication:'questions only — answers removed from dist',
