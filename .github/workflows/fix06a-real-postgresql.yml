@@ -6,6 +6,7 @@ on:
       - '.github/workflows/fix06a-real-postgresql.yml'
       - 'tests/fix06a-pgqa/**'
       - 'tests/fix06b/**'
+      - 'tests/fix06c/**'
       - 'qa/fix06b/**'
       - 'netlify/functions/**'
       - 'netlify/database/migrations/**'
@@ -49,3 +50,10 @@ jobs:
           YKOC_LOCAL_QA: disposable-v1
           YKOC_FIX06B_DISPOSABLE_SQL_APPROVED: 'yes'
         run: node --experimental-strip-types --test --test-concurrency=1 tests/fix06a-pgqa/integration.test.mjs
+      - name: FIX06-C local maintenance and readiness tests
+        run: node --test tests/fix06c/maintenance.test.mjs
+      - name: FIX06-C real PostgreSQL maintenance tests (same disposable schema)
+        env:
+          YKOC_LOCAL_QA: disposable-v1
+          YKOC_FIX06B_DISPOSABLE_SQL_APPROVED: 'yes'
+        run: node --test --test-concurrency=1 tests/fix06a-pgqa/fix06c-maintenance.test.mjs

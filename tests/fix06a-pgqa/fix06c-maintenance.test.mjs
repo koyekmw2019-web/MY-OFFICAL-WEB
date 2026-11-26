@@ -1,0 +1,18 @@
+// CI only, runs AFTER the existing 40-test fixture initializes its disposable schema.
+import assert from 'node:assert/strict';
+import { test, before, after } from 'node:test';
+import { pool } from './adapter.mjs';
+import { readRateReadiness,cleanupExpiredRateFailures } from '../../netlify/functions/_shared/student-rate-maintenance.mjs';
+assert.equal(process.env.YKOC_FIX06B_DISPOSABLE_SQL_APPROVED,'yes');
+const db=()=>({pool});const q=(s,p)=>pool.query(s,p);const table='public.exam_student_verification_failures';
+const account='a'.repeat(64),pair='b'.repeat(64);
+const count=async()=> (await q('SELECT count(*)::int n FROM '+table+' WHERE account_key=$1',[account])).rows[0].n;
+const insert=async(n,age)=>q('INSERT INTO '+table+'(account_key,pair_key,recorded_at) SELECT $1,$2,statement_timestamp()-($3::int*interval \'1 second\') FROM generate_series(1,$4::int)',[account,pair,age,n]);
+before(async()=>{const r=(await q('SELECT current_database() db,current_user AS usr,version() v')).rows[0];assert.equal(r.db,'ykoc_fixture');assert.equal(r.usr,'ykoc_fixture');assert.match(r.v,/PostgreSQL 16\./);assert.ok((await q("SELECT to_regclass('public.exam_student_verification_failures') t")).rows[0].t);});
+after(()=>pool.end());
+test('01 real catalog readiness of exact existing candidate',async()=>{const r=await readRateReadiness(db);assert.deepEqual(Object.values(r.checks),Array(8).fill(true));assert.equal(r.ready,true);});
+test('02 missing rate table readiness fails closed without DML',async()=>{await q('ALTER TABLE '+table+' RENAME TO fix06c_missing_fixture');try{assert.equal((await readRateReadiness(db)).ready,false);}finally{await q('ALTER TABLE public.fix06c_missing_fixture RENAME TO exam_student_verification_failures');}});
+test('03 missing index detected; restored before next test',async()=>{await q('ALTER INDEX public.exam_student_verification_failures_retention_idx RENAME TO fix06c_index_fixture');try{const r=await readRateReadiness(db);assert.equal(r.ready,false);assert.equal(r.checks.retention_index_ok,false);}finally{await q('ALTER INDEX public.fix06c_index_fixture RENAME TO exam_student_verification_failures_retention_idx');}});
+test('04 cleanup bounded 1000; young and active survive; catch up next batch',async()=>{await q('DELETE FROM '+table);await insert(1001,86460);await insert(1,86300);await insert(1,30);assert.equal(await count(),1003);assert.deepEqual(await cleanupExpiredRateFailures(db),{removed:1000,possiblyMore:true});assert.equal(await count(),3);assert.deepEqual(await cleanupExpiredRateFailures(db),{removed:1,possiblyMore:false});assert.equal(await count(),2);assert.deepEqual(await cleanupExpiredRateFailures(db),{removed:0,possiblyMore:false});});
+test('05 real SKIP LOCKED protects concurrently locked expired row',async()=>{await insert(1,86460);const c=await pool.connect();try{await c.query('BEGIN');await c.query('SELECT id FROM '+table+' WHERE account_key=$1 AND recorded_at <= statement_timestamp()-interval \'24 hours\' FOR UPDATE',[account]);assert.equal((await cleanupExpiredRateFailures(db)).removed,0);assert.equal(await count(),3);}finally{await c.query('ROLLBACK');c.release();}assert.equal((await cleanupExpiredRateFailures(db)).removed,1);assert.equal(await count(),2);});
+test('06 real DB schema loss fails and payment/YKCR fixtures stay unchanged',async()=>{await q('ALTER TABLE '+table+' RENAME TO fix06c_missing_fixture');try{await assert.rejects(cleanupExpiredRateFailures(db));}finally{await q('ALTER TABLE public.fix06c_missing_fixture RENAME TO exam_student_verification_failures');}for(const t of ['exam_payment_requests','exam_paid_access','ykcr_sync_events'])assert.equal((await q('SELECT count(*)::int n FROM '+t)).rows[0].n,0);});
