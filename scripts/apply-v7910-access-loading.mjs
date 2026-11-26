@@ -65,6 +65,8 @@ function replaceOnce(html,from,to){
   return html.replace(from,()=>to);
 }
 export function applyExamLoading(html){
+  // Correct the old Burmese guest wording to match the unchanged per-exam policy.
+  html=replaceOnce(html,'အကောင့်တစ်ခုလျှင် အခမဲ့စာမေးပွဲ စုစုပေါင်း 1 ကြိမ် ရရှိပါတယ်။','စာမေးပွဲအမျိုးအစားတစ်ခုစီအတွက် အခမဲ့ 1 ကြိမ် ဖြေဆိုနိုင်ပါတယ်။');
   // Only the authenticated exam-status response determines the displayed Admin state.
   html=replaceOnce(html,'const roles=Array.isArray(user.roles)?user.roles:(Array.isArray(s?.roles)?s.roles:[]);','const roles=s?.authenticated===true&&Array.isArray(s.roles)?s.roles:[];');
   const card='<div class="exam-access-card yk-approved-access">';
