@@ -148,28 +148,50 @@ async function findResume(attempts,seq){
  if(seq!==requestSeq)return;
  $('yk790Resume').hidden=true;$('yk790Daily').hidden=false;
 }
+function yk791HomeBusy(on){
+ root.dataset.ykHomeLoading=String(on);
+ root.setAttribute('aria-busy',String(on));
+}
+function yk791HomeRetry(show){
+ let retry=$('yk791HomeRetry');
+ if(!retry&&show){
+   retry=document.createElement('button');retry.id='yk791HomeRetry';retry.type='button';
+   retry.addEventListener('click',reload);
+   $('yk790Membership').appendChild(retry);
+ }
+ if(retry){retry.textContent=label('ထပ်စမ်းရန်','Retry','再試行');retry.hidden=!show;}
+}
 async function reload(){
  if(!isMode())return;
  const seq=++requestSeq;
- // Clear previous-account UI synchronously, even while identity or requests are pending.
+ yk791HomeBusy(true);
+ yk791HomeRetry(false);
  resetAccountView();
- const auth=window.YKIdentity;
- if(!auth?.getUser){guest();return;}
- let user;
- try{user=await auth.getUser();}catch{
-   if(seq===requestSeq){member(label('အကောင့် စစ်ဆေးမရသေး','Account unavailable','アカウントを確認できません'),'');clearProgress();}
-   return;
+ try{
+   // Identity may still be initializing. Never show guest as a loading placeholder.
+   for(let i=0;!window.YKIdentity?.getUser&&i<80;i++){
+     await new Promise(r=>setTimeout(r,50));
+     if(seq!==requestSeq)return;
+   }
+   const auth=window.YKIdentity;
+   if(!auth?.getUser)throw Error('Identity unavailable');
+   const user=await auth.getUser();
+   if(seq!==requestSeq)return;
+   if(!user){guest();return;}
+   latestUser=user;
+   const [s,a]=await Promise.allSettled([fetchJson('/.netlify/functions/exam-status'),fetchJson('/.netlify/functions/exam-my-activity')]);
+   if(seq!==requestSeq)return;
+   const statusOK=s.status==='fulfilled'&&s.value?.authenticated;
+   if(statusOK)renderAccount(s.value,user);
+   else member(label('အကောင့် အခြေအနေမရသေး','Account status unavailable','アカウント状態を確認できません'),'');
+   if(a.status==='fulfilled'){renderProgress(a.value?.attempts);await findResume(a.value?.attempts,seq);}
+   else{clearProgress();$('yk790Resume').hidden=true;$('yk790Daily').hidden=false;}
+   if(seq===requestSeq)yk791HomeRetry(!statusOK||a.status!=='fulfilled');
+ }catch{
+   if(seq===requestSeq){member(label('အကောင့် စစ်ဆေးမရသေး','Account unavailable','アカウントを確認できません'),'');clearProgress();yk791HomeRetry(true);}
+ }finally{
+   if(seq===requestSeq)yk791HomeBusy(false);
  }
- if(seq!==requestSeq)return;
- if(!user){guest();return;}
- latestUser=user;
- member(label('အကောင့် စစ်ဆေးနေသည်…','Checking your access…','アクセス確認中…'),'');
- const [s,a]=await Promise.allSettled([fetchJson('/.netlify/functions/exam-status'),fetchJson('/.netlify/functions/exam-my-activity')]);
- if(seq!==requestSeq)return;
- if(s.status==='fulfilled'&&s.value?.authenticated)renderAccount(s.value,user);
- else member(label('အကောင့် အခြေအနေမရသေး','Account status unavailable','アカウント状態を確認できません'),'');
- if(a.status==='fulfilled'){renderProgress(a.value?.attempts);await findResume(a.value?.attempts,seq);}
- else{clearProgress();$('yk790Resume').hidden=true;$('yk790Daily').hidden=false;}
 }
 function onSearch(event){
  event?.preventDefault();
