@@ -13,7 +13,7 @@
     "netlify/database/migrations/20261101130000_exam_autosave.sql": "12be4f07971f637182655e623edc18ae212dd2ecb413e56155dae5d60cd3e227",
     "netlify/database/migrations/20261101140000_v762_hardening.sql": "365145540917220dbc6a643c1bb93267e3a3e189f4ae825e9376d3b654074679",
     "netlify/database/migrations/20261101150000_v763_free_per_exam_type.sql": "20abc635effefb4c771ae34e96625dec4336e64e734e88cfced4a024a45b85be",
-    "netlify/functions/_shared/auth.mts": "b1aad966272287e7ea37465126bddd671fd09aa35c0f3ff02443002f5836b28d",
+    "netlify/functions/_shared/auth.mts": "8299422d4b1463be1066c9ebb9c9c19a4d40635f9d6257200450af5ab6547e7b",
     "netlify/functions/_shared/env.mts": "7fbf5c798fbed3a03afc3783fd7b939dd7a0fe9524d55e8eac6eae67aa3c533b",
     "netlify/functions/_shared/exam-answer-key-v763.mts": "e463026ae7663097686cffae6f517d298df32b770952474768aa283b711afc31",
     "netlify/functions/_shared/exam-autosave.mts": "fa2e2833bc6e4452ec2eb5f17555a7e4092338e6efdff919b8e90c479b8af961",
