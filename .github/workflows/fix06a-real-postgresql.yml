@@ -5,6 +5,8 @@ on:
     paths:
       - '.github/workflows/fix06a-real-postgresql.yml'
       - 'tests/fix06a-pgqa/**'
+      - 'tests/fix06b/**'
+      - 'qa/fix06b/**'
       - 'netlify/functions/**'
       - 'netlify/database/migrations/**'
 permissions:
@@ -40,7 +42,10 @@ jobs:
         run: npm install --ignore-scripts --no-package-lock --no-save --no-audit --no-fund pg@8.16.3
       - name: Confirm fixture dependencies
         run: npm ls pg csv-parse --depth=0
-      - name: Run 20 integration tests using only disposable PostgreSQL
+      - name: FIX06-B local policy and adapter simulation tests
+        run: node --experimental-strip-types --test tests/fix06b/*.test.mjs
+      - name: Run 40 integration tests using only disposable PostgreSQL
         env:
           YKOC_LOCAL_QA: disposable-v1
+          YKOC_FIX06B_DISPOSABLE_SQL_APPROVED: 'yes'
         run: node --experimental-strip-types --test --test-concurrency=1 tests/fix06a-pgqa/integration.test.mjs

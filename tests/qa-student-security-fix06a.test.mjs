@@ -10,9 +10,10 @@ import vm from 'node:vm';
 const read=p=>readFileSync(new URL('../netlify/functions/'+p,import.meta.url),'utf8');
 const strip=p=>stripTypeScriptTypes(read(p),{mode:'strip'}).replace(/^import .*;$/gm,'');
 const helpers=['admin-role','auth','student-validation','security','exam-autosave'].map(n=>strip('_shared/'+n+'.mts').replace(/^export /gm,'')).join('\n');
+const rateHelpers=['student-rate-policy','student-rate-postgres','student-verification-handler'].map(n=>read('_shared/'+n+'.mjs').replace(/^import .*;$/gm,'').replace(/^export /gm,'')).join('\n');
 const names=['exam-student-verify','exam-admin-import-students','exam-access','exam-status','exam-admin-overview','exam-admin-analytics'];
 const handlers=names.map((n,i)=>`const h${i}=(()=>{${strip(n+'.mts').replace('export default async','return async')}\n})();`).join('\n');
-const source=helpers+'\n'+handlers+'\nglobalThis.api={h0,h1,h2,h3,h4,h5,studentDate,studentDateRange,hasAdminRole,hashVerificationCode,verifyCode,requireAdmin,sectionDurations};';
+const source=helpers+'\n'+rateHelpers+'\n'+handlers+'\nglobalThis.api={h0,h1,h2,h3,h4,h5,studentDate,studentDateRange,hasAdminRole,hashVerificationCode,verifyCode,requireAdmin,sectionDurations};';
 const als=new AsyncLocalStorage();
 const A={id:'A',email:'a@example.invalid',roles:[]},B={id:'B',roles:[]},ADMIN={id:'ADMIN',roles:['admin']};
 const fixtureTime='2026-11-26T03:00:00Z';
@@ -32,6 +33,7 @@ function fixture(opts={}){
  const state=(r)=>r.status!=='active'?'inactive':jst(clock)<r.class_start?'scheduled':jst(clock)>r.expire_date?'expired':'active';
  const active=(id)=>records.filter(r=>eligible(r,id,clock));
  const deadline=a=>a.ends_at?Date.parse(a.ends_at):Date.parse(a.started_at)+(api.sectionDurations[a.exam_type]?.[0]??80)*60000;
+ const rateEvents=[];
  const db={sql:async(parts,...p)=>{
   const q=parts.join('?').replace(/\s+/g,' ').trim();calls.push({q,p});
   if(q.startsWith('SELECT id,student_code,status,verification_code_hash,linked_user_id FROM exam_students')){
@@ -77,7 +79,24 @@ function fixture(opts={}){
   if(q.includes('FROM exam_students')&&q.startsWith('SELECT COUNT(*)')){assert.match(q,/Asia\/Tokyo/);assert(!q.includes('CURRENT_DATE'));return [{total:records.length,active:records.filter(x=>state(x)==='active').length,inactive_or_expired:records.filter(x=>['inactive','expired'].includes(state(x))).length,upcoming:records.filter(x=>state(x)==='scheduled').length}];}
   if(q.startsWith('SELECT'))return []; // all other summary/status SELECTs; no side effects
   throw Error('unexpected query '+q);
- },pool:{connect:async()=>({query:async(q,p=[])=>{
+ },pool:{connect:async()=>{let rate=false,stagedEvents=[],saved=false;return {query:async(q,p=[])=>{
+   if(q==='BEGIN ISOLATION LEVEL READ COMMITTED'){rate=true;return {rows:[]};}
+   if(rate){
+    const norm=q.replace(/\s+/g,' ').trim();
+    if(q==='COMMIT'){rateEvents.push(...stagedEvents);return {rows:[],command:'COMMIT'};}
+    if(q==='ROLLBACK'){stagedEvents=[];return {rows:[]};}
+    if(q.startsWith('SET LOCAL')||q.startsWith('SELECT pg_advisory_xact_lock'))return {rows:[]};
+    if(q.includes('clock_timestamp()'))return {rows:[{ms:String(clock)}]};
+    if(norm.startsWith('SELECT pair_key'))return {rows:rateEvents.filter(x=>x.account===p[0]&&x.at>p[1]).map(x=>({pair_key:x.pair,ms:String(x.at)}))};
+    if(norm.startsWith('INSERT INTO public.exam_student_verification_failures')){stagedEvents.push({account:p[0],pair:p[1],at:p[2]});return {rows:[{id:1}]};}
+    if(norm.startsWith('WITH expired AS'))return {rows:[]};
+    if(q.startsWith('SAVEPOINT')){saved=true;return {rows:[]};}
+    if(q.startsWith('ROLLBACK TO SAVEPOINT')||q.startsWith('RELEASE SAVEPOINT')){assert(saved);return {rows:[]};}
+    // Execute the original verification SQL mock and retain its assertions.
+    const vals=[];const parts=q.replace(/\$(\d+)/g,(_,n)=>{vals.push(p[Number(n)-1]);return '\u0001';}).split('\u0001');
+    return {rows:await db.sql(parts,...vals)};
+   }
+
    txCalls.push(q);if(q==='BEGIN'){assert.equal(staged,null);staged=structuredClone(records);return {rows:[]};}
    if(q==='COMMIT'){assert(staged);records=staged;staged=null;return {rows:[]};}
    if(q==='ROLLBACK'){staged=null;return {rows:[]};}
@@ -86,7 +105,7 @@ function fixture(opts={}){
    if(opts.failInsertAt&&++insertCount===opts.failInsertAt)throw Error('private mock import error');
    if(staged.some(x=>x.student_code===student_code))return {rows:[]};
    staged.push({id:100+staged.length,student_code,name,class_name,class_start,expire_date,verification_code_hash,status:'active',linked_user_id:null,linked_email:null});return {rows:[{student_code}]};
- },release:()=>txCalls.push('RELEASE')})}};
+ },release:()=>{if(!rate)txCalls.push('RELEASE');}};}}};
  const ctx=vm.createContext({Response,Request,URL,File,FormData,Buffer,createHash,randomBytes,timingSafeEqual,console:{error(){}},getUser:async()=>als.getStore(),getDatabase:()=>{dbCalls++;return db;},parse:()=>{if(opts.badCsv)throw Error('synthetic parser error');return structuredClone(csv);}});
  vm.runInContext(source,ctx);const api=ctx.api;
  const invoke=(i,user,payload={},method=i>=3?'GET':'POST')=>als.run(user,()=>api['h'+i](i===1?{method,formData:async()=>({get:()=>opts.noFile?null:new File([opts.fileContent??'synthetic'],'test.csv')})}:new Request('https://qa.example.invalid/',{method,...(method==='GET'?{}:{body:typeof payload==='string'?payload:JSON.stringify(payload)})})));
@@ -99,7 +118,7 @@ test('concurrent linking: exactly one winner, second conflict',async()=>{const f
 test('concurrent credential rotation blocks stale verification',async()=>{const f=fixture({rows:[row()],onRead:rs=>rs[0].verification_code_hash='changed'});assert.equal((await f.invoke(0,A,body())).status,409);assert.equal(f.records[0].linked_user_id,null);});
 test('concurrent deactivation blocks stale verification',async()=>{const f=fixture({rows:[row()],onRead:rs=>rs[0].status='inactive'});assert.equal((await f.invoke(0,A,body())).status,409);assert.equal(f.records[0].linked_user_id,null);});
 test('second record for same identity returns controlled 409',async()=>{const f=fixture({rows:[row({linked_user_id:'A'}),row({id:2,student_code:'QA-Y'})]});assert.equal((await f.invoke(0,A,body(code,'QA-Y'))).status,409);assert.equal(f.records[1].linked_user_id,null);});
-test('unexpected DB error does not leak internals',async()=>{const f=fixture({rows:[row()],verifyDbError:true});const r=await f.invoke(0,A,body());assert.equal(r.status,500);assert(!((await r.text()).includes('private DB')));});
+test('unexpected DB error does not leak internals',async()=>{const f=fixture({rows:[row()],verifyDbError:true});const r=await f.invoke(0,A,body());assert.equal(r.status,503);assert.equal(r.headers.get('retry-after'),'5');assert(!((await r.text()).includes('private DB')));});
 for(const d of ['2026-02-30','2026-13-01','2026-00-00','1900-02-29','0000-01-01','2026-04-31','bad'])test('calendar rejects '+d,()=>assert.throws(()=>fixture().api.studentDate(d)));
 test('valid leap and slash dates',()=>{const {api}=fixture();assert.equal(api.studentDate('2000-2-29'),'2000-02-29');assert.equal(api.studentDate('2026/2/3'),'2026-02-03');assert.equal(api.studentDateRange('2026-2-3','2026-02-03').expireDate,'2026-02-03');});
 test('reversed class dates rejected',async()=>{const f=fixture({csv:[csvRow({class_start:'2026-12-31',expire_date:'2026-11-01'})]});assert.equal((await f.invoke(1,ADMIN)).status,400);assert.equal(f.dbCalls,0);});
@@ -128,4 +147,4 @@ test('paid fallback unchanged after student expiry',async()=>{const f=fixture({p
 test('legacy checkpoint absence still does not restore free quota',async()=>{const f=fixture({missingCheckpoint:true,freeUsed:true});assert.equal((await f.invoke(2,A,{examType:'truck'})).status,402);});
 test('status role normalization and JST eligibility',async()=>{const f=fixture({now:'2026-11-26T15:00:00Z',rows:[row({linked_user_id:'A',expire_date:'2026-11-26'})]});const r=await f.invoke(3,{...A,roles:['admin',null]});const b=await r.json();assert.equal(r.status,200);assert.deepEqual(b.roles,[]);assert.equal(b.student,null);assert.equal(b.linkedStudent.access_state,'expired');assert(f.calls.every(c=>c.q.startsWith('SELECT')));});
 test('admin overview and analytics use JST and read-only queries',async()=>{const f=fixture({now:'2026-11-26T15:00:00Z',rows:[row({expire_date:'2026-11-26'})]});for(const i of [4,5]){const r=await f.invoke(i,ADMIN);assert.equal(r.status,200);assert.equal((await r.json()).students.active,0);}assert(f.calls.every(c=>c.q.startsWith('SELECT')));});
-// FIX06-B persistent rate limiting intentionally excluded; no assertion of 429 protection.
+// FIX06-A legacy assertions preserved; rate limit and adapter tested separately.

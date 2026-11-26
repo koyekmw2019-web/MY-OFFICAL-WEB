@@ -32,7 +32,7 @@
     "netlify/functions/exam-my-activity.mts": "e10cb10056f4ec0f1fc48a00a8993b8fa75c5ff86931b2de525fb120ca8d6e77",
     "netlify/functions/exam-payment-submit.mts": "3e178b42bbfad8dde13a9954a716f702a1506cab26f803838375b5ad8f49175f",
     "netlify/functions/exam-status.mts": "bae27ce1d08b4f6e2832de2b3775c4f79108671ca2a34284a9d714c2f5b78710",
-    "netlify/functions/exam-student-verify.mts": "4f29863a6ba10efa41406885c3a6e297fc79b91a2b30292b620dfb0737f55654",
+    "netlify/functions/exam-student-verify.mts": "2e2975c1f0710a6d7f85e3d2cf40c395be40929d6058af8df3dd7e77d4d96b77",
     "netlify/functions/yk-announcement-admin.mts": "f2082b2a506894b7427a657e559f5d0a66d165a3dcc8ca0813bbb95414c97c97",
     "netlify/functions/yk-learning.mts": "60197ba2ced2ceed31e52e6df2350af82947e3632affc15c2bef1fa7c0156b0d",
     "netlify/functions/ykcr-student-sync.mts": "ad2a007d10dc1a89592e909a6f2d5684dc6db985a7fa4bc425d421e13af51ab1"

@@ -8,9 +8,9 @@ const adapter=new URL('./adapter.mjs',import.meta.url).href;
 registerHooks({resolve(specifier,ctx,next){if(['@netlify/database','@netlify/identity'].includes(specifier))return {url:adapter,shortCircuit:true};return next(specifier,ctx);}});
 const root=new URL('../../',import.meta.url);
 const manifest=JSON.parse(readFileSync(new URL('./source_blobs.json',import.meta.url),'utf8'));
-assert.equal(Object.keys(manifest).length,23);
+assert.equal(Object.keys(manifest).length,27);
 for(const [path,expected] of Object.entries(manifest)){const b=readFileSync(new URL(path,root));assert.equal(createHash('sha1').update('blob '+b.length+'\0').update(b).digest('hex'),expected,path);}
-console.log('SOURCE BLOBS VERIFIED: 23/23');
+console.log('SOURCE BLOBS VERIFIED: 27/27');
 const fn=async name=>(await import(new URL('netlify/functions/'+name+'.mts',root).href)).default;
 const verify=await fn('exam-student-verify'),importCsv=await fn('exam-admin-import-students'),status=await fn('exam-status'),access=await fn('exam-access');
 const {hashVerificationCode}=await import(new URL('netlify/functions/_shared/security.mts',root).href);
@@ -33,6 +33,7 @@ const data=async(r,expected=200)=>{assert.equal(r.status,expected);return r.json
 function barrier(n){let arrived=0,resolve;const ready=new Promise(r=>resolve=r);return async()=>{if(++arrived===n)resolve();let timer;try{await Promise.race([ready,new Promise((_,rej)=>timer=setTimeout(()=>rej(Error('barrier timeout')),5000))]);}finally{clearTimeout(timer);}};}
 const at='2026-11-26T14:59:59Z',midnight='2026-11-26T15:00:00Z';
 before(async()=>{
+ assert.equal(process.env.YKOC_FIX06B_DISPOSABLE_SQL_APPROVED,'yes','Explicit disposable SQL approval required');
  const server=await one('SELECT current_database() db,current_user AS usr,version() v,current_setting(\'TimeZone\') tz');
  assert.equal(server.db,'ykoc_fixture');assert.equal(server.usr,'ykoc_fixture');assert.match(server.v,/PostgreSQL 16\./);assert.equal(server.tz,'UTC');
  assert.equal((await one("SELECT to_regclass('public.exam_students') AS t")).t,null,'Refusing non-empty database');
@@ -40,6 +41,9 @@ before(async()=>{
  const folder=new URL('netlify/database/migrations/',root);
  const names=readdirSync(folder).filter(n=>n.endsWith('.sql')).sort();assert.equal(names.length,14);
  for(const name of names){await query(readFileSync(new URL(name,folder),'utf8'));console.log('EXISTING MIGRATION OK:',name);}
+ assert.equal((await one("SELECT to_regclass('public.exam_student_verification_failures') AS t")).t,null);
+ await query(readFileSync(new URL('qa/fix06b/20261126_student_verification_failures.sql.candidate',root),'utf8'));
+ console.log('FIX06B CANDIDATE APPLIED IN DISPOSABLE CI ONLY');
 });
 after(async()=>{await pool.end();});
 test('01 valid link, same account reverify, wrong account rejected, no credential leak',async()=>{
@@ -49,7 +53,7 @@ test('02 real concurrent linking: both reads see unlinked, only one UPDATE wins 
  for(let i=0;i<8;i++){const id='QA-RACE-'+i;await seed(id);const wait=barrier(2);const a=member('race-a-'+i),b=member('race-b-'+i);const afterRead=async rows=>{assert.equal(rows[0].linked_user_id,null);await wait();};const results=await Promise.all([link(a,id,{afterRead}),link(b,id,{afterRead})]);assert.deepEqual(results.map(r=>r.status).sort(),[200,409]);assert.equal((await record(id)).linked_user_id,results[0].status===200?a.id:b.id);}
 });
 test('03 same account concurrent linking to two records: real unique constraint maps to 409',async()=>{
- await seed('QA-TWO-A');await seed('QA-TWO-B');const u=member('two');const afterRead=barrier(2);const r=await Promise.all([link(u,'QA-TWO-A',{afterRead}),link(u,'QA-TWO-B',{afterRead})]);assert.deepEqual(r.map(x=>x.status).sort(),[200,409]);assert.equal((await one('SELECT COUNT(*)::int n FROM exam_students WHERE linked_user_id=$1',[u.id])).n,1);
+ await seed('QA-TWO-A');await seed('QA-TWO-B');const u=member('two');const ready=barrier(2);const r=await Promise.all(['QA-TWO-A','QA-TWO-B'].map(async id=>{await ready();return link(u,id);}));assert.deepEqual(r.map(x=>x.status).sort(),[200,409]);assert.equal((await one('SELECT COUNT(*)::int n FROM exam_students WHERE linked_user_id=$1',[u.id])).n,1);
 });
 test('04 database UNIQUE student_code and linked_user_id constraints present',async()=>{
  const r=await query("SELECT conname FROM pg_constraint WHERE conrelid='exam_students'::regclass AND contype='u'");assert.ok(r.rows.some(x=>x.conname==='exam_students_student_code_key'));assert.ok(r.rows.some(x=>x.conname==='exam_students_linked_user_id_key'));
@@ -114,3 +118,6 @@ test('19 strict roles and per-exam free quota remain enforced by real DB',async(
 test('20 payment/YKCR fixture tables remain empty',async()=>{
  for(const table of ['exam_payment_requests','exam_paid_access','ykcr_sync_events'])assert.equal((await one('SELECT COUNT(*)::int n FROM '+table)).n,0,table);
 });
+
+import { registerRateTests } from './fix06b-cases.mjs';
+registerRateTests({pool,query,one,member,seed,record,link,verify,invoke,post,code});

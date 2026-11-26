@@ -21,5 +21,9 @@
   "netlify/functions/exam-access.mts": "28842d614a70d3a969e909a7060e6e97f8d9a37f",
   "netlify/functions/exam-admin-import-students.mts": "6f42ddec46eb56e3012acf983ff4057dae81b8a9",
   "netlify/functions/exam-status.mts": "110896c086ac94f559265916868d286bb15b894c",
-  "netlify/functions/exam-student-verify.mts": "fcb0c5c0485354d667f8e451d610611ea765fef4"
+  "netlify/functions/exam-student-verify.mts": "2f85ef97c58cbf52ad9e349639583e0e65358a32",
+  "netlify/functions/_shared/student-rate-policy.mjs": "52529de24b13f89b8411502293c62966ab9970f1",
+  "netlify/functions/_shared/student-rate-postgres.mjs": "79065554c5763bf12082a917e9edb680b1804456",
+  "netlify/functions/_shared/student-verification-handler.mjs": "c475cc2b299e656455bb73769c6e8adabd7d9a86",
+  "qa/fix06b/20261126_student_verification_failures.sql.candidate": "41b7bcdbffa7c2b0e2d7d5fa2571af86cdb9a0ce"
 }

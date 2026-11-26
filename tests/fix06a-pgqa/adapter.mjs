@@ -27,7 +27,9 @@ export function getDatabase(){
        const invalid=[...params];invalid[1]=null;
        try{return await client.query(sql,invalid);}catch(e){state.rollbackEvidence.code=e.code;throw e;}
      }
-     return client.query(sql,params);
-   },release:()=>client.release()};
+     const result=await client.query(sql,params);
+     if(state.afterRead && /^SELECT id,student_code,status,verification_code_hash,linked_user_id FROM exam_students/.test(sql.trim())) await state.afterRead(result.rows);
+     return result;
+   },release:destroy=>client.release(destroy)};
  }}};
 }
