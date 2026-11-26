@@ -42,13 +42,21 @@ function showView(){
  }
 }
 function member(msg,expire){text('yk790MemberText',msg);text('yk790ExpireText',expire||'');}
-function guest(){
+function resetAccountView(){
  latestUser=null;
  text('yk790WelcomeName','');
- member(label('ဧည့်သည် · Login / Register','Guest · Login / Register','ゲスト · ログイン登録'),'');
- document.querySelectorAll('#yk790ExamCards .yk790-pill').forEach(e=>e.textContent=label('Login ဝင်ရန်','Login required','ログインが必要'));
+ member(label('အကောင့် စစ်ဆေးနေသည်…','Checking your access…','アクセス確認中…'),'');
+ document.querySelectorAll('#yk790ExamCards .yk790-pill').forEach(e=>{
+   e.textContent=label('အသုံးပြုခွင့် စစ်ဆေးနေသည်…','Checking access…','アクセス確認中…');
+   e.classList.toggle('is-verified',false);
+ });
  clearProgress();
  $('yk790Resume').hidden=true;$('yk790Daily').hidden=false;
+}
+function guest(){
+ resetAccountView();
+ member(label('ဧည့်သည် · Login / Register','Guest · Login / Register','ゲスト · ログイン登録'),'');
+ document.querySelectorAll('#yk790ExamCards .yk790-pill').forEach(e=>e.textContent=label('Login ဝင်ရန်','Login required','ログインが必要'));
 }
 function clearProgress(){text('yk790ScoreValue','—');text('yk790ScoreNote',label('အတည်ပြု Result မရှိသေးပါ','No verified results yet','検証済み結果はまだありません'));$('yk790ScoreBars').replaceChildren();}
 async function fetchJson(path){
@@ -105,6 +113,7 @@ function resumePercent(snapshot){
 async function findResume(attempts,seq){
  const started=(Array.isArray(attempts)?attempts:[]).filter(x=>x?.status==='started'&&Number.isSafeInteger(Number(x.id))&&examNames[x.exam_type]).slice(0,3);
  for(const attempt of started){
+   if(seq!==requestSeq)return;
    try{
      const cp=await fetchJson('/.netlify/functions/exam-checkpoint?attemptId='+encodeURIComponent(attempt.id));
      if(seq!==requestSeq)return;
@@ -136,11 +145,14 @@ async function findResume(attempts,seq){
      return;
    }catch{ /* No checkpoint or user is not entitled: omit Continue card. */ }
  }
+ if(seq!==requestSeq)return;
  $('yk790Resume').hidden=true;$('yk790Daily').hidden=false;
 }
 async function reload(){
  if(!isMode())return;
  const seq=++requestSeq;
+ // Clear previous-account UI synchronously, even while identity or requests are pending.
+ resetAccountView();
  const auth=window.YKIdentity;
  if(!auth?.getUser){guest();return;}
  let user;
