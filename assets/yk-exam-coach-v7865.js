@@ -1,6 +1,6 @@
 /* v7.86.5 Dashboard-only. Fetch coach data for a selected exam, never on initial page load. */
 (()=>{'use strict';
-if(document.body?.dataset.dashboard!=='student')return;
+if(!['admin','student','member'].includes(document.body?.dataset.dashboard))return;
 const root=document.getElementById('dashboardBody'),engine=window.YKExamCoachEngineV7865;
 if(!root||!engine)return;
 const valid=new Set((window.YKAllExamsV7863?.catalog||[]).map(x=>x.type));
@@ -15,7 +15,7 @@ const panel=`<section id="yk865Coach" class="yk865-panel" aria-label="Personal E
  <div id="yk865Content" aria-live="polite"></div></section>`;
 const summary=text=>`<div class="yk865-summary">${esc(text)}</div>`;
 function mount(){
- if(ready||!root.querySelector('#yk863ExamGrid')||!root.querySelector('#yk84StudentBody'))return false;
+ if(ready||document.body.dataset.dashboardView!=='personal'||!root.querySelector('#yk863ExamGrid')||!root.querySelector('#yk84StudentBody'))return false;
  root.querySelector('#yk84StudentBody').insertAdjacentHTML('beforebegin',panel);
  ready=true;return true;
 }

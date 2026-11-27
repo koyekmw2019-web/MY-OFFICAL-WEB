@@ -53,21 +53,21 @@ test('wrong answers are filtered to selected exam only',()=>{
 });
 test('UI uses only account-scoped read-only APIs and shared activity request',()=>{
  const js=read('assets/yk-dashboard-pro-v784.js');
- for(const x of ['exam-my-activity','yk-learning','jlpt-learning-progress','jlpt-learning-v782-content.json','jlpt-reading-v7822-upgrade.json'])assert(js.includes(x));
- assert(js.includes('YKDashboardActivityPromiseV7863'));assert(js.includes('yk863JLPTLoad'));assert(js.includes('yk863Mistakes'));
+ for(const x of ['exam-my-activity','yk7912Review','jlpt-learning-progress','jlpt-learning-v782-content.json','jlpt-reading-v7822-upgrade.json'])assert(js.includes(x));
+ assert(js.includes('YKDashboardActivityPromiseV7863'));assert(js.includes('yk863JLPTLoad'));assert(js.includes('data-yk7912-review-type'));assert(read('assets/yk-learning-v760.js').includes("api('yk-learning')"));
  assert(!js.includes('exam-attempt-submit'));assert(!js.includes('exam-access?'));
  for(const x of ['netlify/functions/exam-my-activity.mts','netlify/functions/yk-learning.mts'])assert(read(x).includes('requireUser()'));
 });
 test('no eager JLPT or mistake fetch on account dashboard initial mount',()=>{
  const js=read('assets/yk-dashboard-pro-v784.js');
- const loading=js.slice(js.indexOf('async function loadStudent(){'),js.indexOf('async function loadMistakes()'));
+ const loading=js.slice(js.indexOf('async function loadStudent(){'),js.indexOf('async function loadJLPT()'));
  assert(loading.includes('await getActivity()'));
  assert(!loading.includes('jlpt-learning-progress'));assert(!loading.includes('yk-learning'));
  const old=read('assets/yk-dashboard-v758.js');
  assert(old.includes('window.YKDashboardActivityPromiseV7863=shared'));
  assert(!old.includes('paintLearningInsights(xs);void loadLearningFocus(xs)'));
  const legacy=read('assets/yk-learning-v760.js');assert(!legacy.includes('setTimeout(load,1200)'));
- assert(legacy.includes("details?.addEventListener('toggle'"));
+ assert(legacy.includes("details?.addEventListener('toggle'"));assert(legacy.includes('if(!details.open||rendered||busy)return'));
 });
 test('new layout preserves responsive semantics and accessibility',()=>{
  const page=read('student-dashboard.html'),css=read('assets/yk-dashboard-pro-v784.css');

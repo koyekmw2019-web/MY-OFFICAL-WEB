@@ -26,7 +26,7 @@ check('mobile dashboard action footer is in document flow not fixed',()=>{
 check('administrator report link gated inside admin-only role-specific panel',()=>{
  const js=rd('assets/yk-dashboard-v758.js');
  assert(js.includes('async function showAdmin()'));
- assert(js.includes('Admin Management Tools'));
+ assert(js.includes("section('yk7912Dictionary','Dictionary Reports'"));
  assert(js.includes('/dictionary-reports.html'));
  const html=rd('admin-dashboard.html');
  assert(!html.includes('href="/dictionary-reports.html"'));
@@ -79,10 +79,10 @@ check('saved learning metrics avoid mixed-scale averages while retaining feature
  const js=rd('assets/yk-learning-v760.js');
  assert(!js.includes('Average Score (raw)'));
  assert(!js.includes('Smart Learning · v7.60'));
- assert(js.includes('Additional Learning Tools'));
- assert(js.includes('A zero saved-mistakes count does not prove zero wrong answers.'));
- assert(js.includes('const grouped=new Map()'));
- for(const feature of ['Wrong Answer Review','Daily Practice (5 / 10 / 20)','Announcements','Publish Announcement (Admin)'])assert(js.includes(feature));
+ assert(js.includes('yk7912ReviewHost'));
+ assert(js.includes('Zero records does not prove zero wrong answers.'));
+ assert(js.includes('yk7912MistakeType'));assert(js.includes('missed_count'));
+ for(const feature of ['explanation_my','Daily Practice (5 / 10 / 20)','Announcements','Publish Announcement (Admin)'])assert(js.includes(feature));
  new vm.Script(js);
 });
 console.log('v7.86.2 scoped checks completed');
