@@ -140,4 +140,17 @@ check('FIX07 motion only in 27 safe browsing routes, real pending UI in 7 routes
   assert.equal(css,read('assets/yk-v7912-fix07-page-motion.css'));
   assert.equal(sk,read('assets/yk-v7912-fix07-loading.css'));
 });
+check('FIX08 mobile Home only: visible arrival motion on fast load, true pending indicator, reduced-motion guard',()=>{
+  const filename='yk-v7912-fix08-mobile-home.css',link=filename+'?v=7912-fix08';
+  const pages=readdirSync('dist',{recursive:true}).filter(p=>p.endsWith('.html'));
+  for(const page of pages)assert.equal(read('dist/'+page).split(link).length-1,page==='index.html'?1:0,page);
+  const css=read('dist/assets/'+filename);
+  assert.equal(css,read('assets/'+filename));
+  assert.ok(css.includes('body.yk790-mobile-home #yk790MobileHome .yk790-welcome::before'));
+  assert.ok(css.includes('body.yk790-mobile-home #yk790MobileHome[data-yk-home-loading="true"] .yk790-welcome::after'));
+  assert.ok(css.includes('@media(max-width:720px) and (prefers-reduced-motion:no-preference)'));
+  assert.ok(css.includes('pointer-events:none'));
+  assert.match(css,/animation:yk08HomeArrival 850ms/);
+  assert.match(css,/animation:yk08HomePending 1.15s linear infinite/);
+});
 console.log('TOTAL v7.91.2 targeted: '+count+' PASS / 0 FAIL');

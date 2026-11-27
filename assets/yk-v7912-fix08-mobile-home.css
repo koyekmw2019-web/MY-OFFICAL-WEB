@@ -1,0 +1,30 @@
+/* FIX08 — mobile Home only. A branded entrance isn't a fake loading state:
+   the line reveals the already-interactive page, even on a fast connection.
+   A separate red indicator follows the existing real account pending flag. */
+@media(max-width:720px){
+  body.yk790-mobile-home #yk790MobileHome .yk790-welcome{position:relative;}
+  body.yk790-mobile-home #yk790MobileHome[data-yk-home-loading="true"] .yk790-welcome::after{
+    content:"";position:absolute;inset-inline:2px;bottom:6px;height:3px;border-radius:3px;
+    background:#d71920;pointer-events:none;
+  }
+}
+@media(max-width:720px) and (prefers-reduced-motion:no-preference){
+  body.yk790-mobile-home #yk790MobileHome .yk790-welcome::before{
+    content:"";position:absolute;inset-inline:2px;top:-8px;height:3px;border-radius:3px;
+    background:linear-gradient(90deg,transparent 8%,#d71920 30%,#ff6977 48%,#d71920 65%,transparent 90%);
+    background-size:220% 100%;pointer-events:none;
+    animation:yk08HomeArrival 850ms cubic-bezier(.2,.7,.25,1) both;
+  }
+  body.yk790-mobile-home #yk790MobileHome[data-yk-home-loading="true"] .yk790-welcome::after{
+    background:linear-gradient(90deg,#71151b 12%,#f04450 44%,#ff8892 50%,#71151b 85%);
+    background-size:240% 100%;
+    animation:yk08HomePending 1.15s linear infinite;
+  }
+  @keyframes yk08HomeArrival{
+    0%{background-position:120% 0;opacity:.4;}
+    20%{opacity:1;}
+    76%{opacity:1;}
+    100%{background-position:-120% 0;opacity:0;}
+  }
+  @keyframes yk08HomePending{from{background-position:120% 0}to{background-position:-120% 0}}
+}

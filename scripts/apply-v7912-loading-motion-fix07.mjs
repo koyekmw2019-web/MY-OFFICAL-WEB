@@ -6,7 +6,8 @@ import {copyFileSync,readFileSync,readdirSync,writeFileSync} from 'node:fs';
 import {join,resolve} from 'node:path';
 const dist=resolve('dist');
 const motion='yk-v7912-fix07-page-motion.css',loading='yk-v7912-fix07-loading.css';
-for(const asset of [motion,loading])copyFileSync(resolve('assets',asset),join(dist,'assets',asset));
+const mobileHome='yk-v7912-fix08-mobile-home.css';
+for(const asset of [motion,loading,mobileHome])copyFileSync(resolve('assets',asset),join(dist,'assets',asset));
 const pages=readdirSync(dist,{recursive:true}).filter(p=>p.endsWith('.html')).map(p=>p.replaceAll('\\','/'));
 const dashboards=new Set(['dashboard.html','admin-dashboard.html','student-dashboard.html','member-dashboard.html']);
 const sensitive=page=>page==='login.html'||page==='mock-second-license.html'||page.startsWith('exams/');
@@ -30,6 +31,7 @@ for(const page of pages){
     html=insert(html,anchor,anchor.replace('</section>',panel+'</section>'));
   }
   if(page==='index.html'){
+    html=insert(html,'</head>', '<link rel="stylesheet" href="/assets/'+mobileHome+'?v=7912-fix08"></head>');
     // This loader already owns the three-asset lazy Promise and its retry.
     // Reflect its actual pending state; no new fetch, delay or search behavior.
     html=insert(html,"if(status)status.innerHTML='<p class=\"dictionary-empty\" role=\"status\">Loading dictionary…", "if(status)status.setAttribute('aria-busy','true');\n  if(status)status.innerHTML='<p class=\"dictionary-empty\" role=\"status\">Loading dictionary…");
