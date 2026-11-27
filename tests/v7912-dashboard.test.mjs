@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {readFileSync,existsSync,readdirSync} from 'node:fs';
+import vm from 'node:vm';
 const read=(p)=>readFileSync(p,'utf8');
 let count=0;function check(name,fn){fn();console.log('PASS v7912 '+name);count++;}
 const main=read('assets/yk-dashboard-v758.js'),pro=read('assets/yk-dashboard-pro-v784.js'),review=read('assets/yk-learning-v760.js'),jlpt=read('assets/yk-jlpt-learning-v782-dashboard.js');
@@ -153,4 +154,47 @@ check('FIX08 mobile Home only: visible arrival motion on fast load, true pending
   assert.match(css,/animation:yk08HomeArrival 850ms/);
   assert.match(css,/animation:yk08HomePending 1.15s linear infinite/);
 });
+check('FIX09 exactly 13 Exam pages use verified role, pending state, retry, logout and fresh Admin navigation',()=>{
+  const pages=readdirSync('dist',{recursive:true}).filter(p=>p.endsWith('.html')).map(p=>p.replaceAll('\\','/'));
+  let n=0;
+  for(const p of pages){
+    const html=read('dist/'+p),expected=p==='mock-exams.html'||p.startsWith('exams/');
+    assert.equal(html.split('async function yk09VerifiedAccount(user)').length-1,expected?1:0,p);
+    if(!expected)continue;
+    n++;
+    const account=html.slice(html.indexOf("  if(mode==='account'){"),html.indexOf('function fmtDateV739'));
+    assert(account.includes("await yk09VerifiedAccount(user)"));
+    assert(account.includes("verified.roles.includes('admin')"));
+    assert(account.includes("()=>verify(true)"));
+    assert(account.includes("yk09AccountRetry"));
+    assert(account.includes("sequence++"));
+    assert(account.includes("sequence!==seq"));
+    assert(!account.includes('user.roles'));
+    assert(html.includes("async function adminDashboard(){const user=await currentUser();try{if(!(await yk09VerifiedAccount(user)).roles.includes('admin'))"));
+  }
+  assert.equal(n,13);
+});
+const roleHtml=read('dist/mock-exams.html');
+const verifier=roleHtml.slice(roleHtml.indexOf('async function yk09VerifiedAccount(user)'),roleHtml.indexOf('function yk09InvalidateAccountModal'));
+const initial={id:'fixture-1',email:'qa@example.invalid',roles:['admin']};
+let response,principal,requests;
+const roleCtx=vm.createContext({api:async(name,options)=>{requests.push([name,options.cache]);return response;},currentUser:async()=>principal});
+vm.runInContext(verifier,roleCtx);
+for(const [name,server,status,now,expected] of [
+  ['client Admin, server member',{authenticated:true,email:initial.email,roles:[]},200,initial,[]],
+  ['server Admin overrides client member',{authenticated:true,email:initial.email,roles:['admin']},200,{...initial,roles:[]},['admin']],
+  ['verified email normalization',{authenticated:true,email:'QA@EXAMPLE.INVALID',roles:['admin']},200,initial,['admin']],
+  ['HTTP failure',{authenticated:true,email:initial.email,roles:['admin']},503,initial,null],
+  ['not authenticated',{authenticated:false,email:initial.email,roles:['admin']},200,initial,null],
+  ['different server principal',{authenticated:true,email:'other@example.invalid',roles:['admin']},200,initial,null],
+  ['malformed roles',{authenticated:true,email:initial.email,roles:'admin'},200,initial,null],
+  ['account changed mid-request',{authenticated:true,email:initial.email,roles:['admin']},200,{...initial,id:'fixture-2'},null],
+  ['logout mid-request',{authenticated:true,email:initial.email,roles:['admin']},200,null,null],
+]){
+  requests=[];principal=now;response={res:{ok:status===200},data:server};roleCtx.user=initial;
+  if(expected===null)await assert.rejects(vm.runInContext('yk09VerifiedAccount(user)',roleCtx),/Role verification unavailable/);
+  else{const verified=await vm.runInContext('yk09VerifiedAccount(user)',roleCtx);assert.deepEqual(Array.from(verified.roles),expected);}
+  assert.deepEqual(requests,[['exam-status','no-store']]);
+  console.log('PASS v7912 FIX09 '+name);count++;
+}
 console.log('TOTAL v7.91.2 targeted: '+count+' PASS / 0 FAIL');

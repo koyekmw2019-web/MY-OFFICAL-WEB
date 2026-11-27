@@ -131,3 +131,6 @@ console.log(JSON.stringify({release:'v7.89.8',pages:count,
 
 // FIX07: presentation-only motion and real pending skeletons after all legacy patches.
 await import('./apply-v7912-loading-motion-fix07.mjs');
+
+// FIX09: verified Exam Account role display only, after the generated page patches.
+await import('./apply-v7912-account-role-fix09.mjs');
