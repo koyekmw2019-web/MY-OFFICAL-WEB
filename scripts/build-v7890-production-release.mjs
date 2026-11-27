@@ -134,3 +134,6 @@ await import('./apply-v7912-loading-motion-fix07.mjs');
 
 // FIX09: verified Exam Account role display only, after the generated page patches.
 await import('./apply-v7912-account-role-fix09.mjs');
+
+// FIX11: correct only the displayed free-attempt copy and one dictionary gloss.
+await import('./apply-v7912-copy-dictionary-fix11.mjs');

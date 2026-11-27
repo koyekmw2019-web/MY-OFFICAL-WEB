@@ -197,4 +197,54 @@ for(const [name,server,status,now,expected] of [
   assert.deepEqual(requests,[['exam-status','no-store']]);
   console.log('PASS v7912 FIX09 '+name);count++;
 }
+check('FIX11 guest free-attempt copy matches existing per-exam policy in MY, EN and JA on all 14 pages',()=>{
+  const key='Login / Register required · One free attempt per exam type.';
+  const my='အကောင့်ဝင်ရန် / စာရင်းသွင်းရန် လိုအပ်ပါတယ် · စာမေးပွဲအမျိုးအစားတစ်ခုစီအတွက် အခမဲ့ 1 ကြိမ် ဖြေဆိုနိုင်ပါတယ်။';
+  const ja='ログイン / 登録が必要です。試験の種類ごとに初回1回無料で受験できます。';
+  const pages=readdirSync('dist',{recursive:true}).filter(p=>p.endsWith('.html')).map(p=>p.replaceAll('\\','/'));
+  let total=0;
+  for(const page of pages){
+    const html=read('dist/'+page);
+    assert(!html.includes('အကောင့်တစ်ခုလျှင် အခမဲ့စာမေးပွဲ စုစုပေါင်း 1 ကြိမ် ရရှိပါတယ်။'),page);
+    assert(!html.includes('1アカウントにつき無料試験は合計1回利用できます。'),page);
+    if(page!=='index.html'&&page!=='mock-exams.html'&&!page.startsWith('exams/'))continue;
+    const start=html.indexOf('const V737_TEXT = {'),end=html.indexOf('const V737_ORIGINAL_ATTR',start);
+    assert(start>=0&&end>start,page);
+    const context=vm.createContext({key});vm.runInContext(html.slice(start,end),context);
+    assert.equal(vm.runInContext('V737_TEXT.my[key]',context),my,page);
+    assert.equal(vm.runInContext('V737_TEXT.ja[key]',context),ja,page);
+    if(page!=='index.html'){
+      assert(html.includes("x:'"+key+"'"),page);
+      assert(html.includes('Login is required so your one free attempt per exam type and paid/student access can be securely tracked.'),page);
+      assert(!html.includes('Login is required so your one free exam and paid/student access can be securely tracked.'),page);
+    }
+    total++;
+  }
+  assert.equal(total,14);
+  // No changes to the actual server-side quota or uniqueness constraint.
+  assert(read('netlify/functions/exam-status.mts').includes('freeAttemptLimitPerExamType: 1'));
+  assert(read('netlify/database/migrations/20261101150000_v763_free_per_exam_type.sql').includes('ON exam_attempts(user_id,exam_type)'));
+});
+check('FIX11 preserves every dictionary base record and ID except the approved one-word Myanmar gloss',()=>{
+  const terms=s=>JSON.parse(s.match(/const terms = (\[[^\n]*\]);/)[1]);
+  const original=terms(read('index.html'));
+  const corrected=terms(read('dist/assets/yk-dictionary-runtime-v7863.js'));
+  const matches=original.filter(t=>t.jp==='フットブレーキ'&&t.reading===''&&t.mm==='ခြေးဘရိတ်'&&t.sources?.includes('TRUCK CH1'));
+  assert.equal(matches.length,1);
+  const expected=original.map(t=>t===matches[0]?{...t,mm:'ခြေနင်းဘရိတ်'}:t);
+  assert.deepEqual(corrected,expected);
+  assert(read('dist/index.html').includes('yk-dictionary-runtime-v7863.js?v=7863-v7911-fix11'));
+});
+check('FIX11 real generated dictionary runtime renders the corrected gloss with actual merged data',()=>{
+  const ids=['dictionarySearch','dictionaryResults','dictionaryEmpty','dictionaryToolsV7','dictFavMode','dictRecentV7','dictCountV7','dictionaryLoadMore','dictionaryReportModal','dictionaryReportForm','dictReportStatus','dictReportSend','dictReportWord','dictReportCurrent','dictReportCancel'];
+  const elems=new Map(ids.map(id=>[id,{value:'',innerHTML:'',textContent:'',hidden:false,disabled:false,dataset:{},style:{},classList:{toggle(){}},addEventListener(){},querySelectorAll(){return []}}]));
+  const window={location:{hash:'#driving-dictionary',search:'?yk_dictionary_q='+encodeURIComponent('フットブレーキ')}};
+  const context=vm.createContext({window,document:{getElementById:id=>elems.get(id)||null,querySelectorAll:()=>[]},localStorage:{getItem:()=>null,setItem(){}},fetch:async()=>({ok:true,json:async()=>({overrides:[]})}),URLSearchParams,console,setTimeout(){},clearTimeout(){},navigator:{},SpeechSynthesisUtterance:function(){}});
+  for(const file of ['yk-dictionary-v778-complete-draft.js','yk-dictionary-v783-overlay.js','yk-dictionary-runtime-v7863.js'])vm.runInContext(read('dist/assets/'+file),context);
+  assert.equal(elems.get('dictionarySearch').value,'フットブレーキ');
+  const result=elems.get('dictionaryResults').innerHTML;
+  assert(result.includes('フットブレーキ'));
+  assert(result.includes('ခြေနင်းဘရိတ်'));
+  assert(!result.includes('ခြေးဘရိတ်'));
+});
 console.log('TOTAL v7.91.2 targeted: '+count+' PASS / 0 FAIL');
