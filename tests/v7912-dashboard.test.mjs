@@ -80,4 +80,25 @@ check('FIX04 compact footer preserves logout ID, home logo and single account ac
   }
   assert.equal(read('dist/assets/yk-dashboard-footer-fix04.css'),read('qa/menu-slidein-pr7/yk-dashboard-footer-fix04.css'));
 });
+check('FIX05 all detached menu templates have exactly one in-header opener, with no fallback row',()=>{
+  const kinds={auth:1,video:1,reports:1,study:16,jlpt:2,n2:1};
+  const counts={};
+  const htmlFiles=readdirSync('dist',{recursive:true}).filter(f=>f.endsWith('.html'));
+  assert.equal(htmlFiles.length,41);
+  for(const f of htmlFiles){
+    const html=read('dist/'+f);
+    assert.equal((html.match(/id="(?:menuToggle|ykDrawerOpen)"/g)||[]).length,1,f);
+    assert(!/<body\b[^>]*>\s*<button[^>]*id="ykDrawerOpen"/.test(html),f);
+    const header=html.match(/<header data-yk-header-fix05="([^"]+)"[^>]*>[\s\S]*?<\/header>/);
+    if(header){
+      counts[header[1]]=(counts[header[1]]||0)+1;
+      assert(header[0].includes('id="ykDrawerOpen" aria-controls="siteMenu" aria-expanded="false" aria-label="Menu"'),f);
+      assert(header[0].includes('<svg viewBox="0 0 24 24"'),f);
+      assert(html.includes('yk-global-header-fix05.css?v=7912-fix05'),f);
+      assert(!html.includes('yk-dashboard-header-fix03.css'),f);
+    }else assert(!html.includes('yk-global-header-fix05.css'),f);
+  }
+  assert.deepEqual(counts,kinds);
+  assert.equal(read('dist/assets/yk-global-header-fix05.css'),read('qa/menu-slidein-pr7/yk-global-header-fix05.css'));
+});
 console.log('TOTAL v7.91.2 targeted: '+count+' PASS / 0 FAIL');
