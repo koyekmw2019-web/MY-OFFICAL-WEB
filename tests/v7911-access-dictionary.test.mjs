@@ -25,7 +25,7 @@ function fixture({user=null,status={},attempts=[],checkpoints={},width=390,block
   const window={matchMedia:()=>mq,YKIdentity:{getUser:async()=>state.user},scrollTo(){},addEventListener(k,f){winEvents[k]=f}};
   const location={pathname:'/',hash:'',assigned:null,assign(url){this.assigned=url;}};
   const fetch=async(path,init)=>{calls.push({path,method:init?.method||'GET',cache:init?.cache});if(state.delay)await state.delay;if(path.includes('exam-checkpoint?')&&state.checkpointOverride){const override=state.checkpointOverride(path);if(override)return override;}const bad=(path.endsWith('exam-status')&&state.blockStatus)||(path.endsWith('exam-my-activity')&&state.blockActivity);const value=path.endsWith('exam-status')?{authenticated:true,...state.status}:path.endsWith('exam-my-activity')?{attempts:state.attempts}:state.checkpoints[path.split('attemptId=')[1]];return{ok:!bad&&value!==undefined,status:bad?503:200,json:async()=>value};};
-  vm.runInNewContext(src,{window,document:doc,location,fetch,Intl,Date,URLSearchParams,MutationObserver:class{observe(){}},requestAnimationFrame:f=>f(),console});
+  vm.runInNewContext(src,{window,document:doc,location,fetch,Intl,Date,URLSearchParams,MutationObserver:class{observe(){}},requestAnimationFrame:f=>f(),setTimeout,clearTimeout,console});
   return {state,byId,cards,mq,winEvents,location,calls,body};
 }
 const student={id:'synthetic-student',user_metadata:{name:'QA Student'}}, paid={id:'synthetic-paid',user_metadata:{name:'QA Paid'}};
@@ -58,7 +58,7 @@ await run('Generated Exam: compact admin/student/paid, restore member/guest and 
  card.querySelector=q=>get(q);publicCard.querySelector=q=>get(q);compact.append=e=>e.parentElement=compact;actions.prepend=e=>e.parentElement=actions;account.parentElement=actions;
  let state={user:{id:'synthetic',roles:[]},status:{authenticated:true,roles:['admin']}};
  for(const id of ['#examStudentVerifyV728','#examPlansV728']){get(id).classList.add=()=>{};}
- const ctx=vm.createContext({$:get,window:{},document:{},cachedStatus:null,waitIdentity:async()=>({getUser:async()=>state.user}),api:async()=>({res:{ok:true},data:state.status}),v737Localize:()=>{},console});
+ const ctx=vm.createContext({$:get,window:{},document:{},cachedStatus:null,waitIdentity:async()=>({getUser:async()=>state.user}),api:async()=>({res:{ok:true},data:state.status}),v737Localize:()=>{},AbortController,setTimeout,clearTimeout,console});
  vm.runInContext(fragment,ctx);
  for(const [name,data,expected] of [['admin',{roles:['admin']},true],['student',{student:{class_name:'TAXI',expire_date:'2099-01-01'}},true],['paid',{paid:{expires_at:'2099-01-01'}},true],['member',{roles:[]},false],['pending',{pendingPayment:{}},false],['expired',{linkedStudent:{access_state:'expired'}},false]]){
   state.status={authenticated:true,...data};await vm.runInContext('syncStatus()',ctx);assert.equal(card.dataset.ykAccessState,name);assert.equal(publicCard.hidden,expected);assert.equal(studentCard.hidden,expected);assert.equal(compact.hidden,!expected);assert.equal(account.parentElement,expected?compact:actions);

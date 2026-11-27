@@ -31,7 +31,15 @@ for(const page of pages){
     html=insert(html,anchor,anchor.replace('</section>',panel+'</section>'));
   }
   if(page==='index.html'){
-    html=insert(html,'</head>', '<link rel="stylesheet" href="/assets/'+mobileHome+'?v=7912-fix08"></head>');
+    // FIX13: replace the old red arrival line with the same neutral three-row
+    // skeleton as Exam Center. The boot state ends on actual DOM readiness;
+    // the existing Mobile Home pending flag takes over only when applicable.
+    const homeBoot='<script id="yk7913-home-boot">(()=>{const root=document.documentElement;const home=()=>/^\\/(?:index(?:\\.html)?)?$/.test(location.pathname)&&(!location.hash||location.hash==="#home");if(!home())return;root.setAttribute("data-yk7913-home-boot","true");const done=()=>root.removeAttribute("data-yk7913-home-boot");document.addEventListener("DOMContentLoaded",done,{once:true});window.addEventListener("pageshow",done,{once:true});window.addEventListener("hashchange",()=>{if(!home())done()});setTimeout(done,12000)})();</script>';
+    const row='<div class="yk791-sk-row"><i class="yk791-sk-circle"></i><i class="yk791-sk-line"></i><i class="yk791-sk-end"></i></div>';
+    const homeSkeleton='<div id="yk7913HomeSkeleton" role="status" aria-live="polite"><span class="yk7913-sr" data-my="ပင်မစာမျက်နှာ ဖွင့်နေသည်…" data-en="Loading Home…" data-ja="ホームを読み込み中…">ပင်မစာမျက်နှာ ဖွင့်နေသည်…</span><div aria-hidden="true"><i class="yk791-sk-line yk791-sk-heading"></i>'+row.repeat(3)+'</div></div>';
+    html=insert(html,'</head>', '<link rel="stylesheet" href="/assets/'+mobileHome+'?v=7912-fix13">'+homeBoot+'</head>');
+    html=insert(html,'<main class="yk790-dashboard" id="yk790MobileHome"',homeSkeleton+'<main class="yk790-dashboard" id="yk790MobileHome"');
+    html=insert(html,'yk-v7900-mobile-home.js?v=7901qa-ui7911','yk-v7900-mobile-home.js?v=7901qa-ui7911-fix13');
     // This loader already owns the three-asset lazy Promise and its retry.
     // Reflect its actual pending state; no new fetch, delay or search behavior.
     html=insert(html,"if(status)status.innerHTML='<p class=\"dictionary-empty\" role=\"status\">Loading dictionary…", "if(status)status.setAttribute('aria-busy','true');\n  if(status)status.innerHTML='<p class=\"dictionary-empty\" role=\"status\">Loading dictionary…");

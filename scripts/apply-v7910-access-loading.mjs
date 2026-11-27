@@ -39,14 +39,21 @@ async function syncStatus(){
     setAccessButtonsV739(data,user,s.state);
     yk791PresentAccess(s.state);v737Localize(document);
   };
+  let timer;
+  const controller=new AbortController();
   try{
     // Distinguish an unavailable identity client from a confirmed guest.
-    const user=await (await waitIdentity()).getUser();
+    // Bound the read-only check; a late request cannot render stale access.
+    const check=async()=>{
+      const user=await (await waitIdentity()).getUser();
+      if(!user)return {user:null,data:null};
+      const {res,data}=await api('exam-status',{signal:controller.signal});
+      if(!res.ok||!data||data.authenticated!==true)throw new Error('Status unavailable');
+      return {user,data};
+    };
+    const timeout=new Promise((_,reject)=>{timer=setTimeout(()=>{controller.abort();reject(new Error('Status timeout'));},12000);});
+    const {user,data}=await Promise.race([check(),timeout]);
     if(seq!==yk791AccessSeq)return;
-    if(!user){render(statusText(null,null),null,null);return;}
-    const {res,data}=await api('exam-status');
-    if(seq!==yk791AccessSeq)return;
-    if(!res.ok||!data||data.authenticated!==true)throw new Error('Status unavailable');
     render(statusText(data,user),data,user);
   }catch{
     if(seq!==yk791AccessSeq)return;
@@ -56,7 +63,7 @@ async function syncStatus(){
     if(x)x.textContent='Could not load exam access status. Please retry.';
     if(icon)icon.textContent='⚠️';
     yk791PresentAccess('error');v737Localize(document);
-  }
+  }finally{clearTimeout(timer);}
 }
 `;
 const styleLink='<link rel="stylesheet" href="/assets/yk-v7910-access-loading.css?v=7911ui">';

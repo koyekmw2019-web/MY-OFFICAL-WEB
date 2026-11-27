@@ -25,8 +25,8 @@ for(const page of pages){
     assert(!text.includes(oldMy)&&!text.includes(oldJa),'Unexpected free-quota copy on '+page);
     continue;
   }
-  // The Exam Center received the Burmese correction in v7.91.1; preserve it.
-  if(page==='mock-exams.html'){
+  // FIX13 uses the existing Exam Center loading patch on all 13 legacy Exam routes.
+  if(page==='mock-exams.html'||page.startsWith('exams/')){
     assert(!text.includes(oldMy)&&text.includes(newMy),'Prior Exam Center fix missing');
   }else text=replaceOnce(text,oldMy,newMy,page+' Burmese guest copy');
   text=replaceOnce(text,oldJa,newJa,page+' Japanese guest copy');

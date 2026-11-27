@@ -141,18 +141,36 @@ check('FIX07 motion only in 27 safe browsing routes, real pending UI in 7 routes
   assert.equal(css,read('assets/yk-v7912-fix07-page-motion.css'));
   assert.equal(sk,read('assets/yk-v7912-fix07-loading.css'));
 });
-check('FIX08 mobile Home only: visible arrival motion on fast load, true pending indicator, reduced-motion guard',()=>{
-  const filename='yk-v7912-fix08-mobile-home.css',link=filename+'?v=7912-fix08';
+check('FIX13 Home uses actual pending skeleton on PC and mobile; no forced entrance line',()=>{
+  const filename='yk-v7912-fix08-mobile-home.css',link=filename+'?v=7912-fix13';
   const pages=readdirSync('dist',{recursive:true}).filter(p=>p.endsWith('.html'));
   for(const page of pages)assert.equal(read('dist/'+page).split(link).length-1,page==='index.html'?1:0,page);
-  const css=read('dist/assets/'+filename);
+  const home=read('dist/index.html'),css=read('dist/assets/'+filename);
   assert.equal(css,read('assets/'+filename));
-  assert.ok(css.includes('body.yk790-mobile-home #yk790MobileHome .yk790-welcome::before'));
-  assert.ok(css.includes('body.yk790-mobile-home #yk790MobileHome[data-yk-home-loading="true"] .yk790-welcome::after'));
-  assert.ok(css.includes('@media(max-width:720px) and (prefers-reduced-motion:no-preference)'));
+  assert.equal(home.split('id="yk7913HomeSkeleton"').length,2);
+  assert.match(home,/<div id="yk7913HomeSkeleton" role="status" aria-live="polite">/);
+  assert.match(home,/DOMContentLoaded",done,\{once:true\}/);
+  assert.ok(home.includes('yk-v7900-mobile-home.js?v=7901qa-ui7911-fix13'));
+  assert.ok(css.includes('html[data-yk7913-home-boot="true"]'));
+  assert.ok(css.includes('#yk790MobileHome[data-yk-home-loading="true"]'));
+  assert.ok(css.includes('prefers-reduced-motion:reduce'));
+  assert.doesNotMatch(css,/yk08HomeArrival|yk08HomePending|linear-gradient\(90deg|animation-delay/);
   assert.ok(css.includes('pointer-events:none'));
-  assert.match(css,/animation:yk08HomeArrival 850ms/);
-  assert.match(css,/animation:yk08HomePending 1.15s linear infinite/);
+  const source=read('dist/assets/yk-v7900-mobile-home.js');
+  assert.match(source,/watchdog=setTimeout/);assert.match(source,/clearTimeout\(watchdog\)/);
+});
+check('FIX13 all 13 legacy Exam pages have identical real pending skeleton and fail-closed access display',()=>{
+  const pages=readdirSync('dist',{recursive:true}).filter(p=>p==='mock-exams.html'||p.startsWith('exams/')&&p.endsWith('.html'));
+  assert.equal(pages.length,13);
+  for(const p of pages){
+    const html=read('dist/'+p);
+    assert.equal(html.split('yk791-exam-skeleton').length,2,p);
+    assert.match(html,/data-yk-access-state="loading" aria-busy="true"/,p);
+    assert.match(html,/yk791PresentAccess\('loading'\)/,p);
+    assert.match(html,/yk791PresentAccess\('error'\)/,p);
+    assert.match(html,/const roles=s\?\.authenticated===true/,p);
+    assert.equal(html.split('id="yk791AccessRetry"').length,2,p);
+  }
 });
 check('FIX09 exactly 13 Exam pages use verified role, pending state, retry, logout and fresh Admin navigation',()=>{
   const pages=readdirSync('dist',{recursive:true}).filter(p=>p.endsWith('.html')).map(p=>p.replaceAll('\\','/'));
