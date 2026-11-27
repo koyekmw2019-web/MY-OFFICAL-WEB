@@ -61,7 +61,7 @@ for(const file of pages){
    html=html.replace('</body>',backdrop+drawer+'</body>');
  }
  // All new UI is presentation-only. Existing Identity remains the source of truth.
- const style='<link rel="stylesheet" href="/assets/ykoc-pr7-menu-drawer.css?v=pr7menu1">';
+ const style='<link rel="stylesheet" href="/assets/ykoc-pr7-menu-drawer.css?v=7912-fix12">';
  html=html.replace('</head>',style+'</head>');
  if(!html.includes('id="menuToggle"')) {
    // Dashboard pages already have their own sticky header. Keep the existing
