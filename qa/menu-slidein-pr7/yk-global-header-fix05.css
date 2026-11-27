@@ -24,7 +24,7 @@ html[data-yk-ui-theme="light"] [data-yk-header-fix05] :is(#ykDrawerOpen,.yk-ui-t
 [data-yk-header-fix05] :is(.yk-auth-header-actions,.vc-top-actions){
   display:flex;align-items:center;flex:0 0 auto;gap:8px;margin-left:auto;
 }
-[data-yk-header-fix05] :is(.yk-ui-lang-trigger,#vcLanguage,.vc-account){
+[data-yk-header-fix05] :is(.yk-ui-lang-trigger,#vcLanguage){
   box-sizing:border-box;height:48px;min-height:48px;white-space:nowrap;
 }
 [data-yk-header-fix05] #ykDrawerOpen{order:5;}
@@ -66,7 +66,7 @@ body.yk873-auth [data-yk-header-fix05="auth"]{flex-wrap:nowrap;gap:10px;}
   }
   [data-yk-header-fix05] #ykDrawerOpen > span{display:none;}
   [data-yk-header-fix05] :is(.yk-auth-header-actions,.vc-top-actions){gap:6px;}
-  [data-yk-header-fix05] :is(.yk-ui-lang-trigger,#vcLanguage,.vc-account){
+  [data-yk-header-fix05] :is(.yk-ui-lang-trigger,#vcLanguage){
     height:44px;min-height:44px;font-size:12px;padding:0 8px;
   }
   body.yk873-auth [data-yk-header-fix05="auth"]{gap:7px;padding:9px 12px;}
@@ -92,20 +92,18 @@ body.yk873-auth [data-yk-header-fix05="auth"]{flex-wrap:nowrap;gap:10px;}
   [data-yk-header-fix05="n2"] .ykn2-header-inner > nav a{font-size:11px;padding:6px 8px;}
 }
 @media(max-width:480px){
-  /* Existing Drawer and bottom Account navigation expose sign-in without a
-     second header account button on the smallest phones. */
-  [data-yk-header-fix05="video"] .vc-account{display:none;}
   [data-yk-header-fix05="auth"] .yk-auth-brand-symbol{width:34px;height:34px;}
   body.yk873-auth [data-yk-header-fix05="auth"] .yk-auth-brand strong{font-size:10px;}
 }
 /* Some JLPT pages intentionally hide redundant top links. Keep the menu at
    the right edge of the existing content-width shell in that state, too. */
 [data-yk-header-fix05="jlpt"] #ykDrawerOpen{margin-left:auto;}
-/* The native select and account CTA must not inherit dark text on a dark
+/* The native select must not inherit dark text on a dark
    control background when the otherwise light header theme is active. */
 html[data-yk-ui-theme="light"] [data-yk-header-fix05="video"] #vcLanguage{
   background:#fff;color:#252630;border-color:#d5d7dd;color-scheme:light;
 }
-html[data-yk-ui-theme="light"] [data-yk-header-fix05="video"] .vc-account{
-  color:#fff;
-}
+/* FIX06: The existing menu contains Guest Login/Create account and Member
+   Dashboard/Logout; keep the legacy account hook for its existing session
+   script but do not present a redundant control at any viewport. */
+[data-yk-header-fix05="video"] #vcAccountLink{display:none;}

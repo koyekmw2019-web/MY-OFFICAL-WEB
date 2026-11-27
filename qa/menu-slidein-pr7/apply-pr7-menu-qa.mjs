@@ -122,7 +122,7 @@ for(const file of pages){
      assert((h.match(/id="ykDrawerOpen"/g)||[]).length===1,'FIX05 opener not integrated: '+file);
      h=h.replace(/^<header\b/, '<header data-yk-header-fix05="'+kind+'"');
      html=html.replace(header[0],h);
-     html=html.replace('</head>','<link rel="stylesheet" href="/assets/yk-global-header-fix05.css?v=7912-fix05"></head>');
+     html=html.replace('</head>','<link rel="stylesheet" href="/assets/yk-global-header-fix05.css?v=7912-'+(kind==='video'?'fix06':'fix05')+'"></head>');
    }
  }
  if(!file.endsWith('mock-second-license-qa.html') && !/<script[^>]+src=["'][^"']*identity\.bundle\.js(?:[?#][^"']*)?["']/i.test(html)){

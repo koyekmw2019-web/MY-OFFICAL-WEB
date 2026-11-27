@@ -94,11 +94,21 @@ check('FIX05 all detached menu templates have exactly one in-header opener, with
       counts[header[1]]=(counts[header[1]]||0)+1;
       assert(header[0].includes('id="ykDrawerOpen" aria-controls="siteMenu" aria-expanded="false" aria-label="Menu"'),f);
       assert(header[0].includes('<svg viewBox="0 0 24 24"'),f);
-      assert(html.includes('yk-global-header-fix05.css?v=7912-fix05'),f);
+      assert(html.includes('yk-global-header-fix05.css?v=7912-'+(header[1]==='video'?'fix06':'fix05')),f);
       assert(!html.includes('yk-dashboard-header-fix03.css'),f);
     }else assert(!html.includes('yk-global-header-fix05.css'),f);
   }
   assert.deepEqual(counts,kinds);
   assert.equal(read('dist/assets/yk-global-header-fix05.css'),read('qa/menu-slidein-pr7/yk-global-header-fix05.css'));
+});
+check('FIX06 only Video header hides the redundant account CTA; drawer and original login/account routes stay intact',()=>{
+  const html=read('dist/video-class.html'), css=read('dist/assets/yk-global-header-fix05.css');
+  assert.match(css,/\[data-yk-header-fix05="video"\] #vcAccountLink\{display:none;\}/);
+  assert.equal((html.match(/id="vcAccountLink"/g)||[]).length,1);
+  assert(html.includes('data-drawer-label="login" href="/login.html?return=%2F%23home"'));
+  assert(html.includes('data-drawer-label="create" href="/login.html?return=%2F%23home"'));
+  assert(html.includes('aria-label="Open dashboard" href="/dashboard.html"'));
+  assert(html.includes('id="moreLogout"'));
+  assert(html.includes('data-tab="account" href="/dashboard.html"'));
 });
 console.log('TOTAL v7.91.2 targeted: '+count+' PASS / 0 FAIL');
