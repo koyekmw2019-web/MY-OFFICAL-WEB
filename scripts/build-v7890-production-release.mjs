@@ -128,3 +128,6 @@ console.log(JSON.stringify({release:'v7.89.8',pages:count,
  menu:'V2.1 + approved final polish',ordinary_second:'server-backed',
  bank_publication:'questions only — answers removed from dist',
  existing_site_backend:'preserved',output:'dist'}));
+
+// FIX07: presentation-only motion and real pending skeletons after all legacy patches.
+await import('./apply-v7912-loading-motion-fix07.mjs');

@@ -1,0 +1,52 @@
+/* FIX07: skeletons only during real request/submit states. No timing or
+   authorization logic; do not hide real data, retry errors or controls. */
+:root{--yk07-base:#29292f;--yk07-glow:#41414b;--yk07-border:#36363d;--yk07-surface:#151518;}
+html[data-yk-ui-theme="light"]{--yk07-base:#dbe0e6;--yk07-glow:#f5f6f8;--yk07-border:#d8dce3;--yk07-surface:#fdfdfe;}
+@keyframes yk07Shimmer{from{background-position:120% 0}to{background-position:-120% 0}}
+.yk07-skeleton{display:none;box-sizing:border-box;gap:12px;width:100%;margin:16px 0;pointer-events:none;}
+#dashMessage:not([hidden]):not(.error) + #dashboardBody > .yk07-skeleton{display:grid;}
+.yk07-sk-panel{display:grid;gap:13px;border:1px solid var(--yk07-border);border-radius:18px;padding:20px;background:var(--yk07-surface);}
+.yk07-sk-heading{width:40%;height:13px;}
+.yk07-sk-line{width:64%;height:12px;}
+.yk07-sk-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+.yk07-sk-tile{height:72px;border-radius:12px;}
+.yk07-skeleton :is(.yk07-sk-heading,.yk07-sk-line,.yk07-sk-tile),
+body[data-dashboard] :is(#yk84AdminBody,#yk84StudentBody)[aria-busy="true"]::after,
+#dictionaryResults[aria-busy="true"] > .dictionary-empty[role="status"]::after{
+  display:block;border-radius:8px;background:linear-gradient(105deg,var(--yk07-base) 20%,var(--yk07-glow) 50%,var(--yk07-base) 80%);
+  background-size:250% 100%;animation:yk07Shimmer 1.55s ease-in-out infinite;
+}
+body[data-dashboard] :is(#yk84AdminBody,#yk84StudentBody)[aria-busy="true"]::after,
+#dictionaryResults[aria-busy="true"] > .dictionary-empty[role="status"]::after{
+  content:"";height:44px;margin-top:12px;width:min(100%,440px);
+}
+/* The legacy empty-state class is display:none by default. Show only the
+   lazy loader's real status/error (not the ordinary no-results element). */
+#dictionaryResults[aria-busy="true"] > .dictionary-empty[role="status"],
+#dictionaryResults > .dictionary-empty[role="status"]:has(> #yk863RetryDictionary){display:block;}
+/* The login script already disables only the submit button while its Promise
+   is pending; preserve the existing button label and accessible status. */
+body.yk873-auth .auth-submit:disabled{position:relative;overflow:hidden;cursor:wait;}
+body.yk873-auth .auth-submit:disabled::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+  background:linear-gradient(90deg,transparent,#e5485a,transparent);
+  background-size:200% 100%;animation:yk07Shimmer 1.2s linear infinite;pointer-events:none;
+}
+@media(max-width:720px){
+  .yk07-sk-panel{padding:15px;gap:11px;}
+  .yk07-sk-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
+  .yk07-sk-tile{height:58px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .yk07-skeleton :is(.yk07-sk-heading,.yk07-sk-line,.yk07-sk-tile),
+  body[data-dashboard] :is(#yk84AdminBody,#yk84StudentBody)[aria-busy="true"]::after,
+  #dictionaryResults[aria-busy="true"] > .dictionary-empty[role="status"]::after,
+  body.yk873-auth .auth-submit:disabled::after{animation:none!important;}
+  /* Exact selectors also fix the earlier Mobile Home specificity gap. */
+  #yk790MobileHome[data-yk-home-loading="true"] .yk790-pill,
+  #yk790MobileHome[data-yk-home-loading="true"] #yk790Membership::before,
+  #yk790MobileHome[data-yk-home-loading="true"] #yk790Membership::after,
+  #yk790MobileHome[data-yk-home-loading="true"] #yk790Feature::before,
+  #yk790MobileHome[data-yk-home-loading="true"] #yk790Feature::after,
+  #yk790MobileHome[data-yk-home-loading="true"] .yk790-score::after{animation:none!important;}
+}

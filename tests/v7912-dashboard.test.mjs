@@ -111,4 +111,33 @@ check('FIX06 only Video header hides the redundant account CTA; drawer and origi
   assert(html.includes('id="moreLogout"'));
   assert(html.includes('data-tab="account" href="/dashboard.html"'));
 });
+check('FIX07 motion only in 27 safe browsing routes, real pending UI in 7 routes; sensitive exam/auth navigation unchanged',()=>{
+  const motion='yk-v7912-fix07-page-motion.css?v=7912-fix07',loading='yk-v7912-fix07-loading.css?v=7912-fix07';
+  const pages=readdirSync('dist',{recursive:true}).filter(p=>p.endsWith('.html')).map(p=>p.replaceAll('\\','/'));
+  const dashboards=['dashboard.html','admin-dashboard.html','student-dashboard.html','member-dashboard.html'];
+  let m=0,l=0;
+  for(const p of pages){
+    const html=read('dist/'+p),sensitive=p==='login.html'||p==='mock-second-license.html'||p.startsWith('exams/');
+    assert.equal(html.split(motion).length-1,sensitive?0:1,p);
+    assert.equal(html.split('id="yk07-motion-entry"').length-1,sensitive?0:1,p);
+    assert.equal(html.split(loading).length-1,[...dashboards,'index.html','mock-exams.html','login.html'].includes(p)?1:0,p);
+    if(!sensitive)m++;
+    if(html.includes(loading))l++;
+    if(dashboards.includes(p))assert.match(html,/<section id="dashboardBody" aria-label="Dashboard content"><div class="yk07-skeleton" aria-hidden="true">/,p);
+  }
+  assert.equal(m,27);assert.equal(l,7);assert.equal(pages.length,41);
+  const css=read('dist/assets/yk-v7912-fix07-page-motion.css'), sk=read('dist/assets/yk-v7912-fix07-loading.css');
+  assert.match(css,/@media\(prefers-reduced-motion:no-preference\)/);
+  assert.match(css,/@view-transition\{navigation:auto;\}/);
+  assert.doesNotMatch(css,/translate[XY]|scale[XY]|animation-delay/);
+  assert.match(sk,/#dashMessage:not\(\[hidden\]\):not\(\.error\)/);
+  assert.match(sk,/\[aria-busy="true"\]/);
+  assert.match(sk,/@media\(prefers-reduced-motion:reduce\)/);
+  assert.ok(sk.includes('#dictionaryResults > .dictionary-empty[role="status"]:has(> #yk863RetryDictionary){display:block;}'));
+  const home=read('dist/index.html');
+  assert.match(home,/status\.setAttribute\('aria-busy','true'\)/);
+  assert.match(home,/\.finally\(\(\)=>status\?\.removeAttribute\('aria-busy'\)\)/);
+  assert.equal(css,read('assets/yk-v7912-fix07-page-motion.css'));
+  assert.equal(sk,read('assets/yk-v7912-fix07-loading.css'));
+});
 console.log('TOTAL v7.91.2 targeted: '+count+' PASS / 0 FAIL');
