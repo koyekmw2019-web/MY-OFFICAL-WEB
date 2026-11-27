@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {readFileSync,existsSync} from 'node:fs';
+import {readFileSync,existsSync,readdirSync} from 'node:fs';
 const read=(p)=>readFileSync(p,'utf8');
 let count=0;function check(name,fn){fn();console.log('PASS v7912 '+name);count++;}
 const main=read('assets/yk-dashboard-v758.js'),pro=read('assets/yk-dashboard-pro-v784.js'),review=read('assets/yk-learning-v760.js'),jlpt=read('assets/yk-jlpt-learning-v782-dashboard.js');
@@ -47,5 +47,37 @@ check('Generated public dashboard pages and cache-busted UI assets',()=>{
   }
   for(const f of ['yk-dashboard-v7912.css','yk-dashboard-v758.js','yk-dashboard-pro-v784.js','yk-learning-v760.js'])assert(existsSync('dist/assets/'+f),f);
   assert.match(read('service-worker.js'),/v7912-dashboard/);
+});
+check('FIX03 header opener is unique, inside the existing dashboard header, and scoped to the four routes',()=>{
+  const files=['dashboard.html','admin-dashboard.html','student-dashboard.html','member-dashboard.html'];
+  for(const f of files){
+    const html=read('dist/'+f),header=html.match(/<header class="topbar">[\s\S]*?<\/header>/)?.[0];
+    assert.equal((html.match(/id="ykDrawerOpen"/g)||[]).length,1,f);
+    assert(header?.includes('id="ykDrawerOpen" aria-controls="siteMenu" aria-expanded="false" aria-label="Menu"'),f);
+    assert(header.indexOf('id="ykDashboardLangPicker"')<header.indexOf('id="ykDrawerOpen"'),f);
+    assert(html.includes('yk-dashboard-header-fix03.css?v=7912-fix03'),f);
+  }
+  for(const f of readdirSync('dist',{recursive:true}).filter(f=>f.endsWith('.html')&&!files.includes(f))){
+    assert(!read('dist/'+f).includes('yk-dashboard-header-fix03.css'),f);
+  }
+  assert.equal(read('dist/assets/yk-dashboard-header-fix03.css'),read('qa/menu-slidein-pr7/yk-dashboard-header-fix03.css'));
+});
+check('FIX04 compact footer preserves logout ID, home logo and single account action',()=>{
+  const files=['dashboard.html','admin-dashboard.html','student-dashboard.html','member-dashboard.html'];
+  for(const f of files){
+    const html=read('dist/'+f);
+    assert(!html.includes('<nav class="yk-dash-dock"'),f);
+    assert.match(html,/<footer class="yk-dashboard-footer">[\s\S]*?id="dashLogout"[\s\S]*?<\/footer>/);
+    assert.equal((html.match(/id="dashLogout"/g)||[]).length,1,f);
+    assert.match(html,/class="yk-brand-long-v778" href="\/#home"/);
+    assert(html.includes('yk-dashboard-footer-fix04.css?v=7912-fix04'),f);
+    assert(html.includes('yk-dashboard-v758.js?v=7912-fix04'),f);
+  }
+  assert.equal((main.match(/data-yk-dashboard-logout>Logout<\/button>/g)||[]).length,2);
+  assert.match(main,/closest\('\[data-yk-dashboard-logout\]'\)\)\{\$\('dashLogout'\)\?\.click\(\)/);
+  for(const f of readdirSync('dist',{recursive:true}).filter(f=>f.endsWith('.html')&&!files.includes(f))){
+    assert(!read('dist/'+f).includes('yk-dashboard-footer-fix04.css'),f);
+  }
+  assert.equal(read('dist/assets/yk-dashboard-footer-fix04.css'),read('qa/menu-slidein-pr7/yk-dashboard-footer-fix04.css'));
 });
 console.log('TOTAL v7.91.2 targeted: '+count+' PASS / 0 FAIL');

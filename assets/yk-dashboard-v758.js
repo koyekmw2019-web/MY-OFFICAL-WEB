@@ -29,7 +29,7 @@ function openSection(hash){if(!hash||hash.length>120)return;const target=$(hash.
  for(let el=target;el&&el!==root;el=el.parentElement){if(el.tagName==='DETAILS')el.open=true;}
 }
 root.addEventListener('toggle',e=>{const d=e.target;if(!d.matches?.('.yk7912-section')||d.open||d.hidden)return;d.hidden=true;const link=root.querySelector('.yk7912-tiles a[href="#'+d.id+'"]');link?.setAttribute('aria-current','false');},true);
-root.addEventListener('click',e=>{const link=e.target.closest('a[href^="#"]');if(link)openSection(link.getAttribute('href'));});
+root.addEventListener('click',e=>{if(e.target.closest('[data-yk-dashboard-logout]')){$('dashLogout')?.click();return;}const link=e.target.closest('a[href^="#"]');if(link)openSection(link.getAttribute('href'));});
 window.addEventListener('hashchange',()=>openSection(location.hash));
 window.addEventListener('pageshow',e=>{if(e.persisted)location.reload();});
 async function init(){
@@ -58,7 +58,7 @@ async function showAdmin(){
  section('yk7912Sync','YKCR Sync','<div id="yk7912SyncHost">Loading analytics…</div>')+
  section('yk7912Dictionary','Dictionary Reports','<p class="muted">Dictionary corrections and reporting are reviewed by administrators before any meaning is changed.</p><a class="btn primary" href="/dictionary-reports.html">⚑ Dictionary Translation Reports →</a>')+
  section('yk7912AdminAnnouncements','Announcements','<div id="yk7912AnnouncementHost"></div>')+
- section('yk7912AdminAccount','Account Settings',row('Email',me.email||user.email)+'<div class="actions"><a class="btn" href="/admin-dashboard.html?view=personal">My Dashboard</a><a class="btn" href="/login.html">Login / Password Recovery</a><a class="btn" href="/mock-exams.html">Exam Center</a></div>');
+ section('yk7912AdminAccount','Account Settings',row('Email',me.email||user.email)+'<div class="actions"><a class="btn" href="/admin-dashboard.html?view=personal">My Dashboard</a><a class="btn" href="/login.html">Login / Password Recovery</a><a class="btn" href="/mock-exams.html">Exam Center</a><button type="button" class="btn yk-dashboard-account-logout" data-yk-dashboard-logout>Logout</button></div>');
 
  $('paymentFilter').addEventListener('change',e=>{selectedFilter=e.target.value;paintPayments()});
  $('refreshPayments').addEventListener('click',loadPayments);
@@ -143,7 +143,7 @@ async function showMember(role){
  section('yk7912JLPT','JLPT Progress','<div id="yk7912JLPTProgress"></div>')+
  section('yk7912Announcements','Announcements','<div id="yk7912AnnouncementHost"></div>')+
  section('yk7912Payments','Payment History','<div id="myPayments" class="muted">Loading…</div>')+
- section('yk7912Account','Account Settings',account+(studentProfile?'<h3>My Student Profile</h3>'+studentProfile:'')+(verify?'<h3>Student Verification</h3>'+verify:'')+'<div class="actions">'+(admin?'<a class="btn primary" href="/admin-dashboard.html">Admin Dashboard</a>':'')+'<a class="btn" href="/login.html">Login / Password Recovery</a><a class="btn" href="/mock-exams.html">Exam Center</a></div>');
+ section('yk7912Account','Account Settings',account+(studentProfile?'<h3>My Student Profile</h3>'+studentProfile:'')+(verify?'<h3>Student Verification</h3>'+verify:'')+'<div class="actions">'+(admin?'<a class="btn primary" href="/admin-dashboard.html">Admin Dashboard</a>':'')+'<a class="btn" href="/login.html">Login / Password Recovery</a><a class="btn" href="/mock-exams.html">Exam Center</a><button type="button" class="btn yk-dashboard-account-logout" data-yk-dashboard-logout>Logout</button></div>');
  if(needVerify)$('studentForm').addEventListener('submit',verifyStudent);
  await showActivity();
 }
