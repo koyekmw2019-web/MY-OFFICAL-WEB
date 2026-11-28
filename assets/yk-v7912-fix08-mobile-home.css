@@ -1,0 +1,20 @@
+/* FIX13 — Home only. Real document/account pending state, same neutral
+   skeleton language as Exam Center. No forced display duration or red line. */
+#yk7913HomeSkeleton{display:none;box-sizing:border-box;width:100%;max-width:1160px;margin:0 auto;padding:24px 24px 40px;min-height:290px;pointer-events:none}
+#yk7913HomeSkeleton .yk791-sk-heading{width:clamp(64px,18%,140px);height:13px;margin:0 0 22px}
+#yk7913HomeSkeleton .yk791-sk-row{gap:12px;min-height:44px;margin:0 0 10px}
+#yk7913HomeSkeleton .yk791-sk-circle{width:30px;height:30px;flex-basis:30px}
+#yk7913HomeSkeleton .yk791-sk-row .yk791-sk-line{width:47%;max-width:350px;height:14px}
+#yk7913HomeSkeleton .yk791-sk-end{width:9px;height:15px}
+.yk7913-sr{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important}
+html[data-yk7913-home-boot="true"] body > #yk7913HomeSkeleton{display:block}
+html[data-yk7913-home-boot="true"] body > .wrap,
+html[data-yk7913-home-boot="true"] body > #yk790MobileHome{display:none!important}
+@media(max-width:720px){
+ #yk7913HomeSkeleton{padding:24px 16px 42px;min-height:275px}
+ body.yk790-mobile-home:has(#yk790MobileHome[data-yk-home-loading="true"]) > #yk7913HomeSkeleton{display:block}
+ body.yk790-mobile-home > #yk790MobileHome[data-yk-home-loading="true"]{display:none!important}
+}
+@media(prefers-reduced-motion:reduce){
+ #yk7913HomeSkeleton :is(.yk791-sk-line,.yk791-sk-circle,.yk791-sk-end){animation:none!important}
+}

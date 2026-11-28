@@ -1,0 +1,23 @@
+/* v7.91.2 — shared, compact role dashboard. No access-control behavior. */
+.yk7912-access,.yk7912-section,.yk7912-tiles{margin:16px 0}
+.yk7912-access{padding:clamp(18px,3vw,30px);background:var(--surface,#171719);border:1px solid var(--line,#36363b);border-left:4px solid #d60027;border-radius:20px;box-shadow:0 8px 24px #0001;overflow-wrap:anywhere}
+.yk7912-access h2{font-size:clamp(22px,4vw,32px);margin:4px 0}.yk7912-access p{margin:4px 0 14px}.yk7912-kicker{font-size:11px;font-weight:800;letter-spacing:.12em;color:#e93c55}
+.yk7912-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.yk7912-tiles a{display:flex;align-items:center;gap:10px;padding:14px;min-height:62px;background:var(--surface,#171719);border:1px solid var(--line,#36363b);border-radius:14px;min-width:0;transition:transform .15s,border-color .15s}
+.yk7912-tiles a b{flex:1;min-width:0;font-size:14px;overflow-wrap:anywhere}.yk7912-tiles a>span:first-child{font-size:21px}.yk7912-tiles a>span:last-child{font-size:22px;color:#ed425b}
+.yk7912-tiles a:hover,.yk7912-section>summary:hover{border-color:#d60027}.yk7912-tiles a:active{transform:scale(.98)}
+.yk7912-section{background:var(--surface,#171719);border:1px solid var(--line,#36363b);border-radius:16px;scroll-margin-top:84px;overflow:hidden}
+.yk7912-section>summary{padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:8px;font-weight:750;cursor:pointer;list-style:none}
+.yk7912-section>summary::-webkit-details-marker{display:none}.yk7912-section[open]>summary{border-bottom:1px solid var(--line,#36363b)}.yk7912-section[open]>summary>span:last-child{transform:rotate(180deg)}
+.yk7912-section-body{padding:16px;min-width:0}.yk7912-section-body .yk84-wrap{margin:0 0 12px;padding:16px}.yk7912-subsection{border-top:1px solid var(--line,#36363b);padding-top:12px}.yk7912-subsection>summary{cursor:pointer;font-weight:750}
+.yk7912-section-body .tablewrap{max-width:100%;overflow:auto}.yk7912-section-body .yk767-main-grid{display:block}.yk7912-section-body .yk767-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+.yk7912-section-body .yk760-review{max-height:480px;overflow:auto}.yk7912-section-body .profile-row{overflow-wrap:anywhere}
+@media(max-width:620px){.yk7912-tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.yk7912-tiles a{padding:10px;min-height:64px}.yk7912-tiles a b{font-size:12px}.yk7912-section-body{padding:10px}.yk7912-access{padding:16px}.yk7912-section-body .yk84-wrap{padding:10px}.yk7912-section>summary{padding:14px}.yk7912-tiles a>span:first-child{font-size:18px}}
+@media(prefers-reduced-motion:reduce){.yk7912-tiles a{transition:none}}
+.yk7912-section[hidden]{display:none!important}
+.yk7912-tiles a[aria-current="true"]{border-color:#d60027;box-shadow:0 0 0 1px #d600272b}
+.yk7912-profile-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0}
+.yk7912-profile-summary>div{border:1px solid var(--line,#36363b);border-radius:12px;padding:10px;min-width:0}
+.yk7912-profile-summary small,.yk7912-profile-summary strong{display:block;overflow-wrap:anywhere}.yk7912-profile-summary small{font-size:11px;color:var(--muted,#a0a0a6)}.yk7912-profile-summary strong{font-size:13px;margin-top:4px}
+#yk7912AdminChartHost .yk84-grid{margin-top:0}
+@media(max-width:400px){.yk7912-profile-summary>div{padding:8px}.yk7912-profile-summary small{font-size:10px}.yk7912-profile-summary strong{font-size:12px}}

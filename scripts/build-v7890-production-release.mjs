@@ -121,10 +121,23 @@ mobileHomeHtml=mobileHomeHtml.replace('</head>','<link rel="stylesheet" href="/a
 mobileHomeHtml=mobileHomeHtml.replace('</body>','<script defer src="/assets/yk-v7900-mobile-home.js?v=7901qa"></script></body>');
 // v7.91 UI-only follow-up: existing verified student state drives a compact card.
 copyFileSync(resolve('assets/yk-v7910-access-loading.css'),join(dist,'assets/yk-v7910-access-loading.css'));
-const examLoadingFile=join(dist,'mock-exams.html');
-writeFileSync(examLoadingFile,applyExamLoading(readFileSync(examLoadingFile,'utf8')),'utf8');
+// FIX13: the same real access-loading state on the center and every
+// dedicated legacy exam route (the actual exam engine/timer stays untouched).
+const examLoadingFiles=[join(dist,'mock-exams.html'),...walk(join(dist,'exams'))];
+assert.equal(examLoadingFiles.length,13);
+for(const examLoadingFile of examLoadingFiles)
+ writeFileSync(examLoadingFile,applyExamLoading(readFileSync(examLoadingFile,'utf8')),'utf8');
 writeFileSync(mobileHomeFile,applyHomeLoading(mobileHomeHtml),'utf8');
 console.log(JSON.stringify({release:'v7.89.8',pages:count,
  menu:'V2.1 + approved final polish',ordinary_second:'server-backed',
  bank_publication:'questions only — answers removed from dist',
  existing_site_backend:'preserved',output:'dist'}));
+
+// FIX07: presentation-only motion and real pending skeletons after all legacy patches.
+await import('./apply-v7912-loading-motion-fix07.mjs');
+
+// FIX09: verified Exam Account role display only, after the generated page patches.
+await import('./apply-v7912-account-role-fix09.mjs');
+
+// FIX11: correct only the displayed free-attempt copy and one dictionary gloss.
+await import('./apply-v7912-copy-dictionary-fix11.mjs');

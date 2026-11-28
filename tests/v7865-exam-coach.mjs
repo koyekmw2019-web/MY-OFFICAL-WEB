@@ -82,7 +82,7 @@ await test('Coach is dashboard only and lazy per selected exam',()=>{
  assert(s.includes('yk-exam-coach-v7865.js'));assert(!read('index.html').includes('yk-exam-coach-v7865.js'));
  assert(frontend.includes('data-yk863-type'));assert(frontend.includes('fetchCoach(exam.dataset.yk863Type)'));
  assert(frontend.includes('credentials:\'same-origin\''));assert(frontend.includes('cache:\'no-store\''));
- assert(frontend.includes("dataset.dashboard!=='student'"));assert(!frontend.includes('localStorage'));
+ assert(frontend.includes("dataset.dashboardView!=='personal'"));assert(read("member-dashboard.html").includes("yk-exam-coach-v7865.js"));assert(!frontend.includes('localStorage'));
 });
 await test('Migration only adds private coaching tables and no public IDs',()=>{
  const s=read('netlify/database/migrations/20261110190000_v7865_exam_coach.sql');

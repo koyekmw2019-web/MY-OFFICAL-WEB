@@ -53,20 +53,20 @@ check('backend is admin-only and read-only',()=>{
  assert.match(t,/score_verified=TRUE/);assert.match(t,/passed IS NOT NULL/);assert.match(t,/queueStatus:'unknown'/);
  assert.doesNotMatch(t,/SELECT\s+\*/i);
 });
-check('dashboard only modifies admin and student pages',()=>{
- for(const page of ['admin-dashboard.html','student-dashboard.html']){
+check('shared Pro modules on both dashboard views',()=>{
+ for(const page of ['admin-dashboard.html','student-dashboard.html','member-dashboard.html']){
   const t=fs.readFileSync(path.join(root,page),'utf8');
   assert.match(t,/yk-dashboard-pro-v784\.css/);assert.match(t,/yk-dashboard-pro-v784-engine\.js/);assert.match(t,/yk-dashboard-pro-v784\.js/);
   assert.match(t,/yk-dashboard-v758\.js/);
  }
- assert.doesNotMatch(fs.readFileSync(path.join(root,'member-dashboard.html'),'utf8'),/dashboard-pro-v784/);
+ assert.doesNotMatch(fs.readFileSync(path.join(root,'dashboard.html'),'utf8'),/dashboard-pro-v784/);
 });
 check('original character assets intact',()=>{
  for(const n of ['student-v7821.webp','teacher-v7821.webp'])assert.ok(fs.statSync(path.join(root,'assets/characters',n)).size>1000);
 });
 check('student recommendations account scoped and no attempt consumption',()=>{
  const t=fs.readFileSync(path.join(root,'assets/yk-dashboard-pro-v784.js'),'utf8');
- assert.match(t,/exam-my-activity/);assert.match(t,/yk-learning/);assert.match(t,/jlpt-learning-progress/);
+ assert.match(t,/exam-my-activity/);assert.match(t,/yk7912Review/);assert.match(fs.readFileSync(path.join(root,'assets/yk-learning-v760.js'),'utf8'),/yk-learning/);assert.match(t,/jlpt-learning-progress/);
  assert.doesNotMatch(t,/exam-attempt-submit|exam-access\?|exam-checkpoint/);
 });
 console.log(`v784 dashboard tests: ${tests} PASS`);

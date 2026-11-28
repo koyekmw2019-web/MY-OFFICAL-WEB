@@ -1,0 +1,55 @@
+/* v7.91.2 Dashboard Header FIX03. Scope: the four dashboard routes only.
+   The existing drawer, translation, theme persistence, nav and auth own behavior. */
+body[data-dashboard] .topbar .top-actions{
+  display:flex;align-items:center;flex:0 0 auto;gap:8px;
+}
+body[data-dashboard] .topbar #ykLanguageToggle{
+  box-sizing:border-box;min-height:48px;height:48px;padding:0 12px;
+  white-space:nowrap;
+}
+body[data-dashboard] .topbar .top-actions .yk-ui-theme-toggle,
+body[data-dashboard] .topbar .top-actions #ykDrawerOpen{
+  box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;
+  gap:7px;margin:0;padding:0 12px;min-height:48px;height:48px;
+  border:1px solid #454549;border-radius:13px;background:#232326;color:#f5f5f7;
+  font-size:13px;font-weight:700;line-height:1;white-space:nowrap;
+}
+body[data-dashboard] .topbar .top-actions .yk-ui-theme-toggle{
+  width:48px;min-width:48px;flex:0 0 48px;padding:0;
+}
+body[data-dashboard] .topbar .top-actions #ykDrawerOpen{
+  order:2;flex:0 0 auto;cursor:pointer;
+}
+body[data-dashboard] .topbar .top-actions :is(.yk-ui-theme-toggle,#ykDrawerOpen) svg{
+  width:20px;height:20px;min-width:20px;flex:0 0 20px;display:block;
+  stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;fill:none;
+}
+body[data-dashboard] .topbar .top-actions :is(.yk-ui-theme-toggle,#ykDrawerOpen):focus-visible{
+  outline:2px solid #e75b74;outline-offset:2px;
+}
+@media(hover:hover){
+  body[data-dashboard] .topbar .top-actions :is(.yk-ui-theme-toggle,#ykDrawerOpen):hover{
+    background:#343438;border-color:#73737c;
+  }
+}
+html[data-yk-ui-theme="light"] body[data-dashboard] .topbar .top-actions :is(.yk-ui-theme-toggle,#ykDrawerOpen){
+  background:#fff;color:#252630;border-color:#d5d7dd;
+}
+@media(max-width:720px){
+  body[data-dashboard] .topbar .top-inner{gap:8px;padding:9px 12px;}
+  body[data-dashboard] .topbar .top-dash-tag{display:none;}
+  body[data-dashboard] .topbar .yk-brand-long-v778{flex:0 1 auto;max-width:150px;min-width:0;}
+  body[data-dashboard] .topbar .yk-brand-long-v778 img{width:100%;max-width:150px;height:auto;}
+  body[data-dashboard] .topbar .top-actions{gap:6px;}
+  body[data-dashboard] .topbar #ykLanguageToggle{min-height:44px;height:44px;padding:0 8px;gap:4px;}
+  body[data-dashboard] .topbar #ykLanguageToggle > [data-i18n="language"],
+  body[data-dashboard] .topbar #ykLanguageToggle > .yk-globe-icon{display:none;}
+  body[data-dashboard] .topbar #ykLanguageToggle > .yk-current-language{
+    display:inline;border:0;padding:0;font-size:11px;color:inherit;
+  }
+  body[data-dashboard] .topbar #ykLanguageToggle > .yk-chevron{margin-left:0;}
+  body[data-dashboard] .topbar .top-actions :is(.yk-ui-theme-toggle,#ykDrawerOpen){
+    width:44px;height:44px;min-width:44px;min-height:44px;flex:0 0 44px;padding:0;
+  }
+  body[data-dashboard] .topbar #ykDrawerOpen > span{display:none;}
+}

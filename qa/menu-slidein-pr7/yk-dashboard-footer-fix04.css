@@ -1,0 +1,38 @@
+/* v7.91.2 FIX04: dashboard-only footer. Never overlay content or the mobile navigation.
+   Existing logout ID/handler and header home link are retained. */
+body[data-dashboard] .shell{padding-bottom:8px;}
+body[data-dashboard] .yk-dashboard-footer{
+  position:relative;max-width:1200px;margin:0 auto;padding:0 20px 10px;
+  color:#a5a5ad;
+}
+body[data-dashboard] .yk-dashboard-footer-inner{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  border-top:1px solid rgba(255,255,255,.10);padding:6px 0;
+}
+body[data-dashboard] .yk-dashboard-footer small{
+  font-size:10px;font-weight:650;letter-spacing:.08em;line-height:1.4;
+}
+body[data-dashboard] .yk-dashboard-footer #dashLogout{
+  appearance:none;display:inline-flex;align-items:center;justify-content:center;
+  gap:6px;min-height:44px;padding:0 8px;border:1px solid transparent;border-radius:10px;
+  background:transparent;color:#f18b9c;line-height:1.2;
+  font-family:inherit;font-size:12px;font-weight:700;white-space:nowrap;cursor:pointer;
+}
+body[data-dashboard] .yk-dashboard-footer #dashLogout svg{width:17px;height:17px;flex:none;}
+body[data-dashboard] .yk-dashboard-footer #dashLogout:focus-visible,
+body[data-dashboard] .yk-dashboard-account-logout:focus-visible{outline:2px solid #e75b74;outline-offset:2px;}
+body[data-dashboard] .yk-dashboard-account-logout{color:#f18b9c;border-color:#79404a;min-height:44px;}
+@media(hover:hover){
+  body[data-dashboard] .yk-dashboard-footer #dashLogout:hover{
+    border-color:#79404a;background:#2b1b22;
+  }
+}
+html[data-yk-ui-theme="light"] body[data-dashboard] .yk-dashboard-footer{color:#646672;}
+html[data-yk-ui-theme="light"] body[data-dashboard] .yk-dashboard-footer-inner{border-top-color:#dfe0e5;}
+html[data-yk-ui-theme="light"] body[data-dashboard] :is(.yk-dashboard-footer #dashLogout,.yk-dashboard-account-logout){color:#a82940;}
+html[data-yk-ui-theme="light"] body[data-dashboard] .yk-dashboard-footer #dashLogout:hover{background:#fff0f2;}
+@media(max-width:720px){
+  body[data-dashboard] .yk-dashboard-footer{padding:0 12px 4px;}
+  body[data-dashboard] .yk-dashboard-footer small{font-size:9px;letter-spacing:.045em;}
+  body[data-dashboard] .yk-mobile-nav-space{height:calc(81px + env(safe-area-inset-bottom,0px));}
+}

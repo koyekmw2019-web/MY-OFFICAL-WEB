@@ -1,0 +1,31 @@
+/* FIX07, presentation only. Same-origin native cross-document transition
+   for browsing/dashboard routes; never intercept links or delay navigation.
+   Timed exam and authentication pages deliberately do not opt in. */
+@media(prefers-reduced-motion:no-preference){
+  @view-transition{navigation:auto;}
+  html,html::view-transition{background-color:#09090a;}
+  html[data-yk-ui-theme="light"],html[data-yk-ui-theme="light"]::view-transition{background-color:#f3f4f6;}
+  body > :is(.top,.vc-header,.topbar,.yk82-top,.ykn2-header,header[data-yk-header-fix05]){
+    view-transition-name:yk-v7875-header;
+  }
+  #yk-mobile-nav:not([hidden]){view-transition-name:yk-v7875-tab-bar;}
+  ::view-transition-group(yk-v7875-header),::view-transition-group(yk-v7875-tab-bar){animation-duration:0s!important;}
+  @keyframes yk7912MotionOut{from{opacity:1}to{opacity:0}}
+  @keyframes yk7912MotionIn{from{opacity:0}to{opacity:1}}
+  ::view-transition-old(root){animation:135ms ease-in both yk7912MotionOut;}
+  ::view-transition-new(root){animation:190ms cubic-bezier(.2,.75,.25,1) both yk7912MotionIn;}
+  ::view-transition-old(yk-v7875-header),::view-transition-old(yk-v7875-tab-bar){animation:90ms ease-in both yk7912MotionOut;}
+  ::view-transition-new(yk-v7875-header),::view-transition-new(yk-v7875-tab-bar){animation:115ms ease-out both yk7912MotionIn;}
+  /* Same-page Dictionary jump was mobile-only. This mirrors the native
+     crossfade across desktop widths, using the existing controller. */
+  html.yk-v7894-view::view-transition-group(yk-v7875-header),
+  html.yk-v7894-view::view-transition-group(yk-v7875-tab-bar){animation-duration:0s!important;}
+  html.yk-v7894-view::view-transition-old(root){animation:135ms ease-in both yk7912MotionOut;}
+  html.yk-v7894-view::view-transition-new(root){animation:190ms cubic-bezier(.2,.75,.25,1) both yk7912MotionIn;}
+  #driving-dictionary.yk-v7894-fade{animation:190ms cubic-bezier(.2,.75,.25,1) both yk7912MotionIn;}
+  /* If native view-transition is unavailable or skipped (e.g. a browser
+     drops a snapshot on slower navigation), reveal just the arriving
+     content. Keep header/bottom nav anchored and never block clicks. */
+  @keyframes yk7912Entry{from{opacity:.84}to{opacity:1}}
+  html.yk07-entry body > :is(main,.wrap){animation:yk7912Entry 190ms ease-out both;}
+}

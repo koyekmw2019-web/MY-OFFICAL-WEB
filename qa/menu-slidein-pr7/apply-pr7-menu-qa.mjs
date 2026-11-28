@@ -61,10 +61,69 @@ for(const file of pages){
    html=html.replace('</body>',backdrop+drawer+'</body>');
  }
  // All new UI is presentation-only. Existing Identity remains the source of truth.
- const style='<link rel="stylesheet" href="/assets/ykoc-pr7-menu-drawer.css?v=pr7menu1">';
+ const style='<link rel="stylesheet" href="/assets/ykoc-pr7-menu-drawer.css?v=7912-fix12">';
  html=html.replace('</head>',style+'</head>');
  if(!html.includes('id="menuToggle"')) {
-   html=html.replace(/<body\b[^>]*>/,tag=>tag+'<button type="button" id="ykDrawerOpen" aria-controls="siteMenu" aria-expanded="false">☰ Menu</button>');
+   // Dashboard pages already have their own sticky header. Keep the existing
+   // drawer controller and its single opener, but mount the opener in that header.
+   const dashboard=/<body\b[^>]*\bdata-dashboard="(?:router|admin|student|member)"/.test(html);
+   if(dashboard){
+     const actions=/<div class="top-actions">\s*<details\b[^>]*id="ykDashboardLangPicker"[^>]*>[\s\S]*?<\/details>/g;
+     assert((html.match(actions)||[]).length===1,'Missing/duplicate dashboard language picker: '+file);
+     const opener='<button type="button" id="ykDrawerOpen" aria-controls="siteMenu" aria-expanded="false" aria-label="Menu" title="Menu"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span>Menu</span></button>';
+     html=html.replace(actions,match=>match+opener);
+     html=html.replace('</head>','<link rel="stylesheet" href="/assets/yk-dashboard-header-fix03.css?v=7912-fix03"></head>');
+     // FIX04: remove the floating dock and preserve the exact original
+     // Logout control/ID/handler as a quiet document-flow footer.
+     const dock=/<nav class="yk-dash-dock"[^>]*>[\s\S]*?<\/nav>/g;
+     assert((html.match(dock)||[]).length===1,'Missing or duplicate dashboard dock: '+file);
+     html=html.replace(dock,match=>{
+       const logout=match.match(/<button\b[^>]*id="dashLogout"[^>]*>[\s\S]*?<\/button>/);
+       assert(logout,'Dashboard logout control missing: '+file);
+       return '<footer class="yk-dashboard-footer"><div class="yk-dashboard-footer-inner"><small>© STUDYING WITH YE KUN</small>'+logout[0]+'</div></footer>';
+     });
+     assert((html.match(/id="dashLogout"/g)||[]).length===1,'Logout ID changed: '+file);
+     html=html.replace('</head>','<link rel="stylesheet" href="/assets/yk-dashboard-footer-fix04.css?v=7912-fix04"></head>');
+     assert(html.includes('yk-dashboard-v758.js?v=7912'),'Dashboard script link missing: '+file);
+     html=html.replace('yk-dashboard-v758.js?v=7912','yk-dashboard-v758.js?v=7912-fix04');
+   }else{
+     // FIX05: integrate the existing drawer opener into the actual header.
+     // Known build templates are explicit; unknown layouts fail closed instead
+     // of silently injecting a separate row directly beneath <body>.
+     const opener='<button type="button" id="ykDrawerOpen" aria-controls="siteMenu" aria-expanded="false" aria-label="Menu" title="Menu"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span>Menu</span></button>';
+     const header=html.match(/<header\b[^>]*>[\s\S]*?<\/header>/);
+     assert(header,'FIX05: no header in '+file);
+     let h=header[0],kind;
+     if(h.startsWith('<header class="yk-auth-header">')){
+       kind='auth';
+       // The linked brand already provides the same Home destination.
+       // Retain the existing link and translation hook; CSS removes duplication.
+       assert(h.includes('class="yk-auth-header-actions"'),'Missing auth actions: '+file);
+       h=h.replace(/<\/div>(\s*)<\/header>$/,opener+'</div>$1</header>');
+     }else if(h.startsWith('<header class="vc-header">')){
+       kind='video';
+       assert(h.includes('class="vc-top-actions"'),'Missing video actions: '+file);
+       h=h.replace(/<\/div>(\s*)<\/div>(\s*)<\/header>$/,opener+'</div>$1</div>$2</header>');
+     }else if(h.startsWith('<header class="top">')){
+       kind='study';
+       h=h.replace(/<\/div>(\s*)<\/header>$/,opener+'</div>$1</header>');
+     }else if(h.startsWith('<header class="yk82-top">')){
+       kind='jlpt';
+       h=h.replace(/<\/div>(\s*)<\/header>$/,opener+'</div>$1</header>');
+     }else if(h.startsWith('<header class="ykn2-header">')){
+       kind='n2';
+       h=h.replace(/<\/div>(\s*)<\/header>$/,opener+'</div>$1</header>');
+     }else if(h.startsWith('<header>')&&h.includes('class="bar"')&&file.endsWith('dictionary-reports.html')){
+       kind='reports';
+       h=h.replace(/<\/div>(\s*)<\/header>$/,opener+'</div>$1</header>');
+     }else{
+       assert.fail('FIX05 unknown header layout: '+file);
+     }
+     assert((h.match(/id="ykDrawerOpen"/g)||[]).length===1,'FIX05 opener not integrated: '+file);
+     h=h.replace(/^<header\b/, '<header data-yk-header-fix05="'+kind+'"');
+     html=html.replace(header[0],h);
+     html=html.replace('</head>','<link rel="stylesheet" href="/assets/yk-global-header-fix05.css?v=7912-'+(kind==='video'?'fix06':'fix05')+'"></head>');
+   }
  }
  if(!file.endsWith('mock-second-license-qa.html') && !/<script[^>]+src=["'][^"']*identity\.bundle\.js(?:[?#][^"']*)?["']/i.test(html)){
    html=html.replace('</body>','<script type="module" src="/assets/identity.bundle.js"></script></body>');
@@ -84,6 +143,9 @@ for(const [file,html] of staged)writeFileSync(file,html,'utf8');
 writeFileSync(script,newer,'utf8');
 const assetDir=resolve(dist,'assets'); mkdirSync(assetDir,{recursive:true});
 copyFileSync(resolve(here,'drawer.css'),resolve(assetDir,'ykoc-pr7-menu-drawer.css'));
+copyFileSync(resolve(here,'yk-dashboard-header-fix03.css'),resolve(assetDir,'yk-dashboard-header-fix03.css'));
+copyFileSync(resolve(here,'yk-dashboard-footer-fix04.css'),resolve(assetDir,'yk-dashboard-footer-fix04.css'));
+copyFileSync(resolve(here,'yk-global-header-fix05.css'),resolve(assetDir,'yk-global-header-fix05.css'));
 copyFileSync(resolve(here,'drawer.js'),resolve(assetDir,'ykoc-pr7-menu-drawer.js'));
 copyFileSync(resolve(here,'menu-i18n.js'),resolve(assetDir,'ykoc-pr7-menu-i18n.js'));
 for(const n of ['studying-with-ye-kun-logo.png','studying-with-ye-kun-wordmark.png'])copyFileSync(resolve(here,n),resolve(assetDir,n));

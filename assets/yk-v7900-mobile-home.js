@@ -178,6 +178,15 @@ async function reload(){
  yk791HomeBusy(true);
  yk791HomeRetry(false);
  resetAccountView();
+ // A genuinely stalled read-only request must not leave the Home skeleton
+ // permanently visible. Invalidate late results and expose the existing Retry.
+ const watchdog=setTimeout(()=>{
+   if(seq!==requestSeq)return;
+   requestSeq++;
+   unavailable();clearProgress();
+   $('yk790Resume').hidden=true;$('yk790Daily').hidden=false;
+   yk791HomeRetry(true);yk791HomeBusy(false);
+ },12000);
  try{
    // Identity may still be initializing. Never show guest as a loading placeholder.
    for(let i=0;!window.YKIdentity?.getUser&&i<80;i++){
@@ -201,6 +210,7 @@ async function reload(){
  }catch{
    if(seq===requestSeq){unavailable();clearProgress();yk791HomeRetry(true);}
  }finally{
+   clearTimeout(watchdog);
    if(seq===requestSeq)yk791HomeBusy(false);
  }
 }
