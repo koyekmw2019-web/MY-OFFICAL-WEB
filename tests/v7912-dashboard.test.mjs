@@ -265,4 +265,27 @@ check('FIX11 real generated dictionary runtime renders the corrected gloss with 
   assert(result.includes('ခြေနင်းဘရိတ်'));
   assert(!result.includes('ခြေးဘရိတ်'));
 });
+check('FIX14 invite links route to existing password setup without affecting other Home navigation',()=>{
+  const cases=[
+    ['#invite_token=synthetic', '/login.html#invite_token=synthetic'],
+    ['#invite_token=abc%2Bdef%2Fghi', '/login.html#invite_token=abc%2Bdef%2Fghi'],
+    ['#invite_token=synthetic&other=1', '/login.html#invite_token=synthetic'],
+    ['#invite_token=',null],['#home',null],['#yk82Hub',null],['#driving-dictionary',null],
+    ['#recovery_token=synthetic',null],['#confirmation_token=synthetic',null],
+    ['#email_change_token=synthetic',null],['',null],['#not_invite_token=synthetic',null]
+  ];
+  for(const path of ['index.html','dist/index.html']){
+    const html=read(path);
+    const script=html.match(/<script id="yk-identity-invite-landing">([\s\S]+?)<\/script>/);
+    assert(script,path);
+    assert(html.indexOf(script[0])<html.indexOf('/assets/identity.bundle.js'),path);
+    for(const [hash,expected] of cases){
+      let actual=null;
+      vm.runInNewContext(script[1],{location:{hash,replace(value){actual=value;}},URLSearchParams,encodeURIComponent});
+      assert.equal(actual,expected,path+' '+hash.split('=')[0]);
+    }
+  }
+  assert(read('dist/login.html').includes('id="viewNewPassword"'));
+  assert(read('dist/assets/yk-login-v757.js').includes('id.acceptInvite(inviteToken,pass)'));
+});
 console.log('TOTAL v7.91.2 targeted: '+count+' PASS / 0 FAIL');
