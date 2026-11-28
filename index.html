@@ -3,6 +3,14 @@
 <html lang="my">
 <head>
 <meta charset="utf-8"/>
+<!-- Identity invite landing: dedicated password setup, before Home scripts consume the fragment. -->
+<script id="yk-identity-invite-landing">
+(() => {
+  const invite = new URLSearchParams(location.hash.slice(1)).get('invite_token');
+  if (invite) location.replace('/login.html#invite_token=' + encodeURIComponent(invite));
+})();
+</script>
+
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <!-- v7.55 JLPT mock 180-point scoring criteria / estimated scores (not official scaled) -->
 <!-- v7.54 premium JLPT cards / v7.52 INTEGRATED JLPT MOCK: N1-N5 last scored Listening phase (browser Japanese speech) + native 20 questions. No PDF or PDF page assets. -->
